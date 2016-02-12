@@ -1,8 +1,5 @@
-build/fonts
-build/css
-build/img
-build/js
-build/*.html
+build/*
+!build/readme.md
 
 .Saved/
 _arc/

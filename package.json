@@ -8,6 +8,12 @@
   "author": "Nikolay Gromov",
   "license": "MIT",
   "devDependencies": {
-    "gulp": "^3.9.0"
+    "del": "^2.2.0",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-cssnano": "^2.1.1",
+    "gulp-debug": "^2.1.2",
+    "gulp-less": "^3.0.5",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^1.6.0"
   }
 }
