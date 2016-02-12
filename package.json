@@ -12,6 +12,7 @@
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-cssnano": "^2.1.1",
     "gulp-debug": "^2.1.2",
+    "gulp-if": "^2.0.0",
     "gulp-less": "^3.0.5",
     "gulp-rename": "^1.2.2",
     "gulp-sourcemaps": "^1.6.0"
