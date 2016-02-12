@@ -37,4 +37,8 @@ gulp.task('clean:build', function () {
 
 
 
-gulp.task('build', gulp.series('clean:build', 'less'));
+// Сборка
+gulp.task('build', gulp.series(
+  'clean:build',
+  gulp.parallel('less', 'copy:css')
+));
