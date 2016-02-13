@@ -9,6 +9,7 @@
   "license": "MIT",
   "repository": "nicothin/start-project--gulp",
   "devDependencies": {
+    "browser-sync": "^2.11.1",
     "del": "^2.2.0",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-autoprefixer": "^3.1.0",
@@ -20,6 +21,7 @@
     "gulp-imagemin": "^2.4.0",
     "gulp-less": "^3.0.5",
     "gulp-newer": "^1.1.0",
+    "gulp-notify": "^2.2.0",
     "gulp-rename": "^1.2.2",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-svgmin": "^1.2.1",

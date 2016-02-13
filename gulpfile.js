@@ -17,6 +17,8 @@ const path = require('path');
 const cheerio = require('gulp-cheerio');
 const fileinclude = require('gulp-file-include');
 const newer = require('gulp-newer');
+const notify = require('gulp-notify');
+const browserSync = require('browser-sync').create();
 
 // Запуск `NODE_ENV=production gulp [задача]` приведет к сборке без sourcemaps
 const isDev = !process.env.NODE_ENV || process.env.NODE_ENV == 'dev';
@@ -28,6 +30,12 @@ gulp.task('less', function () {
     .pipe(gulpIf(isDev, sourcemaps.init()))
     .pipe(debug({title: "LESS:"}))
     .pipe(less())
+    .on('error', notify.onError(function(err){
+      return {
+        title: 'Styles error',
+        message: err.message
+      }
+    }))
     .pipe(autoprefixer({
       browsers: ['last 2 versions']
     }))
@@ -124,7 +132,18 @@ gulp.task('watch', function () {
   gulp.watch('src/img/*.{jpg,jpeg,gif,png,svg}', gulp.series('img'));
 });
 
+// Локальный сервер
+gulp.task('serve', function () {
+  gulp.series('build');
+  browserSync.init({
+    server: 'build'
+  });
+  browserSync.watch('build/**/*.*').on('change', browserSync.reload);
+});
+
 
 
 // Задача по умолчанию
-gulp.task('default', gulp.series('build', 'watch'));
+gulp.task('default',
+  gulp.series('build', gulp.parallel('watch', 'serve'))
+);
