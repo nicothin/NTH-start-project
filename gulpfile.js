@@ -80,7 +80,9 @@ gulp.task('svgstore', function () {
     .pipe(gulp.dest('build/img'));
 });
 
+// Сборка HTML
 gulp.task('html', function() {
+  console.log('---------- сборка HTML');
   return gulp.src('src/*.html')
     .pipe(fileinclude({
       prefix: '@@',
@@ -97,19 +99,26 @@ gulp.task('clean', function () {
   ]);
 });
 
-
-
-// Сборка
+// Сборка всего
 gulp.task('build', gulp.series(
   'clean',
-  gulp.parallel('less', 'copy:css', 'img', 'svgstore')
+  gulp.parallel('less', 'copy:css', 'img', 'svgstore'),
+  'html'
 ));
 
+// Слежение
+gulp.task('watch', function () {
+  // Слежение за HTML
+  gulp.watch(['src/*.html', 'src/_include/*.html'], gulp.series('html'));
+  // Слежение за LESS
+  gulp.watch('src/less/**/*.less', gulp.series('less'));
+  // Слежение за добавочными CSS
+  gulp.watch('src/css/*.css', gulp.series('copy:css'));
+  // Слежение за изображениями
+  gulp.watch('src/img/*.{jpg,jpeg,gif,png,svg}', gulp.series('img'));
+});
 
 
 
-// Слежение за LESS
-// gulp.watch('src/less/**/*.less', gulp.series('less'));
-
-// Слежение за добавочными CSS
-// gulp.watch('src/css/*.css', gulp.series('copy:css'));
+// Задача по умолчанию
+gulp.task('default', gulp.series('build', 'watch'));
