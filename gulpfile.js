@@ -112,9 +112,7 @@ gulp.task('js', function () {
   console.log('---------- обработка Javascript');
   return gulp.src([
       // Последовательность конкатенации
-      'src/js/jquery-2.2.0.js',
-      'src/js/owl.carousel.js',
-      'src/js/bootstrap.js'
+      'src/js/script.js'
     ])
     .pipe(debug({title: "JS:"}))
     .pipe(gulpIf(isDev, sourcemaps.init()))
