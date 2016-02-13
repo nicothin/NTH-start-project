@@ -15,6 +15,7 @@ const svgmin = require('gulp-svgmin');
 const path = require('path');
 const cheerio = require('gulp-cheerio');
 const fileinclude = require('gulp-file-include');
+const newer = require('gulp-newer');
 
 // Запуск `NODE_ENV=production gulp [задача]` приведет к сборке без sourcemaps
 const isDev = !process.env.NODE_ENV || process.env.NODE_ENV == 'dev';
@@ -51,7 +52,8 @@ gulp.task('copy:css', function() {
 // Копирование и оптимизация изображений
 gulp.task('img', function () {
   console.log('---------- копирование и оптимизация картинок');
-  return gulp.src('src/img/*.{jpg,jpeg,gif,png,svg}')
+  return gulp.src('src/img/*.{jpg,jpeg,gif,png,svg}', {since: gulp.lastRun('img')}) // только для изменившихся с последнего запуска файлов
+    .pipe(newer('build/img'))  // оставить в потоке только изменившиеся файлы
     .pipe(imagemin({
         progressive: true,
         svgoPlugins: [{removeViewBox: false}],
