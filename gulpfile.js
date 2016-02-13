@@ -14,6 +14,7 @@ const svgstore = require('gulp-svgstore');
 const svgmin = require('gulp-svgmin');
 const path = require('path');
 const cheerio = require('gulp-cheerio');
+const fileinclude = require('gulp-file-include');
 
 // Запуск `NODE_ENV=production gulp [задача]` приведет к сборке без sourcemaps
 const isDev = !process.env.NODE_ENV || process.env.NODE_ENV == 'dev';
@@ -49,6 +50,7 @@ gulp.task('copy:css', function() {
 
 // Копирование и оптимизация изображений
 gulp.task('img', function () {
+  console.log('---------- копирование и оптимизация картинок');
   return gulp.src('src/img/*.{jpg,jpeg,gif,png,svg}')
     .pipe(imagemin({
         progressive: true,
@@ -60,8 +62,8 @@ gulp.task('img', function () {
 
 // Сборка SVG-спрайта
 gulp.task('svgstore', function () {
-  return gulp
-    .src('src/img/svg_sprite/*.svg')
+  console.log('---------- сборка SVG спрайта');
+  return gulp.src('src/img/svg_sprite/*.svg')
     .pipe(svgmin(function (file) {
       return {
         plugins: [{
@@ -76,6 +78,15 @@ gulp.task('svgstore', function () {
       $('svg').attr('style',  'display:none');
     }))
     .pipe(gulp.dest('build/img'));
+});
+
+gulp.task('html', function() {
+  return gulp.src('src/*.html')
+    .pipe(fileinclude({
+      prefix: '@@',
+      basepath: '@file'
+    }))
+    .pipe(gulp.dest('build/'));
 });
 
 // Очистка папки сборки
