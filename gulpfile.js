@@ -18,6 +18,8 @@ const cheerio = require('gulp-cheerio');
 const fileinclude = require('gulp-file-include');
 const newer = require('gulp-newer');
 const notify = require('gulp-notify');
+const uglify = require('gulp-uglify');
+const concat = require('gulp-concat');
 const browserSync = require('browser-sync').create();
 
 // Запуск `NODE_ENV=production gulp [задача]` приведет к сборке без sourcemaps
@@ -32,7 +34,7 @@ gulp.task('less', function () {
     .pipe(less())
     .on('error', notify.onError(function(err){
       return {
-        title: 'Styles error',
+        title: 'Styles compilation error',
         message: err.message
       }
     }))
@@ -43,7 +45,7 @@ gulp.task('less', function () {
     .pipe(rename('style.min.css'))
     .pipe(debug({title: "RENAME:"}))
     .pipe(gulpIf(isDev, sourcemaps.write('.')))
-    .pipe(gulpIf(isDev, debug({title: "SOURCEMAPS:"})))
+    .pipe(gulpIf(isDev, debug({title: "LESS SOURCEMAPS:"})))
     .pipe(gulp.dest('build/css'));
 });
 
@@ -105,6 +107,30 @@ gulp.task('html', function() {
     .pipe(gulp.dest('build/'));
 });
 
+// Конкатенация и углификация Javascript
+gulp.task('js', function () {
+  console.log('---------- обработка Javascript');
+  return gulp.src([
+      // Последовательность конкатенации
+      'src/js/jquery-2.2.0.js',
+      'src/js/owl.carousel.js',
+      'src/js/bootstrap.js'
+    ])
+    .pipe(debug({title: "JS:"}))
+    .pipe(gulpIf(isDev, sourcemaps.init()))
+    .pipe(concat('script.min.js'))
+    .pipe(uglify())
+    .on('error', notify.onError(function(err){
+      return {
+        title: 'Javascript uglify error',
+        message: err.message
+      }
+    }))
+    .pipe(gulpIf(isDev, sourcemaps.write('.')))
+    .pipe(gulpIf(isDev, debug({title: "JS SOURCEMAPS:"})))
+    .pipe(gulp.dest('build/js'));
+});
+
 // Очистка папки сборки
 gulp.task('clean', function () {
   return del([
@@ -116,7 +142,7 @@ gulp.task('clean', function () {
 // Сборка всего
 gulp.task('build', gulp.series(
   'clean',
-  gulp.parallel('less', 'copy:css', 'img', 'svgstore'),
+  gulp.parallel('less', 'copy:css', 'img', 'svgstore', 'js'),
   'html'
 ));
 
@@ -130,6 +156,8 @@ gulp.task('watch', function () {
   gulp.watch('src/css/*.css', gulp.series('copy:css'));
   // Слежение за изображениями
   gulp.watch('src/img/*.{jpg,jpeg,gif,png,svg}', gulp.series('img'));
+  // Слежение за Javascript
+  gulp.watch('src/js/*.js', gulp.series('js'));
 });
 
 // Локальный сервер
@@ -140,8 +168,6 @@ gulp.task('serve', function () {
   });
   browserSync.watch('build/**/*.*').on('change', browserSync.reload);
 });
-
-
 
 // Задача по умолчанию
 gulp.task('default',

@@ -14,6 +14,7 @@
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-cheerio": "^0.6.2",
+    "gulp-concat": "^2.6.0",
     "gulp-cssnano": "^2.1.1",
     "gulp-debug": "^2.1.2",
     "gulp-file-include": "^0.13.7",
@@ -26,6 +27,7 @@
     "gulp-sourcemaps": "^1.6.0",
     "gulp-svgmin": "^1.2.1",
     "gulp-svgstore": "^5.0.5",
+    "gulp-uglify": "^1.5.2",
     "imagemin-pngquant": "^4.2.0"
   }
 }
