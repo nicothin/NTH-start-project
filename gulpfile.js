@@ -5,6 +5,7 @@ const less = require('gulp-less');
 const debug = require('gulp-debug');
 const sourcemaps = require('gulp-sourcemaps');
 const cssnano = require('gulp-cssnano');
+const autoprefixer = require('gulp-autoprefixer');
 const rename = require('gulp-rename');
 const gulpIf = require('gulp-if');
 const del = require('del');
@@ -27,6 +28,9 @@ gulp.task('less', function () {
     .pipe(gulpIf(isDev, sourcemaps.init()))
     .pipe(debug({title: "LESS:"}))
     .pipe(less())
+    .pipe(autoprefixer({
+      browsers: ['last 2 versions']
+    }))
     .pipe(cssnano())
     .pipe(rename('style.min.css'))
     .pipe(debug({title: "RENAME:"}))
