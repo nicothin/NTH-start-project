@@ -10,11 +10,16 @@
   "devDependencies": {
     "del": "^2.2.0",
     "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-cheerio": "^0.6.2",
     "gulp-cssnano": "^2.1.1",
     "gulp-debug": "^2.1.2",
     "gulp-if": "^2.0.0",
+    "gulp-imagemin": "^2.4.0",
     "gulp-less": "^3.0.5",
     "gulp-rename": "^1.2.2",
-    "gulp-sourcemaps": "^1.6.0"
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-svgmin": "^1.2.1",
+    "gulp-svgstore": "^5.0.5",
+    "imagemin-pngquant": "^4.2.0"
   }
 }
