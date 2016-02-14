@@ -5,8 +5,9 @@ const less = require('gulp-less');
 const debug = require('gulp-debug');
 const sourcemaps = require('gulp-sourcemaps');
 const cleanss = require('gulp-cleancss');
-const combineMq = require('gulp-combine-mq');
-const autoprefixer = require('gulp-autoprefixer');
+const postcss = require('gulp-postcss');
+const autoprefixer = require('autoprefixer');
+const mqpacker = require('css-mqpacker');
 const rename = require('gulp-rename');
 const gulpIf = require('gulp-if');
 const del = require('del');
@@ -39,12 +40,10 @@ gulp.task('less', function () {
         message: err.message
       }
     }))
-    .pipe(autoprefixer({
-      browsers: ['last 2 versions']
-    }))
-    .pipe(combineMq({
-      beautify: false
-    }))
+    .pipe(postcss([
+        autoprefixer({browsers: ['last 2 version']}),
+        mqpacker
+    ]))
     .pipe(cleanss())
     .pipe(rename('style.min.css'))
     .pipe(debug({title: "RENAME:"}))
@@ -57,9 +56,6 @@ gulp.task('less', function () {
 gulp.task('copy:css', function() {
   console.log('---------- копирование CSS');
   return gulp.src('src/css/*.css', {since: gulp.lastRun('copy:css')})
-    .pipe(combineMq({
-      beautify: false
-    }))
     .pipe(cleanss())
     .pipe(rename(function (path) {
       path.extname = '.min.css'
