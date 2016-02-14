@@ -1,0 +1,146 @@
+// Make viewport responsive
+// see http://timkadlec.com/2012/10/ie10-snap-mode-and-responsive-design/
+@at-root {
+  @-ms-viewport { width: device-width; }
+}
+
+// Suppress the focus outline on elements that cannot be accessed via keyboard.
+// see: https://github.com/suitcss/base
+[tabindex="-1"]:focus {
+  outline: none !important;
+}
+
+// iOS "clickable elements" fix for role="button"
+// see https://developer.mozilla.org/en-US/docs/Web/Events/click#Safari_Mobile
+[role="button"] {
+  cursor: pointer;
+}
+
+// Avoid 300ms click delay on touch devices that support the `touch-action` CSS property.
+// see:
+// http://v4-alpha.getbootstrap.com/content/reboot/#click-delay-optimization-for-touch
+// http://caniuse.com/#feat=css-touch-action
+// http://patrickhlauke.github.io/touch/tests/results/#suppressing-300ms-delay
+a,
+area,
+button,
+[role="button"],
+input,
+label,
+select,
+summary,
+textarea {
+  touch-action: manipulation;
+}
+
+
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 10px;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -ms-overflow-style: scrollbar;
+}
+
+body {
+  font-family: @font-family;
+  font-size: @font-size;
+  line-height: @line-height;
+  color: @text-color;
+  background: @body-bg;
+}
+
+a {
+  color: @link-color;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    color: @link-color--hover;
+    text-decoration: underline;
+  }
+}
+
+img {
+  max-width: 100%;
+}
+
+
+
+// .h1,
+h1 { font-size: @font-size--h1; }
+// .h2,
+h2 { font-size: @font-size--h2; }
+// .h3,
+h3 { font-size: @font-size--h3; }
+// .h4,
+h4 { font-size: @font-size--h4; }
+// .h5,
+h5 { font-size: @font-size--h5; }
+// .h6,
+h6 { font-size: @font-size--h6; }
+
+// .h1, .h2, .h3, .h4, .h5, .h6,
+h1, h2, h3, h4, h5, h6
+{
+  font-family: @font-family--headings;
+  font-weight: 700;
+  line-height: 1.2;
+  color: currentColor;
+}
+
+// .h1, .h2, .h3,
+h1, h2, h3
+{
+  margin-top: @line-height;
+  margin-bottom: (@line-height / 2);
+}
+
+// .h4, .h5, .h6,
+h4, h5, h6
+{
+  margin-top: (@line-height / 2);
+  margin-bottom: (@line-height / 2);
+}
+
+p,
+ul,
+ol,
+blockquote {
+  margin: 0 0 (@line-height / 2);
+}
+
+hr {
+  margin-top:    @line-height;
+  margin-bottom: @line-height;
+  border: 0;
+  border-top: 1px solid @border-color;
+}
+
+// .small,
+small {
+  font-size: @font-size--small;
+}
+
+// .mark,
+mark {
+  background-color: #ff0;
+  padding: .2em;
+}
+
+blockquote {
+  padding: @line-height;
+  border-left: 5px solid @border-color;
+
+  p,
+  ul,
+  ol {
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
