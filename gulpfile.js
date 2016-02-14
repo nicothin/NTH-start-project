@@ -56,6 +56,10 @@ gulp.task('less', function () {
 gulp.task('copy:css', function() {
   console.log('---------- копирование CSS');
   return gulp.src('src/css/*.css', {since: gulp.lastRun('copy:css')})
+    .pipe(postcss([
+        autoprefixer({browsers: ['last 2 version']}),
+        mqpacker
+    ]))
     .pipe(cleanss())
     .pipe(rename(function (path) {
       path.extname = '.min.css'
