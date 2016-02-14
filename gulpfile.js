@@ -4,7 +4,8 @@ const gulp = require('gulp');
 const less = require('gulp-less');
 const debug = require('gulp-debug');
 const sourcemaps = require('gulp-sourcemaps');
-const cssnano = require('gulp-cssnano');
+const cleanss = require('gulp-cleancss');
+const combineMq = require('gulp-combine-mq');
 const autoprefixer = require('gulp-autoprefixer');
 const rename = require('gulp-rename');
 const gulpIf = require('gulp-if');
@@ -41,7 +42,10 @@ gulp.task('less', function () {
     .pipe(autoprefixer({
       browsers: ['last 2 versions']
     }))
-    .pipe(cssnano())
+    .pipe(combineMq({
+      beautify: false
+    }))
+    .pipe(cleanss())
     .pipe(rename('style.min.css'))
     .pipe(debug({title: "RENAME:"}))
     .pipe(gulpIf(isDev, sourcemaps.write('.')))
@@ -53,9 +57,10 @@ gulp.task('less', function () {
 gulp.task('copy:css', function() {
   console.log('---------- копирование CSS');
   return gulp.src('src/css/*.css', {since: gulp.lastRun('copy:css')})
-    .pipe(cssnano({
-      discardUnused: false // не удалять неиспользованные конструкции
+    .pipe(combineMq({
+      beautify: false
     }))
+    .pipe(cleanss())
     .pipe(rename(function (path) {
       path.extname = '.min.css'
     }))
