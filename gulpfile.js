@@ -23,6 +23,7 @@ const notify = require('gulp-notify');
 const uglify = require('gulp-uglify');
 const concat = require('gulp-concat');
 const browserSync = require('browser-sync').create();
+const replace = require('gulp-replace');
 
 // Запуск `NODE_ENV=production gulp [задача]` приведет к сборке без sourcemaps
 const isDev = !process.env.NODE_ENV || process.env.NODE_ENV == 'dev';
@@ -48,7 +49,6 @@ gulp.task('less', function () {
     .pipe(rename('style.min.css'))
     .pipe(debug({title: "RENAME:"}))
     .pipe(gulpIf(isDev, sourcemaps.write('.')))
-    .pipe(gulpIf(isDev, debug({title: "LESS SOURCEMAPS:"})))
     .pipe(gulp.dest('build/css'));
 });
 
@@ -109,6 +109,7 @@ gulp.task('html', function() {
       prefix: '@@',
       basepath: '@file'
     }))
+    .pipe(replace(/\n<!--DEVCOMMENT[\s\S]+?-->/gm, ''))
     .pipe(gulp.dest('build/'));
 });
 
@@ -167,7 +168,9 @@ gulp.task('watch', function () {
 gulp.task('serve', function () {
   gulp.series('build');
   browserSync.init({
-    server: 'build'
+    server: 'build',
+    notify: false,
+    startPath: '_components_library.html'
   });
   browserSync.watch('build/**/*.*').on('change', browserSync.reload);
 });

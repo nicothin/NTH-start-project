@@ -40,7 +40,7 @@ textarea {
 
 
 //------------------------------------------------------------------------------
-//  Теги: общее и типографика
+//  Базис
 //------------------------------------------------------------------------------
 
 *, *:before, *:after {
@@ -52,6 +52,7 @@ html {
   font-size: 10px;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   -ms-overflow-style: scrollbar;
+  min-width: 320px;
 }
 
 body {
@@ -60,6 +61,7 @@ body {
   line-height: @line-height;
   color: @text-color;
   background: @body-bg;
+  margin: 0;
 }
 
 a {
@@ -79,6 +81,10 @@ img {
 
 
 
+//------------------------------------------------------------------------------
+//  Типографика
+//------------------------------------------------------------------------------
+
 // .h1,
 h1 { font-size: @font-size--h1; }
 // .h2,
@@ -93,24 +99,21 @@ h5 { font-size: @font-size--h5; }
 h6 { font-size: @font-size--h6; }
 
 // .h1, .h2, .h3, .h4, .h5, .h6,
-h1, h2, h3, h4, h5, h6
-{
+h1, h2, h3, h4, h5, h6 {
   font-family: @font-family--headings;
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.4;
   color: currentColor;
 }
 
 // .h1, .h2, .h3,
-h1, h2, h3
-{
+h1, h2, h3 {
   margin-top: @line-height;
   margin-bottom: (@line-height / 2);
 }
 
 // .h4, .h5, .h6,
-h4, h5, h6
-{
+h4, h5, h6 {
   margin-top: (@line-height / 2);
   margin-bottom: (@line-height / 2);
 }
@@ -118,8 +121,24 @@ h4, h5, h6
 p,
 ul,
 ol,
-blockquote {
-  margin: 0 0 (@line-height / 2);
+dl,
+blockquote,
+address,
+pre,
+figure {
+  margin-top: 0;
+  margin-bottom: (@line-height / 2);
+}
+
+ol ol,
+ul ul,
+ol ul,
+ul ol {
+  margin-bottom: 0;
+}
+
+dt {
+  font-weight: 700;
 }
 
 hr {
@@ -131,12 +150,12 @@ hr {
 
 // .small,
 small {
-  font-size: @font-size--small;
+  font-size: 80%;
 }
 
 // .mark,
 mark {
-  background-color: #ff0;
+  background: #ff0;
   padding: .2em;
 }
 
@@ -151,4 +170,30 @@ blockquote {
       margin-bottom: 0;
     }
   }
+}
+
+
+
+//------------------------------------------------------------------------------
+//  Таблицы
+//------------------------------------------------------------------------------
+
+table {
+  border: none;
+}
+
+caption {
+  padding-top: .3em;
+  padding-bottom: .3em;
+  color: @text-color--muted;
+  text-align: left;
+}
+
+th {
+  text-align: left;
+  padding: .3em;
+}
+
+td {
+  padding: .3em;
 }
