@@ -170,7 +170,7 @@ gulp.task('serve', function () {
   browserSync.init({
     server: 'build',
     notify: false,
-    startPath: '_components_library.html'
+    startPath: '_blocks_library.html'
   });
   browserSync.watch('build/**/*.*').on('change', browserSync.reload);
 });

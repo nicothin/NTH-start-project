@@ -1,4 +1,12 @@
 //------------------------------------------------------------------------------
+//  Базовая стилизация. Одновременно и аналог CSS-normalize, и стилизация тегов:
+//  базис, типографика, код, таблицы, формы...
+//  Но только тегов. Блоки описываются в индивидуальных файлах.
+//------------------------------------------------------------------------------
+
+
+
+//------------------------------------------------------------------------------
 //  Общие правила
 //------------------------------------------------------------------------------
 
@@ -52,6 +60,7 @@ html {
   font-size: 10px;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   -ms-overflow-style: scrollbar;
+  -ms-text-size-adjust: 100%;
   min-width: 320px;
 }
 
@@ -67,6 +76,7 @@ body {
 a {
   color: @link-color;
   text-decoration: none;
+  background-color: transparent;
 
   &:hover,
   &:focus {
@@ -77,6 +87,7 @@ a {
 
 img {
   max-width: 100%;
+  border: 0;
 }
 
 
@@ -124,9 +135,8 @@ ol,
 dl,
 blockquote,
 address,
-pre,
 figure {
-  margin-top: 0;
+  margin-top: (@line-height / 2);
   margin-bottom: (@line-height / 2);
 }
 
@@ -134,6 +144,7 @@ ol ol,
 ul ul,
 ol ul,
 ul ol {
+  margin-top: 0;
   margin-bottom: 0;
 }
 
@@ -159,6 +170,11 @@ mark {
   padding: .2em;
 }
 
+b,
+strong {
+  font-weight: bolder;
+}
+
 blockquote {
   padding: @line-height;
   border-left: 5px solid @border-color;
@@ -170,6 +186,43 @@ blockquote {
       margin-bottom: 0;
     }
   }
+}
+
+code,
+kbd,
+pre,
+samp {
+  font-family: @font-family--monospace;
+}
+
+code {
+  color: @text-color;
+  background-color: @gray-lightest;
+  padding: .2em .4em;
+  border-radius: @border-radius;
+}
+
+kbd {
+  padding: .2em .4em;
+  color: @text-color;
+  background-color: @gray-light;
+  border-radius: @border-radius;
+
+  kbd {
+    padding: 0;
+  }
+}
+
+pre {
+  display: block;
+  width: 100%;
+  margin-top:    @line-height;
+  margin-bottom: @line-height;
+  overflow-x: scroll;
+  background-color: @gray-lightest;
+  padding: .5em;
+  border-radius: @border-radius;
+  border: 1px solid @border-color;
 }
 
 
@@ -196,4 +249,83 @@ th {
 
 td {
   padding: .3em;
+}
+
+
+
+//------------------------------------------------------------------------------
+//  Формы
+//------------------------------------------------------------------------------
+
+label {
+  display: inline-block;
+}
+
+button {
+  overflow: visible;
+
+  &:focus {
+    outline: 1px dotted;
+    outline: 5px auto -webkit-focus-ring-color;
+  }
+}
+
+input,
+button,
+select,
+optgroup,
+textarea {
+  margin: 0;
+  line-height: inherit;
+  font: inherit;
+  border-radius: 0;
+  text-transform: none;
+}
+
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+input[type="search"] {
+  -webkit-appearance: none;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  padding: 0;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+fieldset {
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+legend {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  margin-bottom: .5em;
+  font-size: 1em;
+  line-height: inherit;
 }

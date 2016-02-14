@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ru">
+
+<head>
+<meta charset="utf-8">
+<title>Заголовок</title>
+<meta name="description" content="">
+@@include('_include/page_head.html')
+</head>
+
+<body>
+@@include('_include/page_header.html')
+
+<section class="container  blocks-library">
+  <h1>Библиотека блоков <a href="/">проекта</a></h1>
+  <p>ДРасположение блоков на этой странице регулируется глобальной модульной сеткой и, если она отключена (что хорошо для большинства проектов), блоки смещаются друг под друга.</p>
+  <p><strong>Проектные блоки</strong> — те, что cозданы специально для этого проекта (по умолчанию их нет вовсе).</p>
+  <p><strong>Исходные блоки</strong> — те, что есть в стартовом наборе блоков проекта (все они отключены по умолчанию).</p>
+
+  <section>
+    <h2>Формы по умолчанию</h2>
+  </section>
+
+  <section>
+    <h2>Исходный блок: Модульная сетка на flexbox</h2>
+    <p>Почти как в bootstrap 4.</p>
+    <p>Классы <code>.container</code>, <code>.row</code>, <code>.col-[xs|sm|md|lg|xl|xxl]-[1 - @grid-columns]</code>. См. глобальную сетку и примеси.</p>
+    <p><code>.col-[xxl]-[1 - @grid-columns]</code> по умолчанию закомментированы.</p>
+    <div class="row">
+      <div class="col-xs-12  col-sm-6  col-md-4  col-lg-3">
+        <div style="background: #eceeef; border: 1px solid #B1B1B1; padding: .5em;">
+          <code>.col-xs-12  .col-sm-4  .col-md-4  .col-lg-3</code>
+        </div>
+      </div>
+      <div class="col-xs-12  col-sm-6  col-md-4  col-lg-3">
+        <div style="background: #eceeef; border: 1px solid #B1B1B1; padding: .5em;">
+          <code>.col-xs-12  .col-sm-4  .col-md-4  .col-lg-3</code>
+        </div>
+      </div>
+      <div class="col-xs-12  col-sm-6  col-md-4  col-lg-3">
+        <div style="background: #eceeef; border: 1px solid #B1B1B1; padding: .5em;">
+          <code>.col-xs-12  .col-sm-4  .col-md-4  .col-lg-3</code>
+        </div>
+      </div>
+      <div class="col-xs-12  col-sm-6  col-md-4  col-lg-3">
+        <div style="background: #eceeef; border: 1px solid #B1B1B1; padding: .5em;">
+          <code>.col-xs-12  .col-sm-4  .col-md-4  .col-lg-3</code>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2  col-lg-3">
+        <div style="background: #eceeef; border: 1px solid #B1B1B1; padding: .5em;">
+          <code>.col-md-2 <br>.col-lg-3</code>
+        </div>
+      </div>
+      <div class="col-md-10  col-lg-9">
+        <div style="background: #eceeef; border: 1px solid #B1B1B1; padding: .5em;">
+          <code>.col-md-10 <br>.col-lg-9</code>
+        </div>
+      </div>
+    </div>
+    <h3>LESS-примеси</h3>
+    <p>Приоритетным является подход, в котором вместо упомянутых выше классов модульной сетки используются семантические БЭМ-овские классы и less-примеси (см. файл с примесями).</p>
+    <div class="row">
+      <div class="col-lg-6">
+<pre>
+.block-name {
+  .row(); // БЭМ-блок — обёртка элементов модульной сетки
+
+  &__element {
+  // Разные ширины элемента на разных вьюпортах
+  .col(xs, 6);
+  .col(sm, 5);
+  .col(md, 4);
+  .col(lg, 3);
+  .col(xl, 2);
+  .col(xxl, 1);
+  }
+}
+</pre>
+        111
+      </div>
+      <div class="col-lg-6">
+<pre>
+.block-name {
+  // в примесь можно передать ширину промежутка между ячейками
+  .row(10px);
+
+  &__first-element {
+    // в примесь можно передать много данных
+    .col(xs, 6, @grid-columns, 10px);
+  }
+}
+</pre>
+      </div>
+    </div>
+    <hr>
+  </section>
+</section>
+
+@@include('_include/page_footer.html')
+@@include('_include/page_bottom.html')
+</body>
+</html>

@@ -14,7 +14,7 @@
 
 
 
-// Семантические вета
+// Семантические цвета
 
 @text-color:                  @gray-darkest;
 @text-color--muted:           @gray-dark;
@@ -38,10 +38,11 @@
 @font-size--h6:               1.6rem;
 @font-size--small:            1.1rem;
 
-@line-height:                 1.4;
+@line-height:                 1.4em;
 
 @font-family:                 -apple-system, BlinkMacSystemFont, "Roboto", "Ubuntu", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
 @font-family--serif:          Georgia, "Times New Roman", Times, serif;
+@font-family--monospace:      Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 @font-family--headings:       @font-family;
 
 
@@ -60,10 +61,15 @@
 @screen-md:                   768px;
 @screen-lg:                   992px;
 @screen-xl:                   1200px;
-@screen-xxl:                  1890px;
+@screen-xxl:                  1800px;
 
 @container-sm:                100%;
 @container-md:                100%;
-@container-lg:                @screen-lg;
-@container-xl:                @screen-xl;
-@container-xxl:               @screen-xxl;
+@container-lg:                @screen-lg - 30;
+@container-xl:                @screen-xl - 30;
+@container-xxl:               @screen-xxl - 30;
+
+
+
+// Разное
+@border-radius:               .3rem;
