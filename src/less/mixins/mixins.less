@@ -81,6 +81,7 @@
 .make-col(@column: 1, @columns: @grid-columns, @gutter: @grid-gutter-width) {
   .get-width(@column, @columns); // Вернёт @width с шириной в процентах
 
+  display: block;
   flex: 0 0 @width;
   max-width: @width;
 
@@ -154,6 +155,7 @@
   }
   .column-list(@index, @list) when (@index > @grid-columns) {
     @{list} {
+      display: block;
       flex: 0 0 100%;
       width: 100%;
       padding-left: (@grid-gutter-width / 2);

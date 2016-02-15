@@ -278,7 +278,6 @@ textarea {
   margin: 0;
   line-height: inherit;
   font: inherit;
-  border-radius: 0;
   text-transform: none;
 }
 
@@ -328,4 +327,35 @@ legend {
   margin-bottom: .5em;
   font-size: 1em;
   line-height: inherit;
+}
+
+// Добавочная стилизация по умолчанию
+
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"] {
+  border: 1px solid @border-color;
+  border-radius: @border-radius;
+  display: block;
+  width: 100%;
+  height: 2em;
+  line-height: @line-height;
+  padding: .2em .4em;
+}
+
+select[multiple],
+textarea {
+  height: auto;
 }

@@ -13,19 +13,76 @@
 
 <section class="container  blocks-library">
   <h1>Библиотека блоков <a href="/">проекта</a></h1>
-  <p>ДРасположение блоков на этой странице регулируется глобальной модульной сеткой и, если она отключена (что хорошо для большинства проектов), блоки смещаются друг под друга.</p>
-  <p><strong>Проектные блоки</strong> — те, что cозданы специально для этого проекта (по умолчанию их нет вовсе).</p>
-  <p><strong>Исходные блоки</strong> — те, что есть в стартовом наборе блоков проекта (все они отключены по умолчанию).</p>
+  <p>Расположение блоков на этой странице регулируется глобальной модульной сеткой и, если она отключена (что хорошо для большинства проектов), блоки смещаются друг под друга.</p>
+  <p><strong>Проектные блоки</strong> — те, что cозданы специально для этого проекта (по умолчанию отсутствуют).</p>
+  <p><strong>Исходные блоки</strong> — те, что есть в стартовом наборе блоков проекта (могут быть отключены).</p>
 
   <section>
     <h2>Формы по умолчанию</h2>
+    <form action="">
+      <fieldset>
+        <legend>Это <code>legend</code> <code>fieldset</code>-а</legend>
+        <div class="row">
+          <div class="col-sm-6 col-md-4 col-lg-3">
+            <label>
+              Текст в <code>label</code>
+              <input type="text" placeholder="input[type=text]">
+            </label>
+            <input type="search" placeholder="input[type=search]">
+            <input type="color" placeholder="input[type=color]">
+            <input type="date" placeholder="input[type=date]">
+            <input type="time" placeholder="input[type=time]">
+            <input type="range" placeholder="input[type=range]">
+            <input type="password" placeholder="input[type=password]">
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-3">
+            <input type="month" placeholder="input[type=month]">
+            <input type="week" placeholder="input[type=week]">
+            <input type="datetime" placeholder="input[type=datetime]">
+            <input type="email" placeholder="input[type=email]">
+            <input type="number" placeholder="input[type=number]">
+            <select>
+              <optgroup label="optgroup">
+                <option>Значение 1</option>
+                <option>Значение 2</option>
+                <option>Значение 3</option>
+              </optgroup>
+              <option>Значение 10</option>
+            </select>
+            <input type="file">
+            <label><input type="checkbox"> text</label>
+            <label><input type="radio"> text</label>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-3">
+            <input type="tel" placeholder="input[type=tel]">
+            <input type="url" placeholder="input[type=url]">
+            <textarea rows="3" placeholder="textarea"></textarea>
+            <select multiple>
+              <option>Значение 1</option>
+              <option>Значение 2</option>
+              <option>Значение 3</option>
+            </select>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-3">
+            <input type="reset" value="input[type=reset]"><br>
+            <input type="submit" value="input[type=submit]"><br>
+            <input type="button" value="input[type=button]"><br>
+            <button>button</button><br>
+            <br>
+            <input type="text" placeholder="input[type=text] disabled" disabled>
+            <input type="text" placeholder="input[type=text] readonly" readonly>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+    <hr>
   </section>
 
   <section>
     <h2>Исходный блок: Модульная сетка на flexbox</h2>
-    <p>Почти как в bootstrap 4.</p>
+    <p>Вдохновлён сеткой bootstrap 4.</p>
     <p>Классы <code>.container</code>, <code>.row</code>, <code>.col-[xs|sm|md|lg|xl|xxl]-[1 - @grid-columns]</code>. См. глобальную сетку и примеси.</p>
-    <p><code>.col-[xxl]-[1 - @grid-columns]</code> по умолчанию закомментированы.</p>
+    <p><code>.col-[xxl]-[1 - @grid-columns]</code> по умолчанию отсутствуют (закомментированы).</p>
     <div class="row">
       <div class="col-xs-12  col-sm-6  col-md-4  col-lg-3">
         <div style="background: #eceeef; border: 1px solid #B1B1B1; padding: .5em;">
@@ -51,17 +108,17 @@
     <div class="row">
       <div class="col-md-2  col-lg-3">
         <div style="background: #eceeef; border: 1px solid #B1B1B1; padding: .5em;">
-          <code>.col-md-2 <br>.col-lg-3</code>
+          <code>.col-md-2 &nbsp;.col-lg-3</code>
         </div>
       </div>
-      <div class="col-md-10  col-lg-9">
+      <div class="col-md-9  col-md-offset-1  col-lg-8">
         <div style="background: #eceeef; border: 1px solid #B1B1B1; padding: .5em;">
-          <code>.col-md-10 <br>.col-lg-9</code>
+          <code>.col-md-10 &nbsp;.col-md-offset-1 &nbsp;.col-lg-9</code>
         </div>
       </div>
     </div>
     <h3>LESS-примеси</h3>
-    <p>Приоритетным является подход, в котором вместо упомянутых выше классов модульной сетки используются семантические БЭМ-овские классы и less-примеси (см. файл с примесями).</p>
+    <p>Приоритетным является подход, в котором вместо упомянутых классов модульной сетки используются семантические БЭМ-овские классы и LESS-примеси (см. файл с примесями).</p>
     <div class="row">
       <div class="col-lg-6">
 <pre>
@@ -79,7 +136,6 @@
   }
 }
 </pre>
-        111
       </div>
       <div class="col-lg-6">
 <pre>
