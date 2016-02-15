@@ -198,7 +198,7 @@ samp {
 code {
   color: @text-color;
   background-color: @gray-lightest;
-  padding: .2em .4em;
+  padding: .1em .3em;
   border-radius: @border-radius;
 }
 
@@ -345,17 +345,22 @@ input[type="number"],
 input[type="email"],
 input[type="url"],
 input[type="search"],
+input[type="color"],
 input[type="tel"] {
   border: 1px solid @border-color;
   border-radius: @border-radius;
   display: block;
   width: 100%;
-  height: 2em;
+  height: 2.125em; // 16 × 2.125 = 34
   line-height: @line-height;
-  padding: .2em .4em;
+  padding: .5rem .4em .2em; // вебкиты, windows...
 }
 
 select[multiple],
 textarea {
   height: auto;
+}
+
+input[type="range"] {
+  width: 100%;
 }
