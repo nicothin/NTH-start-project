@@ -140,6 +140,15 @@ figure {
   margin-bottom: (@line-height / 2);
 }
 
+address {
+  font-style: normal;
+}
+
+ul,
+ol {
+  padding-left: 1.8em;
+}
+
 ol ol,
 ul ul,
 ol ul,
@@ -150,6 +159,14 @@ ul ol {
 
 dt {
   font-weight: 700;
+}
+
+dd {
+  margin-left: 1.8em;
+
+  & + dt {
+    margin-top: (@line-height / 2);
+  }
 }
 
 hr {
@@ -164,10 +181,15 @@ small {
   font-size: 80%;
 }
 
+sub,
+sup {
+  font-size: 70%;
+}
+
 // .mark,
 mark {
-  background: #ff0;
-  padding: .2em;
+  background: #FCF8E3;
+  padding: .1em .3em;
 }
 
 b,
@@ -176,14 +198,26 @@ strong {
 }
 
 blockquote {
-  padding: @line-height;
+  padding: .5em 0 .5em 1.8em;
+  margin-left: 0;
   border-left: 5px solid @border-color;
 
   p,
   ul,
   ol {
+    &:first-child {
+      margin-top: 0;
+    }
     &:last-child {
       margin-bottom: 0;
+    }
+  }
+
+  footer {
+    text-align: right;
+
+    &:before {
+      content: '— ';
     }
   }
 }
@@ -197,15 +231,15 @@ samp {
 
 code {
   color: @text-color;
-  background-color: @gray-lightest;
+  background-color: @gray-lighter;
   padding: .1em .3em;
   border-radius: @border-radius;
 }
 
 kbd {
-  padding: .2em .4em;
+  padding: .1em .3em;
   color: @text-color;
-  background-color: @gray-light;
+  background-color: @gray-lighter;
   border-radius: @border-radius;
 
   kbd {
@@ -219,7 +253,7 @@ pre {
   margin-top:    @line-height;
   margin-bottom: @line-height;
   overflow-x: scroll;
-  background-color: @gray-lightest;
+  background-color: @gray-lighter;
   padding: .5em;
   border-radius: @border-radius;
   border: 1px solid @border-color;
