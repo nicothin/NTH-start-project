@@ -1,0 +1,44 @@
+//------------------------------------------------------------------------------
+//  Адаптивные таблицы (требуют наличия атрибутов data-label на тегах td)
+//------------------------------------------------------------------------------
+
+.table-responsive {
+
+  @media (max-width: (@screen-md - 1)) {
+    display: block;
+    border: 0;
+    overflow-x: auto; // IE11 отказывается переносить длинный текст в <td>, даём костыль
+
+    thead {
+      display: none;
+    }
+
+    tbody {
+      display: block;
+      width: 100%;
+
+      tr {
+        display: block;
+        border-top: 0;
+
+        &:not(:last-child) {
+          margin-bottom: @line-height;
+        }
+      }
+
+      td {
+        display: flex;
+        width: 100%;
+
+        &:before {
+          display: block;
+          padding-right: .5em;
+          font-weight: 700;
+          white-space: nowrap;
+          content: attr(data-label) + ":";
+        }
+      }
+    }
+  }
+}
+
