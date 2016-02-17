@@ -1,0 +1,16 @@
+.btn {
+  .btn();
+  .btn-color-variant(@text-color; @gray-lighter; @gray-lighter);
+
+  &--main {
+    .btn-color-variant(#fff; @color-main; @color-main);
+  }
+
+  &--danger {
+    .btn-color-variant(#fff; @color-danger; @color-danger);
+  }
+
+  &--success {
+    .btn-color-variant(#fff; @color-success; @color-success);
+  }
+}
