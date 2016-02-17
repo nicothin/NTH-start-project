@@ -271,7 +271,7 @@
   <section>
     <h2 id="btn">Исходное: кнопки</h2>
     <p>
-      <input type="text" value="Ссылка" style="width:80px">
+      <!-- <input type="text" value="Текстово поле" style="width:80px"> -->
       <a href="" class="btn">Cсылка</a>
       <input type="submit" class="btn" value="Input">
       <button class="btn">Button</button>
@@ -285,13 +285,13 @@
       <input type="submit" class="btn  btn--danger" value="Input">
       <button class="btn  btn--danger">Button</button>
     </p>
-    <p>Приоритетным является подход, в котором вместо классов <code>.btn</code> и их модификаторов используются семантические БЭМ-овские классы и LESS-примеси <code>.btn()</code> и <code>.btn-color-variant(цвет_текста; цвет_фона; цвет_бордюра)</code>.</p>
+    <p>Приоритетным является подход, в котором используются LESS-примеси <code>.btn()</code> и <code>.btn-color-variant(цвет_текста; цвет_фона; цвет_бордюра)</code>.</p>
     <hr>
   </section>
 
   <section>
     <h2>Исходное: Модульная сетка на flexbox</h2>
-    <p>Вдохновлён сеткой bootstrap 4.</p>
+    <p>Сетка вдохновлена сеткой bootstrap 4.</p>
     <p>Классы <code>.container</code>, <code>.row</code>, <code>.col-[xs|sm|md|lg|xl|xxl]-[1 - @grid-columns]</code>. См. глобальную сетку и примеси.</p>
     <p><code>.col-[xxl]-[1 - @grid-columns]</code> по умолчанию отсутствуют (закомментированы).</p>
     <div class="row">
