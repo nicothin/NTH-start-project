@@ -267,6 +267,94 @@
         <input type="file">
       </fieldset>
     </form>
+    <h2 id="form-style">Стилизованные формы</h2>
+    <p>Стилизация: БЭМ-блоки <code>.field</code>, <code>.form</code> и модификаторы. Опирается на стилизацию форм по умолчанию.</p>
+    <div class="row">
+      <div class="col-md-6">
+        <form action="" class="form">
+          <fieldset>
+            <legend>Варианты разметки и модификаторы</legend>
+            <div class="field">
+              <label class="field__name" for="field_id_001">Название поля</label>
+              <div class="field__input-wrap">
+                <input class="field__input-text" id="field_id_001" type="text" placeholder="input[type=text]">
+                <div class="field__help-text">Лейбл отдельно, обёртка — <code>&lt;div&gt;</code>, связь с лейблом по <code>id</code>.</div>
+              </div>
+            </div>
+            <label class="field">
+              <div class="field__name">Название поля</div>
+              <div class="field__input-wrap">
+                <input class="field__input-text" type="text" placeholder="input[type=text]">
+                <div class="field__help-text">Обёртка — <code>&lt;label&gt;</code>.</div>
+              </div>
+            </label>
+            <label class="field  field--error">
+              <div class="field__name">Ошибочное поле</div>
+              <div class="field__input-wrap">
+                <input class="field__input-text" type="text" placeholder="input[type=text]">
+                <div class="field__help-text">Обёртка — <code>&lt;label&gt;</code>.</div>
+              </div>
+            </label>
+            <label class="field  field--success">
+              <div class="field__name">Корректно заполненное поле</div>
+              <div class="field__input-wrap">
+                <input class="field__input-text" type="text" placeholder="input[type=text]">
+                <div class="field__help-text">Обёртка — <code>&lt;label&gt;</code>.</div>
+              </div>
+            </label>
+            <div class="field  field--actions">
+              <button class="btn">Отправить</button>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+      <div class="col-md-6">
+        <form action="" class="form form--horizontal">
+          <fieldset>
+            <legend>Горизонтальная форма</legend>
+            <div class="field">
+              <label class="field__name" for="field_id_001">Название поля</label>
+              <div class="field__input-wrap">
+                <input class="field__input-text" id="field_id_001" type="text" placeholder="input[type=text]">
+                <div class="field__help-text">Лейбл отдельно, обёртка — <code>&lt;div&gt;</code>, связь с лейблом по <code>id</code>.</div>
+              </div>
+            </div>
+            <label class="field">
+              <div class="field__name">Название поля</div>
+              <div class="field__input-wrap">
+                <input class="field__input-text" type="text" placeholder="input[type=text]">
+                <div class="field__help-text">Обёртка — <code>&lt;label&gt;</code>.</div>
+              </div>
+            </label>
+            <div class="field  field--actions">
+              <button class="btn">Отправить</button>
+            </div>
+          </fieldset>
+        </form>
+        <form action="" class="form form--inline">
+          <fieldset>
+            <legend>Инлайн форма</legend>
+            <div class="field">
+              <label class="field__name" for="field_id_001">Название поля</label>
+              <div class="field__input-wrap">
+                <input class="field__input-text" id="field_id_001" type="text" placeholder="input[type=text]">
+                <div class="field__help-text">Лейбл отдельно, обёртка — <code>&lt;div&gt;</code>, связь с лейблом по <code>id</code>.</div>
+              </div>
+            </div>
+            <label class="field">
+              <div class="field__name">Название поля</div>
+              <div class="field__input-wrap">
+                <input class="field__input-text" type="text" placeholder="input[type=text]">
+                <div class="field__help-text">Обёртка — <code>&lt;label&gt;</code>.</div>
+              </div>
+            </label>
+            <div class="field  field--actions">
+              <button class="btn">Отправить</button>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
   </section>
 
   <section class="blocks-library__item">

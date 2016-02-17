@@ -62,6 +62,7 @@ html {
   -ms-overflow-style: scrollbar;
   -ms-text-size-adjust: 100%;
   min-width: 320px;
+  site: be cool; // :)
 }
 
 body {
@@ -350,6 +351,11 @@ input[type="number"]::-webkit-outer-spin-button {
   height: auto;
 }
 
+::placeholder {
+  color: @text-color--muted;
+  opacity: 1;
+}
+
 textarea {
   resize: vertical;
 }
@@ -366,9 +372,13 @@ legend {
   width: 100%;
   padding: 0;
   border: 0;
-  margin-bottom: .5em;
-  font-size: 1em;
-  line-height: inherit;
+  margin-top: (@line-height / 2);
+  margin-bottom: (@line-height / 2);
+  font-size: @font-size--h4;
+  font-family: @font-family--headings;
+  font-weight: 700;
+  line-height: 1.4;
+  color: currentColor;
 }
 
 // Добавочная стилизация по умолчанию
@@ -405,7 +415,7 @@ select[multiple] {
 }
 
 input[type="color"] {
-  width: auto;
+  max-width: 100px;
 }
 
 input[type="range"] {
