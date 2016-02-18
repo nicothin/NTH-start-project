@@ -399,6 +399,7 @@ input[type="url"],
 input[type="search"],
 input[type="color"],
 input[type="tel"] {
+  background-color: #fff;
   border: 1px solid @border-color;
   border-radius: @border-radius;
   display: inline-block;
@@ -420,4 +421,9 @@ input[type="color"] {
 
 input[type="range"] {
   width: 100%;
+}
+
+input[disabled],
+input[readonly] {
+  background-color: @gray-lighter;
 }
