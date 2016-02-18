@@ -24,15 +24,67 @@
         outline-color: @color-danger;
       }
     }
+
+    .field__select {
+      color: @color-danger;
+      border-color: @color-danger;
+
+      &:focus {
+        outline-color: @color-danger;
+      }
+    }
   }
+
+  // Закомментировал, в связи с редкой надобностью
+
+  // &--success {
+  //   color: @color-success;
+
+  //   .field__help-text {
+  //     color: @color-success;
+  //   }
+
+  //   .field__input {
+  //     color: @color-success;
+  //     border-color: @color-success;
+  //     background-image: data-uri('image/svg+xml;charset=UTF-8', '../img/form_field_bg/check.svg');
+  //     background-repeat: no-repeat;
+  //     background-position: right .3em center;
+
+  //     &::placeholder {
+  //       color: @color-success;
+  //     }
+
+  //     &:focus {
+  //       outline-color: @color-success;
+  //     }
+  //   }
+
+  //   .field__select {
+  //     color: @color-success;
+  //     border-color: @color-success;
+
+  //     &:focus {
+  //       outline-color: @color-success;
+  //     }
+  //   }
+  // }
 
   &--checkbox,
   &--radio {
     .field__name {
       display: inline-block;
+      vertical-align: top;
       font-weight: inherit;
       font-family: inherit;
       margin-bottom: 0;
+      margin-right: .6em;
+    }
+    .field__input {
+      margin-top: .25em;
+      margin-bottom: 0;
+      display: inline-block;
+      vertical-align: top;
     }
   }
 

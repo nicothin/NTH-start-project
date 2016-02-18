@@ -312,6 +312,10 @@
                   <input class="field__input" type="radio">
                   Радиобатон
                 </label>
+                <label class="field__name">
+                  <input class="field__input" type="radio">
+                  Радиобатон 2
+                </label>
                 <div class="field__help-text">Пояснительный тест.</div>
               </div>
             </div>
@@ -343,10 +347,39 @@
                 <div class="field__help-text">Обёртка — <code>&lt;label&gt;</code>.</div>
               </div>
             </label>
-            <label class="field  field--success">
-              <div class="field__name">Корректно заполненное поле</div>
+            <div class="field  field--checkbox  field--error">
               <div class="field__input-wrap">
-                <input class="field__input" type="text" placeholder="input[type=text]">
+                <label class="field__name">
+                  <input class="field__input" type="checkbox">
+                  Чекбокс, более известный как флажок
+                </label>
+                <div class="field__help-text">Пояснительный тест.</div>
+              </div>
+            </div>
+            <div class="field  field--radio  field--error">
+              <div class="field__input-wrap">
+                <label class="field__name">
+                  <input class="field__input" type="radio">
+                  Радиобатон
+                </label>
+                <label class="field__name">
+                  <input class="field__input" type="radio">
+                  Радиобатон 2
+                </label>
+                <div class="field__help-text">Пояснительный тест.</div>
+              </div>
+            </div>
+            <label class="field  field--error">
+              <div class="field__name">Название поля</div>
+              <div class="field__input-wrap">
+                <select class="field__select">
+                  <optgroup label="optgroup">
+                    <option>Значение 1</option>
+                    <option>Значение 2</option>
+                    <option>Значение 3</option>
+                  </optgroup>
+                  <option>Значение 10</option>
+                </select>
                 <div class="field__help-text">Обёртка — <code>&lt;label&gt;</code>.</div>
               </div>
             </label>
