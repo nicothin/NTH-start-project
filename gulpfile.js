@@ -84,6 +84,17 @@ gulp.task('img', function () {
     .pipe(gulp.dest('build/img'));
 });
 
+// Оптимизация изображений для форм
+gulp.task('img:form', function () {
+  console.log('---------- Оптимизация картинок для компонента форм');
+  return gulp.src('src/img/form_field_bg/*.svg')
+    .pipe(imagemin({
+        progressive: true,
+        svgoPlugins: [{removeViewBox: false}],
+    }))
+    .pipe(gulp.dest('src/img/form_field_bg'));
+});
+
 // Сборка SVG-спрайта
 gulp.task('svgstore', function () {
   console.log('---------- сборка SVG спрайта');

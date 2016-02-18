@@ -2,6 +2,30 @@
   display: block;
   margin-bottom: (@line-height / 2);
 
+  &--error {
+    color: @color-danger;
+
+    .field__help-text {
+      color: @color-danger;
+    }
+
+    .field__input {
+      color: @color-danger;
+      border-color: @color-danger;
+      background-image: data-uri('image/svg+xml;charset=UTF-8', '../img/form_field_bg/close.svg');
+      background-repeat: no-repeat;
+      background-position: right .3em center;
+
+      &::placeholder {
+        color: @color-danger;
+      }
+
+      &:focus {
+        outline-color: @color-danger;
+      }
+    }
+  }
+
   &__name {
     font-weight: 700;
     display: block;
@@ -10,8 +34,13 @@
 
   &__input-wrap {}
 
-  &__input-text {
+  &__input,
+  &__select {
     margin-bottom: round(@line-height / 4, 2);
+  }
+
+  &__select {
+    // appearance: none;
   }
 
   &__help-text {
