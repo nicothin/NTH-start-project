@@ -28,6 +28,9 @@ const replace = require('gulp-replace');
 // Запуск `NODE_ENV=production gulp [задача]` приведет к сборке без sourcemaps
 const isDev = !process.env.NODE_ENV || process.env.NODE_ENV == 'dev';
 
+// Запуск `port=3004 gulp [задача]` приведет к запуску сервера обновлений на 3004 порту
+const port = process.env.port ? process.env.port : 3000;
+
 // Компиляция LESS
 gulp.task('less', function () {
   console.log('---------- компиляция LESS');
@@ -169,6 +172,7 @@ gulp.task('serve', function () {
   gulp.series('build');
   browserSync.init({
     server: 'build',
+    port: port,
     notify: false,
     startPath: '_blocks_library.html'
   });
