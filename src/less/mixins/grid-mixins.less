@@ -37,17 +37,56 @@
 //  Генератор правил для прямого родителя модульной сетки
 //------------------------------------------------------------------------------
 //  Принимает:
-//  @gutter:     @grid-gutter-width      - промежуток между ячейками
+//  @xs-grid-gutter:   @grid-gutter-width - промежуток между ячейками XS-сетки
+//  @sm-grid-gutter:   @grid-gutter-width - промежуток между ячейками SM-сетки
+//  @md-grid-gutter:   @grid-gutter-width - промежуток между ячейками MD-сетки
+//  @lg-grid-gutter:   @grid-gutter-width - промежуток между ячейками LG-сетки
+//  @xl-grid-gutter:   @grid-gutter-width - промежуток между ячейками XL-сетки
+//  @xxl-grid-gutter:  @grid-gutter-width - промежуток между ячейками XXL-сетки
 //------------------------------------------------------------------------------
 
-.row(@gutter: @grid-gutter-width) {
+.row(@xs-grid-gutter: @grid-gutter-width; @sm-grid-gutter: @grid-gutter-width; @md-grid-gutter: @grid-gutter-width; @lg-grid-gutter: @grid-gutter-width; @xl-grid-gutter: @grid-gutter-width; @xxl-grid-gutter: @grid-gutter-width;) {
   display: flex;
   flex-wrap: wrap;
 
-  // ВНИМАНИЕ! если передан false, в CSS не попадут margin-ы
-  & when not (@gutter = false) {
-    margin-left: (@gutter / -2);
-    margin-right: (@gutter / -2);
+  & when not (@xs-grid-gutter = false) {
+    margin-left:  (@xs-grid-gutter / -2);
+    margin-right: (@xs-grid-gutter / -2);
+  }
+
+  & when not (@sm-grid-gutter = @xs-grid-gutter) {
+    @media (min-width: @screen-sm) {
+      margin-left:  (@sm-grid-gutter / -2);
+      margin-right: (@sm-grid-gutter / -2);
+    }
+  }
+
+  & when not (@md-grid-gutter = @xs-grid-gutter) {
+    @media (min-width: @screen-md) {
+      margin-left:  (@md-grid-gutter / -2);
+      margin-right: (@md-grid-gutter / -2);
+    }
+  }
+
+  & when not (@lg-grid-gutter = @xs-grid-gutter) {
+    @media (min-width: @screen-lg) {
+      margin-left:  (@lg-grid-gutter / -2);
+      margin-right: (@lg-grid-gutter / -2);
+    }
+  }
+
+  & when not (@xl-grid-gutter = @xs-grid-gutter) {
+    @media (min-width: @screen-xl) {
+      margin-left:  (@xl-grid-gutter / -2);
+      margin-right: (@xl-grid-gutter / -2);
+    }
+  }
+
+  & when not (@xxl-grid-gutter = @xs-grid-gutter) {
+    @media (min-width: @screen-xxl) {
+      margin-left:  (@xxl-grid-gutter / -2);
+      margin-right: (@xxl-grid-gutter / -2);
+    }
   }
 }
 
