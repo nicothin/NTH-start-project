@@ -2,4 +2,42 @@
   &:not(:last-child) {
     margin-bottom: @line-height;
   }
+
+  &--horizontal {
+    .field {
+      display: flex;
+    }
+
+    .field__name {
+      width: 15rem;
+      padding-top: .42em;
+      padding-right: .3em;
+    }
+
+    .field__input-wrap {
+      flex-grow: 10;
+    }
+
+    .field--actions {
+      padding-left: 15rem;
+    }
+  }
+
+  &--inline {
+    .field {
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    .field__name {
+      display: inline-block;
+      vertical-align: top;
+      padding-top: .42em;
+    }
+
+    .field__input-wrap {
+      display: inline-block;
+      vertical-align: top;
+    }
+  }
 }
