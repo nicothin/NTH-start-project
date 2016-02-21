@@ -1,0 +1,27 @@
+.field-radio {
+  display: block;
+  margin-bottom: (@line-height / 2);
+
+  &__input-wrap {}
+
+  &__name {
+    position: relative;
+    padding-left: 1.3em;
+    font-weight: 400;
+    display: inline-block;
+    margin-right: .6em;
+  }
+
+  &__input {
+    position: absolute;
+    top: .25em;
+    left: 0;
+  }
+
+  &__help-text {
+    display: block;
+    font-size: @font-size--small;
+    color: @text-color--muted;
+    padding-left: 1.6em; // 1.3 + 0.3
+  }
+}
