@@ -427,3 +427,14 @@ input[disabled],
 input[readonly] {
   background-color: @gray-lighter;
 }
+
+select,
+textarea,
+input:not([type="submit"]),
+input:not([type="button"]),
+input:not([type="reset"]) {
+  &:focus {
+    outline: fade(@color-main, 30%) solid 2px;
+    outline-offset: -1px;
+  }
+}
