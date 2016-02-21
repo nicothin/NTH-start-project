@@ -303,6 +303,7 @@
               </div>
             </label>
             <div class="field-checkbox">
+              <div class="field-checkbox__title">Общее название</div>
               <div class="field-checkbox__input-wrap">
                 <label class="field-checkbox__name">
                   <input class="field-checkbox__input" type="checkbox">
@@ -312,7 +313,7 @@
                   <input class="field-checkbox__input" type="checkbox">
                   <span class="field-checkbox__name-text">Флажок</span>
                 </label>
-                <div class="field-checkbox__help-text">Пояснительный тест.</div>
+                <div class="field-checkbox__help-text">Есть общее название.</div>
               </div>
             </div>
             <div class="field-radio">
@@ -325,12 +326,12 @@
                   <input class="field-radio__input" type="radio" name="one">
                   <span class="field-checkbox__name-text">Радиокнопка</span>
                 </label>
-                <div class="field-radio__help-text">Пояснительный тест.</div>
+                <div class="field-radio__help-text">Нет общего названия.</div>
               </div>
             </div>
             <label class="field-select">
               <div class="field-select__name">Название поля</div>
-              <div class="field-select__input-wrap">
+              <div class="field-select__select-wrap">
                 <select class="field-select__select">
                   <optgroup label="optgroup">
                     <option>Значение 1</option>
@@ -357,62 +358,93 @@
         </form>
       </div>
       <div class="col-md-6">
-        <form action="" class="form form--horizontal">
+        <form action="" class="form  form--horizontal">
           <fieldset>
             <legend>Горизонтальная форма</legend>
-            <div class="field">
-              <label class="field__name" for="field_id_001">Название поля</label>
-              <div class="field__input-wrap">
-                <input class="field__input-text" id="field_id_001" type="text" placeholder="input[type=text]">
-                <div class="field__help-text">Лейбл отдельно, обёртка — <code>&lt;div&gt;</code>, связь с лейблом по <code>id</code>.</div>
+            <div class="field-text">
+              <label class="field-text__name" for="field-text_id_001">Название поля какое-то длинное</label>
+              <div class="field-text__input-wrap">
+                <input class="field-text__input" id="field-text_id_001" type="text" placeholder="input[type=text]">
+                <div class="field-text__help-text">Лейбл отдельно, обёртка — <code>&lt;div&gt;</code>, связь с лейблом по <code>id</code>.</div>
               </div>
             </div>
-            <label class="field">
-              <div class="field__name">Название поля</div>
-              <div class="field__input-wrap">
-                <input class="field__input-text" type="text" placeholder="input[type=text]">
-                <div class="field__help-text">Обёртка — <code>&lt;label&gt;</code>.</div>
+            <label class="field-text">
+              <div class="field-text__name">Название поля</div>
+              <div class="field-text__input-wrap">
+                <input class="field-text__input" type="text" placeholder="input[type=text]">
+                <div class="field-text__help-text">Обёртка — <code>&lt;label&gt;</code>.</div>
               </div>
             </label>
-            <div class="field  field--checkbox">
-              <div class="field__name"></div>
-              <div class="field__input-wrap">
-                <label class="field__name">
-                  <input class="field__input" type="checkbox">
-                  Чекбокс, более известный как флажок
-                </label>
-                <div class="field__help-text">Пояснительный тест.</div>
-              </div>
-            </div>
-            <div class="field  field--actions">
-              <button class="btn">Отправить</button>
-            </div>
-          </fieldset>
-        </form>
-        <form action="" class="form form--inline">
-          <fieldset>
-            <legend>Инлайн форма</legend>
-            <div class="field">
-              <label class="field__name" for="field_id_001">Логин</label>
-              <div class="field__input-wrap">
-                <input class="field__input-text" id="field_id_001" type="text" placeholder="input[type=text]">
-              </div>
-            </div>
-            <div class="field  field--checkbox">
-              <div class="field__input-wrap">
-                <label class="field__name">
-                  <input class="field__input" type="checkbox">
-                  Чекбокс
-                </label>
-              </div>
-            </div>
-            <label class="field">
-              <div class="field__name">Пароль</div>
-              <div class="field__input-wrap">
-                <input class="field__input-text" type="password" placeholder="input[type=password]">
+            <label class="field-text">
+              <div class="field-text__name">Название поля</div>
+              <div class="field-text__input-wrap">
+                <textarea class="field-text__input" rows="3" placeholder="textarea"></textarea>
+                <div class="field-text__help-text">Обёртка — <code>&lt;label&gt;</code>.</div>
               </div>
             </label>
-            <div class="field  field--actions">
+            <div class="field-checkbox">
+              <div class="field-checkbox__title">Общее название</div>
+              <div class="field-checkbox__input-wrap">
+                <label class="field-checkbox__name">
+                  <input class="field-checkbox__input" type="checkbox">
+                  <span class="field-checkbox__name-text">Флажок</span>
+                </label>
+                <label class="field-checkbox__name">
+                  <input class="field-checkbox__input" type="checkbox">
+                  <span class="field-checkbox__name-text">Флажок</span>
+                </label>
+                <div class="field-checkbox__help-text">Есть общее название.</div>
+              </div>
+            </div>
+            <div class="field-radio">
+              <div class="field-radio__title"></div>
+              <div class="field-radio__input-wrap">
+                <label class="field-radio__name">
+                  <input class="field-radio__input" type="radio" name="one">
+                  <span class="field-checkbox__name-text">Радиокнопка</span>
+                </label>
+                <label class="field-radio__name">
+                  <input class="field-radio__input" type="radio" name="one">
+                  <span class="field-checkbox__name-text">Радиокнопка</span>
+                </label>
+                <div class="field-radio__help-text">Нет общего названия, но оставлен пустой <code>div</code> для него.</div>
+              </div>
+            </div>
+            <div class="field-radio">
+              <div class="field-radio__input-wrap">
+                <label class="field-radio__name">
+                  <input class="field-radio__input" type="radio" name="one">
+                  <span class="field-checkbox__name-text">Радиокнопка</span>
+                </label>
+                <label class="field-radio__name">
+                  <input class="field-radio__input" type="radio" name="one">
+                  <span class="field-checkbox__name-text">Радиокнопка</span>
+                </label>
+                <div class="field-radio__help-text">Нет общего названия и отсутствует пустой <code>div</code> для него.</div>
+              </div>
+            </div>
+            <label class="field-select">
+              <div class="field-select__name">Название поля</div>
+              <div class="field-select__select-wrap">
+                <select class="field-select__select">
+                  <optgroup label="optgroup">
+                    <option>Значение 1</option>
+                    <option>Значение 2</option>
+                    <option>Значение 3</option>
+                  </optgroup>
+                  <option>Значение 10</option>
+                </select>
+                <small class="field-select__help-text">Обёртка — <code>&lt;label&gt;</code>.</small>
+              </div>
+            </label>
+            <label class="field-file">
+              <div class="field-file__name">Название поля</div>
+              <div class="field-file__input-wrap">
+                <input class="field-file__input" type="file">
+                <div class="field-file__help-text">Обёртка — <code>&lt;label&gt;</code>.</div>
+              </div>
+            </label>
+            <div class="field-actions">
               <button class="btn">Отправить</button>
             </div>
           </fieldset>
