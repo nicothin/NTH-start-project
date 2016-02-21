@@ -430,11 +430,8 @@ input[readonly] {
 
 select,
 textarea,
-input:not([type="submit"]),
-input:not([type="button"]),
-input:not([type="reset"]) {
+input {
   &:focus {
-    outline: fade(@color-main, 30%) solid 2px;
-    outline-offset: -1px;
+    .focus();
   }
 }

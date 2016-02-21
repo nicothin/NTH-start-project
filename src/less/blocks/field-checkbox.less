@@ -2,40 +2,6 @@
   display: block;
   margin-bottom: (@line-height / 2);
 
-  &--custom {
-
-    .field-checkbox__name {
-      padding-left: 1.6em;
-    }
-
-    .field-checkbox__help-text {
-      padding-left: 1.9em; // 1.6 + 0.3
-    }
-
-    .field-checkbox__input {
-      position: absolute;
-      opacity: 0;
-
-      & + .field-checkbox__name-text:before {
-        width: 1.125em;
-        height: 1.125em;
-        position: absolute;
-        top: .1em;
-        left: 0;
-        content: '';
-        background-size: 100%;
-        background-repeat: no-repeat;
-        background-image: data-uri('image/svg+xml;charset=UTF-8', '../img/form_field_bg/checkbox.svg');
-      }
-
-      &:checked + .field-checkbox__name-text:before {
-        background-image: data-uri('image/svg+xml;charset=UTF-8', '../img/form_field_bg/checkbox--checked.svg');
-      }
-    }
-  }
-
-
-
   &__title {
     font-weight: 700;
     line-height: 1.2em;
