@@ -427,3 +427,11 @@ input[disabled],
 input[readonly] {
   background-color: @gray-lighter;
 }
+
+select,
+textarea,
+input {
+  &:focus {
+    .focus();
+  }
+}
