@@ -1,0 +1,131 @@
+.field-range {
+  display: block;
+  margin-bottom: (@line-height / 2);
+
+  &__name {
+    font-weight: 700;
+    display: block;
+    margin-bottom: round(@line-height / 4, 2);
+  }
+
+  &__input-wrap {}
+
+  &__input {
+    margin-bottom: round(@line-height / 3, 2);
+    align-self: center;
+    padding: 0;
+    width: 100%;
+    height: 2em;
+    border-radius: .25rem;
+    border: none;
+    background: none;
+    font-size: inherit;
+    cursor: pointer;
+    -webkit-appearance: none;
+
+    &::-webkit-slider-runnable-track,
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+    }
+
+    &:focus {
+      outline: 0;
+      box-shadow: 0 0 0 2px rgba(2, 117, 216, 0.3);
+    }
+
+    // Увы, тут похожие наборы свойств приходится писать порознь.
+    &::-webkit-slider-runnable-track {
+      box-sizing: border-box;
+      border: none;
+      width: 100%;
+      height: 0.75em;
+      border-radius: @border-radius;
+    }
+    &::-moz-range-track {
+      box-sizing: border-box;
+      border: none;
+      width: 100%;
+      height: 0.75em;
+      border-radius: @border-radius;
+    }
+    &::-ms-track {
+      box-sizing: border-box;
+      border: none;
+      width: 100%;
+      height: 0.75em;
+      border-radius: @border-radius;
+      color: transparent;
+    }
+
+    // Увы, тут похожие наборы свойств приходится писать порознь.
+    &::-webkit-slider-thumb {
+      margin-top: -.68em;
+      box-sizing: border-box;
+      border: none;
+      padding: 0;
+      width: 2em;
+      height: 2em;
+      border-radius: @border-radius;
+      box-shadow: none;
+      cursor: ew-resize;
+    }
+    &::-moz-range-thumb {
+      box-sizing: border-box;
+      border: none;
+      padding: 0;
+      width: 2em;
+      height: 2em;
+      border-radius: @border-radius;
+      box-shadow: none;
+      cursor: ew-resize;
+    }
+    &::-ms-thumb {
+      box-sizing: border-box;
+      border: none;
+      padding: 0;
+      width: 2em;
+      height: 2em;
+      border-radius: @border-radius;
+      box-shadow: none;
+      cursor: ew-resize;
+    }
+
+    &::-ms-fill-lower,
+    &::-ms-tooltip {
+      display: none;
+    }
+
+    &::-webkit-slider-runnable-track {
+      background: @gray-lighter;
+      border: 1px solid @border-color;
+    }
+    &::-moz-range-track {
+      background: @gray-lighter;
+      border: 1px solid @border-color;
+    }
+    &::-ms-track {
+      background: @gray-lighter;
+      border: 1px solid @border-color;
+    }
+
+    &::-webkit-slider-thumb {
+      background: @gray-lighter;
+      border: 1px solid @border-color;
+    }
+    &::-moz-range-thumb {
+      background: @gray-lighter;
+      border: 1px solid @border-color;
+    }
+    &::-ms-thumb {
+      background: @gray-lighter;
+      border: 1px solid @border-color;
+    }
+  }
+
+  &__help-text {
+    display: block;
+    font-size: @font-size--small-percent;
+    line-height: 1.2em;
+    color: @text-color--muted;
+  }
+}

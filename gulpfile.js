@@ -187,7 +187,7 @@ gulp.task('serve', function () {
     notify: false,
     startPath: '_blocks_library.html'
   });
-  browserSync.watch('build/**/*.*').on('change', browserSync.reload);
+  browserSync.watch(['build/**/*.*', '!build/**/*.map.*']).on('change', browserSync.reload);
 });
 
 // Задача по умолчанию
