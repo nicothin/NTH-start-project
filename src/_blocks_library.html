@@ -313,7 +313,7 @@
                   <input class="field-checkbox__input" type="checkbox">
                   <span class="field-checkbox__name-text">Флажок</span>
                 </label>
-                <div class="field-checkbox__help-text">Есть общее название.</div>
+                <div class="field-checkbox__help-text">Есть общее название. Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные.</div>
               </div>
             </div>
             <div class="field-radio">
@@ -330,6 +330,20 @@
               </div>
             </div>
             <div class="field-checkbox  field-checkbox--custom">
+              <div class="field-checkbox__title">Собственные флажки</div>
+              <div class="field-checkbox__input-wrap">
+                <label class="field-checkbox__name">
+                  <input class="field-checkbox__input" type="checkbox" checked>
+                  <span class="field-checkbox__name-text">Флажок</span>
+                </label>
+                <label class="field-checkbox__name">
+                  <input class="field-checkbox__input" type="checkbox">
+                  <span class="field-checkbox__name-text">Флажок</span>
+                </label>
+                <div class="field-checkbox__help-text">Изображения в формате SVG, вписываются в CSS-файл функцией <code>data-uri()</code> компилятора LESS.</div>
+              </div>
+            </div>
+            <div class="field-checkbox  field-checkbox--custom" style="font-size: 24px">
               <div class="field-checkbox__title">Собственные флажки</div>
               <div class="field-checkbox__input-wrap">
                 <label class="field-checkbox__name">
@@ -421,6 +435,18 @@
                   <input class="field-checkbox__input" type="checkbox">
                   <span class="field-checkbox__name-text">Флажок</span>
                 </label>
+                <label class="field-checkbox__name">
+                  <input class="field-checkbox__input" type="checkbox">
+                  <span class="field-checkbox__name-text">Флажок</span>
+                </label>
+                <label class="field-checkbox__name">
+                  <input class="field-checkbox__input" type="checkbox">
+                  <span class="field-checkbox__name-text">Флажок</span>
+                </label>
+                <label class="field-checkbox__name">
+                  <input class="field-checkbox__input" type="checkbox">
+                  <span class="field-checkbox__name-text">Флажок</span>
+                </label>
                 <div class="field-checkbox__help-text">Есть общее название.</div>
               </div>
             </div>
@@ -479,9 +505,10 @@
   <section class="blocks-library__item">
     <h2 id="btn">Кнопки</h2>
     <p>Стилизация: БЭМ-блок <code>.btn</code> и модификаторы.</p>
-    <p class="alert  alert--success">Приоритетным является подход, в котором используются LESS-примеси <code>.btn()</code> и <code>.btn-color-variant(цвет_текста; цвет_фона; цвет_бордюра)</code>. Это не всегда удобно (бывает сложно получить цвета состояний кнопки преобразованием цветов по умолчанию).</p>
+    <p class="alert  alert--success">Приоритетным является подход, в котором используются LESS-примеси <code>.btn()</code>, <code>.btn-color(цвет_текста; цвет_фона; цвет_бордюра)</code> и <code>.btn-size([sm|md|lg])</code>.</p>
+    <p class="alert  alert--success">Все кнопки — <code>display: inline-flex;</code>.</p>
     <p>
-      <!-- <input type="text" value="Текстово поле" style="width:80px"> -->
+      <input type="text" value="Текстовое поле для сравнения высоты" title="Текстовое поле для сравнения высоты" style="width:70px">
       <a href="" class="btn">Cсылка</a>
       <input type="submit" class="btn" value="Input">
       <button class="btn">Button</button>
@@ -494,6 +521,20 @@
       <a href="" class="btn  btn--danger">Cсылка</a>
       <input type="submit" class="btn  btn--danger" value="Input">
       <button class="btn  btn--danger">Button</button>
+    </p>
+    <p>
+      <a href="" class="btn  btn--lg">Cсылка (lg)</a>
+      <input type="submit" class="btn  btn--lg" value="Input (lg)">
+      <button class="btn  btn--lg">Button (lg)</button>
+      <a href="" class="btn">Cсылка</a>
+      <input type="submit" class="btn" value="Input">
+      <button class="btn">Button</button>
+      <a href="" class="btn  btn--sm">Cсылка (sm)</a>
+      <input type="submit" class="btn  btn--sm" value="Input (sm)">
+      <button class="btn  btn--sm">Button (sm)</button>
+    </p>
+    <p>
+      <button class="btn  btn--block">Button (block)</button>
     </p>
   </section>
 
@@ -572,6 +613,22 @@
       </div>
     </div>
   </section>
+
+
+  <section class="blocks-library__item">
+    <h2 id="responsive-mixins">Примеси адаптивности</h2>
+    <p>Стилизация: нет, только примеси.</p>
+    <p>К нужным элементам добавляем примеси, элементы скрываются на тех или иных ширинах вьюпорта.</p>
+    <p class="alert  alert--success">В примесях указано только значение <code>display: none;</code>, без <code>!important</code>.</p>
+    <pre>
+.block-name {
+  .hidden-up(lg);   // Скрыть на LG (включительно) и более широких
+  .hidden-down(sm); // Скрыть на SM (включительно) и более узких
+}</pre>
+  </section>
+
+
+
 </section>
 
 @@include('_include/page_footer.html')

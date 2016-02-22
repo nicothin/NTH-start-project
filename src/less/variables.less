@@ -36,7 +36,8 @@
 @font-size--h4:               2.0rem;
 @font-size--h5:               1.6rem;
 @font-size--h6:               1.6rem;
-@font-size--small:            80%;
+@font-size--small:            round((@font-size / 100 * @font-size--small-percent), 2);
+@font-size--small-percent:    75%;
 
 @line-height:                 1.375em;
 
@@ -74,7 +75,7 @@
 // Формы, кнопки
 
 @field-padding-top:           0.313em;
-@field-padding-bottom:        0.188em;
+@field-padding-bottom:        0.313em;
 @field-padding-horizontal:    0.438em;
 
 

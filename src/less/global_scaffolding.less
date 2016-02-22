@@ -70,7 +70,7 @@ body {
   font-size: @font-size;
   line-height: @line-height;
   color: @text-color;
-  background: @body-bg;
+  background-color: @body-bg;
   margin: 0;
 }
 
@@ -180,7 +180,7 @@ hr {
 
 // .small,
 small {
-  font-size: 80%;
+  font-size: @font-size--small-percent;
 }
 
 sub,
@@ -197,6 +197,10 @@ mark {
 b,
 strong {
   font-weight: bolder;
+}
+
+abbr[title] {
+  border-bottom: 1px dotted;
 }
 
 blockquote {
@@ -405,7 +409,6 @@ input[type="tel"] {
   display: inline-block;
   vertical-align: middle;
   width: 100%;
-  height: 2.125em; // 16 × 2.125 = 34
   line-height: @line-height;
   padding: @field-padding-top @field-padding-horizontal @field-padding-bottom;
 }

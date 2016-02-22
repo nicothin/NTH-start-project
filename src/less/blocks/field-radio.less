@@ -29,9 +29,14 @@
 
   &__help-text {
     display: block;
-    font-size: @font-size--small;
+    font-size: @font-size--small-percent;
     line-height: 1.2em;
     color: @text-color--muted;
-    padding-left: 1.6em; // 1.3 + 0.3
+    // Задача: здесь левый padding должен совпадать с левым padding .field-checkbox__name-text и должен быть
+    // в относительных единицах.
+    // Левый padding у .field-checkbox__name-text = 1.3em от размера шрифта родителя (указано выше в этом файле).
+    // Нужно получить 1.3em от размера шрифта родителя, отталкиваясь от здешнего (уменьшенного) размера шрифта.
+    // Фактор увеличения: 100 / @font-size--small-percent
+    padding-left: round(1.3em * (100 / @font-size--small-percent), 2);
   }
 }

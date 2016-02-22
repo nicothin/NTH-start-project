@@ -14,8 +14,6 @@
 
 .btn() {
   display: inline-block;
-  min-height: 2.125em; // 16 × 2.125 = 34
-  line-height: @line-height;
   padding: @field-padding-top @field-padding-horizontal @field-padding-bottom;
   text-align: center;
   white-space: nowrap;
@@ -23,6 +21,7 @@
   cursor: pointer;
   user-select: none;
   font: inherit;
+  line-height: @line-height;
   text-decoration: none;
   border: 1px solid;
   box-sizing: border-box;
@@ -59,7 +58,7 @@
 //  Примесь-генератор цветовых стилей
 //------------------------------------------------------------------------------
 
-.btn-color-variant(@color: @text-color; @background: @gray-lighter; @border: @gray-lighter) {
+.btn-color(@color: @text-color; @background: @gray-lighter; @border: @gray-lighter) {
   color: @color;
   background-color: @background;
   border-color: @border;
@@ -84,5 +83,28 @@
     color: @color;
     background-color: @background;
     border-color: @border;
+  }
+}
+
+
+
+//------------------------------------------------------------------------------
+//  Примесь-генератор размера кнопок
+//------------------------------------------------------------------------------
+
+.btn-size(@size: md) {
+
+  & when (@size = md) {
+    font-size: @font-size;
+  }
+
+  & when (@size = sm) {
+    font-size: @font-size--small;
+    padding-top: round((@field-padding-top / 2), 2);
+    padding-bottom: round((@field-padding-bottom / 2), 2);
+  }
+
+  & when (@size = lg) {
+    font-size: @font-size--h3;
   }
 }
