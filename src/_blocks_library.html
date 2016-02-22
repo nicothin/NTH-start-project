@@ -282,28 +282,28 @@
           <fieldset>
             <legend>Варианты разметки и модификаторы</legend>
             <div class="field-text">
-              <label class="field-text__name" for="field-text_id_001">Название поля</label>
+              <label class="field-text__name" for="field-text_id_001">Любое поле, выглядящее как текстовое</label>
               <div class="field-text__input-wrap">
                 <input class="field-text__input" id="field-text_id_001" type="text" placeholder="input[type=text]">
                 <div class="field-text__help-text">Лейбл отдельно, обёртка — <code>&lt;div&gt;</code>, связь с лейблом по <code>id</code>.</div>
               </div>
             </div>
             <label class="field-text">
-              <div class="field-text__name">Название поля</div>
+              <div class="field-text__name">Любое поле, выглядящее как текстовое</div>
               <div class="field-text__input-wrap">
                 <input class="field-text__input" type="text" placeholder="input[type=text]">
                 <div class="field-text__help-text">Обёртка — <code>&lt;label&gt;</code>.</div>
               </div>
             </label>
             <label class="field-text">
-              <div class="field-text__name">Название поля</div>
+              <div class="field-text__name">Многострочное текстовое поле</div>
               <div class="field-text__input-wrap">
                 <textarea class="field-text__input" rows="3" placeholder="textarea"></textarea>
                 <div class="field-text__help-text">Обёртка — <code>&lt;label&gt;</code>.</div>
               </div>
             </label>
             <div class="field-checkbox">
-              <div class="field-checkbox__title">Общее название этих двух флажков</div>
+              <div class="field-checkbox__title">Стандартные флажки</div>
               <div class="field-checkbox__input-wrap">
                 <label class="field-checkbox__name">
                   <input class="field-checkbox__input" type="checkbox">
@@ -317,6 +317,7 @@
               </div>
             </div>
             <div class="field-radio">
+              <div class="field-checkbox__title">Стандартные радиокнопки</div>
               <div class="field-radio__input-wrap">
                 <label class="field-radio__name">
                   <input class="field-radio__input" type="radio" name="one">
@@ -344,7 +345,7 @@
               </div>
             </div>
             <div class="field-checkbox  field-checkbox--custom" style="font-size: 24px">
-              <div class="field-checkbox__title">Собственные флажки</div>
+              <div class="field-checkbox__title">Собственные флажки, <code>font-size: 24px</code> на родительском элементе</div>
               <div class="field-checkbox__input-wrap">
                 <label class="field-checkbox__name">
                   <input class="field-checkbox__input" type="checkbox" checked>
@@ -372,7 +373,7 @@
               </div>
             </div>
             <label class="field-select">
-              <div class="field-select__name">Название поля</div>
+              <div class="field-select__name">Селект</div>
               <div class="field-select__select-wrap">
                 <select class="field-select__select">
                   <optgroup label="optgroup">
@@ -386,14 +387,14 @@
               </div>
             </label>
             <div class="field-range">
-              <div class="field-range__name">Название поля</div>
+              <div class="field-range__name">Range</div>
               <div class="field-range__input-wrap">
                 <input class="field-range__input" type="range">
-                <div class="field-range__help-text">Пояснительный текст.</div>
+                <div class="field-range__help-text">Нативный, без JS.</div>
               </div>
             </div>
             <div class="field-file">
-              <div class="field-file__name">Название поля</div>
+              <div class="field-file__name">Выбор файлов</div>
               <label class="field-file__input-wrap">
                 <input class="field-file__input" type="file" data-multiple-caption="файлов выбрано: {count}" multiple>
                 <div class="field-file__name-text" data-button-text="Выбрать файл">Файлы не выбраны</div>
