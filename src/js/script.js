@@ -4,16 +4,16 @@
 
 /*
   Форма: работа стилизованного input[type="file"]
-  Автор: Osvaldas Valutis, www.osvaldas.info
+  Автор: Osvaldas Valutis, www.osvaldas.info (адаптировано под используемую разметку)
   Available for use under the MIT License
 */
 
-;( function ( document, window, index )
+;( function ()
 {
   var inputs = document.querySelectorAll( '.field-file__input' );
   Array.prototype.forEach.call( inputs, function( input )
   {
-    var label  = input.nextElementSibling,
+    var label  = input.closest('.field-file').querySelector( '.field-file__name-text' ),
         labelVal = label.innerHTML;
 
     input.addEventListener( 'change', function( e ) {
@@ -33,10 +33,30 @@
       }
     });
   });
-}( document, window, 0 ));
+}());
+
+
+
+/*
+  Поиск ближайшего родителя по селектору
+  https://github.com/oneuijs/You-Dont-Need-jQuery/blob/master/README-ru.md#1.6
+*/
+
+function closest(el, selector) {
+  const matchesSelector = el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector;
+
+  while (el) {
+    if (matchesSelector.call(el, selector)) {
+      return el;
+    } else {
+      el = el.parentElement;
+    }
+  }
+  return null;
+}
 
 
 
 // $(document).ready(function() {
-//   alert('fuck jQuery');
+//   alert('You Dont Need jQuery');
 // });
