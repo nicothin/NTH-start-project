@@ -34,7 +34,7 @@ const isDev = !process.env.NODE_ENV || process.env.NODE_ENV == 'dev';
 const port = process.env.port ? process.env.port : 3000;
 
 // Расположение папки с компонентами
-const componentsFolder = './src/components/';
+const componentsFolder = './src/blocks/';
 
 // Файлы компилируемых компонентов
 let components = getComponentsFiles();
@@ -242,7 +242,7 @@ function getComponentsFiles() {
         сomponentsFilesList.css.push(cssFile);
       }
       // Берём в массив изображения
-      сomponentsFilesList.img.push(componentsFolder + componentName + '/*.{jpg,jpeg,gif,png,svg}');
+      сomponentsFilesList.img.push(componentsFolder + componentName + '/img/*.{jpg,jpeg,gif,png,svg}');
     }
   });
   // Добавим глобальный JS-файл в начало массива с обрабатываемыми JS-файлами
