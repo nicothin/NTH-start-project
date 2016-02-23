@@ -34,11 +34,12 @@ const isDev = !process.env.NODE_ENV || process.env.NODE_ENV == 'dev';
 const port = process.env.port ? process.env.port : 3000;
 
 // Расположение папки с компонентами
-const componentFolder = './src/components/';
+const componentsFolder = './src/components/';
 
-
-
-getComponentsFiles();
+// Файлы компилируемых компонентов
+let components = getComponentsFiles();
+console.log('---------- Список добавочных js/css-файлов и адресов картинок для копирования');
+console.log(components);
 
 
 
@@ -69,7 +70,7 @@ gulp.task('less', function () {
 // Копирование добавочных CSS, которые хочется иметь отдельными файлами
 gulp.task('copy:css', function() {
   console.log('---------- копирование CSS');
-  return gulp.src('./src/css/*.css', {since: gulp.lastRun('copy:css')})
+  return gulp.src(components.css, {since: gulp.lastRun('copy:css')})
     .pipe(postcss([
         autoprefixer({browsers: ['last 2 version']}),
         mqpacker
@@ -85,7 +86,7 @@ gulp.task('copy:css', function() {
 // Копирование и оптимизация изображений
 gulp.task('img', function () {
   console.log('---------- копирование и оптимизация картинок');
-  return gulp.src('./src/img/*.{jpg,jpeg,gif,png,svg}', {since: gulp.lastRun('img')}) // только для изменившихся с последнего запуска файлов
+  return gulp.src(components.img, {since: gulp.lastRun('img')}) // только для изменившихся с последнего запуска файлов
     .pipe(newer('./build/img'))  // оставить в потоке только изменившиеся файлы
     .pipe(imagemin({
         progressive: true,
@@ -95,16 +96,16 @@ gulp.task('img', function () {
     .pipe(gulp.dest('./build/img'));
 });
 
-// Оптимизация изображений для форм
-gulp.task('img:form', function () {
-  console.log('---------- Оптимизация картинок для компонента форм');
-  return gulp.src('./src/img/form_field_bg/*.svg')
-    .pipe(imagemin({
-        progressive: true,
-        svgoPlugins: [{removeViewBox: false}],
-    }))
-    .pipe(gulp.dest('./src/img/form_field_bg'));
-});
+// TEMP: Оптимизация изображений для форм
+// gulp.task('img:form', function () {
+//   console.log('---------- Оптимизация картинок для компонента форм');
+//   return gulp.src('./src/img/form_field_bg/*.svg')
+//     .pipe(imagemin({
+//         progressive: true,
+//         svgoPlugins: [{removeViewBox: false}],
+//     }))
+//     .pipe(gulp.dest('./src/img/form_field_bg'));
+// });
 
 // Сборка SVG-спрайта
 gulp.task('svgstore', function () {
@@ -141,10 +142,7 @@ gulp.task('html', function() {
 // Конкатенация и углификация Javascript
 gulp.task('js', function () {
   console.log('---------- обработка Javascript');
-  return gulp.src([
-      // Последовательность конкатенации
-      './src/js/script.js'
-    ])
+  return gulp.src(components.js)
     .pipe(debug({title: "JS:"}))
     .pipe(gulpIf(isDev, sourcemaps.init()))
     .pipe(concat('script.min.js'))
@@ -208,34 +206,77 @@ gulp.task('default',
 
 // Определение собираемых компонентов
 function getComponentsFiles() {
-  console.log('---------- получение списка компонентов');
-  // Создадим переменную-объект, куда потом запишем результат
-  let сomponentsList = {};
+  // Создаем объект для списка файлов компонентов
+  let сomponentsFilesList = {
+    js: [],  // тут будут JS-файлы компонент в том же порядке, в котором подключены less-файлы
+    img: [], // тут будет массив из «путь_до_компонента/img/*.{jpg,jpeg,gif,png,svg}» для всех импортируемых компонент
+    css: [], // тут будут CSS-файлы компонент в том же порядке, в котором подключены less-файлы
+  };
   // Читаем файл диспетчера подключений
   let connectManager = fs.readFileSync('./src/less/style.less', 'utf8');
   // Фильтруем массив, оставляя только строки с незакомментированными импортами
   let fileSystem = connectManager.split('\n').filter(function(item) {
-    if(/^@import/.test(item)) return true;
+    if(/^(\s*)@import/.test(item)) return true;
     else return false;
   });
   // Обойдём массив и запишем его части в объект результирующей переменной
   fileSystem.forEach(function(item, i) {
     // Попробуем вычленить компонент из строки импорта
-    let componentData = /\/components\/(.+?)(\/)/g.exec(item);
-    // console.log(componentData);
-    // Если это компонент
-    if (componentData !== null) {
-      // Дописываем в объект название компонента
-      if(!сomponentsList[componentData[1]]) {
-        сomponentsList[componentData[1]] = '';
+    let componentData = /\/components\/(.+?)(\/)(.+?)(?=.(less|css))/g.exec(item);
+    // Если это компонент и получилось извлечь имя файла
+    if (componentData !== null && componentData[3]) {
+      // Название компонента (название папки)
+      let componentName = componentData[1];
+      // Имя подключаемого файла без расширения
+      let componentFileName = componentData[3];
+      // Имя JS-файла, который нужно взять в сборку в этой итерации, если он существует
+      let jsFile = componentsFolder + componentName + '/' + componentFileName + '.js';
+      // Имя CSS-файла, который нужно взять в сборку в этой итерации, если он существует
+      let cssFile = componentsFolder + componentName + '/' + componentFileName + '.css';
+      // Если существует JS-файл — берём его в массив
+      if(fileExist(jsFile)) {
+        сomponentsFilesList.js.push(jsFile);
       }
+      // Если существует CSS-файл — берём его в массив
+      if(fileExist(cssFile)) {
+        сomponentsFilesList.css.push(cssFile);
+      }
+      // Берём в массив изображения
+      сomponentsFilesList.img.push(componentsFolder + componentName + '/*.{jpg,jpeg,gif,png,svg}');
     }
   });
-  console.log(сomponentsList);
+  // Добавим глобальный JS-файл в начало массива с обрабатываемыми JS-файлами
+  if(fileExist('./src/js/global_script.js')) {
+    сomponentsFilesList.js.unshift('./src/js/global_script.js');
+  }
+  // Добавим глобальный CSS-файл в начало массива с обрабатываемыми CSS-файлами
+  if(fileExist('./src/css/global_additional-css.css')) {
+    сomponentsFilesList.css.unshift('./src/css/global_additional-css.css');
+  }
+  // Добавим глобальные изображения
+  сomponentsFilesList.img.unshift('./src/img/*.{jpg,jpeg,gif,png,svg}');
+  сomponentsFilesList.img = uniqueArray(сomponentsFilesList.img);
+  return сomponentsFilesList;
+}
 
-  // Если в строке были указаны дополнительные файлы (комментарием в конце строки, по форме // add[addFile1.js, megafile.js] )
-  // let componentAdditionalFiles = /add\[(.+)\]/g.exec(item);
-  // console.log(componentAdditionalFiles);
-  // Вернем объект со списком собираемых JS-файлов и копируемых изображений
-  // return ComponentsList;
+// Проверка существования файла и его размера (размер менее 2байт == файла нет)
+function fileExist(path) {
+  const fs = require('fs');
+  try {
+    fs.statSync(path);
+    if(fs.statSync(path).size > 1) return true;
+    else return false;
+  } catch(err) {
+    return !(err && err.code === 'ENOENT');
+  }
+}
+
+// Оставить в массиве только уникальные значения (убрать повторы)
+function uniqueArray(arr) {
+  var objectTemp = {};
+  for (var i = 0; i < arr.length; i++) {
+    var str = arr[i];
+    objectTemp[str] = true; // запомнить строку в виде свойства объекта
+  }
+  return Object.keys(objectTemp);
 }
