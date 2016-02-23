@@ -1,5 +1,6 @@
 'use strict';
 
+// Зависимости проекта
 const gulp = require('gulp');
 const less = require('gulp-less');
 const debug = require('gulp-debug');
@@ -24,6 +25,7 @@ const uglify = require('gulp-uglify');
 const concat = require('gulp-concat');
 const browserSync = require('browser-sync').create();
 const replace = require('gulp-replace');
+const fs = require('fs');
 
 // Запуск `NODE_ENV=production gulp [задача]` приведет к сборке без sourcemaps
 const isDev = !process.env.NODE_ENV || process.env.NODE_ENV == 'dev';
@@ -31,10 +33,19 @@ const isDev = !process.env.NODE_ENV || process.env.NODE_ENV == 'dev';
 // Запуск `port=3004 gulp [задача]` приведет к запуску сервера обновлений на 3004 порту
 const port = process.env.port ? process.env.port : 3000;
 
+// Расположение папки с компонентами
+const componentFolder = './src/components/';
+
+
+
+getComponentsFiles();
+
+
+
 // Компиляция LESS
 gulp.task('less', function () {
   console.log('---------- компиляция LESS');
-  return gulp.src('src/less/style.less')
+  return gulp.src('./src/less/style.less')
     .pipe(gulpIf(isDev, sourcemaps.init()))
     .pipe(debug({title: "LESS:"}))
     .pipe(less())
@@ -52,13 +63,13 @@ gulp.task('less', function () {
     .pipe(rename('style.min.css'))
     .pipe(debug({title: "RENAME:"}))
     .pipe(gulpIf(isDev, sourcemaps.write('.')))
-    .pipe(gulp.dest('build/css'));
+    .pipe(gulp.dest('./build/css'));
 });
 
 // Копирование добавочных CSS, которые хочется иметь отдельными файлами
 gulp.task('copy:css', function() {
   console.log('---------- копирование CSS');
-  return gulp.src('src/css/*.css', {since: gulp.lastRun('copy:css')})
+  return gulp.src('./src/css/*.css', {since: gulp.lastRun('copy:css')})
     .pipe(postcss([
         autoprefixer({browsers: ['last 2 version']}),
         mqpacker
@@ -68,37 +79,37 @@ gulp.task('copy:css', function() {
       path.extname = '.min.css'
     }))
     .pipe(debug({title: "RENAME:"}))
-    .pipe(gulp.dest('build/css'));
+    .pipe(gulp.dest('./build/css'));
 });
 
 // Копирование и оптимизация изображений
 gulp.task('img', function () {
   console.log('---------- копирование и оптимизация картинок');
-  return gulp.src('src/img/*.{jpg,jpeg,gif,png,svg}', {since: gulp.lastRun('img')}) // только для изменившихся с последнего запуска файлов
-    .pipe(newer('build/img'))  // оставить в потоке только изменившиеся файлы
+  return gulp.src('./src/img/*.{jpg,jpeg,gif,png,svg}', {since: gulp.lastRun('img')}) // только для изменившихся с последнего запуска файлов
+    .pipe(newer('./build/img'))  // оставить в потоке только изменившиеся файлы
     .pipe(imagemin({
         progressive: true,
         svgoPlugins: [{removeViewBox: false}],
         use: [pngquant()]
     }))
-    .pipe(gulp.dest('build/img'));
+    .pipe(gulp.dest('./build/img'));
 });
 
 // Оптимизация изображений для форм
 gulp.task('img:form', function () {
   console.log('---------- Оптимизация картинок для компонента форм');
-  return gulp.src('src/img/form_field_bg/*.svg')
+  return gulp.src('./src/img/form_field_bg/*.svg')
     .pipe(imagemin({
         progressive: true,
         svgoPlugins: [{removeViewBox: false}],
     }))
-    .pipe(gulp.dest('src/img/form_field_bg'));
+    .pipe(gulp.dest('./src/img/form_field_bg'));
 });
 
 // Сборка SVG-спрайта
 gulp.task('svgstore', function () {
   console.log('---------- сборка SVG спрайта');
-  return gulp.src('src/img/svg_sprite/*.svg')
+  return gulp.src('./src/img/svg_sprite/*.svg')
     .pipe(svgmin(function (file) {
       return {
         plugins: [{
@@ -112,19 +123,19 @@ gulp.task('svgstore', function () {
     .pipe(cheerio(function ($) {
       $('svg').attr('style',  'display:none');
     }))
-    .pipe(gulp.dest('build/img'));
+    .pipe(gulp.dest('./build/img'));
 });
 
 // Сборка HTML
 gulp.task('html', function() {
   console.log('---------- сборка HTML');
-  return gulp.src('src/*.html')
+  return gulp.src('./src/*.html')
     .pipe(fileinclude({
       prefix: '@@',
       basepath: '@file'
     }))
     .pipe(replace(/\n<!--DEVCOMMENT[\s\S]+?-->/gm, ''))
-    .pipe(gulp.dest('build/'));
+    .pipe(gulp.dest('./build/'));
 });
 
 // Конкатенация и углификация Javascript
@@ -132,7 +143,7 @@ gulp.task('js', function () {
   console.log('---------- обработка Javascript');
   return gulp.src([
       // Последовательность конкатенации
-      'src/js/script.js'
+      './src/js/script.js'
     ])
     .pipe(debug({title: "JS:"}))
     .pipe(gulpIf(isDev, sourcemaps.init()))
@@ -146,14 +157,14 @@ gulp.task('js', function () {
     }))
     .pipe(gulpIf(isDev, sourcemaps.write('.')))
     .pipe(gulpIf(isDev, debug({title: "JS SOURCEMAPS:"})))
-    .pipe(gulp.dest('build/js'));
+    .pipe(gulp.dest('./build/js'));
 });
 
 // Очистка папки сборки
 gulp.task('clean', function () {
   return del([
-    'build/**/*',
-    '!build/readme.md'
+    './build/**/*',
+    '!./build/readme.md'
   ]);
 });
 
@@ -167,30 +178,64 @@ gulp.task('build', gulp.series(
 // Слежение
 gulp.task('watch', function () {
   // Слежение за HTML
-  gulp.watch(['src/*.html', 'src/_include/*.html'], gulp.series('html'));
+  gulp.watch('./src/**/*.html', gulp.series('html'));
   // Слежение за LESS
-  gulp.watch('src/less/**/*.less', gulp.series('less'));
+  gulp.watch('./src/**/*.less', gulp.series('less'));
   // Слежение за добавочными CSS
-  gulp.watch('src/css/*.css', gulp.series('copy:css'));
+  gulp.watch('./src/css/*.css', gulp.series('copy:css'));
   // Слежение за изображениями
-  gulp.watch('src/img/*.{jpg,jpeg,gif,png,svg}', gulp.series('img'));
+  gulp.watch('./src/**/img/*.{jpg,jpeg,gif,png,svg}', gulp.series('img'));
   // Слежение за Javascript
-  gulp.watch('src/js/*.js', gulp.series('js'));
+  gulp.watch('./src/**/*.js', gulp.series('js'));
 });
 
 // Локальный сервер
 gulp.task('serve', function () {
   gulp.series('build');
   browserSync.init({
-    server: 'build',
+    server: './build',
     port: port,
     notify: false,
     startPath: '_blocks_library.html'
   });
-  browserSync.watch(['build/**/*.*', '!build/**/*.map.*']).on('change', browserSync.reload);
+  browserSync.watch(['./build/**/*.*', '!./build/**/*.map.*']).on('change', browserSync.reload);
 });
 
 // Задача по умолчанию
 gulp.task('default',
   gulp.series('build', gulp.parallel('watch', 'serve'))
 );
+
+// Определение собираемых компонентов
+function getComponentsFiles() {
+  console.log('---------- получение списка компонентов');
+  // Создадим переменную-объект, куда потом запишем результат
+  let сomponentsList = {};
+  // Читаем файл диспетчера подключений
+  let connectManager = fs.readFileSync('./src/less/style.less', 'utf8');
+  // Фильтруем массив, оставляя только строки с незакомментированными импортами
+  let fileSystem = connectManager.split('\n').filter(function(item) {
+    if(/^@import/.test(item)) return true;
+    else return false;
+  });
+  // Обойдём массив и запишем его части в объект результирующей переменной
+  fileSystem.forEach(function(item, i) {
+    // Попробуем вычленить компонент из строки импорта
+    let componentData = /\/components\/(.+?)(\/)/g.exec(item);
+    // console.log(componentData);
+    // Если это компонент
+    if (componentData !== null) {
+      // Дописываем в объект название компонента
+      if(!сomponentsList[componentData[1]]) {
+        сomponentsList[componentData[1]] = '';
+      }
+    }
+  });
+  console.log(сomponentsList);
+
+  // Если в строке были указаны дополнительные файлы (комментарием в конце строки, по форме // add[addFile1.js, megafile.js] )
+  // let componentAdditionalFiles = /add\[(.+)\]/g.exec(item);
+  // console.log(componentAdditionalFiles);
+  // Вернем объект со списком собираемых JS-файлов и копируемых изображений
+  // return ComponentsList;
+}

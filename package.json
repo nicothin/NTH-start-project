@@ -1,5 +1,5 @@
 {
-  "name": "start-project--gulp",
+  "name": "NTH-start-project",
   "version": "1.0.0",
   "description": "",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "author": "Nikolay Gromov",
   "license": "MIT",
-  "repository": "nicothin/start-project--gulp",
+  "repository": "nicothin/NTH-start-project",
   "devDependencies": {
     "autoprefixer": "^6.3.3",
     "browser-sync": "^2.11.1",
