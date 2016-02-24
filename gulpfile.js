@@ -219,10 +219,11 @@ function getComponentsFiles() {
     if(/^(\s*)@import/.test(item)) return true;
     else return false;
   });
+  console.log(fileSystem);
   // Обойдём массив и запишем его части в объект результирующей переменной
   fileSystem.forEach(function(item, i) {
     // Попробуем вычленить компонент из строки импорта
-    let componentData = /\/components\/(.+?)(\/)(.+?)(?=.(less|css))/g.exec(item);
+    let componentData = /\/blocks\/(.+?)(\/)(.+?)(?=.(less|css))/g.exec(item);
     // Если это компонент и получилось извлечь имя файла
     if (componentData !== null && componentData[3]) {
       // Название компонента (название папки)
