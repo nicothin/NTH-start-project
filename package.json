@@ -8,7 +8,10 @@
   },
   "author": "Nikolay Gromov",
   "license": "MIT",
-  "repository": "nicothin/NTH-start-project",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nicothin/NTH-start-project.git"
+  },
   "devDependencies": {
     "autoprefixer": "^6.3.3",
     "browser-sync": "^2.11.1",
@@ -33,5 +36,12 @@
     "gulp-svgstore": "^5.0.5",
     "gulp-uglify": "^1.5.2",
     "imagemin-pngquant": "^4.2.0"
+  },
+  "config": {
+    "directories": {
+      "source": "./src",
+      "build": "./build",
+      "blocks": "./src/blocks"
+    }
   }
 }
