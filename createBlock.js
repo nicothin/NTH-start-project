@@ -1,35 +1,49 @@
 'use strict';
 
+// Использование: node createBlock.js [имя блока] [доп. расширения через пробел]
+
 const fs = require('fs');
 const pjson = require('./package.json');
 const dirs = pjson.config.directories;
 const mkdirp = require('mkdirp');
 
-// Использование: run node createBlock.js [BLOCK_NAME] [additional extensions]
-
 let blockName = process.argv[2];
-let defaultExtensions = ['html', 'less'];
+let defaultExtensions = ['html', 'less']; // расширения по умолчанию
 let extensions = uniqueArray(defaultExtensions.concat(process.argv.slice(3)));
 
-if (blockName) {
+if(blockName) {
   let dirPath = dirs.blocks + '/' + blockName + '/';
-  if(!fileExist(dirPath)) {
-
-  }
-  else {
-    console.log('---------- Отмена операции: блок ' + dirPath + ' уже существует');
-  }
-  // console.log(fileExist(dirPath));
-  // mkdirp(dirPath, function(err){
-  //   if (err) {
-  //     console.error(err);
-  //   }
-  //   else {
-  //     extensions.forEach(function(extention){
-  //       fs.closeSync(fs.openSync(path.join(dirPath, blockName + '.' + extention), 'w'));
-  //     });
-  //   }
-  // })
+  mkdirp(dirPath, function(err){
+    if(err) {
+      console.error('---------- Отмена операции: ' + err);
+    }
+    else {
+      extensions.forEach(function(extention){
+        let filePath = dirPath + blockName + '.' + extention;
+        let fileContent = '';
+        if(extention == 'less') {
+          fileContent = '.' + blockName + ' {\n  \n}\n';
+        }
+        else if(extention == 'html') {
+          fileContent = '<div class="' + blockName + '">content</div>\n';
+        }
+        if(fileExist(filePath) === false) {
+          fs.writeFile(filePath, fileContent, function(err) {
+            if(err) {
+              return console.log('---------- Файл не создан: ' + err);
+            }
+            console.log('---------- Файл создан: ' + filePath);
+          });
+        }
+        else {
+          console.log('---------- Файл не создан: ' + filePath + ' уже существует');
+        }
+      });
+    }
+  });
+}
+else {
+  console.log('---------- Отмена операции: не указан блок');
 }
 
 // Оставить в массиве только уникальные значения (убрать повторы)
