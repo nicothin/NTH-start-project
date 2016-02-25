@@ -35,7 +35,8 @@
     "gulp-svgmin": "^1.2.1",
     "gulp-svgstore": "^5.0.5",
     "gulp-uglify": "^1.5.2",
-    "imagemin-pngquant": "^4.2.0"
+    "imagemin-pngquant": "^4.2.0",
+    "mkdirp": "^0.5.1"
   },
   "config": {
     "directories": {
