@@ -18,6 +18,15 @@ if(blockName) {
       console.error('---------- Отмена операции: ' + err);
     }
     else {
+      let dirImagesPath = dirPath + 'img';
+      // mkdirp(dirImagesPath, function(err){
+      //   if(err) {
+      //     console.error('---------- Папка для изображений не создана: ' + err);
+      //   }
+      //   else {
+      //     console.error('---------- Папка для изображений создана: ' + dirImagesPath);
+      //   }
+      // });
       extensions.forEach(function(extention){
         let filePath = dirPath + blockName + '.' + extention;
         let fileContent = '';
