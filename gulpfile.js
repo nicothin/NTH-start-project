@@ -261,10 +261,12 @@ function getComponentsFiles() {
       let componentName = componentData[1];
       // Имя подключаемого файла без расширения
       let componentFileName = componentData[3];
-      // Имя JS-файла, который нужно взять в сборку в этой итерации, если он существует
+      // Имя JS-файла, который нужно взять в сборку, если он существует
       let jsFile = dirs.blocks + '/' + componentName + '/' + componentFileName + '.js';
-      // Имя CSS-файла, который нужно взять в сборку в этой итерации, если он существует
+      // Имя CSS-файла, который нужно взять в сборку, если он существует
       let cssFile = dirs.blocks + '/' + componentName + '/' + componentFileName + '.css';
+      // Папка с картинками, которую нужно взять в сборку, если она существует
+      let imagesDir = dirs.blocks + '/' + componentName + '/img';
       // Если существует JS-файл — берём его в массив
       if(fileExistAndHasContent(jsFile)) {
         сomponentsFilesList.js.push(jsFile);
@@ -274,7 +276,9 @@ function getComponentsFiles() {
         сomponentsFilesList.css.push(cssFile);
       }
       // Берём в массив изображения
-      сomponentsFilesList.img.push(dirs.blocks + '/' + componentName + '/img/*.{jpg,jpeg,gif,png,svg}');
+      if(fileExist(imagesDir) !== false) {
+        сomponentsFilesList.img.push(imagesDir + '/*.{jpg,jpeg,gif,png,svg}');
+      }
     }
   });
   // Добавим глобальный JS-файл в начало массива с обрабатываемыми JS-файлами

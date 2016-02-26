@@ -58,13 +58,21 @@ node createBlock.js [имя блока] [доп. расширения через
 То указанный файл будет взят в компиляцию стилей, а так же:
 - в обработку будет взят js-файл блока: `src/blocks/demo-block/demo-block.js` (если существует и не пустой)
 - в обработку будет взят css-файл блока: `src/blocks/demo-block/demo-block.css` (если существует и не пустой)
-- в обработку будут добавлены все картинки блока: `src/blocks/demo-block/img/*.{jpg,jpeg,gif,png,svg}`
+- в обработку будут добавлены все картинки блока: `src/blocks/demo-block/img/*.{jpg,jpeg,gif,png,svg}` (если в папке блока существует подпапка `img/`)
 
+Если в диспетчере подключений:
 
 ```
 @import "../blocks/demo-block/demo-block.less";
 @import "../blocks/demo-block/demo-block--mod.less";
 ```
+
+То указанные файлы будет взяты в компиляцию стилей, а так же:
+- в обработку будет взят js-файл блока: `src/blocks/demo-block/demo-block.js` (если существует и не пустой)
+- в обработку будет взят js-файл блока: `src/blocks/demo-block/demo-block--mod.js` (если существует и не пустой)
+- в обработку будет взят css-файл блока: `src/blocks/demo-block/demo-block.css` (если существует и не пустой)
+- в обработку будет взят css-файл блока: `src/blocks/demo-block/demo-block--mod.css` (если существует и не пустой)
+- в обработку будут добавлены все картинки блока: `src/blocks/demo-block/img/*.{jpg,jpeg,gif,png,svg}` (если в папке блока существует подпапка `img/`)
 
 
 

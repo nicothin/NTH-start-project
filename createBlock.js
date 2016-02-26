@@ -19,15 +19,6 @@ if(blockName) {
     }
     else {
       console.log('[NTH] Создание папки ' + dirPath + ' (создана, если ещё не существует)');
-      let dirImagesPath = dirPath + 'img';
-      // mkdirp(dirImagesPath, function(err){
-      //   if(err) {
-      //     console.error('[NTH] Папка для изображений не создана: ' + err);
-      //   }
-      //   else {
-      //     console.error('[NTH] Папка для изображений создана: ' + dirImagesPath);
-      //   }
-      // });
       extensions.forEach(function(extention){
         let filePath = dirPath + blockName + '.' + extention;
         let fileContent = '';
@@ -37,8 +28,8 @@ if(blockName) {
           fileCreateMsg = '[NTH] Для импорта стилей: @import "' + dirs.blocks + '/' + blockName + '/' + blockName + '.less";';
         }
         else if(extention == 'html') {
-          fileContent = '<div class="' + blockName + '">content</div>\n';
-          fileCreateMsg = '[NTH] Для вставки разметки: @@include(\'blocks/' + blockName + '/' + blockName + '.html\',{"key":"value"})  Подробнее: https://www.npmjs.com/package/gulp-file-include';
+          fileContent = '<!--DEVCOMMENT\n\nНужно убрать пробел между @-ами:\n\n@ @include(\'blocks/' + blockName + '/' + blockName + '.html\')\n\n-->\n<div class="' + blockName + '">content</div>\n';
+          fileCreateMsg = '[NTH] Для вставки разметки: @@include(\'blocks/' + blockName + '/' + blockName + '.html\')  Подробнее: https://www.npmjs.com/package/gulp-file-include';
         }
         if(fileExist(filePath) === false) {
           fs.writeFile(filePath, fileContent, function(err) {

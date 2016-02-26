@@ -264,27 +264,17 @@
         <form action="" class="form">
           <fieldset>
             <legend>Варианты разметки и модификаторы</legend>
-            <div class="field-text">
-              <label class="field-text__name" for="field-text_id_001">Любое поле, выглядящее как текстовое</label>
-              <div class="field-text__input-wrap">
-                <input class="field-text__input" id="field-text_id_001" type="text" placeholder="input[type=text]">
-                <div class="field-text__help-text">Лейбл отдельно, обёртка — <code>&lt;div&gt;</code>, связь с лейблом по <code>id</code>.</div>
-              </div>
-            </div>
-            <label class="field-text">
-              <div class="field-text__name">Любое поле, выглядящее как текстовое</div>
-              <div class="field-text__input-wrap">
-                <input class="field-text__input" type="text" placeholder="input[type=text]">
-                <div class="field-text__help-text">Обёртка — <code>&lt;label&gt;</code>.</div>
-              </div>
-            </label>
-            <label class="field-text">
-              <div class="field-text__name">Многострочное текстовое поле</div>
-              <div class="field-text__input-wrap">
-                <textarea class="field-text__input" rows="3" placeholder="textarea"></textarea>
-                <div class="field-text__help-text">Обёртка — <code>&lt;label&gt;</code>.</div>
-              </div>
-            </label>
+            @@include('blocks/field-text/field-text.html',{
+              "type": "text",
+              "name": "Любое поле, выглядящее как текстовое",
+              "placeholder": "input[type=text]",
+              "helpText":"Обёртка — <code>&lt;label&gt;</code>. Можно сделать обёртку <code>div</code>, но тогда элемент нужно <code>.field-text__name</code> делать <code>label</code> и связывать его с полем по <code>id</code> поля."
+            })
+            @@include('blocks/field-text/field-text--textarea.html',{
+              "name": "Многострочное текстовое поле",
+              "placeholder": "textarea",
+              "helpText": "Обёртка — <code>&lt;label&gt;</code>."
+            })
             <div class="field-checkbox">
               <div class="field-checkbox__title">Стандартные флажки</div>
               <div class="field-checkbox__input-wrap">

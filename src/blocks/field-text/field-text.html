@@ -1,0 +1,19 @@
+<!--DEVCOMMENT
+
+Нужно убрать пробел между @-ами:
+
+@ @include('blocks/field-text/field-text.html',{
+  "type": "text",
+  "name": "Имя",
+  "placeholder": "Имя",
+  "helpText":"Введите имя"
+})
+
+ -->
+<label class="field-text">
+  <div class="field-text__name">@@name</div>
+  <div class="field-text__input-wrap">
+    <input class="field-text__input" type="@@type" placeholder="@@placeholder">
+    <div class="field-text__help-text">@@helpText</div>
+  </div>
+</label>
