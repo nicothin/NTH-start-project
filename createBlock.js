@@ -34,6 +34,7 @@ if(blockName) {
         let fileCreateMsg = '';
         if(extention == 'less') {
           fileContent = '@import "' + dirs.less + '/variables.less";     // только для удобства обращения к переменным\n@import "' + dirs.less + '/mixins/mixins.less"; // только для удобства обращения к примесям\n\n\n.' + blockName + ' {\n  \n}\n';
+          fileCreateMsg = '[NTH] Для импорта стилей: @import "' + dirs.blocks + '/' + blockName + '/' + blockName + '.less";';
         }
         else if(extention == 'html') {
           fileContent = '<div class="' + blockName + '">content</div>\n';
@@ -46,7 +47,7 @@ if(blockName) {
             }
             console.log('[NTH] Файл создан: ' + filePath);
             if(fileCreateMsg) {
-              console.log(fileCreateMsg);
+              console.warn(fileCreateMsg);
             }
           });
         }
