@@ -42,7 +42,8 @@
     "directories": {
       "source": "./src",
       "build": "./build",
-      "blocks": "./src/blocks"
+      "blocks": "./src/blocks",
+      "less": "./src/less"
     }
   }
 }

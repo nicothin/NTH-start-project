@@ -187,24 +187,7 @@
       <p>Стилизация: БЭМ-блок <code>.table-responsive</code></p>
       <p class="alert  alert--danger"><strong>Внимание!</strong> Адаптивные таблицы требуют добавления дата-атрибутов. Фиксация минимальной ширины имитатора <code>th</code> будет полезной (делается индивидуально).</p>
       <p class="alert  alert--success">Приоритетным является не использование класса <code>.table-responsive</code>, а использование семантических БЭМ-классов и LESS-примеси <code>.table-responsive(sm);</code> (принимает в себя значение той ширины вьюпорта, на которой таблица ещё адаптивна).</p>
-      <table class="table-responsive">
-        <thead>
-          <tr>
-            <th>Имя и фамилия</th>
-            <th>Тип мироощущения</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td data-label="Имя и фамилия">Анатоле Вассерман</td>
-            <td data-label="Тип мироощущения">Девственность</td>
-          </tr>
-          <tr>
-            <td data-label="Имя и фамилия">Джакомо Казанова</td>
-            <td data-label="Тип мироощущения">Небольшая распущенность с лёгкой примесью леденящих душу извращений, чудовищной лжи и имитатора известного органа, обитого телячьей кожей.</td>
-          </tr>
-        </tbody>
-      </table>
+      @@include('blocks/table-responsive/table-responsive.html')
     </section>
   </section>
 

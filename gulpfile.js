@@ -39,7 +39,7 @@ const port = process.env.port ? process.env.port : 3000;
 
 // Файлы компилируемых компонентов
 let components = getComponentsFiles();
-console.log('---------- Список добавочных js/css-файлов и адресов картинок для копирования');
+console.log('---------- Список добавочных ресурсов:');
 console.log(components);
 
 
@@ -69,9 +69,11 @@ gulp.task('less', function () {
 });
 
 // Копирование добавочных CSS, которые хочется иметь отдельными файлами
-gulp.task('copy:css', function() {
+gulp.task('copy:css', function(callback) {
+  if(components.css.length > 0){
   console.log('---------- копирование CSS');
-  return gulp.src(components.css, {since: gulp.lastRun('copy:css')})
+  return
+    gulp.src(components.css, {since: gulp.lastRun('copy:css')})
     .pipe(postcss([
         autoprefixer({browsers: ['last 2 version']}),
         mqpacker
@@ -82,6 +84,11 @@ gulp.task('copy:css', function() {
     }))
     .pipe(debug({title: "RENAME:"}))
     .pipe(gulp.dest(dirs.build + '/css'));
+  }
+  else {
+    console.log('---------- копирование CSS: нет дополнительного CSS');
+    callback();
+  }
 });
 
 // Копирование и оптимизация изображений
@@ -109,23 +116,30 @@ gulp.task('img', function () {
 // });
 
 // Сборка SVG-спрайта
-gulp.task('svgstore', function () {
-  console.log('---------- сборка SVG спрайта');
-  return gulp.src(dirs.source + '/img/svg_sprite/*.svg')
-    .pipe(svgmin(function (file) {
-      return {
-        plugins: [{
-          cleanupIDs: {
-            minify: true
-          }
-        }]
-      }
-    }))
-    .pipe(svgstore({ inlineSvg: true }))
-    .pipe(cheerio(function ($) {
-      $('svg').attr('style',  'display:none');
-    }))
-    .pipe(gulp.dest(dirs.build + '/img'));
+gulp.task('svgstore', function (callback) {
+  let spritePath = dirs.source + '/img/svg_sprite/';
+  if(fileExist(spritePath) !== false) {
+    console.log('---------- сборка SVG спрайта');
+    return gulp.src(spritePath + '*.svg')
+      .pipe(svgmin(function (file) {
+        return {
+          plugins: [{
+            cleanupIDs: {
+              minify: true
+            }
+          }]
+        }
+      }))
+      .pipe(svgstore({ inlineSvg: true }))
+      .pipe(cheerio(function ($) {
+        $('svg').attr('style',  'display:none');
+      }))
+      .pipe(gulp.dest(dirs.build + '/img'));
+  }
+  else {
+    console.log('---------- сборка SVG спрайта: нет папки с картинками');
+    callback();
+  }
 });
 
 // Сборка HTML
@@ -134,7 +148,8 @@ gulp.task('html', function() {
   return gulp.src(dirs.source + '/*.html')
     .pipe(fileinclude({
       prefix: '@@',
-      basepath: '@file'
+      basepath: '@file',
+      indent: true,
     }))
     .pipe(replace(/\n<!--DEVCOMMENT[\s\S]+?-->/gm, ''))
     .pipe(gulp.dest(dirs.build));
@@ -251,11 +266,11 @@ function getComponentsFiles() {
       // Имя CSS-файла, который нужно взять в сборку в этой итерации, если он существует
       let cssFile = dirs.blocks + '/' + componentName + '/' + componentFileName + '.css';
       // Если существует JS-файл — берём его в массив
-      if(fileExist(jsFile)) {
+      if(fileExistAndHasContent(jsFile)) {
         сomponentsFilesList.js.push(jsFile);
       }
       // Если существует CSS-файл — берём его в массив
-      if(fileExist(cssFile)) {
+      if(fileExistAndHasContent(cssFile)) {
         сomponentsFilesList.css.push(cssFile);
       }
       // Берём в массив изображения
@@ -263,11 +278,11 @@ function getComponentsFiles() {
     }
   });
   // Добавим глобальный JS-файл в начало массива с обрабатываемыми JS-файлами
-  if(fileExist(dirs.source + '/js/global_script.js')) {
+  if(fileExistAndHasContent(dirs.source + '/js/global_script.js')) {
     сomponentsFilesList.js.unshift(dirs.source + '/js/global_script.js');
   }
   // Добавим глобальный CSS-файл в начало массива с обрабатываемыми CSS-файлами
-  if(fileExist(dirs.source + '/css/global_additional-css.css')) {
+  if(fileExistAndHasContent(dirs.source + '/css/global_additional-css.css')) {
     сomponentsFilesList.css.unshift(dirs.source + '/css/global_additional-css.css');
   }
   // Добавим глобальные изображения
@@ -277,12 +292,22 @@ function getComponentsFiles() {
 }
 
 // Проверка существования файла и его размера (размер менее 2байт == файла нет)
-function fileExist(path) {
+function fileExistAndHasContent(path) {
   const fs = require('fs');
   try {
     fs.statSync(path);
     if(fs.statSync(path).size > 1) return true;
     else return false;
+  } catch(err) {
+    return !(err && err.code === 'ENOENT');
+  }
+}
+
+// Проверка существования файла
+function fileExist(path) {
+  const fs = require('fs');
+  try {
+    fs.statSync(path);
   } catch(err) {
     return !(err && err.code === 'ENOENT');
   }
