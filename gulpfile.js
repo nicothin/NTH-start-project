@@ -38,9 +38,9 @@ const isDev = !process.env.NODE_ENV || process.env.NODE_ENV == 'dev';
 const port = process.env.port ? process.env.port : 3000;
 
 // Файлы компилируемых компонентов
-let components = getComponentsFiles();
-console.log('---------- Список добавочных ресурсов:');
-console.log(components);
+let blocks = getComponentsFiles();
+console.log('---------- Список ресурсов:');
+console.log(blocks);
 
 
 
@@ -70,16 +70,16 @@ gulp.task('less', function () {
 
 // Копирование добавочных CSS, которые хочется иметь отдельными файлами
 gulp.task('copy:css', function(callback) {
-  if(components.css.length > 0){
-    console.log('---------- Копирование CSS');
-    return
-      gulp.src(components.css, {since: gulp.lastRun('copy:css')})
+  if(blocks.additionalCss.length > 0) {
+    console.log('---------- копирование CSS');
+    return gulp.src(blocks.additionalCss, {since: gulp.lastRun('copy:css')})
       .pipe(postcss([
           autoprefixer({browsers: ['last 2 version']}),
           mqpacker
       ]))
       .pipe(cleanss())
       .pipe(rename(function (path) {
+        path.basename = 'additional-styles',
         path.extname = '.min.css'
       }))
       .pipe(debug({title: "RENAME:"}))
@@ -94,7 +94,7 @@ gulp.task('copy:css', function(callback) {
 // Копирование и оптимизация изображений
 gulp.task('img', function () {
   console.log('---------- Копирование и оптимизация картинок');
-  return gulp.src(components.img, {since: gulp.lastRun('img')}) // только для изменившихся с последнего запуска файлов
+  return gulp.src(blocks.img, {since: gulp.lastRun('img')}) // только для изменившихся с последнего запуска файлов
     .pipe(newer(dirs.build + '/img'))  // оставить в потоке только изменившиеся файлы
     .pipe(imagemin({
         progressive: true,
@@ -117,7 +117,7 @@ gulp.task('img', function () {
 
 // Сборка SVG-спрайта
 gulp.task('svgstore', function (callback) {
-  let spritePath = dirs.source + '/img/svg_sprite/';
+  let spritePath = dirs.source + '/img/svg-sprite/';
   if(fileExist(spritePath) !== false) {
     console.log('---------- Сборка SVG спрайта');
     return gulp.src(spritePath + '*.svg')
@@ -157,9 +157,9 @@ gulp.task('html', function() {
 
 // Конкатенация и углификация Javascript
 gulp.task('js', function (callback) {
-  if(components.js.length > 0){
-    console.log('---------- Обработка Javascript');
-    return gulp.src(components.js)
+  if(blocks.js.length > 0){
+    console.log('---------- Обработка JS');
+    return gulp.src(blocks.js)
       .pipe(debug({title: "JS:"}))
       .pipe(gulpIf(isDev, sourcemaps.init()))
       .pipe(concat('script.min.js'))
@@ -175,7 +175,7 @@ gulp.task('js', function (callback) {
       .pipe(gulp.dest(dirs.build + '/js'));
   }
   else {
-    console.log('---------- Обработка Javascript: в сборке нет js-файлов');
+    console.log('---------- Обработка JS: в сборке нет JS-файлов');
     callback();
   }
 });
@@ -204,26 +204,20 @@ gulp.task('watch', function () {
     dirs.source + '/_include/*.html',
     dirs.blocks + '/**/*.html',
   ], gulp.series('html'));
-  // Слежение за LESS
-  gulp.watch([
-    dirs.source + '/less/**/*.less',
-    dirs.blocks + '/**/*.less', // вот тут хорошо бы следить только за компилируемыми
-  ], gulp.series('less'));
-  // Слежение за добавочными CSS
-  gulp.watch([
-    dirs.source + '/css/*.css',
-    dirs.blocks + '/**/*.css',
-  ], gulp.series('copy:css'));
-  // Слежение за изображениями
-  gulp.watch([
-    dirs.source + '/img/*.{jpg,jpeg,gif,png,svg}',
-    dirs.blocks + '/**/img/*.{jpg,jpeg,gif,png,svg}'
-  ], gulp.series('img'));
-  // Слежение за Javascript
-  gulp.watch([
-    dirs.source + '/**/*.js',
-    dirs.blocks + '/**/*.js',
-  ], gulp.series('js'));
+  // Слежение за LESS (они точно есть)
+  gulp.watch(blocks.less, gulp.series('less'));
+  // Слежение за добавочными CSS, если нужно
+  if(blocks.additionalCss) {
+    gulp.watch(blocks.additionalCss, gulp.series('copy:css'));
+  }
+  // Слежение за изображениями, если нужно
+  if(blocks.img) {
+    gulp.watch(blocks.img, gulp.series('img'));
+  }
+  // Слежение за Javascript, если нужно
+  if(blocks.js) {
+    gulp.watch(blocks.js, gulp.series('js'));
+  }
 });
 
 // Локальный сервер
@@ -245,11 +239,13 @@ gulp.task('default',
 
 // Определение собираемых компонентов
 function getComponentsFiles() {
-  // Создаем объект для списка файлов компонентов
+  // Создаем объект для служебных данных
   let сomponentsFilesList = {
-    js: [],  // тут будут JS-файлы компонент в том же порядке, в котором подключены less-файлы
-    img: [], // тут будет массив из «путь_до_компонента/img/*.{jpg,jpeg,gif,png,svg}» для всех импортируемых компонент
-    css: [], // тут будут CSS-файлы компонент в том же порядке, в котором подключены less-файлы
+    blocks: [],        // тут будут блоки
+    less: [],          // тут будут LESS-файлы в том же порядке, в котором они подключены
+    js: [],            // тут будут JS-файлы в том же порядке, в котором подключены LESS-файлы
+    img: [],           // тут будет массив из «путь_до_блока/img/*.{jpg,jpeg,gif,png,svg}» для всех импортируемых блоков
+    additionalCss: [], // тут будут добавочные CSS-файлы блоков в том же порядке, в котором подключены LESS-файлы
   };
   // Читаем файл диспетчера подключений
   let connectManager = fs.readFileSync(dirs.source + '/less/style.less', 'utf8');
@@ -260,41 +256,48 @@ function getComponentsFiles() {
   });
   // Обойдём массив и запишем его части в объект результирующей переменной
   fileSystem.forEach(function(item, i) {
-    // Попробуем вычленить компонент из строки импорта
+    // Попробуем вычленить блок из строки импорта
     let componentData = /\/blocks\/(.+?)(\/)(.+?)(?=.(less|css))/g.exec(item);
-    // Если это компонент и получилось извлечь имя файла
+    // Если это блок и получилось извлечь имя файла
     if (componentData !== null && componentData[3]) {
-      // Название компонента (название папки)
+      // Название блока (название папки)
       let componentName = componentData[1];
       // Имя подключаемого файла без расширения
       let componentFileName = componentData[3];
       // Имя JS-файла, который нужно взять в сборку, если он существует
       let jsFile = dirs.blocks + '/' + componentName + '/' + componentFileName + '.js';
-      // Имя CSS-файла, который нужно взять в сборку, если он существует
+      // Имя CSS-файла, который нужно обработать, если он существует
       let cssFile = dirs.blocks + '/' + componentName + '/' + componentFileName + '.css';
-      // Папка с картинками, которую нужно взять в сборку, если она существует
+      // Папка с картинками, которую нужно взять в обработку, если она существует
       let imagesDir = dirs.blocks + '/' + componentName + '/img';
-      // Если существует JS-файл — берём его в массив
+      // Добавляем в массив с результатом название блока
+      сomponentsFilesList.blocks.push(componentName);
+      // Добавляем в массив с результатом LESS-файл
+      сomponentsFilesList.less.push(dirs.source + componentData[0] + '.' + componentData[4]);
+      // Если существует JS-файл — добавляем его в массив с результатом
       if(fileExistAndHasContent(jsFile)) {
         сomponentsFilesList.js.push(jsFile);
       }
-      // Если существует CSS-файл — берём его в массив
+      // Если существует CSS-файл — добавляем его в массив с результатом
       if(fileExistAndHasContent(cssFile)) {
-        сomponentsFilesList.css.push(cssFile);
+        сomponentsFilesList.additionalCss.push(cssFile);
       }
-      // Берём в массив изображения
+      // Если есть папка с изображениями, добавляем её в массив с результатом
       if(fileExist(imagesDir) !== false) {
         сomponentsFilesList.img.push(imagesDir + '/*.{jpg,jpeg,gif,png,svg}');
       }
     }
   });
+  сomponentsFilesList.blocks = uniqueArray(сomponentsFilesList.blocks);
+  // Добавим глобальныe LESS-файлы в массив с обрабатываемыми LESS-файлами
+  сomponentsFilesList.less.push(dirs.source + '/less/**/*.less');
   // Добавим глобальный JS-файл в начало массива с обрабатываемыми JS-файлами
-  if(fileExistAndHasContent(dirs.source + '/js/global_script.js')) {
-    сomponentsFilesList.js.unshift(dirs.source + '/js/global_script.js');
+  if(fileExistAndHasContent(dirs.source + '/js/global-script.js')) {
+    сomponentsFilesList.js.unshift(dirs.source + '/js/global-script.js');
   }
   // Добавим глобальный CSS-файл в начало массива с обрабатываемыми CSS-файлами
-  if(fileExistAndHasContent(dirs.source + '/css/global_additional-css.css')) {
-    сomponentsFilesList.css.unshift(dirs.source + '/css/global_additional-css.css');
+  if(fileExistAndHasContent(dirs.source + '/css/global-additional-css.css')) {
+    сomponentsFilesList.additionalCss.unshift(dirs.source + '/css/global-additional-css.css');
   }
   // Добавим глобальные изображения
   сomponentsFilesList.img.unshift(dirs.source + '/img/*.{jpg,jpeg,gif,png,svg}');
