@@ -28,7 +28,7 @@ if(blockName) {
           fileCreateMsg = '[NTH] Для импорта стилей: @import "' + dirs.blocks + '/' + blockName + '/' + blockName + '.less";';
         }
         else if(extention == 'html') {
-          fileContent = '<!--DEVCOMMENT\n\nНужно убрать пробел между @-ами:\n\n@ @include(\'blocks/' + blockName + '/' + blockName + '.html\')\n\n-->\n<div class="' + blockName + '">content</div>\n';
+          fileContent = '<!--DEV\n\nНужно убрать пробел между @-ами:\n\n@ @include(\'blocks/' + blockName + '/' + blockName + '.html\')\n\n-->\n<div class="' + blockName + '">content</div>\n';
           fileCreateMsg = '[NTH] Для вставки разметки: @@include(\'blocks/' + blockName + '/' + blockName + '.html\')  Подробнее: https://www.npmjs.com/package/gulp-file-include';
         }
         if(fileExist(filePath) === false) {

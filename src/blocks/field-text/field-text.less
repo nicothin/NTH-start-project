@@ -16,16 +16,13 @@
 
   &__input {
     margin-bottom: round(@line-height / 3, 2);
+
+    textarea& {
+      min-height: (@line-height * 2) + @field-padding-top + @field-padding-bottom + .2; // .2 — поправка на бордюр
+    }
   }
 
   &__help-text {
-    display: block;
-    font-size: @font-size--small-percent;
-    line-height: 1.2em;
-    color: @text-color--muted;
-
-    &:empty {
-      display: none;
-    }
+    .help-text();
   }
 }

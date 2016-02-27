@@ -31,10 +31,10 @@ const browserSync = require('browser-sync').create();
 const replace = require('gulp-replace');
 const fs = require('fs');
 
-// Запуск `NODE_ENV=production gulp [задача]` приведет к сборке без sourcemaps
+// Запуск `NODE_ENV=production npm start [задача]` приведет к сборке без sourcemaps
 const isDev = !process.env.NODE_ENV || process.env.NODE_ENV == 'dev';
 
-// Запуск `port=3004 gulp [задача]` приведет к запуску сервера обновлений на 3004 порту
+// Запуск `port=3004 npm start` приведет к запуску сервера обновлений на 3004 порту и всей обычной автоматизации
 const port = process.env.port ? process.env.port : 3000;
 
 // Файлы компилируемых компонентов
@@ -46,7 +46,7 @@ console.log(components);
 
 // Компиляция LESS
 gulp.task('less', function () {
-  console.log('---------- компиляция LESS');
+  console.log('---------- Компиляция LESS');
   return gulp.src(dirs.source + '/less/style.less')
     .pipe(gulpIf(isDev, sourcemaps.init()))
     .pipe(debug({title: "LESS:"}))
@@ -71,29 +71,29 @@ gulp.task('less', function () {
 // Копирование добавочных CSS, которые хочется иметь отдельными файлами
 gulp.task('copy:css', function(callback) {
   if(components.css.length > 0){
-  console.log('---------- копирование CSS');
-  return
-    gulp.src(components.css, {since: gulp.lastRun('copy:css')})
-    .pipe(postcss([
-        autoprefixer({browsers: ['last 2 version']}),
-        mqpacker
-    ]))
-    .pipe(cleanss())
-    .pipe(rename(function (path) {
-      path.extname = '.min.css'
-    }))
-    .pipe(debug({title: "RENAME:"}))
-    .pipe(gulp.dest(dirs.build + '/css'));
+    console.log('---------- Копирование CSS');
+    return
+      gulp.src(components.css, {since: gulp.lastRun('copy:css')})
+      .pipe(postcss([
+          autoprefixer({browsers: ['last 2 version']}),
+          mqpacker
+      ]))
+      .pipe(cleanss())
+      .pipe(rename(function (path) {
+        path.extname = '.min.css'
+      }))
+      .pipe(debug({title: "RENAME:"}))
+      .pipe(gulp.dest(dirs.build + '/css'));
   }
   else {
-    console.log('---------- копирование CSS: нет дополнительного CSS');
+    console.log('---------- Копирование CSS: нет дополнительного CSS');
     callback();
   }
 });
 
 // Копирование и оптимизация изображений
 gulp.task('img', function () {
-  console.log('---------- копирование и оптимизация картинок');
+  console.log('---------- Копирование и оптимизация картинок');
   return gulp.src(components.img, {since: gulp.lastRun('img')}) // только для изменившихся с последнего запуска файлов
     .pipe(newer(dirs.build + '/img'))  // оставить в потоке только изменившиеся файлы
     .pipe(imagemin({
@@ -119,7 +119,7 @@ gulp.task('img', function () {
 gulp.task('svgstore', function (callback) {
   let spritePath = dirs.source + '/img/svg_sprite/';
   if(fileExist(spritePath) !== false) {
-    console.log('---------- сборка SVG спрайта');
+    console.log('---------- Сборка SVG спрайта');
     return gulp.src(spritePath + '*.svg')
       .pipe(svgmin(function (file) {
         return {
@@ -137,7 +137,7 @@ gulp.task('svgstore', function (callback) {
       .pipe(gulp.dest(dirs.build + '/img'));
   }
   else {
-    console.log('---------- сборка SVG спрайта: нет папки с картинками');
+    console.log('---------- Сборка SVG спрайта: нет папки с картинками');
     callback();
   }
 });
@@ -151,31 +151,38 @@ gulp.task('html', function() {
       basepath: '@file',
       indent: true,
     }))
-    .pipe(replace(/\n<!--DEVCOMMENT[\s\S]+?-->/gm, ''))
+    .pipe(replace(/\n\s*<!--DEV[\s\S]+?-->/gm, ''))
     .pipe(gulp.dest(dirs.build));
 });
 
 // Конкатенация и углификация Javascript
-gulp.task('js', function () {
-  console.log('---------- обработка Javascript');
-  return gulp.src(components.js)
-    .pipe(debug({title: "JS:"}))
-    .pipe(gulpIf(isDev, sourcemaps.init()))
-    .pipe(concat('script.min.js'))
-    .pipe(uglify())
-    .on('error', notify.onError(function(err){
-      return {
-        title: 'Javascript uglify error',
-        message: err.message
-      }
-    }))
-    .pipe(gulpIf(isDev, sourcemaps.write('.')))
-    .pipe(gulpIf(isDev, debug({title: "JS SOURCEMAPS:"})))
-    .pipe(gulp.dest(dirs.build + '/js'));
+gulp.task('js', function (callback) {
+  if(components.js.length > 0){
+    console.log('---------- Обработка Javascript');
+    return gulp.src(components.js)
+      .pipe(debug({title: "JS:"}))
+      .pipe(gulpIf(isDev, sourcemaps.init()))
+      .pipe(concat('script.min.js'))
+      .pipe(uglify())
+      .on('error', notify.onError(function(err){
+        return {
+          title: 'Javascript uglify error',
+          message: err.message
+        }
+      }))
+      .pipe(gulpIf(isDev, sourcemaps.write('.')))
+      .pipe(gulpIf(isDev, debug({title: "JS SOURCEMAPS:"})))
+      .pipe(gulp.dest(dirs.build + '/js'));
+  }
+  else {
+    console.log('---------- Обработка Javascript: в сборке нет js-файлов');
+    callback();
+  }
 });
 
 // Очистка папки сборки
 gulp.task('clean', function () {
+  console.log('---------- Очистка папки сборки');
   return del([
     dirs.build + '/**/*',
     '!' + dirs.build + '/readme.md'
@@ -195,12 +202,12 @@ gulp.task('watch', function () {
   gulp.watch([
     dirs.source + '/*.html',
     dirs.source + '/_include/*.html',
-    // dirs.blocks + '/**/*.html', // пока не предполагается использовать html-файлы блоков иначе как для документирования
+    dirs.blocks + '/**/*.html',
   ], gulp.series('html'));
   // Слежение за LESS
   gulp.watch([
     dirs.source + '/less/**/*.less',
-    dirs.blocks + '/**/*.less',
+    dirs.blocks + '/**/*.less', // вот тут хорошо бы следить только за компилируемыми
   ], gulp.series('less'));
   // Слежение за добавочными CSS
   gulp.watch([

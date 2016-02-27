@@ -1,3 +1,7 @@
+@import "./src/less/variables.less";     // только для удобства обращения к переменным
+@import "./src/less/mixins/mixins.less"; // только для удобства обращения к примесям
+
+
 .field-checkbox {
   display: block;
   margin-bottom: (@line-height / 2);
@@ -30,10 +34,7 @@
   }
 
   &__help-text {
-    display: block;
-    font-size: @font-size--small-percent;
-    line-height: 1.2em;
-    color: @text-color--muted;
+    .help-text();
     // Задача: здесь левый padding должен совпадать с левым padding .field-checkbox__name-text и должен быть
     // в относительных единицах.
     // Левый padding у .field-checkbox__name-text = 1.3em от размера шрифта родителя (указано выше в этом файле).

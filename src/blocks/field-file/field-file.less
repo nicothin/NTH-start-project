@@ -1,3 +1,7 @@
+@import "./src/less/variables.less";     // только для удобства обращения к переменным
+@import "./src/less/mixins/mixins.less"; // только для удобства обращения к примесям
+
+
 .field-file {
   display: block;
   margin-bottom: (@line-height / 2);
@@ -18,6 +22,10 @@
     width: 1px;
     height: 1px;
     opacity: 0;
+
+    &:focus ~ .field-file__name-text {
+      .focus();
+    }
   }
 
   &__name-text {
@@ -52,15 +60,12 @@
       border-bottom-left-radius: @border-radius;
     }
 
-    .field-file__input:focus ~ & {
-      .focus();
-    }
+    // .field-file__input:focus ~ & {
+    //   .focus();
+    // }
   }
 
   &__help-text {
-    display: block;
-    font-size: @font-size--small-percent;
-    line-height: 1.2em;
-    color: @text-color--muted;
+    .help-text();
   }
 }

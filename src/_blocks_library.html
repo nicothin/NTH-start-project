@@ -268,122 +268,60 @@
               "type": "text",
               "name": "Любое поле, выглядящее как текстовое",
               "placeholder": "input[type=text]",
-              "helpText":"Обёртка — <code>&lt;label&gt;</code>. Можно сделать обёртку <code>div</code>, но тогда элемент нужно <code>.field-text__name</code> делать <code>label</code> и связывать его с полем по <code>id</code> поля."
+              "helpText":"Обёртка — <code>label</code>. Можно сделать обёртку <code>div</code>, но тогда, возможно, захочется элемент <code>.field-text__name</code> делать <code>label</code> и связывать его с полем по <code>id</code> поля."
             })
-            @@include('blocks/field-text/field-text--textarea.html',{
+            @@include('blocks/field-text/field-text.html',{
+              "type": "textarea",
               "name": "Многострочное текстовое поле",
               "placeholder": "textarea",
+              "helpText": "Обёртка — <code>label</code>."
+            })
+            @@include('blocks/field-checkbox/field-checkbox.html',{
+              "name": "Стандартные флажки",
+              "text": "Флажок",
+              "mod": "",
+              "helpText": "Есть общее название. При желании флажков можно написать несколько подряд."
+            })
+            @@include('blocks/field-checkbox/field-checkbox.html',{
+              "name": "Собственные флажки",
+              "text": "Флажок",
+              "mod": "custom",
+              "helpText": "Есть общее название. При желании флажков можно написать несколько подряд. Изображения в формате SVG, вписываются в CSS-файл функцией <code>data-uri()</code> компилятора LESS."
+            })
+            @@include('blocks/field-radio/field-radio.html',{
+              "name": "Стандартные радиокнопки",
+              "text": "Радиокнопка",
+              "mod": "",
+              "helpText": "Есть общее название. При желании радиокнопок можно написать несколько подряд."
+            })
+            @@include('blocks/field-radio/field-radio.html',{
+              "name": "Собственные радиокнопки",
+              "text": "Радиокнопка",
+              "mod": "custom",
+              "helpText": "Есть общее название. При желании радиокнопок можно написать несколько подряд. Изображения в формате SVG, вписываются в CSS-файл функцией <code>data-uri()</code> компилятора LESS."
+            })
+            @@include('blocks/field-select/field-select.html',{
+              "name": "Селект",
+              "options": "<optgroup label=\"Группа\"><option>Значение 1</option><option>Значение 2</option><option>Значение 3</option></optgroup><option>Значение 10</option>",
               "helpText": "Обёртка — <code>&lt;label&gt;</code>."
             })
-            <div class="field-checkbox">
-              <div class="field-checkbox__title">Стандартные флажки</div>
-              <div class="field-checkbox__input-wrap">
-                <label class="field-checkbox__name">
-                  <input class="field-checkbox__input" type="checkbox">
-                  <span class="field-checkbox__name-text">Флажок</span>
-                </label>
-                <label class="field-checkbox__name">
-                  <input class="field-checkbox__input" type="checkbox">
-                  <span class="field-checkbox__name-text">Флажок</span>
-                </label>
-                <div class="field-checkbox__help-text">Есть общее название. Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные.</div>
-              </div>
-            </div>
-            <div class="field-radio">
-              <div class="field-checkbox__title">Стандартные радиокнопки</div>
-              <div class="field-radio__input-wrap">
-                <label class="field-radio__name">
-                  <input class="field-radio__input" type="radio" name="one">
-                  <span class="field-radio__name-text">Радиокнопка</span>
-                </label>
-                <label class="field-radio__name">
-                  <input class="field-radio__input" type="radio" name="one">
-                  <span class="field-radio__name-text">Радиокнопка</span>
-                </label>
-                <div class="field-radio__help-text">Нет общего названия.</div>
-              </div>
-            </div>
-            <div class="field-checkbox  field-checkbox--custom">
-              <div class="field-checkbox__title">Собственные флажки</div>
-              <div class="field-checkbox__input-wrap">
-                <label class="field-checkbox__name">
-                  <input class="field-checkbox__input" type="checkbox" checked>
-                  <span class="field-checkbox__name-text">Флажок</span>
-                </label>
-                <label class="field-checkbox__name">
-                  <input class="field-checkbox__input" type="checkbox">
-                  <span class="field-checkbox__name-text">Флажок</span>
-                </label>
-                <div class="field-checkbox__help-text">Изображения в формате SVG, вписываются в CSS-файл функцией <code>data-uri()</code> компилятора LESS.</div>
-              </div>
-            </div>
-            <div class="field-checkbox  field-checkbox--custom" style="font-size: 24px">
-              <div class="field-checkbox__title">Собственные флажки, <code>font-size: 24px</code> на родительском элементе</div>
-              <div class="field-checkbox__input-wrap">
-                <label class="field-checkbox__name">
-                  <input class="field-checkbox__input" type="checkbox" checked>
-                  <span class="field-checkbox__name-text">Флажок</span>
-                </label>
-                <label class="field-checkbox__name">
-                  <input class="field-checkbox__input" type="checkbox">
-                  <span class="field-checkbox__name-text">Флажок</span>
-                </label>
-                <div class="field-checkbox__help-text">Изображения в формате SVG, вписываются в CSS-файл функцией <code>data-uri()</code> компилятора LESS.</div>
-              </div>
-            </div>
-            <div class="field-radio  field-radio--custom">
-              <div class="field-radio__title">Собственные радиокнопки</div>
-              <div class="field-radio__input-wrap">
-                <label class="field-radio__name">
-                  <input class="field-radio__input" type="radio" name="two" checked>
-                  <span class="field-radio__name-text">Радиокнопка</span>
-                </label>
-                <label class="field-radio__name">
-                  <input class="field-radio__input" type="radio" name="two">
-                  <span class="field-radio__name-text">Радиокнопка</span>
-                </label>
-                <div class="field-radio__help-text">Изображения в формате SVG, вписываются в CSS-файл функцией <code>data-uri()</code> компилятора LESS.</div>
-              </div>
-            </div>
-            <label class="field-select">
-              <div class="field-select__name">Селект</div>
-              <div class="field-select__select-wrap">
-                <select class="field-select__select">
-                  <optgroup label="optgroup">
-                    <option>Значение 1</option>
-                    <option>Значение 2</option>
-                    <option>Значение 3</option>
-                  </optgroup>
-                  <option>Значение 10</option>
-                </select>
-                <small class="field-select__help-text">Обёртка — <code>&lt;label&gt;</code>.</small>
-              </div>
-            </label>
-            <div class="field-range">
-              <div class="field-range__name">Range</div>
-              <div class="field-range__input-wrap">
-                <input class="field-range__input" type="range"  min"1" max="100" step="5" value="60">
-                <div class="field-range__help-text"><code>min"1" max="100" step="5" value="60"</code>, стилизован без JS.</div>
-              </div>
-            </div>
-            <div class="field-range">
-              <div class="field-range__name">Range</div>
-              <div class="field-range__input-wrap">
-                <input class="field-range__input" type="range"  min"0" max="80" step="10" value="20">
-                <div class="field-range__help-text"><code>min"0" max="80" step="10" value="20"</code>, стилизован без JS.</div>
-              </div>
-            </div>
-            <div class="field-file">
-              <div class="field-file__name">Выбор файлов</div>
-              <label class="field-file__input-wrap">
-                <input class="field-file__input" type="file" data-multiple-caption="файлов выбрано: {count}" multiple>
-                <div class="field-file__name-text" data-button-text="Выбрать файл">Файлы не выбраны</div>
-                <div class="field-file__help-text">Работа этого стилизованного поля требует Javascript-а.</div>
-              </label>
-            </div>
-            <div class="field-actions">
-              <button class="btn">Отправить</button>
-            </div>
+            @@include('blocks/field-range/field-range.html',{
+              "name": "Range",
+              "properties": "min=\"1\" max=\"100\" step=\"1\" value=\"70\"",
+              "helpText": "<code>min=\"1\" max=\"100\" step=\"1\" value=\"70\"</code>, стилизован без JS."
+            })
+            @@include('blocks/field-range/field-range.html',{
+              "name": "Range",
+              "properties": "min=\"1\" max=\"30\" step=\"5\" value=\"10\"",
+              "helpText": "<code>min=\"1\" max=\"30\" step=\"5\" value=\"10\"</code>, стилизован без JS."
+            })
+            @@include('blocks/field-file/field-file.html', {
+              "name": "Выбор файлов",
+              "helpText": "Работа этого стилизованного поля требует Javascript-а. Но только работа. Стилизация — нет."
+            })
+            @@include('blocks/field-actions/field-actions.html', {
+              "actions": "<button class=\"btn\">Отправить</button>"
+            })
           </fieldset>
         </form>
       </div>
@@ -391,13 +329,6 @@
         <form action="" class="form  form--horizontal">
           <fieldset>
             <legend>Горизонтальная форма</legend>
-            <div class="field-text">
-              <label class="field-text__name" for="field-text_id_001">Название поля какое-то длинное</label>
-              <div class="field-text__input-wrap">
-                <input class="field-text__input" id="field-text_id_001" type="text" placeholder="input[type=text]">
-                <div class="field-text__help-text">Лейбл отдельно, обёртка — <code>&lt;div&gt;</code>, связь с лейблом по <code>id</code>.</div>
-              </div>
-            </div>
             <label class="field-text">
               <div class="field-text__name">Название поля</div>
               <div class="field-text__input-wrap">

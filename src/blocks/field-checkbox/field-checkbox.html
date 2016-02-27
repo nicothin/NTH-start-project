@@ -1,0 +1,29 @@
+<!--DEV
+
+Нужно убрать пробел между @-ами:
+
+@ @include('blocks/field-checkbox/field-checkbox.html',{
+  "name": "Стандартные флажки",
+  "text": "Флажок",
+  "mod": "",
+  "helpText": "Есть общее название. При желании флажков можно написать несколько подряд."
+})
+
+@ @include('blocks/field-checkbox/field-checkbox.html',{
+  "name": "Собственные флажки",
+  "text": "Флажок",
+  "mod": "custom",
+  "helpText": "Есть общее название. При желании флажков можно написать несколько подряд. Изображения в формате SVG, вписываются в CSS-файл функцией <code>data-uri()</code> компилятора LESS."
+})
+
+-->
+@@if(mod === ""){<div class="field-checkbox">}@@if(mod !== ""){<div class="field-checkbox  field-checkbox--@@mod">}
+  <div class="field-checkbox__title">@@name</div>
+  <div class="field-checkbox__input-wrap">
+    <label class="field-checkbox__name">
+      <input class="field-checkbox__input" type="checkbox" checked>
+      <span class="field-checkbox__name-text">@@text</span>
+    </label>
+    <div class="field-checkbox__help-text">@@helpText</div>
+  </div>
+</div>
