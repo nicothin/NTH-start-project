@@ -241,7 +241,6 @@ gulp.task('default',
 function getComponentsFiles() {
   // Создаем объект для служебных данных
   let сomponentsFilesList = {
-    blocks: [],        // тут будут блоки
     less: [],          // тут будут LESS-файлы в том же порядке, в котором они подключены
     js: [],            // тут будут JS-файлы в том же порядке, в котором подключены LESS-файлы
     img: [],           // тут будет массив из «путь_до_блока/img/*.{jpg,jpeg,gif,png,svg}» для всех импортируемых блоков
@@ -270,8 +269,6 @@ function getComponentsFiles() {
       let cssFile = dirs.source + '/blocks/' + componentName + '/' + componentFileName + '.css';
       // Папка с картинками, которую нужно взять в обработку, если она существует
       let imagesDir = dirs.source + '/blocks/' + componentName + '/img';
-      // Добавляем в массив с результатом название блока
-      сomponentsFilesList.blocks.push(componentName);
       // Добавляем в массив с результатом LESS-файл
       сomponentsFilesList.less.push(dirs.source + componentData[0] + '.' + componentData[4]);
       // Если существует JS-файл — добавляем его в массив с результатом
@@ -288,7 +285,6 @@ function getComponentsFiles() {
       }
     }
   });
-  сomponentsFilesList.blocks = uniqueArray(сomponentsFilesList.blocks);
   // Добавим глобальныe LESS-файлы в массив с обрабатываемыми LESS-файлами
   сomponentsFilesList.less.push(dirs.source + '/less/**/*.less');
   // Добавим глобальный JS-файл в начало массива с обрабатываемыми JS-файлами
