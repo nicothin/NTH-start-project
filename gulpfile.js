@@ -104,16 +104,25 @@ gulp.task('img', function () {
     .pipe(gulp.dest(dirs.build + '/img'));
 });
 
-// TEMP: Оптимизация изображений для форм
-// gulp.task('img:form', function () {
-//   console.log('---------- Оптимизация картинок для компонента форм');
-//   return gulp.src(dirs.source + '/img/form_field_bg/*.svg')
-//     .pipe(imagemin({
-//         progressive: true,
-//         svgoPlugins: [{removeViewBox: false}],
-//     }))
-//     .pipe(gulp.dest(dirs.source + '/img/form_field_bg'));
-// });
+// Оптимизация изображений
+const folder = process.env.folder;
+gulp.task('img:opt', function (callback) {
+  if(folder){
+    console.log('---------- Оптимизация картинок');
+    return gulp.src(folder + '/*.{jpg,jpeg,gif,png,svg}')
+      .pipe(imagemin({
+          progressive: true,
+          svgoPlugins: [{removeViewBox: false}],
+          use: [pngquant()]
+      }))
+      .pipe(gulp.dest(folder));
+  }
+  else {
+    console.log('---------- Оптимизация картинок: ошибка (не указана папка)');
+    console.log('---------- Пример вызова команды: folder=src/blocks/block-name/img_to_bg/ npm start img:opt');
+    callback();
+  }
+});
 
 // Сборка SVG-спрайта
 gulp.task('svgstore', function (callback) {
