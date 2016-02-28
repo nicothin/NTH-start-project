@@ -202,7 +202,7 @@ gulp.task('watch', function () {
   gulp.watch([
     dirs.source + '/*.html',
     dirs.source + '/_include/*.html',
-    dirs.blocks + '/**/*.html',
+    dirs.source + '/blocks/**/*.html',
   ], gulp.series('html'));
   // Слежение за LESS (они точно есть)
   gulp.watch(blocks.less, gulp.series('less'));
@@ -265,11 +265,11 @@ function getComponentsFiles() {
       // Имя подключаемого файла без расширения
       let componentFileName = componentData[3];
       // Имя JS-файла, который нужно взять в сборку, если он существует
-      let jsFile = dirs.blocks + '/' + componentName + '/' + componentFileName + '.js';
+      let jsFile = dirs.source + '/blocks/' + componentName + '/' + componentFileName + '.js';
       // Имя CSS-файла, который нужно обработать, если он существует
-      let cssFile = dirs.blocks + '/' + componentName + '/' + componentFileName + '.css';
+      let cssFile = dirs.source + '/blocks/' + componentName + '/' + componentFileName + '.css';
       // Папка с картинками, которую нужно взять в обработку, если она существует
-      let imagesDir = dirs.blocks + '/' + componentName + '/img';
+      let imagesDir = dirs.source + '/blocks/' + componentName + '/img';
       // Добавляем в массив с результатом название блока
       сomponentsFilesList.blocks.push(componentName);
       // Добавляем в массив с результатом LESS-файл

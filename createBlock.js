@@ -12,7 +12,7 @@ let defaultExtensions = ['html', 'less']; // расширения по умол�
 let extensions = uniqueArray(defaultExtensions.concat(process.argv.slice(3)));
 
 if(blockName) {
-  let dirPath = dirs.blocks + '/' + blockName + '/';
+  let dirPath = dirs.source + '/blocks/' + blockName + '/';
   mkdirp(dirPath, function(err){
     if(err) {
       console.error('[NTH] Отмена операции: ' + err);
@@ -24,8 +24,8 @@ if(blockName) {
         let fileContent = '';
         let fileCreateMsg = '';
         if(extention == 'less') {
-          fileContent = '@import "' + dirs.less + '/variables.less";     // только для удобства обращения к переменным\n@import "' + dirs.less + '/mixins/mixins.less"; // только для удобства обращения к примесям\n\n\n.' + blockName + ' {\n  \n}\n';
-          fileCreateMsg = '[NTH] Для импорта стилей: @import "' + dirs.blocks + '/' + blockName + '/' + blockName + '.less";';
+          fileContent = '@import "' + dirs.source + '/less/variables.less";     // только для удобства обращения к переменным\n@import "' + dirs.source + '/less/mixins/mixins.less"; // только для удобства обращения к примесям\n\n\n.' + blockName + ' {\n  \n}\n';
+          fileCreateMsg = '[NTH] Для импорта стилей: @import "' + dirs.source + '/blocks/' + blockName + '/' + blockName + '.less";';
         }
         else if(extention == 'html') {
           fileContent = '<!--DEV\n\nНужно убрать пробел между @-ами:\n\n@ @include(\'blocks/' + blockName + '/' + blockName + '.html\')\n\n-->\n<div class="' + blockName + '">content</div>\n';

@@ -41,9 +41,7 @@
   "config": {
     "directories": {
       "source": "./src",
-      "build": "./build",
-      "blocks": "./src/blocks",
-      "less": "./src/less"
+      "build": "./build"
     }
   }
 }
