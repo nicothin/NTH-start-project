@@ -29,6 +29,7 @@ const uglify = require('gulp-uglify');
 const concat = require('gulp-concat');
 const browserSync = require('browser-sync').create();
 const replace = require('gulp-replace');
+const ghPages = require('gulp-gh-pages');
 const fs = require('fs');
 
 // Запуск `NODE_ENV=production npm start [задача]` приведет к сборке без sourcemaps
@@ -236,9 +237,14 @@ gulp.task('serve', function () {
     server: dirs.build,
     port: port,
     notify: false,
-    startPath: '_blocks_library.html'
+    startPath: 'blocks_library.html'
   });
   browserSync.watch([dirs.build + '/**/*.*', '!' + dirs.build +  + '/**/*.map.*']).on('change', browserSync.reload);
+});
+
+gulp.task('deploy', function() {
+  return gulp.src('./build/**/*')
+    .pipe(ghPages());
 });
 
 // Задача по умолчанию
