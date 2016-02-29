@@ -9,7 +9,6 @@ node_modules/
 *.log
 *.sublime-*
 *.rar
-*.txt
 *.zip
 .idea
 .publish
