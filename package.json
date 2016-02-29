@@ -43,6 +43,7 @@
     "directories": {
       "source": "./src",
       "build": "./build"
-    }
+    },
+    "deployURL": "http://nicothin.github.io/NTH-start-project/blocks_library.html"
   }
 }

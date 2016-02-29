@@ -242,7 +242,9 @@ gulp.task('serve', function () {
   browserSync.watch([dirs.build + '/**/*.*', '!' + dirs.build +  + '/**/*.map.*']).on('change', browserSync.reload);
 });
 
+// Отправка в GH pages (ветку gh-pages репозитория)
 gulp.task('deploy', function() {
+  console.log('---------- Публикация на GH pages: ' + pjson.config.deployURL);
   return gulp.src('./build/**/*')
     .pipe(ghPages());
 });
