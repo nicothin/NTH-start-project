@@ -24,7 +24,7 @@ if(blockName) {
         let fileContent = '';
         let fileCreateMsg = '';
         if(extention == 'less') {
-          fileContent = '@import "' + dirs.source + '/less/variables.less";     // только для удобства обращения к переменным\n@import "' + dirs.source + '/less/mixins/mixins.less"; // только для удобства обращения к примесям\n\n\n.' + blockName + ' {\n  \n}\n';
+          fileContent = '@import "../../less/variables.less";     // только для удобства обращения к переменным\n@import "../../less/mixins/mixins.less"; // только для удобства обращения к примесям\n\n\n.' + blockName + ' {\n  \n}\n';
           fileCreateMsg = '[NTH] Для импорта стилей: @import "' + dirs.source + '/blocks/' + blockName + '/' + blockName + '.less";';
         }
         else if(extention == 'html') {

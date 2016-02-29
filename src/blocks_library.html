@@ -12,12 +12,18 @@
 @@include('blocks/page-header/page-header.html')
 
 <section class="container  blocks-library">
+
   <h1>Библиотека блоков <a href="/">проекта</a></h1>
-  <p>Стартовое состояние проекта содержит ряд блоков и глобальных стилей, описанных и показанных в этом файле. Если некоторые блоки показаны без стилизации, значит они не используются и импорт их стилей отключен в файле диспетчера подключений.</p>
+
+  <p>Стартовое состояние проекта содержит ряд блоков и глобальных стилей, описанных и показанных в этом файле. Если некоторые блоки не работают, значит импорт их стилей отключен в файле диспетчера подключений.</p>
+
+
 
   <section class="blocks-library__item">
+
     <h2 class="blocks-library__title" id="typo">Типографика, код</h2>
     <p>Стилизация: теги (см. глобальные стили)</p>
+
     <div class="row">
       <div class="col-md-6">
         <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут <a href="/">рыбные ссылки</a>. Грустный предупредила, дал приставка составитель решила подпоясал запятых сих ручеек которой власти до, над жизни возвращайся силуэт что не курсивных.</p>
@@ -71,7 +77,12 @@
         <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Грустный предупредила, дал приставка составитель решила подпоясал запятых сих ручеек которой власти до, над жизни возвращайся силуэт что не курсивных.</p>
       </div>
       <div class="col-md-6">
-        <p><img src="img/TEMP-DavidBlaine.jpg" alt=""></p>
+        <p>
+          <img src="img/TEMP-DavidBlaine.jpg" height="331" width="382" alt="">
+          <img class="thumb" src="img/TEMP-DavidBlaine.jpg" height="331" width="382" alt="">
+          <img class="thumb" src="img/TEMP-DavidBlaine.jpg" width="120" alt="">
+          <a href=""><img class="thumb" src="img/TEMP-DavidBlaine.jpg" width="120" alt=""></a>
+        </p>
         <table>
           <tr>
             <td><code>&lt;a&gt;</code></td>
@@ -146,8 +157,10 @@
 
 
   <section class="blocks-library__item">
+
     <h2 class="blocks-library__title" id="tables">Таблицы</h2>
     <p>Стилизация: теги (см. глобальные стили)</p>
+
     <div class="row">
       <div class="col-md-6">
         <table>
@@ -182,6 +195,7 @@
         </table>
       </div>
     </div>
+
     <section class="blocks-library__item">
       <h3 id="tables-responsive">Адаптивные таблицы</h3>
       <p>Стилизация: БЭМ-блок <code>.table-responsive</code></p>
