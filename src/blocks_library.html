@@ -80,6 +80,7 @@
         <p>
           <img src="img/TEMP-DavidBlaine.jpg" height="331" width="382" alt="">
           <img class="thumb" src="img/TEMP-DavidBlaine.jpg" height="331" width="382" alt="">
+          <br>
           <img class="thumb" src="img/TEMP-DavidBlaine.jpg" width="120" alt="">
           <a href=""><img class="thumb" src="img/TEMP-DavidBlaine.jpg" width="120" alt=""></a>
         </p>
@@ -197,11 +198,15 @@
     </div>
 
     <section class="blocks-library__item">
+
       <h3 id="tables-responsive">Адаптивные таблицы</h3>
+
       <p>Стилизация: БЭМ-блок <code>.table-responsive</code></p>
       <p class="alert  alert--danger"><strong>Внимание!</strong> Адаптивные таблицы требуют добавления дата-атрибутов. Фиксация минимальной ширины имитатора <code>th</code> будет полезной (делается индивидуально).</p>
       <p class="alert  alert--success">Приоритетным является не использование класса <code>.table-responsive</code>, а использование семантических БЭМ-классов и LESS-примеси <code>.table-responsive(sm);</code> (принимает в себя значение той ширины вьюпорта, на которой таблица ещё адаптивна).</p>
+
       @@include('blocks/table-responsive/table-responsive.html')
+
     </section>
   </section>
 
@@ -273,6 +278,7 @@
     <h2 id="form-style">Стилизованные формы</h2>
 
     <p>Стилизация: БЭМ-блоки <code>.field-text</code>, <code>.field-checkbox</code>, <code>.field-radio</code>, <code>.field-select</code>, <code>.field-file</code>, <code>.field-actions</code>, <code>.form</code> и модификаторы. Опирается на стилизацию форм по умолчанию.</p>
+
     <div class="row">
       <div class="col-md-6">
         <form action="" class="form">
@@ -436,6 +442,7 @@
 
 
   <section class="blocks-library__item">
+
     <h2 id="btn">Кнопки</h2>
     <p>Стилизация: БЭМ-блок <code>.btn</code> и модификаторы.</p>
     <p class="alert  alert--success">Приоритетным является подход, в котором используются LESS-примеси <code>.btn()</code>, <code>.btn-color(цвет_текста; цвет_фона; цвет_бордюра)</code> и <code>.btn-size([sm|md|lg])</code>.</p>
@@ -473,45 +480,81 @@
 
 
   <section class="blocks-library__item">
+
+    <h2 id="breakpoints">Breakpoints</h2>
+    <p>Ширины, на которых возможна перестройка блоков проекта:</p>
+
+    <table>
+      <tr>
+        <th>Переменная</th>
+        <th>Ширина в px по умолчанию</th>
+        <th>ID сетки, начинающей срабатывать</th>
+      </tr>
+      <tr>
+        <td><code>@screen-xs</code></td>
+        <td>0</td>
+        <td>XS</td>
+      </tr>
+      <tr>
+        <td><code>@screen-sm</code></td>
+        <td>480</td>
+        <td>SM</td>
+      </tr>
+      <tr>
+        <td><code>@screen-md</code></td>
+        <td>768</td>
+        <td>MD</td>
+      </tr>
+      <tr>
+        <td><code>@screen-lg</code></td>
+        <td>992</td>
+        <td>LG</td>
+      </tr>
+      <tr>
+        <td><code>@screen-xl</code></td>
+        <td>1200</td>
+        <td>XL</td>
+      </tr>
+      <tr>
+        <td><code>@screen-xxl</code></td>
+        <td>1800</td>
+        <td>XXL</td>
+      </tr>
+    </table>
+  </section>
+
+
+
+  <section class="blocks-library__item">
     <h2 id="grid">Модульная сетка на flexbox</h2>
     <p>Стилизация: БЭМ-блоки <code>.row</code>, <code>.col-[ID]-[COL]</code>, <code>.col-[ID]-offset-[COL]</code></p>
     <p>Возможные ID сетки: xs, sm, md, lg, xl, xxl (xxl по умолчанию закомментированы). Вдохновлено Bootstrap 4.</p>
     <div class="row">
-      <div class="col-xs-12  col-sm-6  col-md-4  col-lg-3">
-        <div style="background: #eceeef; border: 1px solid #B1B1B1; padding: .5em;">
-          <code>.col-xs-12  .col-sm-4  .col-md-4  .col-lg-3</code>
-        </div>
+      <div class="col-xs-12  col-sm-6  col-md-4  col-lg-3" style="background: #eceeef; border: 1px solid #B1B1B1;">
+        <code>.col-xs-12  .col-sm-4  .col-md-4  .col-lg-3</code>
       </div>
-      <div class="col-xs-12  col-sm-6  col-md-4  col-lg-3">
-        <div style="background: #eceeef; border: 1px solid #B1B1B1; padding: .5em;">
-          <code>.col-xs-12  .col-sm-4  .col-md-4  .col-lg-3</code>
-        </div>
+      <div class="col-xs-12  col-sm-6  col-md-4  col-lg-3" style="background: #eceeef; border: 1px solid #B1B1B1;">
+        <code>.col-xs-12  .col-sm-4  .col-md-4  .col-lg-3</code>
       </div>
-      <div class="col-xs-12  col-sm-6  col-md-4  col-lg-3">
-        <div style="background: #eceeef; border: 1px solid #B1B1B1; padding: .5em;">
-          <code>.col-xs-12  .col-sm-4  .col-md-4  .col-lg-3</code>
-        </div>
+      <div class="col-xs-12  col-sm-6  col-md-4  col-lg-3" style="background: #eceeef; border: 1px solid #B1B1B1;">
+        <code>.col-xs-12  .col-sm-4  .col-md-4  .col-lg-3</code>
       </div>
-      <div class="col-xs-12  col-sm-6  col-md-4  col-lg-3">
-        <div style="background: #eceeef; border: 1px solid #B1B1B1; padding: .5em;">
-          <code>.col-xs-12  .col-sm-4  .col-md-4  .col-lg-3</code>
-        </div>
+      <div class="col-xs-12  col-sm-6  col-md-4  col-lg-3" style="background: #eceeef; border: 1px solid #B1B1B1;">
+        <code>.col-xs-12  .col-sm-4  .col-md-4  .col-lg-3</code>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-2  col-lg-3">
-        <div style="background: #eceeef; border: 1px solid #B1B1B1; padding: .5em;">
-          <code>.col-md-2 &nbsp;.col-lg-3</code>
-        </div>
+      <div class="col-md-2  col-lg-3" style="background: #eceeef; border: 1px solid #B1B1B1;">
+        <code>.col-md-2 &nbsp;.col-lg-3</code>
       </div>
-      <div class="col-md-9  col-md-offset-1  col-lg-8">
-        <div style="background: #eceeef; border: 1px solid #B1B1B1; padding: .5em;">
-          <code>.col-md-10 &nbsp;.col-md-offset-1 &nbsp;.col-lg-9</code>
-        </div>
+      <div class="col-md-9  col-md-offset-1  col-lg-8" style="background: #eceeef; border: 1px solid #B1B1B1;">
+        <code>.col-md-10 &nbsp;.col-md-offset-1 &nbsp;.col-lg-9</code>
       </div>
     </div>
     <h3 id="grid-mixins">LESS-примеси</h3>
     <p class="alert  alert--success">Приоритетным является подход, в котором вместо упомянутых классов модульной сетки используются семантические БЭМ-овские классы и LESS-примеси (см. файл с примесями).</p>
+    <p>С примесями можно сделать модульную сетку любой колоночности (на разных ширинах может быть разноколоночная сетка), с любым промежутком между ячейками (на разных ширинах могут быть разные промежутки).</p>
+    <p class="alert  alert--danger">Вызов примеси <code>.col(xs, 12);</code> (возможно, не 12, а какое-то своё кол-во колонок) обязателен для элементов, являющихся прямыми потомками родителя модульной сетки.</p>
     <div class="row">
       <div class="col-lg-6">
 <pre>
@@ -537,14 +580,93 @@
   .row(10px);
 
   &__first-element {
-    // в примесь можно передать много данных
+    // xs-сетка, 6 колонок из @grid-columns (12 по умолчанию),
+    // промежутки 10px
     .col(xs, 6, @grid-columns, 10px);
   }
 }
 </pre>
       </div>
     </div>
+    <p>Максимально подробный пример:</p>
+    <pre>
+.root {
+    // При указании переменных подряд имена можно не писать, оставлены для наглядности
+    // @xs-grid-gutter: 1rem;  // XS-ширина: указан промежуток между ячейками сетки
+    // @sm-grid-gutter: 1.8rem;// SM-ширина: указан промежуток между ячейками сетки
+    // @md-grid-gutter: 2rem;  // MD-ширина: указан промежуток между ячейками сетки
+    // @lg-grid-gutter: 3rem;  // LG-ширина: указан промежуток между ячейками сетки
+    // @xl-grid-gutter: 4rem;  // XL-ширина: указан промежуток между ячейками сетки
+    // @xxl-grid-gutter: 5rem; // XXL-ширина: указан промежуток между ячейками сетки
+    // Короткая форма указания промежутков для всех ширин:
+    // 1rem; 1.8rem; 2rem; 3rem; 4rem; 5rem
+  .row(
+    @xs-grid-gutter: 1rem;
+    @sm-grid-gutter: 1.8rem;
+    @md-grid-gutter: 2rem;
+    @lg-grid-gutter: @grid-gutter-width;
+    @xl-grid-gutter: 4rem;
+    @xxl-grid-gutter: 5rem;
+  );
+
+  &__cuprum {
+    // Для каждого вызова примеси указан промежуток между колонками (совпадает с тем, что у соответствующего вызова .row() для родительского элемента)
+    .col(xs, 1, 2, 1rem);   // XS-ширина, 1 колонка в 2-колоночной сетке
+    .col(sm, 2, 5, 1.8rem); // SM-ширина, 2 колонки в 5-колоночной сетке
+    .col(md, 2, 8, 2rem);   // MD-ширина, 2 колонки в 8-колоночной сетке
+    .col(lg, 2, @grid-columns, @grid-gutter-width); // LG-ширина, 2 колонки в 12-колоночной сетке (если @grid-columns оставлена по умолчанию)
+    .col(xl, 3, 10, 4rem);   // XL-ширина, 3 колонки в 10-колоночной сетке
+  }
+
+  &__aurum {
+    .col(xs, 1, 2, 1rem);
+    .col(sm, 3, 5, 1.8rem);
+    .col(md, 6, 8, 2rem);
+    .col(lg, 10, @grid-columns, @grid-gutter-width);
+    .col(xl, 7, 10, 4rem);
+  }
+}
+    </pre>
+    <p>Реальный пример 1:</p>
+    <pre>
+.root {
+  // Промежуток между колонками будет отличаться только на XS-ширине, это первый
+  // ожидаемый примесью параметр, указываем только его.
+  .row(1rem);
+
+  &__cuprum {
+    .col(xs, 1, 2, 1rem); // 1 из 2, нужно указать измененный для .row() промежуток
+    .col(sm, 4); // начиная с SM — 4 из 12 (12 по умолчанию, можно не указывать)
+    .col(md, 3); // начиная с MD — 3 из 12 (12 по умолчанию, можно не указывать)
+  }
+
+  &__aurum {
+    .col(xs, 1, 2, 1rem);
+    .col(sm, 8);
+    .col(md, 9);
+  }
+}
+    </pre>
+    <p>Реальный пример 2:</p>
+    <pre>
+.root {
+  .row(); // Промежуток везде одинаковый (берется из переменной)
+
+  &__cuprum {
+    // Пока вьюпорт не стал равен или шире MD, блок 100% ширины родителя
+    .col(xs, 12); // по умолчанию — 12 из 12 (обязательный вызов примеси)
+    .col(md, 3);  // начиная с MD — 3 из 12
+  }
+
+  &__aurum {
+    // Пока вьюпорт не стал равен или шире MD, блок 100% ширины родителя
+    .col(xs, 12); // по умолчанию — 12 из 12 (обязательный вызов примеси)
+    .col(md, 9);  // начиная с MD — 9 из 12
+  }
+}
+    </pre>
   </section>
+
 
 
   <section class="blocks-library__item">
