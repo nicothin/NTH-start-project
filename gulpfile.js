@@ -127,7 +127,7 @@ gulp.task('img:opt', function (callback) {
 
 // Сборка SVG-спрайта
 gulp.task('svgstore', function (callback) {
-  let spritePath = dirs.source + '/img/svg-sprite/';
+  let spritePath = dirs.source + '/blocks/sprite-svg--localstorage/svg/';
   if(fileExist(spritePath) !== false) {
     console.log('---------- Сборка SVG спрайта');
     return gulp.src(spritePath + '*.svg')
@@ -144,7 +144,8 @@ gulp.task('svgstore', function (callback) {
       .pipe(cheerio(function ($) {
         $('svg').attr('style',  'display:none');
       }))
-      .pipe(gulp.dest(dirs.build + '/img'));
+      .pipe(rename('sprite-svg--ls.svg'))
+      .pipe(gulp.dest(dirs.source + '/blocks/sprite-svg--localstorage/img'));
   }
   else {
     console.log('---------- Сборка SVG спрайта: нет папки с картинками');
@@ -202,7 +203,8 @@ gulp.task('clean', function () {
 // Сборка всего
 gulp.task('build', gulp.series(
   'clean',
-  gulp.parallel('less', 'copy:css', 'img', 'svgstore', 'js'),
+  'svgstore',
+  gulp.parallel('less', 'copy:css', 'img', 'js'),
   'html'
 ));
 
