@@ -32,10 +32,10 @@
 
     & + .field-toggler__name-text:before {
       content: '';
-      width: 2.2em;
+      width: 2.125em;
       height: 1.25em;
       position: absolute;
-      top: .1em;
+      top: 0.125em;
       left: 0;
       background-color: @gray-lighter;
       border: 1px solid @border-color;
@@ -45,11 +45,12 @@
     & + .field-toggler__name-text:after {
       content: '';
       position: absolute;
-      top: .2em;
-      left: .15em;
+      top: 0.25em;
+      left: 0.125em;
       height: 1em;
       width: 1em;
       background: #fff;
+      border: 1px solid @border-color;
       transition: left .3s;
     }
 
@@ -59,7 +60,8 @@
     }
 
     &:checked + .field-toggler__name-text:after {
-      left: 1.1em;
+      left: 1em;
+      border: 1px solid @gray;
     }
 
     &:focus + .field-toggler__name-text:before {
