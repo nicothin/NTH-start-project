@@ -1,29 +1,63 @@
 <!--DEV
 
-Нужно убрать пробел между @-ами:
-
-@ @include('blocks/field-radio/field-radio.html',{
-  "name": "Стандартные радиокнопки",
-  "text": "Радиокнопка",
-  "mod": "",
-  "helpText": "Есть общее название. При желании радиокнопок можно написать несколько подряд."
-})
-
-@ @include('blocks/field-radio/field-radio.html',{
-  "name": "Собственные радиокнопки",
-  "text": "Радиокнопка",
-  "mod": "custom",
-  "helpText": "Есть общее название. При желании радиокнопок можно написать несколько подряд. Изображения в формате SVG, вписываются в CSS-файл функцией <code>data-uri()</code> компилятора LESS."
-})
-
--->
-@@if(mod === ""){<div class="field-radio">}@@if(mod !== ""){<div class="field-radio  field-radio--@@mod">}
-  <div class="field-radio__title">@@name</div>
+<div class="field-radio">
+  <div class="field-radio__title">Стандартная радиокнопка</div>
   <div class="field-radio__input-wrap">
     <label class="field-radio__name">
-      <input class="field-radio__input" type="radio" checked>
-      <span class="field-radio__name-text">@@text</span>
+      <input class="field-radio__input" type="radio">
+      <span class="field-radio__name-text">Да</span>
     </label>
-    <div class="field-radio__help-text">@@helpText</div>
+    <div class="field-radio__help-text">Пояснение не обязательно.</div>
   </div>
 </div>
+
+<div class="field-radio">
+  <div class="field-radio__title">Стандартные радиокнопки</div>
+  <div class="field-radio__input-wrap">
+    <label class="field-radio__name">
+      <input class="field-radio__input" type="radio" name="radio-demo" checked>
+      <span class="field-radio__name-text">Да</span>
+    </label>
+    <label class="field-radio__name">
+      <input class="field-radio__input" type="radio" name="radio-demo">
+      <span class="field-radio__name-text">Нет</span>
+    </label>
+    <label class="field-radio__name">
+      <input class="field-radio__input" type="radio" name="radio-demo">
+      <span class="field-radio__name-text">Не знаю</span>
+    </label>
+    <div class="field-radio__help-text">Разметка никак не модифицируется, просто добавляются дополнительные <code>label</code>.</div>
+  </div>
+</div>
+
+<div class="field-radio  field-radio--custom">
+  <div class="field-radio__title">Собственная радиокнопка</div>
+  <div class="field-radio__input-wrap">
+    <label class="field-radio__name">
+      <input class="field-radio__input" type="radio">
+      <span class="field-radio__name-text">Да</span>
+    </label>
+    <div class="field-radio__help-text">Есть общее название. При желании радиокнопок можно написать несколько подряд. Изображения в формате SVG, вписываются в CSS-файл функцией <code>data-uri()</code> компилятора LESS.</div>
+  </div>
+</div>
+
+<div class="field-radio  field-radio--custom">
+  <div class="field-radio__title">Собственные радиокнопки</div>
+  <div class="field-radio__input-wrap">
+    <label class="field-radio__name">
+      <input class="field-radio__input" type="radio" name="radio-demo-2" checked>
+      <span class="field-radio__name-text">Да</span>
+    </label>
+    <label class="field-radio__name">
+      <input class="field-radio__input" type="radio" name="radio-demo-2">
+      <span class="field-radio__name-text">Нет</span>
+    </label>
+    <label class="field-radio__name">
+      <input class="field-radio__input" type="radio" name="radio-demo-2">
+      <span class="field-radio__name-text">Не знаю</span>
+    </label>
+    <div class="field-radio__help-text">Разметка никак не модифицируется, просто добавляются дополнительные <code>label</code>.</div>
+  </div>
+</div>
+
+-->

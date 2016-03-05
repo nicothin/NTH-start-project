@@ -1,19 +1,19 @@
 <!--DEV
 
-Нужно убрать пробел между @-ами:
-
-@ @include('blocks/field-text/field-text.html',{
-  "type": "text",
-  "name": "Имя",
-  "placeholder": "Имя",
-  "helpText":"Введите имя"
-})
-
--->
 <label class="field-text">
-  <div class="field-text__name">@@name</div>
+  <div class="field-text__name">Любое поле, выглядящее как текстовое</div>
   <div class="field-text__input-wrap">
-    @@if (type === 'textarea') {<textarea class="field-text__input" placeholder="@@placeholder"></textarea>}@@if (type !== 'textarea') {<input class="field-text__input" type="@@type" placeholder="@@placeholder">}
-    <div class="field-text__help-text">@@helpText</div>
+    <input class="field-text__input" type="text" placeholder="input[type=text]">
+    <div class="field-text__help-text">Обёртка — <code>label</code>. Можно сделать обёртку <code>div</code>, но тогда, возможно, захочется элемент <code>.field-text__name</code> делать <code>label</code> и связывать его с полем по <code>id</code> поля.</div>
   </div>
 </label>
+
+<label class="field-text">
+  <div class="field-text__name">Многострочное текстовое поле</div>
+  <div class="field-text__input-wrap">
+    <textarea class="field-text__input" placeholder="textarea"></textarea>
+    <div class="field-text__help-text">Обёртка — <code>label</code>.</div>
+  </div>
+</label>
+
+-->
