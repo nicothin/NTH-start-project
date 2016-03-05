@@ -320,6 +320,13 @@
               "mod": "custom",
               "helpText": "Есть общее название. При желании радиокнопок можно написать несколько подряд. Изображения в формате SVG, вписываются в CSS-файл функцией <code>data-uri()</code> компилятора LESS."
             })
+            @@include('blocks/field-toggler/field-toggler.html',{
+              "name": "Переключатель",
+              "type": "checkbox",
+              "text": "Флажок",
+              "checked": "",
+              "helpText": "Какое-то описание"
+            })
             @@include('blocks/field-select/field-select.html',{
               "name": "Селект",
               "options": "<optgroup label=\"Группа\"><option>Значение 1</option><option>Значение 2</option><option>Значение 3</option></optgroup><option>Значение 10</option>",

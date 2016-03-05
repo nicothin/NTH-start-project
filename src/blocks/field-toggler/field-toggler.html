@@ -1,0 +1,23 @@
+<!--DEV
+
+Нужно убрать пробел между @-ами:
+
+@ @include('blocks/field-toggler/field-toggler.html',{
+  "name": "Переключатель",
+  "type": "checkbox",
+  "text": "Флажок",
+  "checked": "",
+  "helpText": "Какое-то описание"
+})
+
+-->
+<div class="field-toggler">
+  <div class="field-toggler__title">@@name</div>
+  <div class="field-toggler__input-wrap">
+    <label class="field-toggler__name">
+      <input class="field-toggler__input" type="@@type" @@checked>
+      <span class="field-toggler__name-text">@@text</span>
+    </label>
+    <div class="field-toggler__help-text">@@helpText</div>
+  </div>
+</div>

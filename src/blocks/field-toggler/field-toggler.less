@@ -1,0 +1,80 @@
+@import "../../less/variables.less";     // только для удобства обращения к переменным
+@import "../../less/mixins/mixins.less"; // только для удобства обращения к примесям
+
+
+.field-toggler {
+  display: block;
+  margin-bottom: (@line-height / 2);
+
+  &__title {
+    font-weight: 700;
+    line-height: 1.2em;
+    display: block;
+    margin-bottom: round(@line-height / 4, 2);
+    min-height: 1px;
+  }
+
+  &__input-wrap {}
+
+  &__name {
+    position: relative;
+    padding-left: 2.7em;
+    font-weight: 400;
+    display: inline-block;
+    margin-right: .6em;
+    margin-bottom: .2em;
+    line-height: @line-height;
+  }
+
+  &__input {
+    position: absolute;
+    opacity: 0;
+
+    & + .field-toggler__name-text:before {
+      content: '';
+      width: 2.2em;
+      height: 1.25em;
+      position: absolute;
+      top: .1em;
+      left: 0;
+      background-color: @gray-lighter;
+      border: 1px solid @border-color;
+      transition: background-color .3s;
+    }
+
+    & + .field-toggler__name-text:after {
+      content: '';
+      position: absolute;
+      top: .2em;
+      left: .15em;
+      height: 1em;
+      width: 1em;
+      background: #fff;
+      transition: left .3s;
+    }
+
+    &:checked + .field-toggler__name-text:before {
+      background-color: @gray-light;
+      border: 1px solid @gray;
+    }
+
+    &:checked + .field-toggler__name-text:after {
+      left: 1.1em;
+    }
+
+    &:focus + .field-toggler__name-text:before {
+      .focus();
+    }
+  }
+
+  &__help-text {
+    .help-text();
+    // Задача: здесь левый padding должен совпадать с левым padding .field-toggler__name-text и должен быть
+    // в относительных единицах.
+    // Левый padding у .field-toggler__name-text = 2.7em от размера шрифта родителя (указано выше в этом файле).
+    // Нужно получить 2.7em от размера шрифта родителя, отталкиваясь от здешнего (уменьшенного) размера шрифта.
+    // Фактор увеличения: 100 / @font-size--small-percent
+    padding-left: round(2.7em * (100 / @font-size--small-percent), 2);
+  }
+}
+
