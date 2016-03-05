@@ -105,7 +105,7 @@ gulp.task('img', function () {
     .pipe(gulp.dest(dirs.build + '/img'));
 });
 
-// Оптимизация изображений
+// Оптимизация изображений // folder=src/blocks/block-name/img_to_bg/ npm start img:opt
 const folder = process.env.folder;
 gulp.task('img:opt', function (callback) {
   if(folder){
