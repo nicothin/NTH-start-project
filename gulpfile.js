@@ -40,7 +40,7 @@ const port = process.env.port ? process.env.port : 3000;
 
 // Файлы компилируемых компонентов
 let blocks = getComponentsFiles();
-console.log('---------- Список ресурсов:');
+console.log('---------- Список задействованных ресурсов:');
 console.log(blocks);
 
 
@@ -265,6 +265,7 @@ function getComponentsFiles() {
     img: [],           // тут будет массив из «путь_до_блока/img/*.{jpg,jpeg,gif,png,svg}» для всех импортируемых блоков
     additionalCss: [], // тут будут добавочные CSS-файлы блоков в том же порядке, в котором подключены LESS-файлы
   };
+  let jsLibs = []; // тут будут сторонние JS-файлы из используемых блоков (библиотеки), потом вставим в начало сomponentsFilesList.js
   // Читаем файл диспетчера подключений
   let connectManager = fs.readFileSync(dirs.source + '/less/style.less', 'utf8');
   // Фильтруем массив, оставляя только строки с незакомментированными импортами
@@ -280,16 +281,29 @@ function getComponentsFiles() {
     if (componentData !== null && componentData[3]) {
       // Название блока (название папки)
       let componentName = componentData[1];
+      // Папка блока
+      let blockDir = dirs.source + '/blocks/' + componentName;
       // Имя подключаемого файла без расширения
       let componentFileName = componentData[3];
       // Имя JS-файла, который нужно взять в сборку, если он существует
-      let jsFile = dirs.source + '/blocks/' + componentName + '/' + componentFileName + '.js';
+      let jsFile = blockDir + '/' + componentFileName + '.js';
       // Имя CSS-файла, который нужно обработать, если он существует
-      let cssFile = dirs.source + '/blocks/' + componentName + '/' + componentFileName + '.css';
+      let cssFile = blockDir + '/' + componentFileName + '.css';
       // Папка с картинками, которую нужно взять в обработку, если она существует
-      let imagesDir = dirs.source + '/blocks/' + componentName + '/img';
+      let imagesDir = blockDir + '/img';
       // Добавляем в массив с результатом LESS-файл
       сomponentsFilesList.less.push(dirs.source + componentData[0] + '.' + componentData[4]);
+      // Если в папке блока есть сторонние JS-файлы — добавляем их в массив с результатом (это библиотеки)
+      let blockFiles = fs.readdirSync(blockDir); // список файлов
+      let reg = new RegExp(componentName + '(\.|--)', '');
+      blockFiles.forEach(function(file, i) {
+        if(/\.js$/.test(file) && !reg.test(file)) {
+          if(fileExistAndHasContent(blockDir + '/' + file)) {        // и если он существует и не пуст
+            jsLibs.push(blockDir + '/' + file);  // добавим в массив библиотек
+          }
+        }
+      });
+      jsLibs = uniqueArray(jsLibs); // уникализируем массив библиотек
       // Если существует JS-файл — добавляем его в массив с результатом
       if(fileExistAndHasContent(jsFile)) {
         сomponentsFilesList.js.push(jsFile);
@@ -309,6 +323,10 @@ function getComponentsFiles() {
   // Добавим глобальный JS-файл в начало массива с обрабатываемыми JS-файлами
   if(fileExistAndHasContent(dirs.source + '/js/global-script.js')) {
     сomponentsFilesList.js.unshift(dirs.source + '/js/global-script.js');
+  }
+  // Добавим JS-библиотеки (если есть) в начало списка JS-файлов
+  if(jsLibs) {
+    сomponentsFilesList.js = jsLibs.concat(сomponentsFilesList.js);
   }
   // Добавим глобальный CSS-файл в начало массива с обрабатываемыми CSS-файлами
   if(fileExistAndHasContent(dirs.source + '/css/global-additional-css.css')) {
