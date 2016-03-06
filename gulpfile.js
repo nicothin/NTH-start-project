@@ -191,6 +191,22 @@ gulp.task('js', function (callback) {
   }
 });
 
+// Копирование JS-библиотек (если есть)
+gulp.task('js:copy', function (callback) {
+  let jsLibs = [];
+  if(fileExistAndHasContent(dirs.source + '/js/jquery.js')) {
+    jsLibs.push(dirs.source + '/js/jquery.js');
+  }
+  if(jsLibs){
+    console.log('---------- Копирование JS-библиотек');
+    return gulp.src(jsLibs)
+      .pipe(gulp.dest(dirs.build + '/js'));
+  }
+  else {
+    callback();
+  }
+});
+
 // Очистка папки сборки
 gulp.task('clean', function () {
   console.log('---------- Очистка папки сборки');
@@ -204,7 +220,7 @@ gulp.task('clean', function () {
 gulp.task('build', gulp.series(
   'clean',
   'svgstore',
-  gulp.parallel('less', 'copy:css', 'img', 'js'),
+  gulp.parallel('less', 'copy:css', 'img', 'js', 'js:copy'),
   'html'
 ));
 
@@ -255,6 +271,8 @@ gulp.task('deploy', function() {
 gulp.task('default',
   gulp.series('build', gulp.parallel('watch', 'serve'))
 );
+
+
 
 // Определение собираемых компонентов
 function getComponentsFiles() {
@@ -328,6 +346,9 @@ function getComponentsFiles() {
   if(jsLibs) {
     сomponentsFilesList.js = jsLibs.concat(сomponentsFilesList.js);
   }
+  // if(fileExistAndHasContent(dirs.source + '/js/jquery.js')) {
+  //   сomponentsFilesList.js.unshift(dirs.source + '/js/jquery.js');
+  // }
   // Добавим глобальный CSS-файл в начало массива с обрабатываемыми CSS-файлами
   if(fileExistAndHasContent(dirs.source + '/css/global-additional-css.css')) {
     сomponentsFilesList.additionalCss.unshift(dirs.source + '/css/global-additional-css.css');
