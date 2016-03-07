@@ -1,0 +1,69 @@
+@import "../../less/variables.less";     // только для удобства обращения к переменным
+@import "../../less/mixins/mixins.less"; // только для удобства обращения к примесям
+
+
+.fields-group {
+  display: flex;
+  margin-bottom: (@line-height / 2);
+
+  &__item {
+    margin-bottom: 0;
+    // flex: 0 0 auto;
+    flex-basis: 100%;
+    // flex: 1;
+
+    &--text {
+      white-space: nowrap;
+      background-color: @gray-lighter;
+      color: @gray;
+      border: @border-width solid @border-color;
+      border-radius: @border-radius;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: @line-height;
+      min-height: 2.125em;
+      padding: @field-padding-top @field-padding-horizontal @field-padding-bottom;
+    }
+
+    &--addon {
+      // flex-grow: 0;
+      flex-basis: 1%;
+
+      &:not(:last-child) {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+
+      &:not(:first-child) {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
+
+    &:not(:last-child) {
+      input {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+    }
+
+    &:not(:first-child) {
+
+      margin-left: (@border-width * -1);
+
+      input {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
+
+    input {
+      position: relative;
+
+      &:focus {
+        z-index: 1;
+      }
+    }
+
+  }
+}

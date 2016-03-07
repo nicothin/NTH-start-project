@@ -39,7 +39,6 @@
     height: 2.125em; // 16 × 2.125 = 34
     line-height: @line-height;
     padding-right: @field-padding-horizontal;
-    margin-bottom: round(@line-height / 3, 2);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -60,9 +59,12 @@
       border-bottom-left-radius: @border-radius;
     }
 
-    // .field-file__input:focus ~ & {
-    //   .focus();
-    // }
+    &:hover, &:focus {
+      &:before {
+        background-color: darken(@gray-lighter, 10%); // как у обычных кнопок
+      }
+    }
+
   }
 
   &__help-text {
