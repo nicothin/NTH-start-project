@@ -15,3 +15,11 @@ function closest(el, selector) {
   }
   return null;
 }
+
+
+
+// Свой код с jQuery
+
+$( document ).ready(function() {
+
+});

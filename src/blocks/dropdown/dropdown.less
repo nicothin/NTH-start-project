@@ -1,0 +1,78 @@
+@import "../../less/variables.less";     // только для удобства обращения к переменным
+@import "../../less/mixins/mixins.less"; // только для удобства обращения к примесям
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+
+  &--open & {
+    &__menu {
+      z-index: @z-index-dropdown;
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  &__toggler {}
+
+  &__menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: -1;
+    background-color: #fff;
+    color: @text-color;
+    padding: 1em;
+    margin: 0;
+    border: 1px solid @border-color;
+    border-radius: @border-radius;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity @transition-time;
+
+    &--up {
+      top: auto;
+      bottom: 100%;
+    }
+
+    &--right {
+      left: auto;
+      right: 0;
+    }
+
+    div& {
+      min-width: 26rem;
+    }
+
+    ul& {
+      min-width: 16rem;
+      // max-width: 30rem;
+      list-style: none;
+      padding: .3em 0;
+
+      > li > a {
+        display: block;
+        white-space: nowrap;
+        // width: 100%;
+        // overflow: hidden;
+        // text-overflow: ellipsis;
+        padding: .3em 1em;
+        color: @text-color;
+        text-decoration: none;
+
+        &:hover, &:focus {
+          background-color: @gray-lighter;
+        }
+      }
+    }
+  }
+
+  &__menu-separator {
+    &:not(:last-child) {
+      padding-bottom: .3em;
+      margin-bottom: .3em;
+      border-bottom: 1px solid @border-color;
+    }
+  }
+}

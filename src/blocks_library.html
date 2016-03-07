@@ -75,6 +75,7 @@
           <dd>Некое, возможно, относительно длинное определение упомянутой сущности.</dd>
         </dl>
         <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Грустный предупредила, дал приставка составитель решила подпоясал запятых сих ручеек которой власти до, над жизни возвращайся силуэт что не курсивных.</p>
+        <div class="p">Это <code>div</code> с классом <code>.p</code>. Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Грустный предупредила, дал приставка составитель решила подпоясал запятых сих ручеек которой власти до, над жизни возвращайся силуэт что не курсивных.</div>
       </div>
       <div class="col-md-6">
         <p>
@@ -625,6 +626,122 @@
     <p>
       <button class="btn  btn--block">Button (block)</button>
     </p>
+
+  </section>
+
+
+
+  <section class="blocks-library__item">
+
+    <h2 id="dropdown">Выпадающие элементы</h2>
+    <p>Свойства:</p>
+    <ul>
+      <li>Требуют jQuery.</li>
+      <li>Управление с клавиатуры.</li>
+      <li>Выпадать может <code>ul</code> или <code>div</code> с произвольным содержимым.</li>
+      <li>Cобытия с пространством имён.</li>
+    </ul>
+    <div class="p">
+      <span role="presentation" class="dropdown" id="test">
+        <a id="test_link" href="#" class="dropdown__toggler" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ссылка</a>
+        <ul class="dropdown__menu" aria-labelledby="qwer">
+          <li><a href="#">Пункт списка (выпадает <code>ul</code>)</a></li>
+          <li class="dropdown__menu-separator"><a href="#">Пункт списка, после которого следует разделитель</a></li>
+          <li><a href="#">Пункт меню весьма длинный, такой, что прямо адски длинный, очень много, реально много слов!</a></li>
+        </ul>
+      </span>
+      <span role="presentation" class="dropdown" id="test_2">
+        <button class="dropdown__toggler  btn" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Выпадает список
+        </button>
+        <ul class="dropdown__menu" aria-labelledby="dLabel" id="qwer">
+          <li><a href="#">Пункт списка (выпадает <code>ul</code>)</a></li>
+          <li><a href="">Пункт меню весьма длинный</a></li>
+          <li><a href="">Второй пункт</a></li>
+        </ul>
+      </span>
+      <span role="presentation" class="dropdown" id="test_2">
+        <button class="dropdown__toggler  btn" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Выпадает блок
+        </button>
+        <div class="dropdown__menu">
+          Выпадает <code>div</code> с произвольным контентом. <a href="">Ссылка какая-то</a>.
+          <hr>
+          <form action="">
+            <input type="text">
+            <select name="" id="">
+              <option value="">Название пункта</option>
+            </select>
+            <textarea name="" id="" rows="3"></textarea>
+            <button class="btn">Отправить эту форму</button>
+          </form>
+        </div>
+      </span>
+      <span role="presentation" class="dropdown" id="test_2">
+        <button class="dropdown__toggler  btn" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Выпадение вверх от пр. края
+        </button>
+        <ul class="dropdown__menu  dropdown__menu--up  dropdown__menu--right" aria-labelledby="dLabel" id="qwer">
+          <li><a href="#">Пункт списка (выпадает <code>ul</code>)</a></li>
+          <li><a href="">Пункт меню весьма длинный</a></li>
+          <li><a href="">Второй пункт</a></li>
+        </ul>
+      </span>
+    </div>
+    <h3>События</h3>
+    <div class="row">
+      <div class="col-md-6">
+        <pre>
+&lt;span role=&quot;presentation&quot; class=&quot;dropdown&quot; id=&quot;test&quot;&gt;
+  &lt;a href=&quot;#&quot; class=&quot;dropdown__toggler&quot; data-toggle=&quot;dropdown&quot; role=&quot;button&quot; aria-haspopup=&quot;true&quot; aria-expanded=&quot;false&quot;&gt;&#x421;&#x441;&#x44b;&#x43b;&#x43a;&#x430; &#x441; &#x432;&#x44b;&#x43f;&#x430;&#x434;&#x430;&#x44e;&#x449;&#x438;&#x43c; &#x44d;&#x43b;&#x435;&#x43c;&#x435;&#x43d;&#x442;&#x43e;&#x43c;&lt;/a&gt;
+  &lt;ul class=&quot;dropdown__menu&quot; aria-labelledby=&quot;qwer&quot;&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&#x41f;&#x443;&#x43d;&#x43a;&#x442; &#x441;&#x43f;&#x438;&#x441;&#x43a;&#x430; (&#x432;&#x44b;&#x43f;&#x430;&#x434;&#x430;&#x435;&#x442; &lt;code&gt;ul&lt;/code&gt;)&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/span&gt;</pre>
+      </div>
+      <div class="col-md-6">
+        <pre>
+// Факт открытия
+$('#test').on('shown.nth.dropdown', function () {
+  console.log('shown.nth.dropdown');
+});
+
+// Факт закрытия
+$('#test').on('hidden.nth.dropdown', function () {
+  console.log('hidden.nth.dropdown');
+});</pre>
+      </div>
+    </div>
+
+
+
+<!--     <div class="dropdown">
+      <a href="#" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Dropdown trigger
+      </a>
+      <div class="dropdown__menu">
+        <a href="">1111</a>
+        <a href="">1111</a>
+        <hr>
+        <form action="">
+          <input type="text">
+          <select name="" id="">
+            <option value="">111</option>
+          </select>
+          <textarea name="" id="" cols="30" rows="10"></textarea>
+          <button>111</button>
+        </form>
+      </div>
+    </div> -->
+
+<!--     <div class="dropdown">
+      <span class="btn  dropdown__toggler">Кнопка 2</span>
+      <div class="dropdown__content">выпадающий блок 2</div>
+    </div> -->
+
   </section>
 
 
