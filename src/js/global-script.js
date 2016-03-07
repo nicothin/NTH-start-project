@@ -20,6 +20,6 @@ function closest(el, selector) {
 
 // Свой код с jQuery
 
-$( document ).ready(function() {
+// $( document ).ready(function() {
 
-});
+// });
