@@ -719,14 +719,14 @@
         <button class="dropdown__toggler  btn" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Выпадает список
         </button>
-        <ul class="dropdown__menu" aria-labelledby="dLabel" id="qwer">
+        <ul class="dropdown__menu" id="qwer">
           <li><a href="#">Пункт списка (выпадает <code>ul</code>)</a></li>
           <li><a href="">Пункт меню весьма длинный</a></li>
           <li><a href="">Второй пункт</a></li>
         </ul>
       </span>
-      <span role="presentation" class="dropdown" id="test_2">
-        <button class="dropdown__toggler  btn" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <span role="presentation" class="dropdown">
+        <button class="dropdown__toggler  btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Выпадает блок
         </button>
         <div class="dropdown__menu">
@@ -742,11 +742,31 @@
           </form>
         </div>
       </span>
-      <span role="presentation" class="dropdown" id="test_2">
-        <button class="dropdown__toggler  btn" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <span role="presentation" class="dropdown">
+        <button class="dropdown__toggler  btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Выпадение вверх
+        </button>
+        <ul class="dropdown__menu  dropdown__menu--up">
+          <li><a href="#">Пункт списка (выпадает <code>ul</code>)</a></li>
+          <li><a href="">Пункт меню весьма длинный</a></li>
+          <li><a href="">Второй пункт</a></li>
+        </ul>
+      </span>
+      <span role="presentation" class="dropdown">
+        <button class="dropdown__toggler  btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Выпадение от пр. края
+        </button>
+        <ul class="dropdown__menu  dropdown__menu--right">
+          <li><a href="#">Пункт списка (выпадает <code>ul</code>)</a></li>
+          <li><a href="">Пункт меню весьма длинный</a></li>
+          <li><a href="">Второй пункт</a></li>
+        </ul>
+      </span>
+      <span role="presentation" class="dropdown">
+        <button class="dropdown__toggler  btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Выпадение вверх от пр. края
         </button>
-        <ul class="dropdown__menu  dropdown__menu--up  dropdown__menu--right" aria-labelledby="dLabel" id="qwer">
+        <ul class="dropdown__menu  dropdown__menu--up  dropdown__menu--right">
           <li><a href="#">Пункт списка (выпадает <code>ul</code>)</a></li>
           <li><a href="">Пункт меню весьма длинный</a></li>
           <li><a href="">Второй пункт</a></li>
