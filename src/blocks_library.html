@@ -595,8 +595,17 @@
               <label class="field-text  fields-group__item">
                 <input class="field-text__input" type="text" placeholder="input[type=text]">
               </label>
-              <label class="field-text  fields-group__item">
-                <input class="field-text__input" type="text" placeholder="input[type=text]">
+              <label class="field-select  fields-group__item">
+                <div class="field-select__select-wrap">
+                  <select class="field-select__select">
+                    <optgroup label="Группа">
+                      <option>Значение 1</option>
+                      <option>Значение 2</option>
+                      <option>Значение 3</option>
+                    </optgroup>
+                    <option>Значение 10</option>
+                  </select>
+                </div>
               </label>
               <label class="field-text  fields-group__item">
                 <input class="field-text__input" type="text" placeholder="input[type=text]">
@@ -614,6 +623,14 @@
               <label class="field-text  fields-group__item">
                 <input class="field-text__input" type="text" placeholder="input[type=text]">
                 <small class="field-select__help-text">Пояснение еще.</small>
+              </label>
+            </div>
+            <div class="fields-group  fields-group--inline">
+              <label class="field-text  fields-group__item">
+                <input class="field-text__input" type="text" placeholder="input[type=text]">
+              </label>
+              <label class="field-text  fields-group__item">
+                <input class="field-text__input" type="text" placeholder="input[type=text]">
               </label>
             </div>
             <div class="fields-group">
@@ -675,46 +692,6 @@
           <button class="btn">Отправить</button>
         </div>
 
-        <h3>Флажки (чекбоксы) как кнопки</h3>
-
-        <!-- <div class="btn-group">
-          <label class="checked-btn">
-            <input type="checkbox">
-            <span class="btn">Флажок 1</span>
-          </label>
-          <label class="checked-btn">
-            <input type="checkbox">
-            <span class="btn  btn--main">Флажок 2</span>
-          </label>
-          <label class="checked-btn">
-            <input type="checkbox">
-            <span class="btn  btn--danger">Флажок 3</span>
-          </label>
-          <label class="checked-btn">
-            <input type="checkbox">
-            <span class="btn  btn--success">Флажок 4</span>
-          </label>
-        </div> -->
-
-        <!-- <div class="btn-group">
-          <label class="checked-btn">
-            <input type="checkbox">
-            <span class="btn">Флажок 1</span>
-          </label>
-          <label class="checked-btn">
-            <input type="checkbox">
-            <span class="btn">Флажок 2</span>
-          </label>
-          <label class="checked-btn">
-            <input type="checkbox">
-            <span class="btn">Флажок 3</span>
-          </label>
-          <label class="checked-btn">
-            <input type="checkbox">
-            <span class="btn">Флажок 4</span>
-          </label>
-        </div> -->
-
         <h3>Радиокнопки как кнопки</h3>
 
         <div class="btn-group  checked-btns">
@@ -727,6 +704,10 @@
           <label class="btn" for="radio-btn-3">Флажок 3</label>
           <label class="btn" for="radio-btn-4">Флажок 4</label>
         </div>
+
+        <h3>Флажки (чекбоксы) как кнопки</h3>
+
+        <p>TODO</p>
 
       </div>
     </div>

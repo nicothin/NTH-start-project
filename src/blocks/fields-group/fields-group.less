@@ -6,6 +6,10 @@
   display: flex;
   margin-bottom: (@line-height / 2);
 
+  &--inline {
+    display: inline-flex;
+  }
+
   &__item {
     margin-bottom: 0;
     flex-basis: 100%;
@@ -38,20 +42,29 @@
     }
 
     &:not(:last-child) {
-      input {
+      input,
+      select {
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
       }
     }
 
     &:not(:first-child) {
+      // margin-left: -1px;
 
-      margin-left: (@border-width * -1);
-
-      input {
+      input,
+      select {
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
       }
+    }
+  }
+
+  * {
+    position: relative;
+
+    &:focus {
+      z-index: 1;
     }
   }
 }
