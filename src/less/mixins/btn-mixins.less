@@ -1,15 +1,10 @@
 //------------------------------------------------------------------------------
 //  КНОПКИ
 //------------------------------------------------------------------------------
-//  Использование:
-//  .super-button {
-//    .btn();
-//    .btn-color-variant(@text-color; @gray-lighter; @gray-lighter);
-//  }
-//------------------------------------------------------------------------------
+
 
 //------------------------------------------------------------------------------
-//  Общие стиля любой кнопки
+//  Общие стили любой кнопки
 //------------------------------------------------------------------------------
 
 .btn() {
@@ -26,7 +21,6 @@
   border: 1px solid;
   box-sizing: border-box;
   border-radius: @border-radius;
-
 
   // &--hover,
   &:hover {
@@ -65,25 +59,55 @@
 
   // &--hover,
   &:hover {
-    color: @color;
-    background-color: darken(@background, 10%);
-    border-color: darken(@border, 12%);
+    .btn-color--hover(@color; @background; @border);
   }
 
   // &--active,
   &:active,
   &:focus {
-    color: @color;
-    background-color: darken(@background, 15%);
-    border-color: darken(@border, 17%);
+    .btn-color--active(@color; @background; @border);
   }
 
   // &--disabled,
   &:disabled {
-    color: @color;
-    background-color: @background;
-    border-color: @border;
+    .btn-color--disabled(@color; @background; @border);
   }
+}
+
+
+
+//------------------------------------------------------------------------------
+//  Вспомогательная примесь-генератор цветовых стилей для hover
+//------------------------------------------------------------------------------
+
+.btn-color--hover(@color: @text-color; @background: @gray-lighter; @border: @gray-lighter) {
+  color: @color;
+  background-color: darken(@background, 10%);
+  border-color: darken(@border, 12%);
+}
+
+
+
+//------------------------------------------------------------------------------
+//  Вспомогательная примесь-генератор цветовых стилей для active и focus
+//------------------------------------------------------------------------------
+
+.btn-color--active(@color: @text-color; @background: @gray-lighter; @border: @gray-lighter) {
+  color: @color;
+  background-color: darken(@background, 15%);
+  border-color: darken(@border, 50%);
+}
+
+
+
+//------------------------------------------------------------------------------
+//  Вспомогательная примесь-генератор цветовых стилей для disabled
+//------------------------------------------------------------------------------
+
+.btn-color--disabled(@color: @text-color; @background: @gray-lighter; @border: @gray-lighter) {
+  color: @color;
+  background-color: @background;
+  border-color: @border;
 }
 
 

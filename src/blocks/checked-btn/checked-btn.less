@@ -1,0 +1,28 @@
+@import "../../less/variables.less";     // только для удобства обращения к переменным
+@import "../../less/mixins/mixins.less"; // только для удобства обращения к примесям
+
+
+.checked-btn {
+
+  input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+
+    &:checked {
+      & ~ .btn {
+        .btn-color--active(@text-color; @gray-lighter; @gray-lighter);
+      }
+      & ~ .btn--main {
+        .btn-color--active(#fff; @color-main; @color-main);
+      }
+      & ~ .btn--success {
+        .btn-color--active(#fff; @color-success; @color-success);
+      }
+      & ~ .btn--danger {
+        .btn-color--active(#fff; @color-danger; @color-danger);
+      }
+    }
+  }
+}
