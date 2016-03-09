@@ -22,12 +22,12 @@
   box-sizing: border-box;
   border-radius: @border-radius;
 
-  // &--hover,
+  &--hover,
   &:hover {
     text-decoration: none;
   }
 
-  // &--active,
+  &--active,
   &:active,
   &:focus {
     text-decoration: none;
@@ -35,7 +35,7 @@
     box-shadow: none;
   }
 
-  // &--disabled,
+  &--disabled,
   &:disabled {
     cursor: not-allowed;
     opacity: @opacity;
@@ -57,18 +57,18 @@
   background-color: @background;
   border-color: @border;
 
-  // &--hover,
+  &--hover,
   &:hover {
     .btn-color--hover(@color; @background; @border);
   }
 
-  // &--active,
+  &--active,
   &:active,
   &:focus {
     .btn-color--active(@color; @background; @border);
   }
 
-  // &--disabled,
+  &--disabled,
   &:disabled {
     .btn-color--disabled(@color; @background; @border);
   }
