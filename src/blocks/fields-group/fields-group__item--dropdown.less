@@ -1,0 +1,25 @@
+@import "../../less/variables.less";     // только для удобства обращения к переменным
+@import "../../less/mixins/mixins.less"; // только для удобства обращения к примесям
+
+
+.fields-group {
+  &__item {
+    &--dropdown {
+      &:not(:last-child) {
+        .btn {
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+      }
+
+      &:not(:first-child) {
+        margin-left: -1px;
+
+        .btn {
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+        }
+      }
+    }
+  }
+}

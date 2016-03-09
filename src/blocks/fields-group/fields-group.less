@@ -41,9 +41,11 @@
       }
     }
 
+    // &--dropdown {} // Вынесено в отдельный файл, т.к. ситуация специфическая, редкая
+
     &:not(:last-child) {
-      input,
-      select {
+      .field-text__input,
+      .field-select__select {
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
       }
@@ -52,19 +54,22 @@
     &:not(:first-child) {
       margin-left: -1px;
 
-      input,
-      select {
+      .field-text__input,
+      .field-select__select {
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
       }
     }
   }
 
-  * {
+  .field-text__input,
+  .field-select__select,
+  .btn {
     position: relative;
+    z-index: 1;
 
-    &:focus {
-      z-index: 1;
+    &:not(:focus) {
+      z-index: 0;
     }
   }
 }
