@@ -4,6 +4,7 @@
 
 .btn-group {
   display: inline-flex;
+  vertical-align: middle;
   margin-bottom: (@line-height / 2);
 
   > .btn {
@@ -29,10 +30,22 @@
     }
 
     &:not(:first-child) {
+      margin-left: -1px;
+
       .btn {
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
       }
+    }
+  }
+
+  .btn {
+    position: relative;
+    z-index: 0;
+
+    &:focus,
+    &:hover {
+      z-index: 1;
     }
   }
 }
