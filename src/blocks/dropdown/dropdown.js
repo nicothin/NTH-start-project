@@ -16,7 +16,7 @@
     $(element).on('click.nth.dropdown', this.toggle)
   }
 
-  Dropdown.VERSION = '3.3.6'
+  // Dropdown.VERSION = '3.3.6'
 
   function getParent($this) {
     var selector = $this.attr('data-target')
@@ -65,8 +65,6 @@
     var $parent  = getParent($this)
     // var isActive = $parent.hasClass('open')
     var isActive = $parent.hasClass('dropdown--open')
-
-                              // console.log($this);
 
     clearMenus()
 
