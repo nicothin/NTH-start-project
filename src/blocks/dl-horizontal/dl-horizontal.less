@@ -1,0 +1,23 @@
+@import "../../less/variables.less";     // только для удобства обращения к переменным
+@import "../../less/mixins/mixins.less"; // только для удобства обращения к примесям
+
+
+.dl-horizontal {
+  @media (min-width: @screen-md) {
+    & > dt {
+      width: 19rem;
+      float: left;
+      margin: 0;
+      word-wrap: break-word;
+      text-align: right;
+      clear: both;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    & > dd {
+      margin-left: 20.5rem;
+    }
+  }
+}
