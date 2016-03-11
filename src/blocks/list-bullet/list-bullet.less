@@ -1,0 +1,23 @@
+@import "../../less/variables.less";     // только для удобства обращения к переменным
+@import "../../less/mixins/mixins.less"; // только для удобства обращения к примесям
+
+
+.list-bullet {
+  list-style: none;
+
+  & > li {
+    position: relative;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: .6em;
+      left: -1.3em;
+      font-size: 80%;
+      width: 0.5em;
+      height: 0.5em;
+      border-radius: 50%;
+      background-color: @color-main;
+    }
+  }
+}

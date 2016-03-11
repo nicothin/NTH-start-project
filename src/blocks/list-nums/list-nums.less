@@ -1,0 +1,44 @@
+@import "../../less/variables.less";     // только для удобства обращения к переменным
+@import "../../less/mixins/mixins.less"; // только для удобства обращения к примесям
+
+
+.list-nums {
+  list-style: none;
+  padding-left: 0;
+  counter-reset: li;
+
+  & &  {
+    counter-reset: li-in;
+    padding-top: .25em;
+
+    & > li {
+      &:before {
+        content: counter(li) '.' counter(li-in);
+        counter-increment: li-in;
+      }
+    }
+  }
+
+  & > li {
+    position: relative;
+    padding-left: 1.8em;
+    padding-top: .25em;
+    padding-bottom: .25em;
+
+    &:before {
+      content: counter(li);
+      counter-increment: li;
+      position: absolute;
+      top: .35em;
+      left: 0;
+      font-size: 70%;
+      width: 1.9em;
+      height: 1.9em;
+      line-height: 2em;
+      color: #fff;
+      background-color: @color-main;
+      border-radius: 50%;
+      text-align: center;
+    }
+  }
+}

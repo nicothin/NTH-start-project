@@ -1,0 +1,63 @@
+@import "../../less/variables.less";     // только для удобства обращения к переменным
+@import "../../less/mixins/mixins.less"; // только для удобства обращения к примесям
+
+
+.step-list {
+  list-style: none;
+  padding-left: 0;
+  counter-reset: step-list;
+
+  &__item {
+    position: relative;
+    margin-left: 5rem;
+    margin-bottom: 1.5rem;
+    padding-left: 1.2rem;
+    border-left: 1px solid @border-color;
+
+    &:before {
+      content: counter(step-list) '.';
+      counter-increment: step-list;
+      position: absolute;
+      top: 0;
+      left: -5rem;
+      font-size: @font-size--h2;
+      width: 1.2em;
+      height: @line-height;
+      line-height: @line-height;
+      color: @gray-light;
+      text-align: right;
+    }
+
+    &--main {
+      .step-list__title {
+        border-color: @color-main;
+      }
+    }
+
+    &--danger {
+      .step-list__title {
+        border-color: @color-danger;
+      }
+    }
+
+    &--success {
+      .step-list__title {
+        border-color: @color-success;
+      }
+    }
+  }
+
+  &__title {
+    font-size: @font-size--h2;
+    font-weight: 400;
+    line-height: @line-height;
+    padding: 0 0 .7rem;
+    margin: 0 0 1.5rem;
+    border-bottom: 2px solid @border-color;
+  }
+
+  &__text {
+    margin-bottom: 2rem;
+  }
+
+}
