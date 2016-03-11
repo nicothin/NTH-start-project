@@ -10,9 +10,12 @@
   &__item {
     position: relative;
     margin-left: 5rem;
-    margin-bottom: 1.5rem;
     padding-left: 1.2rem;
     border-left: 1px solid @border-color;
+
+    &:not(:last-child) {
+      margin-bottom: 1.5rem;
+    }
 
     &:before {
       content: counter(step-list) '.';
@@ -20,7 +23,7 @@
       position: absolute;
       top: 0;
       left: -5rem;
-      font-size: @font-size--h2;
+      font-size: @font-size--h1;
       width: 1.2em;
       height: @line-height;
       line-height: @line-height;
@@ -48,7 +51,7 @@
   }
 
   &__title {
-    font-size: @font-size--h2;
+    font-size: @font-size--h1;
     font-weight: 400;
     line-height: @line-height;
     padding: 0 0 .7rem;
