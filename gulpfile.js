@@ -62,7 +62,7 @@ gulp.task('less', function () {
         autoprefixer({browsers: ['last 2 version']}),
         mqpacker
     ]))
-    .pipe(cleanss())
+    .pipe(gulpIf(!isDev, cleanss()))
     .pipe(rename('style.min.css'))
     .pipe(debug({title: "RENAME:"}))
     .pipe(gulpIf(isDev, sourcemaps.write('.')))
