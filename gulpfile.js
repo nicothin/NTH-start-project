@@ -65,7 +65,7 @@ gulp.task('less', function () {
     .pipe(gulpIf(!isDev, cleanss()))
     .pipe(rename('style.min.css'))
     .pipe(debug({title: "RENAME:"}))
-    .pipe(gulpIf(isDev, sourcemaps.write('.')))
+    .pipe(gulpIf(isDev, sourcemaps.write()))
     .pipe(gulp.dest(dirs.build + '/css'));
 });
 
@@ -254,7 +254,6 @@ gulp.task('serve', function () {
   browserSync.init({
     server: dirs.build,
     port: port,
-    notify: false,
     startPath: 'blocks_library.html'
   });
   browserSync.watch([dirs.build + '/**/*.*', '!' + dirs.build +  + '/**/*.map.*']).on('change', browserSync.reload);
@@ -262,7 +261,7 @@ gulp.task('serve', function () {
 
 // Отправка в GH pages (ветку gh-pages репозитория)
 gulp.task('deploy', function() {
-  console.log('---------- Публикация на GH pages: ' + pjson.config.deployURL);
+  console.log('---------- Публикация ./build/ на GH pages: ' + pjson.config.deployURL);
   return gulp.src('./build/**/*')
     .pipe(ghPages());
 });
