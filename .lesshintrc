@@ -1,0 +1,34 @@
+{
+  "emptyRule": false,
+  "importantRule": false,
+  "propertyOrdering": false,
+  "singleLinePerSelector": "18f",
+  "hexLength": {
+    "style": "short"
+  },
+  "zeroUnit": {
+    "style": "no_unit"
+  },
+  "hexNotation": {
+    "style": "lowercase"
+  },
+  "stringQuotes": {
+    "style": "double"
+  },
+  "idSelector": {
+    "exclude": []
+  },
+  "qualifyingElement": {
+    "allowWithAttribute": true
+  },
+  "selectorNaming": {
+    "disallowUppercase": true,
+    "disallowUnderscore": true,
+    "disallowDash": true
+  },
+  "importPath": {
+    "filenameExtension": true,
+    "leadingUnderscore": false,
+    "exclude": []
+  }
+}
