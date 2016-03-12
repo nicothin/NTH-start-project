@@ -5,6 +5,13 @@
 .blockquote-right {
   text-align: right;
   border-left: 0;
-  padding: 0 1.8em 0 0;
-  border-right: 5px solid @border-color;
+  padding: 0 0.5em 0 0;
+  border-right: 1px solid @border-color;
+
+  @media (min-width: @screen-sm) {
+    padding: 0 1.8em 0 0;
+    margin-left: 0;
+    border-right-width: 5px;
+    border-left: 0;
+  }
 }

@@ -32,7 +32,6 @@
   }
 
   function clearMenus(e) {
-    console.log('e: ' + e);
     if (e && e.which === 3) return
     $(backdrop).remove()
     $(toggle).each(function () {
@@ -101,8 +100,6 @@
   Dropdown.prototype.keydown = function (e) {
     if (!/(38|40|27|32)/.test(e.which) || /input|textarea/i.test(e.target.tagName)) return
 
-    console.log(e.which);
-
     var $this = $(this)
 
     e.preventDefault()
@@ -133,7 +130,6 @@
     if (!~index)                                    index = 0
 
     $items.eq(index).trigger('focus')
-    console.log($items.eq(index));
   }
 
 

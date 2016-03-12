@@ -11,6 +11,7 @@
       z-index: @z-index-dropdown;
       visibility: visible;
       opacity: 1;
+      width: auto;
     }
   }
 
@@ -29,6 +30,8 @@
   // }
 
   &__menu {
+    max-width: 90vw;
+    width: 1px;
     position: absolute;
     top: 100%;
     left: 0;
@@ -59,16 +62,15 @@
 
     ul& {
       min-width: 16rem;
-      // max-width: 30rem;
       list-style: none;
       padding: .3em 0;
 
       > li > a {
         display: block;
         white-space: nowrap;
-        // width: 100%;
-        // overflow: hidden;
-        // text-overflow: ellipsis;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
         padding: .3em 1em;
         color: @text-color;
         text-decoration: none;

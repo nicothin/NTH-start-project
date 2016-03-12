@@ -60,12 +60,16 @@ textarea {
 
 html {
   box-sizing: border-box;
-  font-size: 10px;
+  font-size: 8px;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   -ms-overflow-style: scrollbar;
   -ms-text-size-adjust: 100%;
   min-width: 320px;
   site: be cool; // :)
+
+  @media (min-width: @screen-sm) {
+    font-size: 10px;
+  }
 }
 
 body {
@@ -178,7 +182,11 @@ dt {
 }
 
 dd {
-  margin-left: 1.8em;
+  margin-left: 0;
+
+  @media (min-width: @screen-sm) {
+    margin-left: 1.8em;
+  }
 
   & + dt {
     margin-top: (@line-height / 2);
@@ -218,9 +226,16 @@ abbr[title] {
 }
 
 blockquote {
-  padding: 0 0 0 1.8em;
+  padding: 0 0 0 .5em;
   margin-left: 0;
-  border-left: 5px solid @border-color;
+  margin-right: 0;
+  border-left: 1px solid @border-color;
+
+  @media (min-width: @screen-sm) {
+    padding: 0 0 0 1.8em;
+    margin-left: 0;
+    border-left-width: 5px;
+  }
 
   p,
   ul,
