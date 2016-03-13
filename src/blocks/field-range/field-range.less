@@ -1,4 +1,4 @@
-@import "../../less/variables.less";     // только для удобства обращения к переменным
+@import '../../less/variables.less';     // только для удобства обращения к переменным
 
 
 .field-range {
@@ -20,8 +20,8 @@
     padding: 0;
     width: 100%;
     height: 2em;
-    border-radius: .25rem;
-    border: none;
+    border-radius: 0.25rem;
+    border: 0;
     background: none;
     font-size: inherit;
     cursor: pointer;
@@ -40,7 +40,7 @@
     // Да, да, это — локальная примесь для трёх нижеследующих правил.
     .field-range-track() {
       box-sizing: border-box;
-      border: none;
+      border: 0;
       width: 100%;
       height: 0.75em;
       border-radius: @border-radius;
@@ -61,7 +61,7 @@
     // Да, да, и это — локальная примесь.
     .field-range-thumb() {
       box-sizing: border-box;
-      border: none;
+      border: 0;
       padding: 0;
       width: 2em;
       height: 2em;
@@ -72,7 +72,7 @@
 
     // Увы, тут похожие наборы свойств приходится писать порознь.
     &::-webkit-slider-thumb {
-      margin-top: -.68em;
+      margin-top: -0.68em;
       .field-range-thumb(); // локальная примесь!
     }
     &::-moz-range-thumb {

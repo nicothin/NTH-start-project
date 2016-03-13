@@ -1,4 +1,4 @@
-@import "../../less/variables.less";     // только для удобства обращения к переменным
+@import '../../less/variables.less';     // только для удобства обращения к переменным
 
 
 .list-nums {
@@ -6,9 +6,9 @@
   padding-left: 0;
   counter-reset: li;
 
-  & &  {
+  & & {
     counter-reset: li-in;
-    padding-top: .25em;
+    padding-top: 0.25em;
 
     & > li {
       &:before {
@@ -21,14 +21,14 @@
   & > li {
     position: relative;
     padding-left: 1.8em;
-    padding-top: .25em;
-    padding-bottom: .25em;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
 
     &:before {
       content: counter(li);
       counter-increment: li;
       position: absolute;
-      top: .35em;
+      top: 0.35em;
       left: 0;
       font-size: 70%;
       width: 1.9em;

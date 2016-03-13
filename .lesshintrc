@@ -1,4 +1,11 @@
 {
+  "excludedFiles": [
+    "btn-mixins.less",
+    "global-print.less",
+    "grid-mixins.less",
+    "responsive-mixins.less",
+    "table-responsive-mixins.less"
+  ],
   "emptyRule": false,
   "importantRule": false,
   "propertyOrdering": false,
@@ -11,9 +18,6 @@
   },
   "hexNotation": {
     "style": "lowercase"
-  },
-  "stringQuotes": {
-    "style": "double"
   },
   "idSelector": {
     "exclude": []
@@ -30,5 +34,10 @@
     "filenameExtension": true,
     "leadingUnderscore": false,
     "exclude": []
+  },
+  "duplicateProperty": {
+    "exclude": [
+      "outline"
+    ]
   }
 }
