@@ -1,7 +1,6 @@
 {
   "excludedFiles": [
     "btn-mixins.less",
-    "global-print.less",
     "grid-mixins.less",
     "responsive-mixins.less",
     "table-responsive-mixins.less"
