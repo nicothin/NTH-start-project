@@ -24,8 +24,8 @@ if(blockName) {
         let fileContent = '';
         let fileCreateMsg = '';
         if(extention == 'less') {
-          fileContent = '@import "../../less/variables.less";     // только для удобства обращения к переменным\n\n\n.' + blockName + ' {\n  \n}\n';
-          fileCreateMsg = '[NTH] Для импорта стилей: @import "' + dirs.source + '/blocks/' + blockName + '/' + blockName + '.less";';
+          fileContent = '@import \'../../less/variables.less\';     // только для удобства обращения к переменным\n\n\n.' + blockName + ' {\n  \n}\n';
+          fileCreateMsg = '[NTH] Для импорта стилей: @import \'' + dirs.source + '/blocks/' + blockName + '/' + blockName + '.less\';';
         }
         else if(extention == 'html') {
           fileContent = '<!--DEV\n\nНужно убрать пробел между @-ами:\n\n@ @include(\'blocks/' + blockName + '/' + blockName + '.html\')\n\n-->\n<div class="' + blockName + '">content</div>\n';
