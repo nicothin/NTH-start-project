@@ -40,4 +40,18 @@
   &__title {
     margin-top: 0;
   }
+
+  &__sub-item {
+    &:not(:first-child) {
+      margin-top: 2.5em;
+    }
+  }
+
+  &__sub-item-title {
+    display: block;
+    color: @gray-light;
+    font-size: @font-size;
+    margin-bottom: 0.7em;
+    border-bottom: 2px dashed @gray-lighter;
+  }
 }
