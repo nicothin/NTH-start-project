@@ -425,41 +425,39 @@
         </table>
       </div>
     </div>
+  </section>
 
-    <div class="blocks-library__sub-item">
-      <b class="blocks-library__sub-item-title">Адаптивные таблицы</b>
-      <p>Стилизация: БЭМ-блок <code>.table-responsive</code></p>
-      <p class="alert  alert--danger"><strong>Внимание!</strong> Адаптивные таблицы требуют добавления дата-атрибутов. Фиксация минимальной ширины имитатора <code>th</code> будет полезной (делается индивидуально).</p>
-      <p class="alert  alert--success">Приоритетным является не использование класса <code>.table-responsive</code>, а использование семантических БЭМ-классов и LESS-примеси <code>.table-responsive(sm);</code> (принимает в себя значение той ширины вьюпорта, на которой таблица ещё адаптивна).</p>
 
-      <style>
-        .blocks-library__table-responsive tbody td:before,
-        .blocks-library__table-responsive tbody th:before {
-          width: 180px;
-          max-width: 180px;
-        }
-      </style>
 
-      <table class="table-responsive  blocks-library__table-responsive">
-        <thead>
-          <tr>
-            <th>Имя и фамилия</th>
-            <th>Тип мироощущения</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td data-label="Имя и фамилия">Анатоле Вассерман</td>
-            <td data-label="Тип мироощущения">Девственность</td>
-          </tr>
-          <tr>
-            <td data-label="Имя и фамилия">Джакомо Казанова</td>
-            <td data-label="Тип мироощущения">Небольшая распущенность с лёгкой примесью леденящих душу извращений, чудовищной лжи и имитатора известного органа, обитого телячьей кожей.</td>
-          </tr>
-        </tbody>
-      </table>
+  <section class="blocks-library__item" id="table-responsive" data-name=".table-responsive">
+    <p class="alert  alert--danger"><strong>Внимание!</strong> Адаптивные таблицы требуют добавления дата-атрибутов. Фиксация минимальной ширины имитатора <code>th</code> будет полезной (делается индивидуально).</p>
+    <p class="alert  alert--success">Приоритетным является не использование класса <code>.table-responsive</code>, а использование семантических БЭМ-классов и LESS-примеси <code>.table-responsive(sm);</code> (принимает в себя значение той ширины вьюпорта, на которой таблица ещё адаптивна).</p>
 
-    </div>
+    <style>
+      .blocks-library__table-responsive tbody td:before,
+      .blocks-library__table-responsive tbody th:before {
+        min-width: 145px;
+      }
+    </style>
+
+    <table class="table-responsive  blocks-library__table-responsive">
+      <thead>
+        <tr>
+          <th>Имя и фамилия</th>
+          <th>Тип мироощущения</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Имя и фамилия">Анатоле Вассерман</td>
+          <td data-label="Тип мироощущения">Девственность</td>
+        </tr>
+        <tr>
+          <td data-label="Имя и фамилия">Джакомо Казанова</td>
+          <td data-label="Тип мироощущения">Небольшая распущенность с лёгкой примесью леденящих душу извращений, чудовищной лжи и имитатора известного органа, обитого телячьей кожей.</td>
+        </tr>
+      </tbody>
+    </table>
   </section>
 
 
