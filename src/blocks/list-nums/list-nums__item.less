@@ -1,0 +1,14 @@
+@import '../../less/variables.less';     // только для удобства обращения к переменным
+
+
+
+.list-nums {
+  & > &__item {
+    &--main {
+      &:before {
+        color: #fff;
+        background-color: @color-main;
+      }
+    }
+  }
+}
