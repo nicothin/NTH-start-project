@@ -1,0 +1,40 @@
+@import '../../less/variables.less';     // только для удобства обращения к переменным
+
+
+.label {
+  display: inline-block;
+  position: relative;
+  margin: 0 0.1em;
+  vertical-align: baseline;
+  line-height: 1;
+  padding: 0.25em 0.4em 0.2em;
+  background-color: @gray;
+  color: #fff;
+  text-decoration: none;
+  text-transform: none;
+  font-weight: 700;
+  font-size: 75%;
+  white-space: nowrap;
+  border-radius: @border-radius;
+
+  &:hover, &:focus {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  &--main {
+    background-color: @color-main;
+  }
+
+  &--danger {
+    background-color: @color-danger;
+  }
+
+  &--success {
+    background-color: @color-success;
+  }
+
+  svg {
+    fill: #fff;
+  }
+}

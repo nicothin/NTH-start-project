@@ -3,7 +3,8 @@
     "btn-mixins.less",
     "grid-mixins.less",
     "responsive-mixins.less",
-    "table-responsive-mixins.less"
+    "table-responsive-mixins.less",
+    "label--tag.less"
   ],
   "emptyRule": false,
   "importantRule": false,
