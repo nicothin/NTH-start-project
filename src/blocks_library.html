@@ -462,6 +462,10 @@
 
 
 
+  <h2 class="blocks-library__title" id="forms-all">Формы</h2>
+
+
+
   <section class="blocks-library__item" id="forms" data-name="Формы (умолчание)">
     <form action="">
       <fieldset>
@@ -523,83 +527,120 @@
 
 
 
-  <section class="blocks-library__item" id="forms" data-name="Формы">
-    <div class="blocks-library__sub-item">
-      <b class="blocks-library__sub-item-title"><code>.field-text</code></b>
-      <div class="field-text">
-        <label class="field-text__name" for="text-field-1">Любое поле, выглядящее как текстовое</label>
-        <div class="field-text__input-wrap">
-          <input class="field-text__input" id="text-field-1" type="text" placeholder="input[type=text]">
-          <div class="field-text__help-text">Обёртка — <code>div</code>.</div>
+  <section class="blocks-library__item" id="field-text" data-name=".field-text">
+    <div class="row">
+      <div class="col-md-6">
+        <label class="field-text">
+          <div class="field-text__name">Многострочное текстовое поле</div>
+          <div class="field-text__input-wrap">
+            <textarea class="field-text__input" placeholder="textarea"></textarea>
+            <div class="field-text__help-text">Обёртка — <code>label</code>. Можно сделать обёртку <code>div</code>, но тогда, возможно, захочется элемент <code>.field-text__name</code> делать <code>label</code> и связывать его с полем по <code>id</code> поля.</div>
+          </div>
+        </label>
+      </div>
+      <div class="col-md-6">
+        <div class="field-text">
+          <label class="field-text__name" for="text-field-1">Любое поле, выглядящее как текстовое</label>
+          <div class="field-text__input-wrap">
+            <input class="field-text__input" id="text-field-1" type="text" placeholder="input[type=text]">
+            <div class="field-text__help-text">Обёртка — <code>div</code>.</div>
+          </div>
         </div>
       </div>
-      <label class="field-text">
-        <div class="field-text__name">Многострочное текстовое поле</div>
-        <div class="field-text__input-wrap">
-          <textarea class="field-text__input" placeholder="textarea"></textarea>
-          <div class="field-text__help-text">Обёртка — <code>label</code>. Можно сделать обёртку <code>div</code>, но тогда, возможно, захочется элемент <code>.field-text__name</code> делать <code>label</code> и связывать его с полем по <code>id</code> поля.</div>
-        </div>
-      </label>
     </div>
-    <div class="blocks-library__sub-item">
-      <b class="blocks-library__sub-item-title"><code>.field-checkbox</code></b>
-      <div class="field-checkbox">
-        <div class="field-checkbox__title">Стандартный флажок</div>
-        <div class="field-checkbox__input-wrap">
-          <label class="field-checkbox__name">
-            <input class="field-checkbox__input" type="checkbox" checked>
-            <span class="field-checkbox__name-text">Использовать</span>
-          </label>
-          <div class="field-checkbox__help-text">Пояснение не обязательно.</div>
+    <div class="row" style="font-size: 24px">
+      <div class="col-md-6">
+        <label class="field-text">
+          <div class="field-text__name">Увеличен font-size родителя</div>
+          <div class="field-text__input-wrap">
+            <textarea class="field-text__input" placeholder="textarea"></textarea>
+            <div class="field-text__help-text">Обёртка — <code>label</code>.</div>
+          </div>
+        </label>
+      </div>
+      <div class="col-md-6">
+        <div class="field-text">
+          <label class="field-text__name" for="text-field-1">Увеличен font-size родителя</label>
+          <div class="field-text__input-wrap">
+            <input class="field-text__input" id="text-field-1" type="text" placeholder="input[type=text]">
+            <div class="field-text__help-text">Обёртка — <code>div</code>.</div>
+          </div>
         </div>
       </div>
-      <div class="field-checkbox">
-        <div class="field-checkbox__title">Стандартные флажки</div>
-        <div class="field-checkbox__input-wrap">
-          <label class="field-checkbox__name">
-            <input class="field-checkbox__input" type="checkbox" checked>
-            <span class="field-checkbox__name-text">Использовать</span>
-          </label>
-          <label class="field-checkbox__name">
-            <input class="field-checkbox__input" type="checkbox">
-            <span class="field-checkbox__name-text">Переиспользовать</span>
-          </label>
-          <label class="field-checkbox__name">
-            <input class="field-checkbox__input" type="checkbox">
-            <span class="field-checkbox__name-text">Нет</span>
-          </label>
-          <div class="field-checkbox__help-text">Разметка никак не модифицируется, просто добавляются дополнительные <code>label</code>.</div>
+    </div>
+  </section>
+
+
+
+  <section class="blocks-library__item" id="field-checkbox" data-name=".field-checkbox">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="field-checkbox">
+          <div class="field-checkbox__title">Стандартный флажок</div>
+          <div class="field-checkbox__input-wrap">
+            <label class="field-checkbox__name">
+              <input class="field-checkbox__input" type="checkbox" checked>
+              <span class="field-checkbox__name-text">Использовать</span>
+            </label>
+            <div class="field-checkbox__help-text">Пояснение не обязательно.</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="field-checkbox">
+          <div class="field-checkbox__title">Несколько стандартных флажков</div>
+          <div class="field-checkbox__input-wrap">
+            <label class="field-checkbox__name">
+              <input class="field-checkbox__input" type="checkbox" checked>
+              <span class="field-checkbox__name-text">Использовать</span>
+            </label>
+            <label class="field-checkbox__name">
+              <input class="field-checkbox__input" type="checkbox">
+              <span class="field-checkbox__name-text">Переиспользовать</span>
+            </label>
+            <label class="field-checkbox__name">
+              <input class="field-checkbox__input" type="checkbox">
+              <span class="field-checkbox__name-text">Нет</span>
+            </label>
+            <div class="field-checkbox__help-text">Разметка никак не модифицируется, просто добавляются дополнительные <code>label</code>.</div>
+          </div>
         </div>
       </div>
     </div>
     <div class="blocks-library__sub-item">
       <b class="blocks-library__sub-item-title"><code>.field-checkbox.field-checkbox--custom</code></b>
-      <div class="field-checkbox  field-checkbox--custom">
-        <div class="field-checkbox__title">Собственный флажок</div>
-        <div class="field-checkbox__input-wrap">
-          <label class="field-checkbox__name">
-            <input class="field-checkbox__input" type="checkbox" checked>
-            <span class="field-checkbox__name-text">Да</span>
-          </label>
-          <div class="field-checkbox__help-text">Есть общее название. При желании флажков можно написать несколько подряд. Изображения в формате SVG, вписываются в CSS-файл функцией <code>data-uri()</code> компилятора LESS.</div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="field-checkbox  field-checkbox--custom">
+            <div class="field-checkbox__title">Собственный флажок</div>
+            <div class="field-checkbox__input-wrap">
+              <label class="field-checkbox__name">
+                <input class="field-checkbox__input" type="checkbox" checked>
+                <span class="field-checkbox__name-text">Да</span>
+              </label>
+              <div class="field-checkbox__help-text">Есть общее название. При желании флажков можно написать несколько подряд. Изображения в формате SVG, вписываются в CSS-файл функцией <code>data-uri()</code> компилятора LESS.</div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="field-checkbox  field-checkbox--custom">
-        <div class="field-checkbox__title">Собственные флажки</div>
-        <div class="field-checkbox__input-wrap">
-          <label class="field-checkbox__name">
-            <input class="field-checkbox__input" type="checkbox" checked>
-            <span class="field-checkbox__name-text">Да</span>
-          </label>
-          <label class="field-checkbox__name">
-            <input class="field-checkbox__input" type="checkbox">
-            <span class="field-checkbox__name-text">Нет</span>
-          </label>
-          <label class="field-checkbox__name">
-            <input class="field-checkbox__input" type="checkbox">
-            <span class="field-checkbox__name-text">Сто лет в обед</span>
-          </label>
-          <div class="field-checkbox__help-text">Разметка никак не модифицируется, просто добавляются дополнительные <code>label</code>.</div>
+        <div class="col-md-6">
+          <div class="field-checkbox  field-checkbox--custom">
+            <div class="field-checkbox__title">Несколько собственных флажков</div>
+            <div class="field-checkbox__input-wrap">
+              <label class="field-checkbox__name">
+                <input class="field-checkbox__input" type="checkbox" checked>
+                <span class="field-checkbox__name-text">Да</span>
+              </label>
+              <label class="field-checkbox__name">
+                <input class="field-checkbox__input" type="checkbox">
+                <span class="field-checkbox__name-text">Нет</span>
+              </label>
+              <label class="field-checkbox__name">
+                <input class="field-checkbox__input" type="checkbox">
+                <span class="field-checkbox__name-text">Сто лет в обед</span>
+              </label>
+              <div class="field-checkbox__help-text">Разметка никак не модифицируется, просто добавляются дополнительные <code>label</code>.</div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="field-checkbox  field-checkbox--custom" style="font-size: 24px;">
@@ -616,17 +657,306 @@
         </div>
       </div>
     </div>
-    <div class="blocks-library__sub-item">
-      <b class="blocks-library__sub-item-title"><code></code></b>
+  </section>
+
+
+
+  <section class="blocks-library__item" id="field-radio" data-name=".field-radio">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="field-radio">
+          <div class="field-radio__title">Стандартная радиокнопка</div>
+          <div class="field-radio__input-wrap">
+            <label class="field-radio__name">
+              <input class="field-radio__input" type="radio">
+              <span class="field-radio__name-text">Да</span>
+            </label>
+            <div class="field-radio__help-text">Пояснение не обязательно.</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="field-radio">
+          <div class="field-radio__title">Стандартные радиокнопки</div>
+          <div class="field-radio__input-wrap">
+            <label class="field-radio__name">
+              <input class="field-radio__input" type="radio" name="radio-demo" checked>
+              <span class="field-radio__name-text">Да</span>
+            </label>
+            <label class="field-radio__name">
+              <input class="field-radio__input" type="radio" name="radio-demo">
+              <span class="field-radio__name-text">Нет</span>
+            </label>
+            <label class="field-radio__name">
+              <input class="field-radio__input" type="radio" name="radio-demo">
+              <span class="field-radio__name-text">Не знаю</span>
+            </label>
+            <div class="field-radio__help-text">Разметка никак не модифицируется, просто добавляются дополнительные <code>label</code>.</div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="blocks-library__sub-item">
-      <b class="blocks-library__sub-item-title"><code></code></b>
+      <b class="blocks-library__sub-item-title"><code>.field-radio.field-radio--custom</code></b>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="field-radio  field-radio--custom">
+            <div class="field-radio__title">Собственная радиокнопка</div>
+            <div class="field-radio__input-wrap">
+              <label class="field-radio__name">
+                <input class="field-radio__input" type="radio">
+                <span class="field-radio__name-text">Да</span>
+              </label>
+              <div class="field-radio__help-text">Есть общее название. При желании радиокнопок можно написать несколько подряд. Изображения в формате SVG, вписываются в CSS-файл функцией <code>data-uri()</code> компилятора LESS.</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="field-radio  field-radio--custom">
+            <div class="field-radio__title">Собственные радиокнопки</div>
+            <div class="field-radio__input-wrap">
+              <label class="field-radio__name">
+                <input class="field-radio__input" type="radio" name="radio-demo-2" checked>
+                <span class="field-radio__name-text">Да</span>
+              </label>
+              <label class="field-radio__name">
+                <input class="field-radio__input" type="radio" name="radio-demo-2">
+                <span class="field-radio__name-text">Нет</span>
+              </label>
+              <label class="field-radio__name">
+                <input class="field-radio__input" type="radio" name="radio-demo-2">
+                <span class="field-radio__name-text">Не знаю</span>
+              </label>
+              <div class="field-radio__help-text">Разметка никак не модифицируется, просто добавляются дополнительные <code>label</code>.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="field-radio  field-radio--custom" style="font-size: 24px;">
+        <div class="field-radio__title">Увеличен font-size родителя</div>
+        <div class="field-radio__input-wrap">
+          <label class="field-radio__name">
+            <input class="field-radio__input" type="radio" name="radio-demo-3" checked>
+            <span class="field-radio__name-text">Да</span>
+          </label>
+          <label class="field-radio__name">
+            <input class="field-radio__input" type="radio" name="radio-demo-3">
+            <span class="field-radio__name-text">Нет</span>
+          </label>
+          <label class="field-radio__name">
+            <input class="field-radio__input" type="radio" name="radio-demo-3">
+            <span class="field-radio__name-text">Не знаю</span>
+          </label>
+        </div>
+      </div>
     </div>
-    <div class="blocks-library__sub-item">
-      <b class="blocks-library__sub-item-title"><code></code></b>
+  </section>
+
+
+
+  <section class="blocks-library__item" id="field-toggler" data-name=".field-toggler">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="field-toggler">
+          <div class="field-toggler__title">Переключатель-флажок</div>
+          <div class="field-toggler__input-wrap">
+            <label class="field-toggler__name">
+              <input class="field-toggler__input" type="checkbox">
+              <span class="field-toggler__name-text">Использовать</span>
+            </label>
+            <div class="field-toggler__help-text">Графика не используется, всё нарисовано CSS-ом.</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="field-toggler">
+          <div class="field-toggler__title">Переключатели-флажки</div>
+          <div class="field-toggler__input-wrap">
+            <label class="field-toggler__name">
+              <input class="field-toggler__input" type="checkbox" checked>
+              <span class="field-toggler__name-text">Использовать</span>
+            </label>
+            <label class="field-toggler__name">
+              <input class="field-toggler__input" type="checkbox">
+              <span class="field-toggler__name-text">Не использовать</span>
+            </label>
+            <div class="field-toggler__help-text">Графика не используется, всё нарисовано CSS-ом.</div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="blocks-library__sub-item">
-      <b class="blocks-library__sub-item-title"><code></code></b>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="field-toggler">
+          <div class="field-toggler__title">Переключатель-радиокнопка</div>
+          <div class="field-toggler__input-wrap">
+            <label class="field-toggler__name">
+              <input class="field-toggler__input" type="radio">
+              <span class="field-toggler__name-text">Использовать</span>
+            </label>
+            <div class="field-toggler__help-text">Графика не используется, всё нарисовано CSS-ом.</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="field-toggler">
+          <div class="field-toggler__title">Переключатели-радиокнопки</div>
+          <div class="field-toggler__input-wrap">
+            <label class="field-toggler__name">
+              <input class="field-toggler__input" type="radio" name="radio-toggler-1" checked>
+              <span class="field-toggler__name-text">Использовать</span>
+            </label>
+            <label class="field-toggler__name">
+              <input class="field-toggler__input" type="radio" name="radio-toggler-1">
+              <span class="field-toggler__name-text">Не использовать</span>
+            </label>
+            <div class="field-toggler__help-text">Графика не используется, всё нарисовано CSS-ом.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" style="font-size: 24px">
+      <div class="col-md-6">
+        <div class="field-toggler">
+          <div class="field-toggler__title">Увеличен font-size родителя</div>
+          <div class="field-toggler__input-wrap">
+            <label class="field-toggler__name">
+              <input class="field-toggler__input" type="radio">
+              <span class="field-toggler__name-text">Использовать</span>
+            </label>
+            <div class="field-toggler__help-text">Графика не используется, всё нарисовано CSS-ом.</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="field-toggler">
+          <div class="field-toggler__title">Увеличен font-size родителя</div>
+          <div class="field-toggler__input-wrap">
+            <label class="field-toggler__name">
+              <input class="field-toggler__input" type="radio" name="radio-toggler-2" checked>
+              <span class="field-toggler__name-text">Использовать</span>
+            </label>
+            <label class="field-toggler__name">
+              <input class="field-toggler__input" type="radio" name="radio-toggler-2">
+              <span class="field-toggler__name-text">Не использовать</span>
+            </label>
+            <div class="field-toggler__help-text">Графика не используется, всё нарисовано CSS-ом.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="blocks-library__item" id="field-select" data-name=".field-select">
+    <div class="row">
+      <div class="col-md-6">
+        <label class="field-select">
+          <div class="field-select__name">Селект</div>
+          <div class="field-select__select-wrap">
+            <select class="field-select__select">
+              <optgroup label="Группа">
+                <option>Значение 1</option>
+                <option>Значение 2</option>
+                <option>Значение 3</option>
+              </optgroup>
+              <option>Значение 10</option>
+            </select>
+            <small class="field-select__help-text">Обёртка — <code>&lt;label&gt;</code>.</small>
+          </div>
+        </label>
+      </div>
+      <div class="col-md-6">
+        <label class="field-select">
+          <div class="field-select__name">Множественный селект</div>
+          <div class="field-select__select-wrap">
+            <select class="field-select__select" multiple>
+              <optgroup label="Группа">
+                <option>Значение 1</option>
+                <option>Значение 2</option>
+                <option>Значение 3</option>
+              </optgroup>
+              <option>Значение 10</option>
+            </select>
+            <small class="field-select__help-text">Обёртка — <code>&lt;label&gt;</code>.</small>
+          </div>
+        </label>
+      </div>
+    </div>
+    <div class="row" style="font-size: 24px">
+      <div class="col-md-6">
+        <label class="field-select">
+          <div class="field-select__name">Увеличен font-size родителя</div>
+          <div class="field-select__select-wrap">
+            <select class="field-select__select">
+              <optgroup label="Группа">
+                <option>Значение 1</option>
+                <option>Значение 2</option>
+                <option>Значение 3</option>
+              </optgroup>
+              <option>Значение 10</option>
+            </select>
+            <small class="field-select__help-text">Обёртка — <code>&lt;label&gt;</code>.</small>
+          </div>
+        </label>
+      </div>
+      <div class="col-md-6">
+        <label class="field-select">
+          <div class="field-select__name">Увеличен font-size родителя</div>
+          <div class="field-select__select-wrap">
+            <select class="field-select__select" multiple>
+              <optgroup label="Группа">
+                <option>Значение 1</option>
+                <option>Значение 2</option>
+                <option>Значение 3</option>
+              </optgroup>
+              <option>Значение 10</option>
+            </select>
+            <small class="field-select__help-text">Обёртка — <code>&lt;label&gt;</code>.</small>
+          </div>
+        </label>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="blocks-library__item" id="field-range" data-name=".field-range">
+    <div class="field-range">
+      <div class="field-range__name">Range</div>
+      <div class="field-range__input-wrap">
+        <input class="field-range__input" type="range" min="1" max="100" step="1" value="70">
+        <div class="field-range__help-text"><code>min="1" max="100" step="1" value="70"</code>, стилизован без JS.</div>
+      </div>
+    </div>
+    <div class="field-range" style="font-size: 24px">
+      <div class="field-range__name">Увеличен font-size родителя</div>
+      <div class="field-range__input-wrap">
+        <input class="field-range__input" type="range" min="1" max="30" step="1" value="3">
+        <div class="field-range__help-text"><code>min="1" max="30" step="1" value="3"</code>, стилизован без JS.</div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="blocks-library__item" id="field-file" data-name=".field-file">
+    <div class="field-file">
+      <div class="field-file__name">Выбор файлов</div>
+      <label class="field-file__input-wrap">
+        <input class="field-file__input" type="file" data-multiple-caption="файлов выбрано: {count}" multiple>
+        <div class="field-file__name-text" data-button-text="Выбрать файл(ы)">Ничего не выбрано</div>
+        <div class="field-file__help-text">Отображение выбранного файла(ов) требует Javascript-а. Стилизация — не требует.</div>
+      </label>
+    </div>
+    <div class="field-file" style="font-size: 24px">
+      <div class="field-file__name">Увеличен font-size родителя</div>
+      <label class="field-file__input-wrap">
+        <input class="field-file__input" type="file" data-multiple-caption="файлов выбрано: {count}" multiple>
+        <div class="field-file__name-text" data-button-text="Выбрать файл(ы)">Ничего не выбрано</div>
+        <div class="field-file__help-text">Отображение выбранного файла(ов) требует Javascript-а. Стилизация — не требует.</div>
+      </label>
     </div>
   </section>
 
@@ -649,147 +979,7 @@
     <p>Стилизация: БЭМ-блоки и модификаторы. Опирается на стилизацию форм по умолчанию.</p>
 
     <div class="row">
-      <div class="col-md-6">
-        <form action="" class="form">
-          <fieldset>
 
-
-
-
-
-            <div class="field-radio">
-              <div class="field-radio__title">Стандартная радиокнопка</div>
-              <div class="field-radio__input-wrap">
-                <label class="field-radio__name">
-                  <input class="field-radio__input" type="radio">
-                  <span class="field-radio__name-text">Да</span>
-                </label>
-                <div class="field-radio__help-text">Пояснение не обязательно.</div>
-              </div>
-            </div>
-
-            <div class="field-radio">
-              <div class="field-radio__title">Стандартные радиокнопки</div>
-              <div class="field-radio__input-wrap">
-                <label class="field-radio__name">
-                  <input class="field-radio__input" type="radio" name="radio-demo" checked>
-                  <span class="field-radio__name-text">Да</span>
-                </label>
-                <label class="field-radio__name">
-                  <input class="field-radio__input" type="radio" name="radio-demo">
-                  <span class="field-radio__name-text">Нет</span>
-                </label>
-                <label class="field-radio__name">
-                  <input class="field-radio__input" type="radio" name="radio-demo">
-                  <span class="field-radio__name-text">Не знаю</span>
-                </label>
-                <div class="field-radio__help-text">Разметка никак не модифицируется, просто добавляются дополнительные <code>label</code>.</div>
-              </div>
-            </div>
-
-            <div class="field-radio  field-radio--custom">
-              <div class="field-radio__title">Собственная радиокнопка</div>
-              <div class="field-radio__input-wrap">
-                <label class="field-radio__name">
-                  <input class="field-radio__input" type="radio">
-                  <span class="field-radio__name-text">Да</span>
-                </label>
-                <div class="field-radio__help-text">Есть общее название. При желании радиокнопок можно написать несколько подряд. Изображения в формате SVG, вписываются в CSS-файл функцией <code>data-uri()</code> компилятора LESS.</div>
-              </div>
-            </div>
-
-            <div class="field-radio  field-radio--custom">
-              <div class="field-radio__title">Собственные радиокнопки</div>
-              <div class="field-radio__input-wrap">
-                <label class="field-radio__name">
-                  <input class="field-radio__input" type="radio" name="radio-demo-2" checked>
-                  <span class="field-radio__name-text">Да</span>
-                </label>
-                <label class="field-radio__name">
-                  <input class="field-radio__input" type="radio" name="radio-demo-2">
-                  <span class="field-radio__name-text">Нет</span>
-                </label>
-                <label class="field-radio__name">
-                  <input class="field-radio__input" type="radio" name="radio-demo-2">
-                  <span class="field-radio__name-text">Не знаю</span>
-                </label>
-                <div class="field-radio__help-text">Разметка никак не модифицируется, просто добавляются дополнительные <code>label</code>.</div>
-              </div>
-            </div>
-
-            <div class="field-toggler">
-              <div class="field-toggler__title">Переключатель-флажок</div>
-              <div class="field-toggler__input-wrap">
-                <label class="field-toggler__name">
-                  <input class="field-toggler__input" type="checkbox">
-                  <span class="field-toggler__name-text">Использовать</span>
-                </label>
-                <div class="field-toggler__help-text">Графика не используется, всё нарисовано CSS-ом.</div>
-              </div>
-            </div>
-
-            <div class="field-toggler">
-              <div class="field-toggler__title">Переключатели-флажки</div>
-              <div class="field-toggler__input-wrap">
-                <label class="field-toggler__name">
-                  <input class="field-toggler__input" type="checkbox" checked>
-                  <span class="field-toggler__name-text">Использовать</span>
-                </label>
-                <label class="field-toggler__name">
-                  <input class="field-toggler__input" type="checkbox">
-                  <span class="field-toggler__name-text">Не использовать</span>
-                </label>
-                <div class="field-toggler__help-text">Графика не используется, всё нарисовано CSS-ом.</div>
-              </div>
-            </div>
-
-            <label class="field-select">
-              <div class="field-select__name">Селект</div>
-              <div class="field-select__select-wrap">
-                <select class="field-select__select">
-                  <optgroup label="Группа">
-                    <option>Значение 1</option>
-                    <option>Значение 2</option>
-                    <option>Значение 3</option>
-                  </optgroup>
-                  <option>Значение 10</option>
-                </select>
-                <small class="field-select__help-text">Обёртка — <code>&lt;label&gt;</code>.</small>
-              </div>
-            </label>
-
-            <div class="field-range">
-              <div class="field-range__name">Range</div>
-              <div class="field-range__input-wrap">
-                <input class="field-range__input" type="range" min="1" max="100" step="1" value="70">
-                <div class="field-range__help-text"><code>min="1" max="100" step="1" value="70"</code>, стилизован без JS.</div>
-              </div>
-            </div>
-
-            <div class="field-range">
-              <div class="field-range__name">Range</div>
-              <div class="field-range__input-wrap">
-                <input class="field-range__input" type="range" min="1" max="30" step="1" value="3">
-                <div class="field-range__help-text"><code>min="1" max="30" step="1" value="3"</code>, стилизован без JS.</div>
-              </div>
-            </div>
-
-            <div class="field-file">
-              <div class="field-file__name">Выбор файлов</div>
-              <label class="field-file__input-wrap">
-                <input class="field-file__input" type="file" data-multiple-caption="файлов выбрано: {count}" multiple>
-                <div class="field-file__name-text" data-button-text="Выбрать файл(ы)">Ничего не выбрано</div>
-                <div class="field-file__help-text">Отображение выбранного файла(ов) требует Javascript-а. Стилизация — не требует.</div>
-              </label>
-            </div>
-
-            <div class="field-actions">
-              <button class="btn">Отправить</button>
-            </div>
-
-          </fieldset>
-        </form>
-      </div>
       <div class="col-md-6">
 
         <form action="" class="form  form--horizontal">

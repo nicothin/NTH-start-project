@@ -18,6 +18,12 @@
     background-image: data-uri('image/svg+xml;charset=UTF-8', './src/blocks/field-select/img_to_bg/select-down.svg');
     background-repeat: no-repeat;
     background-position: right 0.3em center;
+    background-size: 1.063em 0.688em;
+
+    &[multiple] {
+      background-image: none;
+      min-height: 6.8em;
+    }
 
     &::-ms-expand {
         display: none;
