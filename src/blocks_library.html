@@ -1522,45 +1522,64 @@ $('#test').on('hidden.nth.dropdown', function () {
     <div class="blocks-library__sub-item">
       <b class="blocks-library__sub-item-title">Элемент: <code>label__detail</code> (отдельный LESS-файл)</b>
       <div class="p">
-        Обычный текст
-        <div class="label">
-          Метка-div
-          <span class="label__detail">23</span>
-        </div>
-        Обычный текст
-        <span class="label">
-          Метка-span
-          <span class="label__detail">999</span>
-        </span>
-        Обычный текст
-        <a href="" class="label">
-          Метка-ссылка
-          <span class="label__detail">7</span>
-        </a>
+        Метки-<code>span</code>:
+        <span class="label">Метка <span class="label__detail">7</span></span>
+        <span class="label  label--main">Метка <span class="label__detail">7</span></span>
+        <span class="label  label--danger">Метка <span class="label__detail">7</span></span>
+        <span class="label  label--success">Метка <span class="label__detail">7</span></span>
+        Метки-<code>div</code>:
+        <div class="label">Метка <span class="label__detail">7</span></div>
+        <div class="label  label--main">Метка <span class="label__detail">7</span></div>
+        <div class="label  label--danger">Метка <span class="label__detail">7</span></div>
+        <div class="label  label--success">Метка <span class="label__detail">7</span></div>
+        Метки-ссылки:
+        <a href="" class="label">Метка <span class="label__detail">7</span></a>
+        <a href="" class="label  label--main">Метка <span class="label__detail">7</span></a>
+        <a href="" class="label  label--danger">Метка <span class="label__detail">7</span></a>
+        <a href="" class="label  label--success">Метка <span class="label__detail">7</span></a>
       </div>
     </div>
 
     <div class="blocks-library__sub-item">
       <b class="blocks-library__sub-item-title">Модификатор: <code>label--tag</code> (отдельный LESS-файл)</b>
       <div class="p">
-        Обычный текст
-        <div class="label  label--tag">Метка-div</div>
-        Обычный текст
-        <span class="label  label--tag">Метка-span</span>
-        Обычный текст
-        <a href="" class="label  label--tag">Метка-ссылка</a>
+        Метки-<code>span</code>:
+        <span class="label  label--tag">Метка <span class="label__detail">7</span></span>
+        <span class="label  label--tag  label--main">Метка</span>
+        <span class="label  label--tag  label--danger">Метка</span>
+        <span class="label  label--tag  label--success">Метка</span>
+        Метки-<code>div</code>:
+        <div class="label  label--tag">Метка</div>
+        <div class="label  label--tag  label--main">Метка</div>
+        <div class="label  label--tag  label--danger">Метка</div>
+        <div class="label  label--tag  label--success">Метка</div>
+        Метки-ссылки:
+        <a href="" class="label  label--tag">Метка</a>
+        <a href="" class="label  label--tag  label--main">Метка</a>
+        <a href="" class="label  label--tag  label--danger">Метка</a>
+        <a href="" class="label  label--tag  label--success">Метка</a>
       </div>
+      <p>Внимание: круг внутри метки не прозрачный! Это <code>@body-bg</code> (по умолчанию — <code>#fff</code>).</p>
     </div>
 
     <div class="blocks-library__sub-item">
       <b class="blocks-library__sub-item-title">Модификатор: <code>label--circle</code> (отдельный LESS-файл)</b>
       <div class="p">
-        Обычный текст
-        <div class="label  label--circle">Метка-div</div>
-        Обычный текст
-        <span class="label  label--circle">Метка-span</span>
-        Обычный текст
-        <a href="" class="label  label--circle">Метка-ссылка</a>
+        Метки-<code>span</code>:
+        <span class="label  label--circle">Метка</span>
+        <span class="label  label--circle  label--main">Метка</span>
+        <span class="label  label--circle  label--danger">Метка</span>
+        <span class="label  label--circle  label--success">Метка</span>
+        Метки-<code>div</code>:
+        <div class="label  label--circle">Метка</div>
+        <div class="label  label--circle  label--main">Метка</div>
+        <div class="label  label--circle  label--danger">Метка</div>
+        <div class="label  label--circle  label--success">Метка</div>
+        Метки-ссылки:
+        <a href="" class="label  label--circle">Метка</a>
+        <a href="" class="label  label--circle  label--main">Метка</a>
+        <a href="" class="label  label--circle  label--danger">Метка</a>
+        <a href="" class="label  label--circle  label--success">Метка</a>
       </div>
     </div>
 

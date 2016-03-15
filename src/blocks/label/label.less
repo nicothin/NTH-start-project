@@ -8,8 +8,8 @@
   vertical-align: baseline;
   line-height: 1;
   padding: 0.25em 0.4em 0.2em;
-  background-color: @gray;
-  color: #fff;
+  background-color: @gray-lighter;
+  color: @text-color;
   text-decoration: none;
   text-transform: none;
   font-weight: 700;
@@ -18,23 +18,51 @@
   border-radius: @border-radius;
 
   &:hover, &:focus {
-    color: #fff;
+    color: @text-color;
     text-decoration: none;
+  }
+
+  svg {
+    fill: @text-color;
   }
 
   &--main {
     background-color: @color-main;
+    color: #fff;
+
+     &:hover, &:focus {
+      color: #fff;
+    }
+
+    svg {
+      fill: #fff;
+    }
   }
 
   &--danger {
     background-color: @color-danger;
+    color: #fff;
+
+     &:hover, &:focus {
+      color: #fff;
+    }
+
+    svg {
+      fill: #fff;
+    }
   }
 
   &--success {
     background-color: @color-success;
+    color: #fff;
+
+     &:hover, &:focus {
+      color: #fff;
+    }
+
+    svg {
+      fill: #fff;
+    }
   }
 
-  svg {
-    fill: #fff;
-  }
 }
