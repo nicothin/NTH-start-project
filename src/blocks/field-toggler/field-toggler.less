@@ -17,11 +17,12 @@
 
   &__name {
     position: relative;
-    padding-left: 2.7em;
+    padding-left: 43px;
     font-weight: 400;
     display: inline-block;
     margin-right: 0.6em;
     line-height: @line-height;
+    min-height: 20px;
   }
 
   &__input {
@@ -30,8 +31,8 @@
 
     & + .field-toggler__name-text:before {
       content: '';
-      width: 2.125em;
-      height: 1.25em;
+      width: 34px;
+      height: 20px;
       position: absolute;
       top: 0;
       left: 0;
@@ -43,10 +44,10 @@
     & + .field-toggler__name-text:after {
       content: '';
       position: absolute;
-      top: 0.125em;
-      left: 0.125em;
-      height: 1em;
-      width: 1em;
+      top: 2px;
+      left: 2px;
+      width: 16px;
+      height: 16px;
       background: #fff;
       border: 1px solid @border-color;
       transition: left 0.3s;
@@ -58,7 +59,7 @@
     }
 
     &:checked + .field-toggler__name-text:after {
-      left: 1em;
+      left: 16px;
       border: 1px solid @gray;
     }
 
@@ -69,12 +70,7 @@
 
   &__help-text {
     .help-text();
-    // Задача: здесь левый padding должен совпадать с левым padding .field-toggler__name-text и должен быть
-    // в относительных единицах.
-    // Левый padding у .field-toggler__name-text = 2.7em от размера шрифта родителя (указано выше в этом файле).
-    // Нужно получить 2.7em от размера шрифта родителя, отталкиваясь от здешнего (уменьшенного) размера шрифта.
-    // Фактор увеличения: 100 / @font-size--small-percent
-    padding-left: round(2.7em * (100 / @font-size--small-percent), 2);
+    padding-left: 43px;
   }
 }
 
