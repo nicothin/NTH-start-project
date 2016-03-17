@@ -16,7 +16,7 @@
   vertical-align: middle;
   cursor: pointer;
   user-select: none;
-  font: inherit;
+  font-size: 1em;
   line-height: @line-height;
   text-decoration: none;
   border: 1px solid;
@@ -118,10 +118,6 @@
 //------------------------------------------------------------------------------
 
 .btn-size(@size: md) {
-
-  & when (@size = md) {
-    font-size: @font-size;
-  }
 
   & when (@size = sm) {
     font-size: @font-size--small;

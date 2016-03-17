@@ -1301,10 +1301,80 @@
 
 
 
-  <section class="blocks-library__item" id="form-horizontal" data-name=".form--horizontal">
-    <form action="" class="form  form--horizontal">
+  <section class="blocks-library__item" id="form" data-name=".form">
+    <form action="" class="form">
       <fieldset>
-        <legend>Горизонтальная форма</legend>
+        <legend>Форма</legend>
+        <label class="field-text">
+          <div class="field-text__name">Название поля</div>
+          <div class="field-text__input-wrap">
+            <input class="field-text__input" type="text" placeholder="input[type=text]">
+            <div class="field-text__help-text">Обёртка — <code>&lt;label&gt;</code>.</div>
+          </div>
+        </label>
+        <div class="field-checkbox">
+          <div class="field-checkbox__title">Общее название</div>
+          <div class="field-checkbox__input-wrap">
+            <label class="field-checkbox__name">
+              <input class="field-checkbox__input" type="checkbox">
+              <span class="field-checkbox__name-text">Флажок</span>
+            </label>
+            <label class="field-checkbox__name">
+              <input class="field-checkbox__input" type="checkbox">
+              <span class="field-checkbox__name-text">Флажок</span>
+            </label>
+            <label class="field-checkbox__name">
+              <input class="field-checkbox__input" type="checkbox">
+              <span class="field-checkbox__name-text">Флажок</span>
+            </label>
+            <label class="field-checkbox__name">
+              <input class="field-checkbox__input" type="checkbox">
+              <span class="field-checkbox__name-text">Флажок</span>
+            </label>
+            <label class="field-checkbox__name">
+              <input class="field-checkbox__input" type="checkbox">
+              <span class="field-checkbox__name-text">Флажок</span>
+            </label>
+            <div class="field-checkbox__help-text">Есть общее название.</div>
+          </div>
+        </div>
+        <label class="field-select">
+          <div class="field-select__name">Название поля</div>
+          <div class="field-select__select-wrap">
+            <select class="field-select__select">
+              <optgroup label="optgroup">
+                <option>Значение 1</option>
+                <option>Значение 2</option>
+                <option>Значение 3</option>
+              </optgroup>
+              <option>Значение 10</option>
+            </select>
+            <small class="field-select__help-text">Обёртка — <code>&lt;label&gt;</code>.</small>
+          </div>
+        </label>
+        <div class="field-file">
+          <div class="field-file__name">Выбор файлов</div>
+          <label class="field-file__input-wrap">
+            <input class="field-file__input" type="file" data-multiple-caption="файлов выбрано: {count}" multiple>
+            <div class="field-file__name-text" data-button-text="Выбрать файл(ы)">Ничего не выбрано</div>
+            <div class="field-file__help-text">Отображение выбранного файла(ов) требует Javascript-а. Стилизация — не требует.</div>
+          </label>
+        </div>
+        <div class="field-range">
+          <div class="field-range__name">Range</div>
+          <div class="field-range__input-wrap">
+            <input class="field-range__input" type="range" min="1" max="100" step="1" value="70">
+            <div class="field-range__help-text"><code>min="1" max="100" step="1" value="70"</code></div>
+          </div>
+        </div>
+        <div class="field-actions">
+          <button class="btn">Отправить</button>
+        </div>
+      </fieldset>
+    </form>
+    <div class="blocks-library__sub-item">
+      <b class="blocks-library__sub-item-title"><code>.form.form--horizontal</code> (отдельный less-файл)</b>
+      <form action="" class="form  form--horizontal">
         <label class="field-text">
           <div class="field-text__name">Название поля</div>
           <div class="field-text__input-wrap">
@@ -1354,7 +1424,7 @@
             </label>
             <label class="field-radio__name">
               <input class="field-radio__input" type="radio" name="one1">
-              <span class="field-radio__name-text">Радиокнопка</span>
+              <span class="field-radio__name-text">Наверное. И тут много строк. Далеко-далеко за словесными горами в стране, гласных и согласных. Наверное. И тут много строк. Далеко-далеко за словесными горами в стране, гласных и согласных.</span>
             </label>
             <div class="field-radio__help-text">Нет общего названия, но оставлен пустой <code>div</code> для него.</div>
           </div>
@@ -1367,9 +1437,36 @@
             </label>
             <label class="field-radio__name">
               <input class="field-radio__input" type="radio" name="two1">
-              <span class="field-radio__name-text">Радиокнопка</span>
+              <span class="field-radio__name-text">Наверное.</span>
             </label>
             <div class="field-radio__help-text">Нет общего названия и отсутствует пустой <code>div</code> для него.</div>
+          </div>
+        </div>
+        <div class="field-radio">
+          <div class="field-radio__input-wrap">
+            <label class="field-radio__name">
+              <input class="field-radio__input" type="radio" name="two2">
+              <span class="field-radio__name-text">Радиокнопка</span>
+            </label>
+            <label class="field-radio__name">
+              <input class="field-radio__input" type="radio" name="two2">
+              <span class="field-radio__name-text">Наверное. И тут много строк. Далеко-далеко за словесными горами в стране, гласных и согласных. И тут много строк. Далеко-далеко за словесными горами в стране, гласных и согласных.</span>
+            </label>
+            <div class="field-radio__help-text">Нет общего названия и отсутствует пустой <code>div</code> для него.</div>
+          </div>
+        </div>
+        <div class="field-toggler">
+          <div class="field-toggler__title">Переключатели-флажки</div>
+          <div class="field-toggler__input-wrap">
+            <label class="field-toggler__name">
+              <input class="field-toggler__input" type="checkbox" checked="">
+              <span class="field-toggler__name-text">Да</span>
+            </label>
+            <label class="field-toggler__name">
+              <input class="field-toggler__input" type="checkbox">
+              <span class="field-toggler__name-text">Наверное.  И тут много строк. Далеко-далеко за словесными горами в стране, гласных и согласных. И тут много строк. Далеко-далеко за словесными горами в стране, гласных и согласных.</span>
+            </label>
+            <div class="field-toggler__help-text">Графика не используется, всё нарисовано CSS-ом.</div>
           </div>
         </div>
         <label class="field-select">
@@ -1386,11 +1483,106 @@
             <small class="field-select__help-text">Обёртка — <code>&lt;label&gt;</code>.</small>
           </div>
         </label>
+        <label class="field-select">
+          <div class="field-select__name">Название поля</div>
+          <div class="field-select__select-wrap">
+            <select class="field-select__select" multiple>
+              <optgroup label="optgroup">
+                <option>Значение 1</option>
+                <option>Значение 2</option>
+                <option>Значение 3</option>
+              </optgroup>
+              <option>Значение 10</option>
+            </select>
+            <small class="field-select__help-text">Обёртка — <code>&lt;label&gt;</code>.</small>
+          </div>
+        </label>
+        <div class="field-file">
+          <div class="field-file__name">Выбор файлов</div>
+          <label class="field-file__input-wrap">
+            <input class="field-file__input" type="file" data-multiple-caption="файлов выбрано: {count}" multiple>
+            <div class="field-file__name-text" data-button-text="Выбрать файл(ы)">Ничего не выбрано</div>
+            <div class="field-file__help-text">Отображение выбранного файла(ов) требует Javascript-а. Стилизация — не требует.</div>
+          </label>
+        </div>
+        <div class="field-range">
+          <div class="field-range__name">Range</div>
+          <div class="field-range__input-wrap">
+            <input class="field-range__input" type="range" min="1" max="100" step="1" value="70">
+            <div class="field-range__help-text"><code>min="1" max="100" step="1" value="70"</code></div>
+          </div>
+        </div>
         <div class="field-actions">
           <button class="btn">Отправить</button>
         </div>
-      </fieldset>
-    </form>
+      </form>
+    </div>
+  </section>
+
+
+
+  <section class="blocks-library__item" id="btn" data-name=".btn">
+    <h1 class="blocks-library__item-title">Кнопки</h1>
+    <div class="blocks-library__sub-item">
+      <p>
+        <input type="text" value="Текстовое поле для сравнения высоты" title="Текстовое поле для сравнения высоты" style="width:70px">
+        <a href="" class="btn">Cсылка</a>
+        <input type="submit" class="btn" value="Input">
+        <button class="btn">Button</button>
+        <!-- .btn.btn--main -->
+        <a href="" class="btn  btn--main">Cсылка</a>
+        <input type="submit" class="btn  btn--main" value="Input">
+        <button class="btn  btn--main">Button</button>
+        <!-- .btn.btn--success -->
+        <a href="" class="btn  btn--success">Cсылка</a>
+        <input type="submit" class="btn  btn--success" value="Input">
+        <button class="btn  btn--success">Button</button>
+        <!-- .btn.btn--danger -->
+        <a href="" class="btn  btn--danger">Cсылка</a>
+        <input type="submit" class="btn  btn--danger" value="Input">
+        <button class="btn  btn--danger">Button</button>
+      </p>
+    <pre><code>&lt;input type="text" value="Текстовое поле для сравнения высоты" style="width:70px"&gt;
+&lt;a href="" class="btn"&gt;Cсылка&lt;/a&gt;
+&lt;input type="submit" class="btn" value="Input"&gt;
+&lt;button class="btn"&gt;Button&lt;/button&gt;
+
+&lt;!-- .btn.btn--main --&gt;
+&lt;a href="" class="btn  btn--main"&gt;Cсылка&lt;/a&gt;
+&lt;input type="submit" class="btn  btn--main" value="Input"&gt;
+&lt;button class="btn  btn--main"&gt;Button&lt;/button&gt;
+
+&lt;!-- .btn.btn--success --&gt;
+&lt;a href="" class="btn  btn--success"&gt;Cсылка&lt;/a&gt;
+&lt;input type="submit" class="btn  btn--success" value="Input"&gt;
+&lt;button class="btn  btn--success"&gt;Button&lt;/button&gt;
+
+&lt;!-- .btn.btn--danger --&gt;
+&lt;a href="" class="btn  btn--danger"&gt;Cсылка&lt;/a&gt;
+&lt;input type="submit" class="btn  btn--danger" value="Input"&gt;
+&lt;button class="btn  btn--danger"&gt;Button&lt;/button&gt;</code></pre>
+    </div>
+    <div class="blocks-library__sub-item">
+      <h2 class="blocks-library__sub-item-title">Увеличение и уменьшение модификаторами</h2>
+      <p>
+        <a href="" class="btn  btn--lg">Cсылка (lg)</a>
+        <input type="submit" class="btn  btn--lg" value="Input (lg)">
+        <button class="btn  btn--lg">Button (lg)</button>
+      </p>
+      <p>
+        <a href="" class="btn  btn--sm">Cсылка (sm)</a>
+        <input type="submit" class="btn  btn--sm" value="Input (sm)">
+        <button class="btn  btn--sm">Button (sm)</button>
+      </p>
+    </div>
+    <div class="blocks-library__sub-item">
+      <h2 class="blocks-library__sub-item-title">Блочные кнопки</h2>
+      <p>
+        <a href="" class="btn  btn--block">Cсылка (sm)</a>
+        <input type="submit" class="btn  btn--block  btn--main" value="Input (sm)">
+        <button class="btn  btn--block  btn--success">Button (sm)</button>
+      </p>
+    </div>
   </section>
 
 
@@ -1400,12 +1592,6 @@
 
 
   <section class="blocks-library__item">
-
-    <h2 id="form">Формы по умолчанию</h2>
-
-    <p>Стилизация: теги (см. глобальные стили)</p>
-
-
 
     <h2 id="form-style">Стилизованные формы</h2>
 
@@ -1640,36 +1826,7 @@
 
     <h2 id="btn">Кнопки</h2>
     <p>Стилизация: БЭМ-блок <code>.btn</code> и модификаторы.</p>
-    <p class="alert  alert--success">Приоритетным является подход, в котором используются LESS-примеси <code>.btn()</code>, <code>.btn-color(цвет_текста; цвет_фона; цвет_бордюра)</code> и <code>.btn-size([sm|md|lg])</code>.</p>
-    <p>
-      <input type="text" value="Текстовое поле для сравнения высоты" title="Текстовое поле для сравнения высоты" style="width:70px">
-      <a href="" class="btn">Cсылка</a>
-      <input type="submit" class="btn" value="Input">
-      <button class="btn">Button</button>
-      <a href="" class="btn  btn--main">Cсылка</a>
-      <input type="submit" class="btn  btn--main" value="Input">
-      <button class="btn  btn--main">Button</button>
-      <a href="" class="btn  btn--success">Cсылка</a>
-      <input type="submit" class="btn  btn--success" value="Input">
-      <button class="btn  btn--success">Button</button>
-      <a href="" class="btn  btn--danger">Cсылка</a>
-      <input type="submit" class="btn  btn--danger" value="Input">
-      <button class="btn  btn--danger">Button</button>
-    </p>
-    <p>
-      <a href="" class="btn  btn--lg">Cсылка (lg)</a>
-      <input type="submit" class="btn  btn--lg" value="Input (lg)">
-      <button class="btn  btn--lg">Button (lg)</button>
-      <a href="" class="btn">Cсылка</a>
-      <input type="submit" class="btn" value="Input">
-      <button class="btn">Button</button>
-      <a href="" class="btn  btn--sm">Cсылка (sm)</a>
-      <input type="submit" class="btn  btn--sm" value="Input (sm)">
-      <button class="btn  btn--sm">Button (sm)</button>
-    </p>
-    <p>
-      <button class="btn  btn--block">Button (block)</button>
-    </p>
+
 
   </section>
 
@@ -1755,8 +1912,7 @@
     <h3>События</h3>
     <div class="row">
       <div class="col-md-6">
-        <pre>
-&lt;span role=&quot;presentation&quot; class=&quot;dropdown&quot; id=&quot;test&quot;&gt;
+        <pre><code>&lt;span role=&quot;presentation&quot; class=&quot;dropdown&quot; id=&quot;test&quot;&gt;
   &lt;a href=&quot;#&quot; class=&quot;dropdown__toggler&quot; data-toggle=&quot;dropdown&quot; role=&quot;button&quot; aria-haspopup=&quot;true&quot; aria-expanded=&quot;false&quot;&gt;&#x421;&#x441;&#x44b;&#x43b;&#x43a;&#x430; &#x441; &#x432;&#x44b;&#x43f;&#x430;&#x434;&#x430;&#x44e;&#x449;&#x438;&#x43c; &#x44d;&#x43b;&#x435;&#x43c;&#x435;&#x43d;&#x442;&#x43e;&#x43c;&lt;/a&gt;
   &lt;ul class=&quot;dropdown__menu&quot; aria-labelledby=&quot;qwer&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&#x41f;&#x443;&#x43d;&#x43a;&#x442; &#x441;&#x43f;&#x438;&#x441;&#x43a;&#x430; (&#x432;&#x44b;&#x43f;&#x430;&#x434;&#x430;&#x435;&#x442; &lt;code&gt;ul&lt;/code&gt;)&lt;/a&gt;&lt;/li&gt;
@@ -1764,7 +1920,7 @@
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
-&lt;/span&gt;</pre>
+&lt;/span&gt;</code></pre>
       </div>
       <div class="col-md-6">
         <pre>
@@ -2209,5 +2365,6 @@ $('#test').on('hidden.nth.dropdown', function () {
 
 @@include('blocks/page-footer/page-footer.html')
 @@include('_include/page_bottom.html')
+<script>hljs.initHighlightingOnLoad();</script>
 </body>
 </html>
