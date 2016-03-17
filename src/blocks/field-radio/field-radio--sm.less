@@ -1,0 +1,21 @@
+@import '../../less/variables.less';     // только для удобства обращения к переменным
+
+
+.field-radio {
+
+  &--sm {
+    font-size: @font-size--small;
+
+    .field-radio__input {
+      top: 0.1em;
+    }
+
+    .field-radio__name {
+      padding-left: 1.6em;
+    }
+
+    .field-radio__help-text {
+      padding-left: round(1.6em * (100 / @font-size--small-percent), 2);
+    }
+  }
+}
