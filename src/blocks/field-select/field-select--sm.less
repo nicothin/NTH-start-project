@@ -1,0 +1,15 @@
+@import '../../less/variables.less';     // только для удобства обращения к переменным
+
+
+.field-select {
+
+  &--sm {
+    font-size: @font-size--small;
+
+    .field-select__select {
+      &[multiple] {
+        min-height: 7.5em;
+      }
+    }
+  }
+}
