@@ -5,8 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "./node_modules/.bin/gulp",
-    "less-lint": "lesshint ./src/less/ ./src/blocks/",
-    "precommit": "npm run less-lint"
+    "less-lint": "lesshint ./src/less/ ./src/blocks/"
   },
   "author": "Nikolay Gromov",
   "license": "MIT",

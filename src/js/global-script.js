@@ -18,6 +18,24 @@ function closest(el, selector) {
 
 
 
+/*
+  Запуск по готовности DOM
+  http://youmightnotneedjquery.com/#ready
+  Применение: ready(function(){ console.log('ddd'); });
+*/
+
+function ready(fn) {
+  if (document.readyState != 'loading'){
+    fn();
+  } else {
+    document.addEventListener('DOMContentLoaded', fn);
+  }
+}
+
+
+
+
+
 // Свой код с jQuery
 
 // $( document ).ready(function() {

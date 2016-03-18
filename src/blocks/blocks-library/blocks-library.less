@@ -90,13 +90,20 @@
   }
 
   &__code {
+    transition: max-height @transition-time;
+    overflow: hidden;
 
     .js & {
-      display: none;
+      max-height: 0;
+    }
+
+    .js &--shown {
+      max-height: 410px;
     }
 
     pre {
       margin: 0;
+      max-height: 410px;
     }
   }
 }
