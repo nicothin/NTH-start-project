@@ -45,4 +45,48 @@
   &__sub-item {}
 
   &__sub-item-title {}
+
+  &__code-wrapper {
+    position: relative;
+  }
+
+  &__code-show-trigger {
+    position: absolute;
+    top: 0;
+    left: -4rem;
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer;
+  }
+
+  &__code-icon {
+    display: block;
+    width: 3rem;
+    height: 0.2rem;
+    background-color: @gray-light;
+
+    &:before,
+    &:after {
+      position: absolute;
+      background-color: @gray-light;
+      width: 3rem;
+      height: 0.2rem;
+      left: 0;
+      content: '';
+    }
+
+    &:before {
+      top: 0.8rem;
+    }
+
+    &:after {
+      top: 1.6rem;
+    }
+  }
+
+  &__code {
+    max-height: 0;
+    overflow: hidden;
+  }
 }
+
