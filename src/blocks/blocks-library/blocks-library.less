@@ -53,13 +53,13 @@
   &__code-show-trigger {
     display: block;
     width: 3rem;
-    height: 2rem;
+    height: 20px;
     cursor: pointer;
     margin-bottom: 0.3em;
 
     @media (min-width: @screen-md) {
       position: absolute;
-      top: 0;
+      top: -2.9rem;
       left: -4rem;
     }
   }
@@ -67,7 +67,7 @@
   &__code-icon {
     display: block;
     width: 3rem;
-    height: 0.2rem;
+    height: 2px;
     background-color: @gray-light;
 
     &:before,
@@ -75,35 +75,38 @@
       position: absolute;
       background-color: @gray-light;
       width: 3rem;
-      height: 0.2rem;
+      height: 2px;
       left: 0;
       content: '';
     }
 
     &:before {
-      top: 0.8rem;
+      top: 8px;
     }
 
     &:after {
-      top: 1.6rem;
+      top: 16px;
     }
   }
 
   &__code {
-    transition: max-height @transition-time;
     overflow: hidden;
 
     .js & {
       max-height: 0;
+      transition-duration: @transition-time;
+      transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
     }
 
     .js &--shown {
-      max-height: 410px;
+      transition-duration: @transition-time;
+      transition-timing-function: ease-in;
+      max-height: 1000px;
     }
 
     pre {
       margin: 0;
-      max-height: 410px;
+      max-height: 500px;
     }
   }
 }
