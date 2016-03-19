@@ -10,7 +10,8 @@
     counter-reset: li-in;
     padding-top: 0.25em;
 
-    & > li {
+    & > li,
+    & > &__item {
       &:before {
         content: counter(li) '.' counter(li-in);
         counter-increment: li-in;
@@ -18,7 +19,8 @@
     }
   }
 
-  & > li {
+  & > li,
+  & > &__item {
     position: relative;
     padding-left: 1.8em;
     padding-top: 0.25em;

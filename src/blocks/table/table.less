@@ -1,0 +1,24 @@
+@import '../../less/variables.less';     // только для удобства обращения к переменным
+
+
+.table {
+  border: 1px solid @border-color;
+
+  td,
+  th {
+    &:not(:first-child) {
+      border-left: 1px solid @border-color;
+    }
+  }
+
+  &__header {
+    background-color: @gray-lightest;
+  }
+
+  &__body {}
+
+  &__footer {
+    background-color: @gray-lightest;
+    color: @gray;
+  }
+}

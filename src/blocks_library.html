@@ -362,6 +362,7 @@
   <section class="blocks-library__item" id="list-nums" data-name=".list-nums">
 
     <h1 class="blocks-library__item-title">Нумерованные списки с особыми маркерами</h1>
+    <p>Если используются <code>ol</code> или <code>ul</code>, пунктам списка можно не давать классов. При использовании других тегов (см. пример кода) нужны классы у элементов.</p>
 
     <div class="row">
       <div class="col-md-6">
@@ -377,13 +378,13 @@
         </ol>
       </div>
       <div class="col-md-6">
-        <ul class="list-nums">
-          <li>Далеко-далеко за словесными горами.</li>
-          <li>Одна послушавшись дал, большого.</li>
-          <li>Проектах за вопрос курсивных.</li>
-          <li>Власти, она себя за?</li>
-          <li>Решила алфавит, назад маленький.</li>
-        </ul>
+        <div class="list-nums">
+          <div class="list-nums__item">Далеко-далеко за словесными горами.</div>
+          <div class="list-nums__item">Одна послушавшись дал, большого.</div>
+          <div class="list-nums__item">Проектах за вопрос курсивных.</div>
+          <div class="list-nums__item">Власти, она себя за?</div>
+          <div class="list-nums__item">Решила алфавит, назад маленький.</div>
+        </div>
       </div>
     </div>
     <div class="blocks-library__code-wrapper">
@@ -400,13 +401,18 @@
           <code class="html">  &lt;/li&gt;</code>
           <code class="html">  &lt;li&gt;&#x414;&#x430;&#x43b;&#x435;&#x43a;&#x43e;-&#x434;&#x430;&#x43b;&#x435;&#x43a;&#x43e; &#x437;&#x430; &#x441;&#x43b;&#x43e;&#x432;&#x435;&#x441;&#x43d;&#x44b;&#x43c;&#x438; &#x433;&#x43e;&#x440;&#x430;&#x43c;&#x438;.&lt;/li&gt;</code>
           <code class="html">&lt;/ol&gt;</code>
+          <code class="html"> </code>
+          <code class="html">&lt;div class=&quot;list-nums&quot;&gt;</code>
+          <code class="html">  &lt;div class=&quot;list-nums__item&quot;&gt;&#x414;&#x430;&#x43b;&#x435;&#x43a;&#x43e;-&#x434;&#x430;&#x43b;&#x435;&#x43a;&#x43e; &#x437;&#x430; &#x441;&#x43b;&#x43e;&#x432;&#x435;&#x441;&#x43d;&#x44b;&#x43c;&#x438; &#x433;&#x43e;&#x440;&#x430;&#x43c;&#x438;.&lt;/div&gt;</code>
+          <code class="html">  ...</code>
+          <code class="html">&lt;/div&gt;</code>
         </pre>
       </div>
     </div>
 
     <div class="blocks-library__sub-item">
-      <h2 class="blocks-library__sub-item-title">Подсветка маркера пункта модификатором</h2>
-      <p class="blocks-library__sub-item-title">Подсветка маркера пункта модификатором элемента <code>.list-nums__item.list-nums__item--main</code> (отдельный LESS-файл)</p>
+      <h2 class="blocks-library__sub-item-title">Подсветка маркера отдельного пункта модификатором</h2>
+      <p>Подсветка маркера пункта модификатором элемента <code>.list-nums__item.list-nums__item--main</code> (отдельный LESS-файл)</p>
       <ol class="list-nums">
         <li>Далеко-далеко за словесными горами.</li>
         <li class="list-nums__item  list-nums__item--main">Проектах за вопрос курсивных.</li>
@@ -426,7 +432,7 @@
 
     <div class="blocks-library__sub-item">
       <h2 class="blocks-library__sub-item-title">Подсветка всех маркеров списка модификатором</h2>
-      <p class="blocks-library__sub-item-title">Подсветка всех маркеров списка модификатором блока <code>.list-nums.list-nums--main</code> (отдельный LESS-файл). Распространяется только на тот список, которому дан модификатор.</p>
+      <p>Подсветка всех маркеров списка модификатором блока <code>.list-nums.list-nums--main</code> (отдельный LESS-файл). Распространяется только на тот список, которому дан модификатор.</p>
       <div class="row">
         <div class="col-md-6">
           <ol class="list-nums  list-nums--main">
@@ -643,17 +649,231 @@
 
 
 
+  <section class="blocks-library__item" id="table-block" data-name=".table">
+
+    <h1 class="blocks-library__item-title">Таблица как БЭМ-блок</h1>
+
+    <div class="table-responsive-scroll">
+      <table class="table">
+        <caption>Таблица как БЭМ-блок, элементы имеют классы</caption>
+        <thead class="table__header">
+          <tr>
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Мыло</th>
+            <th>Статус</th>
+            <th>Политическая ориентация</th>
+          </tr>
+        </thead>
+        <tbody class="table__body">
+          <tr>
+            <td>Иннокентий</td>
+            <td>Барлаухенштицкен-Ламанческий</td>
+            <td>Хозяйственное</td>
+            <td>Администратор</td>
+            <td>«ВСЕГДА!»</td>
+          </tr>
+          <tr>
+            <td>Васисуалий</td>
+            <td>Пылепневмомешковыколачивателев</td>
+            <td>Душистое</td>
+            <td>Юзверь</td>
+            <td>Нижняя</td>
+          </tr>
+          <tr>
+            <td>Ктулху</td>
+            <td>Втанк</td>
+            <td>ktulkhu@ad.ru</td>
+            <td>Патриарх</td>
+            <td>Яизм</td>
+          </tr>
+        </tbody>
+        <tfoot class="table__footer">
+          <tr>
+            <td colspan="5">Итого: 18 попугаев, 15 длинных червяков, надувная женщина и украденный из церкви огарок дешевой свечи.</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <div class="blocks-library__code-wrapper">
+      <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+      <div class="blocks-library__code">
+        <pre>
+          <code class="html">&lt;table class=&quot;table&quot;&gt;</code>
+          <code class="html">  &lt;caption&gt;&#x422;&#x430;&#x431;&#x43b;&#x438;&#x446;&#x430; &#x43a;&#x430;&#x43a; &#x411;&#x42d;&#x41c;-&#x431;&#x43b;&#x43e;&#x43a;, &#x44d;&#x43b;&#x435;&#x43c;&#x435;&#x43d;&#x442;&#x44b; &#x438;&#x43c;&#x435;&#x44e;&#x442; &#x43a;&#x43b;&#x430;&#x441;&#x441;&#x44b;&lt;/caption&gt;</code>
+          <code class="html">  &lt;thead class=&quot;table__header&quot;&gt;</code>
+          <code class="html">    &lt;tr&gt;</code>
+          <code class="html">      &lt;th&gt;...&lt;/th&gt;</code>
+          <code class="html">    &lt;/tr&gt;</code>
+          <code class="html">  &lt;/thead&gt;</code>
+          <code class="html">  &lt;tbody class=&quot;table__body&quot;&gt;</code>
+          <code class="html">    &lt;tr&gt;</code>
+          <code class="html">      &lt;td&gt;...&lt;/td&gt;</code>
+          <code class="html">    &lt;/tr&gt;</code>
+          <code class="html">  &lt;/tbody&gt;</code>
+          <code class="html">  &lt;tfoot class=&quot;table__footer&quot;&gt;</code>
+          <code class="html">    &lt;tr&gt;</code>
+          <code class="html">      &lt;td&gt;....&lt;/td&gt;</code>
+          <code class="html">    &lt;/tr&gt;</code>
+          <code class="html">  &lt;/tfoot&gt;</code>
+          <code class="html">&lt;/table&gt;</code>
+        </pre>
+      </div>
+    </div>
+
+    <div class="blocks-library__sub-item">
+      <h2 class="blocks-library__sub-item-title">Подсветка строк по наведению</h2>
+      <p>Модификатор <code>table--hover</code>, отдельный less-файл. Подсвечиваются только строки внутри <code>tbody</code>.</p>
+      <div class="table-responsive-scroll">
+        <table class="table  table--hover">
+          <caption>Таблица как БЭМ-блок, элементы имеют классы</caption>
+          <thead class="table__header">
+            <tr>
+              <th>Имя</th>
+              <th>Фамилия</th>
+              <th>Мыло</th>
+              <th>Статус</th>
+              <th>Политическая ориентация</th>
+            </tr>
+          </thead>
+          <tbody class="table__body">
+            <tr>
+              <td>Иннокентий</td>
+              <td>Барлаухенштицкен-Ламанческий</td>
+              <td>Хозяйственное</td>
+              <td>Администратор</td>
+              <td>«ВСЕГДА!»</td>
+            </tr>
+            <tr>
+              <td>Васисуалий</td>
+              <td>Пылепневмомешковыколачивателев</td>
+              <td>Душистое</td>
+              <td>Юзверь</td>
+              <td>Нижняя</td>
+            </tr>
+            <tr>
+              <td>Ктулху</td>
+              <td>Втанк</td>
+              <td>ktulkhu@ad.ru</td>
+              <td>Патриарх</td>
+              <td>Яизм</td>
+            </tr>
+          </tbody>
+          <tfoot class="table__footer">
+            <tr>
+              <td colspan="5">Итого: 18 попугаев, 15 длинных червяков, надувная женщина и украденный из церкви огарок дешевой свечи.</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre>
+            <code class="html">&lt;table class=&quot;table  table--hover&quot;&gt;</code>
+            <code class="html">  &lt;tbody&gt;</code>
+            <code class="html">    &lt;tr&gt;</code>
+            <code class="html">      &lt;td&gt;...&lt;/td&gt;</code>
+            <code class="html">    &lt;/tr&gt;</code>
+            <code class="html">  &lt;/tbody&gt;</code>
+            <code class="html">&lt;/table&gt;</code>
+          </pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="blocks-library__sub-item">
+      <h2 class="blocks-library__sub-item-title">Разлинованная таблица</h2>
+      <p>Модификатор <code>table--striped</code>, отдельный less-файл. Подсвечиваются только строки внутри <code>tbody</code>.</p>
+      <div class="table-responsive-scroll">
+        <table class="table  table--striped">
+          <caption>Таблица как БЭМ-блок, элементы имеют классы</caption>
+          <thead class="table__header">
+            <tr>
+              <th>Имя</th>
+              <th>Фамилия</th>
+              <th>Мыло</th>
+              <th>Статус</th>
+              <th>Политическая ориентация</th>
+            </tr>
+          </thead>
+          <tbody class="table__body">
+            <tr>
+              <td>Иннокентий</td>
+              <td>Барлаухенштицкен-Ламанческий</td>
+              <td>Хозяйственное</td>
+              <td>Администратор</td>
+              <td>«ВСЕГДА!»</td>
+            </tr>
+            <tr>
+              <td>Васисуалий</td>
+              <td>Пылепневмомешковыколачивателев</td>
+              <td>Душистое</td>
+              <td>Юзверь</td>
+              <td>Нижняя</td>
+            </tr>
+            <tr>
+              <td>Ктулху</td>
+              <td>Втанк</td>
+              <td>ktulkhu@ad.ru</td>
+              <td>Патриарх</td>
+              <td>Яизм</td>
+            </tr>
+            <tr>
+              <td>Васисуалий</td>
+              <td>Петров</td>
+              <td>Душистое</td>
+              <td>Монстр</td>
+              <td>Нижняя</td>
+            </tr>
+            <tr>
+              <td>Ктулху</td>
+              <td>Втанк</td>
+              <td>Домашнее от Агафьи</td>
+              <td>Патриарх</td>
+              <td>ИдиотъЪ</td>
+            </tr>
+          </tbody>
+          <tfoot class="table__footer">
+            <tr>
+              <td colspan="5">Итого: 18 попугаев, 15 длинных червяков, надувная женщина и украденный из церкви огарок дешевой свечи.</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre>
+            <code class="html">&lt;table class=&quot;table  table--striped&quot;&gt;</code>
+            <code class="html">  &lt;tbody&gt;</code>
+            <code class="html">    &lt;tr&gt;</code>
+            <code class="html">      &lt;td&gt;...&lt;/td&gt;</code>
+            <code class="html">    &lt;/tr&gt;</code>
+            <code class="html">  &lt;/tbody&gt;</code>
+            <code class="html">&lt;/table&gt;</code>
+          </pre>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+
+
   <section class="blocks-library__item" id="table-responsive" data-name=".table-responsive">
 
     <h1 class="blocks-library__item-title">Адаптивные таблицы с повторяющимися названиями ячеек</h1>
 
     <p class="alert  alert--danger"><strong>Внимание!</strong> Адаптивные таблицы требуют добавления дата-атрибутов. Фиксация минимальной ширины имитатора <code>th</code> будет полезной (делается индивидуально).</p>
-    <p class="alert  alert--success">Приоритетным является не использование класса <code>.table-responsive</code>, а использование семантических БЭМ-классов и LESS-примеси <code>.table-responsive(sm);</code> (принимает в себя значение той ширины вьюпорта, на которой таблица ещё адаптивна).</p>
+    <p class="alert  alert--danger"><strong>Внимание!</strong> Применение ограничено таблицами, имеющими заголовочные ячейки сверху.</p>
+    <p>Приоритетным является не использование класса <code>.table-responsive</code>, а использование семантических БЭМ-классов и LESS-примеси <code>.table-responsive(sm);</code> (принимает в себя значение той ширины вьюпорта, на которой таблица ещё адаптивна).</p>
 
     <style>
       .blocks-library__table-responsive tbody td:before,
       .blocks-library__table-responsive tbody th:before {
-        min-width: 145px;
+        min-width: 18rem;
       }
     </style>
 
@@ -697,6 +917,93 @@
           <code class="html">    &lt;/tr></code>
           <code class="html">  &lt;/tbody></code>
           <code class="html">&lt;/table></code>
+        </pre>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="blocks-library__item" id="table-responsive-scroll" data-name=".table-responsive-scroll">
+
+    <h1 class="blocks-library__item-title">Адаптивные таблицы c горизонтальной прокруткой</h1>
+
+    <div class="table-responsive-scroll">
+      <table class="">
+        <tbody class="table__body">
+          <tr>
+            <td>Иннокентий</td>
+            <td>Барлаухенштицкен-Ламанческий</td>
+            <td>Хозяйственное</td>
+            <td>Администратор</td>
+            <td>«ВСЕГДА!»</td>
+          </tr>
+          <tr>
+            <td>Васисуалий</td>
+            <td>Пылепневмомешковыколачивателев</td>
+            <td>Душистое</td>
+            <td>Юзверь</td>
+            <td>Нижняя</td>
+          </tr>
+          <tr>
+            <td>Ктулху</td>
+            <td>Втанк</td>
+            <td>ktulkhu@ad.ru</td>
+            <td>Патриарх</td>
+            <td>Яизм</td>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-responsive-scroll">
+      <table class="table">
+        <caption>Таблица как БЭМ-блок, элементы имеют классы</caption>
+        <thead class="table__header">
+          <tr>
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Мыло</th>
+            <th>Статус</th>
+            <th>Политическая ориентация</th>
+          </tr>
+        </thead>
+        <tbody class="table__body">
+          <tr>
+            <td>Иннокентий</td>
+            <td>Барлаухенштицкен-Ламанческий</td>
+            <td>Хозяйственное</td>
+            <td>Администратор</td>
+            <td>«ВСЕГДА!»</td>
+          </tr>
+          <tr>
+            <td>Васисуалий</td>
+            <td>Пылепневмомешковыколачивателев</td>
+            <td>Душистое</td>
+            <td>Юзверь</td>
+            <td>Нижняя</td>
+          </tr>
+          <tr>
+            <td>Ктулху</td>
+            <td>Втанк</td>
+            <td>ktulkhu@ad.ru</td>
+            <td>Патриарх</td>
+            <td>Яизм</td>
+        </tbody>
+        <tfoot class="table__footer">
+          <tr>
+            <td colspan="5">Итого: 18 попугаев, 15 длинных червяков, надувная женщина и украденный из церкви огарок дешевой свечи.</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    <div class="blocks-library__code-wrapper">
+      <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+      <div class="blocks-library__code">
+        <pre>
+          <code class="html">&lt;div class=&quot;table-responsive-scroll&quot;&gt;</code>
+          <code class="html">  &lt;table&gt; &lt;!-- Можно с class=&quot;table&quot;, можно без. --&gt;</code>
+          <code class="html">    ...</code>
+          <code class="html">  &lt;/table&gt;</code>
+          <code class="html">&lt;/div&gt;</code>
         </pre>
       </div>
     </div>

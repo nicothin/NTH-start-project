@@ -1,0 +1,21 @@
+@import '../../less/variables.less';     // только для удобства обращения к переменным
+
+
+.table-responsive-scroll {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  margin-top: (@line-height / 2);
+  margin-bottom: (@line-height / 2);
+  border: 1px solid @border-color;
+  border-bottom: 0;
+
+  table {
+    margin: 0;
+    border: 0 !important;
+  }
+
+  caption {
+    display: none;
+  }
+}
