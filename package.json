@@ -5,7 +5,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "./node_modules/.bin/gulp",
-    "less-lint": "lesshint ./src/less/ ./src/blocks/"
   },
   "author": "Nikolay Gromov",
   "license": "MIT",
@@ -38,7 +37,6 @@
     "gulp-svgstore": "^5.0.5",
     "gulp-uglify": "^1.5.2",
     "imagemin-pngquant": "^4.2.0",
-    "lesshint": "^1.4.0",
     "mkdirp": "^0.5.1"
   },
   "config": {
