@@ -653,9 +653,58 @@
 
     <h1 class="blocks-library__item-title">Таблица как БЭМ-блок</h1>
 
+    <p>Тут и ниже во всех примерах (хоть сколько-нибудь широких таблиц) в демонстрации использована обертка для адаптивности с горизонтальной прокруткой.</p>
+
     <div class="table-responsive-scroll">
       <table class="table">
-        <caption>Таблица как БЭМ-блок, элементы имеют классы</caption>
+        <caption>Таблица как БЭМ-блок, нет прописанных thead, tbody, tfoot</caption>
+        <tr>
+          <th>Имя</th>
+          <th>Фамилия</th>
+          <th>Мыло</th>
+          <th>Статус</th>
+          <th>Политическая ориентация</th>
+        </tr>
+        <tr>
+          <td>Иннокентий</td>
+          <td>Барлаухенштицкен-Ламанческий</td>
+          <td>Хозяйственное</td>
+          <td>Администратор</td>
+          <td>«ВСЕГДА!»</td>
+        </tr>
+        <tr>
+          <td>Васисуалий</td>
+          <td>Пылепневмомешковыколачивателев</td>
+          <td>Душистое</td>
+          <td>Юзверь</td>
+          <td>Нижняя</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="blocks-library__code-wrapper">
+      <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+      <div class="blocks-library__code">
+        <pre>
+          <code class="html">&lt;table class=&quot;table&quot;&gt;</code>
+          <code class="html">  &lt;caption&gt;Таблица как БЭМ-блок, нет прописанных thead, tbody, tfoot&lt;/caption&gt;</code>
+          <code class="html">  &lt;tr&gt;</code>
+          <code class="html">    &lt;th&gt;...&lt;/th&gt;</code>
+          <code class="html">  &lt;/tr&gt;</code>
+          <code class="html">  &lt;tr&gt;</code>
+          <code class="html">    &lt;td&gt;...&lt;/td&gt;</code>
+          <code class="html">  &lt;/tr&gt;</code>
+          <code class="html">  &lt;tr&gt;</code>
+          <code class="html">    &lt;td&gt;....&lt;/td&gt;</code>
+          <code class="html">  &lt;/tr&gt;</code>
+          <code class="html">&lt;/table&gt;</code>
+        </pre>
+      </div>
+    </div>
+
+    <div class="table-responsive-scroll">
+      <table class="table">
+        <caption>Таблица как БЭМ-блок, есть thead, tbody, tfoot и у них есть классы</caption>
         <thead class="table__header">
           <tr>
             <th>Имя</th>
@@ -701,7 +750,7 @@
       <div class="blocks-library__code">
         <pre>
           <code class="html">&lt;table class=&quot;table&quot;&gt;</code>
-          <code class="html">  &lt;caption&gt;&#x422;&#x430;&#x431;&#x43b;&#x438;&#x446;&#x430; &#x43a;&#x430;&#x43a; &#x411;&#x42d;&#x41c;-&#x431;&#x43b;&#x43e;&#x43a;, &#x44d;&#x43b;&#x435;&#x43c;&#x435;&#x43d;&#x442;&#x44b; &#x438;&#x43c;&#x435;&#x44e;&#x442; &#x43a;&#x43b;&#x430;&#x441;&#x441;&#x44b;&lt;/caption&gt;</code>
+          <code class="html">  &lt;caption&gt;Таблица как БЭМ-блок, есть thead, tbody, tfoot и у них есть классы&lt;/caption&gt;</code>
           <code class="html">  &lt;thead class=&quot;table__header&quot;&gt;</code>
           <code class="html">    &lt;tr&gt;</code>
           <code class="html">      &lt;th&gt;...&lt;/th&gt;</code>
@@ -719,6 +768,44 @@
           <code class="html">  &lt;/tfoot&gt;</code>
           <code class="html">&lt;/table&gt;</code>
         </pre>
+      </div>
+    </div>
+
+    <div class="blocks-library__sub-item">
+      <h2 class="blocks-library__sub-item-title">Нежадная таблица</h2>
+      <p>Модификатор <code>table--not-greed</code>, отдельный less-файл.</p>
+      <p class="alert  alert--danger">Не могут иметь адаптивность с горизонтальной прокруткой (становятся жадными).</p>
+      <table class="table  table--not-greed">
+        <thead class="table__header">
+          <tr>
+            <th>Имя</th>
+            <th>Фамилия</th>
+          </tr>
+        </thead>
+        <tbody class="table__body">
+          <tr>
+            <td>Иннокентий</td>
+            <td>Барлаух</td>
+          </tr>
+          <tr>
+            <td>Васисуалий</td>
+            <td>Пылепев</td>
+          </tr>
+          <tr>
+            <td>Ктулху</td>
+            <td>Втанк</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre>
+            <code class="html">&lt;table class=&quot;table  table--not-greed&quot;&gt;</code>
+            <code class="html">  ...</code>
+            <code class="html">&lt;/table&gt;</code>
+          </pre>
+        </div>
       </div>
     </div>
 
@@ -866,32 +953,29 @@
 
     <h1 class="blocks-library__item-title">Адаптивные таблицы с повторяющимися названиями ячеек</h1>
 
-    <p class="alert  alert--danger"><strong>Внимание!</strong> Адаптивные таблицы требуют добавления дата-атрибутов. Фиксация минимальной ширины имитатора <code>th</code> будет полезной (делается индивидуально).</p>
-    <p class="alert  alert--danger"><strong>Внимание!</strong> Применение ограничено таблицами, имеющими заголовочные ячейки сверху.</p>
-    <p>Приоритетным является не использование класса <code>.table-responsive</code>, а использование семантических БЭМ-классов и LESS-примеси <code>.table-responsive(sm);</code> (принимает в себя значение той ширины вьюпорта, на которой таблица ещё адаптивна).</p>
+    <p class="alert  alert--danger"><strong>Внимание!</strong> Адаптивные таблицы требуют добавления дата-атрибутов.</p>
 
-    <style>
-      .blocks-library__table-responsive tbody td:before,
-      .blocks-library__table-responsive tbody th:before {
-        min-width: 18rem;
-      }
-    </style>
+    <p class="alert  alert--danger"><strong>Внимание!</strong> Применение варианта по умолчанию ограничено таблицами, имеющими заголовочные ячейки сверху.</p>
 
-    <table class="table-responsive  blocks-library__table-responsive">
+    <table class="table-responsive">
+      <caption>Адаптивная таблица с перестроением блоков</caption>
       <thead>
         <tr>
           <th>Имя и фамилия</th>
-          <th>Тип мироощущения</th>
+          <th>Тип индивидуального мироощущения</th>
+          <th>Образ в искусстве</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td data-label="Имя и фамилия">Анатоле Вассерман</td>
-          <td data-label="Тип мироощущения">Девственность</td>
+          <td data-label="Тип индивидуального мироощущения">Девственность</td>
+          <td data-label="Образ в искусстве">Светлый</td>
         </tr>
         <tr>
           <td data-label="Имя и фамилия">Джакомо Казанова</td>
-          <td data-label="Тип мироощущения">Небольшая распущенность с лёгкой примесью леденящих душу извращений, чудовищной лжи и имитатора известного органа, обитого телячьей кожей.</td>
+          <td data-label="Тип индивидуального мироощущения">Небольшая распущенность с лёгкой примесью леденящих душу извращений, чудовищной лжи и имитатора известного органа, обитого телячьей кожей.</td>
+          <td data-label="Образ в искусстве">Невероятно привлекательный</td>
         </tr>
       </tbody>
     </table>
@@ -904,22 +988,80 @@
           <code class="html">    &lt;tr></code>
           <code class="html">      &lt;th>Имя и фамилия&lt;/th></code>
           <code class="html">      &lt;th>Тип мироощущения&lt;/th></code>
+          <code class="html">      &lt;th>Образ в искусстве&lt;/th></code>
           <code class="html">    &lt;/tr></code>
           <code class="html">  &lt;/thead></code>
           <code class="html">  &lt;tbody></code>
           <code class="html">    &lt;tr></code>
           <code class="html">      &lt;td data-label="Имя и фамилия">Анатоле Вассерман&lt;/td></code>
           <code class="html">      &lt;td data-label="Тип мироощущения">Девственность&lt;/td></code>
+          <code class="html">      &lt;td data-label="Образ в искусстве">Светлый&lt;/td></code>
           <code class="html">    &lt;/tr></code>
           <code class="html">    &lt;tr></code>
           <code class="html">      &lt;td data-label="Имя и фамилия">Джакомо Казанова&lt;/td></code>
           <code class="html">      &lt;td data-label="Тип мироощущения">Небольшая распущенность с лёгкой примесью леденящих душу извращений, чудовищной лжи и имитатора известного органа, обитого телячьей кожей.&lt;/td></code>
+          <code class="html">      &lt;td data-label="Образ в искусстве">Невероятно привлекательный&lt;/td></code>
           <code class="html">    &lt;/tr></code>
           <code class="html">  &lt;/tbody></code>
           <code class="html">&lt;/table></code>
         </pre>
       </div>
     </div>
+
+    <div class="blocks-library__sub-item">
+      <h2 class="blocks-library__sub-item-title">Модификация для горизонтального перестроения</h2>
+      <p>Модификатор <code>table-responsive--horizontal</code>, отдельный less-файл.</p>
+      <table class="table-responsive  table-responsive--horizontal">
+        <thead>
+          <tr>
+            <th>Имя и фамилия</th>
+            <th>Тип индивидуального мироощущения</th>
+            <th>Образ в искусстве</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Имя и фамилия">Анатоле Вассерман</td>
+            <td data-label="Тип индивидуального мироощущения">Девственность</td>
+            <td data-label="Образ в искусстве">Светлый</td>
+          </tr>
+          <tr>
+            <td data-label="Имя и фамилия">Джакомо Казанова</td>
+            <td data-label="Тип индивидуального мироощущения">Небольшая распущенность с лёгкой примесью леденящих душу извращений, чудовищной лжи и имитатора известного органа, обитого телячьей кожей.</td>
+            <td data-label="Образ в искусстве">Невероятно привлекательный</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre>
+            <code class="html">&lt;table class="table-responsive  table-responsive--horizontal"></code>
+            <code class="html">  &lt;thead></code>
+            <code class="html">    &lt;tr></code>
+            <code class="html">      &lt;th>Имя и фамилия&lt;/th></code>
+            <code class="html">      &lt;th>Тип мироощущения&lt;/th></code>
+            <code class="html">      &lt;th>Образ в искусстве&lt;/th></code>
+            <code class="html">    &lt;/tr></code>
+            <code class="html">  &lt;/thead></code>
+            <code class="html">  &lt;tbody></code>
+            <code class="html">    &lt;tr></code>
+            <code class="html">      &lt;td data-label="Имя и фамилия">Анатоле Вассерман&lt;/td></code>
+            <code class="html">      &lt;td data-label="Тип мироощущения">Девственность&lt;/td></code>
+            <code class="html">      &lt;td data-label="Образ в искусстве">Светлый&lt;/td></code>
+            <code class="html">    &lt;/tr></code>
+            <code class="html">    &lt;tr></code>
+            <code class="html">      &lt;td data-label="Имя и фамилия">Джакомо Казанова&lt;/td></code>
+            <code class="html">      &lt;td data-label="Тип мироощущения">Небольшая распущенность с лёгкой примесью леденящих душу извращений, чудовищной лжи и имитатора известного органа, обитого телячьей кожей.&lt;/td></code>
+            <code class="html">      &lt;td data-label="Образ в искусстве">Невероятно привлекательный&lt;/td></code>
+            <code class="html">    &lt;/tr></code>
+            <code class="html">  &lt;/tbody></code>
+            <code class="html">&lt;/table></code>
+          </pre>
+        </div>
+      </div>
+    </div>
+
   </section>
 
 

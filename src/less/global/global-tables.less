@@ -6,18 +6,26 @@ table {
   border: 0;
   border-collapse: collapse;
   width: 100%;
+  border: 1px solid @border-color;
 }
 
 caption {
-  padding: 0.6em;
+  padding: round(0.6em * (100 / @font-size--small-percent), 2);
+  text-align: right;
+  caption-side: bottom;
+  font-size: @font-size--small-percent;
+  line-height: 1em;
   color: @text-color--muted;
-  text-align: left;
 }
 
 td,
 th {
   vertical-align: top;
   border-bottom: 1px solid @border-color;
+
+  &:not(:first-child) {
+    border-left: 1px solid @border-color;
+  }
 }
 
 th {

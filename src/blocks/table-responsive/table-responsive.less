@@ -6,7 +6,48 @@
 //------------------------------------------------------------------------------
 
 .table-responsive {
-  // Таблицу с любым классом можно сделать адаптивной, вызывая эту примесь.
-  // ВНИМАНИЕ: примесь ждет макс. ширину, на которой таблица ещё адпативна.
-  .table-responsive(sm);
+
+  @media (max-width: (@screen-md - 1)) {
+    display: block;
+    border: 0;
+
+    caption {
+      display: block;
+      width: 100%;
+      text-align: left;
+    }
+
+    thead {
+      display: none;
+    }
+
+    tbody {
+      display: block;
+      width: 100%;
+
+      tr {
+        display: block;
+        border: 1px solid @gray-lighter;
+        border-bottom: 0;
+
+        &:not(:last-child) {
+          margin-bottom: @line-height;
+        }
+      }
+
+      td {
+        display: block;
+        width: 100%;
+        border-right: 0 !important;
+        border-left: 0 !important;
+
+        &:before {
+          display: block;
+          font-weight: 700;
+          content: attr(data-label);
+        }
+      }
+    }
+  }
+
 }

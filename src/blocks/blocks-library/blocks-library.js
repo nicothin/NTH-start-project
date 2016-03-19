@@ -1,3 +1,4 @@
+// Не работает в IE11
 ready(function(){
   // Открытие/закрытие блока с кодом
   var codeShowTriggers = document.querySelectorAll('.blocks-library__code-show-trigger');
