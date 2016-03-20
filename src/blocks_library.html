@@ -2246,67 +2246,91 @@
 
 
   <section class="blocks-library__item" id="field-toggler" data-name=".field-toggler">
-    <p>Элемент переключателя стилизован с ипользованием <code>px</code> (с <code>em</code> нельзя настроить точные пиксельные размеры для всех <code>font-size</code> родителя). Сам блок подстраивается под размер шрифта родителя, переключатель — нет.</p>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="field-toggler">
-          <div class="field-toggler__title">Переключатель-флажок</div>
-          <div class="field-toggler__input-wrap">
-            <label class="field-toggler__name">
-              <input class="field-toggler__input" type="checkbox">
-              <span class="field-toggler__name-text">Использовать</span>
-            </label>
-            <div class="field-toggler__help-text">Графика не используется, всё нарисовано CSS-ом.</div>
+
+    <h1 class="blocks-library__item-title">Переключатель</h1>
+
+    <p>Элемент переключателя стилизован с ипользованием <code>px</code> (с <code>em</code> нельзя настроить точные пиксельные размеры и отступы для всех <code>font-size</code> родителя). Сам блок подстраивается под размер шрифта родителя, переключатель — нет.</p>
+
+    <div class="js-font-resizer">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="field-toggler">
+            <div class="field-toggler__title">Переключатель-флажок</div>
+            <div class="field-toggler__input-wrap">
+              <label class="field-toggler__name">
+                <input class="field-toggler__input" type="checkbox">
+                <span class="field-toggler__name-text">Использовать</span>
+              </label>
+              <div class="field-toggler__help-text">Графика не используется, всё нарисовано CSS-ом.</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="field-toggler">
+            <div class="field-toggler__title">Переключатели-флажки</div>
+            <div class="field-toggler__input-wrap">
+              <label class="field-toggler__name">
+                <input class="field-toggler__input" type="checkbox" checked>
+                <span class="field-toggler__name-text">Да</span>
+              </label>
+              <label class="field-toggler__name">
+                <input class="field-toggler__input" type="checkbox">
+                <span class="field-toggler__name-text">Наверное.  И тут много строк. Далеко-далеко за словесными горами в стране, гласных и согласных.</span>
+              </label>
+              <div class="field-toggler__help-text">Графика не используется, всё нарисовано CSS-ом.</div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="col-md-6">
-        <div class="field-toggler">
-          <div class="field-toggler__title">Переключатели-флажки</div>
-          <div class="field-toggler__input-wrap">
-            <label class="field-toggler__name">
-              <input class="field-toggler__input" type="checkbox" checked>
-              <span class="field-toggler__name-text">Да</span>
-            </label>
-            <label class="field-toggler__name">
-              <input class="field-toggler__input" type="checkbox">
-              <span class="field-toggler__name-text">Наверное.  И тут много строк. Далеко-далеко за словесными горами в стране, гласных и согласных.</span>
-            </label>
-            <div class="field-toggler__help-text">Графика не используется, всё нарисовано CSS-ом.</div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="field-toggler">
+            <div class="field-toggler__title">Переключатель-радиокнопка</div>
+            <div class="field-toggler__input-wrap">
+              <label class="field-toggler__name">
+                <input class="field-toggler__input" type="radio">
+                <span class="field-toggler__name-text">Использовать</span>
+              </label>
+              <div class="field-toggler__help-text">Графика не используется, всё нарисовано CSS-ом.</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="field-toggler">
+            <div class="field-toggler__title">Переключатели-радиокнопки</div>
+            <div class="field-toggler__input-wrap">
+              <label class="field-toggler__name">
+                <input class="field-toggler__input" type="radio" name="radio-toggler-1" checked>
+                <span class="field-toggler__name-text">Да</span>
+              </label>
+              <label class="field-toggler__name">
+                <input class="field-toggler__input" type="radio" name="radio-toggler-1">
+                <span class="field-toggler__name-text">Нет</span>
+              </label>
+              <div class="field-toggler__help-text">Графика не используется, всё нарисовано CSS-ом.</div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="field-toggler">
-          <div class="field-toggler__title">Переключатель-радиокнопка</div>
-          <div class="field-toggler__input-wrap">
-            <label class="field-toggler__name">
-              <input class="field-toggler__input" type="radio">
-              <span class="field-toggler__name-text">Использовать</span>
-            </label>
-            <div class="field-toggler__help-text">Графика не используется, всё нарисовано CSS-ом.</div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="field-toggler">
-          <div class="field-toggler__title">Переключатели-радиокнопки</div>
-          <div class="field-toggler__input-wrap">
-            <label class="field-toggler__name">
-              <input class="field-toggler__input" type="radio" name="radio-toggler-1" checked>
-              <span class="field-toggler__name-text">Да</span>
-            </label>
-            <label class="field-toggler__name">
-              <input class="field-toggler__input" type="radio" name="radio-toggler-1">
-              <span class="field-toggler__name-text">Нет</span>
-            </label>
-            <div class="field-toggler__help-text">Графика не используется, всё нарисовано CSS-ом.</div>
-          </div>
-        </div>
+    <div class="blocks-library__code-wrapper">
+      <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+      <div class="blocks-library__code">
+        <pre>
+          <code class="html">&lt;div class=&quot;field-toggler&quot;&gt;</code>
+          <code class="html">  &lt;div class=&quot;field-toggler__title&quot;&gt;&#x41f;&#x435;&#x440;&#x435;&#x43a;&#x43b;&#x44e;&#x447;&#x430;&#x442;&#x435;&#x43b;&#x44c;-&#x444;&#x43b;&#x430;&#x436;&#x43e;&#x43a;&lt;/div&gt;</code>
+          <code class="html">  &lt;div class=&quot;field-toggler__input-wrap&quot;&gt;</code>
+          <code class="html">    &lt;label class=&quot;field-toggler__name&quot;&gt;</code>
+          <code class="html">      &lt;input class=&quot;field-toggler__input&quot; type=&quot;checkbox&quot;&gt;</code>
+          <code class="html">      &lt;span class=&quot;field-toggler__name-text&quot;&gt;&#x418;&#x441;&#x43f;&#x43e;&#x43b;&#x44c;&#x437;&#x43e;&#x432;&#x430;&#x442;&#x44c;&lt;/span&gt;</code>
+          <code class="html">    &lt;/label&gt;</code>
+          <code class="html">    &lt;div class=&quot;field-toggler__help-text&quot;&gt;&#x413;&#x440;&#x430;&#x444;&#x438;&#x43a;&#x430; &#x43d;&#x435; &#x438;&#x441;&#x43f;&#x43e;&#x43b;&#x44c;&#x437;&#x443;&#x435;&#x442;&#x441;&#x44f;, &#x432;&#x441;&#x451; &#x43d;&#x430;&#x440;&#x438;&#x441;&#x43e;&#x432;&#x430;&#x43d;&#x43e; CSS-&#x43e;&#x43c;.&lt;/div&gt;</code>
+          <code class="html">  &lt;/div&gt;</code>
+          <code class="html">&lt;/div&gt;</code>
+        </pre>
       </div>
     </div>
+
   </section>
 
 
