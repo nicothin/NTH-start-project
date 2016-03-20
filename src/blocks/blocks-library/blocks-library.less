@@ -109,5 +109,37 @@
       max-height: 500px;
     }
   }
+
+  .js-font-resizer {
+    position: relative;
+
+    @media (min-width: @screen-md) {
+      &:hover {
+        .js-font-resizer__btns {
+          opacity: 1;
+        }
+      }
+    }
+
+  }
+
+  .js-font-resizer__btns {
+    margin-bottom: 1em;
+    font-size: 2rem;
+    transition: opacity .3s;
+
+    @media (min-width: @screen-md) {
+      opacity: 0.2;
+      position: absolute;
+      top: 0;
+      left: -4rem;
+      width: 4rem;
+    }
+
+    .btn {
+      width: 3rem;
+      text-align: center;
+    }
+  }
 }
 

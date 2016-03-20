@@ -1301,128 +1301,90 @@
 
 
 
-  <h2 class="blocks-library__title" id="forms-all">Формы</h2>
-
-
-
   <section class="blocks-library__item" id="forms" data-name="Формы (умолчание)">
+
+    <h1 class="blocks-library__item-title">Формы по умолчанию</h1>
+
+    <p class="alert alert--danger">Формы по умолчанию имеют стилизацию. См. глобальный стилизационный файл для форм.</p>
+
     <form action="">
-      <fieldset>
-        <legend>Это <code>legend</code> <code>fieldset</code>-а</legend>
-        <div class="row">
-          <div class="col-sm-6 col-md-4 col-lg-3">
-            <label>
-              Текст в <code>label</code>
-              <input type="text" placeholder="input[type=text]">
-            </label>
-            <input type="search" placeholder="input[type=search]" value="Поиск">
-            <input type="email" placeholder="input[type=email]">
-            <input type="password" placeholder="input[type=password]">
-            <input type="color" placeholder="input[type=color]">
-            <select>
-              <optgroup label="optgroup">
-                <option>Значение 1</option>
-                <option>Значение 2</option>
-                <option>Значение 3</option>
-              </optgroup>
-              <option>Значение 10</option>
-            </select>
-            <input type="range" placeholder="input[type=range]">
-          </div>
-          <div class="col-sm-6 col-md-4 col-lg-3">
-            <input type="date" placeholder="input[type=date]">
-            <input type="time" placeholder="input[type=time]">
-            <input type="month" placeholder="input[type=month]">
-            <input type="week" placeholder="input[type=week]">
-            <input type="datetime" placeholder="input[type=datetime]">
-            <input type="number" placeholder="input[type=number]">
-            <label><input type="checkbox"> text</label>
-            <label><input type="radio"> text</label>
-          </div>
-          <div class="col-sm-6 col-md-4 col-lg-3">
-            <input type="tel" placeholder="input[type=tel]">
-            <input type="url" placeholder="input[type=url]">
-            <textarea rows="3" placeholder="textarea"></textarea>
-            <select multiple>
+      <div class="row">
+        <fieldset class="col-sm-6 col-md-4 col-lg-3">
+          <legend>Это <code>legend</code> <code>fieldset</code>-а</legend>
+          <label>
+            Текст в <code>label</code>
+            <input type="text" placeholder="input[type=text]">
+          </label>
+          <input type="search" placeholder="input[type=search]" value="Поиск">
+          <input type="email" placeholder="input[type=email]">
+          <input type="password" placeholder="input[type=password]">
+          <input type="color" placeholder="input[type=color]">
+          <select>
+            <optgroup label="optgroup">
               <option>Значение 1</option>
               <option>Значение 2</option>
               <option>Значение 3</option>
-            </select>
-          </div>
-          <div class="col-sm-6 col-md-4 col-lg-3">
-            <input type="reset" value="input[type=reset]"><br>
-            <input type="submit" value="input[type=submit]"><br>
-            <input type="button" value="input[type=button]"><br>
-            <button>button</button><br>
-            <br>
-            <input type="text" placeholder="input[type=text] disabled" disabled>
-            <input type="text" placeholder="input[type=text] readonly" tabindex="-1" readonly>
-          </div>
-        </div>
-        <input type="file">
-      </fieldset>
+            </optgroup>
+            <option>Значение 10</option>
+          </select>
+          <input type="range" placeholder="input[type=range]">
+        </fieldset>
+        <fieldset class="col-sm-6 col-md-4 col-lg-3">
+          <legend>Легенда</legend>
+          <input type="date" placeholder="input[type=date]">
+          <input type="time" placeholder="input[type=time]">
+          <input type="month" placeholder="input[type=month]">
+          <input type="week" placeholder="input[type=week]">
+          <input type="datetime" placeholder="input[type=datetime]">
+          <input type="number" placeholder="input[type=number]">
+          <label><input type="checkbox"> text</label>
+          <label><input type="radio"> text</label>
+        </fieldset>
+        <fieldset class="col-sm-6 col-md-4 col-lg-3">
+          <input type="tel" placeholder="input[type=tel]">
+          <input type="url" placeholder="input[type=url]">
+          <textarea rows="3" placeholder="textarea"></textarea>
+          <select multiple>
+            <option>Значение 1</option>
+            <option>Значение 2</option>
+            <option>Значение 3</option>
+          </select>
+        </fieldset>
+        <fieldset class="col-sm-6 col-md-4 col-lg-3">
+          <input type="reset" value="input[type=reset]"><br>
+          <input type="submit" value="input[type=submit]"><br>
+          <input type="button" value="input[type=button]"><br>
+          <button>button</button><br>
+          <br>
+          <input type="text" placeholder="input[type=text] disabled" disabled>
+          <input type="text" placeholder="input[type=text] readonly" tabindex="-1" readonly>
+          <input type="file">
+        </fieldset>
+      </div>
     </form>
   </section>
 
 
 
   <section class="blocks-library__item" id="field-text" data-name=".field-text">
+
+    <h1 class="blocks-library__item-title">Текстовые поля</h1>
+
     <p>Размеры задаются в <code>em</code> — зависят от размера шрифта родительского элемента.</p>
-    <div class="row">
-      <div class="col-md-6">
-        <label class="field-text">
-          <div class="field-text__name">Многострочное текстовое поле</div>
-          <div class="field-text__input-wrap">
-            <textarea class="field-text__input" placeholder="textarea"></textarea>
-            <div class="field-text__help-text">Обёртка — <code>label</code>. Можно сделать обёртку <code>div</code>, но тогда, возможно, захочется элемент <code>.field-text__name</code> делать <code>label</code> и связывать его с полем по <code>id</code> поля.</div>
-          </div>
-        </label>
-      </div>
-      <div class="col-md-6">
-        <div class="field-text">
-          <label class="field-text__name" for="text-field-1">Любое поле, выглядящее как текстовое</label>
-          <div class="field-text__input-wrap">
-            <input class="field-text__input" id="text-field-1" type="text" placeholder="input[type=text]">
-            <div class="field-text__help-text">Обёртка — <code>div</code>.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row" style="font-size:1.5em">
-      <div class="col-md-6">
-        <label class="field-text">
-          <div class="field-text__name">Увеличен font-size родителя</div>
-          <div class="field-text__input-wrap">
-            <textarea class="field-text__input" placeholder="textarea"></textarea>
-            <div class="field-text__help-text">Обёртка — <code>label</code>.</div>
-          </div>
-        </label>
-      </div>
-      <div class="col-md-6">
-        <div class="field-text">
-          <label class="field-text__name" for="text-field-1">Увеличен font-size родителя</label>
-          <div class="field-text__input-wrap">
-            <input class="field-text__input" id="text-field-1" type="text" placeholder="input[type=text]">
-            <div class="field-text__help-text">Обёртка — <code>div</code>.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="blocks-library__sub-item">
-      <b class="blocks-library__sub-item-title"><code>.field-text.field-text--lg</code> (отдельный less-файл)</b>
-      <p>Размер изменён благодаря модификатору. Модификатор меняет <code>font-size</code> блока в <code>em</code>-ах (реальный размер блока продолжает зависеть от размера шрифта родителя).</p>
+
+    <div class="js-font-resizer">
       <div class="row">
         <div class="col-md-6">
-          <label class="field-text  field-text--lg">
+          <label class="field-text">
             <div class="field-text__name">Многострочное текстовое поле</div>
             <div class="field-text__input-wrap">
               <textarea class="field-text__input" placeholder="textarea"></textarea>
-              <div class="field-text__help-text">Обёртка — <code>label</code>.</div>
+              <div class="field-text__help-text">Обёртка — <code>label</code>. Можно сделать обёртку <code>div</code>, но тогда, возможно, захочется элемент <code>.field-text__name</code> делать <code>label</code> и связывать его с полем по <code>id</code> поля.</div>
             </div>
           </label>
         </div>
         <div class="col-md-6">
-          <div class="field-text  field-text--lg">
+          <div class="field-text">
             <label class="field-text__name" for="text-field-1">Любое поле, выглядящее как текстовое</label>
             <div class="field-text__input-wrap">
               <input class="field-text__input" id="text-field-1" type="text" placeholder="input[type=text]">
@@ -1432,30 +1394,113 @@
         </div>
       </div>
     </div>
+    <div class="blocks-library__code-wrapper">
+      <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+      <div class="blocks-library__code">
+        <pre>
+          <code class="html">&lt;!-- БЭМ-блок может быть как label, так и div --></code>
+          <code class="html"> </code>
+          <code class="html">&lt;label class="field-text"></code>
+          <code class="html">  &lt;div class="field-text__name">Многострочное текстовое поле&lt;/div></code>
+          <code class="html">  &lt;div class="field-text__input-wrap"></code>
+          <code class="html">    &lt;textarea class="field-text__input" placeholder="textarea">&lt;/textarea></code>
+          <code class="html">    &lt;div class="field-text__help-text">Необязательное пояснение&lt;/div></code>
+          <code class="html">  &lt;/div></code>
+          <code class="html">&lt;/label></code>
+          <code class="html"> </code>
+          <code class="html">&lt;div class="field-text"></code>
+          <code class="html">  &lt;label class="field-text__name" for="text-field-1">Любое поле, выглядящее как текстовое&lt;/label></code>
+          <code class="html">  &lt;div class="field-text__input-wrap"></code>
+          <code class="html">    &lt;input class="field-text__input" id="text-field-1" type="text" placeholder="input[type=text]"></code>
+          <code class="html">    &lt;div class="field-text__help-text">Необязательное пояснение&lt;/div></code>
+          <code class="html">  &lt;/div></code>
+          <code class="html">&lt;/div></code>
+        </pre>
+      </div>
+    </div>
+
     <div class="blocks-library__sub-item">
-      <b class="blocks-library__sub-item-title"><code>.field-text.field-text--sm</code> (отдельный less-файл)</b>
-      <p>Размер изменён благодаря модификатору. Модификатор меняет <code>font-size</code> блока в <code>em</code>-ах (реальный размер блока продолжает зависеть от размера шрифта родителя).</p>
-      <div class="row">
-        <div class="col-md-6">
-          <label class="field-text  field-text--sm">
-            <div class="field-text__name">Многострочное текстовое поле</div>
-            <div class="field-text__input-wrap">
-              <textarea class="field-text__input" placeholder="textarea"></textarea>
-              <div class="field-text__help-text">Обёртка — <code>label</code>.</div>
-            </div>
-          </label>
-        </div>
-        <div class="col-md-6">
-          <div class="field-text  field-text--sm">
-            <label class="field-text__name" for="text-field-1">Любое поле, выглядящее как текстовое</label>
-            <div class="field-text__input-wrap">
-              <input class="field-text__input" id="text-field-1" type="text" placeholder="input[type=text]">
-              <div class="field-text__help-text">Обёртка — <code>div</code>.</div>
+      <h2 class="blocks-library__sub-item-title">Увеличенный размер</h2>
+      <p>Модификатор <code>field-text--lg</code>, отдельный less-файл. Модификатор меняет <code>font-size</code> блока в <code>em</code>-ах (реальный размер блока продолжает зависеть от размера шрифта родителя).</p>
+      <div class="js-font-resizer">
+        <div class="row">
+          <div class="col-md-6">
+            <label class="field-text  field-text--lg">
+              <div class="field-text__name">Многострочное текстовое поле</div>
+              <div class="field-text__input-wrap">
+                <textarea class="field-text__input" placeholder="textarea"></textarea>
+                <div class="field-text__help-text">Обёртка — <code>label</code>.</div>
+              </div>
+            </label>
+          </div>
+          <div class="col-md-6">
+            <div class="field-text  field-text--lg">
+              <label class="field-text__name" for="text-field-1">Любое поле, выглядящее как текстовое</label>
+              <div class="field-text__input-wrap">
+                <input class="field-text__input" id="text-field-1" type="text" placeholder="input[type=text]">
+                <div class="field-text__help-text">Обёртка — <code>div</code>.</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre>
+            <code class="html">&lt;label class="field-text  field-text--lg"></code>
+            <code class="html">  &lt;div class="field-text__name">Любое поле, выглядящее как текстовое&lt;/div></code>
+            <code class="html">  &lt;div class="field-text__input-wrap"></code>
+            <code class="html">    &lt;input class="field-text__input" id="text-field-1" type="text" placeholder="input[type=text]"></code>
+            <code class="html">    &lt;div class="field-text__help-text">Необязательное пояснение&lt;/div></code>
+            <code class="html">  &lt;/div></code>
+            <code class="html">&lt;/label></code>
+          </pre>
+        </div>
+      </div>
     </div>
+
+    <div class="blocks-library__sub-item">
+      <h2 class="blocks-library__sub-item-title">Уменьшенный размер</h2>
+      <p>Модификатор <code>field-text--sm</code>, отдельный less-файл. Модификатор меняет <code>font-size</code> блока в <code>em</code>-ах (реальный размер блока продолжает зависеть от размера шрифта родителя).</p>
+      <div class="js-font-resizer">
+        <div class="row">
+          <div class="col-md-6">
+            <label class="field-text  field-text--sm">
+              <div class="field-text__name">Многострочное текстовое поле</div>
+              <div class="field-text__input-wrap">
+                <textarea class="field-text__input" placeholder="textarea"></textarea>
+                <div class="field-text__help-text">Обёртка — <code>label</code>.</div>
+              </div>
+            </label>
+          </div>
+          <div class="col-md-6">
+            <div class="field-text  field-text--sm">
+              <label class="field-text__name" for="text-field-1">Любое поле, выглядящее как текстовое</label>
+              <div class="field-text__input-wrap">
+                <input class="field-text__input" id="text-field-1" type="text" placeholder="input[type=text]">
+                <div class="field-text__help-text">Обёртка — <code>div</code>.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre>
+            <code class="html">&lt;label class="field-text  field-text--sm"></code>
+            <code class="html">  &lt;div class="field-text__name">Любое поле, выглядящее как текстовое&lt;/div></code>
+            <code class="html">  &lt;div class="field-text__input-wrap"></code>
+            <code class="html">    &lt;input class="field-text__input" id="text-field-1" type="text" placeholder="input[type=text]"></code>
+            <code class="html">    &lt;div class="field-text__help-text">Необязательное пояснение&lt;/div></code>
+            <code class="html">  &lt;/div></code>
+            <code class="html">&lt;/label></code>
+          </pre>
+        </div>
+      </div>
+    </div>
+
   </section>
 
 
