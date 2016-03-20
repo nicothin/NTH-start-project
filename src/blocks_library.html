@@ -1876,103 +1876,61 @@
 
 
   <section class="blocks-library__item" id="field-radio" data-name=".field-radio">
-    <div class="row">
-      <div class="col-md-6">
-        <div class="field-radio">
-          <div class="field-radio__title">Стандартная радиокнопка</div>
-          <div class="field-radio__input-wrap">
-            <label class="field-radio__name">
-              <input class="field-radio__input" type="radio">
-              <span class="field-radio__name-text">Да</span>
-            </label>
-            <div class="field-radio__help-text">Пояснение не обязательно.</div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="field-radio">
-          <div class="field-radio__title">Стандартные радиокнопки</div>
-          <div class="field-radio__input-wrap">
-            <label class="field-radio__name">
-              <input class="field-radio__input" type="radio" name="radio-demo" checked>
-              <span class="field-radio__name-text">Да</span>
-            </label>
-            <label class="field-radio__name">
-              <input class="field-radio__input" type="radio" name="radio-demo">
-              <span class="field-radio__name-text">Нет</span>
-            </label>
-            <label class="field-radio__name">
-              <input class="field-radio__input" type="radio" name="radio-demo">
-              <span class="field-radio__name-text">Не знаю</span>
-            </label>
-            <div class="field-radio__help-text">Разметка никак не модифицируется, просто добавляются дополнительные <code>label</code>.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row" style="font-size:1.5em;">
-      <div class="col-md-6">
-        <div class="field-radio">
-          <div class="field-radio__title">Увеличен font-size родителя</div>
-          <div class="field-radio__input-wrap">
-            <label class="field-radio__name">
-              <input class="field-radio__input" type="radio">
-              <span class="field-radio__name-text">Да</span>
-            </label>
-            <div class="field-radio__help-text">Пояснение не обязательно.</div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="field-radio  field-radio--custom">
-          <div class="field-radio__title">Увеличен font-size родителя</div>
-          <div class="field-radio__input-wrap">
-            <label class="field-radio__name">
-              <input class="field-radio__input" type="radio" name="radio-demo-3" checked>
-              <span class="field-radio__name-text">Да</span>
-            </label>
-            <label class="field-radio__name">
-              <input class="field-radio__input" type="radio" name="radio-demo-3">
-              <span class="field-radio__name-text">Нет</span>
-            </label>
-            <label class="field-radio__name">
-              <input class="field-radio__input" type="radio" name="radio-demo-3">
-              <span class="field-radio__name-text">Не знаю</span>
-            </label>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="blocks-library__sub-item">
-      <b class="blocks-library__sub-item-title"><code>.field-radio.field-radio--custom</code> (отдельный less-файл)</b>
+
+    <h1 class="blocks-library__item-title">Радиокнопки</h1>
+
+    <p>Размеры задаются в <code>em</code> — зависят от размера шрифта родительского элемента.</p>
+    <p>Поскольку при увеличении шрифта изображение радиокнопки в некоторых браузерах не увеличивается, на больших размерах шрифта смотрится — так себе.</p>
+
+    <div class="js-font-resizer">
       <div class="row">
         <div class="col-md-6">
-          <div class="field-radio  field-radio--custom">
-            <div class="field-radio__title">Собственная радиокнопка</div>
+          <div class="field-radio">
+            <div class="field-radio__title">Стандартная радиокнопка</div>
             <div class="field-radio__input-wrap">
               <label class="field-radio__name">
-                <input class="field-radio__input" type="radio">
-                <span class="field-radio__name-text">Да</span>
+                <input class="field-radio__input" type="radio" checked>
+                <span class="field-radio__name-text">Использовать</span>
               </label>
-              <div class="field-radio__help-text">Есть общее название. При желании радиокнопок можно написать несколько подряд. Изображения в формате SVG, вписываются в CSS-файл функцией <code>data-uri()</code> компилятора LESS.</div>
+              <div class="field-radio__help-text">Пояснение не обязательно.</div>
+            </div>
+          </div>
+          <div class="field-radio">
+            <div class="field-radio__title">Несколько стандартных радиокнопок  с переносами строк</div>
+            <div class="field-radio__input-wrap">
+              <label class="field-radio__name">
+                <input class="field-radio__input" type="radio"  name="radio-1" checked>
+                <span class="field-radio__name-text">Использовать</span>
+              </label>
+              <br>
+              <label class="field-radio__name">
+                <input class="field-radio__input" type="radio"  name="radio-1">
+                <span class="field-radio__name-text">Переиспользовать</span>
+              </label>
+              <br>
+              <label class="field-radio__name">
+                <input class="field-radio__input" type="radio"  name="radio-1">
+                <span class="field-radio__name-text">Нет</span>
+              </label>
+              <div class="field-radio__help-text">Разметка никак не модифицируется, просто добавляются дополнительные <code>label</code>.</div>
             </div>
           </div>
         </div>
         <div class="col-md-6">
-          <div class="field-radio  field-radio--custom">
-            <div class="field-radio__title">Собственные радиокнопки</div>
+          <div class="field-radio">
+            <div class="field-radio__title">Несколько стандартных радиокнопок</div>
             <div class="field-radio__input-wrap">
               <label class="field-radio__name">
-                <input class="field-radio__input" type="radio" name="radio-demo-2" checked>
-                <span class="field-radio__name-text">Да</span>
+                <input class="field-radio__input" type="radio" name="radio-2" checked>
+                <span class="field-radio__name-text">Использовать</span>
               </label>
               <label class="field-radio__name">
-                <input class="field-radio__input" type="radio" name="radio-demo-2">
+                <input class="field-radio__input" type="radio" name="radio-2">
+                <span class="field-radio__name-text">Переиспользовать</span>
+              </label>
+              <label class="field-radio__name">
+                <input class="field-radio__input" type="radio" name="radio-2">
                 <span class="field-radio__name-text">Нет</span>
-              </label>
-              <label class="field-radio__name">
-                <input class="field-radio__input" type="radio" name="radio-demo-2">
-                <span class="field-radio__name-text">Не знаю</span>
               </label>
               <div class="field-radio__help-text">Разметка никак не модифицируется, просто добавляются дополнительные <code>label</code>.</div>
             </div>
@@ -1980,80 +1938,309 @@
         </div>
       </div>
     </div>
+    <div class="blocks-library__code-wrapper">
+      <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+      <div class="blocks-library__code">
+        <pre>
+          <code class="html">&lt;div class="field-radio"></code>
+          <code class="html">  &lt;div class="field-radio__title">Стандартная радиокнопка&lt;/div></code>
+          <code class="html">  &lt;div class="field-radio__input-wrap"></code>
+          <code class="html">    &lt;label class="field-radio__name"></code>
+          <code class="html">      &lt;input class="field-radio__input" type="radio" checked></code>
+          <code class="html">      &lt;span class="field-radio__name-text">Использовать&lt;/span></code>
+          <code class="html">    &lt;/label></code>
+          <code class="html">    &lt;div class="field-radio__help-text">Пояснение не обязательно.&lt;/div></code>
+          <code class="html">  &lt;/div></code>
+          <code class="html">&lt;/div></code>
+          <code class="html"> </code>
+          <code class="html">&lt;div class="field-radio"></code>
+          <code class="html">  &lt;div class="field-radio__title">Несколько стандартных радиокнопок&lt;/div></code>
+          <code class="html">  &lt;div class="field-radio__input-wrap"></code>
+          <code class="html">    &lt;label class="field-radio__name"></code>
+          <code class="html">      &lt;input class="field-radio__input" type="radio" name="radio-1" checked></code>
+          <code class="html">      &lt;span class="field-radio__name-text">Использовать&lt;/span></code>
+          <code class="html">    &lt;/label></code>
+          <code class="html">    &lt;label class="field-radio__name"></code>
+          <code class="html">      &lt;input class="field-radio__input" type="radio" name="radio-1"></code>
+          <code class="html">      &lt;span class="field-radio__name-text">Переиспользовать&lt;/span></code>
+          <code class="html">    &lt;/label></code>
+          <code class="html">    ...</code>
+          <code class="html">    &lt;div class="field-radio__help-text">Разметка никак не модифицируется...&lt;/div></code>
+          <code class="html">  &lt;/div></code>
+          <code class="html">&lt;/div></code>
+        </pre>
+      </div>
+    </div>
+
     <div class="blocks-library__sub-item">
-      <b class="blocks-library__sub-item-title"><code>.field-radio.field-radio--lg</code> (отдельный less-файл)</b>
-      <p>Размер изменён благодаря модификатору. Модификатор меняет <code>font-size</code> блока в <code>em</code>-ах (реальный размер блока продолжает зависеть от размера шрифта родителя).</p>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="field-radio  field-radio--lg">
-            <div class="field-radio__title">Стандартная радиокнопка</div>
-            <div class="field-radio__input-wrap">
-              <label class="field-radio__name">
-                <input class="field-radio__input" type="radio">
-                <span class="field-radio__name-text">Да</span>
-              </label>
-              <div class="field-radio__help-text">Пояснение не обязательно.</div>
+      <h2 class="blocks-library__sub-item-title">Собственные радиокнопки (картинкой)</h2>
+      <p>Модификатор <code>field-radio--custom</code>, отдельный less-файл. Изображения в формате SVG, вписываются в CSS-файл функцией <code>data-uri()</code> компилятора LESS.</p>
+
+      <div class="js-font-resizer">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="field-radio  field-radio--custom">
+              <div class="field-radio__title">Собственная радиокнопка</div>
+              <div class="field-radio__input-wrap">
+                <label class="field-radio__name">
+                  <input class="field-radio__input" type="radio" checked>
+                  <span class="field-radio__name-text">Использовать</span>
+                </label>
+                <div class="field-radio__help-text">Пояснение не обязательно.</div>
+              </div>
+            </div>
+            <div class="field-radio  field-radio--custom">
+              <div class="field-radio__title">Несколько собственных радиокнопок  с переносами строк</div>
+              <div class="field-radio__input-wrap">
+                <label class="field-radio__name">
+                  <input class="field-radio__input" type="radio" name="radio-3" checked>
+                  <span class="field-radio__name-text">Использовать</span>
+                </label>
+                <br>
+                <label class="field-radio__name">
+                  <input class="field-radio__input" type="radio" name="radio-3">
+                  <span class="field-radio__name-text">Переиспользовать</span>
+                </label>
+                <br>
+                <label class="field-radio__name">
+                  <input class="field-radio__input" type="radio" name="radio-3">
+                  <span class="field-radio__name-text">Нет</span>
+                </label>
+                <div class="field-radio__help-text">Разметка никак не модифицируется, просто добавляются дополнительные <code>label</code>.</div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-md-6">
-          <div class="field-radio  field-radio--lg  field-radio--custom">
-            <div class="field-radio__title">Собственные радиокнопки</div>
-            <div class="field-radio__input-wrap">
-              <label class="field-radio__name">
-                <input class="field-radio__input" type="radio" name="radio-demo-4" checked>
-                <span class="field-radio__name-text">Да</span>
-              </label>
-              <label class="field-radio__name">
-                <input class="field-radio__input" type="radio" name="radio-demo-4">
-                <span class="field-radio__name-text">Нет</span>
-              </label>
-              <label class="field-radio__name">
-                <input class="field-radio__input" type="radio" name="radio-demo-4">
-                <span class="field-radio__name-text">Не знаю</span>
-              </label>
+          <div class="col-md-6">
+            <div class="field-radio  field-radio--custom">
+              <div class="field-radio__title">Несколько собственных радиокнопок</div>
+              <div class="field-radio__input-wrap">
+                <label class="field-radio__name">
+                  <input class="field-radio__input" type="radio" name="radio-4" checked>
+                  <span class="field-radio__name-text">Использовать</span>
+                </label>
+                <label class="field-radio__name">
+                  <input class="field-radio__input" type="radio" name="radio-4">
+                  <span class="field-radio__name-text">Переиспользовать</span>
+                </label>
+                <label class="field-radio__name">
+                  <input class="field-radio__input" type="radio" name="radio-4">
+                  <span class="field-radio__name-text">Нет</span>
+                </label>
+                <div class="field-radio__help-text">Разметка никак не модифицируется, просто добавляются дополнительные <code>label</code>.</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre>
+            <code class="html">&lt;div class="field-radio  field-radio--custom"></code>
+            <code class="html">  &lt;div class="field-radio__title">Собственная радиокнопка&lt;/div></code>
+            <code class="html">  &lt;div class="field-radio__input-wrap"></code>
+            <code class="html">    &lt;label class="field-radio__name"></code>
+            <code class="html">      &lt;input class="field-radio__input" type="radio" checked></code>
+            <code class="html">      &lt;span class="field-radio__name-text">Использовать&lt;/span></code>
+            <code class="html">    &lt;/label></code>
+            <code class="html">    &lt;div class="field-radio__help-text">Пояснение не обязательно.&lt;/div></code>
+            <code class="html">  &lt;/div></code>
+            <code class="html">&lt;/div></code>
+            <code class="html"> </code>
+            <code class="html">&lt;div class="field-radio  field-radio--custom"></code>
+            <code class="html">  &lt;div class="field-radio__title">Несколько собственных радиокнопок&lt;/div></code>
+            <code class="html">  &lt;div class="field-radio__input-wrap"></code>
+            <code class="html">    &lt;label class="field-radio__name"></code>
+            <code class="html">      &lt;input class="field-radio__input" type="radio" name="radio-3" checked></code>
+            <code class="html">      &lt;span class="field-radio__name-text">Использовать&lt;/span></code>
+            <code class="html">    &lt;/label></code>
+            <code class="html">    &lt;label class="field-radio__name"></code>
+            <code class="html">      &lt;input class="field-radio__input" type="radio" name="radio-3"></code>
+            <code class="html">      &lt;span class="field-radio__name-text">Переиспользовать&lt;/span></code>
+            <code class="html">    &lt;/label></code>
+            <code class="html">    ...</code>
+            <code class="html">    &lt;div class="field-radio__help-text">Разметка никак не модифицируется...&lt;/div></code>
+            <code class="html">  &lt;/div></code>
+            <code class="html">&lt;/div></code>
+          </pre>
+        </div>
+      </div>
     </div>
+
     <div class="blocks-library__sub-item">
-      <b class="blocks-library__sub-item-title"><code>.field-radio.field-radio--sm</code> (отдельный less-файл)</b>
-      <p>Размер изменён благодаря модификатору. Модификатор меняет <code>font-size</code> блока в <code>em</code>-ах (реальный размер блока продолжает зависеть от размера шрифта родителя).</p>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="field-radio  field-radio--sm">
-            <div class="field-radio__title">Стандартная радиокнопка</div>
-            <div class="field-radio__input-wrap">
-              <label class="field-radio__name">
-                <input class="field-radio__input" type="radio">
-                <span class="field-radio__name-text">Да</span>
-              </label>
-              <div class="field-radio__help-text">Пояснение не обязательно.</div>
+      <h2 class="blocks-library__sub-item-title">Увеличенный размер</h2>
+      <p>Модификатор <code>field-radio--lg</code>, отдельный less-файл.</p>
+
+      <div class="js-font-resizer">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="field-radio  field-radio--lg">
+              <div class="field-radio__title">Стандартная радиокнопка</div>
+              <div class="field-radio__input-wrap">
+                <label class="field-radio__name">
+                  <input class="field-radio__input" type="radio" checked>
+                  <span class="field-radio__name-text">Использовать</span>
+                </label>
+                <div class="field-radio__help-text">Пояснение не обязательно.</div>
+              </div>
+            </div>
+            <div class="field-radio  field-radio--lg">
+              <div class="field-radio__title">Несколько стандартных радиокнопок</div>
+              <div class="field-radio__input-wrap">
+                <label class="field-radio__name">
+                  <input class="field-radio__input" type="radio" name="radio-5" checked>
+                  <span class="field-radio__name-text">Использовать</span>
+                </label>
+                <label class="field-radio__name">
+                  <input class="field-radio__input" type="radio" name="radio-5">
+                  <span class="field-radio__name-text">Переиспользовать</span>
+                </label>
+                <label class="field-radio__name">
+                  <input class="field-radio__input" type="radio" name="radio-5">
+                  <span class="field-radio__name-text">Нет</span>
+                </label>
+                <div class="field-radio__help-text">Разметка никак не модифицируется, просто добавляются дополнительные <code>label</code>.</div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-md-6">
-          <div class="field-radio  field-radio--sm  field-radio--custom">
-            <div class="field-radio__title">Собственные радиокнопки</div>
-            <div class="field-radio__input-wrap">
-              <label class="field-radio__name">
-                <input class="field-radio__input" type="radio" name="radio-demo-5" checked>
-                <span class="field-radio__name-text">Да</span>
-              </label>
-              <label class="field-radio__name">
-                <input class="field-radio__input" type="radio" name="radio-demo-5">
-                <span class="field-radio__name-text">Нет</span>
-              </label>
-              <label class="field-radio__name">
-                <input class="field-radio__input" type="radio" name="radio-demo-5">
-                <span class="field-radio__name-text">Не знаю</span>
-              </label>
+          <div class="col-md-6">
+            <div class="field-radio  field-radio--lg  field-radio--custom">
+              <div class="field-radio__title">Собственная радиокнопка</div>
+              <div class="field-radio__input-wrap">
+                <label class="field-radio__name">
+                  <input class="field-radio__input" type="radio" checked>
+                  <span class="field-radio__name-text">Использовать</span>
+                </label>
+                <div class="field-radio__help-text">Пояснение не обязательно.</div>
+              </div>
+            </div>
+            <div class="field-radio  field-radio--lg  field-radio--custom">
+              <div class="field-radio__title">Несколько собственных радиокнопок</div>
+              <div class="field-radio__input-wrap">
+                <label class="field-radio__name">
+                  <input class="field-radio__input" type="radio" name="radio-6" checked>
+                  <span class="field-radio__name-text">Использовать</span>
+                </label>
+                <label class="field-radio__name">
+                  <input class="field-radio__input" type="radio" name="radio-6">
+                  <span class="field-radio__name-text">Переиспользовать</span>
+                </label>
+                <label class="field-radio__name">
+                  <input class="field-radio__input" type="radio" name="radio-6">
+                  <span class="field-radio__name-text">Нет</span>
+                </label>
+                <div class="field-radio__help-text">Разметка никак не модифицируется, просто добавляются дополнительные <code>label</code>.</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre>
+            <code class="html">&lt;div class="field-radio  field-radio--lg"></code>
+            <code class="html">  &lt;div class="field-radio__title">Стандартная радиокнопка&lt;/div></code>
+            <code class="html">  &lt;div class="field-radio__input-wrap"></code>
+            <code class="html">    &lt;label class="field-radio__name"></code>
+            <code class="html">      &lt;input class="field-radio__input" type="radio" checked></code>
+            <code class="html">      &lt;span class="field-radio__name-text">Использовать&lt;/span></code>
+            <code class="html">    &lt;/label></code>
+            <code class="html">    &lt;div class="field-radio__help-text">Пояснение не обязательно.&lt;/div></code>
+            <code class="html">  &lt;/div></code>
+            <code class="html">&lt;/div></code>
+          </pre>
+        </div>
+      </div>
     </div>
+
+    <div class="blocks-library__sub-item">
+      <h2 class="blocks-library__sub-item-title">Уменьшенный размер</h2>
+      <p>Модификатор <code>field-radio--sm</code>, отдельный less-файл.</p>
+
+      <div class="js-font-resizer">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="field-radio  field-radio--sm">
+              <div class="field-radio__title">Стандартная радиокнопка</div>
+              <div class="field-radio__input-wrap">
+                <label class="field-radio__name">
+                  <input class="field-radio__input" type="radio" checked>
+                  <span class="field-radio__name-text">Использовать</span>
+                </label>
+                <div class="field-radio__help-text">Пояснение не обязательно.</div>
+              </div>
+            </div>
+            <div class="field-radio  field-radio--sm">
+              <div class="field-radio__title">Несколько стандартных радиокнопок</div>
+              <div class="field-radio__input-wrap">
+                <label class="field-radio__name">
+                  <input class="field-radio__input" type="radio" name="radio-6" checked>
+                  <span class="field-radio__name-text">Использовать</span>
+                </label>
+                <label class="field-radio__name">
+                  <input class="field-radio__input" type="radio" name="radio-6">
+                  <span class="field-radio__name-text">Переиспользовать</span>
+                </label>
+                <label class="field-radio__name">
+                  <input class="field-radio__input" type="radio" name="radio-6">
+                  <span class="field-radio__name-text">Нет</span>
+                </label>
+                <div class="field-radio__help-text">Разметка никак не модифицируется, просто добавляются дополнительные <code>label</code>.</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="field-radio  field-radio--sm  field-radio--custom">
+              <div class="field-radio__title">Собственная радиокнопка</div>
+              <div class="field-radio__input-wrap">
+                <label class="field-radio__name">
+                  <input class="field-radio__input" type="radio" checked>
+                  <span class="field-radio__name-text">Использовать</span>
+                </label>
+                <div class="field-radio__help-text">Пояснение не обязательно.</div>
+              </div>
+            </div>
+            <div class="field-radio  field-radio--sm  field-radio--custom">
+              <div class="field-radio__title">Несколько собственных радиокнопок</div>
+              <div class="field-radio__input-wrap">
+                <label class="field-radio__name">
+                  <input class="field-radio__input" type="radio" name="radio-7" checked>
+                  <span class="field-radio__name-text">Использовать</span>
+                </label>
+                <label class="field-radio__name">
+                  <input class="field-radio__input" type="radio" name="radio-7">
+                  <span class="field-radio__name-text">Переиспользовать</span>
+                </label>
+                <label class="field-radio__name">
+                  <input class="field-radio__input" type="radio" name="radio-7">
+                  <span class="field-radio__name-text">Нет</span>
+                </label>
+                <div class="field-radio__help-text">Разметка никак не модифицируется, просто добавляются дополнительные <code>label</code>.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre>
+            <code class="html">&lt;div class="field-radio  field-radio--sm"></code>
+            <code class="html">  &lt;div class="field-radio__title">Стандартный флажок&lt;/div></code>
+            <code class="html">  &lt;div class="field-radio__input-wrap"></code>
+            <code class="html">    &lt;label class="field-radio__name"></code>
+            <code class="html">      &lt;input class="field-radio__input" type="radio" checked></code>
+            <code class="html">      &lt;span class="field-radio__name-text">Использовать&lt;/span></code>
+            <code class="html">    &lt;/label></code>
+            <code class="html">    &lt;div class="field-radio__help-text">Пояснение не обязательно.&lt;/div></code>
+            <code class="html">  &lt;/div></code>
+            <code class="html">&lt;/div></code>
+          </pre>
+        </div>
+      </div>
+    </div>
+
   </section>
 
 
