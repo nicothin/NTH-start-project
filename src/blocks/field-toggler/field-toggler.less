@@ -29,10 +29,12 @@
     position: absolute;
     opacity: 0;
 
+    // Оболочка, в которой двигается контрол
     & + .field-toggler__name-text:before {
       content: '';
       width: 34px;
       height: 20px;
+      // border-radius: 10px; // возможность выбтро скруглить
       position: absolute;
       top: 0.7em;
       transform: translateY(-50%);
@@ -42,6 +44,7 @@
       transition: background-color 0.3s;
     }
 
+    // Двигающийся контрол
     & + .field-toggler__name-text:after {
       content: '';
       position: absolute;
@@ -50,16 +53,19 @@
       left: 2px;
       width: 16px;
       height: 16px;
+      // border-radius: 8px; // возможность выбтро скруглить
       background: #fff;
       border: 1px solid @border-color;
       transition: left 0.3s;
     }
 
+    // Состояние оболочки, когда переключатель включён
     &:checked + .field-toggler__name-text:before {
       background-color: @gray-light;
       border: 1px solid @gray;
     }
 
+    // Состояние контрола, когда переключатель включён
     &:checked + .field-toggler__name-text:after {
       left: 16px;
       border: 1px solid @gray;
