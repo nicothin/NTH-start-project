@@ -1506,104 +1506,61 @@
 
 
   <section class="blocks-library__item" id="field-checkbox" data-name=".field-checkbox">
+
+    <h1 class="blocks-library__item-title">Флажки (чекбоксы)</h1>
+
     <p>Размеры задаются в <code>em</code> — зависят от размера шрифта родительского элемента.</p>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="field-checkbox">
-          <div class="field-checkbox__title">Стандартный флажок</div>
-          <div class="field-checkbox__input-wrap">
-            <label class="field-checkbox__name">
-              <input class="field-checkbox__input" type="checkbox" checked>
-              <span class="field-checkbox__name-text">Использовать</span>
-            </label>
-            <div class="field-checkbox__help-text">Пояснение не обязательно.</div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="field-checkbox">
-          <div class="field-checkbox__title">Несколько стандартных флажков</div>
-          <div class="field-checkbox__input-wrap">
-            <label class="field-checkbox__name">
-              <input class="field-checkbox__input" type="checkbox" checked>
-              <span class="field-checkbox__name-text">Использовать</span>
-            </label>
-            <label class="field-checkbox__name">
-              <input class="field-checkbox__input" type="checkbox">
-              <span class="field-checkbox__name-text">Переиспользовать</span>
-            </label>
-            <label class="field-checkbox__name">
-              <input class="field-checkbox__input" type="checkbox">
-              <span class="field-checkbox__name-text">Нет</span>
-            </label>
-            <div class="field-checkbox__help-text">Разметка никак не модифицируется, просто добавляются дополнительные <code>label</code>.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row" style="font-size:1.5em;">
-      <div class="col-md-6">
-        <div class="field-checkbox">
-          <div class="field-checkbox__title">Увеличен font-size родителя</div>
-          <div class="field-checkbox__input-wrap">
-            <label class="field-checkbox__name">
-              <input class="field-checkbox__input" type="checkbox" checked>
-              <span class="field-checkbox__name-text">Использовать</span>
-            </label>
-            <div class="field-checkbox__help-text">Пояснение не обязательно.</div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="field-checkbox  field-checkbox--custom">
-          <div class="field-checkbox__title">Увеличен font-size родителя</div>
-          <div class="field-checkbox__input-wrap">
-            <label class="field-checkbox__name">
-              <input class="field-checkbox__input" type="checkbox" checked>
-              <span class="field-checkbox__name-text">Да</span>
-            </label>
-            <label class="field-checkbox__name">
-              <input class="field-checkbox__input" type="checkbox">
-              <span class="field-checkbox__name-text">Нет</span>
-            </label>
-            <label class="field-checkbox__name">
-              <input class="field-checkbox__input" type="checkbox">
-              <span class="field-checkbox__name-text">Сто лет в обед</span>
-            </label>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="blocks-library__sub-item">
-      <b class="blocks-library__sub-item-title"><code>.field-checkbox.field-checkbox--custom</code> (отдельный less-файл)</b>
+    <p>Поскольку при увеличении шрифта изображение флажка в некоторых браузерах не увеличивается, на больших размерах шрифта смотрится — так себе.</p>
+
+    <div class="js-font-resizer">
       <div class="row">
         <div class="col-md-6">
-          <div class="field-checkbox  field-checkbox--custom">
-            <div class="field-checkbox__title">Собственный флажок</div>
+          <div class="field-checkbox">
+            <div class="field-checkbox__title">Стандартный флажок</div>
             <div class="field-checkbox__input-wrap">
               <label class="field-checkbox__name">
                 <input class="field-checkbox__input" type="checkbox" checked>
-                <span class="field-checkbox__name-text">Да</span>
+                <span class="field-checkbox__name-text">Использовать</span>
               </label>
-              <div class="field-checkbox__help-text">Есть общее название. При желании флажков можно написать несколько подряд. Изображения в формате SVG, вписываются в CSS-файл функцией <code>data-uri()</code> компилятора LESS.</div>
+              <div class="field-checkbox__help-text">Пояснение не обязательно.</div>
             </div>
           </div>
-        </div>
-        <div class="col-md-6">
-          <div class="field-checkbox  field-checkbox--custom">
-            <div class="field-checkbox__title">Несколько собственных флажков</div>
+          <div class="field-checkbox">
+            <div class="field-checkbox__title">Несколько стандартных флажков  с переносами строк</div>
             <div class="field-checkbox__input-wrap">
               <label class="field-checkbox__name">
                 <input class="field-checkbox__input" type="checkbox" checked>
-                <span class="field-checkbox__name-text">Да</span>
+                <span class="field-checkbox__name-text">Использовать</span>
               </label>
+              <br>
+              <label class="field-checkbox__name">
+                <input class="field-checkbox__input" type="checkbox">
+                <span class="field-checkbox__name-text">Переиспользовать</span>
+              </label>
+              <br>
               <label class="field-checkbox__name">
                 <input class="field-checkbox__input" type="checkbox">
                 <span class="field-checkbox__name-text">Нет</span>
               </label>
+              <div class="field-checkbox__help-text">Разметка никак не модифицируется, просто добавляются дополнительные <code>label</code>.</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="field-checkbox">
+            <div class="field-checkbox__title">Несколько стандартных флажков</div>
+            <div class="field-checkbox__input-wrap">
+              <label class="field-checkbox__name">
+                <input class="field-checkbox__input" type="checkbox" checked>
+                <span class="field-checkbox__name-text">Использовать</span>
+              </label>
               <label class="field-checkbox__name">
                 <input class="field-checkbox__input" type="checkbox">
-                <span class="field-checkbox__name-text">Сто лет в обед</span>
+                <span class="field-checkbox__name-text">Переиспользовать</span>
+              </label>
+              <label class="field-checkbox__name">
+                <input class="field-checkbox__input" type="checkbox">
+                <span class="field-checkbox__name-text">Нет</span>
               </label>
               <div class="field-checkbox__help-text">Разметка никак не модифицируется, просто добавляются дополнительные <code>label</code>.</div>
             </div>
@@ -1611,80 +1568,309 @@
         </div>
       </div>
     </div>
+    <div class="blocks-library__code-wrapper">
+      <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+      <div class="blocks-library__code">
+        <pre>
+          <code class="html">&lt;div class="field-checkbox"></code>
+          <code class="html">  &lt;div class="field-checkbox__title">Стандартный флажок&lt;/div></code>
+          <code class="html">  &lt;div class="field-checkbox__input-wrap"></code>
+          <code class="html">    &lt;label class="field-checkbox__name"></code>
+          <code class="html">      &lt;input class="field-checkbox__input" type="checkbox" checked></code>
+          <code class="html">      &lt;span class="field-checkbox__name-text">Использовать&lt;/span></code>
+          <code class="html">    &lt;/label></code>
+          <code class="html">    &lt;div class="field-checkbox__help-text">Пояснение не обязательно.&lt;/div></code>
+          <code class="html">  &lt;/div></code>
+          <code class="html">&lt;/div></code>
+          <code class="html"> </code>
+          <code class="html">&lt;div class="field-checkbox"></code>
+          <code class="html">  &lt;div class="field-checkbox__title">Несколько стандартных флажков&lt;/div></code>
+          <code class="html">  &lt;div class="field-checkbox__input-wrap"></code>
+          <code class="html">    &lt;label class="field-checkbox__name"></code>
+          <code class="html">      &lt;input class="field-checkbox__input" type="checkbox" checked></code>
+          <code class="html">      &lt;span class="field-checkbox__name-text">Использовать&lt;/span></code>
+          <code class="html">    &lt;/label></code>
+          <code class="html">    &lt;label class="field-checkbox__name"></code>
+          <code class="html">      &lt;input class="field-checkbox__input" type="checkbox"></code>
+          <code class="html">      &lt;span class="field-checkbox__name-text">Переиспользовать&lt;/span></code>
+          <code class="html">    &lt;/label></code>
+          <code class="html">    ...</code>
+          <code class="html">    &lt;div class="field-checkbox__help-text">Разметка никак не модифицируется...&lt;/div></code>
+          <code class="html">  &lt;/div></code>
+          <code class="html">&lt;/div></code>
+        </pre>
+      </div>
+    </div>
+
     <div class="blocks-library__sub-item">
-      <b class="blocks-library__sub-item-title"><code>.field-checkbox.field-checkbox--lg</code> (отдельный less-файл)</b>
-      <p>Размер изменён благодаря модификатору. Модификатор меняет <code>font-size</code> блока в <code>em</code>-ах (реальный размер блока продолжает зависеть от размера шрифта родителя).</p>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="field-checkbox  field-checkbox--lg">
-            <div class="field-checkbox__title">Стандартный флажок</div>
-            <div class="field-checkbox__input-wrap">
-              <label class="field-checkbox__name">
-                <input class="field-checkbox__input" type="checkbox" checked>
-                <span class="field-checkbox__name-text">Использовать</span>
-              </label>
-              <div class="field-checkbox__help-text">Пояснение не обязательно.</div>
+      <h2 class="blocks-library__sub-item-title">Собственные флажки (картинкой)</h2>
+      <p>Модификатор <code>field-checkbox--custom</code>, отдельный less-файл. Изображения в формате SVG, вписываются в CSS-файл функцией <code>data-uri()</code> компилятора LESS.</p>
+
+      <div class="js-font-resizer">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="field-checkbox  field-checkbox--custom">
+              <div class="field-checkbox__title">Собственный флажок</div>
+              <div class="field-checkbox__input-wrap">
+                <label class="field-checkbox__name">
+                  <input class="field-checkbox__input" type="checkbox" checked>
+                  <span class="field-checkbox__name-text">Использовать</span>
+                </label>
+                <div class="field-checkbox__help-text">Пояснение не обязательно.</div>
+              </div>
+            </div>
+            <div class="field-checkbox  field-checkbox--custom">
+              <div class="field-checkbox__title">Несколько собственных флажков  с переносами строк</div>
+              <div class="field-checkbox__input-wrap">
+                <label class="field-checkbox__name">
+                  <input class="field-checkbox__input" type="checkbox" checked>
+                  <span class="field-checkbox__name-text">Использовать</span>
+                </label>
+                <br>
+                <label class="field-checkbox__name">
+                  <input class="field-checkbox__input" type="checkbox">
+                  <span class="field-checkbox__name-text">Переиспользовать</span>
+                </label>
+                <br>
+                <label class="field-checkbox__name">
+                  <input class="field-checkbox__input" type="checkbox">
+                  <span class="field-checkbox__name-text">Нет</span>
+                </label>
+                <div class="field-checkbox__help-text">Разметка никак не модифицируется, просто добавляются дополнительные <code>label</code>.</div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-md-6">
-          <div class="field-checkbox  field-checkbox--lg  field-checkbox--custom">
-            <div class="field-checkbox__title">Несколько собственных флажков</div>
-            <div class="field-checkbox__input-wrap">
-              <label class="field-checkbox__name">
-                <input class="field-checkbox__input" type="checkbox" checked>
-                <span class="field-checkbox__name-text">Да</span>
-              </label>
-              <label class="field-checkbox__name">
-                <input class="field-checkbox__input" type="checkbox">
-                <span class="field-checkbox__name-text">Нет</span>
-              </label>
-              <label class="field-checkbox__name">
-                <input class="field-checkbox__input" type="checkbox">
-                <span class="field-checkbox__name-text">Сто лет в обед</span>
-              </label>
+          <div class="col-md-6">
+            <div class="field-checkbox  field-checkbox--custom">
+              <div class="field-checkbox__title">Несколько собственных флажков</div>
+              <div class="field-checkbox__input-wrap">
+                <label class="field-checkbox__name">
+                  <input class="field-checkbox__input" type="checkbox" checked>
+                  <span class="field-checkbox__name-text">Использовать</span>
+                </label>
+                <label class="field-checkbox__name">
+                  <input class="field-checkbox__input" type="checkbox">
+                  <span class="field-checkbox__name-text">Переиспользовать</span>
+                </label>
+                <label class="field-checkbox__name">
+                  <input class="field-checkbox__input" type="checkbox">
+                  <span class="field-checkbox__name-text">Нет</span>
+                </label>
+                <div class="field-checkbox__help-text">Разметка никак не модифицируется, просто добавляются дополнительные <code>label</code>.</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre>
+            <code class="html">&lt;div class="field-checkbox  field-checkbox--custom"></code>
+            <code class="html">  &lt;div class="field-checkbox__title">Собственный флажок&lt;/div></code>
+            <code class="html">  &lt;div class="field-checkbox__input-wrap"></code>
+            <code class="html">    &lt;label class="field-checkbox__name"></code>
+            <code class="html">      &lt;input class="field-checkbox__input" type="checkbox" checked></code>
+            <code class="html">      &lt;span class="field-checkbox__name-text">Использовать&lt;/span></code>
+            <code class="html">    &lt;/label></code>
+            <code class="html">    &lt;div class="field-checkbox__help-text">Пояснение не обязательно.&lt;/div></code>
+            <code class="html">  &lt;/div></code>
+            <code class="html">&lt;/div></code>
+            <code class="html"> </code>
+            <code class="html">&lt;div class="field-checkbox  field-checkbox--custom"></code>
+            <code class="html">  &lt;div class="field-checkbox__title">Несколько собственных флажков&lt;/div></code>
+            <code class="html">  &lt;div class="field-checkbox__input-wrap"></code>
+            <code class="html">    &lt;label class="field-checkbox__name"></code>
+            <code class="html">      &lt;input class="field-checkbox__input" type="checkbox" checked></code>
+            <code class="html">      &lt;span class="field-checkbox__name-text">Использовать&lt;/span></code>
+            <code class="html">    &lt;/label></code>
+            <code class="html">    &lt;label class="field-checkbox__name"></code>
+            <code class="html">      &lt;input class="field-checkbox__input" type="checkbox"></code>
+            <code class="html">      &lt;span class="field-checkbox__name-text">Переиспользовать&lt;/span></code>
+            <code class="html">    &lt;/label></code>
+            <code class="html">    ...</code>
+            <code class="html">    &lt;div class="field-checkbox__help-text">Разметка никак не модифицируется...&lt;/div></code>
+            <code class="html">  &lt;/div></code>
+            <code class="html">&lt;/div></code>
+          </pre>
+        </div>
+      </div>
     </div>
+
     <div class="blocks-library__sub-item">
-      <b class="blocks-library__sub-item-title"><code>.field-checkbox.field-checkbox--sm</code> (отдельный less-файл)</b>
-      <p>Размер изменён благодаря модификатору. Модификатор меняет <code>font-size</code> блока в <code>em</code>-ах (реальный размер блока продолжает зависеть от размера шрифта родителя).</p>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="field-checkbox  field-checkbox--sm">
-            <div class="field-checkbox__title">Стандартный флажок</div>
-            <div class="field-checkbox__input-wrap">
-              <label class="field-checkbox__name">
-                <input class="field-checkbox__input" type="checkbox" checked>
-                <span class="field-checkbox__name-text">Использовать</span>
-              </label>
-              <div class="field-checkbox__help-text">Пояснение не обязательно.</div>
+      <h2 class="blocks-library__sub-item-title">Увеличенный размер</h2>
+      <p>Модификатор <code>field-checkbox--lg</code>, отдельный less-файл.</p>
+
+      <div class="js-font-resizer">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="field-checkbox  field-checkbox--lg">
+              <div class="field-checkbox__title">Стандартный флажок</div>
+              <div class="field-checkbox__input-wrap">
+                <label class="field-checkbox__name">
+                  <input class="field-checkbox__input" type="checkbox" checked>
+                  <span class="field-checkbox__name-text">Использовать</span>
+                </label>
+                <div class="field-checkbox__help-text">Пояснение не обязательно.</div>
+              </div>
+            </div>
+            <div class="field-checkbox  field-checkbox--lg">
+              <div class="field-checkbox__title">Несколько стандартных флажков</div>
+              <div class="field-checkbox__input-wrap">
+                <label class="field-checkbox__name">
+                  <input class="field-checkbox__input" type="checkbox" checked>
+                  <span class="field-checkbox__name-text">Использовать</span>
+                </label>
+                <label class="field-checkbox__name">
+                  <input class="field-checkbox__input" type="checkbox">
+                  <span class="field-checkbox__name-text">Переиспользовать</span>
+                </label>
+                <label class="field-checkbox__name">
+                  <input class="field-checkbox__input" type="checkbox">
+                  <span class="field-checkbox__name-text">Нет</span>
+                </label>
+                <div class="field-checkbox__help-text">Разметка никак не модифицируется, просто добавляются дополнительные <code>label</code>.</div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-md-6">
-          <div class="field-checkbox  field-checkbox--sm  field-checkbox--custom">
-            <div class="field-checkbox__title">Несколько собственных флажков</div>
-            <div class="field-checkbox__input-wrap">
-              <label class="field-checkbox__name">
-                <input class="field-checkbox__input" type="checkbox" checked>
-                <span class="field-checkbox__name-text">Да</span>
-              </label>
-              <label class="field-checkbox__name">
-                <input class="field-checkbox__input" type="checkbox">
-                <span class="field-checkbox__name-text">Нет</span>
-              </label>
-              <label class="field-checkbox__name">
-                <input class="field-checkbox__input" type="checkbox">
-                <span class="field-checkbox__name-text">Сто лет в обед</span>
-              </label>
+          <div class="col-md-6">
+            <div class="field-checkbox  field-checkbox--lg  field-checkbox--custom">
+              <div class="field-checkbox__title">Собственный флажок</div>
+              <div class="field-checkbox__input-wrap">
+                <label class="field-checkbox__name">
+                  <input class="field-checkbox__input" type="checkbox" checked>
+                  <span class="field-checkbox__name-text">Использовать</span>
+                </label>
+                <div class="field-checkbox__help-text">Пояснение не обязательно.</div>
+              </div>
+            </div>
+            <div class="field-checkbox  field-checkbox--lg  field-checkbox--custom">
+              <div class="field-checkbox__title">Несколько собственных флажков</div>
+              <div class="field-checkbox__input-wrap">
+                <label class="field-checkbox__name">
+                  <input class="field-checkbox__input" type="checkbox" checked>
+                  <span class="field-checkbox__name-text">Использовать</span>
+                </label>
+                <label class="field-checkbox__name">
+                  <input class="field-checkbox__input" type="checkbox">
+                  <span class="field-checkbox__name-text">Переиспользовать</span>
+                </label>
+                <label class="field-checkbox__name">
+                  <input class="field-checkbox__input" type="checkbox">
+                  <span class="field-checkbox__name-text">Нет</span>
+                </label>
+                <div class="field-checkbox__help-text">Разметка никак не модифицируется, просто добавляются дополнительные <code>label</code>.</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre>
+            <code class="html">&lt;div class="field-checkbox  field-checkbox--lg"></code>
+            <code class="html">  &lt;div class="field-checkbox__title">Стандартный флажок&lt;/div></code>
+            <code class="html">  &lt;div class="field-checkbox__input-wrap"></code>
+            <code class="html">    &lt;label class="field-checkbox__name"></code>
+            <code class="html">      &lt;input class="field-checkbox__input" type="checkbox" checked></code>
+            <code class="html">      &lt;span class="field-checkbox__name-text">Использовать&lt;/span></code>
+            <code class="html">    &lt;/label></code>
+            <code class="html">    &lt;div class="field-checkbox__help-text">Пояснение не обязательно.&lt;/div></code>
+            <code class="html">  &lt;/div></code>
+            <code class="html">&lt;/div></code>
+          </pre>
+        </div>
+      </div>
     </div>
+
+    <div class="blocks-library__sub-item">
+      <h2 class="blocks-library__sub-item-title">Уменьшенный размер</h2>
+      <p>Модификатор <code>field-checkbox--sm</code>, отдельный less-файл.</p>
+
+      <div class="js-font-resizer">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="field-checkbox  field-checkbox--sm">
+              <div class="field-checkbox__title">Стандартный флажок</div>
+              <div class="field-checkbox__input-wrap">
+                <label class="field-checkbox__name">
+                  <input class="field-checkbox__input" type="checkbox" checked>
+                  <span class="field-checkbox__name-text">Использовать</span>
+                </label>
+                <div class="field-checkbox__help-text">Пояснение не обязательно.</div>
+              </div>
+            </div>
+            <div class="field-checkbox  field-checkbox--sm">
+              <div class="field-checkbox__title">Несколько стандартных флажков</div>
+              <div class="field-checkbox__input-wrap">
+                <label class="field-checkbox__name">
+                  <input class="field-checkbox__input" type="checkbox" checked>
+                  <span class="field-checkbox__name-text">Использовать</span>
+                </label>
+                <label class="field-checkbox__name">
+                  <input class="field-checkbox__input" type="checkbox">
+                  <span class="field-checkbox__name-text">Переиспользовать</span>
+                </label>
+                <label class="field-checkbox__name">
+                  <input class="field-checkbox__input" type="checkbox">
+                  <span class="field-checkbox__name-text">Нет</span>
+                </label>
+                <div class="field-checkbox__help-text">Разметка никак не модифицируется, просто добавляются дополнительные <code>label</code>.</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="field-checkbox  field-checkbox--sm  field-checkbox--custom">
+              <div class="field-checkbox__title">Собственный флажок</div>
+              <div class="field-checkbox__input-wrap">
+                <label class="field-checkbox__name">
+                  <input class="field-checkbox__input" type="checkbox" checked>
+                  <span class="field-checkbox__name-text">Использовать</span>
+                </label>
+                <div class="field-checkbox__help-text">Пояснение не обязательно.</div>
+              </div>
+            </div>
+            <div class="field-checkbox  field-checkbox--sm  field-checkbox--custom">
+              <div class="field-checkbox__title">Несколько собственных флажков</div>
+              <div class="field-checkbox__input-wrap">
+                <label class="field-checkbox__name">
+                  <input class="field-checkbox__input" type="checkbox" checked>
+                  <span class="field-checkbox__name-text">Использовать</span>
+                </label>
+                <label class="field-checkbox__name">
+                  <input class="field-checkbox__input" type="checkbox">
+                  <span class="field-checkbox__name-text">Переиспользовать</span>
+                </label>
+                <label class="field-checkbox__name">
+                  <input class="field-checkbox__input" type="checkbox">
+                  <span class="field-checkbox__name-text">Нет</span>
+                </label>
+                <div class="field-checkbox__help-text">Разметка никак не модифицируется, просто добавляются дополнительные <code>label</code>.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre>
+            <code class="html">&lt;div class="field-checkbox  field-checkbox--sm"></code>
+            <code class="html">  &lt;div class="field-checkbox__title">Стандартный флажок&lt;/div></code>
+            <code class="html">  &lt;div class="field-checkbox__input-wrap"></code>
+            <code class="html">    &lt;label class="field-checkbox__name"></code>
+            <code class="html">      &lt;input class="field-checkbox__input" type="checkbox" checked></code>
+            <code class="html">      &lt;span class="field-checkbox__name-text">Использовать&lt;/span></code>
+            <code class="html">    &lt;/label></code>
+            <code class="html">    &lt;div class="field-checkbox__help-text">Пояснение не обязательно.&lt;/div></code>
+            <code class="html">  &lt;/div></code>
+            <code class="html">&lt;/div></code>
+          </pre>
+        </div>
+      </div>
+    </div>
+
   </section>
 
 
