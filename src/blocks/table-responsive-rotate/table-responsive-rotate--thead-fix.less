@@ -1,0 +1,23 @@
+@import '../../less/variables.less';     // только для удобства обращения к переменным
+
+
+.table-responsive-rotate {
+
+  &--thead-fix {
+    position: relative;
+    padding-left: 12rem;
+
+    .table-responsive-rotate__inner {
+      display: block;
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    thead {
+      width: 12rem;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+}

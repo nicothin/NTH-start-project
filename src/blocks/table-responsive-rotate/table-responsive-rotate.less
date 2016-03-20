@@ -1,7 +1,7 @@
 @import '../../less/variables.less';     // только для удобства обращения к переменным
 
 
-.table-responsive-scroll {
+.table-responsive-rotate {
   display: block;
   width: 100%;
   overflow-x: auto;
@@ -10,24 +10,36 @@
   border: 1px solid @border-color;
 
   table {
+    display: flex;
     margin: 0;
     border: 0 !important;
     width: 100%;
   }
 
-  tbody, thead, tfoot {
+  tbody {
+    display: flex;
+  }
+
+  tr {
+    display: block;
+  }
+
+  th,
+  td {
+    display: block;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-left: 0;
+    border-right: 1px solid @border-color;
+
     &:last-child {
-      tr:last-child {
-        td, th {
-          border-bottom: 0;
-        }
-      }
+      border-bottom: 0;
     }
   }
 
   caption {
-    text-align: left;
-    border-bottom: 1px solid @border-color;
-    caption-side: top;
+    display: none;
   }
 }

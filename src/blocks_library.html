@@ -1075,8 +1075,8 @@
     <p>Для просмотра адаптации таблицы сделайте вьюпорт узким.</p>
 
     <div class="table-responsive-scroll">
-      <table class="">
-        <tbody class="table__body">
+      <table>
+        <tbody>
           <tr>
             <td>Иннокентий</td>
             <td>Барлаухенштицкен-Ламанческий</td>
@@ -1153,6 +1153,150 @@
         </pre>
       </div>
     </div>
+  </section>
+
+
+
+  <section class="blocks-library__item" id="table-responsive-rotate" data-name=".table-responsive-rotate">
+
+    <h1 class="blocks-library__item-title">Адаптивные таблицы cо сменой строк на колонки</h1>
+
+    <p>Для просмотра адаптации таблицы сделайте вьюпорт узким.</p>
+
+    <p class="alert  alert--danger"><strong>ВНИМАНИЕ!</strong> Контент в ячейках таблицы жёстко фиксируется как однострочный (нет зависимости развёрнутых ячеек).</p>
+
+    <p class="alert  alert--danger"><strong>ВНИМАНИЕ!</strong> Ячейки не должны объединяться. <code>caption</code> скрывается.</p>
+
+    <div class="table-responsive-rotate">
+      <table class="table">
+        <caption>Таблица как БЭМ-блок, элементы имеют классы</caption>
+        <thead class="table__header">
+          <tr>
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Мыло</th>
+            <th>Статус</th>
+            <th>Политическая ориентация</th>
+          </tr>
+        </thead>
+        <tbody class="table__body">
+          <tr>
+            <td>Иннокентий</td>
+            <td>Барлаухенштицкен-Ламанческий</td>
+            <td>Хозяйственное</td>
+            <td>Администратор</td>
+            <td>«ВСЕГДА!»</td>
+          </tr>
+          <tr>
+            <td>Васисуалий</td>
+            <td>Пылепневмомешковыколачивателев</td>
+            <td>Душистое</td>
+            <td>Юзверь</td>
+            <td>Нижняя</td>
+          </tr>
+          <tr>
+            <td>Ктулху</td>
+            <td>Втанк</td>
+            <td>ktulkhu@ad.ru</td>
+            <td>Патриарх</td>
+            <td>Яизм</td>
+        </tbody>
+        <tfoot class="table__footer">
+          <tr>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+            <th>4</th>
+            <th>5</th>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    <div class="blocks-library__code-wrapper">
+      <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+      <div class="blocks-library__code">
+        <pre>
+          <code class="html">&lt;div class=&quot;table-responsive-rotate&quot;&gt;</code>
+          <code class="html">  &lt;table&gt; &lt;!-- Можно с class=&quot;table&quot;, можно без. --&gt;</code>
+          <code class="html">    ...</code>
+          <code class="html">  &lt;/table&gt;</code>
+          <code class="html">&lt;/div&gt;</code>
+        </pre>
+      </div>
+    </div>
+
+    <div class="blocks-library__sub-item">
+      <h2 class="blocks-library__sub-item-title">С неподвижными названиями</h2>
+      <p>Модификатор <code>table-responsive-rotate--thead-fix</code>, отдельный less-файл. Требует наличия <code>thead</code>, чтобы было что фиксировать.</p>
+      <p class="alert alert--danger">Требует дополнительной обёртки, см. код примера.</p>
+      <div class="table-responsive-rotate  table-responsive-rotate--thead-fix">
+        <div class="table-responsive-rotate__inner">
+          <table class="table">
+            <caption>Таблица как БЭМ-блок, элементы имеют классы</caption>
+            <thead class="table__header">
+              <tr>
+                <th>Имя</th>
+                <th>Фамилия</th>
+                <th>Мыло</th>
+                <th>Статус</th>
+                <th>Политическая ориентация</th>
+              </tr>
+            </thead>
+            <tbody class="table__body">
+              <tr>
+                <td>Иннокентий</td>
+                <td>Барлаухенштицкен-Ламанческий</td>
+                <td>Хозяйственное</td>
+                <td>Администратор</td>
+                <td>«ВСЕГДА!»</td>
+              </tr>
+              <tr>
+                <td>Васисуалий</td>
+                <td>Пылепневмомешковыколачивателев</td>
+                <td>Душистое</td>
+                <td>Юзверь</td>
+                <td>Нижняя</td>
+              </tr>
+              <tr>
+                <td>Ктулху</td>
+                <td>Втанк</td>
+                <td>ktulkhu@ad.ru</td>
+                <td>Патриарх</td>
+                <td>Яизм</td>
+            </tbody>
+            <tfoot class="table__footer">
+              <tr>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+                <th>5</th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre>
+            <code class="html">&lt;div class=&quot;table-responsive-rotate  table-responsive-rotate--thead-fix&quot;&gt;</code>
+            <code class="html">  &lt;div class=&quot;table-responsive-rotate__inner&quot;&gt;</code>
+            <code class="html">    &lt;table&gt; &lt;!-- Можно с class=&quot;table&quot;, можно без. --&gt;</code>
+            <code class="html">      &lt;thead&gt;</code>
+            <code class="html">        ...</code>
+            <code class="html">      &lt;/thead&gt;</code>
+            <code class="html">      &lt;tbody&gt;</code>
+            <code class="html">        ...</code>
+            <code class="html">      &lt;/tbody&gt;</code>
+            <code class="html">    &lt;/table&gt;</code>
+            <code class="html">  &lt;/div&gt;</code>
+            <code class="html">&lt;/div&gt;</code>
+          </pre>
+        </div>
+      </div>
+    </div>
+
   </section>
 
 
