@@ -17,7 +17,7 @@
 
   &__name {
     position: relative;
-    padding-left: 1.3em;
+    padding-left: 2rem;
     font-weight: 400;
     display: inline-block;
     margin-right: 0.6em;
@@ -26,17 +26,13 @@
 
   &__input {
     position: absolute;
-    top: 0.25em;
+    top: 0.7em;
+    transform: translateY(-50%);
     left: 0;
   }
 
   &__help-text {
     .help-text();
-    // Задача: здесь левый padding должен совпадать с левым padding .field-checkbox__name-text и должен быть
-    // в относительных единицах.
-    // Левый padding у .field-checkbox__name-text = 1.3em от размера шрифта родителя (указано выше в этом файле).
-    // Нужно получить 1.3em от размера шрифта родителя, отталкиваясь от здешнего (уменьшенного) размера шрифта.
-    // Фактор увеличения: 100 / @font-size--small-percent
-    padding-left: round(1.3em * (100 / @font-size--small-percent), 2);
+    padding-left: 2rem;
   }
 }
