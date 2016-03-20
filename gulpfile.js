@@ -261,7 +261,7 @@ gulp.task('serve', function () {
 
 // Отправка в GH pages (ветку gh-pages репозитория)
 gulp.task('deploy', function() {
-  console.log('---------- Публикация ./build/ на GH pages: ' + pjson.config.deployURL);
+  console.log('---------- Публикация ./build/ на GH pages');
   return gulp.src('./build/**/*')
     .pipe(ghPages());
 });
