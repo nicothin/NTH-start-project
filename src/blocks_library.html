@@ -2569,19 +2569,48 @@
     <div class="blocks-library__sub-item">
       <h2 class="blocks-library__sub-item-title">С дополнительным элементом-линейкой</h2>
       <p>Стилизация дополнительного элемента-линейки — отдельный less-файл.</p>
-      <p class="alert  alert--danger">Чтобы двигающийся элемент чётко попадал в линейку, шал элемента должен быть достаточно мелким и/или линейка должна быть достаточно частой.</p>
-      <div class="field-range">
-        <div class="field-range__name">Range</div>
-        <div class="field-range__input-wrap">
-          <div class="field-range__line">
-            <span class="field-range__line-item" data-line-value="0%"></span>
-            <span class="field-range__line-item" data-line-value="25%"></span>
-            <span class="field-range__line-item" data-line-value="50%"></span>
-            <span class="field-range__line-item" data-line-value="75%"></span>
-            <span class="field-range__line-item" data-line-value="100%"></span>
+      <p>Линейка добавляется вставкой в разметку дополнительных тегов. Текстовые значения берутся из data-атрибутов. Первый элемент линейки позиционируется абсолютно (не вызывает увеличения длины шкалы). Второй и далее элементы распределяются равномерно, занимают одинаковое количество места в «строке».</p>
+      <p class="alert  alert--danger">Чтобы двигающийся элемент чётко попадал в линейку, шаг элемента должен быть достаточно мелким и/или линейка должна быть достаточно частой или шаг должен строго соответствовать линейке.</p>
+      <div class="js-font-resizer">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="field-range">
+              <div class="field-range__name">Range</div>
+              <div class="field-range__input-wrap">
+                <div class="field-range__line">
+                  <span class="field-range__line-item" data-line-value="0%"></span>
+                  <span class="field-range__line-item" data-line-value="25%"></span>
+                  <span class="field-range__line-item" data-line-value="50%"></span>
+                  <span class="field-range__line-item" data-line-value="75%"></span>
+                  <span class="field-range__line-item" data-line-value="100%"></span>
+                </div>
+                <input class="field-range__input" type="range" min="1" max="1000" value="500" step="1">
+                <div class="field-range__help-text">Линейка 0 - 1000, шаг 1.</div>
+              </div>
+            </div>
           </div>
-          <input class="field-range__input" type="range" min="1" max="1000" value="500">
-          <div class="field-range__help-text">Линейка добавляется вставкой в разметку дополнительных тегов. Текстовые значения берутся из data-атрибутов.<br>Первый элемент линейки позиционируется абсолютно (не вызывает увеличения длины шкалы). <br>Не первые элементы линейки распределяются равномерно, занимают одинаковое количество места в «строке».</div>
+          <div class="col-md-6">
+            <div class="field-range">
+              <div class="field-range__name">Range</div>
+              <div class="field-range__input-wrap">
+                <div class="field-range__line">
+                  <span class="field-range__line-item" data-line-value="0%"></span>
+                  <span class="field-range__line-item" data-line-value="10%"></span>
+                  <span class="field-range__line-item" data-line-value="20%"></span>
+                  <span class="field-range__line-item" data-line-value="30%"></span>
+                  <span class="field-range__line-item" data-line-value="40%"></span>
+                  <span class="field-range__line-item" data-line-value="50%"></span>
+                  <span class="field-range__line-item" data-line-value="60%"></span>
+                  <span class="field-range__line-item" data-line-value="70%"></span>
+                  <span class="field-range__line-item" data-line-value="80%"></span>
+                  <span class="field-range__line-item" data-line-value="90%"></span>
+                  <span class="field-range__line-item" data-line-value="100%"></span>
+                </div>
+                <input class="field-range__input" type="range" min="0" max="100" value="20" step="10">
+                <div class="field-range__help-text">Линейка 0 - 100, шаг 10.</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="blocks-library__code-wrapper">
@@ -2598,7 +2627,7 @@
             <code class="html">      &lt;span class=&quot;field-range__line-item&quot; data-line-value=&quot;75%&quot;&gt;&lt;/span&gt;</code>
             <code class="html">      &lt;span class=&quot;field-range__line-item&quot; data-line-value=&quot;100%&quot;&gt;&lt;/span&gt;</code>
             <code class="html">    &lt;/div&gt;</code>
-            <code class="html">    &lt;input class=&quot;field-range__input&quot; type=&quot;range&quot; min=&quot;1&quot; max=&quot;100&quot; step=&quot;1&quot; value=&quot;70&quot;&gt;</code>
+            <code class="html">    &lt;input class=&quot;field-range__input&quot; type=&quot;range&quot; min=&quot;1&quot; max=&quot;100&quot; step=&quot;1&quot; value=&quot;70&quot; step="1"&gt;</code>
             <code class="html">    &lt;div class=&quot;field-range__help-text&quot;&gt;Необязательное пояснение.&lt;/div&gt;</code>
             <code class="html">  &lt;/div&gt;</code>
             <code class="html">&lt;/div&gt;</code>
@@ -2608,27 +2637,141 @@
     </div>
 
     <div class="blocks-library__sub-item">
-      <b class="blocks-library__sub-item-title"><code>.field-range.field-range--lg</code> (отдельный less-файл)</b>
+      <h2 class="blocks-library__sub-item-title">Увеличение размера</h2>
       <p>Размер изменён благодаря модификатору. Модификатор меняет <code>font-size</code> блока в <code>em</code>-ах (реальный размер блока продолжает зависеть от размера шрифта родителя).</p>
-      <div class="field-range  field-range--lg">
-        <div class="field-range__name">Range</div>
-        <div class="field-range__input-wrap">
-          <input class="field-range__input" type="range" min="1" max="30" step="1" value="3">
-          <div class="field-range__help-text"><code>min="1" max="30" step="1" value="3"</code>, стилизован без JS.</div>
+      <div class="js-font-resizer">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="field-range  field-range--lg">
+              <div class="field-range__name">Range</div>
+              <div class="field-range__input-wrap">
+                <div class="field-range__line">
+                  <span class="field-range__line-item" data-line-value="0%"></span>
+                  <span class="field-range__line-item" data-line-value="25%"></span>
+                  <span class="field-range__line-item" data-line-value="50%"></span>
+                  <span class="field-range__line-item" data-line-value="75%"></span>
+                  <span class="field-range__line-item" data-line-value="100%"></span>
+                </div>
+                <input class="field-range__input" type="range" min="1" max="1000" value="500" step="1">
+                <div class="field-range__help-text">Линейка 0 - 1000, шаг 1.</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="field-range  field-range--lg">
+              <div class="field-range__name">Range</div>
+              <div class="field-range__input-wrap">
+                <div class="field-range__line">
+                  <span class="field-range__line-item" data-line-value="0%"></span>
+                  <span class="field-range__line-item" data-line-value="10%"></span>
+                  <span class="field-range__line-item" data-line-value="20%"></span>
+                  <span class="field-range__line-item" data-line-value="30%"></span>
+                  <span class="field-range__line-item" data-line-value="40%"></span>
+                  <span class="field-range__line-item" data-line-value="50%"></span>
+                  <span class="field-range__line-item" data-line-value="60%"></span>
+                  <span class="field-range__line-item" data-line-value="70%"></span>
+                  <span class="field-range__line-item" data-line-value="80%"></span>
+                  <span class="field-range__line-item" data-line-value="90%"></span>
+                  <span class="field-range__line-item" data-line-value="100%"></span>
+                </div>
+                <input class="field-range__input" type="range" min="0" max="100" value="20" step="10">
+                <div class="field-range__help-text">Линейка 0 - 100, шаг 10.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre>
+            <code class="html">&lt;div class=&quot;field-range  field-range--lg&quot;&gt;</code>
+            <code class="html">  &lt;div class=&quot;field-range__name&quot;&gt;Range&lt;/div&gt;</code>
+            <code class="html">  &lt;div class=&quot;field-range__input-wrap&quot;&gt;</code>
+            <code class="html">    &lt;div class=&quot;field-range__line&quot;&gt;</code>
+            <code class="html">      &lt;span class=&quot;field-range__line-item&quot; data-line-value=&quot;0%&quot;&gt;&lt;/span&gt;</code>
+            <code class="html">      &lt;span class=&quot;field-range__line-item&quot; data-line-value=&quot;25%&quot;&gt;&lt;/span&gt;</code>
+            <code class="html">      &lt;span class=&quot;field-range__line-item&quot; data-line-value=&quot;50%&quot;&gt;&lt;/span&gt;</code>
+            <code class="html">      &lt;span class=&quot;field-range__line-item&quot; data-line-value=&quot;75%&quot;&gt;&lt;/span&gt;</code>
+            <code class="html">      &lt;span class=&quot;field-range__line-item&quot; data-line-value=&quot;100%&quot;&gt;&lt;/span&gt;</code>
+            <code class="html">    &lt;/div&gt;</code>
+            <code class="html">    &lt;input class=&quot;field-range__input&quot; type=&quot;range&quot; min=&quot;1&quot; max=&quot;100&quot; step=&quot;1&quot; value=&quot;70&quot; step="1"&gt;</code>
+            <code class="html">    &lt;div class=&quot;field-range__help-text&quot;&gt;Необязательное пояснение.&lt;/div&gt;</code>
+            <code class="html">  &lt;/div&gt;</code>
+            <code class="html">&lt;/div&gt;</code>
+          </pre>
         </div>
       </div>
     </div>
+
     <div class="blocks-library__sub-item">
-      <b class="blocks-library__sub-item-title"><code>.field-range.field-range--sm</code> (отдельный less-файл)</b>
+      <h2 class="blocks-library__sub-item-title">Увеличение размера</h2>
       <p>Размер изменён благодаря модификатору. Модификатор меняет <code>font-size</code> блока в <code>em</code>-ах (реальный размер блока продолжает зависеть от размера шрифта родителя).</p>
-      <div class="field-range  field-range--sm">
-        <div class="field-range__name">Range</div>
-        <div class="field-range__input-wrap">
-          <input class="field-range__input" type="range" min="1" max="30" step="1" value="3">
-          <div class="field-range__help-text"><code>min="1" max="30" step="1" value="3"</code>, стилизован без JS.</div>
+      <div class="js-font-resizer">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="field-range  field-range--sm">
+              <div class="field-range__name">Range</div>
+              <div class="field-range__input-wrap">
+                <div class="field-range__line">
+                  <span class="field-range__line-item" data-line-value="0%"></span>
+                  <span class="field-range__line-item" data-line-value="25%"></span>
+                  <span class="field-range__line-item" data-line-value="50%"></span>
+                  <span class="field-range__line-item" data-line-value="75%"></span>
+                  <span class="field-range__line-item" data-line-value="100%"></span>
+                </div>
+                <input class="field-range__input" type="range" min="1" max="1000" value="500" step="1">
+                <div class="field-range__help-text">Линейка 0 - 1000, шаг 1.</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="field-range  field-range--sm">
+              <div class="field-range__name">Range</div>
+              <div class="field-range__input-wrap">
+                <div class="field-range__line">
+                  <span class="field-range__line-item" data-line-value="0%"></span>
+                  <span class="field-range__line-item" data-line-value="10%"></span>
+                  <span class="field-range__line-item" data-line-value="20%"></span>
+                  <span class="field-range__line-item" data-line-value="30%"></span>
+                  <span class="field-range__line-item" data-line-value="40%"></span>
+                  <span class="field-range__line-item" data-line-value="50%"></span>
+                  <span class="field-range__line-item" data-line-value="60%"></span>
+                  <span class="field-range__line-item" data-line-value="70%"></span>
+                  <span class="field-range__line-item" data-line-value="80%"></span>
+                  <span class="field-range__line-item" data-line-value="90%"></span>
+                  <span class="field-range__line-item" data-line-value="100%"></span>
+                </div>
+                <input class="field-range__input" type="range" min="0" max="100" value="20" step="10">
+                <div class="field-range__help-text">Линейка 0 - 100, шаг 10.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre>
+            <code class="html">&lt;div class=&quot;field-range  field-range--sm&quot;&gt;</code>
+            <code class="html">  &lt;div class=&quot;field-range__name&quot;&gt;Range&lt;/div&gt;</code>
+            <code class="html">  &lt;div class=&quot;field-range__input-wrap&quot;&gt;</code>
+            <code class="html">    &lt;div class=&quot;field-range__line&quot;&gt;</code>
+            <code class="html">      &lt;span class=&quot;field-range__line-item&quot; data-line-value=&quot;0%&quot;&gt;&lt;/span&gt;</code>
+            <code class="html">      &lt;span class=&quot;field-range__line-item&quot; data-line-value=&quot;25%&quot;&gt;&lt;/span&gt;</code>
+            <code class="html">      &lt;span class=&quot;field-range__line-item&quot; data-line-value=&quot;50%&quot;&gt;&lt;/span&gt;</code>
+            <code class="html">      &lt;span class=&quot;field-range__line-item&quot; data-line-value=&quot;75%&quot;&gt;&lt;/span&gt;</code>
+            <code class="html">      &lt;span class=&quot;field-range__line-item&quot; data-line-value=&quot;100%&quot;&gt;&lt;/span&gt;</code>
+            <code class="html">    &lt;/div&gt;</code>
+            <code class="html">    &lt;input class=&quot;field-range__input&quot; type=&quot;range&quot; min=&quot;1&quot; max=&quot;100&quot; step=&quot;1&quot; value=&quot;70&quot; step="1"&gt;</code>
+            <code class="html">    &lt;div class=&quot;field-range__help-text&quot;&gt;Необязательное пояснение.&lt;/div&gt;</code>
+            <code class="html">  &lt;/div&gt;</code>
+            <code class="html">&lt;/div&gt;</code>
+          </pre>
         </div>
       </div>
     </div>
+
   </section>
 
 
