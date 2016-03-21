@@ -2777,26 +2777,19 @@
 
 
   <section class="blocks-library__item" id="field-file" data-name=".field-file">
-    <div class="field-file">
-      <div class="field-file__name">Выбор файлов</div>
-      <label class="field-file__input-wrap">
-        <input class="field-file__input" type="file" data-multiple-caption="файлов выбрано: {count}" multiple>
-        <div class="field-file__name-text" data-button-text="Выбрать файл(ы)">Ничего не выбрано</div>
-        <div class="field-file__help-text">Отображение выбранного файла(ов) требует Javascript-а. Стилизация — не требует.</div>
-      </label>
-    </div>
-    <div class="field-file" style="font-size:1.5em">
-      <div class="field-file__name">Увеличен font-size родителя</div>
-      <label class="field-file__input-wrap">
-        <input class="field-file__input" type="file" data-multiple-caption="файлов выбрано: {count}" multiple>
-        <div class="field-file__name-text" data-button-text="Выбрать файл(ы)">Ничего не выбрано</div>
-        <div class="field-file__help-text">Отображение выбранного файла(ов) требует Javascript-а. Стилизация — не требует.</div>
-      </label>
-    </div>
-    <div class="blocks-library__sub-item">
-      <b class="blocks-library__sub-item-title"><code>.field-file.field-file--lg</code> (отдельный less-файл)</b>
-      <p>Размер изменён благодаря модификатору. Модификатор меняет <code>font-size</code> блока в <code>em</code>-ах (реальный размер блока продолжает зависеть от размера шрифта родителя).</p>
-      <div class="field-file  field-file--lg">
+
+    <h1 class="blocks-library__item-title">Выбор файлов</h1>
+
+    <div class="js-font-resizer">
+      <div class="field-file">
+        <div class="field-file__name">Выбор файлов</div>
+        <label class="field-file__input-wrap">
+          <input class="field-file__input" type="file" data-multiple-caption="файлов выбрано: {count}" multiple>
+          <div class="field-file__name-text" data-button-text="Выбрать файл(ы)">Ничего не выбрано</div>
+          <div class="field-file__help-text">Отображение выбранного файла(ов) требует Javascript-а. Стилизация — не требует.</div>
+        </label>
+      </div>
+      <div class="field-file">
         <div class="field-file__name">Выбор файлов</div>
         <label class="field-file__input-wrap">
           <input class="field-file__input" type="file" data-multiple-caption="файлов выбрано: {count}" multiple>
@@ -2805,18 +2798,90 @@
         </label>
       </div>
     </div>
-    <div class="blocks-library__sub-item">
-      <b class="blocks-library__sub-item-title"><code>.field-file.field-file--sm</code> (отдельный less-файл)</b>
-      <p>Размер изменён благодаря модификатору. Модификатор меняет <code>font-size</code> блока в <code>em</code>-ах (реальный размер блока продолжает зависеть от размера шрифта родителя).</p>
-      <div class="field-file  field-file--sm">
-        <div class="field-file__name">Выбор файлов</div>
-        <label class="field-file__input-wrap">
-          <input class="field-file__input" type="file" data-multiple-caption="файлов выбрано: {count}" multiple>
-          <div class="field-file__name-text" data-button-text="Выбрать файл(ы)">Ничего не выбрано</div>
-          <div class="field-file__help-text">Отображение выбранного файла(ов) требует Javascript-а. Стилизация — не требует.</div>
-        </label>
+    <div class="blocks-library__code-wrapper">
+      <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+      <div class="blocks-library__code">
+        <pre>
+          <code class="html">&lt;div class=&quot;field-file&quot;&gt;</code>
+          <code class="html">  &lt;div class=&quot;field-file__name&quot;&gt;&#x412;&#x44b;&#x431;&#x43e;&#x440; &#x444;&#x430;&#x439;&#x43b;&#x43e;&#x432;&lt;/div&gt;</code>
+          <code class="html">  &lt;label class=&quot;field-file__input-wrap&quot;&gt;</code>
+          <code class="html">    &lt;input class=&quot;field-file__input&quot; type=&quot;file&quot; data-multiple-caption=&quot;&#x444;&#x430;&#x439;&#x43b;&#x43e;&#x432; &#x432;&#x44b;&#x431;&#x440;&#x430;&#x43d;&#x43e;: {count}&quot; multiple&gt;</code>
+          <code class="html">    &lt;div class=&quot;field-file__name-text&quot; data-button-text=&quot;&#x412;&#x44b;&#x431;&#x440;&#x430;&#x442;&#x44c; &#x444;&#x430;&#x439;&#x43b;(&#x44b;)&quot;&gt;&#x41d;&#x438;&#x447;&#x435;&#x433;&#x43e; &#x43d;&#x435; &#x432;&#x44b;&#x431;&#x440;&#x430;&#x43d;&#x43e;&lt;/div&gt;</code>
+          <code class="html">    &lt;div class=&quot;field-file__help-text&quot;&gt;&#x41e;&#x442;&#x43e;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43d;&#x438;&#x435; &#x432;&#x44b;&#x431;&#x440;&#x430;&#x43d;&#x43d;&#x43e;&#x433;&#x43e; &#x444;&#x430;&#x439;&#x43b;&#x430;(&#x43e;&#x432;) &#x442;&#x440;&#x435;&#x431;&#x443;&#x435;&#x442; Javascript-&#x430;. &#x421;&#x442;&#x438;&#x43b;&#x438;&#x437;&#x430;&#x446;&#x438;&#x44f; &mdash; &#x43d;&#x435; &#x442;&#x440;&#x435;&#x431;&#x443;&#x435;&#x442;.&lt;/div&gt;</code>
+          <code class="html">  &lt;/label&gt;</code>
+          <code class="html">&lt;/div&gt;</code>
+        </pre>
       </div>
     </div>
+
+    <div class="blocks-library__sub-item">
+      <h2 class="blocks-library__sub-item-title">Увеличение размера</h2>
+      <p>Размер изменён благодаря модификатору. Модификатор меняет <code>font-size</code> блока в <code>em</code>-ах (реальный размер блока продолжает зависеть от размера шрифта родителя).</p>
+      <div class="js-font-resizer">
+        <div class="field-file  field-file--lg">
+          <div class="field-file__name">Выбор файлов</div>
+          <label class="field-file__input-wrap">
+            <input class="field-file__input" type="file" data-multiple-caption="файлов выбрано: {count}" multiple>
+            <div class="field-file__name-text" data-button-text="Выбрать файл(ы)">Ничего не выбрано</div>
+            <div class="field-file__help-text">Отображение выбранного файла(ов) требует Javascript-а. Стилизация — не требует.</div>
+          </label>
+        </div>
+      </div>
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre>
+            <code class="html">&lt;div class=&quot;field-file  field-file--lg&quot;&gt;</code>
+            <code class="html">  &lt;div class=&quot;field-file__name&quot;&gt;&#x412;&#x44b;&#x431;&#x43e;&#x440; &#x444;&#x430;&#x439;&#x43b;&#x43e;&#x432;&lt;/div&gt;</code>
+            <code class="html">  &lt;label class=&quot;field-file__input-wrap&quot;&gt;</code>
+            <code class="html">    &lt;input class=&quot;field-file__input&quot; type=&quot;file&quot; data-multiple-caption=&quot;&#x444;&#x430;&#x439;&#x43b;&#x43e;&#x432; &#x432;&#x44b;&#x431;&#x440;&#x430;&#x43d;&#x43e;: {count}&quot; multiple&gt;</code>
+            <code class="html">    &lt;div class=&quot;field-file__name-text&quot; data-button-text=&quot;&#x412;&#x44b;&#x431;&#x440;&#x430;&#x442;&#x44c; &#x444;&#x430;&#x439;&#x43b;(&#x44b;)&quot;&gt;&#x41d;&#x438;&#x447;&#x435;&#x433;&#x43e; &#x43d;&#x435; &#x432;&#x44b;&#x431;&#x440;&#x430;&#x43d;&#x43e;&lt;/div&gt;</code>
+            <code class="html">    &lt;div class=&quot;field-file__help-text&quot;&gt;&#x41e;&#x442;&#x43e;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43d;&#x438;&#x435; &#x432;&#x44b;&#x431;&#x440;&#x430;&#x43d;&#x43d;&#x43e;&#x433;&#x43e; &#x444;&#x430;&#x439;&#x43b;&#x430;(&#x43e;&#x432;) &#x442;&#x440;&#x435;&#x431;&#x443;&#x435;&#x442; Javascript-&#x430;. &#x421;&#x442;&#x438;&#x43b;&#x438;&#x437;&#x430;&#x446;&#x438;&#x44f; &mdash; &#x43d;&#x435; &#x442;&#x440;&#x435;&#x431;&#x443;&#x435;&#x442;.&lt;/div&gt;</code>
+            <code class="html">  &lt;/label&gt;</code>
+            <code class="html">&lt;/div&gt;</code>
+          </pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="blocks-library__sub-item">
+      <h2 class="blocks-library__sub-item-title">Уменьшение размера</h2>
+      <p>Размер изменён благодаря модификатору. Модификатор меняет <code>font-size</code> блока в <code>em</code>-ах (реальный размер блока продолжает зависеть от размера шрифта родителя).</p>
+      <div class="js-font-resizer">
+        <div class="field-file  field-file--sm">
+          <div class="field-file__name">Выбор файлов</div>
+          <label class="field-file__input-wrap">
+            <input class="field-file__input" type="file" data-multiple-caption="файлов выбрано: {count}" multiple>
+            <div class="field-file__name-text" data-button-text="Выбрать файл(ы)">Ничего не выбрано</div>
+            <div class="field-file__help-text">Отображение выбранного файла(ов) требует Javascript-а. Стилизация — не требует.</div>
+          </label>
+        </div>
+        <div class="field-file  field-file--sm">
+          <div class="field-file__name">Выбор файлов</div>
+          <label class="field-file__input-wrap">
+            <input class="field-file__input" type="file" data-multiple-caption="файлов выбрано: {count}" multiple>
+            <div class="field-file__name-text" data-button-text="Выбрать файл(ы)">Ничего не выбрано</div>
+            <div class="field-file__help-text">Отображение выбранного файла(ов) требует Javascript-а. Стилизация — не требует.</div>
+          </label>
+        </div>
+      </div>
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre>
+            <code class="html">&lt;div class=&quot;field-file  field-file--sm&quot;&gt;</code>
+            <code class="html">  &lt;div class=&quot;field-file__name&quot;&gt;&#x412;&#x44b;&#x431;&#x43e;&#x440; &#x444;&#x430;&#x439;&#x43b;&#x43e;&#x432;&lt;/div&gt;</code>
+            <code class="html">  &lt;label class=&quot;field-file__input-wrap&quot;&gt;</code>
+            <code class="html">    &lt;input class=&quot;field-file__input&quot; type=&quot;file&quot; data-multiple-caption=&quot;&#x444;&#x430;&#x439;&#x43b;&#x43e;&#x432; &#x432;&#x44b;&#x431;&#x440;&#x430;&#x43d;&#x43e;: {count}&quot; multiple&gt;</code>
+            <code class="html">    &lt;div class=&quot;field-file__name-text&quot; data-button-text=&quot;&#x412;&#x44b;&#x431;&#x440;&#x430;&#x442;&#x44c; &#x444;&#x430;&#x439;&#x43b;(&#x44b;)&quot;&gt;&#x41d;&#x438;&#x447;&#x435;&#x433;&#x43e; &#x43d;&#x435; &#x432;&#x44b;&#x431;&#x440;&#x430;&#x43d;&#x43e;&lt;/div&gt;</code>
+            <code class="html">    &lt;div class=&quot;field-file__help-text&quot;&gt;&#x41e;&#x442;&#x43e;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43d;&#x438;&#x435; &#x432;&#x44b;&#x431;&#x440;&#x430;&#x43d;&#x43d;&#x43e;&#x433;&#x43e; &#x444;&#x430;&#x439;&#x43b;&#x430;(&#x43e;&#x432;) &#x442;&#x440;&#x435;&#x431;&#x443;&#x435;&#x442; Javascript-&#x430;. &#x421;&#x442;&#x438;&#x43b;&#x438;&#x437;&#x430;&#x446;&#x438;&#x44f; &mdash; &#x43d;&#x435; &#x442;&#x440;&#x435;&#x431;&#x443;&#x435;&#x442;.&lt;/div&gt;</code>
+            <code class="html">  &lt;/label&gt;</code>
+            <code class="html">&lt;/div&gt;</code>
+          </pre>
+        </div>
+      </div>
+    </div>
+
   </section>
 
 
