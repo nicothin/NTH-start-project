@@ -2715,7 +2715,7 @@
     </div>
 
     <div class="blocks-library__sub-item">
-      <h2 class="blocks-library__sub-item-title">Увеличение размера</h2>
+      <h2 class="blocks-library__sub-item-title">Уменьшение размера</h2>
       <p>Размер изменён благодаря модификатору. Модификатор меняет <code>font-size</code> блока в <code>em</code>-ах (реальный размер блока продолжает зависеть от размера шрифта родителя).</p>
       <div class="js-font-resizer">
         <div class="row">
@@ -2787,26 +2787,19 @@
 
 
   <section class="blocks-library__item" id="field-file" data-name=".field-file">
-    <div class="field-file">
-      <div class="field-file__name">Выбор файлов</div>
-      <label class="field-file__input-wrap">
-        <input class="field-file__input" type="file" data-multiple-caption="файлов выбрано: {count}" multiple>
-        <div class="field-file__name-text" data-button-text="Выбрать файл(ы)">Ничего не выбрано</div>
-        <div class="field-file__help-text">Отображение выбранного файла(ов) требует Javascript-а. Стилизация — не требует.</div>
-      </label>
-    </div>
-    <div class="field-file" style="font-size:1.5em">
-      <div class="field-file__name">Увеличен font-size родителя</div>
-      <label class="field-file__input-wrap">
-        <input class="field-file__input" type="file" data-multiple-caption="файлов выбрано: {count}" multiple>
-        <div class="field-file__name-text" data-button-text="Выбрать файл(ы)">Ничего не выбрано</div>
-        <div class="field-file__help-text">Отображение выбранного файла(ов) требует Javascript-а. Стилизация — не требует.</div>
-      </label>
-    </div>
-    <div class="blocks-library__sub-item">
-      <b class="blocks-library__sub-item-title"><code>.field-file.field-file--lg</code> (отдельный less-файл)</b>
-      <p>Размер изменён благодаря модификатору. Модификатор меняет <code>font-size</code> блока в <code>em</code>-ах (реальный размер блока продолжает зависеть от размера шрифта родителя).</p>
-      <div class="field-file  field-file--lg">
+
+    <h1 class="blocks-library__item-title">Выбор файлов</h1>
+
+    <div class="js-font-resizer">
+      <div class="field-file">
+        <div class="field-file__name">Выбор файлов</div>
+        <label class="field-file__input-wrap">
+          <input class="field-file__input" type="file" data-multiple-caption="файлов выбрано: {count}" multiple>
+          <div class="field-file__name-text" data-button-text="Выбрать файл(ы)">Ничего не выбрано</div>
+          <div class="field-file__help-text">Отображение выбранного файла(ов) требует Javascript-а. Стилизация — не требует.</div>
+        </label>
+      </div>
+      <div class="field-file">
         <div class="field-file__name">Выбор файлов</div>
         <label class="field-file__input-wrap">
           <input class="field-file__input" type="file" data-multiple-caption="файлов выбрано: {count}" multiple>
@@ -2815,237 +2808,409 @@
         </label>
       </div>
     </div>
-    <div class="blocks-library__sub-item">
-      <b class="blocks-library__sub-item-title"><code>.field-file.field-file--sm</code> (отдельный less-файл)</b>
-      <p>Размер изменён благодаря модификатору. Модификатор меняет <code>font-size</code> блока в <code>em</code>-ах (реальный размер блока продолжает зависеть от размера шрифта родителя).</p>
-      <div class="field-file  field-file--sm">
-        <div class="field-file__name">Выбор файлов</div>
-        <label class="field-file__input-wrap">
-          <input class="field-file__input" type="file" data-multiple-caption="файлов выбрано: {count}" multiple>
-          <div class="field-file__name-text" data-button-text="Выбрать файл(ы)">Ничего не выбрано</div>
-          <div class="field-file__help-text">Отображение выбранного файла(ов) требует Javascript-а. Стилизация — не требует.</div>
-        </label>
+    <div class="blocks-library__code-wrapper">
+      <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+      <div class="blocks-library__code">
+        <pre>
+          <code class="html">&lt;div class=&quot;field-file&quot;&gt;</code>
+          <code class="html">  &lt;div class=&quot;field-file__name&quot;&gt;&#x412;&#x44b;&#x431;&#x43e;&#x440; &#x444;&#x430;&#x439;&#x43b;&#x43e;&#x432;&lt;/div&gt;</code>
+          <code class="html">  &lt;label class=&quot;field-file__input-wrap&quot;&gt;</code>
+          <code class="html">    &lt;input class=&quot;field-file__input&quot; type=&quot;file&quot; data-multiple-caption=&quot;&#x444;&#x430;&#x439;&#x43b;&#x43e;&#x432; &#x432;&#x44b;&#x431;&#x440;&#x430;&#x43d;&#x43e;: {count}&quot; multiple&gt;</code>
+          <code class="html">    &lt;div class=&quot;field-file__name-text&quot; data-button-text=&quot;&#x412;&#x44b;&#x431;&#x440;&#x430;&#x442;&#x44c; &#x444;&#x430;&#x439;&#x43b;(&#x44b;)&quot;&gt;&#x41d;&#x438;&#x447;&#x435;&#x433;&#x43e; &#x43d;&#x435; &#x432;&#x44b;&#x431;&#x440;&#x430;&#x43d;&#x43e;&lt;/div&gt;</code>
+          <code class="html">    &lt;div class=&quot;field-file__help-text&quot;&gt;&#x41e;&#x442;&#x43e;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43d;&#x438;&#x435; &#x432;&#x44b;&#x431;&#x440;&#x430;&#x43d;&#x43d;&#x43e;&#x433;&#x43e; &#x444;&#x430;&#x439;&#x43b;&#x430;(&#x43e;&#x432;) &#x442;&#x440;&#x435;&#x431;&#x443;&#x435;&#x442; Javascript-&#x430;. &#x421;&#x442;&#x438;&#x43b;&#x438;&#x437;&#x430;&#x446;&#x438;&#x44f; &mdash; &#x43d;&#x435; &#x442;&#x440;&#x435;&#x431;&#x443;&#x435;&#x442;.&lt;/div&gt;</code>
+          <code class="html">  &lt;/label&gt;</code>
+          <code class="html">&lt;/div&gt;</code>
+        </pre>
       </div>
     </div>
+
+    <div class="blocks-library__sub-item">
+      <h2 class="blocks-library__sub-item-title">Увеличение размера</h2>
+      <p>Размер изменён благодаря модификатору. Модификатор меняет <code>font-size</code> блока в <code>em</code>-ах (реальный размер блока продолжает зависеть от размера шрифта родителя).</p>
+      <div class="js-font-resizer">
+        <div class="field-file  field-file--lg">
+          <div class="field-file__name">Выбор файлов</div>
+          <label class="field-file__input-wrap">
+            <input class="field-file__input" type="file" data-multiple-caption="файлов выбрано: {count}" multiple>
+            <div class="field-file__name-text" data-button-text="Выбрать файл(ы)">Ничего не выбрано</div>
+            <div class="field-file__help-text">Отображение выбранного файла(ов) требует Javascript-а. Стилизация — не требует.</div>
+          </label>
+        </div>
+      </div>
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre>
+            <code class="html">&lt;div class=&quot;field-file  field-file--lg&quot;&gt;</code>
+            <code class="html">  &lt;div class=&quot;field-file__name&quot;&gt;&#x412;&#x44b;&#x431;&#x43e;&#x440; &#x444;&#x430;&#x439;&#x43b;&#x43e;&#x432;&lt;/div&gt;</code>
+            <code class="html">  &lt;label class=&quot;field-file__input-wrap&quot;&gt;</code>
+            <code class="html">    &lt;input class=&quot;field-file__input&quot; type=&quot;file&quot; data-multiple-caption=&quot;&#x444;&#x430;&#x439;&#x43b;&#x43e;&#x432; &#x432;&#x44b;&#x431;&#x440;&#x430;&#x43d;&#x43e;: {count}&quot; multiple&gt;</code>
+            <code class="html">    &lt;div class=&quot;field-file__name-text&quot; data-button-text=&quot;&#x412;&#x44b;&#x431;&#x440;&#x430;&#x442;&#x44c; &#x444;&#x430;&#x439;&#x43b;(&#x44b;)&quot;&gt;&#x41d;&#x438;&#x447;&#x435;&#x433;&#x43e; &#x43d;&#x435; &#x432;&#x44b;&#x431;&#x440;&#x430;&#x43d;&#x43e;&lt;/div&gt;</code>
+            <code class="html">    &lt;div class=&quot;field-file__help-text&quot;&gt;&#x41e;&#x442;&#x43e;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43d;&#x438;&#x435; &#x432;&#x44b;&#x431;&#x440;&#x430;&#x43d;&#x43d;&#x43e;&#x433;&#x43e; &#x444;&#x430;&#x439;&#x43b;&#x430;(&#x43e;&#x432;) &#x442;&#x440;&#x435;&#x431;&#x443;&#x435;&#x442; Javascript-&#x430;. &#x421;&#x442;&#x438;&#x43b;&#x438;&#x437;&#x430;&#x446;&#x438;&#x44f; &mdash; &#x43d;&#x435; &#x442;&#x440;&#x435;&#x431;&#x443;&#x435;&#x442;.&lt;/div&gt;</code>
+            <code class="html">  &lt;/label&gt;</code>
+            <code class="html">&lt;/div&gt;</code>
+          </pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="blocks-library__sub-item">
+      <h2 class="blocks-library__sub-item-title">Уменьшение размера</h2>
+      <p>Размер изменён благодаря модификатору. Модификатор меняет <code>font-size</code> блока в <code>em</code>-ах (реальный размер блока продолжает зависеть от размера шрифта родителя).</p>
+      <div class="js-font-resizer">
+        <div class="field-file  field-file--sm">
+          <div class="field-file__name">Выбор файлов</div>
+          <label class="field-file__input-wrap">
+            <input class="field-file__input" type="file" data-multiple-caption="файлов выбрано: {count}" multiple>
+            <div class="field-file__name-text" data-button-text="Выбрать файл(ы)">Ничего не выбрано</div>
+            <div class="field-file__help-text">Отображение выбранного файла(ов) требует Javascript-а. Стилизация — не требует.</div>
+          </label>
+        </div>
+        <div class="field-file  field-file--sm">
+          <div class="field-file__name">Выбор файлов</div>
+          <label class="field-file__input-wrap">
+            <input class="field-file__input" type="file" data-multiple-caption="файлов выбрано: {count}" multiple>
+            <div class="field-file__name-text" data-button-text="Выбрать файл(ы)">Ничего не выбрано</div>
+            <div class="field-file__help-text">Отображение выбранного файла(ов) требует Javascript-а. Стилизация — не требует.</div>
+          </label>
+        </div>
+      </div>
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre>
+            <code class="html">&lt;div class=&quot;field-file  field-file--sm&quot;&gt;</code>
+            <code class="html">  &lt;div class=&quot;field-file__name&quot;&gt;&#x412;&#x44b;&#x431;&#x43e;&#x440; &#x444;&#x430;&#x439;&#x43b;&#x43e;&#x432;&lt;/div&gt;</code>
+            <code class="html">  &lt;label class=&quot;field-file__input-wrap&quot;&gt;</code>
+            <code class="html">    &lt;input class=&quot;field-file__input&quot; type=&quot;file&quot; data-multiple-caption=&quot;&#x444;&#x430;&#x439;&#x43b;&#x43e;&#x432; &#x432;&#x44b;&#x431;&#x440;&#x430;&#x43d;&#x43e;: {count}&quot; multiple&gt;</code>
+            <code class="html">    &lt;div class=&quot;field-file__name-text&quot; data-button-text=&quot;&#x412;&#x44b;&#x431;&#x440;&#x430;&#x442;&#x44c; &#x444;&#x430;&#x439;&#x43b;(&#x44b;)&quot;&gt;&#x41d;&#x438;&#x447;&#x435;&#x433;&#x43e; &#x43d;&#x435; &#x432;&#x44b;&#x431;&#x440;&#x430;&#x43d;&#x43e;&lt;/div&gt;</code>
+            <code class="html">    &lt;div class=&quot;field-file__help-text&quot;&gt;&#x41e;&#x442;&#x43e;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43d;&#x438;&#x435; &#x432;&#x44b;&#x431;&#x440;&#x430;&#x43d;&#x43d;&#x43e;&#x433;&#x43e; &#x444;&#x430;&#x439;&#x43b;&#x430;(&#x43e;&#x432;) &#x442;&#x440;&#x435;&#x431;&#x443;&#x435;&#x442; Javascript-&#x430;. &#x421;&#x442;&#x438;&#x43b;&#x438;&#x437;&#x430;&#x446;&#x438;&#x44f; &mdash; &#x43d;&#x435; &#x442;&#x440;&#x435;&#x431;&#x443;&#x435;&#x442;.&lt;/div&gt;</code>
+            <code class="html">  &lt;/label&gt;</code>
+            <code class="html">&lt;/div&gt;</code>
+          </pre>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+
+
+  <section class="blocks-library__item" id="field-actions" data-name=".field-actions">
+
+    <h1 class="blocks-library__item-title">Блок кнопок формы</h1>
+
+    <div class="js-font-resizer">
+      <div class="field-actions">
+        <div class="field-actions__text">Поля отмеченные * обязательны для заполнения.</div>
+        <button class="btn">Отправить</button>
+        <br>
+        <button class="btn">Отменить</button>
+      </div>
+    </div>
+    <div class="blocks-library__code-wrapper">
+      <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+      <div class="blocks-library__code">
+        <pre>
+          <code class="html">&lt;div class=&quot;field-actions&quot;&gt;</code>
+          <code class="html">  &lt;div class=&quot;field-actions__text&quot;&gt;&#x41f;&#x43e;&#x43b;&#x44f; &#x43e;&#x442;&#x43c;&#x435;&#x447;&#x435;&#x43d;&#x43d;&#x44b;&#x435; * &#x43e;&#x431;&#x44f;&#x437;&#x430;&#x442;&#x435;&#x43b;&#x44c;&#x43d;&#x44b; &#x434;&#x43b;&#x44f; &#x437;&#x430;&#x43f;&#x43e;&#x43b;&#x43d;&#x435;&#x43d;&#x438;&#x44f;.&lt;/div&gt;</code>
+          <code class="html">  &lt;button class=&quot;btn&quot;&gt;&#x41e;&#x442;&#x43f;&#x440;&#x430;&#x432;&#x438;&#x442;&#x44c;&lt;/button&gt;</code>
+          <code class="html">  &lt;br&gt;</code>
+          <code class="html">  &lt;button class=&quot;btn&quot;&gt;&#x41e;&#x442;&#x43c;&#x435;&#x43d;&#x438;&#x442;&#x44c;&lt;/button&gt;</code>
+          <code class="html">&lt;/div&gt;</code>
+        </pre>
+      </div>
+    </div>
+
   </section>
 
 
 
   <section class="blocks-library__item" id="form" data-name=".form">
-    <form action="" class="form">
-      <fieldset>
-        <legend>Форма</legend>
-        <label class="field-text">
-          <div class="field-text__name">Название поля</div>
-          <div class="field-text__input-wrap">
-            <input class="field-text__input" type="text" placeholder="input[type=text]">
-            <div class="field-text__help-text">Обёртка — <code>&lt;label&gt;</code>.</div>
-          </div>
-        </label>
-        <div class="field-checkbox">
-          <div class="field-checkbox__title">Общее название</div>
-          <div class="field-checkbox__input-wrap">
-            <label class="field-checkbox__name">
-              <input class="field-checkbox__input" type="checkbox">
-              <span class="field-checkbox__name-text">Флажок</span>
-            </label>
-            <label class="field-checkbox__name">
-              <input class="field-checkbox__input" type="checkbox">
-              <span class="field-checkbox__name-text">Флажок</span>
-            </label>
-            <label class="field-checkbox__name">
-              <input class="field-checkbox__input" type="checkbox">
-              <span class="field-checkbox__name-text">Флажок</span>
-            </label>
-            <label class="field-checkbox__name">
-              <input class="field-checkbox__input" type="checkbox">
-              <span class="field-checkbox__name-text">Флажок</span>
-            </label>
-            <label class="field-checkbox__name">
-              <input class="field-checkbox__input" type="checkbox">
-              <span class="field-checkbox__name-text">Флажок</span>
-            </label>
-            <div class="field-checkbox__help-text">Есть общее название.</div>
-          </div>
-        </div>
-        <label class="field-select">
-          <div class="field-select__name">Название поля</div>
-          <div class="field-select__select-wrap">
-            <select class="field-select__select">
-              <optgroup label="optgroup">
-                <option>Значение 1</option>
-                <option>Значение 2</option>
-                <option>Значение 3</option>
-              </optgroup>
-              <option>Значение 10</option>
-            </select>
-            <small class="field-select__help-text">Обёртка — <code>&lt;label&gt;</code>.</small>
-          </div>
-        </label>
-        <div class="field-file">
-          <div class="field-file__name">Выбор файлов</div>
-          <label class="field-file__input-wrap">
-            <input class="field-file__input" type="file" data-multiple-caption="файлов выбрано: {count}" multiple>
-            <div class="field-file__name-text" data-button-text="Выбрать файл(ы)">Ничего не выбрано</div>
-            <div class="field-file__help-text">Отображение выбранного файла(ов) требует Javascript-а. Стилизация — не требует.</div>
+
+    <h1 class="blocks-library__item-title">Форма</h1>
+
+    <p>Форма как БЭМ-блок. Добавляется стилизация <code>fieldset</code>, появляется возможность использовать модификаторы (см. ниже).</p>
+
+    <div class="js-font-resizer">
+      <form action="" class="form">
+        <fieldset>
+          <legend>Файлдсет первый</legend>
+          <label class="field-text">
+            <div class="field-text__name">Название поля</div>
+            <div class="field-text__input-wrap">
+              <input class="field-text__input" type="text" placeholder="input[type=text]">
+              <div class="field-text__help-text">Обёртка — <code>&lt;label&gt;</code>.</div>
+            </div>
           </label>
-        </div>
-        <div class="field-range">
-          <div class="field-range__name">Range</div>
-          <div class="field-range__input-wrap">
-            <input class="field-range__input" type="range" min="1" max="100" step="1" value="70">
-            <div class="field-range__help-text"><code>min="1" max="100" step="1" value="70"</code></div>
+          <div class="field-checkbox">
+            <div class="field-checkbox__title">Общее название</div>
+            <div class="field-checkbox__input-wrap">
+              <label class="field-checkbox__name">
+                <input class="field-checkbox__input" type="checkbox">
+                <span class="field-checkbox__name-text">Флажок</span>
+              </label>
+              <label class="field-checkbox__name">
+                <input class="field-checkbox__input" type="checkbox">
+                <span class="field-checkbox__name-text">Флажок</span>
+              </label>
+              <label class="field-checkbox__name">
+                <input class="field-checkbox__input" type="checkbox">
+                <span class="field-checkbox__name-text">Флажок</span>
+              </label>
+              <label class="field-checkbox__name">
+                <input class="field-checkbox__input" type="checkbox">
+                <span class="field-checkbox__name-text">Флажок</span>
+              </label>
+              <label class="field-checkbox__name">
+                <input class="field-checkbox__input" type="checkbox">
+                <span class="field-checkbox__name-text">Флажок</span>
+              </label>
+              <div class="field-checkbox__help-text">Есть общее название.</div>
+            </div>
           </div>
-        </div>
-        <div class="field-actions">
-          <button class="btn">Отправить</button>
-        </div>
-      </fieldset>
-    </form>
-    <div class="blocks-library__sub-item">
-      <b class="blocks-library__sub-item-title"><code>.form.form--horizontal</code> (отдельный less-файл)</b>
-      <form action="" class="form  form--horizontal">
-        <label class="field-text">
-          <div class="field-text__name">Название поля</div>
-          <div class="field-text__input-wrap">
-            <input class="field-text__input" type="text" placeholder="input[type=text]">
-            <div class="field-text__help-text">Обёртка — <code>&lt;label&gt;</code>.</div>
-          </div>
-        </label>
-        <label class="field-text">
-          <div class="field-text__name">Название поля</div>
-          <div class="field-text__input-wrap">
-            <textarea class="field-text__input" rows="3" placeholder="textarea"></textarea>
-            <div class="field-text__help-text">Обёртка — <code>&lt;label&gt;</code>.</div>
-          </div>
-        </label>
-        <div class="field-checkbox">
-          <div class="field-checkbox__title">Общее название</div>
-          <div class="field-checkbox__input-wrap">
-            <label class="field-checkbox__name">
-              <input class="field-checkbox__input" type="checkbox">
-              <span class="field-checkbox__name-text">Флажок</span>
-            </label>
-            <label class="field-checkbox__name">
-              <input class="field-checkbox__input" type="checkbox">
-              <span class="field-checkbox__name-text">Флажок</span>
-            </label>
-            <label class="field-checkbox__name">
-              <input class="field-checkbox__input" type="checkbox">
-              <span class="field-checkbox__name-text">Флажок</span>
-            </label>
-            <label class="field-checkbox__name">
-              <input class="field-checkbox__input" type="checkbox">
-              <span class="field-checkbox__name-text">Флажок</span>
-            </label>
-            <label class="field-checkbox__name">
-              <input class="field-checkbox__input" type="checkbox">
-              <span class="field-checkbox__name-text">Флажок</span>
-            </label>
-            <div class="field-checkbox__help-text">Есть общее название.</div>
-          </div>
-        </div>
-        <div class="field-radio">
-          <div class="field-radio__title"></div>
-          <div class="field-radio__input-wrap">
-            <label class="field-radio__name">
-              <input class="field-radio__input" type="radio" name="one1">
-              <span class="field-radio__name-text">Радиокнопка</span>
-            </label>
-            <label class="field-radio__name">
-              <input class="field-radio__input" type="radio" name="one1">
-              <span class="field-radio__name-text">Наверное. И тут много строк. Далеко-далеко за словесными горами в стране, гласных и согласных. Наверное. И тут много строк. Далеко-далеко за словесными горами в стране, гласных и согласных.</span>
-            </label>
-            <div class="field-radio__help-text">Нет общего названия, но оставлен пустой <code>div</code> для него.</div>
-          </div>
-        </div>
-        <div class="field-radio">
-          <div class="field-radio__input-wrap">
-            <label class="field-radio__name">
-              <input class="field-radio__input" type="radio" name="two1">
-              <span class="field-radio__name-text">Радиокнопка</span>
-            </label>
-            <label class="field-radio__name">
-              <input class="field-radio__input" type="radio" name="two1">
-              <span class="field-radio__name-text">Наверное.</span>
-            </label>
-            <div class="field-radio__help-text">Нет общего названия и отсутствует пустой <code>div</code> для него.</div>
-          </div>
-        </div>
-        <div class="field-radio">
-          <div class="field-radio__input-wrap">
-            <label class="field-radio__name">
-              <input class="field-radio__input" type="radio" name="two2">
-              <span class="field-radio__name-text">Радиокнопка</span>
-            </label>
-            <label class="field-radio__name">
-              <input class="field-radio__input" type="radio" name="two2">
-              <span class="field-radio__name-text">Наверное. И тут много строк. Далеко-далеко за словесными горами в стране, гласных и согласных. И тут много строк. Далеко-далеко за словесными горами в стране, гласных и согласных.</span>
-            </label>
-            <div class="field-radio__help-text">Нет общего названия и отсутствует пустой <code>div</code> для него.</div>
-          </div>
-        </div>
-        <div class="field-toggler">
-          <div class="field-toggler__title">Переключатели-флажки</div>
-          <div class="field-toggler__input-wrap">
-            <label class="field-toggler__name">
-              <input class="field-toggler__input" type="checkbox" checked="">
-              <span class="field-toggler__name-text">Да</span>
-            </label>
-            <label class="field-toggler__name">
-              <input class="field-toggler__input" type="checkbox">
-              <span class="field-toggler__name-text">Наверное.  И тут много строк. Далеко-далеко за словесными горами в стране, гласных и согласных. И тут много строк. Далеко-далеко за словесными горами в стране, гласных и согласных.</span>
-            </label>
-            <div class="field-toggler__help-text">Графика не используется, всё нарисовано CSS-ом.</div>
-          </div>
-        </div>
-        <label class="field-select">
-          <div class="field-select__name">Название поля</div>
-          <div class="field-select__select-wrap">
-            <select class="field-select__select">
-              <optgroup label="optgroup">
-                <option>Значение 1</option>
-                <option>Значение 2</option>
-                <option>Значение 3</option>
-              </optgroup>
-              <option>Значение 10</option>
-            </select>
-            <small class="field-select__help-text">Обёртка — <code>&lt;label&gt;</code>.</small>
-          </div>
-        </label>
-        <label class="field-select">
-          <div class="field-select__name">Название поля</div>
-          <div class="field-select__select-wrap">
-            <select class="field-select__select" multiple>
-              <optgroup label="optgroup">
-                <option>Значение 1</option>
-                <option>Значение 2</option>
-                <option>Значение 3</option>
-              </optgroup>
-              <option>Значение 10</option>
-            </select>
-            <small class="field-select__help-text">Обёртка — <code>&lt;label&gt;</code>.</small>
-          </div>
-        </label>
-        <div class="field-file">
-          <div class="field-file__name">Выбор файлов</div>
-          <label class="field-file__input-wrap">
-            <input class="field-file__input" type="file" data-multiple-caption="файлов выбрано: {count}" multiple>
-            <div class="field-file__name-text" data-button-text="Выбрать файл(ы)">Ничего не выбрано</div>
-            <div class="field-file__help-text">Отображение выбранного файла(ов) требует Javascript-а. Стилизация — не требует.</div>
+        </fieldset>
+        <fieldset>
+          <legend>Файлдсет второй</legend>
+          <label class="field-select">
+            <div class="field-select__name">Название поля</div>
+            <div class="field-select__select-wrap">
+              <select class="field-select__select">
+                <optgroup label="optgroup">
+                  <option>Значение 1</option>
+                  <option>Значение 2</option>
+                  <option>Значение 3</option>
+                </optgroup>
+                <option>Значение 10</option>
+              </select>
+              <small class="field-select__help-text">Обёртка — <code>&lt;label&gt;</code>.</small>
+            </div>
           </label>
-        </div>
-        <div class="field-range">
-          <div class="field-range__name">Range</div>
-          <div class="field-range__input-wrap">
-            <input class="field-range__input" type="range" min="1" max="100" step="1" value="70">
-            <div class="field-range__help-text"><code>min="1" max="100" step="1" value="70"</code></div>
+          <div class="field-file">
+            <div class="field-file__name">Выбор файлов</div>
+            <label class="field-file__input-wrap">
+              <input class="field-file__input" type="file" data-multiple-caption="файлов выбрано: {count}" multiple>
+              <div class="field-file__name-text" data-button-text="Выбрать файл(ы)">Ничего не выбрано</div>
+              <div class="field-file__help-text">Отображение выбранного файла(ов) требует Javascript-а. Стилизация — не требует.</div>
+            </label>
           </div>
-        </div>
+          <div class="field-range">
+            <div class="field-range__name">Range</div>
+            <div class="field-range__input-wrap">
+              <input class="field-range__input" type="range" min="1" max="100" step="1" value="70">
+              <div class="field-range__help-text"><code>min="1" max="100" step="1" value="70"</code></div>
+            </div>
+          </div>
+        </fieldset>
         <div class="field-actions">
+          <div class="field-actions__text">Поля отмеченные * обязательны для заполнения.</div>
           <button class="btn">Отправить</button>
         </div>
       </form>
+    </div>
+    <div class="blocks-library__code-wrapper">
+      <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+      <div class="blocks-library__code">
+        <pre>
+          <code class="html">&lt;form action=&quot;&quot; class=&quot;form&quot;&gt;</code>
+          <code class="html">  &lt;fieldset&gt;</code>
+          <code class="html">    &lt;legend&gt;&#x424;&#x430;&#x439;&#x43b;&#x434;&#x441;&#x435;&#x442; &#x43f;&#x435;&#x440;&#x432;&#x44b;&#x439;&lt;/legend&gt;</code>
+          <code class="html">    &lt;label class=&quot;field-text&quot;&gt;...&lt;/label&gt;</code>
+          <code class="html">    &lt;div class=&quot;field-checkbox&quot;&gt;...&lt;/div&gt;</code>
+          <code class="html">  &lt;/fieldset&gt;</code>
+          <code class="html">  &lt;fieldset&gt;</code>
+          <code class="html">    &lt;legend&gt;&#x424;&#x430;&#x439;&#x43b;&#x434;&#x441;&#x435;&#x442; &#x432;&#x442;&#x43e;&#x440;&#x43e;&#x439;&lt;/legend&gt;</code>
+          <code class="html">    &lt;label class=&quot;field-select&quot;&gt;...&lt;/label&gt;</code>
+          <code class="html">    &lt;div class=&quot;field-file&quot;&gt;...&lt;/div&gt;</code>
+          <code class="html">    &lt;div class=&quot;field-range&quot;&gt;...&lt;/div&gt;</code>
+          <code class="html">  &lt;/fieldset&gt;</code>
+          <code class="html">  &lt;div class=&quot;field-actions&quot;&gt;</code>
+          <code class="html">    &lt;button class=&quot;btn&quot;&gt;&#x41e;&#x442;&#x43f;&#x440;&#x430;&#x432;&#x438;&#x442;&#x44c;&lt;/button&gt;</code>
+          <code class="html">  &lt;/div&gt;</code>
+          <code class="html">&lt;/form&gt;</code>
+        </pre>
+      </div>
+    </div>
+
+    <div class="blocks-library__sub-item">
+      <h1 class="blocks-library__sub-item-title">Горизонтальное расположение названий и полей</h1>
+      <p>Только начиная с SM ширины. Модификатор. Отдельный less-файл.</p>
+
+      <div class="js-font-resizer">
+        <form action="" class="form  form--horizontal">
+          <label class="field-text">
+            <div class="field-text__name">Название поля</div>
+            <div class="field-text__input-wrap">
+              <input class="field-text__input" type="text" placeholder="input[type=text]">
+              <div class="field-text__help-text">Обёртка — <code>&lt;label&gt;</code>.</div>
+            </div>
+          </label>
+          <label class="field-text">
+            <div class="field-text__name">Название поля</div>
+            <div class="field-text__input-wrap">
+              <textarea class="field-text__input" rows="3" placeholder="textarea"></textarea>
+              <div class="field-text__help-text">Обёртка — <code>&lt;label&gt;</code>.</div>
+            </div>
+          </label>
+          <div class="field-checkbox">
+            <div class="field-checkbox__title">Общее название</div>
+            <div class="field-checkbox__input-wrap">
+              <label class="field-checkbox__name">
+                <input class="field-checkbox__input" type="checkbox">
+                <span class="field-checkbox__name-text">Флажок</span>
+              </label>
+              <label class="field-checkbox__name">
+                <input class="field-checkbox__input" type="checkbox">
+                <span class="field-checkbox__name-text">Флажок</span>
+              </label>
+              <label class="field-checkbox__name">
+                <input class="field-checkbox__input" type="checkbox">
+                <span class="field-checkbox__name-text">Флажок</span>
+              </label>
+              <label class="field-checkbox__name">
+                <input class="field-checkbox__input" type="checkbox">
+                <span class="field-checkbox__name-text">Флажок</span>
+              </label>
+              <label class="field-checkbox__name">
+                <input class="field-checkbox__input" type="checkbox">
+                <span class="field-checkbox__name-text">Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Парадигматическая, запятой выйти! Подпоясал, лучше, рыбными.</span>
+              </label>
+              <div class="field-checkbox__help-text">Есть общее название.</div>
+            </div>
+          </div>
+          <div class="field-radio">
+            <div class="field-radio__title"></div>
+            <div class="field-radio__input-wrap">
+              <label class="field-radio__name">
+                <input class="field-radio__input" type="radio" name="one1">
+                <span class="field-radio__name-text">Радиокнопка</span>
+              </label>
+              <label class="field-radio__name">
+                <input class="field-radio__input" type="radio" name="one1">
+                <span class="field-radio__name-text">Наверное. И тут много строк. Далеко-далеко за словесными горами в стране, гласных и согласных. Наверное. И тут много строк. Далеко-далеко за словесными горами в стране, гласных и согласных.</span>
+              </label>
+              <div class="field-radio__help-text">Нет общего названия, но оставлен пустой <code>div</code> для него.</div>
+            </div>
+          </div>
+          <div class="field-radio">
+            <div class="field-radio__input-wrap">
+              <label class="field-radio__name">
+                <input class="field-radio__input" type="radio" name="two1">
+                <span class="field-radio__name-text">Радиокнопка</span>
+              </label>
+              <label class="field-radio__name">
+                <input class="field-radio__input" type="radio" name="two1">
+                <span class="field-radio__name-text">Наверное.</span>
+              </label>
+              <div class="field-radio__help-text">Нет общего названия и отсутствует пустой <code>div</code> для него.</div>
+            </div>
+          </div>
+          <div class="field-radio">
+            <div class="field-radio__input-wrap">
+              <label class="field-radio__name">
+                <input class="field-radio__input" type="radio" name="two2">
+                <span class="field-radio__name-text">Радиокнопка</span>
+              </label>
+              <label class="field-radio__name">
+                <input class="field-radio__input" type="radio" name="two2">
+                <span class="field-radio__name-text">Наверное. И тут много строк. Далеко-далеко за словесными горами в стране, гласных и согласных. И тут много строк. Далеко-далеко за словесными горами в стране, гласных и согласных.</span>
+              </label>
+              <div class="field-radio__help-text">Нет общего названия и отсутствует пустой <code>div</code> для него.</div>
+            </div>
+          </div>
+          <div class="field-toggler">
+            <div class="field-toggler__title">Переключатели-флажки</div>
+            <div class="field-toggler__input-wrap">
+              <label class="field-toggler__name">
+                <input class="field-toggler__input" type="checkbox" checked="">
+                <span class="field-toggler__name-text">Да</span>
+              </label>
+              <label class="field-toggler__name">
+                <input class="field-toggler__input" type="checkbox">
+                <span class="field-toggler__name-text">Наверное.  И тут много строк. Далеко-далеко за словесными горами в стране, гласных и согласных. И тут много строк. Далеко-далеко за словесными горами в стране, гласных и согласных.</span>
+              </label>
+              <div class="field-toggler__help-text">Графика не используется, всё нарисовано CSS-ом.</div>
+            </div>
+          </div>
+          <label class="field-select">
+            <div class="field-select__name">Название поля</div>
+            <div class="field-select__select-wrap">
+              <select class="field-select__select">
+                <optgroup label="optgroup">
+                  <option>Значение 1</option>
+                  <option>Значение 2</option>
+                  <option>Значение 3</option>
+                </optgroup>
+                <option>Значение 10</option>
+              </select>
+              <small class="field-select__help-text">Обёртка — <code>&lt;label&gt;</code>.</small>
+            </div>
+          </label>
+          <label class="field-select">
+            <div class="field-select__name">Название поля</div>
+            <div class="field-select__select-wrap">
+              <select class="field-select__select" multiple>
+                <optgroup label="optgroup">
+                  <option>Значение 1</option>
+                  <option>Значение 2</option>
+                  <option>Значение 3</option>
+                </optgroup>
+                <option>Значение 10</option>
+              </select>
+              <small class="field-select__help-text">Обёртка — <code>&lt;label&gt;</code>.</small>
+            </div>
+          </label>
+          <div class="field-file">
+            <div class="field-file__name">Выбор файлов</div>
+            <label class="field-file__input-wrap">
+              <input class="field-file__input" type="file" data-multiple-caption="файлов выбрано: {count}" multiple>
+              <div class="field-file__name-text" data-button-text="Выбрать файл(ы)">Ничего не выбрано</div>
+              <div class="field-file__help-text">Отображение выбранного файла(ов) требует Javascript-а. Стилизация — не требует.</div>
+            </label>
+          </div>
+          <div class="field-range">
+            <div class="field-range__name">Длинное название поля, которое, будучи многострочным, гарантировано выше чем.</div>
+            <div class="field-range__input-wrap">
+              <input class="field-range__input" type="range" min="1" max="100" step="1" value="70" multiple>
+              <div class="field-range__help-text"><code>min="1" max="100" step="1" value="70"</code></div>
+            </div>
+          </div>
+          <div class="field-actions">
+            <button class="btn">Отправить</button>
+          </div>
+        </form>
+      </div>
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre>
+            <code class="html">&lt;form class=&quot;form  form--horizontal&quot;&gt;</code>
+            <code class="html">  &lt;label class=&quot;field-text&quot;&gt;...&lt;/label&gt;</code>
+            <code class="html">  &lt;label class=&quot;field-text&quot;&gt;...&lt;/label&gt;</code>
+            <code class="html">  &lt;div class=&quot;field-checkbox&quot;&gt;</code>
+            <code class="html">    &lt;div class=&quot;field-checkbox__title&quot;&gt;&#x41e;&#x431;&#x449;&#x435;&#x435; &#x43d;&#x430;&#x437;&#x432;&#x430;&#x43d;&#x438;&#x435;&lt;/div&gt;</code>
+            <code class="html">    &lt;div class=&quot;field-checkbox__input-wrap&quot;&gt;...&lt;/div&gt;</code>
+            <code class="html">  &lt;/div&gt;</code>
+            <code class="html">  &lt;div class=&quot;field-radio&quot;&gt;</code>
+            <code class="html">    &lt;div class=&quot;field-radio__title&quot;&gt;&lt;/div&gt; &lt;!-- &larr; &#x412;&#x41d;&#x418;&#x41c;&#x410;&#x41d;&#x418;&#x415;, &#x43f;&#x443;&#x441;&#x442;&#x43e;&#x439; div &#x434;&#x43b;&#x44f; &#x43e;&#x442;&#x441;&#x442;&#x443;&#x43f;&#x430; --&gt;</code>
+            <code class="html">    &lt;div class=&quot;field-radio__input-wrap&quot;&gt;...&lt;/div&gt;</code>
+            <code class="html">  &lt;/div&gt;</code>
+            <code class="html">  &lt;div class=&quot;field-radio&quot;&gt;</code>
+            <code class="html">    &lt;!-- Нет пустого div (title) &mdash; &#x43d;&#x435;&#x442; &#x438; &#x43e;&#x442;&#x441;&#x442;&#x443;&#x43f;&#x430; --&gt;</code>
+            <code class="html">    &lt;div class=&quot;field-radio__input-wrap&quot;&gt;...&lt;/div&gt;</code>
+            <code class="html">  &lt;/div&gt;</code>
+            <code class="html">  &lt;div class=&quot;field-toggler&quot;&gt;...&lt;/div&gt;</code>
+            <code class="html">  &lt;label class=&quot;field-select&quot;&gt;...&lt;/label&gt;</code>
+            <code class="html">  &lt;div class=&quot;field-file&quot;&gt;...&lt;/div&gt;</code>
+            <code class="html">  &lt;div class=&quot;field-range&quot;&gt;...&lt;/div&gt;</code>
+            <code class="html">  &lt;div class=&quot;field-actions&quot;&gt;</code>
+            <code class="html">    &lt;button class=&quot;btn&quot;&gt;&#x41e;&#x442;&#x43f;&#x440;&#x430;&#x432;&#x438;&#x442;&#x44c;&lt;/button&gt;</code>
+            <code class="html">  &lt;/div&gt;</code>
+            <code class="html">&lt;/form&gt;</code>
+          </pre>
+        </div>
+      </div>
+
     </div>
   </section>
 
