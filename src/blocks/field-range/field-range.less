@@ -37,58 +37,17 @@
       box-shadow: 0 0 0 2px rgba(2, 117, 216, 0.3);
     }
 
-    // Да, да, это — локальная примесь для трёх нижеследующих правил.
-    .field-range-track() {
+
+
+    // Фоновая линия ползунка
+
+    // Да, да, и это — локальная примесь.
+    .field-range-runnable-track() {
       box-sizing: border-box;
       border: 0;
       width: 100%;
       height: 0.75em;
       border-radius: @border-radius;
-    }
-
-    // Увы, тут похожие наборы свойств приходится писать порознь.
-    &::-webkit-slider-runnable-track {
-      .field-range-track(); // локальная примесь!
-    }
-    &::-moz-range-track {
-      .field-range-track(); // локальная примесь!
-    }
-    &::-ms-track {
-      .field-range-track(); // локальная примесь!
-      color: transparent;
-    }
-
-    // Да, да, и это — локальная примесь.
-    .field-range-thumb() {
-      box-sizing: border-box;
-      border: 0;
-      padding: 0;
-      width: 2em;
-      height: 2em;
-      border-radius: @border-radius;
-      box-shadow: none;
-      cursor: ew-resize;
-    }
-
-    // Увы, тут похожие наборы свойств приходится писать порознь.
-    &::-webkit-slider-thumb {
-      margin-top: -0.68em;
-      .field-range-thumb(); // локальная примесь!
-    }
-    &::-moz-range-thumb {
-      .field-range-thumb(); // локальная примесь!
-    }
-    &::-ms-thumb {
-      .field-range-thumb(); // локальная примесь!
-    }
-
-    &::-ms-fill-lower,
-    &::-ms-tooltip {
-      display: none;
-    }
-
-    // Да, да, и это — локальная примесь.
-    .field-range-runnable-track() {
       background: @gray-lighter;
       border: 1px solid @border-color;
     }
@@ -102,21 +61,83 @@
     }
     &::-ms-track {
       .field-range-runnable-track(); // локальная примесь!
+      color: transparent;
+    }
+
+
+    // Смещающийся элемент ползунка
+
+    // Да, да, и это — локальная примесь.
+    .field-range-slider-thumb() {
+      box-sizing: border-box;
+      border: 0;
+      padding: 0;
+      width: 2em;
+      height: 2em;
+      border-radius: 1em;
+      box-shadow: none;
+      cursor: ew-resize;
+      background: @gray-lightest;
+      border: 1px solid @border-color;
     }
 
     &::-webkit-slider-thumb {
-      .field-range-runnable-track(); // локальная примесь!
+      margin-top: -0.68em;
+      .field-range-slider-thumb(); // локальная примесь!
     }
     &::-moz-range-thumb {
-      .field-range-runnable-track(); // локальная примесь!
+      .field-range-slider-thumb(); // локальная примесь!
     }
     &::-ms-thumb {
-      .field-range-runnable-track(); // локальная примесь!
+      .field-range-slider-thumb(); // локальная примесь!
+    }
+    &::-ms-fill-lower,
+    &::-ms-tooltip {
+      display: none;
     }
   }
 
   &__help-text {
     .help-text();
+  }
+
+  &__line {
+    position: relative;
+    margin-left: 1.1em;
+    margin-right: 1.1em;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__line-item {
+    position: relative;
+    display: block;
+    border-right: 1px solid @border-color;
+    color: @border-color;
+    flex-grow: 1;
+    flex-basis: 0;
+    max-width: 100%;
+    text-align: right;
+    padding-top: 0.7em;
+    margin-top: 1em;
+
+    &:before {
+      content: attr(data-line-value);
+      position: absolute;
+      right: 0;
+      transform: translateX(50%);
+      bottom: e("calc(100% + 0.3em)");
+      font-size: @font-size--small;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    &:first-child {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+    }
+
   }
 }
 
