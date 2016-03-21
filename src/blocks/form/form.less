@@ -2,7 +2,14 @@
 
 
 .form {
+
   &:not(:last-child) {
     margin-bottom: @line-height;
+  }
+
+  fieldset {
+    &:not(:last-child) {
+      margin-bottom: @line-height;
+    }
   }
 }
