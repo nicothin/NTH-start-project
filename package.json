@@ -1,7 +1,7 @@
 {
   "name": "NTH-start-project",
   "version": "1.0.0",
-  "description": "",
+  "description": "Start a library of blocks and technical solutions for HTML/CSS/js page layout.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "./node_modules/.bin/gulp",
