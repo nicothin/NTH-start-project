@@ -3025,7 +3025,6 @@
     <div class="blocks-library__sub-item">
       <h1 class="blocks-library__sub-item-title">Горизонтальное расположение названий и полей</h1>
       <p>Только начиная с SM ширины. Модификатор. Отдельный less-файл.</p>
-
       <div class="js-font-resizer">
         <form action="" class="form  form--horizontal">
           <label class="field-text">
@@ -3069,7 +3068,7 @@
             </div>
           </div>
           <div class="field-radio">
-            <div class="field-radio__title"></div>
+            <div class="field-radio__title">Общее название</div>
             <div class="field-radio__input-wrap">
               <label class="field-radio__name">
                 <input class="field-radio__input" type="radio" name="one1">
@@ -3200,8 +3199,197 @@
           </pre>
         </div>
       </div>
-
     </div>
+
+    <div class="blocks-library__sub-item">
+      <h1 class="blocks-library__sub-item-title">Форма в строку</h1>
+      <p>Только начиная с SM ширины. Модификатор. Отдельный less-файл.</p>
+      <p class="alert alert--danger">ВНИМАНИЕ! Поскольку все отступы сделаны в em, при наличии названий полей на некоторых больших размерах шрифта возможно несоответствие (1-2px) базовой линии названия и базовой линии текста в поле.</p>
+      <div class="js-font-resizer">
+        <form action="" class="form  form--line">
+          <label class="field-text">
+            <div class="field-text__name">Логин</div>
+            <div class="field-text__input-wrap">
+              <input class="field-text__input" type="text" placeholder="input[type=text]">
+              <div class="field-text__help-text">Произвольное слово.</div>
+            </div>
+          </label>
+          <label class="field-text">
+            <div class="field-text__name">Пароль</div>
+            <div class="field-text__input-wrap">
+              <input class="field-text__input" type="password" placeholder="input[type=password]">
+              <div class="field-text__help-text">Не менее 1 символа!</div>
+            </div>
+          </label>
+          <div class="field-checkbox">
+            <div class="field-checkbox__input-wrap">
+              <label class="field-checkbox__name">
+                <input class="field-checkbox__input" type="checkbox">
+                <span class="field-checkbox__name-text">Запомнить меня</span>
+              </label>
+              <div class="field-checkbox__help-text">Входить автоматически.</div>
+            </div>
+          </div>
+          <div class="field-actions">
+            <button class="btn">Войти</button>
+          </div>
+        </form>
+        <hr>
+        <form action="" class="form  form--line">
+          <label class="field-text">
+            <div class="field-text__name">Имя</div>
+            <div class="field-text__input-wrap">
+              <input class="field-text__input" type="text" placeholder="input[type=text]">
+              <div class="field-text__help-text">Вменяемое имя.</div>
+            </div>
+          </label>
+          <label class="field-select">
+            <div class="field-select__name">Пол</div>
+            <div class="field-select__select-wrap">
+              <select class="field-select__select">
+                <option>Мужской</option>
+                <option>Женский</option>
+                <option>Феминистка/Шовенист</option>
+              </select>
+              <small class="field-select__help-text">Придётся выбрать.</small>
+            </div>
+          </label>
+          <div class="field-radio">
+            <div class="field-radio__title">Ручной зверек?</div>
+            <div class="field-radio__input-wrap">
+              <label class="field-radio__name">
+                <input class="field-radio__input" type="radio" name="inline-4">
+                <span class="field-radio__name-text">Правша</span>
+              </label>
+              <label class="field-radio__name">
+                <input class="field-radio__input" type="radio" name="inline-4">
+                <span class="field-radio__name-text">Левша</span>
+              </label>
+              <div class="field-radio__help-text">Амбидекстеров не держим.</div>
+            </div>
+          </div>
+          <div class="field-actions">
+            <button class="btn">Найти</button>
+          </div>
+        </form>
+        <hr>
+        <form action="" class="form  form--line">
+          <label class="field-text">
+            <div class="field-text__name">Мыльце</div>
+            <div class="field-text__input-wrap">
+              <input class="field-text__input" type="email" placeholder="input[type=email]">
+              <div class="field-text__help-text">Корретный адрес электропочты.</div>
+            </div>
+          </label>
+          <div class="field-checkbox">
+            <div class="field-checkbox__title">Обязательно</div>
+            <div class="field-checkbox__input-wrap">
+              <label class="field-checkbox__name">
+                <input class="field-checkbox__input" type="checkbox">
+                <span class="field-checkbox__name-text">Я принимаю <a href="">Условия</a></span>
+              </label>
+              <label class="field-checkbox__name">
+                <input class="field-checkbox__input" type="checkbox">
+                <span class="field-checkbox__name-text">Я не робот</span>
+              </label>
+              <div class="field-checkbox__help-text">Необходимо отметить оба флажка для регистрации.</div>
+            </div>
+          </div>
+          <div class="field-actions">
+            <button class="btn">Зарегистрироваться</button>
+          </div>
+        </form>
+        <hr>
+        <form action="" class="form  form--line">
+          <label class="field-text">
+            <div class="field-text__name">Мыльце</div>
+            <div class="field-text__input-wrap">
+              <input class="field-text__input" type="email" placeholder="input[type=email]">
+              <div class="field-text__help-text">Корретный адрес электропочты.</div>
+            </div>
+          </label>
+          <div class="field-toggler">
+            <div class="field-toggler__title">Уровень</div>
+            <div class="field-toggler__input-wrap">
+              <label class="field-toggler__name">
+                <input class="field-toggler__input" type="radio" name="light" checked>
+                <span class="field-toggler__name-text">Просветлённый</span>
+              </label>
+              <label class="field-toggler__name">
+                <input class="field-toggler__input" type="radio" name="light">
+                <span class="field-toggler__name-text">Бодхисаттва</span>
+              </label>
+              <div class="field-toggler__help-text">Буддисты поймут.</div>
+            </div>
+          </div>
+          <div class="field-actions">
+            <button class="btn">Взять света</button>
+          </div>
+        </form>
+        <hr>
+        <form action="" class="form  form--line">
+          <label class="field-text">
+            <div class="field-text__input-wrap">
+              <input class="field-text__input" type="text" placeholder="input[type=text]">
+              <div class="field-text__help-text">Произвольное слово.</div>
+            </div>
+          </label>
+          <label class="field-text">
+            <div class="field-text__input-wrap">
+              <input class="field-text__input" type="password" placeholder="input[type=password]">
+              <div class="field-text__help-text">Не менее 1 символа!</div>
+            </div>
+          </label>
+          <div class="field-checkbox">
+            <div class="field-checkbox__input-wrap">
+              <label class="field-checkbox__name">
+                <input class="field-checkbox__input" type="checkbox">
+                <span class="field-checkbox__name-text">Запомнить меня</span>
+              </label>
+              <div class="field-checkbox__help-text">Входить автоматически.</div>
+            </div>
+          </div>
+          <div class="field-actions">
+            <button class="btn">Отправить</button>
+          </div>
+        </form>
+        <hr>
+        <form action="" class="form  form--line">
+          <label class="field-text">
+            <div class="field-text__input-wrap">
+              <input class="field-text__input" type="text" placeholder="input[type=text]">
+              <div class="field-text__help-text">Произвольное слово.</div>
+            </div>
+          </label>
+          <div class="field-file">
+            <div class="field-file__name">Аватара</div>
+            <label class="field-file__input-wrap">
+              <input class="field-file__input" type="file" data-multiple-caption="файлов выбрано: {count}" multiple>
+              <div class="field-file__name-text" data-button-text="Выбрать файл(ы)">Ничего не выбрано</div>
+              <div class="field-file__help-text">Отображение выбранного файла(ов) требует Javascript-а. Стилизация — не требует.</div>
+            </label>
+          </div>
+          <div class="field-actions">
+            <button class="btn">Отправить</button>
+          </div>
+        </form>
+      </div>
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre>
+            <code class="html">&lt;form class=&quot;form  form--line&quot;&gt;</code>
+            <code class="html">  &lt;label class=&quot;field-text&quot;&gt;...&lt;/label&gt;</code>
+            <code class="html">  &lt;label class=&quot;field-text&quot;&gt;...&lt;/label&gt;</code>
+            <code class="html">  &lt;div class=&quot;field-actions&quot;&gt;</code>
+            <code class="html">    &lt;button class=&quot;btn&quot;&gt;&#x41e;&#x442;&#x43f;&#x440;&#x430;&#x432;&#x438;&#x442;&#x44c;&lt;/button&gt;</code>
+            <code class="html">  &lt;/div&gt;</code>
+            <code class="html">&lt;/form&gt;</code>
+          </pre>
+        </div>
+      </div>
+    </div>
+
   </section>
 
 
@@ -3300,6 +3488,24 @@
             <code class="html">&lt;button class=&quot;btn  btn--block  btn--success  btn--lg&quot;&gt;Button (lg)&lt;/button&gt;</code>
           </pre>
         </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="blocks-library__item" id="form-mariage">
+    <h1 class="blocks-library__item-title">TODO: Комбинации элементов форм</h1>
+    <p>Сравнение и тестирование комбинаций элементов форм по умолчанию и с модификаторами.</p>
+    <div class="js-font-resizer">
+      111
+    </div>
+    <div class="blocks-library__code-wrapper">
+      <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+      <div class="blocks-library__code">
+        <pre>
+          <code class="html">111</code>
+        </pre>
       </div>
     </div>
   </section>
