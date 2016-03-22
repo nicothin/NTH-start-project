@@ -3937,10 +3937,13 @@ $('#test').on('hidden.nth.dropdown', function () {
 
 
 
-  <section class="blocks-library__item">
-    <h2 id="grid">Модульная сетка на flexbox</h2>
-    <p>Стилизация: БЭМ-блоки <code>.row</code>, <code>.col-[ID]-[COL]</code>, <code>.col-[ID]-offset-[COL]</code></p>
+  <section class="blocks-library__item" id="grid">
+
+    <h1 class="blocks-library__item-title">Модульная сетка на flexbox</h1>
+
+    <p>БЭМ-блоки <code>.row</code>, <code>.col-[ID]-[COL]</code>, <code>.col-[ID]-offset-[COL]</code></p>
     <p>Возможные ID сетки: xs, sm, md, lg, xl, xxl (xxl по умолчанию закомментированы). Вдохновлено Bootstrap 4.</p>
+
     <div class="row">
       <div class="col-xs-12  col-sm-6  col-md-4  col-lg-3" style="background: #eceeef; border: 1px solid #B1B1B1;">
         <code>.col-xs-12  .col-sm-6  .col-md-4  .col-lg-3</code>
@@ -3955,6 +3958,20 @@ $('#test').on('hidden.nth.dropdown', function () {
         <code>.col-xs-12  .col-sm-6  .col-md-4  .col-lg-3</code>
       </div>
     </div>
+    <div class="blocks-library__code-wrapper">
+      <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+      <div class="blocks-library__code">
+        <pre>
+          <code class="html">&lt;div class=&quot;row&quot;&gt;</code>
+          <code class="html">  &lt;div class=&quot;col-xs-12  col-sm-6  col-md-4  col-lg-3&quot;&gt;...&lt;/div&gt;</code>
+          <code class="html">  &lt;div class=&quot;col-xs-12  col-sm-6  col-md-4  col-lg-3&quot;&gt;...&lt;/div&gt;</code>
+          <code class="html">  &lt;div class=&quot;col-xs-12  col-sm-6  col-md-4  col-lg-3&quot;&gt;...&lt;/div&gt;</code>
+          <code class="html">  &lt;div class=&quot;col-xs-12  col-sm-6  col-md-4  col-lg-3&quot;&gt;...&lt;/div&gt;</code>
+          <code class="html">&lt;/div&gt;</code>
+        </pre>
+      </div>
+    </div>
+    <hr>
     <div class="row">
       <div class="col-md-2  col-lg-3" style="background: #eceeef; border: 1px solid #B1B1B1;">
         <code>.col-md-2 &nbsp;.col-lg-3</code>
@@ -3963,120 +3980,134 @@ $('#test').on('hidden.nth.dropdown', function () {
         <code>.col-md-10 &nbsp;.col-md-offset-1 &nbsp;.col-lg-9</code>
       </div>
     </div>
-    <h3 id="grid-mixins">LESS-примеси</h3>
-    <p class="alert  alert--success">Приоритетным является подход, в котором вместо упомянутых классов модульной сетки используются семантические БЭМ-овские классы и LESS-примеси (см. файл с примесями).</p>
-    <p>С примесями можно сделать модульную сетку любой колоночности (на разных ширинах может быть разноколоночная сетка), с любым промежутком между ячейками (на разных ширинах могут быть разные промежутки).</p>
-    <p class="alert  alert--danger">Вызов примеси <code>.col(xs, 12);</code> (возможно, не 12, а какое-то своё кол-во колонок) обязателен для элементов, являющихся прямыми потомками родителя модульной сетки.</p>
-    <div class="row">
-      <div class="col-lg-6">
-<pre>
-.block-name {
-  .row(); // БЭМ-блок — обёртка элементов модульной сетки
-
-  &__element {
-  // Разные ширины элемента на разных вьюпортах
-  .col(xs, 6);
-  .col(sm, 5);
-  .col(md, 4);
-  .col(lg, 3);
-  .col(xl, 2);
-  .col(xxl, 1);
-  }
-}
-</pre>
-      </div>
-      <div class="col-lg-6">
-<pre>
-.block-name {
-  // в примесь можно передать ширину промежутка между ячейками
-  .row(10px);
-
-  &__first-element {
-    // xs-сетка, 6 колонок из @grid-columns (12 по умолчанию),
-    // промежутки 10px
-    .col(xs, 6, @grid-columns, 10px);
-  }
-}
-</pre>
+    <div class="blocks-library__code-wrapper">
+      <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+      <div class="blocks-library__code">
+        <pre>
+          <code class="html">&lt;div class=&quot;row&quot;&gt;</code>
+          <code class="html">&lt;div class=&quot;col-md-2  col-lg-3&quot;&gt;...&lt;/div&gt;</code>
+          <code class="html">&lt;div class=&quot;col-md-9  col-md-offset-1  col-lg-8&quot;&gt;...&lt;/div&gt;</code>
+          <code class="html">&lt;/div&gt;</code>
+        </pre>
       </div>
     </div>
-    <p>Максимально подробный пример:</p>
-    <pre>
-.root {
-    // При указании переменных подряд имена можно не писать, оставлены для наглядности
-    // @xs-grid-gutter: 1rem;  // XS-ширина: указан промежуток между ячейками сетки
-    // @sm-grid-gutter: 1.8rem;// SM-ширина: указан промежуток между ячейками сетки
-    // @md-grid-gutter: 2rem;  // MD-ширина: указан промежуток между ячейками сетки
-    // @lg-grid-gutter: 3rem;  // LG-ширина: указан промежуток между ячейками сетки
-    // @xl-grid-gutter: 4rem;  // XL-ширина: указан промежуток между ячейками сетки
-    // @xxl-grid-gutter: 5rem; // XXL-ширина: указан промежуток между ячейками сетки
-    // Короткая форма указания промежутков для всех ширин:
-    // 1rem; 1.8rem; 2rem; 3rem; 4rem; 5rem
-  .row(
-    @xs-grid-gutter: 1rem;
-    @sm-grid-gutter: 1.8rem;
-    @md-grid-gutter: 2rem;
-    @lg-grid-gutter: @grid-gutter-width;
-    @xl-grid-gutter: 4rem;
-    @xxl-grid-gutter: 5rem;
-  );
 
-  &__cuprum {
-    // Для каждого вызова примеси указан промежуток между колонками (совпадает с тем, что у соответствующего вызова .row() для родительского элемента)
-    .col(xs, 1, 2, 1rem);   // XS-ширина, 1 колонка в 2-колоночной сетке
-    .col(sm, 2, 5, 1.8rem); // SM-ширина, 2 колонки в 5-колоночной сетке
-    .col(md, 2, 8, 2rem);   // MD-ширина, 2 колонки в 8-колоночной сетке
-    .col(lg, 2, @grid-columns, @grid-gutter-width); // LG-ширина, 2 колонки в 12-колоночной сетке (если @grid-columns оставлена по умолчанию)
-    .col(xl, 3, 10, 4rem);   // XL-ширина, 3 колонки в 10-колоночной сетке
-  }
-
-  &__aurum {
-    .col(xs, 1, 2, 1rem);
-    .col(sm, 3, 5, 1.8rem);
-    .col(md, 6, 8, 2rem);
-    .col(lg, 10, @grid-columns, @grid-gutter-width);
-    .col(xl, 7, 10, 4rem);
-  }
-}
-    </pre>
-    <p>Реальный пример 1:</p>
-    <pre>
-.root {
-  // Промежуток между колонками будет отличаться только на XS-ширине, это первый
-  // ожидаемый примесью параметр, указываем только его.
-  .row(1rem);
-
-  &__cuprum {
-    .col(xs, 1, 2, 1rem); // 1 из 2, нужно указать измененный для .row() промежуток
-    .col(sm, 4); // начиная с SM — 4 из 12 (12 по умолчанию, можно не указывать)
-    .col(md, 3); // начиная с MD — 3 из 12 (12 по умолчанию, можно не указывать)
-  }
-
-  &__aurum {
-    .col(xs, 1, 2, 1rem);
-    .col(sm, 8);
-    .col(md, 9);
-  }
-}
-    </pre>
-    <p>Реальный пример 2:</p>
-    <pre>
-.root {
-  .row(); // Промежуток везде одинаковый (берется из переменной)
-
-  &__cuprum {
-    // Пока вьюпорт не стал равен или шире MD, блок 100% ширины родителя
-    .col(xs, 12); // по умолчанию — 12 из 12 (обязательный вызов примеси)
-    .col(md, 3);  // начиная с MD — 3 из 12
-  }
-
-  &__aurum {
-    // Пока вьюпорт не стал равен или шире MD, блок 100% ширины родителя
-    .col(xs, 12); // по умолчанию — 12 из 12 (обязательный вызов примеси)
-    .col(md, 9);  // начиная с MD — 9 из 12
-  }
-}
-    </pre>
+    <div class="blocks-library__sub-item" id="grid-mixins">
+      <h2 class="blocks-library__sub-item-title">LESS-примеси</h2>
+      <p class="alert  alert--success">Приоритетным является подход, в котором вместо упомянутых классов модульной сетки используются семантические БЭМ-овские классы и LESS-примеси (см. файл с примесями).</p>
+      <p>С примесями можно сделать модульную сетку любой колоночности (на разных ширинах может быть разноколоночная сетка), с любым промежутком между ячейками (на разных ширинах могут быть разные промежутки).</p>
+      <p class="alert  alert--danger">Вызов примеси <code>.col(xs, 12);</code> (возможно, не 12, а какое-то своё кол-во колонок) обязателен для элементов, являющихся прямыми потомками родителя модульной сетки.</p>
+      <div class="row">
+        <div class="col-lg-6">
+          <pre>
+            <code class="less">.block-name {</code>
+            <code class="less">  .row(); // БЭМ-блок — обёртка элементов модульной сетки</code>
+            <code class="less"> </code>
+            <code class="less">  &__element {</code>
+            <code class="less">    // Разные ширины элемента на разных вьюпортах</code>
+            <code class="less">    .col(xs, 6);</code>
+            <code class="less">    .col(sm, 5);</code>
+            <code class="less">    .col(md, 4);</code>
+            <code class="less">    .col(lg, 3);</code>
+            <code class="less">    .col(xl, 2);</code>
+            <code class="less">    .col(xxl, 1);</code>
+            <code class="less">  }</code>
+            <code class="less">}</code>
+          </pre>
+        </div>
+        <div class="col-lg-6">
+        <pre>
+          <code class="less">.block-name {</code>
+          <code class="less">  // в примесь можно передать ширину промежутка между ячейками</code>
+          <code class="less">  .row(10px);</code>
+          <code class="less"> </code>
+          <code class="less">  &__first-element {</code>
+          <code class="less">    // xs-сетка, 6 колонок из @grid-columns (12 по умолчанию),</code>
+          <code class="less">    // промежутки 10px</code>
+          <code class="less">    .col(xs, 6, @grid-columns, 10px);</code>
+          <code class="less">  }</code>
+          <code class="less">}</code>
+        </pre>
+        </div>
+      </div>
+      <p>Максимально подробный пример:</p>
+      <pre>
+        <code class="less">.root {</code>
+        <code class="less">  // При указании переменных подряд имена можно не писать, оставлены для наглядности</code>
+        <code class="less">  // @xs-grid-gutter: 1rem;  // XS-ширина: указан промежуток между ячейками сетки</code>
+        <code class="less">  // @sm-grid-gutter: 1.8rem;// SM-ширина: указан промежуток между ячейками сетки</code>
+        <code class="less">  // @md-grid-gutter: 2rem;  // MD-ширина: указан промежуток между ячейками сетки</code>
+        <code class="less">  // @lg-grid-gutter: 3rem;  // LG-ширина: указан промежуток между ячейками сетки</code>
+        <code class="less">  // @xl-grid-gutter: 4rem;  // XL-ширина: указан промежуток между ячейками сетки</code>
+        <code class="less">  // @xxl-grid-gutter: 5rem; // XXL-ширина: указан промежуток между ячейками сетки</code>
+        <code class="less">  // Короткая форма указания промежутков для всех ширин:</code>
+        <code class="less">  // 1rem; 1.8rem; 2rem; 3rem; 4rem; 5rem</code>
+        <code class="less">  .row(</code>
+        <code class="less">    @xs-grid-gutter: 1rem;</code>
+        <code class="less">    @sm-grid-gutter: 1.8rem;</code>
+        <code class="less">    @md-grid-gutter: 2rem;</code>
+        <code class="less">    @lg-grid-gutter: @grid-gutter-width;</code>
+        <code class="less">    @xl-grid-gutter: 4rem;</code>
+        <code class="less">    @xxl-grid-gutter: 5rem;</code>
+        <code class="less">  );</code>
+        <code class="less"> </code>
+        <code class="less">  &__cuprum {</code>
+        <code class="less">    // Для каждого вызова примеси указан промежуток между колонками (совпадает с тем, что у соответствующего вызова .row() для родительского элемента)</code>
+        <code class="less">    .col(xs, 1, 2, 1rem);   // XS-ширина, 1 колонка в 2-колоночной сетке</code>
+        <code class="less">    .col(sm, 2, 5, 1.8rem); // SM-ширина, 2 колонки в 5-колоночной сетке</code>
+        <code class="less">    .col(md, 2, 8, 2rem);   // MD-ширина, 2 колонки в 8-колоночной сетке</code>
+        <code class="less">    .col(lg, 2, @grid-columns, @grid-gutter-width); // LG-ширина, 2 колонки в 12-колоночной сетке (если @grid-columns оставлена по умолчанию)</code>
+        <code class="less">    .col(xl, 3, 10, 4rem);   // XL-ширина, 3 колонки в 10-колоночной сетке</code>
+        <code class="less">  }</code>
+        <code class="less"> </code>
+        <code class="less">  &__aurum {</code>
+        <code class="less">    .col(xs, 1, 2, 1rem);</code>
+        <code class="less">    .col(sm, 3, 5, 1.8rem);</code>
+        <code class="less">    .col(md, 6, 8, 2rem);</code>
+        <code class="less">    .col(lg, 10, @grid-columns, @grid-gutter-width);</code>
+        <code class="less">    .col(xl, 7, 10, 4rem);</code>
+        <code class="less">  }</code>
+        <code class="less">}</code>
+      </pre>
+      <p>Реальный пример 1:</p>
+      <pre>
+        <code class="less">.root {</code>
+        <code class="less">  // Промежуток между колонками будет отличаться только на XS-ширине, это первый</code>
+        <code class="less">  // ожидаемый примесью параметр, указываем только его.</code>
+        <code class="less">  .row(1rem);</code>
+        <code class="less"> </code>
+        <code class="less">  &__cuprum {</code>
+        <code class="less">    .col(xs, 1, 2, 1rem); // 1 колонка из 2, нужно указать измененный для .row() промежуток</code>
+        <code class="less">    .col(sm, 4); // начиная с SM — 4 колонки из 12 (12 по умолчанию, можно не указывать)</code>
+        <code class="less">    .col(md, 3); // начиная с MD — 3 колонки из 12 (12 по умолчанию, можно не указывать)</code>
+        <code class="less">  }</code>
+        <code class="less"> </code>
+        <code class="less">  &__aurum {</code>
+        <code class="less">    .col(xs, 1, 2, 1rem);</code>
+        <code class="less">    .col(sm, 8);</code>
+        <code class="less">    .col(md, 9);</code>
+        <code class="less">  }</code>
+        <code class="less">}</code>
+      </pre>
+      <p>Реальный пример 2:</p>
+      <pre>
+        <code class="less">.root {</code>
+        <code class="less">  .row(); // Промежуток везде одинаковый (берется из переменной)</code>
+        <code class="less"> </code>
+        <code class="less">  &__cuprum {</code>
+        <code class="less">    // Пока вьюпорт не стал равен или шире MD, блок 100% ширины родителя</code>
+        <code class="less">    .col(xs, 12); // по умолчанию — 12 из 12 (обязательный вызов примеси)</code>
+        <code class="less">    .col(md, 3);  // начиная с MD — 3 из 12</code>
+        <code class="less">  }</code>
+        <code class="less"> </code>
+        <code class="less">  &__aurum {</code>
+        <code class="less">    // Пока вьюпорт не стал равен или шире MD, блок 100% ширины родителя</code>
+        <code class="less">    .col(xs, 12); // по умолчанию — 12 из 12 (обязательный вызов примеси)</code>
+        <code class="less">    .col(md, 9);  // начиная с MD — 9 из 12</code>
+        <code class="less">  }</code>
+        <code class="less">}</code>
+      </pre>
+    </div>
   </section>
 
 
