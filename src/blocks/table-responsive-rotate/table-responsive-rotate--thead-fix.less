@@ -3,21 +3,24 @@
 
 .table-responsive-rotate {
 
-  &--thead-fix {
-    position: relative;
-    padding-left: 12rem;
+  @media (max-width: (@screen-md - 1)) {
 
-    .table-responsive-rotate__inner {
-      display: block;
-      width: 100%;
-      overflow-x: auto;
-    }
+    &--thead-fix {
+      position: relative;
+      padding-left: 12rem;
 
-    thead {
-      width: 12rem;
-      position: absolute;
-      top: 0;
-      left: 0;
+      .table-responsive-rotate__inner {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+      }
+
+      thead {
+        width: 12rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
     }
   }
 }
