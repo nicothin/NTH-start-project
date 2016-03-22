@@ -65,10 +65,10 @@
   .field-select__select,
   .btn {
     position: relative;
-    z-index: 1;
+    z-index: 0;
 
-    &:not(:focus) {
-      z-index: 0;
+    &:hover, &:focus {
+      z-index: 1;
     }
   }
 }

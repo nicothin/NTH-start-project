@@ -3548,15 +3548,273 @@
 
 
 
+  <section class="blocks-library__item" id="form-mariage" data-name=".fields-group">
+
+    <h1 class="blocks-library__item-title">Группы текстовых полей, селектов, кнопок</h1>
+
+    <p>Потенциально доступны любые сочетания описанных в этом разделе элементов.</p>
+
+    <h2>Простые комбинации текстовых полей, выпадающих списков</h2>
+    <div class="js-font-resizer">
+      <form>
+        <div class="fields-group">
+          <label class="field-text  fields-group__item">
+            <input class="field-text__input" type="text" placeholder="input[type=text]">
+          </label>
+          <label class="field-select  fields-group__item">
+            <div class="field-select__select-wrap">
+              <select class="field-select__select">
+                <optgroup label="Группа">
+                  <option>Значение 1</option>
+                  <option>Значение 2</option>
+                  <option>Значение 3</option>
+                </optgroup>
+                <option>Значение 10</option>
+              </select>
+            </div>
+          </label>
+          <label class="field-text  fields-group__item">
+            <input class="field-text__input" type="text" placeholder="input[type=text]">
+          </label>
+        </div>
+        <div class="fields-group">
+          <label class="field-text  fields-group__item">
+            <input class="field-text__input" type="text" placeholder="input[type=text]">
+            <small class="field-select__help-text">Пояснение отдельного поля, если длинное, распирает блок? Нет.</small>
+          </label>
+          <label class="field-text  fields-group__item">
+            <input class="field-text__input" type="text" placeholder="input[type=text]">
+            <small class="field-select__help-text">Пояснение.</small>
+          </label>
+          <label class="field-text  fields-group__item">
+            <input class="field-text__input" type="text" placeholder="input[type=text]">
+            <small class="field-select__help-text">Пояснение еще.</small>
+          </label>
+        </div>
+        <div class="fields-group  fields-group--inline">
+          <label class="field-text  fields-group__item">
+            <input class="field-text__input" type="text" placeholder="input[type=text]">
+          </label>
+          <label class="field-text  fields-group__item">
+            <input class="field-text__input" type="text" placeholder="input[type=text]">
+          </label>
+        </div>
+      </form>
+    </div>
+    <div class="blocks-library__code-wrapper">
+      <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+      <div class="blocks-library__code">
+        <pre>
+          <code class="html">&lt;div class=&quot;fields-group&quot;&gt;</code>
+          <code class="html">  &lt;label class=&quot;field-text  fields-group__item&quot;&gt;</code>
+          <code class="html">    &lt;input class=&quot;field-text__input&quot; type=&quot;text&quot; placeholder=&quot;input[type=text]&quot;&gt;</code>
+          <code class="html">  &lt;/label&gt;</code>
+          <code class="html">  &lt;label class=&quot;field-select  fields-group__item&quot;&gt;</code>
+          <code class="html">    &lt;div class=&quot;field-select__select-wrap&quot;&gt;</code>
+          <code class="html">      &lt;select class=&quot;field-select__select&quot;&gt;</code>
+          <code class="html">        &lt;option&gt;&#x417;&#x43d;&#x430;&#x447;&#x435;&#x43d;&#x438;&#x435; 1&lt;/option&gt;</code>
+          <code class="html">        &lt;option&gt;&#x417;&#x43d;&#x430;&#x447;&#x435;&#x43d;&#x438;&#x435; 2&lt;/option&gt;</code>
+          <code class="html">      &lt;/select&gt;</code>
+          <code class="html">    &lt;/div&gt;</code>
+          <code class="html">  &lt;/label&gt;</code>
+          <code class="html">  &lt;label class=&quot;field-text  fields-group__item&quot;&gt;</code>
+          <code class="html">    &lt;input class=&quot;field-text__input&quot; type=&quot;text&quot; placeholder=&quot;input[type=text]&quot;&gt;</code>
+          <code class="html">  &lt;/label&gt;</code>
+          <code class="html">&lt;/div&gt;</code>
+        </pre>
+      </div>
+    </div>
+
+    <h2>Добавочные неинтерактивные элементы в начале и/или в конце</h2>
+
+    <div class="js-font-resizer">
+      <form>
+        <div class="fields-group">
+          <span class="fields-group__item  fields-group__item--addon  fields-group__item--text">
+            $
+          </span>
+          <label class="field-text  fields-group__item">
+            <input class="field-text__input" type="text" placeholder="input[type=text]">
+          </label>
+        </div>
+        <div class="fields-group">
+          <label class="field-text  fields-group__item">
+            <input class="field-text__input" type="text" placeholder="input[type=text]">
+          </label>
+          <span class="fields-group__item  fields-group__item--addon  fields-group__item--text">
+            .00
+          </span>
+        </div>
+        <div class="fields-group">
+          <span class="fields-group__item  fields-group__item--addon  fields-group__item--text">
+            $
+          </span>
+          <label class="field-text  fields-group__item">
+            <input class="field-text__input" type="text" placeholder="input[type=text]">
+          </label>
+          <span class="fields-group__item  fields-group__item--addon  fields-group__item--text">
+            .00
+          </span>
+        </div>
+      </form>
+    </div>
+    <div class="blocks-library__code-wrapper">
+      <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+      <div class="blocks-library__code">
+        <pre>
+          <code class="html">&lt;div class=&quot;fields-group&quot;&gt;</code>
+          <code class="html">  &lt;span class=&quot;fields-group__item  fields-group__item--addon  fields-group__item--text&quot;&gt;</code>
+          <code class="html">    $</code>
+          <code class="html">  &lt;/span&gt;</code>
+          <code class="html">  &lt;label class=&quot;field-text  fields-group__item&quot;&gt;</code>
+          <code class="html">    &lt;input class=&quot;field-text__input&quot; type=&quot;text&quot; placeholder=&quot;input[type=text]&quot;&gt;</code>
+          <code class="html">  &lt;/label&gt;</code>
+          <code class="html">  &lt;span class=&quot;fields-group__item  fields-group__item--addon  fields-group__item--text&quot;&gt;</code>
+          <code class="html">    .00</code>
+          <code class="html">  &lt;/span&gt;</code>
+          <code class="html">&lt;/div&gt;</code>
+        </pre>
+      </div>
+    </div>
+
+    <h2>Добавочные интерактивные и неинтерактивные элементы в начале и/или в конце</h2>
+
+    <div class="js-font-resizer">
+      <form>
+        <div class="fields-group">
+          <span class="fields-group__item  fields-group__item--addon  fields-group__item--text">
+            $
+          </span>
+          <label class="field-text  fields-group__item">
+            <input class="field-text__input" type="text" placeholder="input[type=text]">
+          </label>
+          <button class="btn  fields-group__item  fields-group__item--addon">Отправить</button>
+          <button class="btn  fields-group__item  fields-group__item--addon">Отменить</button>
+        </div>
+        <div class="fields-group">
+          <label class="field-text  fields-group__item">
+            <input class="field-text__input" type="text" placeholder="input[type=text]">
+          </label>
+          <span role="presentation" class="dropdown  fields-group__item--dropdown">
+            <button class="dropdown__toggler  btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Выпадение от пр. края
+            </button>
+            <ul class="dropdown__menu  dropdown__menu--right">
+              <li><a href="#">Пункт списка (выпадает <code>ul</code>)</a></li>
+              <li><a href="">Пункт меню весьма длинный</a></li>
+              <li><a href="">Второй пункт</a></li>
+            </ul>
+          </span>
+        </div>
+        <div class="fields-group">
+          <label class="field-text  fields-group__item">
+            <input class="field-text__input" type="text" placeholder="input[type=text]">
+          </label>
+          <span role="presentation" class="dropdown  fields-group__item--dropdown">
+            <button class="dropdown__toggler  btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Выпадение
+            </button>
+            <ul class="dropdown__menu">
+              <li><a href="#">Пункт списка (выпадает <code>ul</code>)</a></li>
+              <li><a href="">Пункт меню весьма длинный</a></li>
+              <li><a href="">Второй пункт</a></li>
+            </ul>
+          </span>
+          <span role="presentation" class="dropdown  fields-group__item--dropdown">
+            <button class="dropdown__toggler  btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Выпадение от пр. края
+            </button>
+            <ul class="dropdown__menu  dropdown__menu--right">
+              <li><a href="#">Пункт списка (выпадает <code>ul</code>)</a></li>
+              <li><a href="">Пункт меню весьма длинный</a></li>
+              <li><a href="">Второй пункт</a></li>
+            </ul>
+          </span>
+        </div>
+        <div class="fields-group">
+          <span role="presentation" class="dropdown  fields-group__item--dropdown">
+            <button class="dropdown__toggler  btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Выпадение
+            </button>
+            <ul class="dropdown__menu">
+              <li><a href="#">Пункт списка (выпадает <code>ul</code>)</a></li>
+              <li><a href="">Пункт меню весьма длинный</a></li>
+              <li><a href="">Второй пункт</a></li>
+            </ul>
+          </span>
+          <label class="field-text  fields-group__item">
+            <input class="field-text__input" type="text" placeholder="input[type=text]">
+          </label>
+        </div>
+        <div class="fields-group">
+          <span role="presentation" class="dropdown  fields-group__item--dropdown">
+            <button class="dropdown__toggler  btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Выпадение
+            </button>
+            <ul class="dropdown__menu">
+              <li><a href="#">Пункт списка (выпадает <code>ul</code>)</a></li>
+              <li><a href="">Пункт меню весьма длинный</a></li>
+              <li><a href="">Второй пункт</a></li>
+            </ul>
+          </span>
+          <label class="field-text  fields-group__item">
+            <input class="field-text__input" type="text" placeholder="input[type=text]">
+          </label>
+          <span role="presentation" class="dropdown  fields-group__item--dropdown">
+            <button class="dropdown__toggler  btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Выпадение от пр. края
+            </button>
+            <ul class="dropdown__menu  dropdown__menu--right">
+              <li><a href="#">Пункт списка (выпадает <code>ul</code>)</a></li>
+              <li><a href="">Пункт меню весьма длинный</a></li>
+              <li><a href="">Второй пункт</a></li>
+            </ul>
+          </span>
+        </div>
+      </form>
+    </div>
+    <div class="blocks-library__code-wrapper">
+      <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+      <div class="blocks-library__code">
+        <pre>
+          <code class="html">&lt;div class=&quot;fields-group&quot;&gt;</code>
+          <code class="html">  &lt;span role=&quot;presentation&quot; class=&quot;dropdown  fields-group__item--dropdown&quot;&gt;</code>
+          <code class="html">    &lt;button class=&quot;dropdown__toggler  btn&quot; type=&quot;button&quot; data-toggle=&quot;dropdown&quot; aria-haspopup=&quot;true&quot; aria-expanded=&quot;false&quot;&gt;</code>
+          <code class="html">      &#x412;&#x44b;&#x43f;&#x430;&#x434;&#x435;&#x43d;&#x438;&#x435;</code>
+          <code class="html">    &lt;/button&gt;</code>
+          <code class="html">    &lt;ul class=&quot;dropdown__menu&quot;&gt;</code>
+          <code class="html">      &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&#x41f;&#x443;&#x43d;&#x43a;&#x442; &#x441;&#x43f;&#x438;&#x441;&#x43a;&#x430; (&#x432;&#x44b;&#x43f;&#x430;&#x434;&#x430;&#x435;&#x442; &lt;code&gt;ul&lt;/code&gt;)&lt;/a&gt;&lt;/li&gt;</code>
+          <code class="html">      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&#x41f;&#x443;&#x43d;&#x43a;&#x442; &#x43c;&#x435;&#x43d;&#x44e; &#x432;&#x435;&#x441;&#x44c;&#x43c;&#x430; &#x434;&#x43b;&#x438;&#x43d;&#x43d;&#x44b;&#x439;&lt;/a&gt;&lt;/li&gt;</code>
+          <code class="html">      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&#x412;&#x442;&#x43e;&#x440;&#x43e;&#x439; &#x43f;&#x443;&#x43d;&#x43a;&#x442;&lt;/a&gt;&lt;/li&gt;</code>
+          <code class="html">    &lt;/ul&gt;</code>
+          <code class="html">  &lt;/span&gt;</code>
+          <code class="html">  &lt;label class=&quot;field-text  fields-group__item&quot;&gt;</code>
+          <code class="html">    &lt;input class=&quot;field-text__input&quot; type=&quot;text&quot; placeholder=&quot;input[type=text]&quot;&gt;</code>
+          <code class="html">  &lt;/label&gt;</code>
+          <code class="html">  &lt;span role=&quot;presentation&quot; class=&quot;dropdown  fields-group__item--dropdown&quot;&gt;</code>
+          <code class="html">    &lt;button class=&quot;dropdown__toggler  btn&quot; type=&quot;button&quot; data-toggle=&quot;dropdown&quot; aria-haspopup=&quot;true&quot; aria-expanded=&quot;false&quot;&gt;</code>
+          <code class="html">      &#x412;&#x44b;&#x43f;&#x430;&#x434;&#x435;&#x43d;&#x438;&#x435; &#x43e;&#x442; &#x43f;&#x440;. &#x43a;&#x440;&#x430;&#x44f;</code>
+          <code class="html">    &lt;/button&gt;</code>
+          <code class="html">    &lt;ul class=&quot;dropdown__menu  dropdown__menu--right&quot;&gt;</code>
+          <code class="html">      &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&#x41f;&#x443;&#x43d;&#x43a;&#x442; &#x441;&#x43f;&#x438;&#x441;&#x43a;&#x430; (&#x432;&#x44b;&#x43f;&#x430;&#x434;&#x430;&#x435;&#x442; &lt;code&gt;ul&lt;/code&gt;)&lt;/a&gt;&lt;/li&gt;</code>
+          <code class="html">      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&#x41f;&#x443;&#x43d;&#x43a;&#x442; &#x43c;&#x435;&#x43d;&#x44e; &#x432;&#x435;&#x441;&#x44c;&#x43c;&#x430; &#x434;&#x43b;&#x438;&#x43d;&#x43d;&#x44b;&#x439;&lt;/a&gt;&lt;/li&gt;</code>
+          <code class="html">      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&#x412;&#x442;&#x43e;&#x440;&#x43e;&#x439; &#x43f;&#x443;&#x43d;&#x43a;&#x442;&lt;/a&gt;&lt;/li&gt;</code>
+          <code class="html">    &lt;/ul&gt;</code>
+          <code class="html">  &lt;/span&gt;</code>
+          <code class="html">&lt;/div&gt;</code>
+        </pre>
+      </div>
+    </div>
+
+  </section>
+
+
+
   <hr>
 
 
 
   <section class="blocks-library__item">
-
-    <h2 id="form-style">Стилизованные формы</h2>
-
-    <p>Стилизация: БЭМ-блоки и модификаторы. Опирается на стилизацию форм по умолчанию.</p>
 
     <div class="row">
 
@@ -3564,167 +3822,9 @@
 
         <form action="" class="form">
           <fieldset>
-            <h3>Группы текстовых полей, селектов, кнопок</h3>
+            <h3></h3>
             <p>Плюс возможные добавочные неинтерактивные элементы.</p>
-            <div class="fields-group">
-              <label class="field-text  fields-group__item">
-                <input class="field-text__input" type="text" placeholder="input[type=text]">
-              </label>
-              <label class="field-select  fields-group__item">
-                <div class="field-select__select-wrap">
-                  <select class="field-select__select">
-                    <optgroup label="Группа">
-                      <option>Значение 1</option>
-                      <option>Значение 2</option>
-                      <option>Значение 3</option>
-                    </optgroup>
-                    <option>Значение 10</option>
-                  </select>
-                </div>
-              </label>
-              <label class="field-text  fields-group__item">
-                <input class="field-text__input" type="text" placeholder="input[type=text]">
-              </label>
-            </div>
-            <div class="fields-group">
-              <label class="field-text  fields-group__item">
-                <input class="field-text__input" type="text" placeholder="input[type=text]">
-                <small class="field-select__help-text">Пояснение отдельного поля, если длинное, распирает блок? Нет.</small>
-              </label>
-              <label class="field-text  fields-group__item">
-                <input class="field-text__input" type="text" placeholder="input[type=text]">
-                <small class="field-select__help-text">Пояснение.</small>
-              </label>
-              <label class="field-text  fields-group__item">
-                <input class="field-text__input" type="text" placeholder="input[type=text]">
-                <small class="field-select__help-text">Пояснение еще.</small>
-              </label>
-            </div>
-            <div class="fields-group  fields-group--inline">
-              <label class="field-text  fields-group__item">
-                <input class="field-text__input" type="text" placeholder="input[type=text]">
-              </label>
-              <label class="field-text  fields-group__item">
-                <input class="field-text__input" type="text" placeholder="input[type=text]">
-              </label>
-            </div>
-            <div class="fields-group">
-              <span class="fields-group__item  fields-group__item--addon  fields-group__item--text">
-                $
-              </span>
-              <label class="field-text  fields-group__item">
-                <input class="field-text__input" type="text" placeholder="input[type=text]">
-              </label>
-            </div>
-            <div class="fields-group">
-              <label class="field-text  fields-group__item">
-                <input class="field-text__input" type="text" placeholder="input[type=text]">
-              </label>
-              <span class="fields-group__item  fields-group__item--addon  fields-group__item--text">
-                .00
-              </span>
-            </div>
-            <div class="fields-group">
-              <span class="fields-group__item  fields-group__item--addon  fields-group__item--text">
-                $
-              </span>
-              <label class="field-text  fields-group__item">
-                <input class="field-text__input" type="text" placeholder="input[type=text]">
-              </label>
-              <span class="fields-group__item  fields-group__item--addon  fields-group__item--text">
-                .00
-              </span>
-            </div>
-            <div class="fields-group">
-              <span class="fields-group__item  fields-group__item--addon  fields-group__item--text">
-                $
-              </span>
-              <label class="field-text  fields-group__item">
-                <input class="field-text__input" type="text" placeholder="input[type=text]">
-              </label>
-              <button class="btn  fields-group__item  fields-group__item--addon">Отправить</button>
-              <button class="btn  fields-group__item  fields-group__item--addon">Отменить</button>
-            </div>
-            <div class="fields-group">
-              <label class="field-text  fields-group__item">
-                <input class="field-text__input" type="text" placeholder="input[type=text]">
-              </label>
-              <span role="presentation" class="dropdown  fields-group__item--dropdown">
-                <button class="dropdown__toggler  btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Выпадение от пр. края
-                </button>
-                <ul class="dropdown__menu  dropdown__menu--right">
-                  <li><a href="#">Пункт списка (выпадает <code>ul</code>)</a></li>
-                  <li><a href="">Пункт меню весьма длинный</a></li>
-                  <li><a href="">Второй пункт</a></li>
-                </ul>
-              </span>
-            </div>
-            <div class="fields-group">
-              <label class="field-text  fields-group__item">
-                <input class="field-text__input" type="text" placeholder="input[type=text]">
-              </label>
-              <span role="presentation" class="dropdown  fields-group__item--dropdown">
-                <button class="dropdown__toggler  btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Выпадение
-                </button>
-                <ul class="dropdown__menu">
-                  <li><a href="#">Пункт списка (выпадает <code>ul</code>)</a></li>
-                  <li><a href="">Пункт меню весьма длинный</a></li>
-                  <li><a href="">Второй пункт</a></li>
-                </ul>
-              </span>
-              <span role="presentation" class="dropdown  fields-group__item--dropdown">
-                <button class="dropdown__toggler  btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Выпадение от пр. края
-                </button>
-                <ul class="dropdown__menu  dropdown__menu--right">
-                  <li><a href="#">Пункт списка (выпадает <code>ul</code>)</a></li>
-                  <li><a href="">Пункт меню весьма длинный</a></li>
-                  <li><a href="">Второй пункт</a></li>
-                </ul>
-              </span>
-            </div>
-            <div class="fields-group">
-              <span role="presentation" class="dropdown  fields-group__item--dropdown">
-                <button class="dropdown__toggler  btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Выпадение
-                </button>
-                <ul class="dropdown__menu">
-                  <li><a href="#">Пункт списка (выпадает <code>ul</code>)</a></li>
-                  <li><a href="">Пункт меню весьма длинный</a></li>
-                  <li><a href="">Второй пункт</a></li>
-                </ul>
-              </span>
-              <label class="field-text  fields-group__item">
-                <input class="field-text__input" type="text" placeholder="input[type=text]">
-              </label>
-            </div>
-            <div class="fields-group">
-              <span role="presentation" class="dropdown  fields-group__item--dropdown">
-                <button class="dropdown__toggler  btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Выпадение
-                </button>
-                <ul class="dropdown__menu">
-                  <li><a href="#">Пункт списка (выпадает <code>ul</code>)</a></li>
-                  <li><a href="">Пункт меню весьма длинный</a></li>
-                  <li><a href="">Второй пункт</a></li>
-                </ul>
-              </span>
-              <label class="field-text  fields-group__item">
-                <input class="field-text__input" type="text" placeholder="input[type=text]">
-              </label>
-              <span role="presentation" class="dropdown  fields-group__item--dropdown">
-                <button class="dropdown__toggler  btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Выпадение от пр. края
-                </button>
-                <ul class="dropdown__menu  dropdown__menu--right">
-                  <li><a href="#">Пункт списка (выпадает <code>ul</code>)</a></li>
-                  <li><a href="">Пункт меню весьма длинный</a></li>
-                  <li><a href="">Второй пункт</a></li>
-                </ul>
-              </span>
-            </div>
+
           </fieldset>
         </form>
 
