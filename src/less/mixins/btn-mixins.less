@@ -8,7 +8,8 @@
 //------------------------------------------------------------------------------
 
 .btn() {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   position: relative;
   padding: @field-padding-top @field-padding-horizontal @field-padding-bottom;
   text-align: center;
@@ -22,6 +23,7 @@
   border: 1px solid;
   box-sizing: border-box;
   border-radius: @border-radius;
+  min-height: 2.125em;
 
   &--hover,
   &:hover {
