@@ -4,8 +4,7 @@
   "description": "Start a library of blocks and technical solutions for HTML/CSS/js page layout.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "./node_modules/.bin/gulp",
-    "deploy": "./node_modules/.bin/cross-env NODE_ENV=production ./node_modules/.bin/gulp build && ./node_modules/.bin/gulp deploy"
+    "start": "./node_modules/.bin/gulp"
   },
   "author": "Nikolay Gromov",
   "license": "MIT",
@@ -16,7 +15,6 @@
   "devDependencies": {
     "autoprefixer": "^6.3.3",
     "browser-sync": "^2.11.1",
-    "cross-env": "^1.0.7",
     "css-mqpacker": "^4.0.0",
     "del": "^2.2.0",
     "gulp": "github:gulpjs/gulp#4.0",
