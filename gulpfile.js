@@ -256,7 +256,10 @@ gulp.task('serve', function () {
     port: port,
     startPath: 'blocks_library.html'
   });
-  browserSync.watch([dirs.build + '/**/*.*', '!' + dirs.build +  + '/**/*.map.*']).on('change', browserSync.reload);
+  browserSync.watch([
+    dirs.build + '/**/*.*',
+    '!' + dirs.build +  + '/**/*.map.*'
+  ]).on('change', browserSync.reload);
 });
 
 // Отправка в GH pages (ветку gh-pages репозитория)
