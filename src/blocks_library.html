@@ -3396,8 +3396,11 @@
 
 
   <section class="blocks-library__item" id="btn" data-name=".btn">
+
     <h1 class="blocks-library__item-title">Кнопки</h1>
+
     <p>Показанные кнопки (кнопки по умолчанию) стилизуются примесями. Для создания индивидуальных кнопок используйте примесь <code>.btn()</code> или полностью индивидуальное оформление с включением правил этой примеси.</p>
+
     <div class="js-font-resizer">
       <p>
         <a href="" class="btn">Cсылка</a>
@@ -3492,12 +3495,15 @@
         </div>
       </div>
     </div>
+
   </section>
 
 
 
   <section class="blocks-library__item" id="form-mariage">
+
     <h1 class="blocks-library__item-title">Комбинации элементов форм</h1>
+
     <p>Сравнение и тестирование комбинаций элементов форм по умолчанию и с модификаторами.</p>
     <div class="js-font-resizer">
       <form action="" class="form  form--line">
@@ -3544,6 +3550,7 @@
         </pre>
       </div>
     </div>
+
   </section>
 
 
@@ -3810,92 +3817,76 @@
 
 
 
+  <section class="blocks-library__item" id="btn-group" data-name=".btn-group">
+
+    <h1 class="blocks-library__item-title">Группа кнопок</h1>
+
+    <div class="js-font-resizer">
+      <div class="btn-group">
+        <button class="btn">Отправить</button>
+        <button class="btn  btn--main">Отменить</button>
+        <button class="btn">Отменить</button>
+        <span role="presentation" class="dropdown">
+          <button class="dropdown__toggler  btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Выпадение от пр. края
+          </button>
+          <ul class="dropdown__menu  dropdown__menu--right">
+            <li><a href="#">Пункт списка (выпадает <code>ul</code>)</a></li>
+            <li><a href="">Пункт меню весьма длинный</a></li>
+            <li><a href="">Второй пункт</a></li>
+          </ul>
+        </span>
+      </div>
+      <hr>
+      <div class="btn-group">
+        <span role="presentation" class="dropdown">
+          <button class="dropdown__toggler  btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Выпадение
+          </button>
+          <ul class="dropdown__menu">
+            <li><a href="#">Пункт списка (выпадает <code>ul</code>)</a></li>
+            <li><a href="">Пункт меню весьма длинный</a></li>
+            <li><a href="">Второй пункт</a></li>
+          </ul>
+        </span>
+        <button class="btn">Отправить</button>
+      </div>
+    </div>
+    <div class="blocks-library__code-wrapper">
+      <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+      <div class="blocks-library__code">
+        <pre>
+          <code class="html">&lt;div class=&quot;btn-group&quot;&gt;</code>
+          <code class="html">  &lt;button class=&quot;btn&quot;&gt;&#x41e;&#x442;&#x43f;&#x440;&#x430;&#x432;&#x438;&#x442;&#x44c;&lt;/button&gt;</code>
+          <code class="html">  &lt;button class=&quot;btn  btn--main&quot;&gt;&#x41e;&#x442;&#x43c;&#x435;&#x43d;&#x438;&#x442;&#x44c;&lt;/button&gt;</code>
+          <code class="html">  &lt;button class=&quot;btn&quot;&gt;&#x41e;&#x442;&#x43c;&#x435;&#x43d;&#x438;&#x442;&#x44c;&lt;/button&gt;</code>
+          <code class="html">  &lt;span role=&quot;presentation&quot; class=&quot;dropdown&quot;&gt;</code>
+          <code class="html">    &lt;button class=&quot;dropdown__toggler  btn&quot; type=&quot;button&quot; data-toggle=&quot;dropdown&quot; aria-haspopup=&quot;true&quot; aria-expanded=&quot;false&quot;&gt;</code>
+          <code class="html">      &#x412;&#x44b;&#x43f;&#x430;&#x434;&#x435;&#x43d;&#x438;&#x435; &#x43e;&#x442; &#x43f;&#x440;. &#x43a;&#x440;&#x430;&#x44f;</code>
+          <code class="html">    &lt;/button&gt;</code>
+          <code class="html">    &lt;ul class=&quot;dropdown__menu  dropdown__menu--right&quot;&gt;</code>
+          <code class="html">      &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&#x41f;&#x443;&#x43d;&#x43a;&#x442; &#x441;&#x43f;&#x438;&#x441;&#x43a;&#x430; (&#x432;&#x44b;&#x43f;&#x430;&#x434;&#x430;&#x435;&#x442; &lt;code&gt;ul&lt;/code&gt;)&lt;/a&gt;&lt;/li&gt;</code>
+          <code class="html">      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&#x41f;&#x443;&#x43d;&#x43a;&#x442; &#x43c;&#x435;&#x43d;&#x44e; &#x432;&#x435;&#x441;&#x44c;&#x43c;&#x430; &#x434;&#x43b;&#x438;&#x43d;&#x43d;&#x44b;&#x439;&lt;/a&gt;&lt;/li&gt;</code>
+          <code class="html">      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&#x412;&#x442;&#x43e;&#x440;&#x43e;&#x439; &#x43f;&#x443;&#x43d;&#x43a;&#x442;&lt;/a&gt;&lt;/li&gt;</code>
+          <code class="html">    &lt;/ul&gt;</code>
+          <code class="html">  &lt;/span&gt;</code>
+          <code class="html">&lt;/div&gt;</code>
+        </pre>
+      </div>
+    </div>
+
+  </section>
+
+
+
   <hr>
 
 
 
-  <section class="blocks-library__item">
+  <section class="blocks-library__item" id="dropdown" data-name=".dropdown">
 
-    <div class="row">
+    <h1 class="blocks-library__item-title">Выпадающие элементы</h1>
 
-      <div class="col-md-6">
-
-        <form action="" class="form">
-          <fieldset>
-            <h3></h3>
-            <p>Плюс возможные добавочные неинтерактивные элементы.</p>
-
-          </fieldset>
-        </form>
-
-        <h3>Группа кнопок</h3>
-
-        <div class="btn-group">
-          <button class="btn">Отправить</button>
-          <button class="btn  btn--main">Отменить</button>
-          <button class="btn">Отменить</button>
-          <span role="presentation" class="dropdown">
-            <button class="dropdown__toggler  btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Выпадение от пр. края
-            </button>
-            <ul class="dropdown__menu  dropdown__menu--right">
-              <li><a href="#">Пункт списка (выпадает <code>ul</code>)</a></li>
-              <li><a href="">Пункт меню весьма длинный</a></li>
-              <li><a href="">Второй пункт</a></li>
-            </ul>
-          </span>
-        </div>
-
-        <div class="btn-group">
-          <span role="presentation" class="dropdown">
-            <button class="dropdown__toggler  btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Выпадение от пр. края
-            </button>
-            <ul class="dropdown__menu  dropdown__menu--right">
-              <li><a href="#">Пункт списка (выпадает <code>ul</code>)</a></li>
-              <li><a href="">Пункт меню весьма длинный</a></li>
-              <li><a href="">Второй пункт</a></li>
-            </ul>
-          </span>
-          <button class="btn">Отправить</button>
-        </div>
-
-        <h3>Радиокнопки как кнопки</h3>
-
-        <div class="btn-group  checked-btns">
-          <input type="radio" name="radio-btn" id="radio-btn-1">
-          <input type="radio" name="radio-btn" id="radio-btn-2">
-          <input type="radio" name="radio-btn" id="radio-btn-3">
-          <input type="radio" name="radio-btn" id="radio-btn-4">
-          <label class="btn" for="radio-btn-1">Флажок 1</label>
-          <label class="btn" for="radio-btn-2">Флажок 2</label>
-          <label class="btn" for="radio-btn-3">Флажок 3</label>
-          <label class="btn" for="radio-btn-4">Флажок 4</label>
-        </div>
-
-        <h3>Флажки (чекбоксы) как кнопки</h3>
-
-        <p>TODO</p>
-
-      </div>
-    </div>
-  </section>
-
-
-
-  <section class="blocks-library__item">
-
-    <h2 id="btn">Кнопки</h2>
-    <p>Стилизация: БЭМ-блок <code>.btn</code> и модификаторы.</p>
-
-
-  </section>
-
-
-
-  <section class="blocks-library__item">
-
-    <h2 id="dropdown">Выпадающие элементы</h2>
     <p>Свойства:</p>
     <ul>
       <li>Требуют jQuery.</li>
@@ -3903,177 +3894,158 @@
       <li>Выпадать может <code>ul</code> или <code>div</code> с произвольным содержимым.</li>
       <li>Cобытия с пространством имён.</li>
     </ul>
-    <div class="p">
-      <span role="presentation" class="dropdown" id="test">
-        <a id="test_link" href="#" class="dropdown__toggler" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ссылка</a>
-        <ul class="dropdown__menu" aria-labelledby="qwer">
-          <li><a href="#">Пункт списка (выпадает <code>ul</code>)</a></li>
-          <li class="dropdown__menu-separator"><a href="#">Пункт списка, после которого следует разделитель</a></li>
-          <li><a href="#">Пункт меню весьма длинный, такой, что прямо адски длинный, очень много, реально много слов!</a></li>
-        </ul>
-      </span>
-      <span role="presentation" class="dropdown" id="test_2">
-        <button class="dropdown__toggler  btn" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Выпадает список
-        </button>
-        <ul class="dropdown__menu" id="qwer">
-          <li><a href="#">Пункт списка (выпадает <code>ul</code>)</a></li>
-          <li><a href="">Пункт меню весьма длинный</a></li>
-          <li><a href="">Второй пункт</a></li>
-        </ul>
-      </span>
-      <span role="presentation" class="dropdown">
-        <button class="dropdown__toggler  btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Выпадает блок
-        </button>
-        <div class="dropdown__menu">
-          Выпадает <code>div</code> с произвольным контентом. <a href="">Ссылка какая-то</a>.
-          <hr>
-          <form action="">
-            <input type="text">
-            <select name="" id="">
-              <option value="">Название пункта</option>
-            </select>
-            <textarea name="" id="" rows="3"></textarea>
-            <button class="btn">Отправить эту форму</button>
-          </form>
-        </div>
-      </span>
-      <span role="presentation" class="dropdown">
-        <button class="dropdown__toggler  btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Выпадение вверх
-        </button>
-        <ul class="dropdown__menu  dropdown__menu--up">
-          <li><a href="#">Пункт списка (выпадает <code>ul</code>)</a></li>
-          <li><a href="">Пункт меню весьма длинный</a></li>
-          <li><a href="">Второй пункт</a></li>
-        </ul>
-      </span>
-      <span role="presentation" class="dropdown">
-        <button class="dropdown__toggler  btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Выпадение от пр. края
-        </button>
-        <ul class="dropdown__menu  dropdown__menu--right">
-          <li><a href="#">Пункт списка (выпадает <code>ul</code>)</a></li>
-          <li><a href="">Пункт меню весьма длинный</a></li>
-          <li><a href="">Второй пункт</a></li>
-        </ul>
-      </span>
-      <span role="presentation" class="dropdown">
-        <button class="dropdown__toggler  btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Выпадение вверх от пр. края
-        </button>
-        <ul class="dropdown__menu  dropdown__menu--up  dropdown__menu--right">
-          <li><a href="#">Пункт списка (выпадает <code>ul</code>)</a></li>
-          <li><a href="">Пункт меню весьма длинный</a></li>
-          <li><a href="">Второй пункт</a></li>
-        </ul>
-      </span>
-    </div>
-    <h3>События</h3>
-    <div class="row">
-      <div class="col-md-6">
-        <pre><code>&lt;span role=&quot;presentation&quot; class=&quot;dropdown&quot; id=&quot;test&quot;&gt;
-  &lt;a href=&quot;#&quot; class=&quot;dropdown__toggler&quot; data-toggle=&quot;dropdown&quot; role=&quot;button&quot; aria-haspopup=&quot;true&quot; aria-expanded=&quot;false&quot;&gt;&#x421;&#x441;&#x44b;&#x43b;&#x43a;&#x430; &#x441; &#x432;&#x44b;&#x43f;&#x430;&#x434;&#x430;&#x44e;&#x449;&#x438;&#x43c; &#x44d;&#x43b;&#x435;&#x43c;&#x435;&#x43d;&#x442;&#x43e;&#x43c;&lt;/a&gt;
-  &lt;ul class=&quot;dropdown__menu&quot; aria-labelledby=&quot;qwer&quot;&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&#x41f;&#x443;&#x43d;&#x43a;&#x442; &#x441;&#x43f;&#x438;&#x441;&#x43a;&#x430; (&#x432;&#x44b;&#x43f;&#x430;&#x434;&#x430;&#x435;&#x442; &lt;code&gt;ul&lt;/code&gt;)&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/span&gt;</code></pre>
-      </div>
-      <div class="col-md-6">
-        <pre>
-// Факт открытия
-$('#test').on('shown.nth.dropdown', function () {
-  console.log('shown.nth.dropdown');
-});
-
-// Факт закрытия
-$('#test').on('hidden.nth.dropdown', function () {
-  console.log('hidden.nth.dropdown');
-});</pre>
-      </div>
-    </div>
-
-
-
-<!--     <div class="dropdown">
-      <a href="#" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Dropdown trigger
-      </a>
-      <div class="dropdown__menu">
-        <a href="">1111</a>
-        <a href="">1111</a>
+    <div class="js-font-resizer">
+      <div class="p">
+        <span role="presentation" class="dropdown" id="test">
+          <a id="test_link" href="#" class="dropdown__toggler" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ссылка с выпадением</a>
+          <ul class="dropdown__menu" aria-labelledby="qwer">
+            <li><a href="#">Пункт списка (выпадает <code>ul</code>)</a></li>
+            <li class="dropdown__menu-separator"><a href="#">Пункт списка, после которого следует разделитель</a></li>
+            <li><a href="#">Пункт меню весьма длинный, такой, что прямо адски длинный, очень много, реально много слов!</a></li>
+          </ul>
+        </span>
+        <span role="presentation" class="dropdown" id="test_2">
+          <button class="dropdown__toggler  btn" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Выпадает список
+          </button>
+          <ul class="dropdown__menu" id="qwer">
+            <li><a href="#">Пункт списка (выпадает <code>ul</code>)</a></li>
+            <li><a href="">Пункт меню весьма длинный</a></li>
+            <li><a href="">Второй пункт</a></li>
+          </ul>
+        </span>
         <hr>
-        <form action="">
-          <input type="text">
-          <select name="" id="">
-            <option value="">111</option>
-          </select>
-          <textarea name="" id="" cols="30" rows="10"></textarea>
-          <button>111</button>
-        </form>
+        <span role="presentation" class="dropdown">
+          <button class="dropdown__toggler  btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Выпадает блок
+          </button>
+          <div class="dropdown__menu">
+            Выпадает <code>div</code> с произвольным контентом. <a href="">Ссылка какая-то</a>.
+            <hr>
+            <form action="">
+              <input type="text">
+              <select name="" id="">
+                <option value="">Название пункта</option>
+              </select>
+              <textarea name="" id="" rows="3"></textarea>
+              <button class="btn">Отправить эту форму</button>
+            </form>
+          </div>
+        </span>
       </div>
-    </div> -->
+    </div>
+    <div class="blocks-library__code-wrapper">
+      <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+      <div class="blocks-library__code">
+        <pre>
+          <code class="html">&lt;span role=&quot;presentation&quot; class=&quot;dropdown&quot; id=&quot;test&quot;&gt;</code>
+          <code class="html">  &lt;a href=&quot;#&quot; class=&quot;dropdown__toggler&quot; data-toggle=&quot;dropdown&quot; role=&quot;button&quot; aria-haspopup=&quot;true&quot; aria-expanded=&quot;false&quot;&gt;</code>
+          <code class="html">    Ссылка с выпадением</code>
+          <code class="html">  &lt;/a&gt;</code>
+          <code class="html">  &lt;ul class=&quot;dropdown__menu&quot; aria-labelledby=&quot;qwer&quot;&gt;</code>
+          <code class="html">    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&#x41f;&#x443;&#x43d;&#x43a;&#x442; &#x441;&#x43f;&#x438;&#x441;&#x43a;&#x430; (&#x432;&#x44b;&#x43f;&#x430;&#x434;&#x430;&#x435;&#x442; &lt;code&gt;ul&lt;/code&gt;)&lt;/a&gt;&lt;/li&gt;</code>
+          <code class="html">  &lt;/ul&gt;</code>
+          <code class="html">&lt;/span&gt;</code>
+          <code class="html"> </code>
+          <code class="html">&lt;span role=&quot;presentation&quot; class=&quot;dropdown&quot; id=&quot;test&quot;&gt;</code>
+          <code class="html">  &lt;button class=&quot;dropdown__toggler  btn&quot; id=&quot;dLabel&quot; type=&quot;button&quot; data-toggle=&quot;dropdown&quot; aria-haspopup=&quot;true&quot; aria-expanded=&quot;false&quot;&gt;</code>
+          <code class="html">    Кнопка с выпадением</code>
+          <code class="html">  &lt;/button&gt;</code>
+          <code class="html">  &lt;ul class=&quot;dropdown__menu&quot; aria-labelledby=&quot;qwer&quot;&gt;</code>
+          <code class="html">    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&#x41f;&#x443;&#x43d;&#x43a;&#x442; &#x441;&#x43f;&#x438;&#x441;&#x43a;&#x430; (&#x432;&#x44b;&#x43f;&#x430;&#x434;&#x430;&#x435;&#x442; &lt;code&gt;ul&lt;/code&gt;)&lt;/a&gt;&lt;/li&gt;</code>
+          <code class="html">  &lt;/ul&gt;</code>
+          <code class="html">&lt;/span&gt;</code>
+        </pre>
+      </div>
+    </div>
 
-<!--     <div class="dropdown">
-      <span class="btn  dropdown__toggler">Кнопка 2</span>
-      <div class="dropdown__content">выпадающий блок 2</div>
-    </div> -->
+    <h2>Выпадение вверх</h2>
+    <p>Модификатор <code>dropdown__menu--up</code> на выпадающем элементе.</p>
+
+    <span role="presentation" class="dropdown">
+      <button class="dropdown__toggler  btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Выпадение вверх
+      </button>
+      <ul class="dropdown__menu  dropdown__menu--up">
+        <li><a href="#">Пункт списка (выпадает <code>ul</code>)</a></li>
+        <li><a href="">Пункт меню весьма длинный</a></li>
+        <li><a href="">Второй пункт</a></li>
+      </ul>
+    </span>
+    <div class="blocks-library__code-wrapper">
+      <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+      <div class="blocks-library__code">
+        <pre>
+          <code class="html">&lt;span role=&quot;presentation&quot; class=&quot;dropdown&quot; id=&quot;test&quot;&gt;</code>
+          <code class="html">  &lt;button class=&quot;dropdown__toggler  btn&quot; id=&quot;dLabel&quot; type=&quot;button&quot; data-toggle=&quot;dropdown&quot; aria-haspopup=&quot;true&quot; aria-expanded=&quot;false&quot;&gt;</code>
+          <code class="html">    Кнопка с выпадением</code>
+          <code class="html">  &lt;/button&gt;</code>
+          <code class="html">  &lt;ul class=&quot;dropdown__menu &nbsp;dropdown__menu--up&quot; aria-labelledby=&quot;qwer&quot;&gt;</code>
+          <code class="html">    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&#x41f;&#x443;&#x43d;&#x43a;&#x442; &#x441;&#x43f;&#x438;&#x441;&#x43a;&#x430; (&#x432;&#x44b;&#x43f;&#x430;&#x434;&#x430;&#x435;&#x442; &lt;code&gt;ul&lt;/code&gt;)&lt;/a&gt;&lt;/li&gt;</code>
+          <code class="html">  &lt;/ul&gt;</code>
+          <code class="html">&lt;/span&gt;</code>
+        </pre>
+      </div>
+    </div>
+
+    <h2>Выпадение от правого края</h2>
+    <p>Модификатор <code>dropdown__menu--right</code> на выпадающем элементе. Нормально сочетается с модификатором <code>dropdown__menu--up</code>.</p>
+    Текст перед кнопкой
+    <span role="presentation" class="dropdown">
+      <button class="dropdown__toggler  btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Выпадение от пр. края
+      </button>
+      <ul class="dropdown__menu  dropdown__menu--right">
+        <li><a href="#">Пункт списка (выпадает <code>ul</code>)</a></li>
+        <li><a href="">Пункт меню весьма длинный</a></li>
+        <li><a href="">Второй пункт</a></li>
+      </ul>
+    </span>
+    <span role="presentation" class="dropdown">
+      <button class="dropdown__toggler  btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Выпадение вверх от пр. края
+      </button>
+      <ul class="dropdown__menu  dropdown__menu--up  dropdown__menu--right">
+        <li><a href="#">Пункт списка (выпадает <code>ul</code>)</a></li>
+        <li><a href="">Пункт меню весьма длинный</a></li>
+        <li><a href="">Второй пункт</a></li>
+      </ul>
+    </span>
+    <div class="blocks-library__code-wrapper">
+      <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+      <div class="blocks-library__code">
+        <pre>
+          <code class="html">&lt;span role=&quot;presentation&quot; class=&quot;dropdown&quot; id=&quot;test&quot;&gt;</code>
+          <code class="html">  &lt;button class=&quot;dropdown__toggler  btn&quot; id=&quot;dLabel&quot; type=&quot;button&quot; data-toggle=&quot;dropdown&quot; aria-haspopup=&quot;true&quot; aria-expanded=&quot;false&quot;&gt;</code>
+          <code class="html">    Кнопка с выпадением</code>
+          <code class="html">  &lt;/button&gt;</code>
+          <code class="html">  &lt;ul class=&quot;dropdown__menu &nbsp;dropdown__menu--right&quot; aria-labelledby=&quot;qwer&quot;&gt;</code>
+          <code class="html">    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&#x41f;&#x443;&#x43d;&#x43a;&#x442; &#x441;&#x43f;&#x438;&#x441;&#x43a;&#x430; (&#x432;&#x44b;&#x43f;&#x430;&#x434;&#x430;&#x435;&#x442; &lt;code&gt;ul&lt;/code&gt;)&lt;/a&gt;&lt;/li&gt;</code>
+          <code class="html">  &lt;/ul&gt;</code>
+          <code class="html">&lt;/span&gt;</code>
+        </pre>
+      </div>
+    </div>
+
+
+    <h2>События</h2>
+    <pre>
+      <code class="js">// Факт открытия</code>
+      <code class="js">$('#test').on('shown.nth.dropdown', function () {</code>
+      <code class="js">  console.log('shown.nth.dropdown');</code>
+      <code class="js">});</code>
+      <code class="js"> </code>
+      <code class="js">// Факт закрытия</code>
+      <code class="js">$('#test').on('hidden.nth.dropdown', function () {</code>
+      <code class="js">  console.log('hidden.nth.dropdown');</code>
+      <code class="js">});</code>
+    </pre>
 
   </section>
 
 
 
-  <section class="blocks-library__item">
-
-    <h2 id="breakpoints">Breakpoints</h2>
-    <p>Ширины, на которых возможна перестройка блоков проекта:</p>
-
-    <table>
-      <tr>
-        <th>Переменная</th>
-        <th>Ширина в px по умолчанию</th>
-        <th>ID сетки, начинающей срабатывать</th>
-      </tr>
-      <tr>
-        <td><code>@screen-xs</code></td>
-        <td>0</td>
-        <td>XS</td>
-      </tr>
-      <tr>
-        <td><code>@screen-sm</code></td>
-        <td>480</td>
-        <td>SM</td>
-      </tr>
-      <tr>
-        <td><code>@screen-md</code></td>
-        <td>768</td>
-        <td>MD</td>
-      </tr>
-      <tr>
-        <td><code>@screen-lg</code></td>
-        <td>992</td>
-        <td>LG</td>
-      </tr>
-      <tr>
-        <td><code>@screen-xl</code></td>
-        <td>1200</td>
-        <td>XL</td>
-      </tr>
-      <tr>
-        <td><code>@screen-xxl</code></td>
-        <td>1800</td>
-        <td>XXL</td>
-      </tr>
-    </table>
-  </section>
-
-
-
-  <section class="blocks-library__item" id="grid">
+  <section class="blocks-library__item" id="grid" data-name=".row, .col-...">
 
     <h1 class="blocks-library__item-title">Модульная сетка на flexbox</h1>
 
@@ -4127,6 +4099,47 @@ $('#test').on('hidden.nth.dropdown', function () {
         </pre>
       </div>
     </div>
+
+    <h2 id="breakpoints">Breakpoints</h2>
+    <p>Ширины, на которых возможна перестройка блоков проекта:</p>
+
+    <table>
+      <tr>
+        <th>Переменная</th>
+        <th>Ширина в px по умолчанию</th>
+        <th>ID сетки, начинающей срабатывать</th>
+      </tr>
+      <tr>
+        <td><code>@screen-xs</code></td>
+        <td>0</td>
+        <td>XS</td>
+      </tr>
+      <tr>
+        <td><code>@screen-sm</code></td>
+        <td>480</td>
+        <td>SM</td>
+      </tr>
+      <tr>
+        <td><code>@screen-md</code></td>
+        <td>768</td>
+        <td>MD</td>
+      </tr>
+      <tr>
+        <td><code>@screen-lg</code></td>
+        <td>992</td>
+        <td>LG</td>
+      </tr>
+      <tr>
+        <td><code>@screen-xl</code></td>
+        <td>1200</td>
+        <td>XL</td>
+      </tr>
+      <tr>
+        <td><code>@screen-xxl</code></td>
+        <td>1800</td>
+        <td>XXL</td>
+      </tr>
+    </table>
 
     <div class="blocks-library__sub-item" id="grid-mixins">
       <h2 class="blocks-library__sub-item-title">LESS-примеси</h2>
@@ -4244,23 +4257,34 @@ $('#test').on('hidden.nth.dropdown', function () {
         <code class="less">}</code>
       </pre>
     </div>
+
   </section>
 
 
 
-  <section class="blocks-library__item">
-    <h2 id="responsive-mixins">Примеси адаптивности</h2>
-    <p>Стилизация: нет, только примеси.</p>
+  <section class="blocks-library__item" id="responsive-mixins">
+
+    <h1 class="blocks-library__item-title">Примеси адаптивности</h1>
+
     <p>К нужным элементам добавляем примеси, элементы скрываются на тех или иных ширинах вьюпорта.</p>
+
     <p class="alert  alert--success">В примесях указано только значение <code>display: none;</code>, без <code>!important</code>.</p>
+
     <pre>
-.block-name {
-  .hidden-up(lg);   // Скрыть на LG (включительно) и более широких
-  .hidden-down(sm); // Скрыть на SM (включительно) и более узких
-}</pre>
+      <code class="less">.block-name {</code>
+      <code class="less">  .hidden-up(lg);   // Скрыть на LG (включительно) и более широких</code>
+      <code class="less">  .hidden-down(sm); // Скрыть на SM (включительно) и более узких</code>
+      <code class="less">}</code>
+    </pre>
+
   </section>
+
+
 
   <section class="blocks-library__item" id="step-list" data-name=".step-list">
+
+    <h1 class="blocks-library__item-title">Пошаговый список</h1>
+
     <ol class="step-list">
       <li class="step-list__item">
         <h2 class="step-list__title">Автоматизируйте всё</h2>
@@ -4291,122 +4315,254 @@ $('#test').on('hidden.nth.dropdown', function () {
         <a href="" class="btn  btn--success">Да, детка, сверстай мне!</a>
       </li>
     </ol>
+
   </section>
 
+
+
   <section class="blocks-library__item" id="label" data-name=".label">
-    <div class="p">
-      Метки-<code>span</code>:
-      <span class="label">Метка</span>
-      <span class="label  label--main">Метка</span>
-      <span class="label  label--danger">Метка</span>
-      <span class="label  label--success">Метка</span>
-      Метки-<code>div</code>:
-      <div class="label">Метка</div>
-      <div class="label  label--main">Метка</div>
-      <div class="label  label--danger">Метка</div>
-      <div class="label  label--success">Метка</div>
-      Метки-ссылки:
-      <a href="" class="label">Метка</a>
-      <a href="" class="label  label--main">Метка</a>
-      <a href="" class="label  label--danger">Метка</a>
-      <a href="" class="label  label--success">Метка</a>
-    </div>
-    <p>
-      Метки с иконками:
-      <span class="label"><svg width=".7em" height=".7em"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#block-library-camera"></use></svg> Метка</span>
-      <span class="label  label--main"><svg width=".7em" height=".7em"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#block-library-folder-open"></use></svg> Метка</span>
-      <span class="label  label--danger"><svg width=".7em" height=".7em"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#block-library-road"></use></svg> Метка</span>
-      <span class="label  label--success"><svg width=".7em" height=".7em"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#block-library-search"></use></svg> Метка</span>
-    </p>
-    <div class="p">
-      Метки в кнопках:
-      <a href="" class="btn">Кнопка <span class="label">1</span></a>
-      <a href="" class="btn  btn--danger">Кнопка <span class="label  label--danger">1</span></a>
-      <a href="" class="btn  btn--main">Кнопка <span class="label  label--success">1</span></a>
-      <a href="" class="btn  btn--sm">Кнопка <span class="label">1</span></a>
-      <a href="" class="btn  btn--sm  btn--danger">Кнопка <span class="label  label--danger">1</span></a>
-      <a href="" class="btn  btn--sm  btn--main">Кнопка <span class="label  label--success">1</span></a>
-      <a href="" class="btn  btn--lg">Кнопка <span class="label">1</span></a>
-      <a href="" class="btn  btn--lg  btn--danger">Кнопка <span class="label  label--danger">1</span></a>
-      <a href="" class="btn  btn--lg  btn--main">Кнопка <span class="label  label--success">1</span></a>
-    </div>
 
-    <div class="blocks-library__sub-item">
-      <b class="blocks-library__sub-item-title">Только иконка, нет текстового узла (увеличен размер шрифта родителя)</b>
-      <div class="p" style="font-size: 2.4rem">
-        <span class="label"><svg width=".7em" height=".7em"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#block-library-camera"></use></svg></span>
-        <span class="label  label--circle"><svg width=".7em" height=".7em"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#block-library-folder-open"></use></svg></span>
-        <span class="label  label--circle  label--tag"><svg width=".7em" height=".7em"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#block-library-road"></use></svg></span>
-        <span class="label  label--danger"><svg width=".7em" height=".7em"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#block-library-search"></use></svg></span>
-      </div>
-    </div>
+    <h1 class="blocks-library__item-title">Метки</h1>
 
-    <div class="blocks-library__sub-item">
-      <b class="blocks-library__sub-item-title">Элемент: <code>label__detail</code> (отдельный LESS-файл)</b>
+    <div class="js-font-resizer">
       <div class="p">
         Метки-<code>span</code>:
-        <span class="label">Метка <span class="label__detail">7</span></span>
-        <span class="label  label--main">Метка <span class="label__detail">7</span></span>
-        <span class="label  label--danger">Метка <span class="label__detail">7</span></span>
-        <span class="label  label--success">Метка <span class="label__detail">7</span></span>
+        <span class="label">Метка</span>
+        <span class="label  label--main">Метка</span>
+        <span class="label  label--danger">Метка</span>
+        <span class="label  label--success">Метка</span>
         Метки-<code>div</code>:
-        <div class="label">Метка <span class="label__detail">7</span></div>
-        <div class="label  label--main">Метка <span class="label__detail">7</span></div>
-        <div class="label  label--danger">Метка <span class="label__detail">7</span></div>
-        <div class="label  label--success">Метка <span class="label__detail">7</span></div>
+        <div class="label">Метка</div>
+        <div class="label  label--main">Метка</div>
+        <div class="label  label--danger">Метка</div>
+        <div class="label  label--success">Метка</div>
         Метки-ссылки:
-        <a href="" class="label">Метка <span class="label__detail">7</span></a>
-        <a href="" class="label  label--main">Метка <span class="label__detail">7</span></a>
-        <a href="" class="label  label--danger">Метка <span class="label__detail">7</span></a>
-        <a href="" class="label  label--success">Метка <span class="label__detail">7</span></a>
+        <a href="" class="label">Метка</a>
+        <a href="" class="label  label--main">Метка</a>
+        <a href="" class="label  label--danger">Метка</a>
+        <a href="" class="label  label--success">Метка</a>
       </div>
-    </div>
-
-    <div class="blocks-library__sub-item">
-      <b class="blocks-library__sub-item-title">Модификатор: <code>label--tag</code> (отдельный LESS-файл)</b>
+      <p>
+        Метки с иконками:
+        <span class="label"><svg width=".7em" height=".7em"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#block-library-camera"></use></svg> Метка</span>
+        <span class="label  label--main"><svg width=".7em" height=".7em"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#block-library-folder-open"></use></svg> Метка</span>
+        <span class="label  label--danger"><svg width=".7em" height=".7em"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#block-library-road"></use></svg> Метка</span>
+        <span class="label  label--success"><svg width=".7em" height=".7em"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#block-library-search"></use></svg> Метка</span>
+      </p>
       <div class="p">
-        Метки-<code>span</code>:
-        <span class="label  label--tag">Метка <span class="label__detail">7</span></span>
-        <span class="label  label--tag  label--main">Метка</span>
-        <span class="label  label--tag  label--danger">Метка</span>
-        <span class="label  label--tag  label--success">Метка</span>
-        Метки-<code>div</code>:
-        <div class="label  label--tag">Метка</div>
-        <div class="label  label--tag  label--main">Метка</div>
-        <div class="label  label--tag  label--danger">Метка</div>
-        <div class="label  label--tag  label--success">Метка</div>
-        Метки-ссылки:
-        <a href="" class="label  label--tag">Метка</a>
-        <a href="" class="label  label--tag  label--main">Метка</a>
-        <a href="" class="label  label--tag  label--danger">Метка</a>
-        <a href="" class="label  label--tag  label--success">Метка</a>
+        Метки в кнопках:
+        <a href="" class="btn">Кнопка <span class="label">1</span></a>
+        <a href="" class="btn  btn--danger">Кнопка <span class="label  label--danger">1</span></a>
+        <a href="" class="btn  btn--main">Кнопка <span class="label  label--success">1</span></a>
+        <a href="" class="btn  btn--sm">Кнопка <span class="label">1</span></a>
+        <a href="" class="btn  btn--sm  btn--danger">Кнопка <span class="label  label--danger">1</span></a>
+        <a href="" class="btn  btn--sm  btn--main">Кнопка <span class="label  label--success">1</span></a>
+        <a href="" class="btn  btn--lg">Кнопка <span class="label">1</span></a>
+        <a href="" class="btn  btn--lg  btn--danger">Кнопка <span class="label  label--danger">1</span></a>
+        <a href="" class="btn  btn--lg  btn--main">Кнопка <span class="label  label--success">1</span></a>
       </div>
-      <p>Внимание: круг внутри метки не прозрачный! Это <code>@body-bg</code> (по умолчанию — <code>#fff</code>).</p>
     </div>
-
-    <div class="blocks-library__sub-item">
-      <b class="blocks-library__sub-item-title">Модификатор: <code>label--circle</code> (отдельный LESS-файл)</b>
-      <div class="p">
-        Метки-<code>span</code>:
-        <span class="label  label--circle">Метка</span>
-        <span class="label  label--circle  label--main">Метка</span>
-        <span class="label  label--circle  label--danger">Метка</span>
-        <span class="label  label--circle  label--success">Метка</span>
-        Метки-<code>div</code>:
-        <div class="label  label--circle">Метка</div>
-        <div class="label  label--circle  label--main">Метка</div>
-        <div class="label  label--circle  label--danger">Метка</div>
-        <div class="label  label--circle  label--success">Метка</div>
-        Метки-ссылки:
-        <a href="" class="label  label--circle">Метка</a>
-        <a href="" class="label  label--circle  label--main">Метка</a>
-        <a href="" class="label  label--circle  label--danger">Метка</a>
-        <a href="" class="label  label--circle  label--success">Метка</a>
+    <div class="blocks-library__code-wrapper">
+      <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+      <div class="blocks-library__code">
+        <pre>
+          <code class="html">&lt;span class=&quot;label&quot;&gt;&#x41c;&#x435;&#x442;&#x43a;&#x430;&lt;/span&gt;</code>
+          <code class="html">&lt;span class=&quot;label  label--main&quot;&gt;&#x41c;&#x435;&#x442;&#x43a;&#x430;&lt;/span&gt;</code>
+          <code class="html">&lt;span class=&quot;label  label--danger&quot;&gt;&#x41c;&#x435;&#x442;&#x43a;&#x430;&lt;/span&gt;</code>
+          <code class="html">&lt;span class=&quot;label  label--success&quot;&gt;&#x41c;&#x435;&#x442;&#x43a;&#x430;&lt;/span&gt;</code>
+          <code class="html"> </code>
+          <code class="html">&lt;div class=&quot;label&quot;&gt;&#x41c;&#x435;&#x442;&#x43a;&#x430;&lt;/div&gt;</code>
+          <code class="html">&lt;div class=&quot;label  label--main&quot;&gt;&#x41c;&#x435;&#x442;&#x43a;&#x430;&lt;/div&gt;</code>
+          <code class="html">&lt;div class=&quot;label  label--danger&quot;&gt;&#x41c;&#x435;&#x442;&#x43a;&#x430;&lt;/div&gt;</code>
+          <code class="html">&lt;div class=&quot;label  label--success&quot;&gt;&#x41c;&#x435;&#x442;&#x43a;&#x430;&lt;/div&gt;</code>
+          <code class="html"> </code>
+          <code class="html">&lt;a href=&quot;&quot; class=&quot;label&quot;&gt;&#x41c;&#x435;&#x442;&#x43a;&#x430;&lt;/a&gt;</code>
+          <code class="html">&lt;a href=&quot;&quot; class=&quot;label  label--main&quot;&gt;&#x41c;&#x435;&#x442;&#x43a;&#x430;&lt;/a&gt;</code>
+          <code class="html">&lt;a href=&quot;&quot; class=&quot;label  label--danger&quot;&gt;&#x41c;&#x435;&#x442;&#x43a;&#x430;&lt;/a&gt;</code>
+          <code class="html">&lt;a href=&quot;&quot; class=&quot;label  label--success&quot;&gt;&#x41c;&#x435;&#x442;&#x43a;&#x430;&lt;/a&gt;</code>
+          <code class="html"> </code>
+          <code class="html">&lt;a href=&quot;&quot; class=&quot;btn&quot;&gt;&#x41a;&#x43d;&#x43e;&#x43f;&#x43a;&#x430;</code>
+          <code class="html">  &lt;span class=&quot;label&quot;&gt;1&lt;/span&gt;</code>
+          <code class="html">&lt;/a&gt;</code>
+        </pre>
       </div>
     </div>
 
     <div class="blocks-library__sub-item">
-      <b class="blocks-library__sub-item-title">Размеры (без модификатора, относительно родительского элемента)</b>
+      <h2 class="blocks-library__sub-item-title">Только иконка, нет текстового узла</h2>
+      <div class="js-font-resizer">
+        <div class="p">
+          <span class="label"><svg width=".7em" height=".7em"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#block-library-camera"></use></svg></span>
+          <br>
+          <span class="label  label--circle  label--success"><svg width=".7em" height=".7em"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#block-library-folder-open"></use></svg></span>
+          <br>
+          <span class="label  label--circle  label--tag"><svg width=".7em" height=".7em"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#block-library-road"></use></svg></span>
+          <br>
+          <span class="label  label--danger"><svg width=".7em" height=".7em"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#block-library-search"></use></svg></span>
+        </div>
+      </div>
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre>
+            <code class="html">&lt;span class=&quot;label&quot;&gt;</code>
+            <code class="html">  &lt;svg width=&quot;.7em&quot; height=&quot;.7em&quot;&gt;&lt;use xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; xlink:href=&quot;#block-library-camera&quot;&gt;&lt;/use&gt;&lt;/svg&gt;</code>
+            <code class="html">&lt;/span&gt;</code>
+            <code class="html">&lt;span class=&quot;label  label--circle  label--success&quot;&gt;</code>
+            <code class="html">  &lt;svg width=&quot;.7em&quot; height=&quot;.7em&quot;&gt;&lt;use xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; xlink:href=&quot;#block-library-folder-open&quot;&gt;&lt;/use&gt;&lt;/svg&gt;</code>
+            <code class="html">&lt;/span&gt;</code>
+            <code class="html">&lt;span class=&quot;label  label--circle  label--tag&quot;&gt;</code>
+            <code class="html">  &lt;svg width=&quot;.7em&quot; height=&quot;.7em&quot;&gt;&lt;use xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; xlink:href=&quot;#block-library-road&quot;&gt;&lt;/use&gt;&lt;/svg&gt;</code>
+            <code class="html">&lt;/span&gt;</code>
+            <code class="html">&lt;span class=&quot;label  label--danger&quot;&gt;</code>
+            <code class="html">  &lt;svg width=&quot;.7em&quot; height=&quot;.7em&quot;&gt;&lt;use xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; xlink:href=&quot;#block-library-search&quot;&gt;&lt;/use&gt;&lt;/svg&gt;</code>
+            <code class="html">&lt;/span&gt;</code>
+          </pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="blocks-library__sub-item">
+      <h2 class="blocks-library__sub-item-title">Элемент вторичной значимости</h2>
+      <p>Дополнительный элемент <code>label__detail</code>, отдельный less-файл.</p>
+      <div class="js-font-resizer">
+        <div class="p">
+          Метки-<code>span</code>:
+          <span class="label">Метка <span class="label__detail">7</span></span>
+          <span class="label  label--main">Метка <span class="label__detail">7</span></span>
+          <span class="label  label--danger">Метка <span class="label__detail">7</span></span>
+          <span class="label  label--success">Метка <span class="label__detail">7</span></span>
+          <br>
+          Метки-<code>div</code>:
+          <div class="label">Метка <span class="label__detail">7</span></div>
+          <div class="label  label--main">Метка <span class="label__detail">7</span></div>
+          <div class="label  label--danger">Метка <span class="label__detail">7</span></div>
+          <div class="label  label--success">Метка <span class="label__detail">7</span></div>
+          <br>
+          Метки-ссылки:
+          <a href="" class="label">Метка <span class="label__detail">7</span></a>
+          <a href="" class="label  label--main">Метка <span class="label__detail">7</span></a>
+          <a href="" class="label  label--danger">Метка <span class="label__detail">7</span></a>
+          <a href="" class="label  label--success">Метка <span class="label__detail">7</span></a>
+        </div>
+      </div>
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre>
+            <code class="html">&lt;span class=&quot;label&quot;&gt;&#x41c;&#x435;&#x442;&#x43a;&#x430; &lt;span class=&quot;label__detail&quot;&gt;7&lt;/span&gt;&lt;/span&gt;</code>
+            <code class="html">&lt;span class=&quot;label  label--main&quot;&gt;&#x41c;&#x435;&#x442;&#x43a;&#x430; &lt;span class=&quot;label__detail&quot;&gt;7&lt;/span&gt;&lt;/span&gt;</code>
+            <code class="html">&lt;span class=&quot;label  label--danger&quot;&gt;&#x41c;&#x435;&#x442;&#x43a;&#x430; &lt;span class=&quot;label__detail&quot;&gt;7&lt;/span&gt;&lt;/span&gt;</code>
+            <code class="html">&lt;span class=&quot;label  label--success&quot;&gt;&#x41c;&#x435;&#x442;&#x43a;&#x430; &lt;span class=&quot;label__detail&quot;&gt;7&lt;/span&gt;&lt;/span&gt;</code>
+          </pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="blocks-library__sub-item">
+      <h2 class="blocks-library__sub-item-title">Бирка</h2>
+      <p>Модификатор <code>label--tag</code>, отдельный less-файл.</p>
+      <div class="js-font-resizer">
+        <div class="p">
+          Метки-<code>span</code>:
+          <span class="label  label--tag">Метка <span class="label__detail">7</span></span>
+          <span class="label  label--tag  label--main">Метка</span>
+          <span class="label  label--tag  label--danger">Метка</span>
+          <span class="label  label--tag  label--success">Метка</span>
+          <br>
+          Метки-<code>div</code>:
+          <div class="label  label--tag">Метка</div>
+          <div class="label  label--tag  label--main">Метка</div>
+          <div class="label  label--tag  label--danger">Метка</div>
+          <div class="label  label--tag  label--success">Метка</div>
+          <br>
+          Метки-ссылки:
+          <a href="" class="label  label--tag">Метка</a>
+          <a href="" class="label  label--tag  label--main">Метка</a>
+          <a href="" class="label  label--tag  label--danger">Метка</a>
+          <a href="" class="label  label--tag  label--success">Метка</a>
+        </div>
+      </div>
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre>
+            <code class="html">&lt;span class=&quot;label  label--tag&quot;&gt;&#x41c;&#x435;&#x442;&#x43a;&#x430; &lt;span class=&quot;label__detail&quot;&gt;7&lt;/span&gt;&lt;/span&gt;</code>
+            <code class="html">&lt;span class=&quot;label  label--tag  label--main&quot;&gt;&#x41c;&#x435;&#x442;&#x43a;&#x430;&lt;/span&gt;</code>
+            <code class="html">&lt;span class=&quot;label  label--tag  label--danger&quot;&gt;&#x41c;&#x435;&#x442;&#x43a;&#x430;&lt;/span&gt;</code>
+            <code class="html">&lt;span class=&quot;label  label--tag  label--success&quot;&gt;&#x41c;&#x435;&#x442;&#x43a;&#x430;&lt;/span&gt;</code>
+          </pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="blocks-library__sub-item">
+      <h2 class="blocks-library__sub-item-title">Скруглённые углы</h2>
+      <p>Модификатор <code>label--circle</code>, отдельный less-файл.</p>
+      <div class="js-font-resizer">
+        <div class="p">
+          Метки-<code>span</code>:
+          <span class="label  label--circle">Метка</span>
+          <span class="label  label--circle  label--main">Метка</span>
+          <span class="label  label--circle  label--danger">Метка</span>
+          <span class="label  label--circle  label--success">Метка</span>
+          <br>
+          Метки-<code>div</code>:
+          <div class="label  label--circle">Метка</div>
+          <div class="label  label--circle  label--main">Метка</div>
+          <div class="label  label--circle  label--danger">Метка</div>
+          <div class="label  label--circle  label--success">Метка</div>
+          <br>
+          Метки-ссылки:
+          <a href="" class="label  label--circle">Метка</a>
+          <a href="" class="label  label--circle  label--main">Метка</a>
+          <a href="" class="label  label--circle  label--danger">Метка</a>
+          <a href="" class="label  label--circle  label--success">Метка</a>
+        </div>
+      </div>
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre>
+            <code class="html">&lt;span class=&quot;label  label--circle&quot;&gt;&#x41c;&#x435;&#x442;&#x43a;&#x430;&lt;/span&gt;</code>
+            <code class="html">&lt;span class=&quot;label  label--circle  label--main&quot;&gt;&#x41c;&#x435;&#x442;&#x43a;&#x430;&lt;/span&gt;</code>
+            <code class="html">&lt;span class=&quot;label  label--circle  label--danger&quot;&gt;&#x41c;&#x435;&#x442;&#x43a;&#x430;&lt;/span&gt;</code>
+            <code class="html">&lt;span class=&quot;label  label--circle  label--success&quot;&gt;&#x41c;&#x435;&#x442;&#x43a;&#x430;&lt;/span&gt;</code>
+          </pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="blocks-library__sub-item">
+      <h2 class="blocks-library__sub-item-title">Абсолютно позиционированная метка</h2>
+      <p>Модификатор <code>label--absolute</code>, отдельный less-файл.</p>
+      <div class="js-font-resizer">
+        <div class="p">
+          <a href="" class="btn">Кнопка <span class="label  label--absolute">1</span></a>
+          <a href="" class="btn  btn--danger">Кнопка <span class="label  label--absolute  label--danger  label--circle">1</span></a>
+          <a href="" class="btn  btn--success">Кнопка <span class="label  label--absolute  label--success  label--tag  label--circle">1</span></a>
+          <hr>
+          <a href="" class="btn  btn--sm">Кнопка <span class="label  label--absolute">1</span></a>
+          <a href="" class="btn  btn--sm  btn--danger">Кнопка <span class="label  label--absolute  label--danger  label--circle">1</span></a>
+          <a href="" class="btn  btn--sm  btn--success">Кнопка <span class="label  label--absolute  label--success  label--tag  label--circle">1</span></a>
+          <hr>
+          <a href="" class="btn  btn--lg">Кнопка <span class="label  label--absolute">1</span></a>
+          <a href="" class="btn  btn--lg  btn--danger">Кнопка <span class="label  label--absolute  label--danger  label--circle">1</span></a>
+          <a href="" class="btn  btn--lg  btn--success">Кнопка <span class="label  label--absolute  label--success  label--tag  label--circle">1</span></a>
+        </div>
+      </div>
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre>
+            <code class="html">&lt;a href=&quot;&quot; class=&quot;btn&quot;&gt;&#x41a;&#x43d;&#x43e;&#x43f;&#x43a;&#x430; &lt;span class=&quot;label  label--absolute&quot;&gt;1&lt;/span&gt;&lt;/a&gt;</code>
+          </pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="blocks-library__sub-item">
+      <h2 class="blocks-library__sub-item-title">Использование в заголовках</h2>
       <h1 style="margin: 1rem 0;">Заголовок 1
         <span class="label"><svg width=".7em" height=".7em"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#block-library-camera"></use></svg> Метка</span>
         <span class="label  label--tag">Метка</span>
@@ -4432,21 +4588,6 @@ $('#test').on('hidden.nth.dropdown', function () {
         <span class="label  label--tag">Метка</span>
         <span class="label  label--circle  label--tag">Метка</span>
       </h5>
-    </div>
-
-    <div class="blocks-library__sub-item">
-      <b class="blocks-library__sub-item-title">Модификатор: <code>label--absolute</code> (отдельный LESS-файл)</b>
-      <p>
-        <a href="" class="btn">Кнопка <span class="label  label--absolute">1</span></a>
-        <a href="" class="btn  btn--danger">Кнопка <span class="label  label--absolute  label--danger  label--circle">1</span></a>
-        <a href="" class="btn  btn--success">Кнопка <span class="label  label--absolute  label--success  label--tag  label--circle">1</span></a>
-        <a href="" class="btn  btn--sm">Кнопка <span class="label  label--absolute">1</span></a>
-        <a href="" class="btn  btn--sm  btn--danger">Кнопка <span class="label  label--absolute  label--danger  label--circle">1</span></a>
-        <a href="" class="btn  btn--sm  btn--success">Кнопка <span class="label  label--absolute  label--success  label--tag  label--circle">1</span></a>
-        <a href="" class="btn  btn--lg">Кнопка <span class="label  label--absolute">1</span></a>
-        <a href="" class="btn  btn--lg  btn--danger">Кнопка <span class="label  label--absolute  label--danger  label--circle">1</span></a>
-        <a href="" class="btn  btn--lg  btn--success">Кнопка <span class="label  label--absolute  label--success  label--tag  label--circle">1</span></a>
-      </p>
     </div>
 
   </section>
