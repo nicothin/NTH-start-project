@@ -7,6 +7,15 @@
     background-color: @color-success;
     border: 1px solid darken(@color-success, 15%);
     color: #fff;
+
+    a {
+      color: inherit;
+      text-decoration: underline;
+
+      &:hover, &:focus {
+        text-decoration: none;
+      }
+    }
   }
 
 }

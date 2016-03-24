@@ -1,0 +1,30 @@
+@import '../../less/variables.less';     // только для удобства обращения к переменным
+
+
+.alert {
+
+  &--icon {
+    display: flex;
+    align-items: center;
+
+    .alert__icon {
+      min-width: 3em;
+      min-height: 3em;
+      margin-right: 1em;
+      margin-left: 1em;
+
+      & + .alert__content {
+        padding-left: 1em;
+      }
+    }
+
+    .alert__content {
+      flex-grow: 1;
+
+      & + .alert__icon {
+        margin-left: 2em;
+      }
+    }
+
+  }
+}
