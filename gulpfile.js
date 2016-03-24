@@ -40,8 +40,20 @@ const port = process.env.port ? process.env.port : 3000;
 
 // Файлы компилируемых компонентов
 let blocks = getComponentsFiles();
-console.log('---------- Список задействованных ресурсов:');
-console.log(blocks);
+
+// Вывод в консоль информации о взятых в сборку файлах (без LESS)
+if(blocks.js.length) {
+  console.log('---------- В сборку и обработку взяты JS-файлы:');
+  console.log(blocks.js);
+}
+if(blocks.img.length) {
+  console.log('---------- В сборку и обработку взяты изображения:');
+  console.log(blocks.img);
+}
+if(blocks.additionalCss.length) {
+  console.log('---------- В сборку скопированы добавочные CSS:');
+  console.log(blocks.additionalCss);
+}
 
 
 
