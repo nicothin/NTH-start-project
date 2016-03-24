@@ -540,7 +540,7 @@
 
 
   <section class="alert  alert--danger" id="text-helpers">
-    <h1>Текстовые хелперы</h1>
+    <h1 class="alert__header">Текстовые хелперы</h1>
     <p>Классов, вроде <code>.test-accent</code> (увеличенный текст), <code>.test-secondary</code> (уменьшенный текст), <code>.test-muted</code> («приглушенный» текст), <code>.align-center</code> (выравнивание текста по центру), <code>.bg-primary</code> (заданный цвет фона) и т.п. тут не будет. Это не фреймворк, это стартовая библиотека блоков. Предполагается, что пользователь в состоянии прицельно применить любую стилизацию по семантическому классу уровня блока/элемента/модификатора.</p>
   </section>
 
@@ -4326,6 +4326,44 @@
       </li>
     </ol>
 
+    <div class="blocks-library__code-wrapper">
+      <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+      <div class="blocks-library__code">
+        <pre>
+          <code class="html">&lt;ol class="step-list"></code>
+          <code class="html">  &lt;li class="step-list__item"></code>
+          <code class="html">    &lt;h2 class="step-list__title">Автоматизируйте всё&lt;/h2></code>
+          <code class="html">    &lt;div class="step-list__text"></code>
+          <code class="html">      &lt;p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Которое напоивший, одна лучше свое предупреждал моей осталось власти, безорфографичный, образ вопроса текст домах своего что текстами ipsum взобравшись использовало.&lt;/p></code>
+          <code class="html">    &lt;/div></code>
+          <code class="html">    &lt;a href="https://github.com/nicothin/NTH-start-project" class="btn">Автоматизировать&lt;/a></code>
+          <code class="html">  &lt;/li></code>
+          <code class="html">  &lt;li class="step-list__item  step-list__item--main"></code>
+          <code class="html">    &lt;h2 class="step-list__title">Используйте голову&lt;/h2></code>
+          <code class="html">    &lt;div class="step-list__text"></code>
+          <code class="html">      &lt;p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Которое напоивший, одна лучше свое предупреждал моей осталось власти, безорфографичный, образ вопроса текст домах своего что текстами ipsum взобравшись использовало.&lt;/p></code>
+          <code class="html">    &lt;/div></code>
+          <code class="html">    &lt;a href="" class="btn  btn--main">Начать&lt;/a></code>
+          <code class="html">  &lt;/li></code>
+          <code class="html">  &lt;li class="step-list__item  step-list__item--danger"></code>
+          <code class="html">    &lt;h2 class="step-list__title">Верстайте быстро&lt;/h2></code>
+          <code class="html">    &lt;div class="step-list__text"></code>
+          <code class="html">      &lt;p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Которое напоивший, одна лучше свое предупреждал моей осталось власти, безорфографичный.&lt;/p></code>
+          <code class="html">    &lt;/div></code>
+          <code class="html">  &lt;a href="" class="btn  btn--danger">Приступить&lt;/a></code>
+          <code class="html">  &lt;/li></code>
+          <code class="html">  &lt;li class="step-list__item  step-list__item--success"></code>
+          <code class="html">    &lt;h2 class="step-list__title">Испытывайте удовольствие от работы&lt;/h2></code>
+          <code class="html">    &lt;div class="step-list__text"></code>
+          <code class="html">      &lt;p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Которое напоивший, одна лучше свое предупреждал моей осталось власти, безорфографичный.&lt;/p></code>
+          <code class="html">    &lt;/div></code>
+          <code class="html">    &lt;a href="" class="btn  btn--success">Да, детка, сверстай мне!&lt;/a></code>
+          <code class="html">  &lt;/li></code>
+          <code class="html">&lt;/ol></code>
+        </pre>
+      </div>
+    </div>
+
   </section>
 
 
@@ -4598,6 +4636,224 @@
         <span class="label  label--tag">Метка</span>
         <span class="label  label--circle  label--tag">Метка</span>
       </h5>
+    </div>
+
+  </section>
+
+
+
+  <section class="blocks-library__item" id="alert" data-name=".alert">
+
+    <h1 class="blocks-library__item-title">Сообщения</h1>
+
+    <p>Модификаторы <code>alert--danger</code> и <code>alert--success</code> не являются отдельными less-файлами.</p>
+    <p>Заголовки и внутренние ссылки — необязательные БЭМ-элементы. Ссылка внутри может быть акцентирована классом <code>alert__link</code> или оставлена по умолчанию (оба варианта показаны ниже).</p>
+
+    <div class="js-font-resizer">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="alert">
+            <h1 class="alert__header">Нейтральное сообщение</h1>
+            <p>Далеко-далеко за <a href="" class="alert__link">словесными</a> горами в стране, гласных и согласных живут рыбные тексты. Языкового жаренные его сбить живет оксмокс? Города текстами предложения решила ее свое великий вершину семь подпоясал, но. Лучше, взгляд, <a href="">послушавшись</a>!</p>
+            <ul>
+              <li>Да, детка</li>
+              <li>Да, детка</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="alert">
+            <p>Далеко-далеко за <a href="" class="alert__link">словесными</a> горами в стране, гласных и согласных живут рыбные тексты.</p>
+          </div>
+          <div class="alert">
+            <p>Языкового жаренные его сбить живет оксмокс? Города текстами предложения решила ее свое великий вершину семь подпоясал, но. Лучше, взгляд, <a href="">послушавшись</a>!</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="alert  alert--danger">
+            <h1 class="alert__header">Внимание, опасность, отказ</h1>
+            <p>Далеко-далеко за <a href="" class="alert__link">словесными</a> горами в стране, гласных и согласных живут рыбные тексты. Языкового жаренные его сбить живет оксмокс? Города текстами предложения решила ее свое великий вершину семь подпоясал, но. Лучше, взгляд, <a href="">послушавшись</a>!</p>
+            <ul>
+              <li>Да, детка</li>
+              <li>Да, детка</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="alert  alert--danger">
+            <p>Далеко-далеко за <a href="" class="alert__link">словесными</a> горами в стране, гласных и согласных живут рыбные тексты.</p>
+          </div>
+          <div class="alert  alert--danger">
+            <p>Языкового жаренные его сбить живет оксмокс? Города текстами предложения решила ее свое великий вершину семь подпоясал, но. Лучше, взгляд, <a href="">послушавшись</a>!</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="alert  alert--success">
+            <h1 class="alert__header">Успешное действие</h1>
+            <p>Далеко-далеко за <a href="" class="alert__link">словесными</a> горами в стране, гласных и согласных живут рыбные тексты. Языкового жаренные его сбить живет оксмокс? Города текстами предложения решила ее свое великий вершину семь подпоясал, но. Лучше, взгляд, <a href="">послушавшись</a>!</p>
+            <ul>
+              <li>Да, детка</li>
+              <li>Да, детка</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="alert  alert--success">
+            <p>Далеко-далеко за <a href="" class="alert__link">словесными</a> горами в стране, гласных и согласных живут рыбные тексты.</p>
+          </div>
+          <div class="alert  alert--success">
+            <p>Языкового жаренные его сбить живет оксмокс? Города текстами предложения решила ее свое великий вершину семь подпоясал, но. Лучше, взгляд, <a href="">послушавшись</a>!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="blocks-library__code-wrapper">
+      <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+      <div class="blocks-library__code">
+        <pre>
+          <code class="html">&lt;div class=&quot;alert&quot;&gt;</code>
+          <code class="html">  &lt;h1 class=&quot;alert__header&quot;&gt;Нейтральное сообщение&lt;/h1&gt; &lt;!-- &#x41d;&#x435;&#x43e;&#x431;&#x44f;&#x437;&#x430;&#x442;&#x435;&#x43b;&#x44c;&#x43d;&#x44b;&#x439; &#x437;&#x430;&#x433;&#x43e;&#x43b;&#x43e;&#x432;&#x43e;&#x43a; --&gt;</code>
+          <code class="html">  &lt;p&gt;...&lt;/p&gt;</code>
+          <code class="html">&lt;/div&gt;</code>
+          <code class="html"> </code>
+          <code class="html">&lt;div class=&quot;alert  alert--danger&quot;&gt;</code>
+          <code class="html">  &lt;h1 class=&quot;alert__header&quot;&gt;Внимание, опасность, отказ&lt;/h1&gt; &lt;!-- &#x41d;&#x435;&#x43e;&#x431;&#x44f;&#x437;&#x430;&#x442;&#x435;&#x43b;&#x44c;&#x43d;&#x44b;&#x439; &#x437;&#x430;&#x433;&#x43e;&#x43b;&#x43e;&#x432;&#x43e;&#x43a; --&gt;</code>
+          <code class="html">  &lt;p&gt;...&lt;/p&gt;</code>
+          <code class="html">&lt;/div&gt;</code>
+          <code class="html"></code>
+          <code class="html">&lt;div class=&quot;alert  alert--success&quot;&gt;</code>
+          <code class="html">  &lt;h1 class=&quot;alert__header&quot;&gt;Успешное действие&lt;/h1&gt; &lt;!-- &#x41d;&#x435;&#x43e;&#x431;&#x44f;&#x437;&#x430;&#x442;&#x435;&#x43b;&#x44c;&#x43d;&#x44b;&#x439; &#x437;&#x430;&#x433;&#x43e;&#x43b;&#x43e;&#x432;&#x43e;&#x43a; --&gt;</code>
+          <code class="html">  &lt;p&gt;...&lt;/p&gt;</code>
+          <code class="html">&lt;/div&gt;</code>
+        </pre>
+      </div>
+    </div>
+
+    <div class="blocks-library__sub-item">
+      <h2 class="blocks-library__sub-item-title">Инвертированный блок «опасность, внимание»</h2>
+      <p>Модификатор <code>alert--danger-invert</code>, отдельный less-файл.</p>
+      <div class="js-font-resizer">
+        <div class="alert  alert--danger-invert">
+          <h1 class="alert__header">Внимание, опасность, отказ</h1>
+          <p>Далеко-далеко за <a href="" class="alert__link">словесными</a> горами в стране, гласных и согласных живут рыбные тексты. Языкового жаренные его сбить живет оксмокс? Города текстами предложения решила ее свое великий вершину семь подпоясал, но. Лучше, взгляд, <a href="">послушавшись</a>!</p>
+          <ul>
+            <li>Да, детка</li>
+            <li>Да, детка</li>
+          </ul>
+        </div>
+      </div>
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre>
+            <code class="html">&lt;div class=&quot;alert  alert--danger-invert&quot;&gt;</code>
+            <code class="html">  &lt;h1 class=&quot;alert__header&quot;&gt;Внимание, опасность, отказ&lt;/h1&gt; &lt;!-- &#x41d;&#x435;&#x43e;&#x431;&#x44f;&#x437;&#x430;&#x442;&#x435;&#x43b;&#x44c;&#x43d;&#x44b;&#x439; &#x437;&#x430;&#x433;&#x43e;&#x43b;&#x43e;&#x432;&#x43e;&#x43a; --&gt;</code>
+            <code class="html">  &lt;p&gt;...&lt;/p&gt;</code>
+            <code class="html">&lt;/div&gt;</code>
+          </pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="blocks-library__sub-item">
+      <h2 class="blocks-library__sub-item-title">Инвертированный блок «успех»</h2>
+      <p>Модификатор <code>alert--success-invert</code>, отдельный less-файл.</p>
+      <div class="js-font-resizer">
+        <div class="alert  alert--success-invert">
+          <h1 class="alert__header">Успешное действие</h1>
+          <p>Далеко-далеко за <a href="" class="alert__link">словесными</a> горами в стране, гласных и согласных живут рыбные тексты. Языкового жаренные его сбить живет оксмокс? Города текстами предложения решила ее свое великий вершину семь подпоясал, но. Лучше, взгляд, <a href="">послушавшись</a>!</p>
+          <ul>
+            <li>Да, детка</li>
+            <li>Да, детка</li>
+          </ul>
+        </div>
+      </div>
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre>
+            <code class="html">&lt;div class=&quot;alert  alert--success-invert&quot;&gt;</code>
+            <code class="html">  &lt;h1 class=&quot;alert__header&quot;&gt;Успешное действие&lt;/h1&gt; &lt;!-- &#x41d;&#x435;&#x43e;&#x431;&#x44f;&#x437;&#x430;&#x442;&#x435;&#x43b;&#x44c;&#x43d;&#x44b;&#x439; &#x437;&#x430;&#x433;&#x43e;&#x43b;&#x43e;&#x432;&#x43e;&#x43a; --&gt;</code>
+            <code class="html">  &lt;p&gt;...&lt;/p&gt;</code>
+            <code class="html">&lt;/div&gt;</code>
+          </pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="blocks-library__sub-item">
+      <h2 class="blocks-library__sub-item-title">Сообщение с иконкой</h2>
+      <p>Модификатор <code>alert--icon</code>, дополнительные элементы <code>alert__icon</code> и <code>alert__content</code> (чуть другая разметка), отдельный less-файл.</p>
+      <p>Хорошо сочетается с любыми другими модификаторами. Иконка может быть как до текста, так и после.</p>
+      <div class="js-font-resizer">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="alert  alert--icon">
+              <div class="alert__icon">
+                <svg width="3em" height="3em" fill="currentColor"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#block-library-camera"></use></svg>
+              </div>
+              <div class="alert__content">
+                <h1 class="alert__header">Нейтральное сообщение</h1>
+                <p>Далеко-далеко за <a href="" class="alert__link">словесными</a> горами в стране, гласных.</p>
+              </div>
+            </div>
+            <div class="alert  alert--icon  alert--danger">
+              <div class="alert__icon">
+                <svg width="3em" height="3em" fill="currentColor"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#block-library-search"></use></svg>
+              </div>
+              <div class="alert__content">
+                <p>Далеко-далеко за <a href="" class="alert__link">словесными</a> горами в стране, гласных и согласных живут рыбные тексты.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="alert  alert--icon  alert--success">
+              <div class="alert__icon">
+                <svg width="3em" height="3em" fill="currentColor"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#block-library-folder-open"></use></svg>
+              </div>
+              <div class="alert__content">
+                <p>Далеко-далеко за <a href="" class="alert__link">словесными</a> горами в стране, гласных и согласных живут рыбные тексты.</p>
+              </div>
+            </div>
+            <div class="alert  alert--icon  alert--success-invert">
+              <div class="alert__content">
+                <p>Далеко-далеко за <a href="" class="alert__link">словесными</a> горами в стране, гласных и согласных живут рыбные тексты.</p>
+              </div>
+              <div class="alert__icon">
+                <svg width="3em" height="3em" fill="currentColor"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#block-library-folder-open"></use></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre>
+            <code class="html">&lt;div class=&quot;alert  alert--icon&quot;&gt;</code>
+            <code class="html">  &lt;div class=&quot;alert__icon&quot;&gt;</code>
+            <code class="html">    &lt;svg width=&quot;3em&quot; height=&quot;3em&quot; fill=&quot;currentColor&quot;&gt;&lt;use xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; xlink:href=&quot;#block-library-camera&quot;&gt;&lt;/use&gt;&lt;/svg&gt;</code>
+            <code class="html">  &lt;/div&gt;</code>
+            <code class="html">  &lt;div class=&quot;alert__content&quot;&gt;</code>
+            <code class="html">    ...</code>
+            <code class="html">  &lt;/div&gt;</code>
+            <code class="html">&lt;/div&gt;</code>
+            <code class="html"> </code>
+            <code class="html">&lt;div class=&quot;alert  alert--icon&quot;&gt;</code>
+            <code class="html">  &lt;div class=&quot;alert__content&quot;&gt;</code>
+            <code class="html">    ...</code>
+            <code class="html">  &lt;/div&gt;</code>
+            <code class="html">  &lt;div class=&quot;alert__icon&quot;&gt;</code>
+            <code class="html">    &lt;svg width=&quot;3em&quot; height=&quot;3em&quot; fill=&quot;currentColor&quot;&gt;&lt;use xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; xlink:href=&quot;#block-library-camera&quot;&gt;&lt;/use&gt;&lt;/svg&gt;</code>
+            <code class="html">  &lt;/div&gt;</code>
+            <code class="html">&lt;/div&gt;</code>
+          </pre>
+        </div>
+      </div>
     </div>
 
   </section>
