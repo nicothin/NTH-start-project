@@ -4636,12 +4636,122 @@
 
     <h1 class="blocks-library__item-title">Сообщения</h1>
 
+    <p>Модификаторы <code>alert--danger</code> и <code>alert--success</code> не являются отдельными less-файлами.</p>
+
     <div class="js-font-resizer">
-      <div class="alert  alert--danger">
-          <h1 class="alert__header">Большой заголовок сообщения</h1>
-          <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Языкового жаренные его сбить живет оксмокс? Города текстами предложения решила ее свое великий вершину семь подпоясал, но. Лучше, взгляд, послушавшись!</p>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="alert">
+            <h1 class="alert__header">Нейтральное сообщение</h1>
+            <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Языкового жаренные его сбить живет оксмокс? Города текстами предложения решила ее свое великий вершину семь подпоясал, но. Лучше, взгляд, послушавшись!</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="alert">
+            <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты.</p>
+          </div>
+          <div class="alert">
+            <p>Языкового жаренные его сбить живет оксмокс? Города текстами предложения решила ее свое великий вершину семь подпоясал, но. Лучше, взгляд, послушавшись!</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="alert  alert--danger">
+            <h1 class="alert__header">Внимание, опасность, отказ</h1>
+            <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Языкового жаренные его сбить живет оксмокс? Города текстами предложения решила ее свое великий вершину семь подпоясал, но. Лучше, взгляд, послушавшись!</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="alert  alert--danger">
+            <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты.</p>
+          </div>
+          <div class="alert  alert--danger">
+            <p>Языкового жаренные его сбить живет оксмокс? Города текстами предложения решила ее свое великий вершину семь подпоясал, но. Лучше, взгляд, послушавшись!</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="alert  alert--success">
+            <h1 class="alert__header">Успешное действие</h1>
+            <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Языкового жаренные его сбить живет оксмокс? Города текстами предложения решила ее свое великий вершину семь подпоясал, но. Лучше, взгляд, послушавшись!</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="alert  alert--success">
+            <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты.</p>
+          </div>
+          <div class="alert  alert--success">
+            <p>Языкового жаренные его сбить живет оксмокс? Города текстами предложения решила ее свое великий вершину семь подпоясал, но. Лучше, взгляд, послушавшись!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="blocks-library__code-wrapper">
+      <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+      <div class="blocks-library__code">
+        <pre>
+          <code class="html">&lt;div class=&quot;alert&quot;&gt;</code>
+          <code class="html">  &lt;h1 class=&quot;alert__header&quot;&gt;Нейтральное сообщение&lt;/h1&gt; &lt;!-- &#x41d;&#x435;&#x43e;&#x431;&#x44f;&#x437;&#x430;&#x442;&#x435;&#x43b;&#x44c;&#x43d;&#x44b;&#x439; &#x437;&#x430;&#x433;&#x43e;&#x43b;&#x43e;&#x432;&#x43e;&#x43a; --&gt;</code>
+          <code class="html">  &lt;p&gt;...&lt;/p&gt;</code>
+          <code class="html">&lt;/div&gt;</code>
+          <code class="html"> </code>
+          <code class="html">&lt;div class=&quot;alert  alert--danger&quot;&gt;</code>
+          <code class="html">  &lt;h1 class=&quot;alert__header&quot;&gt;Внимание, опасность, отказ&lt;/h1&gt; &lt;!-- &#x41d;&#x435;&#x43e;&#x431;&#x44f;&#x437;&#x430;&#x442;&#x435;&#x43b;&#x44c;&#x43d;&#x44b;&#x439; &#x437;&#x430;&#x433;&#x43e;&#x43b;&#x43e;&#x432;&#x43e;&#x43a; --&gt;</code>
+          <code class="html">  &lt;p&gt;...&lt;/p&gt;</code>
+          <code class="html">&lt;/div&gt;</code>
+          <code class="html"></code>
+          <code class="html">&lt;div class=&quot;alert  alert--success&quot;&gt;</code>
+          <code class="html">  &lt;h1 class=&quot;alert__header&quot;&gt;Успешное действие&lt;/h1&gt; &lt;!-- &#x41d;&#x435;&#x43e;&#x431;&#x44f;&#x437;&#x430;&#x442;&#x435;&#x43b;&#x44c;&#x43d;&#x44b;&#x439; &#x437;&#x430;&#x433;&#x43e;&#x43b;&#x43e;&#x432;&#x43e;&#x43a; --&gt;</code>
+          <code class="html">  &lt;p&gt;...&lt;/p&gt;</code>
+          <code class="html">&lt;/div&gt;</code>
+        </pre>
+      </div>
+    </div>
+
+    <div class="blocks-library__sub-item">
+      <h2 class="blocks-library__sub-item-title">Инвертированный блок «опасность, внимание»</h2>
+      <p>Модификатор <code>alert--danger-invert</code>, отдельный less-файл.</p>
+      <div class="js-font-resizer">
+        <div class="alert  alert--danger-invert">
+          <h1 class="alert__header">Внимание, опасность, отказ</h1>
           <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Языкового жаренные его сбить живет оксмокс? Города текстами предложения решила ее свое великий вершину семь подпоясал, но. Лучше, взгляд, послушавшись!</p>
         </div>
+      </div>
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre>
+            <code class="html">&lt;div class=&quot;alert  alert--danger-invert&quot;&gt;</code>
+            <code class="html">  &lt;h1 class=&quot;alert__header&quot;&gt;Внимание, опасность, отказ&lt;/h1&gt; &lt;!-- &#x41d;&#x435;&#x43e;&#x431;&#x44f;&#x437;&#x430;&#x442;&#x435;&#x43b;&#x44c;&#x43d;&#x44b;&#x439; &#x437;&#x430;&#x433;&#x43e;&#x43b;&#x43e;&#x432;&#x43e;&#x43a; --&gt;</code>
+            <code class="html">  &lt;p&gt;...&lt;/p&gt;</code>
+            <code class="html">&lt;/div&gt;</code>
+          </pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="blocks-library__sub-item">
+      <h2 class="blocks-library__sub-item-title">Инвертированный блок «успех»</h2>
+      <p>Модификатор <code>alert--success-invert</code>, отдельный less-файл.</p>
+      <div class="js-font-resizer">
+        <div class="alert  alert--success-invert">
+          <h1 class="alert__header">Успешное действие</h1>
+          <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Языкового жаренные его сбить живет оксмокс? Города текстами предложения решила ее свое великий вершину семь подпоясал, но. Лучше, взгляд, послушавшись!</p>
+        </div>
+      </div>
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre>
+            <code class="html">&lt;div class=&quot;alert  alert--success-invert&quot;&gt;</code>
+            <code class="html">  &lt;h1 class=&quot;alert__header&quot;&gt;Успешное действие&lt;/h1&gt; &lt;!-- &#x41d;&#x435;&#x43e;&#x431;&#x44f;&#x437;&#x430;&#x442;&#x435;&#x43b;&#x44c;&#x43d;&#x44b;&#x439; &#x437;&#x430;&#x433;&#x43e;&#x43b;&#x43e;&#x432;&#x43e;&#x43a; --&gt;</code>
+            <code class="html">  &lt;p&gt;...&lt;/p&gt;</code>
+            <code class="html">&lt;/div&gt;</code>
+          </pre>
+        </div>
+      </div>
     </div>
 
   </section>
