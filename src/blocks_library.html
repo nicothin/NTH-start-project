@@ -4875,6 +4875,57 @@
 
 
 
+  <section class="blocks-library__item" id="alert-area" data-name=".alert-area">
+
+    <h1 class="blocks-library__item-title">Область показа уведомлений</h1>
+
+    <p>Фиксированная во вьюпорте область, в которой показываются уведомления.</p>
+
+    <p>
+      <button class="btn" id="show-alert-area" onclick="showAlertArea();">Показать / Скрыть</button>
+      <script>
+        function showAlertArea() {
+          document.getElementById('demo-alert-area').classList.toggle('alert-area--shown');
+        }
+      </script>
+    </p>
+
+    <div class="alert-area" id="demo-alert-area">
+      <div class="alert  alert--danger-invert">
+        <button class="alert__close" aria-label="Close">×</button>
+        <p><strong>Что-то пошло не так!</strong></p>
+      </div>
+      <div class="alert  alert--success-invert">
+        <button class="alert__close" aria-label="Close">×</button>
+        <p>Шутка, все хорошо.</p>
+      </div>
+    </div>
+
+    <div class="blocks-library__code-wrapper">
+      <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+      <div class="blocks-library__code">
+        <pre>
+          <code class="html">&lt;div class=&quot;alert-area&quot;&gt;</code>
+          <code class="html"> </code>
+          <code class="html">  &lt;div class=&quot;alert  alert--danger-invert&quot;&gt;</code>
+          <code class="html">    &lt;button class=&quot;alert__close&quot; aria-label=&quot;Close&quot;&gt;&times;&lt;/button&gt;</code>
+          <code class="html">    &lt;p&gt;&lt;strong&gt;&#x427;&#x442;&#x43e;-&#x442;&#x43e; &#x43f;&#x43e;&#x448;&#x43b;&#x43e; &#x43d;&#x435; &#x442;&#x430;&#x43a;!&lt;/strong&gt;&lt;/p&gt;</code>
+          <code class="html">  &lt;/div&gt;</code>
+          <code class="html">  </code>
+          <code class="html">  &lt;div class=&quot;alert  alert--success-invert&quot;&gt;</code>
+          <code class="html">    &lt;button class=&quot;alert__close&quot; aria-label=&quot;Close&quot;&gt;&times;&lt;/button&gt;</code>
+          <code class="html">    &lt;p&gt;&#x428;&#x443;&#x442;&#x43a;&#x430;, &#x432;&#x441;&#x435; &#x445;&#x43e;&#x440;&#x43e;&#x448;&#x43e;.&lt;/p&gt;</code>
+          <code class="html">  &lt;/div&gt;</code>
+          <code class="html"> </code>
+          <code class="html">&lt;/div&gt;</code>
+        </pre>
+      </div>
+    </div>
+
+  </section>
+
+
+
 </section>
 
 @@include('blocks/page-footer/page-footer.html')
