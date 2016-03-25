@@ -1,0 +1,19 @@
+@import '../../less/variables.less';     // только для удобства обращения к переменным
+
+
+.loader {
+
+  &:before {
+    content: '';
+    display: block;
+    width: 3em;
+    height: 3em;
+    // background-image: data-uri('image/svg+xml;charset=UTF-8', './src/blocks/loader/img_to_bg/loader.svg');
+    // ВНИМАНИЕ! В строку с URL-кодированным SVG интерполирована переменная с цветом!
+    @svg: escape('<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" stroke="@{gray-light}"><g transform="translate(2 2)" fill="none" fill-rule="evenodd" stroke-width="3"><circle cx="18" cy="18" r="18" stroke-opacity=".5"/><path d="M36 18c0-9.94-8.06-18-18-18"><animateTransform attributeName="transform" type="rotate" from="0 18 18" to="360 18 18" dur="1s" repeatCount="indefinite"/></path></g></svg>');
+    background-image: url("data:image/svg+xml,@{svg}");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+  }
+}

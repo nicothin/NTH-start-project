@@ -4926,6 +4926,33 @@
 
 
 
+  <section class="blocks-library__item" id="loader" data-name=".loader">
+
+    <h1 class="blocks-library__item-title">Загрузчик</h1>
+
+    <p>Анимация прописана в самом SVG-файле, размещенном в фоне псевдоэлемента блока. Поскольку файл не кодируется в base64, в текст SVG-файла внедрена переменная с цветом.</p>
+
+    <div class="js-font-resizer">
+      <div class="p" style="min-height: 8em; border: 1px solid #ddd; display: flex; align-items: center; justify-content: center;">
+        <span class="loader"></span>
+      </div>
+    </div>
+
+    <div class="blocks-library__code-wrapper">
+      <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+      <div class="blocks-library__code">
+        <pre>
+          <code class="html">&lt;div style=&quot;min-height: 8em; border: 1px solid #ddd; display: flex; align-items: center; justify-content: center;&quot;&gt;</code>
+          <code class="html">  &lt;span class=&quot;loader&quot;&gt;&lt;/span&gt;</code>
+          <code class="html">&lt;/div&gt;</code>
+        </pre>
+      </div>
+    </div>
+
+  </section>
+
+
+
 </section>
 
 @@include('blocks/page-footer/page-footer.html')
