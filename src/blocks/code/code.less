@@ -1,0 +1,21 @@
+// Для импорта в диспетчер подключений: @import './src/blocks/code/code.less';
+
+@import '../../less/variables.less';     // только для удобства обращения к переменным
+
+
+.code {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  background-color: @gray-lightest;
+  padding: 1em;
+  border-radius: @border-radius;
+  border: 1px solid @gray-lighter;
+  white-space: normal;
+  tab-size: 2;
+
+  &__line {
+    display: block;
+    white-space: pre;
+  }
+}
