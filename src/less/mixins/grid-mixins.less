@@ -51,6 +51,11 @@
   display: flex;
   flex-wrap: wrap;
 
+  & > * {
+    display: block;
+    width: 100%;
+  }
+
   & when not (@xs-grid-gutter = false) {
     margin-left:  (@xs-grid-gutter / -2);
     margin-right: (@xs-grid-gutter / -2);

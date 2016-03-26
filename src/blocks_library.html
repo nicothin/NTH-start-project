@@ -3290,8 +3290,8 @@
       <div class="blocks-library__code">
         <pre>
           <code class="html">&lt;div class=&quot;row&quot;&gt;</code>
-          <code class="html">&lt;div class=&quot;col-md-2  col-lg-3&quot;&gt;...&lt;/div&gt;</code>
-          <code class="html">&lt;div class=&quot;col-md-9  col-md-offset-1  col-lg-8&quot;&gt;...&lt;/div&gt;</code>
+          <code class="html">  &lt;div class=&quot;col-md-2  col-lg-3&quot;&gt;...&lt;/div&gt;</code>
+          <code class="html">  &lt;div class=&quot;col-md-9  col-md-offset-1  col-lg-8&quot;&gt;...&lt;/div&gt;</code>
           <code class="html">&lt;/div&gt;</code>
         </pre>
       </div>
@@ -3341,13 +3341,18 @@
     <div class="blocks-library__sub-item" id="grid-mixins">
       <h2 class="blocks-library__sub-item-title">LESS-примеси</h2>
       <p class="alert  alert--success">Приоритетным является подход, в котором вместо упомянутых классов модульной сетки используются семантические БЭМ-овские классы и LESS-примеси (см. файл с примесями).</p>
-      <p>С примесями можно сделать модульную сетку любой колоночности (на разных ширинах может быть разноколоночная сетка), с любым промежутком между ячейками (на разных ширинах могут быть разные промежутки).</p>
-      <p class="alert  alert--danger">Вызов примеси <code>.col(xs, 12);</code> (возможно, не 12, а какое-то своё кол-во колонок) обязателен для элементов, являющихся прямыми потомками родителя модульной сетки.</p>
+      <h3>Преимущества использования примесей вместо классов модульной сетки</h3>
+      <ul>
+        <li>Любое количество колонок в «строке» на любой ширине вьюпорта (на разных ширинах можно сделать разное кол-во колонок).</li>
+        <li>Любые промежутки между колонками на любой ширине вьюпорта (на разных ширинах можно сделать разные промежутки).</li>
+        <li>Отсутствие в стилевом файле лишних классов.</li>
+      </ul>
+      <p>Абсолютно любая сетка на любой ширине. Бесплатно без регистрации и СМС.</p>
       <div class="row">
         <div class="col-lg-6">
           <pre>
             <code class="less">.block-name {</code>
-            <code class="less">  .row(); // БЭМ-блок — обёртка элементов модульной сетки</code>
+            <code class="less">  .row(); // БЭМ-блок — обёртка элементов сетки</code>
             <code class="less"> </code>
             <code class="less">  &__element {</code>
             <code class="less">    // Разные ширины элемента на разных вьюпортах</code>
@@ -3362,13 +3367,85 @@
           </pre>
         </div>
         <div class="col-lg-6">
+          <pre>
+            <code class="css">/* Родитель: */</code>
+            <code class="css">.block-name {</code>
+            <code class="css">  display: flex;</code>
+            <code class="css">  flex-wrap: wrap;</code>
+            <code class="css">  margin-left: -1.5rem;</code>
+            <code class="css">  margin-right: -1.5rem;</code>
+            <code class="css">}</code>
+            <code class="css">/* Внимание! Все прямые потомки безусловно станут блочными */</code>
+            <code class="css">.block-name > * {</code>
+            <code class="css">  display: block;</code>
+            <code class="css">  width: 100%;</code>
+            <code class="css">}</code>
+            <code class="css"> </code>
+            <code class="css">/* Потомок: */</code>
+            <code class="css">.block-name__element { /* XS — безусловное срабатывание */</code>
+            <code class="css">  display: block;</code>
+            <code class="css">  flex: 0 0 50%;</code>
+            <code class="css">  max-width: 50%;</code>
+            <code class="css">  padding-left: 1.5rem;</code>
+            <code class="css">  padding-right: 1.5rem;</code>
+            <code class="css">}</code>
+            <code class="css">@media (min-width: 480px) {</code>
+            <code class="css">  .block-name__element { /* SM — начиная с @screen-sm */</code>
+            <code class="css">    display: block;</code>
+            <code class="css">    flex: 0 0 41.66666667%;</code>
+            <code class="css">    max-width: 41.66666667%;</code>
+            <code class="css">    padding-left: 1.5rem;</code>
+            <code class="css">    padding-right: 1.5rem;</code>
+            <code class="css">  }</code>
+            <code class="css">}</code>
+            <code class="css">@media (min-width: 768px) {</code>
+            <code class="css">  .block-name__element { /* MD — начиная с @screen-md */</code>
+            <code class="css">    display: block;</code>
+            <code class="css">    flex: 0 0 33.33333333%;</code>
+            <code class="css">    max-width: 33.33333333%;</code>
+            <code class="css">    padding-left: 1.5rem;</code>
+            <code class="css">    padding-right: 1.5rem;</code>
+            <code class="css">  }</code>
+            <code class="css">}</code>
+            <code class="css">@media (min-width: 992px) {</code>
+            <code class="css">  .block-name__element { /* LG — начиная с @screen-lg */</code>
+            <code class="css">    display: block;</code>
+            <code class="css">    flex: 0 0 25%;</code>
+            <code class="css">    max-width: 25%;</code>
+            <code class="css">    padding-left: 1.5rem;</code>
+            <code class="css">    padding-right: 1.5rem;</code>
+            <code class="css">  }</code>
+            <code class="css">}</code>
+            <code class="css">@media (min-width: 1200px) {</code>
+            <code class="css">  .block-name__element { /* XL — начиная с @screen-xl */</code>
+            <code class="css">    display: block;</code>
+            <code class="css">    flex: 0 0 16.66666667%;</code>
+            <code class="css">    max-width: 16.66666667%;</code>
+            <code class="css">    padding-left: 1.5rem;</code>
+            <code class="css">    padding-right: 1.5rem;</code>
+            <code class="css">  }</code>
+            <code class="css">}</code>
+            <code class="css">@media (min-width: 1800px) {</code>
+            <code class="css">  .block-name__element { /* XXL — начиная с @screen-xxl */</code>
+            <code class="css">    display: block;</code>
+            <code class="css">    flex: 0 0 8.33333333%;</code>
+            <code class="css">    max-width: 8.33333333%;</code>
+            <code class="css">    padding-left: 1.5rem;</code>
+            <code class="css">    padding-right: 1.5rem;</code>
+            <code class="css">  }</code>
+            <code class="css">}</code>
+          </pre>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
         <pre>
           <code class="less">.block-name {</code>
-          <code class="less">  // в примесь можно передать ширину промежутка между ячейками</code>
+          <code class="less">  // в примесь можно передать ширину промежутка</code>
           <code class="less">  .row(10px);</code>
           <code class="less"> </code>
           <code class="less">  &__first-element {</code>
-          <code class="less">    // xs-сетка, 6 колонок из @grid-columns (12 по умолчанию),</code>
+          <code class="less">    // xs-сетка, 6 колонок из @grid-columns (12 по умолч.),</code>
           <code class="less">    // промежутки 10px</code>
           <code class="less">    .col(xs, 6, @grid-columns, 10px);</code>
           <code class="less">  }</code>
@@ -3442,13 +3519,11 @@
         <code class="less"> </code>
         <code class="less">  &__cuprum {</code>
         <code class="less">    // Пока вьюпорт не стал равен или шире MD, блок 100% ширины родителя</code>
-        <code class="less">    .col(xs, 12); // по умолчанию — 12 из 12 (обязательный вызов примеси)</code>
         <code class="less">    .col(md, 3);  // начиная с MD — 3 из 12</code>
         <code class="less">  }</code>
         <code class="less"> </code>
         <code class="less">  &__aurum {</code>
         <code class="less">    // Пока вьюпорт не стал равен или шире MD, блок 100% ширины родителя</code>
-        <code class="less">    .col(xs, 12); // по умолчанию — 12 из 12 (обязательный вызов примеси)</code>
         <code class="less">    .col(md, 9);  // начиная с MD — 9 из 12</code>
         <code class="less">  }</code>
         <code class="less">}</code>
