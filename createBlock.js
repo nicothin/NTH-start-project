@@ -24,7 +24,7 @@ if(blockName) {
         let fileContent = '';
         let fileCreateMsg = '';
         if(extention == 'less') {
-          fileContent = '@import \'../../less/variables.less\';     // только для удобства обращения к переменным\n\n\n.' + blockName + ' {\n  \n}\n';
+          fileContent = '// Для импорта в диспетчер подключений: @import \'' + dirs.source + '/blocks/' + blockName + '/' + blockName + '.less\';\n\n@import \'../../less/variables.less\';     // только для удобства обращения к переменным\n\n\n.' + blockName + ' {\n  \n}\n';
           fileCreateMsg = '[NTH] Для импорта стилей: @import \'' + dirs.source + '/blocks/' + blockName + '/' + blockName + '.less\';';
         }
         else if(extention == 'html') {
