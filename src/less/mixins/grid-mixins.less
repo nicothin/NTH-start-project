@@ -54,14 +54,20 @@
   & > * {
     display: block;
     width: 100%;
-    padding-left:  (@grid-gutter-width / 2);
-    padding-right: (@grid-gutter-width / 2);
   }
 
-  // Если первая переданная переменная ноль — не выводим margin-ы по умолчанию
+  // Если первая переданная переменная не ноль — выводим margin-ы по умолчанию
   & when not (@xs-grid-gutter = 0) {
     margin-left:  (@xs-grid-gutter / -2);
     margin-right: (@xs-grid-gutter / -2);
+  }
+
+  // Если первая переданная переменная не ноль — выводим padding-и по умолчанию для прямых потомков
+  & when not (@xs-grid-gutter = 0) {
+    & > * {
+      padding-left:  (@grid-gutter-width / 2);
+      padding-right: (@grid-gutter-width / 2);
+    }
   }
 
   & when not (@sm-grid-gutter = @xs-grid-gutter) {
