@@ -3248,6 +3248,7 @@
 
     <p>БЭМ-блоки <code>.row</code>, <code>.col-[ID]-[COL]</code>, <code>.col-[ID]-offset-[COL]</code></p>
     <p>Возможные ID сетки: xs, sm, md, lg, xl, xxl (xxl по умолчанию закомментированы). Вдохновлено Bootstrap 4.</p>
+    <p>Промежутки ячеек модульной сетки сделаны  с помощью <code>padding</code> (<code>@grid-gutter-width / 2</code>), у родителя модульной сетки есть отрицательные <code>margin</code> (<code>@grid-gutter-width / -2</code>) для выравнивания левой границы контентных областей ячеек сетки по левым границам блоков вне сетки.</p>
 
     <div class="row">
       <div class="col-xs-12  col-sm-6  col-md-4  col-lg-3" style="background: #eceeef; border: 1px solid #B1B1B1;">
@@ -3348,186 +3349,270 @@
         <li>Отсутствие в стилевом файле лишних классов.</li>
       </ul>
       <p>Абсолютно любая сетка на любой ширине. Бесплатно без регистрации и СМС.</p>
+      <p class="alert alert--danger">Примеси генерируют много медиа-выражений! Обязательно используйте конкатенатор медиа-выражений, к примеру, <strong><a href="https://github.com/hail2u/node-css-mqpacker">этот</a></strong> (написанный с PostCSS).</p>
+
+      <h3>Работа с примесями</h3>
+
+      <p>TODO</p>
+
+      <h3>Варианты использования</h3>
+
+      <h4>Сетка с промежутками по умолчанию на любых вьюпортах и разным количеством колонок на ячейку</h4>
+
+      <p>Если промежуток отличается от 3rem (30px по умолчанию), нужно пойти и поменять значение переменной <code>@grid-gutter-width</code>.</p>
+
+      <pre class="code">
+        <code class="code__syntax  less">
+          <span class="code__line">.block-name {</span>
+          <span class="code__line">  .row(); // На всех вьюпортах промежуток по умолчанию (из переменной @grid-gutter-width)</span>
+          <span class="code__line"> </span>
+          <span class="code__line">  &__element {</span>
+          <span class="code__line">    .col(xs, 6); // Изначально 6/12 (50%), на SM будет то же самое, т.к. нет вызова .col(sm, ЧИСЛО);</span>
+          <span class="code__line">    .col(md, 4); // Начиная с MD — 4/12 (33.33333333%)</span>
+          <span class="code__line">    .col(lg, 3); // Начиная с LG — 3/12 (25%), на XL и XXL будет то же самое</span>
+          <span class="code__line">  }</span>
+          <span class="code__line">}</span>
+        </code>
+      </pre>
+
+      <h4>Сетка, у которой на XS изменён промежуток (1rem), а на SM и далее — промежуток по умолчанию</h4>
+
+      <pre class="code">
+        <code class="code__syntax  less">
+          <span class="code__line">.block-name {</span>
+          <span class="code__line">  .row(1rem); // Передаём примеси промежуток для XS (для SM и далее он будет по умолчанию)</span>
+          <span class="code__line"> </span>
+          <span class="code__line">  &__element {</span>
+          <span class="code__line">    .col(xs, 6, @grid-columns, 1rem); // Нужно передать изменённый промежуток колонкам тоже</span>
+          <span class="code__line">    .col(sm, 4);                      // Восстановления промежутка по умолчанию</span>
+          <span class="code__line">  }</span>
+          <span class="code__line">}</span>
+        </code>
+      </pre>
+
+      <h4>4. Нужна сетка, у которой на XS промежуток по умолчанию, на SM изменённый, а на MD и далее — по умолчанию</h4>
+
+      <pre class="code">
+        <code class="code__syntax  less">
+          <span class="code__line">.block-name {</span>
+          <span class="code__line">  .row(@sm-grid-gutter: 1rem);       // Для XS опускаем, сразу пишем для SM (вынуждены указать конкретную переменную, поскольку примесь сначала ждет переменную для XS)</span>
+          <span class="code__line">  // .row(@grid-gutter-width, 1rem); // Полностью аналогично, но с соблюдением очередности переменных при вызове</span>
+          <span class="code__line"> </span>
+          <span class="code__line">  &__element {</span>
+          <span class="code__line">    .col(sm, 6, @grid-columns, 1rem); // Нужно передать изменённый промежуток колонкам тоже</span>
+          <span class="code__line">    .col(md, 4);                      // Восстановления промежутка по умолчанию</span>
+          <span class="code__line">  }</span>
+          <span class="code__line">}</span>
+        </code>
+      </pre>
+
+      <h4>5. Нужна сетка, у которой на каждом вьюпорте свой промежуток</h4>
+
+      111
+
+      <h4>6. Нужна сетка без промежутков на любых вьюпортах</h4>
+
+      111
+
+      <h4>7. Нужна сетка без промежутков на XS, но с промежутками по умолчанию начиная с SM</h4>
+
+      111
+
       <div class="row">
         <div class="col-lg-6">
-          <pre>
-            <code class="less">.block-name {</code>
-            <code class="less">  .row(); // БЭМ-блок — обёртка элементов сетки</code>
-            <code class="less"> </code>
-            <code class="less">  &__element {</code>
-            <code class="less">    // Разные ширины элемента на разных вьюпортах</code>
-            <code class="less">    .col(xs, 6);</code>
-            <code class="less">    .col(sm, 5);</code>
-            <code class="less">    .col(md, 4);</code>
-            <code class="less">    .col(lg, 3);</code>
-            <code class="less">    .col(xl, 2);</code>
-            <code class="less">    .col(xxl, 1);</code>
-            <code class="less">  }</code>
-            <code class="less">}</code>
+          <p>Вызов примесей:</p>
+          <pre class="code">
+            <code class="code__syntax  less">
+              <span class="code__line">.block-name {</span>
+              <span class="code__line">  .row(); // БЭМ-блок — обёртка элементов сетки</span>
+              <span class="code__line"> </span>
+              <span class="code__line">  &__element {</span>
+              <span class="code__line">    // Разные ширины элемента на разных вьюпортах</span>
+              <span class="code__line">    .col(xs, 6);</span>
+              <span class="code__line">    .col(sm, 5);</span>
+              <span class="code__line">    .col(md, 4);</span>
+              <span class="code__line">    .col(lg, 3);</span>
+              <span class="code__line">    .col(xl, 2);</span>
+              <span class="code__line">    .col(xxl, 1);</span>
+              <span class="code__line">  }</span>
+              <span class="code__line">}</span>
+            </code>
           </pre>
         </div>
         <div class="col-lg-6">
-          <pre>
-            <code class="css">/* Родитель: */</code>
-            <code class="css">.block-name {</code>
-            <code class="css">  display: flex;</code>
-            <code class="css">  flex-wrap: wrap;</code>
-            <code class="css">  margin-left: -1.5rem;</code>
-            <code class="css">  margin-right: -1.5rem;</code>
-            <code class="css">}</code>
-            <code class="css">/* Внимание! Все прямые потомки безусловно станут блочными */</code>
-            <code class="css">.block-name > * {</code>
-            <code class="css">  display: block;</code>
-            <code class="css">  width: 100%;</code>
-            <code class="css">}</code>
-            <code class="css"> </code>
-            <code class="css">/* Потомок: */</code>
-            <code class="css">.block-name__element { /* XS — безусловное срабатывание */</code>
-            <code class="css">  display: block;</code>
-            <code class="css">  flex: 0 0 50%;</code>
-            <code class="css">  max-width: 50%;</code>
-            <code class="css">  padding-left: 1.5rem;</code>
-            <code class="css">  padding-right: 1.5rem;</code>
-            <code class="css">}</code>
-            <code class="css">@media (min-width: 480px) {</code>
-            <code class="css">  .block-name__element { /* SM — начиная с @screen-sm */</code>
-            <code class="css">    display: block;</code>
-            <code class="css">    flex: 0 0 41.66666667%;</code>
-            <code class="css">    max-width: 41.66666667%;</code>
-            <code class="css">    padding-left: 1.5rem;</code>
-            <code class="css">    padding-right: 1.5rem;</code>
-            <code class="css">  }</code>
-            <code class="css">}</code>
-            <code class="css">@media (min-width: 768px) {</code>
-            <code class="css">  .block-name__element { /* MD — начиная с @screen-md */</code>
-            <code class="css">    display: block;</code>
-            <code class="css">    flex: 0 0 33.33333333%;</code>
-            <code class="css">    max-width: 33.33333333%;</code>
-            <code class="css">    padding-left: 1.5rem;</code>
-            <code class="css">    padding-right: 1.5rem;</code>
-            <code class="css">  }</code>
-            <code class="css">}</code>
-            <code class="css">@media (min-width: 992px) {</code>
-            <code class="css">  .block-name__element { /* LG — начиная с @screen-lg */</code>
-            <code class="css">    display: block;</code>
-            <code class="css">    flex: 0 0 25%;</code>
-            <code class="css">    max-width: 25%;</code>
-            <code class="css">    padding-left: 1.5rem;</code>
-            <code class="css">    padding-right: 1.5rem;</code>
-            <code class="css">  }</code>
-            <code class="css">}</code>
-            <code class="css">@media (min-width: 1200px) {</code>
-            <code class="css">  .block-name__element { /* XL — начиная с @screen-xl */</code>
-            <code class="css">    display: block;</code>
-            <code class="css">    flex: 0 0 16.66666667%;</code>
-            <code class="css">    max-width: 16.66666667%;</code>
-            <code class="css">    padding-left: 1.5rem;</code>
-            <code class="css">    padding-right: 1.5rem;</code>
-            <code class="css">  }</code>
-            <code class="css">}</code>
-            <code class="css">@media (min-width: 1800px) {</code>
-            <code class="css">  .block-name__element { /* XXL — начиная с @screen-xxl */</code>
-            <code class="css">    display: block;</code>
-            <code class="css">    flex: 0 0 8.33333333%;</code>
-            <code class="css">    max-width: 8.33333333%;</code>
-            <code class="css">    padding-left: 1.5rem;</code>
-            <code class="css">    padding-right: 1.5rem;</code>
-            <code class="css">  }</code>
-            <code class="css">}</code>
+          <p>Результат (без постпроцессинга):</p>
+          <pre class="code">
+            <code class="code__syntax  css">
+              <span class="code__line">/* Родитель: */</span>
+              <span class="code__line">.block-name {</span>
+              <span class="code__line">  display: flex;</span>
+              <span class="code__line">  flex-wrap: wrap;</span>
+              <span class="code__line">  margin-left: -1.5rem;</span>
+              <span class="code__line">  margin-right: -1.5rem;</span>
+              <span class="code__line">}</span>
+              <span class="code__line">/* Внимание! */</span>
+              <span class="code__line">/* Все прямые потомки безусловно станут блочными */</span>
+              <span class="code__line">.block-name > * {</span>
+              <span class="code__line">  display: block;</span>
+              <span class="code__line">  width: 100%;</span>
+              <span class="code__line">}</span>
+              <span class="code__line"> </span>
+              <span class="code__line">/* Потомок: */</span>
+              <span class="code__line">/* XS — безусловное срабатывание */</span>
+              <span class="code__line">.block-name__element { </span>
+              <span class="code__line">  display: block;</span>
+              <span class="code__line">  flex: 0 0 50%;</span>
+              <span class="code__line">  max-width: 50%;</span>
+              <span class="code__line">  padding-left: 1.5rem;</span>
+              <span class="code__line">  padding-right: 1.5rem;</span>
+              <span class="code__line">}</span>
+              <span class="code__line"> </span>
+              <span class="code__line">/* SM — начиная с @screen-sm */</span>
+              <span class="code__line">@media (min-width: 480px) {</span>
+              <span class="code__line">  .block-name__element { </span>
+              <span class="code__line">    display: block;</span>
+              <span class="code__line">    flex: 0 0 41.66666667%;</span>
+              <span class="code__line">    max-width: 41.66666667%;</span>
+              <span class="code__line">    padding-left: 1.5rem;</span>
+              <span class="code__line">    padding-right: 1.5rem;</span>
+              <span class="code__line">  }</span>
+              <span class="code__line">}</span>
+              <span class="code__line"> </span>
+              <span class="code__line">/* MD — начиная с @screen-md */</span>
+              <span class="code__line">@media (min-width: 768px) {</span>
+              <span class="code__line">  .block-name__element { </span>
+              <span class="code__line">    display: block;</span>
+              <span class="code__line">    flex: 0 0 33.33333333%;</span>
+              <span class="code__line">    max-width: 33.33333333%;</span>
+              <span class="code__line">    padding-left: 1.5rem;</span>
+              <span class="code__line">    padding-right: 1.5rem;</span>
+              <span class="code__line">  }</span>
+              <span class="code__line">}</span>
+              <span class="code__line"> </span>
+              <span class="code__line">/* LG — начиная с @screen-lg */</span>
+              <span class="code__line">@media (min-width: 992px) {</span>
+              <span class="code__line">  .block-name__element { </span>
+              <span class="code__line">    display: block;</span>
+              <span class="code__line">    flex: 0 0 25%;</span>
+              <span class="code__line">    max-width: 25%;</span>
+              <span class="code__line">    padding-left: 1.5rem;</span>
+              <span class="code__line">    padding-right: 1.5rem;</span>
+              <span class="code__line">  }</span>
+              <span class="code__line">}</span>
+              <span class="code__line"> </span>
+              <span class="code__line">/* XL — начиная с @screen-xl */</span>
+              <span class="code__line">@media (min-width: 1200px) {</span>
+              <span class="code__line">  .block-name__element { </span>
+              <span class="code__line">    display: block;</span>
+              <span class="code__line">    flex: 0 0 16.66666667%;</span>
+              <span class="code__line">    max-width: 16.66666667%;</span>
+              <span class="code__line">    padding-left: 1.5rem;</span>
+              <span class="code__line">    padding-right: 1.5rem;</span>
+              <span class="code__line">  }</span>
+              <span class="code__line">}</span>
+              <span class="code__line"> </span>
+              <span class="code__line">/* XXL — начиная с @screen-xxl */</span>
+              <span class="code__line">@media (min-width: 1800px) {</span>
+              <span class="code__line">  .block-name__element { </span>
+              <span class="code__line">    display: block;</span>
+              <span class="code__line">    flex: 0 0 8.33333333%;</span>
+              <span class="code__line">    max-width: 8.33333333%;</span>
+              <span class="code__line">    padding-left: 1.5rem;</span>
+              <span class="code__line">    padding-right: 1.5rem;</span>
+              <span class="code__line">  }</span>
+              <span class="code__line">}</span>
+            </code>
           </pre>
         </div>
       </div>
-      <div class="row">
-        <div class="col-lg-6">
-        <pre>
-          <code class="less">.block-name {</code>
-          <code class="less">  // в примесь можно передать ширину промежутка</code>
-          <code class="less">  .row(10px);</code>
-          <code class="less"> </code>
-          <code class="less">  &__first-element {</code>
-          <code class="less">    // xs-сетка, 6 колонок из @grid-columns (12 по умолч.),</code>
-          <code class="less">    // промежутки 10px</code>
-          <code class="less">    .col(xs, 6, @grid-columns, 10px);</code>
-          <code class="less">  }</code>
-          <code class="less">}</code>
-        </pre>
-        </div>
-      </div>
+
       <p>Максимально подробный пример:</p>
-      <pre>
-        <code class="less">.root {</code>
-        <code class="less">  // При указании переменных подряд имена можно не писать, оставлены для наглядности</code>
-        <code class="less">  // @xs-grid-gutter: 1rem;  // XS-ширина: указан промежуток между ячейками сетки</code>
-        <code class="less">  // @sm-grid-gutter: 1.8rem;// SM-ширина: указан промежуток между ячейками сетки</code>
-        <code class="less">  // @md-grid-gutter: 2rem;  // MD-ширина: указан промежуток между ячейками сетки</code>
-        <code class="less">  // @lg-grid-gutter: 3rem;  // LG-ширина: указан промежуток между ячейками сетки</code>
-        <code class="less">  // @xl-grid-gutter: 4rem;  // XL-ширина: указан промежуток между ячейками сетки</code>
-        <code class="less">  // @xxl-grid-gutter: 5rem; // XXL-ширина: указан промежуток между ячейками сетки</code>
-        <code class="less">  // Короткая форма указания промежутков для всех ширин:</code>
-        <code class="less">  // 1rem; 1.8rem; 2rem; 3rem; 4rem; 5rem</code>
-        <code class="less">  .row(</code>
-        <code class="less">    @xs-grid-gutter: 1rem;</code>
-        <code class="less">    @sm-grid-gutter: 1.8rem;</code>
-        <code class="less">    @md-grid-gutter: 2rem;</code>
-        <code class="less">    @lg-grid-gutter: @grid-gutter-width;</code>
-        <code class="less">    @xl-grid-gutter: 4rem;</code>
-        <code class="less">    @xxl-grid-gutter: 5rem;</code>
-        <code class="less">  );</code>
-        <code class="less"> </code>
-        <code class="less">  &__cuprum {</code>
-        <code class="less">    // Для каждого вызова примеси указан промежуток между колонками (совпадает с тем, что у соответствующего вызова .row() для родительского элемента)</code>
-        <code class="less">    .col(xs, 1, 2, 1rem);   // XS-ширина, 1 колонка в 2-колоночной сетке</code>
-        <code class="less">    .col(sm, 2, 5, 1.8rem); // SM-ширина, 2 колонки в 5-колоночной сетке</code>
-        <code class="less">    .col(md, 2, 8, 2rem);   // MD-ширина, 2 колонки в 8-колоночной сетке</code>
-        <code class="less">    .col(lg, 2, @grid-columns, @grid-gutter-width); // LG-ширина, 2 колонки в 12-колоночной сетке (если @grid-columns оставлена по умолчанию)</code>
-        <code class="less">    .col(xl, 3, 10, 4rem);   // XL-ширина, 3 колонки в 10-колоночной сетке</code>
-        <code class="less">  }</code>
-        <code class="less"> </code>
-        <code class="less">  &__aurum {</code>
-        <code class="less">    .col(xs, 1, 2, 1rem);</code>
-        <code class="less">    .col(sm, 3, 5, 1.8rem);</code>
-        <code class="less">    .col(md, 6, 8, 2rem);</code>
-        <code class="less">    .col(lg, 10, @grid-columns, @grid-gutter-width);</code>
-        <code class="less">    .col(xl, 7, 10, 4rem);</code>
-        <code class="less">  }</code>
-        <code class="less">}</code>
+
+      <pre class="code">
+        <code class="code__syntax  less">
+          <span class="code__line">.root {</span>
+          <span class="code__line">  // При указании переменных подряд имена можно не писать, оставлены для наглядности</span>
+          <span class="code__line">  // @xs-grid-gutter: 1rem;  // XS-ширина: указан промежуток между ячейками сетки</span>
+          <span class="code__line">  // @sm-grid-gutter: 1.8rem;// SM-ширина: указан промежуток между ячейками сетки</span>
+          <span class="code__line">  // @md-grid-gutter: 2rem;  // MD-ширина: указан промежуток между ячейками сетки</span>
+          <span class="code__line">  // @lg-grid-gutter: 3rem;  // LG-ширина: указан промежуток между ячейками сетки</span>
+          <span class="code__line">  // @xl-grid-gutter: 4rem;  // XL-ширина: указан промежуток между ячейками сетки</span>
+          <span class="code__line">  // @xxl-grid-gutter: 5rem; // XXL-ширина: указан промежуток между ячейками сетки</span>
+          <span class="code__line">  // Короткая форма указания промежутков для всех ширин:</span>
+          <span class="code__line">  // 1rem; 1.8rem; 2rem; 3rem; 4rem; 5rem</span>
+          <span class="code__line">  .row(</span>
+          <span class="code__line">    @xs-grid-gutter: 1rem;</span>
+          <span class="code__line">    @sm-grid-gutter: 1.8rem;</span>
+          <span class="code__line">    @md-grid-gutter: 2rem;</span>
+          <span class="code__line">    @lg-grid-gutter: @grid-gutter-width;</span>
+          <span class="code__line">    @xl-grid-gutter: 4rem;</span>
+          <span class="code__line">    @xxl-grid-gutter: 5rem;</span>
+          <span class="code__line">  );</span>
+          <span class="code__line"> </span>
+          <span class="code__line">  &__cuprum {</span>
+          <span class="code__line">    // Для каждого вызова примеси указан промежуток между колонками (совпадает с тем, что у соответствующего вызова .row() для родительского элемента)</span>
+          <span class="code__line">    .col(xs, 1, 2, 1rem);   // XS-ширина, 1 колонка в 2-колоночной сетке</span>
+          <span class="code__line">    .col(sm, 2, 5, 1.8rem); // SM-ширина, 2 колонки в 5-колоночной сетке</span>
+          <span class="code__line">    .col(md, 2, 8, 2rem);   // MD-ширина, 2 колонки в 8-колоночной сетке</span>
+          <span class="code__line">    .col(lg, 2, @grid-columns, @grid-gutter-width); // LG-ширина, 2 колонки в 12-колоночной сетке (если @grid-columns оставлена по умолчанию)</span>
+          <span class="code__line">    .col(xl, 3, 10, 4rem);   // XL-ширина, 3 колонки в 10-колоночной сетке</span>
+          <span class="code__line">  }</span>
+          <span class="code__line"> </span>
+          <span class="code__line">  &__aurum {</span>
+          <span class="code__line">    .col(xs, 1, 2, 1rem);</span>
+          <span class="code__line">    .col(sm, 3, 5, 1.8rem);</span>
+          <span class="code__line">    .col(md, 6, 8, 2rem);</span>
+          <span class="code__line">    .col(lg, 10, @grid-columns, @grid-gutter-width);</span>
+          <span class="code__line">    .col(xl, 7, 10, 4rem);</span>
+          <span class="code__line">  }</span>
+          <span class="code__line">}</span>
+        </code>
       </pre>
+
       <p>Реальный пример 1:</p>
-      <pre>
-        <code class="less">.root {</code>
-        <code class="less">  // Промежуток между колонками будет отличаться только на XS-ширине, это первый</code>
-        <code class="less">  // ожидаемый примесью параметр, указываем только его.</code>
-        <code class="less">  .row(1rem);</code>
-        <code class="less"> </code>
-        <code class="less">  &__cuprum {</code>
-        <code class="less">    .col(xs, 1, 2, 1rem); // 1 колонка из 2, нужно указать измененный для .row() промежуток</code>
-        <code class="less">    .col(sm, 4); // начиная с SM — 4 колонки из 12 (12 по умолчанию, можно не указывать)</code>
-        <code class="less">    .col(md, 3); // начиная с MD — 3 колонки из 12 (12 по умолчанию, можно не указывать)</code>
-        <code class="less">  }</code>
-        <code class="less"> </code>
-        <code class="less">  &__aurum {</code>
-        <code class="less">    .col(xs, 1, 2, 1rem);</code>
-        <code class="less">    .col(sm, 8);</code>
-        <code class="less">    .col(md, 9);</code>
-        <code class="less">  }</code>
-        <code class="less">}</code>
+
+      <pre class="code">
+        <code class="code__syntax  less">
+          <span class="code__line">.root {</span>
+          <span class="code__line">  // Промежуток между колонками будет отличаться только на XS-ширине, это первый</span>
+          <span class="code__line">  // ожидаемый примесью параметр, указываем только его.</span>
+          <span class="code__line">  .row(1rem);</span>
+          <span class="code__line"> </span>
+          <span class="code__line">  &__cuprum {</span>
+          <span class="code__line">    .col(xs, 1, 2, 1rem); // 1 колонка из 2, нужно указать измененный для .row() промежуток</span>
+          <span class="code__line">    .col(sm, 4); // начиная с SM — 4 колонки из 12 (12 по умолчанию, можно не указывать)</span>
+          <span class="code__line">    .col(md, 3); // начиная с MD — 3 колонки из 12 (12 по умолчанию, можно не указывать)</span>
+          <span class="code__line">  }</span>
+          <span class="code__line"> </span>
+          <span class="code__line">  &__aurum {</span>
+          <span class="code__line">    .col(xs, 1, 2, 1rem);</span>
+          <span class="code__line">    .col(sm, 8);</span>
+          <span class="code__line">    .col(md, 9);</span>
+          <span class="code__line">  }</span>
+          <span class="code__line">}</span>
+        </code>
       </pre>
+
       <p>Реальный пример 2:</p>
-      <pre>
-        <code class="less">.root {</code>
-        <code class="less">  .row(); // Промежуток везде одинаковый (берется из переменной)</code>
-        <code class="less"> </code>
-        <code class="less">  &__cuprum {</code>
-        <code class="less">    // Пока вьюпорт не стал равен или шире MD, блок 100% ширины родителя</code>
-        <code class="less">    .col(md, 3);  // начиная с MD — 3 из 12</code>
-        <code class="less">  }</code>
-        <code class="less"> </code>
-        <code class="less">  &__aurum {</code>
-        <code class="less">    // Пока вьюпорт не стал равен или шире MD, блок 100% ширины родителя</code>
-        <code class="less">    .col(md, 9);  // начиная с MD — 9 из 12</code>
-        <code class="less">  }</code>
-        <code class="less">}</code>
+
+      <pre class="code">
+        <code class="code__syntax  less">
+          <span class="code__line">.root {</span>
+          <span class="code__line">  .row(); // Промежуток везде одинаковый (берется из переменной)</span>
+          <span class="code__line"> </span>
+          <span class="code__line">  &__cuprum {</span>
+          <span class="code__line">    // Пока вьюпорт не стал равен или шире MD, блок 100% ширины родителя</span>
+          <span class="code__line">    .col(md, 3);  // начиная с MD — 3 из 12</span>
+          <span class="code__line">  }</span>
+          <span class="code__line"> </span>
+          <span class="code__line">  &__aurum {</span>
+          <span class="code__line">    // Пока вьюпорт не стал равен или шире MD, блок 100% ширины родителя</span>
+          <span class="code__line">    .col(md, 9);  // начиная с MD — 9 из 12</span>
+          <span class="code__line">  }</span>
+          <span class="code__line">}</span>
+        </code>
       </pre>
+
     </div>
 
   </section>

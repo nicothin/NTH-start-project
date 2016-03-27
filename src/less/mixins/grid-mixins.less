@@ -44,7 +44,7 @@
 //  @xl-grid-gutter:   @grid-gutter-width - промежуток между ячейками XL-сетки
 //  @xxl-grid-gutter:  @grid-gutter-width - промежуток между ячейками XXL-сетки
 //------------------------------------------------------------------------------
-//  Примеры: http://codepen.io/nicothin/pen/obRMgx?editors=1100
+//  Тестирование: http://codepen.io/nicothin/pen/NNggVx?editors=0100
 //------------------------------------------------------------------------------
 
 .row(@xs-grid-gutter: @grid-gutter-width; @sm-grid-gutter: @grid-gutter-width; @md-grid-gutter: @grid-gutter-width; @lg-grid-gutter: @grid-gutter-width; @xl-grid-gutter: @grid-gutter-width; @xxl-grid-gutter: @grid-gutter-width;) {
@@ -54,9 +54,12 @@
   & > * {
     display: block;
     width: 100%;
+    padding-left:  (@grid-gutter-width / 2);
+    padding-right: (@grid-gutter-width / 2);
   }
 
-  & when not (@xs-grid-gutter = false) {
+  // Если первая переданная переменная ноль — не выводим margin-ы по умолчанию
+  & when not (@xs-grid-gutter = 0) {
     margin-left:  (@xs-grid-gutter / -2);
     margin-right: (@xs-grid-gutter / -2);
   }
@@ -68,28 +71,28 @@
     }
   }
 
-  & when not (@md-grid-gutter = @xs-grid-gutter) {
+  & when not (@md-grid-gutter = @sm-grid-gutter) {
     @media (min-width: @screen-md) {
       margin-left:  (@md-grid-gutter / -2);
       margin-right: (@md-grid-gutter / -2);
     }
   }
 
-  & when not (@lg-grid-gutter = @xs-grid-gutter) {
+  & when not (@lg-grid-gutter = @md-grid-gutter) {
     @media (min-width: @screen-lg) {
       margin-left:  (@lg-grid-gutter / -2);
       margin-right: (@lg-grid-gutter / -2);
     }
   }
 
-  & when not (@xl-grid-gutter = @xs-grid-gutter) {
+  & when not (@xl-grid-gutter = @lg-grid-gutter) {
     @media (min-width: @screen-xl) {
       margin-left:  (@xl-grid-gutter / -2);
       margin-right: (@xl-grid-gutter / -2);
     }
   }
 
-  & when not (@xxl-grid-gutter = @xs-grid-gutter) {
+  & when not (@xxl-grid-gutter = @xl-grid-gutter) {
     @media (min-width: @screen-xxl) {
       margin-left:  (@xxl-grid-gutter / -2);
       margin-right: (@xxl-grid-gutter / -2);
