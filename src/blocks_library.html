@@ -3464,6 +3464,8 @@
 
       <h3>Примеры использования</h3>
 
+      <p><a href="http://codepen.io/nicothin/pen/NNggVx?editors=0100">Демо в CodePen</a> (сразу виден рендер демо-блоков). <a href="https://jsbin.com/dolimo/edit?css,output">Демо на JS Bin</a> (сразу видно результат компиляции, без препроцессинга).</p>
+
       <h4>Сетка с промежутками по умолчанию на любых вьюпортах и разным количеством колонок на ячейку</h4>
 
       <p>Если промежуток отличается от 3rem (30px по умолчанию), нужно пойти и поменять значение переменной <code>@grid-gutter-width</code>.</p>
@@ -3577,8 +3579,8 @@
           <span class="code__line">  .row(0);</span>
           <span class="code__line"> </span>
           <span class="code__line">  &__element {</span>
-          <span class="code__line">    .col(sm, 6, @grid-columns, 0); // Нужно передать нулевой промежуток</span>
-          <span class="code__line">    .col(md, 6);                   // Восстановление промежутка по умолчанию</span>
+          <span class="code__line">    .col(xs, 6, @grid-columns, 0); // Нужно передать нулевой промежуток</span>
+          <span class="code__line">    .col(sm, 6);                   // Восстановление промежутка по умолчанию</span>
           <span class="code__line">  }</span>
           <span class="code__line">}</span>
         </code>
