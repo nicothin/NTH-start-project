@@ -1,0 +1,33 @@
+// Для импорта в диспетчер подключений: @import './src/blocks/navbar/navbar.less';
+
+@import '../../less/variables.less';     // только для удобства обращения к переменным
+
+
+.navbar {
+  padding: 0.6rem;
+  background-color: @gray-lightest;
+
+  &__inner {
+    .container();
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__left {
+    margin-right: 1em;
+  }
+
+  &__right {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__form {
+    .fields-group {
+      margin-bottom: 0;
+    }
+  }
+}
