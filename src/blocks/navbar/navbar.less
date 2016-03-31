@@ -7,26 +7,58 @@
   padding: 0.6rem;
   background-color: @gray-lightest;
 
+  &--open {
+
+    // Меняем внешний вид иконки
+    .navbar__toggler-icon {
+      transition: background 0.2s 0;
+      background: transparent;
+
+      &:before,
+      &:after {
+        transition: top 0.2s, transform 0.2s 0.2s;
+        top: 0;
+      }
+
+      &:before {
+        transform: rotate3d(0, 0, 1, 45deg);
+      }
+
+      &:after {
+        transform: rotate3d(0, 0, 1, -45deg);
+      }
+    }
+
+    // Показываем скрытый элемент (если JS работает, иначе он и так виден)
+    .js & .navbar__slidable-content {
+      height: auto;
+      max-height: 90vh;
+    }
+  }
+
   &__inner {
     .container();
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
+
+    @media (min-width: @screen-lg) {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
   }
 
   &__left {
-    margin-right: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @media (min-width: @screen-lg) {
+      margin-right: 2rem;
+    }
   }
 
   &__right {
-    flex-grow: 1;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: flex-end;
-
     @media (min-width: @screen-lg) {
-      justify-content: flex-start;
+      flex-grow: 1;
     }
   }
 
@@ -61,7 +93,7 @@
     background: currentColor;
     border-radius: 0.2rem;
     position: relative;
-    transition: background 0.3s 0.3s;
+    transition: background 0.2s 0.2s;
 
     &:before,
     &:after {
@@ -73,7 +105,7 @@
       left: 0;
       content: '';
       transform-origin: 50% 50%;
-      transition: top 0.3s 0.3s, transform 0.3s;
+      transition: top 0.2s 0.2s, transform 0.2s;
     }
 
     &:before {
@@ -83,45 +115,48 @@
     &:after {
       top: -1rem;
     }
+
   }
 
-  &__toggler-checkbox {
-    &:checked {
-      & ~ .navbar__toggler .navbar__toggler-icon {
-        transition: background .3s 0;
-        background: transparent;
+  &__slidable-content {
+    transition: all @transition-time;
 
-        &:before,
-        &:after {
-          transition: top 0.3s, transform 0.3s 0.3s;
-          top: 0;
-        }
+    // Если JS работает, будем скрывать и показывать по клику
+    .js & {
+      height: 0;
+      overflow: hidden;
+      max-height: 0;
+    }
 
-        &:before {
-          transform: rotate3d(0, 0, 1, 45deg);
-        }
-
-        &:after {
-          transform: rotate3d(0, 0, 1, -45deg);
-        }
-      }
-
-      & ~ .navbar__content {
-        display: block;
+    // На большой ширине показываем вне зависимости от работы JS
+    .js &,
+    .no-js & {
+      @media (min-width: @screen-lg) {
+        height: auto;
+        overflow: visible;
+        max-height: none;
       }
     }
-  }
 
-  &__content {
-    display: none;
-    width: 100%;
+    & > * {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
 
     @media (min-width: @screen-lg) {
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      & > * {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
     }
   }
 
   &__form {
+
     .fields-group {
       margin-bottom: 0;
     }
