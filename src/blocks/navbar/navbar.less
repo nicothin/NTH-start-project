@@ -4,37 +4,9 @@
 
 
 .navbar {
-  padding: 0.6rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   background-color: @gray-lightest;
-
-  &--open {
-
-    // Меняем внешний вид иконки
-    .navbar__toggler-icon {
-      transition: background 0.2s 0;
-      background: transparent;
-
-      &:before,
-      &:after {
-        transition: top 0.2s, transform 0.2s 0.2s;
-        top: 0;
-      }
-
-      &:before {
-        transform: rotate3d(0, 0, 1, 45deg);
-      }
-
-      &:after {
-        transform: rotate3d(0, 0, 1, -45deg);
-      }
-    }
-
-    // Показываем скрытый элемент (если JS работает, иначе он и так виден)
-    .js & .navbar__slidable-content {
-      height: auto;
-      max-height: 90vh;
-    }
-  }
 
   &__inner {
     .container();
@@ -57,9 +29,15 @@
   }
 
   &__right {
+
     @media (min-width: @screen-lg) {
       flex-grow: 1;
     }
+  }
+
+  &__logo {
+    font-size: @font-size--h3;
+    line-height: 4rem;
   }
 
   &__toggler {
@@ -71,7 +49,6 @@
     align-items: center;
     width: 4rem;
     height: 4rem;
-    line-height: 4rem;
     padding: 0.5rem;
     user-select: none;
     cursor: pointer;
@@ -116,43 +93,51 @@
       top: -1rem;
     }
 
+    // Модификатор «открытого» состояния (крестик)
+    &--open {
+      transition: background 0.2s 0;
+      background: transparent;
+
+      &:before,
+      &:after {
+        transition: top 0.2s, transform 0.2s 0.2s;
+        top: 0;
+      }
+
+      &:before {
+        transform: rotate3d(0, 0, 1, 45deg);
+      }
+
+      &:after {
+        transform: rotate3d(0, 0, 1, -45deg);
+      }
+    }
   }
 
   &__slidable-content {
-    transition: all @transition-time;
 
     // Если JS работает, будем скрывать и показывать по клику
     .js & {
-      height: 0;
-      overflow: hidden;
-      max-height: 0;
+      display: none;
     }
 
     // На большой ширине показываем вне зависимости от работы JS
     .js &,
     .no-js & {
       @media (min-width: @screen-lg) {
-        height: auto;
-        overflow: visible;
-        max-height: none;
+        display: flex !important; // он может иметь инлайновый display: none из-за JS
       }
-    }
-
-    & > * {
-      margin-top: 1rem;
-      margin-bottom: 1rem;
     }
 
     @media (min-width: @screen-lg) {
       display: flex;
       align-items: center;
       justify-content: space-between;
-
-      & > * {
-        margin-top: 0;
-        margin-bottom: 0;
-      }
     }
+  }
+
+  &__nav {
+    margin-bottom: 1rem;
   }
 
   &__form {
