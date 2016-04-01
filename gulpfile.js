@@ -91,11 +91,6 @@ gulp.task('copy:css', function(callback) {
           mqpacker
       ]))
       .pipe(cleanss())
-      .pipe(rename(function (path) {
-        path.basename = 'additional-styles',
-        path.extname = '.min.css'
-      }))
-      .pipe(debug({title: "RENAME:"}))
       .pipe(gulp.dest(dirs.build + '/css'));
   }
   else {
