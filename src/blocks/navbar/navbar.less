@@ -38,6 +38,13 @@
   &__logo {
     font-size: @font-size--h3;
     line-height: 4rem;
+    color: @text-color;
+    text-decoration: none;
+
+    &:hover, &:focus {
+      text-decoration: none;
+      color: @text-color;
+    }
   }
 
   &__toggler {
@@ -115,6 +122,7 @@
   }
 
   &__slidable-content {
+    padding-top: 0.5em;
 
     // Если JS работает, будем скрывать и показывать по клику
     .js & {
