@@ -112,7 +112,7 @@ gulp.task('img', function () {
     .pipe(gulp.dest(dirs.build + '/img'));
 });
 
-// Оптимизация изображений // folder=src/blocks/block-name/img_to_bg/ npm start img:opt
+// Оптимизация изображений // folder=src/img/icons/ npm start img:opt
 const folder = process.env.folder;
 gulp.task('img:opt', function (callback) {
   if(folder){
