@@ -195,6 +195,48 @@
 
 
 //------------------------------------------------------------------------------
+//  Генератор правил для отступа одной ячейки с возможностью указать @media
+//------------------------------------------------------------------------------
+//  Принимает:
+//  @screen:      xs                    - тип сетки [xs|sm|md|lg|xl|xxl]
+//  @column:      1                     - ширина отступа (кол-во колонок)
+//  @columns:     @grid-columns;        - общее количество ячеек на 1 ряд
+//------------------------------------------------------------------------------
+
+.col-offset(@screen: xs, @column: 1, @columns: @grid-columns) {
+  & when (@screen = xs) {
+    margin-left: (@column * 100% / @columns);
+  }
+  & when (@screen = sm) {
+    @media (min-width: @screen-sm) {
+      margin-left: (@column * 100% / @columns);
+    }
+  }
+  & when (@screen = md) {
+    @media (min-width: @screen-md) {
+      margin-left: (@column * 100% / @columns);
+    }
+  }
+  & when (@screen = lg) {
+    @media (min-width: @screen-lg) {
+      margin-left: (@column * 100% / @columns);
+    }
+  }
+  & when (@screen = xl) {
+    @media (min-width: @screen-xl) {
+      margin-left: (@column * 100% / @columns);
+    }
+  }
+  & when (@screen = xxl) {
+    @media (min-width: @screen-xxl) {
+      margin-left: (@column * 100% / @columns);
+    }
+  }
+}
+
+
+
+//------------------------------------------------------------------------------
 //  Генератор списка селекторов .col-[указанный тип]-[] и их общих свойств
 //------------------------------------------------------------------------------
 //  Принимает:
