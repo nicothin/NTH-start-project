@@ -4,6 +4,8 @@
 
 
 .main-nav {
+  margin-left: (@grid-gutter-width / -2);
+  margin-right: (@grid-gutter-width / -2);
 
   &__list {
     padding: 0;
@@ -26,5 +28,21 @@
 
   &__item {
     display: block;
+  }
+
+  &__link {
+    display: block;
+    padding-top: 0.4em;
+    padding-bottom: 0.4em;
+    padding-left: (@grid-gutter-width / 2);
+    padding-right: (@grid-gutter-width / 2);
+    color: @gray;
+    text-decoration: none;
+
+    &:hover, &:focus {
+      color: @text-color;
+      background-color: @gray-lighter;
+      text-decoration: none;
+    }
   }
 }
