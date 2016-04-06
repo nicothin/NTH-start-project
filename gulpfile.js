@@ -78,7 +78,8 @@ gulp.task('less', function () {
     .pipe(rename('style.min.css'))
     .pipe(debug({title: "RENAME:"}))
     .pipe(gulpIf(isDev, sourcemaps.write()))
-    .pipe(gulp.dest(dirs.build + '/css'));
+    .pipe(gulp.dest(dirs.build + '/css'))
+    .pipe(browserSync.stream());
 });
 
 // Копирование добавочных CSS, которые хочется иметь отдельными файлами
@@ -137,7 +138,7 @@ gulp.task('img:opt', function (callback) {
   }
 });
 
-// Сборка SVG-спрайта
+// Сборка SVG-спрайта для блока sprite-svg--localstorage
 gulp.task('svgstore', function (callback) {
   let spritePath = dirs.source + '/blocks/sprite-svg--localstorage/svg/';
   if(fileExist(spritePath) !== false) {
@@ -186,7 +187,7 @@ gulp.task('js', function (callback) {
       .pipe(debug({title: "JS:"}))
       .pipe(gulpIf(isDev, sourcemaps.init()))
       .pipe(concat('script.min.js'))
-      .pipe(uglify())
+      .pipe(gulpIf(!isDev, uglify()))
       .on('error', notify.onError(function(err){
         return {
           title: 'Javascript uglify error',
@@ -236,43 +237,26 @@ gulp.task('build', gulp.series(
   'html'
 ));
 
-// Слежение
-gulp.task('watch', function () {
-  // Слежение за HTML
-  gulp.watch([
-    dirs.source + '/*.html',
-    dirs.source + '/_include/*.html',
-    dirs.source + '/blocks/**/*.html',
-  ], gulp.series('html'));
-  // Слежение за LESS (они точно есть)
-  gulp.watch(blocks.less, gulp.series('less'));
-  // Слежение за добавочными CSS, если нужно
-  if(blocks.additionalCss) {
-    gulp.watch(blocks.additionalCss, gulp.series('copy:css'));
-  }
-  // Слежение за изображениями, если нужно
-  if(blocks.img) {
-    gulp.watch(blocks.img, gulp.series('img'));
-  }
-  // Слежение за Javascript, если нужно
-  if(blocks.js) {
-    gulp.watch(blocks.js, gulp.series('js'));
-  }
-});
-
-// Локальный сервер
-gulp.task('serve', function () {
-  gulp.series('build');
+// Локальный сервер, слежение
+gulp.task('serve', gulp.series('build', function() {
   browserSync.init({
     server: dirs.build,
     port: port,
     startPath: 'blocks_library.html'
   });
-  browserSync.watch([
-    dirs.build + '/**/*.*',
-    '!' + dirs.build +  + '/**/*.map.*'
-  ]).on('change', browserSync.reload);
-});
+  gulp.watch([
+    dirs.source + '/*.html',
+    dirs.source + '/_include/*.html',
+    dirs.source + '/blocks/**/*.html',
+  ], gulp.series('html', reloader));
+  gulp.watch(blocks.less, gulp.series('less'));
+  if(blocks.img) {
+    gulp.watch(blocks.img, gulp.series('img', reloader));
+  }
+  if(blocks.js) {
+    gulp.watch(blocks.js, gulp.series('js', reloader));
+  }
+}));
 
 // Отправка в GH pages (ветку gh-pages репозитория)
 gulp.task('deploy', function() {
@@ -283,10 +267,14 @@ gulp.task('deploy', function() {
 
 // Задача по умолчанию
 gulp.task('default',
-  gulp.series('build', gulp.parallel('watch', 'serve'))
+  gulp.series('serve')
 );
 
-
+// Перезагрузка в браузере
+function reloader(done) {
+  browserSync.reload();
+  done();
+}
 
 // Определение собираемых компонентов
 function getComponentsFiles() {
