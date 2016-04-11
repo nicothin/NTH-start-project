@@ -115,6 +115,5 @@ src/            # Исходные файлы
 
 
 ```bash
-npm start build    # собрать проект без карт кода
-npm start deploy   # отправить в gh-pages
+npm run deploy    # собрать проект без карт кода и отправить на gh-pages
 ```

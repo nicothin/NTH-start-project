@@ -3,6 +3,7 @@
 // Получение настроек папок из package.json
 const pjson = require('./package.json');
 const dirs = pjson.config.directories;
+const ghPagesUrl = pjson.config.ghPages;
 
 // Зависимости проекта
 const gulp = require('gulp');
@@ -256,6 +257,7 @@ gulp.task('serve', gulp.series('build', function() {
 // Отправка в GH pages (ветку gh-pages репозитория)
 gulp.task('deploy', function() {
   console.log('---------- Публикация ./build/ на GH pages');
+  console.log('---------- '+ ghPagesUrl);
   return gulp.src('./build/**/*')
     .pipe(ghPages());
 });

@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "./node_modules/.bin/gulp",
-    "deploy": "cross-env NODE_ENV=production gulp build && gulp deploy"
+    "deploy": "cross-env NODE_ENV=production ./node_modules/.bin/gulp build && cross-env ./node_modules/.bin/gulp deploy"
   },
   "author": "Nikolay Gromov",
   "license": "MIT",
@@ -42,6 +42,7 @@
     "mkdirp": "^0.5.1"
   },
   "config": {
+    "ghPages": "http://nicothin.github.io/NTH-start-project/blocks_library.html",
     "directories": {
       "source": "./src",
       "build": "./build"
