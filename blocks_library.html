@@ -24,10 +24,74 @@
   <symbol id="block-library-road" viewBox="0 0 30 28"><path d="M17.36 15.563V15.5l-.376-5q-.016-.203-.172-.352t-.36-.148h-2.905q-.203 0-.36.148t-.17.352l-.376 5v.063q-.015.187.126.313t.328.125h3.813q.187 0 .328-.124t.125-.313zm11.86 7.296q0 1.14-.72 1.14h-11q.203 0 .344-.148t.125-.352l-.314-4q-.016-.203-.172-.352t-.36-.148h-4.25q-.202 0-.358.148t-.172.352l-.313 4q-.015.203.126.352T12.5 24h-11q-.72 0-.72-1.14 0-.845.407-1.814L7.703 4.734q.125-.297.406-.516t.593-.22H14q-.203 0-.36.15t-.17.35l-.235 3q-.016.22.125.36t.344.14h2.594q.203 0 .344-.14t.125-.36l-.234-3q-.016-.202-.172-.35t-.358-.15H21.3q.312 0 .593.22t.406.516l6.515 16.312q.406.97.406 1.813z"/></symbol>
   <symbol id="block-library-search" viewBox="0 0 26 28"><path d="M18 13q0-2.89-2.055-4.945T11 6 6.055 8.055 4 13t2.055 4.945T11 20t4.945-2.055T18 13zm8 13q0 .812-.594 1.406T24 28q-.844 0-1.406-.594l-5.36-5.344Q14.44 24 11.002 24q-2.233 0-4.272-.868t-3.516-2.344-2.344-3.516T0 13 .87 8.725 3.212 5.21t3.516-2.344T11 2t4.274.866T18.79 5.21t2.344 3.516T22 13q0 3.436-1.936 6.233l5.36 5.36q.577.577.577 1.405z"/></symbol>
 </svg>
-<header class="page-header">
-  page-header
-</header>
 
+<header class="page-header">
+  <div class="navbar">
+    <div class="navbar__inner">
+      <div class="navbar__left">
+        <a href="/" class="logo  navbar__logo">NTH start project</a>
+        <a class="navbar__toggler" href="#main-nav-wrapper" id="navbar-toggler" data-toggle="collapse" data-toggle-this-class="navbar__toggler-icon--open" aria-controls="main-nav-wrapper" aria-expanded="false">
+          <span class="navbar__toggler-icon"></span>
+        </a>
+        <button class="btn" data-toggle-this-class="btn--primary" data-toggle="collapse" data-target="#main-nav-wrapper" aria-controls="main-nav-wrapper" aria-expanded="false">показать меню</button>
+      </div>
+      <div class="navbar__right">
+        <div class="navbar__slidable-content" id="main-nav-wrapper">
+          <nav class="main-nav  navbar__nav">
+            <ul class="main-nav__list">
+              <li class="main-nav__item">
+                <a href="" class="main-nav__link">
+                  <span class="main-nav__link-text">Библиотека</span>
+                </a>
+                <ul class="main-nav__list  main-nav__list--level-2">
+                  <li class="main-nav__item">
+                    <a href="" class="main-nav__link">
+                      <span class="main-nav__link-text">Типографика</span>
+                    </a>
+                  </li>
+                  <li class="main-nav__item">
+                    <a href="" class="main-nav__link">
+                      <span class="main-nav__link-text">Горизонтальный ассоциативный список</span>
+                    </a>
+                  </li>
+                  <li class="main-nav__item">
+                    <a href="" class="main-nav__link">
+                      <span class="main-nav__link-text">Блочные цитаты по правому краю</span>
+                    </a>
+                  </li>
+                  <li class="main-nav__item">
+                    <a href="" class="main-nav__link">
+                      <span class="main-nav__link-text">Нумерованные списки с особыми маркерами</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="main-nav__item">
+                <a href="" class="main-nav__link">
+                  <span class="main-nav__link-text">Репозиторий</span>
+                </a>
+              </li>
+              <li class="main-nav__item">
+                <a href="" class="main-nav__link">
+                  <span class="main-nav__link-text">Контакты</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <p>Внимание! Работа этого компонента зависит от наличия в сборке компонента collapse</p>
+          <form class="navbar__form">
+            <div class="fields-group">
+              <label class="field-text  fields-group__item">
+                <input class="field-text__input" type="search" placeholder="input[type=search]">
+              </label>
+              <button class="btn  fields-group__item  fields-group__item--addon">Найти</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
 
 <section class="container  blocks-library">
 
@@ -1372,7 +1436,7 @@
 
     <form action="">
       <div class="row">
-        <fieldset class="col-sm-6 col-md-4 col-lg-3">
+        <fieldset class="col-sm-6 col-md-4">
           <legend>Это <code>legend</code> <code>fieldset</code>-а</legend>
           <label>
             Текст в <code>label</code>
@@ -1392,7 +1456,7 @@
           </select>
           <input type="range" placeholder="input[type=range]">
         </fieldset>
-        <fieldset class="col-sm-6 col-md-4 col-lg-3">
+        <fieldset class="col-sm-6 col-md-4">
           <legend>Легенда</legend>
           <input type="date" placeholder="input[type=date]">
           <input type="time" placeholder="input[type=time]">
@@ -1403,7 +1467,7 @@
           <label><input type="checkbox"> text</label>
           <label><input type="radio"> text</label>
         </fieldset>
-        <fieldset class="col-sm-6 col-md-4 col-lg-3">
+        <fieldset class="col-sm-6 col-md-4">
           <input type="tel" placeholder="input[type=tel]">
           <input type="url" placeholder="input[type=url]">
           <textarea rows="3" placeholder="textarea"></textarea>
@@ -1413,7 +1477,7 @@
             <option>Значение 3</option>
           </select>
         </fieldset>
-        <fieldset class="col-sm-6 col-md-4 col-lg-3">
+        <fieldset class="col-sm-6 col-md-4">
           <input type="reset" value="input[type=reset]"><br>
           <input type="submit" value="input[type=submit]"><br>
           <input type="button" value="input[type=button]"><br>
@@ -3084,6 +3148,17 @@
         <pre class="code">
           <code class="code__syntax  html">
             <span class="code__line">&lt;div class=&quot;fields-group&quot;&gt;</span>
+            <span class="code__line">  &lt;span class=&quot;fields-group__item  fields-group__item--addon  fields-group__item--text&quot;&gt;</span>
+            <span class="code__line">    $</span>
+            <span class="code__line">  &lt;/span&gt;</span>
+            <span class="code__line">  &lt;label class=&quot;field-text  fields-group__item&quot;&gt;</span>
+            <span class="code__line">    &lt;input class=&quot;field-text__input&quot; type=&quot;text&quot; placeholder=&quot;input[type=text]&quot;&gt;</span>
+            <span class="code__line">  &lt;/label&gt;</span>
+            <span class="code__line">  &lt;button class=&quot;btn  fields-group__item  fields-group__item--addon&quot;&gt;&#x41e;&#x442;&#x43f;&#x440;&#x430;&#x432;&#x438;&#x442;&#x44c;&lt;/button&gt;</span>
+            <span class="code__line">  &lt;button class=&quot;btn  fields-group__item  fields-group__item--addon&quot;&gt;&#x41e;&#x442;&#x43c;&#x435;&#x43d;&#x438;&#x442;&#x44c;&lt;/button&gt;</span>
+            <span class="code__line">&lt;/div&gt;</span>
+            <span class="code__line"> </span>
+            <span class="code__line">&lt;div class=&quot;fields-group&quot;&gt;</span>
             <span class="code__line">  &lt;span role=&quot;presentation&quot; class=&quot;dropdown  fields-group__item--dropdown&quot;&gt;</span>
             <span class="code__line">    &lt;button class=&quot;dropdown__toggler  btn&quot; type=&quot;button&quot; data-toggle=&quot;dropdown&quot; aria-haspopup=&quot;true&quot; aria-expanded=&quot;false&quot;&gt;</span>
             <span class="code__line">      &#x412;&#x44b;&#x43f;&#x430;&#x434;&#x435;&#x43d;&#x438;&#x435;</span>
@@ -3125,10 +3200,9 @@
       <div class="btn-group">
         <button class="btn">Отправить</button>
         <button class="btn  btn--main">Отменить</button>
-        <button class="btn">Отменить</button>
         <span role="presentation" class="dropdown">
           <button class="dropdown__toggler  btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Выпадение от пр. края
+            Выпадение
           </button>
           <ul class="dropdown__menu  dropdown__menu--right">
             <li><a href="#">Пункт списка (выпадает <code>ul</code>)</a></li>
