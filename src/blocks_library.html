@@ -3266,20 +3266,20 @@
     </ul>
     <div class="js-font-resizer">
       <div class="p">
-        <span role="presentation" class="dropdown" id="test">
-          <a id="test_link" href="#" class="dropdown__toggler" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ссылка с выпадением</a>
-          <ul class="dropdown__menu" aria-labelledby="qwer">
-            <li><a href="#">Пункт списка (выпадает <code>ul</code>)</a></li>
-            <li class="dropdown__menu-separator"><a href="#">Пункт списка, после которого следует разделитель</a></li>
-            <li><a href="#">Пункт меню весьма длинный, такой, что прямо адски длинный, очень много, реально много слов!</a></li>
+        <span role="presentation" class="dropdown">
+          <a href="#" class="dropdown__toggler" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ссылка с выпадением</a>
+          <ul class="dropdown__menu">
+            <li><a href="">Пункт списка (выпадает <code>ul</code>)</a></li>
+            <li class="dropdown__menu-separator"><a href="">Пункт списка, после которого следует разделитель</a></li>
+            <li><a href="">Пункт меню весьма длинный, такой, что прямо адски длинный, очень много, реально много слов!</a></li>
           </ul>
         </span>
-        <span role="presentation" class="dropdown" id="test_2">
-          <button class="dropdown__toggler  btn" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span role="presentation" class="dropdown">
+          <button class="dropdown__toggler  btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Выпадает список
           </button>
-          <ul class="dropdown__menu" id="qwer">
-            <li><a href="#">Пункт списка (выпадает <code>ul</code>)</a></li>
+          <ul class="dropdown__menu">
+            <li><a href="">Пункт списка (выпадает <code>ul</code>)</a></li>
             <li><a href="">Пункт меню весьма длинный</a></li>
             <li><a href="">Второй пункт</a></li>
           </ul>
@@ -3290,16 +3290,18 @@
             Выпадает блок
           </button>
           <div class="dropdown__menu">
-            Выпадает <code>div</code> с произвольным контентом. <a href="">Ссылка какая-то</a>.
-            <hr>
-            <form action="">
-              <input type="text">
-              <select name="" id="">
-                <option value="">Название пункта</option>
-              </select>
-              <textarea name="" id="" rows="3"></textarea>
-              <button class="btn">Отправить эту форму</button>
-            </form>
+            <div class="dropdown__menu-inner">
+              Выпадает <code>div</code> с произвольным контентом. <a href="">Ссылка какая-то</a>.
+              <hr>
+              <form action="">
+                <input type="text">
+                <select name="" id="">
+                  <option value="">Название пункта</option>
+                </select>
+                <textarea name="" id="" rows="3"></textarea>
+                <button class="btn">Отправить эту форму</button>
+              </form>
+            </div>
           </div>
         </span>
       </div>
@@ -3309,20 +3311,20 @@
       <div class="blocks-library__code">
         <pre class="code">
           <code class="code__syntax  html">
-            <span class="code__line">&lt;span role=&quot;presentation&quot; class=&quot;dropdown&quot; id=&quot;test&quot;&gt;</span>
+            <span class="code__line">&lt;span role=&quot;presentation&quot; class=&quot;dropdown&quot;&gt;</span>
             <span class="code__line">  &lt;a href=&quot;#&quot; class=&quot;dropdown__toggler&quot; data-toggle=&quot;dropdown&quot; role=&quot;button&quot; aria-haspopup=&quot;true&quot; aria-expanded=&quot;false&quot;&gt;</span>
             <span class="code__line">    Ссылка с выпадением</span>
             <span class="code__line">  &lt;/a&gt;</span>
-            <span class="code__line">  &lt;ul class=&quot;dropdown__menu&quot; aria-labelledby=&quot;qwer&quot;&gt;</span>
+            <span class="code__line">  &lt;ul class=&quot;dropdown__menu&quot; aria-labelledby=&quot;drop&quot;&gt;</span>
             <span class="code__line">    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&#x41f;&#x443;&#x43d;&#x43a;&#x442; &#x441;&#x43f;&#x438;&#x441;&#x43a;&#x430; (&#x432;&#x44b;&#x43f;&#x430;&#x434;&#x430;&#x435;&#x442; &lt;code&gt;ul&lt;/code&gt;)&lt;/a&gt;&lt;/li&gt;</span>
             <span class="code__line">  &lt;/ul&gt;</span>
             <span class="code__line">&lt;/span&gt;</span>
             <span class="code__line"> </span>
-            <span class="code__line">&lt;span role=&quot;presentation&quot; class=&quot;dropdown&quot; id=&quot;test&quot;&gt;</span>
-            <span class="code__line">  &lt;button class=&quot;dropdown__toggler  btn&quot; id=&quot;dLabel&quot; type=&quot;button&quot; data-toggle=&quot;dropdown&quot; aria-haspopup=&quot;true&quot; aria-expanded=&quot;false&quot;&gt;</span>
+            <span class="code__line">&lt;span role=&quot;presentation&quot; class=&quot;dropdown&quot;&gt;</span>
+            <span class="code__line">  &lt;button class=&quot;dropdown__toggler  btn&quot; type=&quot;button&quot; data-toggle=&quot;dropdown&quot; aria-haspopup=&quot;true&quot; aria-expanded=&quot;false&quot;&gt;</span>
             <span class="code__line">    Кнопка с выпадением</span>
             <span class="code__line">  &lt;/button&gt;</span>
-            <span class="code__line">  &lt;ul class=&quot;dropdown__menu&quot; aria-labelledby=&quot;qwer&quot;&gt;</span>
+            <span class="code__line">  &lt;ul class=&quot;dropdown__menu&quot; aria-labelledby=&quot;drop&quot;&gt;</span>
             <span class="code__line">    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&#x41f;&#x443;&#x43d;&#x43a;&#x442; &#x441;&#x43f;&#x438;&#x441;&#x43a;&#x430; (&#x432;&#x44b;&#x43f;&#x430;&#x434;&#x430;&#x435;&#x442; &lt;code&gt;ul&lt;/code&gt;)&lt;/a&gt;&lt;/li&gt;</span>
             <span class="code__line">  &lt;/ul&gt;</span>
             <span class="code__line">&lt;/span&gt;</span>
