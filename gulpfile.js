@@ -285,7 +285,7 @@ function getComponentsFiles() {
   let jsLibs = []; // тут будут сторонние JS-файлы из используемых блоков (библиотеки), потом вставим в начало сomponentsFilesList.js
   // Читаем файл диспетчера подключений
   let connectManager = fs.readFileSync(dirs.source + '/less/style.less', 'utf8');
-  // Фильтруем массив, оставляя только строки с незакомментированными импортами
+  // Делаем из строк массив, фильтруем массив, оставляя только строки с незакомментированными импортами
   let fileSystem = connectManager.split('\n').filter(function(item) {
     if(/^(\s*)@import/.test(item)) return true;
     else return false;

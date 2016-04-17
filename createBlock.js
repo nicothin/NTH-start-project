@@ -13,31 +13,87 @@ let extensions = uniqueArray(defaultExtensions.concat(process.argv.slice(3)));  
 
 // Если есть имя блока
 if(blockName) {
+
   let dirPath = dirs.source + '/blocks/' + blockName + '/'; // полный путь к создаваемой папке блока
   mkdirp(dirPath, function(err){                            // создаем
+
     // Если какая-то ошибка — покажем
     if(err) {
       console.error('[NTH] Отмена операции: ' + err);
     }
+
     // Нет ошибки, поехали!
     else {
       console.log('[NTH] Создание папки ' + dirPath + ' (создана, если ещё не существует)');
+
+      // Читаем файл диспетчера подключений
+      let connectManager = fs.readFileSync(dirs.source + '/less/style.less', 'utf8');
+
+      // Делаем из строк массив, фильтруем массив, оставляя только строки с незакомментированными импортами
+      let fileSystem = connectManager.split('\n').filter(function(item) {
+        if(/^(\s*)@import/.test(item)) return true;
+        else return false;
+      });
+
       // Обходим массив расширений и создаем файлы, если они еще не созданы
       extensions.forEach(function(extention){
+
         let filePath = dirPath + blockName + '.' + extention; // полный путь к создаваемому файлу
         let fileContent = '';                                 // будущий контент файла
+        let LESSfileImport = '';                              // конструкция импорта будущего LESS
         let fileCreateMsg = '';                               // будущее сообщение в консоли при создании файла
+
         // Если это LESS
         if(extention == 'less') {
-          fileContent = '// Для импорта в диспетчер подключений: @import \'' + dirs.source + '/blocks/' + blockName + '/' + blockName + '.less\';\n\n@import \'../../less/variables.less\';     // только для удобства обращения к переменным\n\n\n.' + blockName + ' {\n  \n}\n';
-          fileCreateMsg = '[NTH] Для импорта стилей: @import \'' + dirs.source + '/blocks/' + blockName + '/' + blockName + '.less\';';
+          LESSfileImport = '@import \'' + dirs.source + '/blocks/' + blockName + '/' + blockName + '.less\';';
+          fileContent = '// Для импорта в диспетчер подключений: ' + LESSfileImport + '\n\n@import \'../../less/variables.less\';     // только для удобства обращения к переменным\n\n\n.' + blockName + ' {\n  \n}\n';
+          fileCreateMsg = '[NTH] Для импорта стилей: ' + LESSfileImport;
+
+          // Создаем регулярку с импортом
+          let reg = new RegExp(LESSfileImport, '');
+
+          // Создадим флаг отсутствия блока среди импортов
+          let impotrtExist = false;
+
+          // Обойдём массив и проверим наличие импорта
+          for (var i = 0, j=fileSystem.length; i < j; i++) {
+            if(reg.test(fileSystem[i])) {
+              impotrtExist = true;
+              break;
+            }
+          }
+
+          // Если файл наличия импорта по-прежнему опущен, допишем импорт
+          if(!impotrtExist) {
+            // Открываем файл
+            fs.open(dirs.source + '/less/style.less', 'a', function(err, fileHandle) {
+              // Если ошибок открытия нет...
+              if (!err) {
+                // Запишем в конец файла
+                fs.write(fileHandle, LESSfileImport + '\n', null, 'utf8', function(err, written) {
+                  if (!err) {
+                    console.log('[NTH] В диспетчер подключений ('+ dirs.source + '/less/style.less) записано: ' + LESSfileImport);
+                  } else {
+                    console.log('[NTH] ОШИБКА записи в '+ dirs.source + '/less/style.less: ' + err);
+                  }
+                });
+              } else {
+                console.log('[NTH] ОШИБКА открытия '+ dirs.source + '/less/style.less: ' + err);
+              }
+            });
+          }
+          else {
+            console.log('[NTH] Импорт НЕ прописан в '+ dirs.source + '/less/style.less (он там уже есть)');
+          }
         }
+
         // Если это HTML
         else if(extention == 'html') {
           fileContent = '<!--DEV\n\nНужно убрать пробел между @-ами:\n\n@ @include(\'blocks/' + blockName + '/' + blockName + '.html\')\n\n-->\n<div class="' + blockName + '">content</div>\n';
           // Пока убрал вывод в консоль конструкции для инклуда файлов
-          // fileCreateMsg = '[NTH] Для вставки разметки: @@include(\'blocks/' + blockName + '/' + blockName + '.html\')  Подробнее: https://www.npmjs.com/package/gulp-file-include';
+          fileCreateMsg = '[NTH] Для вставки разметки: @@include(\'blocks/' + blockName + '/' + blockName + '.html\')  Подробнее: https://www.npmjs.com/package/gulp-file-include';
         }
+
         // Создаем файл, если он еще не существует
         if(fileExist(filePath) === false) {
           fs.writeFile(filePath, fileContent, function(err) {
@@ -51,7 +107,7 @@ if(blockName) {
           });
         }
         else {
-          console.log('[NTH] Файл НЕ создан: ' + filePath + ' уже существует');
+          console.log('[NTH] Файл НЕ создан: ' + filePath + ' (уже существует)');
         }
       });
     }
