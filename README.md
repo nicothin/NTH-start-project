@@ -54,6 +54,8 @@ node createBlock.js new-block js jade # создаст папку, new-block.htm
 
 Если блок уже существует, файлы не будут затёрты, но создадутся те файлы, которые ещё не существуют.
 
+После создания блока, в диспетчер подключений будет дописана (в самый низ) строка импорта стилевого файла.
+
 
 
 ## Подключение блоков
@@ -111,7 +113,7 @@ src/            # Исходные файлы
 
 ## Выгрузка на gh-pages
 
-Содержимое проекта можно быстро «выгрузить» на [gh-pages](https://help.github.com/articles/user-organization-and-project-pages/#project-pages) (запушить содержимое папки `build/` в ветку `gh-pages` репозитория проекта). Адрес для просмотра будет таким: http://USERNAME.github.io/PROJECTNAME/ (полное повторений файловой структуры папки `build/`).
+Содержимое проекта можно быстро «выгрузить» на [gh-pages](https://help.github.com/articles/user-organization-and-project-pages/#project-pages) (автоматически запушить содержимое папки `build/` в ветку `gh-pages` репозитория проекта). Адрес для просмотра будет таким: http://USERNAME.github.io/PROJECTNAME/ (полное повторений файловой структуры папки `build/`).
 
 
 ```bash
