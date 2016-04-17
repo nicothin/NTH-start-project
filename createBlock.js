@@ -63,7 +63,7 @@ if(blockName) {
             }
           }
 
-          // Если файл наличия импорта по-прежнему опущен, допишем импорт
+          // Если флаг наличия импорта по-прежнему опущен, допишем импорт
           if(!impotrtExist) {
             // Открываем файл
             fs.open(dirs.source + '/less/style.less', 'a', function(err, fileHandle) {
