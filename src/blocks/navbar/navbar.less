@@ -67,6 +67,27 @@
     @media (min-width: @screen-lg) {
       display: none;
     }
+
+    &--open {
+      .navbar__toggler-icon {
+        transition: background 0.2s 0;
+        background: transparent;
+
+        &:before,
+        &:after {
+          transition: top 0.2s, transform 0.2s 0.2s;
+          top: 0;
+        }
+
+        &:before {
+          transform: rotate3d(0, 0, 1, 45deg);
+        }
+
+        &:after {
+          transform: rotate3d(0, 0, 1, -45deg);
+        }
+      }
+    }
   }
 
   &__toggler-icon {
@@ -99,30 +120,9 @@
     &:after {
       top: -1rem;
     }
-
-    // Модификатор «открытого» состояния (крестик)
-    &--open {
-      transition: background 0.2s 0;
-      background: transparent;
-
-      &:before,
-      &:after {
-        transition: top 0.2s, transform 0.2s 0.2s;
-        top: 0;
-      }
-
-      &:before {
-        transform: rotate3d(0, 0, 1, 45deg);
-      }
-
-      &:after {
-        transform: rotate3d(0, 0, 1, -45deg);
-      }
-    }
   }
 
   &__slidable-content {
-    padding-top: 0.5em;
 
     // Если JS работает, будем скрывать и показывать по клику
     .js & {
