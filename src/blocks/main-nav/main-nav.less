@@ -4,6 +4,8 @@
 
 
 .main-nav {
+  position: relative;
+  z-index: 1;
   margin-left: (@grid-gutter-width / -2);
   margin-right: (@grid-gutter-width / -2);
 
@@ -16,18 +18,71 @@
       display: flex;
       flex-wrap: wrap;
     }
+  }
 
-    &--level-2 {
-      display: none;
+  &__nested-lvl {
+
+    @media (min-width: @screen-lg) {
+      position: absolute;
+      left: 0;
+      top: 100%;
+      background-color: @gray-lightest;
+      padding-top: 0.3em;
+      width: auto;
+    }
+
+    .main-nav__list {
+      display: block;
+    }
+
+    .main-nav__link {
+      padding-left: @grid-gutter-width;
+      min-width: 12em;
 
       @media (min-width: @screen-lg) {
-        display: none;
+        padding-left: (@grid-gutter-width / 2);
+      }
+    }
+
+    // Вложение внутри вложения
+    & & {
+
+      @media (min-width: @screen-lg) {
+        position: absolute;
+        top: 0;
+        left: 100%;
+        background-color: @gray-lightest;
+        padding-top: 0.3em;
+        width: auto;
+
+        .main-nav__link {
+          padding-left: (@grid-gutter-width / 2);
+        }
+      }
+
+      .main-nav__link {
+        padding-left: @grid-gutter-width * 1.5;
       }
     }
   }
 
   &__item {
     display: block;
+    position: relative;
+
+    // Сокрытие и показ по наведению
+    @media (min-width: @screen-lg) {
+
+      & > .main-nav__nested-lvl {
+        display: none;
+      }
+
+      &:hover {
+        & > .main-nav__nested-lvl {
+          display: block;
+        }
+      }
+    }
   }
 
   &__link {
@@ -38,6 +93,7 @@
     padding-right: (@grid-gutter-width / 2);
     color: @gray;
     text-decoration: none;
+    cursor: pointer;
 
     &:hover, &:focus {
       color: @text-color;
