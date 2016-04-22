@@ -90,8 +90,12 @@ if(blockName) {
         // Если это HTML
         else if(extention == 'html') {
           fileContent = '<!--DEV\n\nНужно убрать пробел между @-ами:\n\n@ @include(\'blocks/' + blockName + '/' + blockName + '.html\')\n\n-->\n<div class="' + blockName + '">content</div>\n';
-          // Пока убрал вывод в консоль конструкции для инклуда файлов
           fileCreateMsg = '[NTH] Для вставки разметки: @@include(\'blocks/' + blockName + '/' + blockName + '.html\')  Подробнее: https://www.npmjs.com/package/gulp-file-include';
+        }
+
+        // Если это JS
+        else if(extention == 'js') {
+          fileContent = '// (function(){\n// код\n// }());\n';
         }
 
         // Создаем файл, если он еще не существует
