@@ -32,6 +32,10 @@
       border: 1px solid @gray-lighter;
       border-top: 0;
       box-shadow: @shadow;
+
+      .main-nav__item:not(:last-child) {
+        border-bottom: 1px solid @gray-lighter;
+      }
     }
 
     .main-nav__list {
@@ -40,7 +44,7 @@
 
     .main-nav__link {
       padding-left: @grid-gutter-width;
-      min-width: 12em;
+      min-width: 15em;
 
       @media (min-width: @screen-lg) {
         padding-left: (@grid-gutter-width / 2);
@@ -57,6 +61,8 @@
         background-color: @gray-lightest;
         padding-top: 0.3em;
         width: auto;
+        padding-top: 0;
+        border-top: 1px solid @gray-lighter;
 
         .main-nav__link {
           padding-left: (@grid-gutter-width / 2);
