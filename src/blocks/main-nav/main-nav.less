@@ -79,6 +79,19 @@
     display: block;
     position: relative;
 
+    &--divider {
+      margin-top: 2rem;
+
+      &:before {
+        content: '';
+        position: absolute;
+        top: -1rem;
+        left: 0;
+        right: 0;
+        border-top: 1px solid @gray-light;
+      }
+    }
+
     // Сокрытие и показ по наведению
     @media (min-width: @screen-lg) {
 
