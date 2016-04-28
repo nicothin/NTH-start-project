@@ -44,7 +44,7 @@ let blocks = getComponentsFiles();
 
 // Вывод в консоль информации о взятых в сборку файлах (без LESS)
 if(blocks.js.length) {
-  console.log('---------- В сборку и обработку взяты JS-файлы:');
+  console.log('---------- В сборку и обработку взяты JS-файлы (указана последовательность):');
   console.log(blocks.js);
 }
 if(blocks.img.length) {
@@ -315,8 +315,8 @@ function getComponentsFiles() {
       let reg = new RegExp(componentName + '(\.|--)', '');
       blockFiles.forEach(function(file, i) {
         if(/\.js$/.test(file) && !reg.test(file)) {
-          if(fileExistAndHasContent(blockDir + '/' + file)) {        // и если он существует и не пуст
-            jsLibs.push(blockDir + '/' + file);  // добавим в массив библиотек
+          if(fileExistAndHasContent(blockDir + '/' + file)) {        // и если он не пуст
+            jsLibs.push(blockDir + '/' + file);                      // добавим в массив библиотек
           }
         }
       });
@@ -345,8 +345,9 @@ function getComponentsFiles() {
   if(jsLibs) {
     сomponentsFilesList.js = jsLibs.concat(сomponentsFilesList.js);
   }
+  // Если хочется иметь jQuery в конкатенируемом JS, раскомментируйте эти строки
   // if(fileExistAndHasContent(dirs.source + '/js/jquery.js')) {
-  //   сomponentsFilesList.js.unshift(dirs.source + '/js/jquery.js');
+  //   сomponentsFilesList.js.unshift(dirs.source + '/js/jquery.js'); // добавляем в самое начало
   // }
   // Добавим глобальный CSS-файл в начало массива с обрабатываемыми CSS-файлами
   if(fileExistAndHasContent(dirs.source + '/css/global-additional-css.css')) {
