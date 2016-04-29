@@ -11,8 +11,7 @@ $( document ).ready(function() {
     clearTimeout(t0);
     t0 = setTimeout(function () {
         showScrollTopButton();
-        console.log('scroll');
-      }, 50);
+      }, 100);
   });
 
   showScrollTopButton();
