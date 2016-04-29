@@ -1,0 +1,25 @@
+// Для импорта в диспетчер подключений: @import './src/blocks/to-top/to-top.less';
+
+@import '../../less/variables.less';     // только для удобства обращения к переменным
+
+
+.to-top {
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+  z-index: 1;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background-color: #000;
+  color: transparent;
+  font: 0/0 a;
+  background-image: data-uri('image/svg+xml;charset=UTF-8', './src/blocks/to-top/img_to_bg/to-up.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  transform: rotate(180deg);
+
+  .js & {
+    display: none;
+  }
+}
