@@ -160,6 +160,11 @@ gulp.task('svgstore', function (callback) {
         $('svg').attr('style',  'display:none');
       }))
       .pipe(rename('sprite-svg--ls.svg'))
+      .pipe(size({
+        title: 'Размер',
+        showFiles: true,
+        showTotal: false,
+      }))
       .pipe(gulp.dest(dirs.source + '/blocks/sprite-svg--localstorage/img'));
   }
   else {
@@ -186,7 +191,6 @@ gulp.task('js', function (callback) {
   if(blocks.js.length > 0){
     console.log('---------- Обработка JS');
     return gulp.src(blocks.js)
-      .pipe(debug({title: "JS:"}))
       .pipe(gulpIf(isDev, sourcemaps.init()))
       .pipe(concat('script.min.js'))
       .pipe(gulpIf(!isDev, uglify()))
@@ -197,7 +201,11 @@ gulp.task('js', function (callback) {
         }
       }))
       .pipe(gulpIf(isDev, sourcemaps.write('.')))
-      .pipe(gulpIf(isDev, debug({title: "JS SOURCEMAPS:"})))
+      .pipe(size({
+        title: 'Размер',
+        showFiles: true,
+        showTotal: false,
+      }))
       .pipe(gulp.dest(dirs.build + '/js'));
   }
   else {
