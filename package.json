@@ -16,8 +16,8 @@
   "devDependencies": {
     "autoprefixer": "^6.3.3",
     "browser-sync": "^2.11.1",
-    "css-mqpacker": "^4.0.0",
     "cross-env": "^1.0.7",
+    "css-mqpacker": "^4.0.0",
     "del": "^2.2.0",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-cheerio": "^0.6.2",
@@ -34,6 +34,7 @@
     "gulp-postcss": "^6.1.0",
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.5.4",
+    "gulp-size": "^2.1.0",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-svgmin": "^1.2.1",
     "gulp-svgstore": "^5.0.5",

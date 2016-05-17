@@ -31,6 +31,7 @@ const concat = require('gulp-concat');
 const browserSync = require('browser-sync').create();
 const replace = require('gulp-replace');
 const ghPages = require('gulp-gh-pages');
+const size = require('gulp-size');
 const fs = require('fs');
 
 // Запуск `NODE_ENV=production npm start [задача]` приведет к сборке без sourcemaps
@@ -79,6 +80,11 @@ gulp.task('less', function () {
     .pipe(rename('style.min.css'))
     .pipe(debug({title: "RENAME:"}))
     .pipe(gulpIf(isDev, sourcemaps.write()))
+    .pipe(size({
+      title: 'Размер',
+      showFiles: true,
+      showTotal: false,
+    }))
     .pipe(gulp.dest(dirs.build + '/css'))
     .pipe(browserSync.stream());
 });
