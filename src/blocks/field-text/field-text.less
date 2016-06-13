@@ -17,6 +17,15 @@
   &__input-wrap {}
 
   &__input {
+    background-color: #fff;
+    border: 1px solid @border-color;
+    border-radius: @border-radius;
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    line-height: @line-height;
+    height: 2.125em;
+    padding: @field-padding-top @field-padding-horizontal @field-padding-bottom;
 
     textarea& {
       min-height: (@line-height * 2) + @field-padding-top + @field-padding-bottom + .2; // .2 — поправка на бордюр
