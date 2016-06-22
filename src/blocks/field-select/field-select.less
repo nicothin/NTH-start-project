@@ -16,16 +16,18 @@
   &__input-wrap {}
 
   &__select {
-    background-color: #fff;
-    border: 1px solid @border-color;
-    border-radius: @border-radius;
     display: inline-block;
     vertical-align: middle;
     width: 100%;
-    line-height: @line-height;
     height: 2.125em;
+    line-height: @line-height;
     padding: @field-padding-top 1.8em @field-padding-bottom @field-padding-horizontal;
+    font-size: inherit;
+    font-family: inherit;
+    border: 1px solid @border-color;
+    border-radius: @border-radius;
     appearance: none;
+    background-color: #fff;
     background-image: data-uri('image/svg+xml;charset=UTF-8', './src/blocks/field-select/img_to_bg/select-down.svg');
     background-repeat: no-repeat;
     background-position: right 0.3em center;
@@ -33,11 +35,22 @@
 
     &[multiple] {
       background-image: none;
+      height: auto;
       min-height: 6.8em;
     }
 
     &::-ms-expand {
       display: none;
+    }
+
+    &:focus {
+      .focus();
+    }
+
+    &[disabled],
+    &[readonly] {
+      cursor: default;
+      background-color: @gray-lighter;
     }
   }
 

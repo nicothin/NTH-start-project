@@ -1259,12 +1259,13 @@
     <h1 class="blocks-library__item-title">Адаптивные таблицы с повторяющимися названиями ячеек</h1>
 
     <p>Для просмотра адаптации таблицы сделайте вьюпорт узким.</p>
+    <p>TODO: сделать модификатором блока <code>.table</code></p>
 
     <p class="alert  alert--danger"><strong>Внимание!</strong> Адаптивные таблицы требуют добавления дата-атрибутов.</p>
 
     <p class="alert  alert--danger"><strong>Внимание!</strong> Применение варианта по умолчанию ограничено таблицами, имеющими заголовочные ячейки сверху.</p>
 
-    <table class="table-responsive">
+    <table class="table  table-responsive">
       <caption>Адаптивная таблица с перестроением блоков</caption>
       <thead>
         <tr>
@@ -1291,7 +1292,7 @@
       <div class="blocks-library__code">
         <pre class="code">
           <code class="code__syntax  html">
-            <span class="code__line">&lt;table class="table-responsive"></span>
+            <span class="code__line">&lt;table class="table  table-responsive"></span>
             <span class="code__line">  &lt;thead></span>
             <span class="code__line">    &lt;tr></span>
             <span class="code__line">      &lt;th>Имя и фамилия&lt;/th></span>
@@ -1320,7 +1321,8 @@
     <div class="blocks-library__sub-item">
       <h2 class="blocks-library__sub-item-title">Модификация для горизонтального перестроения</h2>
       <p>Модификатор <code>table-responsive--horizontal</code>, отдельный less-файл.</p>
-      <table class="table-responsive  table-responsive--horizontal">
+      <p>TODO: сделать модификатором блока <code>.table</code></p>
+      <table class="table  table-responsive  table-responsive--horizontal">
         <thead>
           <tr>
             <th>Имя и фамилия</th>
@@ -1346,7 +1348,7 @@
         <div class="blocks-library__code">
           <pre class="code">
             <code class="code__syntax  html">
-              <span class="code__line">&lt;table class="table-responsive  table-responsive--horizontal"></span>
+              <span class="code__line">&lt;table class="table  table-responsive  table-responsive--horizontal"></span>
               <span class="code__line">  &lt;thead></span>
               <span class="code__line">    &lt;tr></span>
               <span class="code__line">      &lt;th>Имя и фамилия&lt;/th></span>
@@ -1382,8 +1384,9 @@
     <h1 class="blocks-library__item-title">Адаптивные таблицы c горизонтальной прокруткой</h1>
 
     <p>Для просмотра адаптации таблицы сделайте вьюпорт узким.</p>
+    <p>TODO: сделать модификатором блока <code>.table</code></p>
 
-    <div class="table-responsive-scroll">
+    <div class="table  table-responsive-scroll">
       <table>
         <tbody>
           <tr>
@@ -1455,7 +1458,7 @@
       <div class="blocks-library__code">
         <pre class="code">
           <code class="code__syntax  html">
-            <span class="code__line">&lt;div class=&quot;table-responsive-scroll&quot;&gt;</span>
+            <span class="code__line">&lt;div class=&quot;table  table-responsive-scroll&quot;&gt;</span>
             <span class="code__line">  &lt;table&gt; &lt;!-- Можно с class=&quot;table&quot;, можно без. --&gt;</span>
             <span class="code__line">    ...</span>
             <span class="code__line">  &lt;/table&gt;</span>
@@ -1473,6 +1476,7 @@
     <h1 class="blocks-library__item-title">Адаптивные таблицы cо сменой строк на колонки</h1>
 
     <p>Для просмотра адаптации таблицы сделайте вьюпорт узким.</p>
+    <p>TODO: сделать модификатором блока <code>.table</code></p>
 
     <p class="alert  alert--danger"><strong>ВНИМАНИЕ!</strong> При перестройке контент в ячейках таблицы жёстко фиксируется как однострочный (нет зависимости развёрнутых ячеек).</p>
 
@@ -1541,6 +1545,7 @@
     <div class="blocks-library__sub-item">
       <h2 class="blocks-library__sub-item-title">С неподвижными названиями</h2>
       <p>Модификатор <code>table-responsive-rotate--thead-fix</code>, отдельный less-файл. Требует наличия <code>thead</code>, чтобы было что фиксировать.</p>
+      <p>TODO: сделать модификатором блока <code>.table</code></p>
       <p class="alert alert--danger">Требует дополнительной обёртки, см. код примера.</p>
       <div class="table-responsive-rotate  table-responsive-rotate--thead-fix">
         <div class="table-responsive-rotate__inner">
