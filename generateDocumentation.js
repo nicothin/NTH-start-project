@@ -18,3 +18,41 @@
 //    - - использование неподходящих картинок
 // Стилизация типов страниц — теги style в head страниц. JS — аналогично. Брать файлы для вставки из исходников
 // (из src/docs-files)
+
+
+
+const fs = require('fs');
+const pjson = require('./package.json');
+const dirs = pjson.config.directories;
+
+// Файлы компилируемых компонентов
+// let blocks = getComponentsList();
+let blocks = ['./src/blocks/btn'];
+console.log(blocks);
+
+
+// Определение собираемых компонентов
+function getComponentsList() {
+  let сomponentsFilesList = [];
+  let fileSystem = fs.readFileSync(dirs.source + '/less/style.less', 'utf8').split('\n').filter(function(item) {
+    if(/^(\s*)@import/.test(item)) return true;
+    else return false;
+  });
+  fileSystem.forEach(function(item, i) {
+    let componentData = /\/blocks\/(.+?)(\/)(.+?)(?=.(less|css))/g.exec(item);
+    if (componentData !== null && componentData[3]) {
+      сomponentsFilesList.push(dirs.source + '/blocks/' + componentData[1]);
+    }
+  });
+  return uniqueArray(сomponentsFilesList);
+}
+
+// Оставить в массиве только уникальные значения (убрать повторы)
+function uniqueArray(arr) {
+  var objectTemp = {};
+  for (var i = 0; i < arr.length; i++) {
+    var str = arr[i];
+    objectTemp[str] = true; // запомнить строку в виде свойства объекта
+  }
+  return Object.keys(objectTemp);
+}
