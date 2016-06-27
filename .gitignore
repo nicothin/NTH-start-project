@@ -8,6 +8,7 @@ src/docs-files/docs.css
 _arc/
 bower_components/
 node_modules/
+.vscode/
 .DS_Store
 *.log
 *.sublime-*
