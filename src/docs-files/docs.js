@@ -1,27 +1,26 @@
-document.addEventListener('DOMContentLoaded', function(){
+$(document).ready(function(){
 
-  // Проверим запись показа панели доков
-  var panelShown = localStorage.getItem('panelShown');
-  if(!panelShown) {
-    localStorage.setItem('panelShown', '0');
-  }
-  console.log(panelShown);
-  if(panelShown === '1') {
-    document.getElementById('in-lib-block-info').classList.add('in-lib-block-info--visible');
-  }
+  // Заполняем блоки, демонстрирующие код
+  $('.docs-demo').each(function() {
+    var codeHtml =$(this).find('.docs-demo__demo').html();
+    var codeArray = $("<div>").text(codeHtml).html().split('\n');
+    if(!codeArray[codeArray.length]) {
+      codeArray.splice((codeArray.length - 1), 1); // убираем последний элемент
+    }
+    if(!codeArray[0]) {
+      codeArray.splice(0, 1); // убираем первый элемент
+    }
+    var tab = codeArray[0].match( /^\s*/ );
+    codeArray.forEach(function(item, i) {
+      codeArray[i] = '<span class="code__line">'+codeArray[i].replace( tab, '' )+'</span>';
+    });
+    $(this).find('.code__syntax').append(codeArray);
+    // console.log(codeArray);
+  });
 
-  // Следим за кликом и показываем/прячем панель, пишем состояние в LS
-  var toggler = document.getElementById('in-lib-block-info__toggler');
-  var panel = document.getElementById('in-lib-block-info');
-  toggler.onclick = function(){
-    if(panel.classList.contains('in-lib-block-info--visible')) {
-      panel.classList.remove('in-lib-block-info--visible');
-      localStorage.setItem('panelShown', '0');
-    }
-    else {
-      panel.classList.add('in-lib-block-info--visible');
-      localStorage.setItem('panelShown', '1');
-    }
-  }
+  // Обрабатываем клик показа/сокрытия блока с кодом
+  $('.docs-content__code-trigger').on('click', function() {
+    $(this).closest('.docs-content__code-wrapper').find('.docs-content__code-demo').slideToggle(150);
+  });
 
 });
