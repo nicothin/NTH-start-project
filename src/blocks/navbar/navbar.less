@@ -40,7 +40,8 @@
     color: @text-color;
     text-decoration: none;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       text-decoration: none;
       color: @text-color;
     }
@@ -63,6 +64,7 @@
     // На большой ширине показываем вне зависимости от работы JS
     .js &,
     .no-js & {
+
       @media (min-width: @screen-lg) {
         display: flex !important; // он может иметь инлайновый display: none из-за JS
       }

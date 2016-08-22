@@ -6,6 +6,7 @@
 .form {
 
   &--line {
+
     &:not(:last-child) {
       margin-bottom: 0;
     }
@@ -54,7 +55,7 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        padding-top: e("calc(@{field-padding-top} + 1px)"); // 1px — бордюр инпута
+        padding-top: e('calc(@{field-padding-top} + 1px)'); // 1px — бордюр инпута
       }
 
       .field-checkbox__title,
@@ -67,12 +68,9 @@
       .field-radio__name,
       .field-toggler__name {
         margin-right: 0.6em;
-        margin-top: e("calc(@{field-padding-top} + 1px)");
-        margin-bottom: e("calc(@{field-padding-top} + 1px)");
+        margin-top: e('calc(@{field-padding-top} + 1px)');
+        margin-bottom: e('calc(@{field-padding-top} + 1px)');
       }
-
     }
-
   }
 }
-

@@ -8,6 +8,7 @@
   display: inline-block;
 
   &--open & {
+
     &__menu {
       z-index: @z-index-dropdown;
       visibility: visible;
@@ -76,7 +77,8 @@
         color: @text-color;
         text-decoration: none;
 
-        &:hover, &:focus {
+        &:hover,
+        &:focus {
           background-color: @gray-lighter;
         }
       }
@@ -88,6 +90,7 @@
   }
 
   &__menu-separator {
+
     &:not(:last-child) {
       padding-bottom: 0.3em;
       margin-bottom: 0.3em;

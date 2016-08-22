@@ -16,7 +16,8 @@
 // Make viewport responsive
 // see http://timkadlec.com/2012/10/ie10-snap-mode-and-responsive-design/
 @at-root {
-  @-ms-viewport {
+
+  @-ms-viewport { /* stylelint-disable-line  at-rule-no-vendor-prefix */
     width: device-width;
   }
 }
@@ -56,7 +57,9 @@ textarea {
 //  Базис
 //------------------------------------------------------------------------------
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
@@ -65,10 +68,9 @@ html {
   font-size: 8px;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -ms-overflow-style: scrollbar;
-  -ms-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%; /* stylelint-disable-line  property-no-vendor-prefix */
   min-width: 320px;
   min-height: 100%;
-  site: be cool; // :)
 
   @media (min-width: @screen-sm) {
     font-size: 10px;
@@ -113,29 +115,44 @@ img {
 h1 {
   font-size: @font-size--h1;
 }
+
 // .h2,
 h2 {
   font-size: @font-size--h2;
 }
+
 // .h3,
 h3 {
   font-size: @font-size--h3;
 }
+
 // .h4,
 h4 {
   font-size: @font-size--h4;
 }
+
 // .h5,
 h5 {
   font-size: @font-size--h5;
 }
+
 // .h6,
 h6 {
   font-size: @font-size--h6;
 }
 
-// .h1, .h2, .h3, .h4, .h5, .h6,
-h1, h2, h3, h4, h5, h6 {
+// .h1,
+// .h2,
+// .h3,
+// .h4,
+// .h5,
+// .h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: @font-family--headings;
   font-weight: 700;
   line-height: 1.4;
@@ -147,14 +164,22 @@ h1, h2, h3, h4, h5, h6 {
   // }
 }
 
-// .h1, .h2, .h3,
-h1, h2, h3 {
+// .h1,
+// .h2,
+// .h3,
+h1,
+h2,
+h3 {
   margin-top: @line-height;
   margin-bottom: (@line-height / 2);
 }
 
-// .h4, .h5, .h6,
-h4, h5, h6 {
+// .h4,
+// .h5,
+// .h6,
+h4,
+h5,
+h6 {
   margin-top: (@line-height / 2);
   margin-bottom: (@line-height / 2);
 }
@@ -257,9 +282,11 @@ blockquote {
   p,
   ul,
   ol {
+
     &:first-child {
       margin-top: 0;
     }
+
     &:last-child {
       margin-bottom: 0;
     }

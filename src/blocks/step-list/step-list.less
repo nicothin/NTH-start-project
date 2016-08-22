@@ -38,6 +38,7 @@
 
     // На узких ширинах показываем цифру в заголовке
     & .step-list__title {
+
       &:before {
         content: counter(step-list) '. ';
         counter-increment: step-list;
@@ -51,18 +52,21 @@
     }
 
     &--main {
+
       .step-list__title {
         border-color: @color-main;
       }
     }
 
     &--danger {
+
       .step-list__title {
         border-color: @color-danger;
       }
     }
 
     &--success {
+
       .step-list__title {
         border-color: @color-success;
       }
@@ -81,5 +85,4 @@
   &__text {
     margin-bottom: 2rem;
   }
-
 }

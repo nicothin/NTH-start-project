@@ -58,49 +58,52 @@
 
   // Если первая переданная переменная не ноль — выводим margin-ы по умолчанию
   & when not (@xs-grid-gutter = 0) {
-    margin-left:  (@xs-grid-gutter / -2);
+    margin-left: (@xs-grid-gutter / -2);
     margin-right: (@xs-grid-gutter / -2);
-  }
 
-  // Если первая переданная переменная не ноль — выводим padding-и по умолчанию для прямых потомков
-  & when not (@xs-grid-gutter = 0) {
+    // Если первая переданная переменная не ноль — выводим padding-и по умолчанию для прямых потомков
     & > * {
-      padding-left:  (@grid-gutter-width / 2);
+      padding-left: (@grid-gutter-width / 2);
       padding-right: (@grid-gutter-width / 2);
     }
   }
 
   & when not (@sm-grid-gutter = @xs-grid-gutter) {
+
     @media (min-width: @screen-sm) {
-      margin-left:  (@sm-grid-gutter / -2);
+      margin-left: (@sm-grid-gutter / -2);
       margin-right: (@sm-grid-gutter / -2);
     }
   }
 
   & when not (@md-grid-gutter = @sm-grid-gutter) {
+
     @media (min-width: @screen-md) {
-      margin-left:  (@md-grid-gutter / -2);
+      margin-left: (@md-grid-gutter / -2);
       margin-right: (@md-grid-gutter / -2);
     }
   }
 
   & when not (@lg-grid-gutter = @md-grid-gutter) {
+
     @media (min-width: @screen-lg) {
-      margin-left:  (@lg-grid-gutter / -2);
+      margin-left: (@lg-grid-gutter / -2);
       margin-right: (@lg-grid-gutter / -2);
     }
   }
 
   & when not (@xl-grid-gutter = @lg-grid-gutter) {
+
     @media (min-width: @screen-xl) {
-      margin-left:  (@xl-grid-gutter / -2);
+      margin-left: (@xl-grid-gutter / -2);
       margin-right: (@xl-grid-gutter / -2);
     }
   }
 
   & when not (@xxl-grid-gutter = @xl-grid-gutter) {
+
     @media (min-width: @screen-xxl) {
-      margin-left:  (@xxl-grid-gutter / -2);
+      margin-left: (@xxl-grid-gutter / -2);
       margin-right: (@xxl-grid-gutter / -2);
     }
   }
@@ -135,7 +138,6 @@
 
 .make-col(@column: 1, @columns: @grid-columns, @gutter: @grid-gutter-width) {
   .get-width(@column, @columns); // Вернёт @width с шириной в процентах
-
   display: block;
   flex: 0 0 @width;
   max-width: @width;
@@ -162,30 +164,41 @@
 //------------------------------------------------------------------------------
 
 .col(@screen: xs, @column: 1, @columns: @grid-columns, @gutter: @grid-gutter-width) {
+
   & when (@screen = xs) {
     .make-col(@column, @columns, @gutter);
   }
+
   & when (@screen = sm) {
+
     @media (min-width: @screen-sm) {
       .make-col(@column, @columns, @gutter);
     }
   }
+
   & when (@screen = md) {
+
     @media (min-width: @screen-md) {
       .make-col(@column, @columns, @gutter);
     }
   }
+
   & when (@screen = lg) {
+
     @media (min-width: @screen-lg) {
       .make-col(@column, @columns, @gutter);
     }
   }
+
   & when (@screen = xl) {
+
     @media (min-width: @screen-xl) {
       .make-col(@column, @columns, @gutter);
     }
   }
+
   & when (@screen = xxl) {
+
     @media (min-width: @screen-xxl) {
       .make-col(@column, @columns, @gutter);
     }
@@ -204,30 +217,41 @@
 //------------------------------------------------------------------------------
 
 .col-offset(@screen: xs, @column: 1, @columns: @grid-columns) {
+
   & when (@screen = xs) {
     margin-left: (@column * 100% / @columns);
   }
+
   & when (@screen = sm) {
+
     @media (min-width: @screen-sm) {
       margin-left: (@column * 100% / @columns);
     }
   }
+
   & when (@screen = md) {
+
     @media (min-width: @screen-md) {
       margin-left: (@column * 100% / @columns);
     }
   }
+
   & when (@screen = lg) {
+
     @media (min-width: @screen-lg) {
       margin-left: (@column * 100% / @columns);
     }
   }
+
   & when (@screen = xl) {
+
     @media (min-width: @screen-xl) {
       margin-left: (@column * 100% / @columns);
     }
   }
+
   & when (@screen = xxl) {
+
     @media (min-width: @screen-xxl) {
       margin-left: (@column * 100% / @columns);
     }
@@ -244,15 +268,19 @@
 //------------------------------------------------------------------------------
 
 .make-column-list-general-rules(@screen: xs) {
+
   .column-list(@index) {
-    @item: ~".col-@{screen}-@{index}";
+    @item: ~'.col-@{screen}-@{index}';
     .column-list((@index + 1), @item);
   }
+
   .column-list(@index, @list) when (@index =< @grid-columns) {
-    @item: ~".col-@{screen}-@{index}";
-    .column-list((@index + 1), ~"@{list}, @{item}");
+    @item: ~'.col-@{screen}-@{index}';
+    .column-list((@index + 1), ~'@{list}, @{item}');
   }
+
   .column-list(@index, @list) when (@index > @grid-columns) {
+
     @{list} {
       display: block;
       flex: 0 0 100%;
@@ -261,6 +289,7 @@
       padding-right: (@grid-gutter-width / 2);
     }
   }
+
   .column-list(1);
 }
 
@@ -275,9 +304,11 @@
 //------------------------------------------------------------------------------
 
 .make-columns(@n: @grid-columns, @screen: xs, @i: 1) when (@i =< @n) {
+
   .col-@{screen}-@{i} {
     .make-col(@i, @n, false)
   }
+
   .make-columns(@n, @screen, (@i + 1));
 }
 
@@ -292,8 +323,10 @@
 //------------------------------------------------------------------------------
 
 .make-offsets(@n: @grid-columns, @screen: xs, @i: 1) when (@i =< @n) {
+
   .col-@{screen}-offset-@{i} {
     margin-left: (@i * 100% / @n);
   }
+
   .make-offsets(@n, @screen, (@i + 1));
 }

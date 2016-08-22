@@ -45,6 +45,7 @@
     // &--dropdown {} // Вынесено в отдельный файл, т.к. ситуация специфическая, редкая
 
     &:not(:last-child) {
+
       .field-text__input,
       .field-select__select {
         border-top-right-radius: 0;
@@ -69,7 +70,8 @@
     position: relative;
     z-index: 0;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       z-index: 1;
     }
   }
