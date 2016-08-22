@@ -6,6 +6,7 @@
     "test": "node_modules/.bin/stylelint ./src/**/*.less",
     "start": "./node_modules/.bin/gulp",
     "deploy": "cross-env NODE_ENV=production ./node_modules/.bin/gulp build && cross-env ./node_modules/.bin/gulp deploy",
+    "build": "cross-env NODE_ENV=production npm start build",
     "precommit": "npm test"
   },
   "author": "Nikolay Gromov",
