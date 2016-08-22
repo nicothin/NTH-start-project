@@ -1,6 +1,8 @@
-# Настройки редактора
+# Универсальные настройки редактора
 #
 # http://editorconfig.org
+# https://habrahabr.ru/post/220131/
+# https://packagecontrol.io/packages/EditorConfig
 
 root = true
 

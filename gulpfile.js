@@ -74,7 +74,9 @@ gulp.task('less', function () {
     }))
     .pipe(postcss([
         autoprefixer({browsers: ['last 2 version']}),
-        mqpacker
+        mqpacker({
+          sort: true
+        }),
     ]))
     .pipe(gulpIf(!isDev, cleanss()))
     .pipe(rename('style.min.css'))
