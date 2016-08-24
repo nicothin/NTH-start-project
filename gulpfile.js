@@ -162,6 +162,19 @@ gulp.task('img:opt', function (callback) {
   }
 });
 
+// Копирование шрифтов
+gulp.task('fonts:copy', function () {
+  console.log('---------- Копирование шрифтов');
+  return gulp.src(dirs.source + '/fonts/*.{ttf,woff,woff2,eot,svg}', {since: gulp.lastRun('fonts:copy')})
+    .pipe(newer(dirs.build + '/fonts'))  // оставить в потоке только изменившиеся файлы
+    .pipe(size({
+      title: 'Размер',
+      showFiles: true,
+      showTotal: false,
+    }))
+    .pipe(gulp.dest(dirs.build + '/fonts'));
+});
+
 // Сборка SVG-спрайта для блока sprite-svg--localstorage
 gulp.task('svgstore', function (callback) {
   let spritePath = dirs.source + '/blocks/sprite-svg--localstorage/svg/';
@@ -265,7 +278,7 @@ gulp.task('clean', function () {
 gulp.task('build', gulp.series(
   'clean',
   'svgstore',
-  gulp.parallel('less', 'less:docs', 'copy:css', 'img', 'js', 'js:copy'),
+  gulp.parallel('less', 'less:docs', 'copy:css', 'img', 'js', 'js:copy', 'fonts:copy'),
   'html'
 ));
 
@@ -289,6 +302,7 @@ gulp.task('serve', gulp.series('build', function() {
   if(blocks.js) {
     gulp.watch(blocks.js, gulp.series('js', reloader));
   }
+  gulp.watch(dirs.source + '/fonts/*.{ttf,woff,woff2,eot,svg}', gulp.series('fonts:copy', reloader));
 }));
 
 // Отправка в GH pages (ветку gh-pages репозитория)
@@ -310,8 +324,11 @@ function reloader(done) {
   done();
 }
 
+
+
 // Определение собираемых компонентов
 function getComponentsFiles() {
+
   // Создаем объект для служебных данных
   let сomponentsFilesList = {
     less: [],          // тут будут LESS-файлы в том же порядке, в котором они подключены
@@ -319,82 +336,90 @@ function getComponentsFiles() {
     img: [],           // тут будет массив из «путь_до_блока/img/*.{jpg,jpeg,gif,png,svg}» для всех импортируемых блоков
     additionalCss: [], // тут будут добавочные CSS-файлы блоков в том же порядке, в котором подключены LESS-файлы
   };
-  let jsLibs = []; // тут будут сторонние JS-файлы из используемых блоков (библиотеки), потом вставим в начало сomponentsFilesList.js
+
   // Читаем файл диспетчера подключений
   let connectManager = fs.readFileSync(dirs.source + '/less/style.less', 'utf8');
+
   // Делаем из строк массив, фильтруем массив, оставляя только строки с незакомментированными импортами
   let fileSystem = connectManager.split('\n').filter(function(item) {
     if(/^(\s*)@import/.test(item)) return true;
     else return false;
   });
+
   // Обойдём массив и запишем его части в объект результирующей переменной
   fileSystem.forEach(function(item, i) {
+
     // Попробуем вычленить блок из строки импорта
     let componentData = /\/blocks\/(.+?)(\/)(.+?)(?=.(less|css))/g.exec(item);
+
     // Если это блок и получилось извлечь имя файла
     if (componentData !== null && componentData[3]) {
-      // Название блока (название папки)
-      let componentName = componentData[1];
-      // Папка блока
-      let blockDir = dirs.source + '/blocks/' + componentName;
-      // Имя подключаемого файла без расширения
-      let componentFileName = componentData[3];
-      // Имя JS-файла, который нужно взять в сборку, если он существует
-      let jsFile = blockDir + '/' + componentFileName + '.js';
-      // Имя CSS-файла, который нужно обработать, если он существует
-      let cssFile = blockDir + '/' + componentFileName + '.css';
-      // Папка с картинками, которую нужно взять в обработку, если она существует
-      let imagesDir = blockDir + '/img';
+      let componentName = componentData[1];                                     // Название блока
+      let blockDir = dirs.source + '/blocks/' + componentName;                  // Папка блока
+      let componentFileName = componentData[3];                                 // Имя подключаемого файла без расширения
+      let jsFile = blockDir + '/' + componentFileName + '.js';                  // Имя JS-файла, который нужно взять в сборку
+      let cssFile = blockDir + '/' + componentFileName + '.css';                // Имя CSS-файла, который нужно обработать
+      let imagesDir = blockDir + '/img';                                        // Папка с картинками, которую нужно взять в обработку
+
       // Добавляем в массив с результатом LESS-файл
       сomponentsFilesList.less.push(dirs.source + componentData[0] + '.' + componentData[4]);
-      // Если в папке блока есть сторонние JS-файлы — добавляем их в массив с результатом (это библиотеки)
-      let blockFiles = fs.readdirSync(blockDir); // список файлов
-      let reg = new RegExp(componentName + '(\.|--)', '');
-      blockFiles.forEach(function(file, i) {
-        if(/\.js$/.test(file) && !reg.test(file)) {
-          if(fileExistAndHasContent(blockDir + '/' + file)) {        // и если он не пуст
-            jsLibs.push(blockDir + '/' + file);                      // добавим в массив библиотек
-          }
-        }
-      });
-      jsLibs = uniqueArray(jsLibs); // уникализируем массив библиотек
+
       // Если существует JS-файл — добавляем его в массив с результатом
       if(fileExistAndHasContent(jsFile)) {
         сomponentsFilesList.js.push(jsFile);
       }
+
       // Если существует CSS-файл — добавляем его в массив с результатом
       if(fileExistAndHasContent(cssFile)) {
         сomponentsFilesList.additionalCss.push(cssFile);
       }
+
       // Если есть папка с изображениями, добавляем её в массив с результатом
       if(fileExist(imagesDir) !== false) {
         сomponentsFilesList.img.push(imagesDir + '/*.{jpg,jpeg,gif,png,svg}');
       }
     }
   });
+
   // Добавим глобальныe LESS-файлы в массив с обрабатываемыми LESS-файлами
   сomponentsFilesList.less.push(dirs.source + '/less/**/*.less');
+
   // Добавим глобальный JS-файл в начало массива с обрабатываемыми JS-файлами
   if(fileExistAndHasContent(dirs.source + '/js/global-script.js')) {
     сomponentsFilesList.js.unshift(dirs.source + '/js/global-script.js');
   }
-  // Добавим JS-библиотеки (если есть) в начало списка JS-файлов
-  if(jsLibs) {
-    сomponentsFilesList.js = jsLibs.concat(сomponentsFilesList.js);
-  }
+
   // Если хочется иметь jQuery в конкатенируемом JS, раскомментируйте эти строки
   // if(fileExistAndHasContent(dirs.source + '/js/jquery.js')) {
-  //   сomponentsFilesList.js.unshift(dirs.source + '/js/jquery.js'); // добавляем в самое начало
+  //   сomponentsFilesList.js.unshift(dirs.source + '/js/jquery.js'); // добавляем в начало
   // }
+
+  // Если хочется иметь в конкатенируемом JS ещё какие-то файлы, пишите это здесь
+  // if(fileExistAndHasContent(dirs.source + '/js/file_name.js')) {
+  //   сomponentsFilesList.js.unshift(dirs.source + '/js/file_name.js'); // добавляем в начало
+  //   или
+  //   сomponentsFilesList.js.push(dirs.source + '/js/file_name.js'); // добавляем в конец
+  // }
+
   // Добавим глобальный CSS-файл в начало массива с обрабатываемыми CSS-файлами
-  if(fileExistAndHasContent(dirs.source + '/css/global-additional-css.css')) {
-    сomponentsFilesList.additionalCss.unshift(dirs.source + '/css/global-additional-css.css');
+  if(fileExistAndHasContent(dirs.source + '/css/global-css.css')) {
+    сomponentsFilesList.additionalCss.unshift(dirs.source + '/css/global-css.css');
   }
+
+  // Если хочется иметь в папке сборки какие-то еще отдельные CSS-файлы, пишите их здесь
+  // if(fileExistAndHasContent(dirs.source + '/css/file_name.css')) {
+  //   сomponentsFilesList.additionalCss.unshift(dirs.source + '/css/file_name.css');
+  // }
+
   // Добавим глобальные изображения
   сomponentsFilesList.img.unshift(dirs.source + '/img/*.{jpg,jpeg,gif,png,svg}');
   сomponentsFilesList.img = uniqueArray(сomponentsFilesList.img);
+
+  // Возвращаем объект со служебными данными
   return сomponentsFilesList;
 }
+
+
 
 // Проверка существования файла и его размера (размер менее 2байт == файла нет)
 function fileExistAndHasContent(path) {
@@ -408,6 +433,8 @@ function fileExistAndHasContent(path) {
   }
 }
 
+
+
 // Проверка существования файла
 function fileExist(path) {
   const fs = require('fs');
@@ -417,6 +444,8 @@ function fileExist(path) {
     return !(err && err.code === 'ENOENT');
   }
 }
+
+
 
 // Оставить в массиве только уникальные значения (убрать повторы)
 function uniqueArray(arr) {

@@ -10,7 +10,7 @@ const dirs = pjson.config.directories;   // отдельно имеем объе
 const mkdirp = require('mkdirp');        // зависимость
 
 let blockName = process.argv[2];          // получим имя блока
-let defaultExtensions = ['html', 'less']; // расширения по умолчанию
+let defaultExtensions = ['less', 'html']; // расширения по умолчанию
 let extensions = uniqueArray(defaultExtensions.concat(process.argv.slice(3)));  // добавим введенные при вызове расширения (если есть)
 
 // Если есть имя блока
@@ -49,7 +49,7 @@ if(blockName) {
         if(extention == 'less') {
           LESSfileImport = '@import \'' + dirs.source + '/blocks/' + blockName + '/' + blockName + '.less\';';
           fileContent = '// Для импорта в диспетчер подключений: ' + LESSfileImport + '\n\n@import \'../../less/variables.less\';     // только для удобства обращения к переменным\n\n\n.' + blockName + ' {\n  \n}\n';
-          fileCreateMsg = '[NTH] Для импорта стилей: ' + LESSfileImport;
+          // fileCreateMsg = '[NTH] Для импорта стилей: ' + LESSfileImport;
 
           // Создаем регулярку с импортом
           let reg = new RegExp(LESSfileImport, '');
@@ -92,7 +92,7 @@ if(blockName) {
         // Если это HTML
         else if(extention == 'html') {
           fileContent = '<!--DEV\n\nНужно убрать пробел между @-ами:\n\n@ @include(\'blocks/' + blockName + '/' + blockName + '.html\')\n\n-->\n<div class="' + blockName + '">content</div>\n';
-          fileCreateMsg = '[NTH] Для вставки разметки: @@include(\'blocks/' + blockName + '/' + blockName + '.html\')  Подробнее: https://www.npmjs.com/package/gulp-file-include';
+          fileCreateMsg = '[NTH] Для вставки разметки: @@include(\'blocks/' + blockName + '/' + blockName + '.html\') Подробнее: https://www.npmjs.com/package/gulp-file-include';
         }
 
         // Если это JS
@@ -100,8 +100,22 @@ if(blockName) {
           fileContent = '// (function(){\n// код\n// }());\n';
         }
 
+        // Если нужна подпапка для картинок
+        else if(extention == 'img') {
+          let imgFolder = dirPath + 'img/';
+          if(fileExist(imgFolder) === false) {
+            mkdirp(imgFolder, function (err) {
+              if (err) console.error(err)
+              else console.log('[NTH] Папка создана: ' + imgFolder)
+            });
+          }
+          else {
+            console.log('[NTH] Папка НЕ создана (уже существует) ')
+          }
+        }
+
         // Создаем файл, если он еще не существует
-        if(fileExist(filePath) === false) {
+        if(fileExist(filePath) === false && extention !== 'img') {
           fs.writeFile(filePath, fileContent, function(err) {
             if(err) {
               return console.log('[NTH] Файл НЕ создан: ' + err);
@@ -112,7 +126,7 @@ if(blockName) {
             }
           });
         }
-        else {
+        else if(extention !== 'img') {
           console.log('[NTH] Файл НЕ создан: ' + filePath + ' (уже существует)');
         }
       });
