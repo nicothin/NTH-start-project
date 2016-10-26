@@ -1,6 +1,6 @@
-Файлы из этой папки никуда не копируются. Предполагается использовать [fontsquirell](http://www.fontsquirrel.com/tools/webfont-generator) или [jaicab.com/localFont/](http://jaicab.com/localFont/) для создания CSS со шрифтами. Сам CSS-файл, сгенерированный сервисом нужно скопировать в глобальный CSS.
+Файлы шрифтов из этой папки копируются в папку сборки. 
 
-На момент создания этого документа (1.03.2016) плагинов для gulp, корректно кодирующих WOFF в base64 не существует.
+Предпочтительно использовать [fontsquirell](http://www.fontsquirrel.com/tools/webfont-generator) или [jaicab.com/localFont/](http://jaicab.com/localFont/) для создания CSS со шрифтами.
 
 Символы, которые имеет смысл брать в шрифт:
 
