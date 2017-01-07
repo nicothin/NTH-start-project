@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Start a library of blocks and technical solutions for HTML/CSS/js page layout.",
   "scripts": {
-    "test": "node_modules/.bin/stylelint ./src/**/*.less",
+    "test": "node_modules/.bin/stylelint './src/**/*.less'",
     "start": "./node_modules/.bin/gulp",
     "deploy": "cross-env NODE_ENV=production ./node_modules/.bin/gulp build && cross-env ./node_modules/.bin/gulp deploy",
     "build": "cross-env NODE_ENV=production npm start build",
@@ -26,7 +26,7 @@
     "gulp-cleancss": "^0.2.2",
     "gulp-concat": "^2.6.0",
     "gulp-debug": "^2.1.2",
-    "gulp-file-include": "^0.13.7",
+    "gulp-file-include": "^1.0.0",
     "gulp-gh-pages": "^0.5.4",
     "gulp-if": "^2.0.0",
     "gulp-imagemin": "^2.4.0",
