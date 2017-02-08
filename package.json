@@ -48,7 +48,7 @@
     "stylelint-declaration-use-variable": "^1.5.0"
   },
   "config": {
-    "ghPages": "http://nicothin.github.io/NTH-start-project/blocks_library.html",
+    "ghPages": "http://nicothin.github.io/NTH-start-project/index.html",
     "directories": {
       "source": "./src",
       "build": "./build"
