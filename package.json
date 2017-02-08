@@ -1,9 +1,9 @@
 {
   "name": "NTH-start-project",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Start a library of blocks and technical solutions for HTML/CSS/js page layout.",
   "scripts": {
-    "test": "node_modules/.bin/stylelint './src/**/*.less'",
+    "test": "stylelint \"src/**/*.less\"",
     "start": "./node_modules/.bin/gulp",
     "deploy": "cross-env NODE_ENV=production ./node_modules/.bin/gulp build && cross-env ./node_modules/.bin/gulp deploy",
     "build": "cross-env NODE_ENV=production npm start build",
