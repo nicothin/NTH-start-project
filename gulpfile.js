@@ -232,8 +232,8 @@ gulp.task('js', function (callback) {
 // Копирование JS-библиотек (если есть)
 gulp.task('js:copy', function (callback) {
   let jsLibs = [];
-  if(fileExistAndHasContent(dirs.source + '/js/jquery.js')) {
-    jsLibs.push(dirs.source + '/js/jquery.js');
+  if(fileExistAndHasContent(dirs.source + '/js/jquery.3.1.1.min.js')) {
+    jsLibs.push(dirs.source + '/js/jquery.3.1.1.min.js');
   }
   if(jsLibs){
     console.log('---------- Копирование JS-библиотек');

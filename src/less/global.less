@@ -65,16 +65,12 @@ textarea {
 
 html {
   box-sizing: border-box;
-  font-size: 8px;
+  font-size: 10px;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 1);
   -ms-overflow-style: scrollbar;
   -ms-text-size-adjust: 100%; /* stylelint-disable-line  property-no-vendor-prefix */
   min-width: 320px;
   min-height: 100%;
-
-  @media (min-width: @screen-sm) {
-    font-size: 10px;
-  }
 }
 
 body {
@@ -157,11 +153,6 @@ h6 {
   font-weight: 700;
   line-height: 1.4;
   color: currentColor;
-
-  // small {
-  //   color: @gray;
-  //   font-weight: 400;
-  // }
 }
 
 // .h1,
@@ -244,7 +235,7 @@ hr {
 
 // .small,
 small {
-  font-size: @font-size--small-percent;
+  font-size: @font-size--small;
 }
 
 sub,

@@ -1,16 +1,21 @@
 // Базовые цвета
+// https://colorscheme.ru/color-converter.html
 
-@gray-darkest:                #1c1c1c;
-@gray-darker:                 #3a3a3a;
-@gray-dark:                   #5f5f5f;
-@gray:                        #808080;
-@gray-light:                  #b1b1b1;
-@gray-lighter:                #eceeef;
-@gray-lightest:               #f7f7f9;
+@black:                       hsl(0, 0%, 0%);
+@gray-darkest:                hsl(0, 0%, 10%);
+@gray-darker:                 hsl(0, 0%, 20%);
+@gray-darken:                 hsl(0, 0%, 30%);
+@gray-dark:                   hsl(0, 0%, 40%);
+@gray:                        hsl(0, 0%, 50%);
+@gray-light:                  hsl(0, 0%, 60%);
+@gray-lighten:                hsl(0, 0%, 70%);
+@gray-lighter:                hsl(0, 0%, 80%);
+@gray-lightest:               hsl(0, 0%, 90%);
+@white:                       hsl(0, 0%, 100%);
 
-@color-main:                  #0275d8;
-@color-success:               #5cb85c;
-@color-danger:                #d9534f;
+@color-main:                  hsl(208, 98%, 43%);
+@color-success:               hsl(120, 39%, 54%);
+@color-danger:                hsl(2, 64%, 58%);
 
 
 
@@ -27,18 +32,16 @@
 
 
 
-// Базовая типографика (<=479: 1 rem = 8px, >=480: 1rem = 10px)
-// Для лёгкого пересчёта: http://pxtoem.com/
+// Базовая типографика
 
-@font-size:                   1.6rem;
-@font-size--h1:               2.25em;  // 3.6rem;
-@font-size--h2:               1.875em; // 3rem;
-@font-size--h3:               1.5em;   // 2.4rem;
-@font-size--h4:               1.25em;  // 2.0rem;
-@font-size--h5:               1em;     // 1.6rem
-@font-size--h6:               1em;     // 1.6rem
+@font-size:                   16px;
+@font-size--h1:               2.25em;
+@font-size--h2:               1.875em;
+@font-size--h3:               1.5em;
+@font-size--h4:               1.25em;
+@font-size--h5:               1em;
+@font-size--h6:               1em;
 @font-size--small:            0.75em;
-@font-size--small-percent:    75%;
 
 @line-height:                 1.375em;
 
@@ -52,7 +55,7 @@
 // Модульная сетка
 
 @grid-columns:                12;
-@grid-gutter-width:           3rem;
+@grid-gutter-width:           30px;
 
 
 
@@ -89,7 +92,7 @@
 
 // Разное
 
-@border-radius:               0.3rem;
+@border-radius:               3px;
 @opacity:                     0.7;
 @transition-time:             0.3s;
 @shadow:                      0 4px 2px -2px rgba(0, 0, 0, 0.3);
