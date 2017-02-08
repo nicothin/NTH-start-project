@@ -41,6 +41,7 @@
     "gulp-svgmin": "^1.2.1",
     "gulp-svgstore": "^6.1.0",
     "gulp-uglify": "^2.0.1",
+    "husky": "^0.13.1",
     "imagemin-pngquant": "^5.0.0",
     "mkdirp": "^0.5.1",
     "stylelint": "^7.1.0",
