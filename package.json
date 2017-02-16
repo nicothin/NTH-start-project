@@ -4,7 +4,7 @@
   "description": "Start a library of blocks and technical solutions for HTML/CSS/js page layout.",
   "scripts": {
     "test": "stylelint \"src/**/*.less\"",
-    "start": "./node_modules/.bin/gulp",
+    "start": "gulp",
     "deploy": "cross-env NODE_ENV=production ./node_modules/.bin/gulp build && cross-env ./node_modules/.bin/gulp deploy",
     "build": "cross-env NODE_ENV=production npm start build",
     "precommit": "npm test"
