@@ -16,6 +16,21 @@
         "--some-mod"
       ]
     },
+    "addCssBefore": [
+      "./src/css/variables.css"
+    ],
+    "addCssAfter":  [
+      "./src/css/print.css"
+    ],
+    "addJsBefore": [
+      "./src/js/jquery.3.1.1.min.js"
+    ],
+    "addJsAfter":  [
+      "./src/js/global-script.js"
+    ],
+    "addImages": [
+      "./src/img/"
+    ],
     "dirs": {
       "srcPath": "./src/",
       "buildPath": "./build/",
