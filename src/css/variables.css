@@ -1,0 +1,136 @@
+:root {
+
+
+
+/* Базовые цвета https://colorscheme.ru/color-converter.html */
+
+  --black:                    hsl(0, 0%, 0%);
+  --gray-darkest:             hsl(0, 0%, 10%);
+  --gray-darker:              hsl(0, 0%, 20%);
+  --gray-darken:              hsl(0, 0%, 30%);
+  --gray-dark:                hsl(0, 0%, 40%);
+  --gray:                     hsl(0, 0%, 50%);
+  --gray-light:               hsl(0, 0%, 60%);
+  --gray-lighten:             hsl(0, 0%, 70%);
+  --gray-lighter:             hsl(0, 0%, 80%);
+  --gray-lightest:            hsl(0, 0%, 90%);
+  --white:                    hsl(0, 0%, 100%);
+
+  --color-main:               hsl(208, 98%, 43%);
+  --color-success:            hsl(120, 39%, 54%);
+  --color-danger:             hsl(2, 64%, 58%);
+
+
+
+/* Семантические цвета */
+
+  --text-color:               var(--gray-darkest, hsl(0, 0%, 10%));
+  --text-color--muted:        var(--gray,         hsl(0, 0%, 50%));
+  --body-bg:                  var(--white,        #fff);
+
+  --link-color:               var(--color-main,   hsl(208, 98%, 43%));
+  --link-color--hover:        var(--color-main,   hsl(208, 98%, 43%));
+
+  --border-color:             var(--gray-light,   hsl(0, 0%, 60%));
+
+
+
+/* Базовая типографика */
+
+  --font-size:                14px;
+  --font-size--h1:            2.25em;
+  --font-size--h2:            1.875em;
+  --font-size--h3:            1.5em;
+  --font-size--h4:            1.25em;
+  --font-size--h5:            1em;
+  --font-size--h6:            1em;
+  --font-size--small:         0.75em;
+
+  --line-height:              1.375em;
+
+  --font-family:              -apple-system, BlinkMacSystemFont, 'Roboto', 'Ubuntu', 'Droid Sans', 'Helvetica Neue', 'Arial', sans-serif;
+  --font-family--serif:       'Georgia', 'Times New Roman', 'Times', serif;
+  --font-family--monospace:   'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
+  --font-family--headings:    var(--font-family, inherit);
+
+
+
+/* Breakepoints и @media */
+
+  --screen-sm:                     600px;
+  @custom-media --screen-sm        (min-width: var(--screen-sm));
+  @custom-media --screen-sm-2-md   (min-width: var(--screen-sm)) and (max-width: calc(var(--screen-sm) - 1));
+  @custom-media --screen-before-sm (max-width: calc(var(--screen-sm) - 1));
+
+  /* --screen-md:                900px; */
+  /* @custom-media --screen-md (min-width: 900px); */
+  /* @custom-media --screen-md-max (max-width: 899px); */
+
+  /* --screen-lg:                1200px; */
+  /* @custom-media --screen-lg (min-width: 1200px); */
+  /* @custom-media --screen-lg-max (max-width: 1199px); */
+
+  /* --screen-xl:                1800px; */
+  /* @custom-media --screen-xl (min-width: 1800px); */
+  /* @custom-media --screen-xl-max (max-width: 1799px); */
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+// Модульная сетка
+
+@grid-columns:                12;
+@grid-gutter-width:           30px;
+
+
+
+// Ширины
+
+@screen-xs:                   0;
+@screen-sm:                   480px;
+@screen-md:                   768px;
+@screen-lg:                   992px;
+@screen-xl:                   1200px;
+@screen-xxl:                  1800px;
+
+@container-sm:                100%;
+@container-md:                100%;
+@container-lg:                @screen-lg - 30;
+@container-xl:                @screen-xl - 30;
+@container-xxl:               @screen-xxl - 30;
+
+
+
+// Z-index
+
+@z-index-dropdown:            10;
+
+
+
+// Формы, кнопки
+
+@field-padding-top:           0.313em;
+@field-padding-bottom:        0.313em;
+@field-padding-horizontal:    0.438em;
+
+
+
+// Разное
+
+@border-radius:               3px;
+@opacity:                     0.7;
+@transition-time:             0.3s;
+@shadow:                      0 4px 2px -2px rgba(0, 0, 0, 0.3);
+ */
