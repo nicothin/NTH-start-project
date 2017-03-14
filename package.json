@@ -41,8 +41,7 @@
     "test": "stylelint \"src/**/*.less\"",
     "start": "gulp",
     "deploy": "cross-env NODE_ENV=production ./node_modules/.bin/gulp build && cross-env ./node_modules/.bin/gulp deploy",
-    "build": "cross-env NODE_ENV=production npm start build",
-    "precommit": "npm test"
+    "build": "cross-env NODE_ENV=production npm start build"
   },
   "devDependencies": {
     "del": "^2.2.2",
