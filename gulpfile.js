@@ -4,52 +4,23 @@
 const fs = require('fs');
 const gulp = require('gulp');
 const gulpSequence = require('gulp-sequence');
-const del = require('del');
 const postcss = require('gulp-postcss');
-const postcssMediaVariables = require('postcss-media-variables');
+const customProperties = require("postcss-custom-properties")
+const notify = require('gulp-notify');
+const gulpIf = require('gulp-if');
+const debug = require('gulp-debug');
+const sourcemaps = require('gulp-sourcemaps');
+const cleanss = require('gulp-cleancss');
+const rename = require('gulp-rename');
+const size = require('gulp-size');
+const del = require('del');
 
 // Получим настройки проекта из package.json
 let pjson = require('./package.json');
 let dirs = pjson.configProject.dirs;
-let blocksObject = pjson.configProject.blocks;
-
-// Обойдем импорты диспетчера подключений, сформируем массив импортов блоков
-let styleFilePath = dirs.srcPath + 'css/style.css';
-let styleFileContent = fs.readFileSync(styleFilePath, 'utf8');
-let blockRegExp = new RegExp('/'+dirs.blocksDirName+'/', 'i');
-let styleFileImportsArray = styleFileContent.split('\n').filter(function(item) {
-  if(/^(\s*)@import/.test(item) && blockRegExp.test(item)) return true;
-  else return false;
-});
-// console.log(styleFileImportsArray);
-
-// Обойдем объект с необходимыми блоками, поищем их импорты в массиве импортов
-let newImports = '';
-for (let blockName in blocksObject) {
-  if(blocksObject[blockName].length) {
-    newImports += getNeedImport(blockName, blockName);
-    blocksObject[blockName].forEach(function(elementName) {
-      newImports += getNeedImport(blockName, blockName+elementName);
-    });
-  }
-  else {
-    newImports += getNeedImport(blockName, blockName);
-  }
-}
-function getNeedImport(blockName, fileName){
-  let hasImport = false;
-  // console.log('test '+blockName+'/'+fileName+'.css ');
-  for (var i = 0; i < styleFileImportsArray.length; i++) {
-    let blockImportRegExp = new RegExp('/'+blockName+'/'+fileName+'.css', 'i');
-    if(blockImportRegExp.test(styleFileImportsArray[i])) {
-      hasImport = true;
-      break;
-    }
-  }
-  if(!hasImport) return '@import url('+dirs.srcPath+dirs.blocksDirName+'/'+blockName+'/'+fileName+'.css);\n'
-  else return '';
-}
-// console.log(newImports);
+let lists = getFilesList(pjson.configProject);
+console.log('---------- Файлы и папки, взятые в работу:');
+console.log(lists);
 
 // Запуск `NODE_ENV=production npm start [задача]` приведет к сборке без sourcemaps
 const isDev = !process.env.NODE_ENV || process.env.NODE_ENV == 'dev';
@@ -62,3 +33,80 @@ gulp.task('clean', function () {
     '!' + dirs.buildPath + '/readme.md'
   ]);
 });
+
+// Компиляция стилей
+gulp.task('style', function () {
+  console.log('---------- Компиляция стилей');
+  return gulp.src(lists.css)
+    .pipe(gulpIf(isDev, sourcemaps.init()))
+    .pipe(debug({title: "Style:"}))
+    .pipe(postcss([
+      customProperties({preserve: true}),
+      // autoprefixer({browsers: ['last 2 version']}),
+      // mqpacker({
+      //   sort: true
+      // }),
+    ]))
+    .on('error', notify.onError(function(err){
+      return {
+        title: 'Styles compilation error',
+        message: err.message
+      }
+    }))
+    .pipe(gulpIf(!isDev, cleanss()))
+    .pipe(rename('style.min.css'))
+    .pipe(gulpIf(isDev, sourcemaps.write('/')))
+    .pipe(size({
+      title: 'Размер',
+      showFiles: true,
+      showTotal: false,
+    }))
+    .pipe(gulp.dest(dirs.buildPath + '/css'));
+    // .pipe(browserSync.stream());
+});
+
+/**
+ * Вернет объект с обрабатываемыми файлами и папками
+ * @param  {object}
+ * @return {object}
+ */
+function getFilesList(config){
+
+  let res = {
+    'css': [],
+    'js': [],
+    'img': [],
+  };
+
+  // CSS
+  for (let blockName in config.blocks) {
+    res.css.push(config.dirs.srcPath + config.dirs.blocksDirName + '/' + blockName + '/' + blockName + '.css');
+    if(config.blocks[blockName].length) {
+      config.blocks[blockName].forEach(function(elementName) {
+        res.css.push(config.dirs.srcPath + config.dirs.blocksDirName + '/' + blockName + '/' + blockName + elementName + '.css');
+      });
+    }
+  }
+  res.css = res.css.concat(config.addCssAfter);
+  res.css = config.addCssBefore.concat(res.css);
+
+  // JS
+  for (let blockName in config.blocks) {
+    res.js.push(config.dirs.srcPath + config.dirs.blocksDirName + '/' + blockName + '/' + blockName + '.js');
+    if(config.blocks[blockName].length) {
+      config.blocks[blockName].forEach(function(elementName) {
+        res.js.push(config.dirs.srcPath + config.dirs.blocksDirName + '/' + blockName + '/' + blockName + elementName + '.js');
+      });
+    }
+  }
+  res.js = res.js.concat(config.addJsAfter);
+  res.js = config.addJsBefore.concat(res.js);
+
+  // Images
+  for (let blockName in config.blocks) {
+    res.img.push(config.dirs.srcPath + config.dirs.blocksDirName + '/' + blockName + '/img');
+  }
+  res.img = config.addImages.concat(res.img);
+
+  return res;
+}
