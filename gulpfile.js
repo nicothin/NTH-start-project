@@ -21,7 +21,7 @@ const del = require('del');
 let pjson = require('./package.json');
 let dirs = pjson.configProject.dirs;
 let lists = getFilesList(pjson.configProject);
-console.log('---------- Файлы и папки, взятые в работу:');
+// console.log('---------- Файлы и папки, взятые в работу:');
 console.log(lists);
 
 // Запишем стилевой файл диспетчер подключений

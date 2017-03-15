@@ -35,13 +35,14 @@
     }
   },
   "scripts": {
-    "test": "stylelint \"src/**/*.less\"",
+    "test": "stylelint \"src/**/*.scss\"",
     "start": "gulp",
     "deploy": "cross-env NODE_ENV=production ./node_modules/.bin/gulp build && cross-env ./node_modules/.bin/gulp deploy",
     "build": "cross-env NODE_ENV=production npm start build"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.7",
+    "cross-env": "^3.2.4",
     "css-mqpacker": "^5.0.1",
     "del": "^2.2.2",
     "gulp": "^3.9.1",
