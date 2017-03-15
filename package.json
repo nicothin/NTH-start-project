@@ -1,57 +1,59 @@
 {
   "name": "NTH-start-project",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "Start a library of blocks and technical solutions for HTML/CSS/js page layout.",
-  "scripts": {
-    "test": "stylelint \"src/**/*.less\"",
-    "start": "gulp",
-    "deploy": "cross-env NODE_ENV=production ./node_modules/.bin/gulp build && cross-env ./node_modules/.bin/gulp deploy",
-    "build": "cross-env NODE_ENV=production npm start build",
-    "precommit": "npm test"
-  },
   "author": "Nikolay Gromov",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/nicothin/NTH-start-project.git"
   },
-  "devDependencies": {
-    "autoprefixer": "^6.3.3",
-    "browser-sync": "^2.11.1",
-    "cross-env": "^3.1.4",
-    "css-mqpacker": "^5.0.1",
-    "del": "^2.2.0",
-    "gulp": "github:gulpjs/gulp#4.0",
-    "gulp-cheerio": "^0.6.2",
-    "gulp-cleancss": "^0.2.2",
-    "gulp-concat": "^2.6.0",
-    "gulp-debug": "^3.0.0",
-    "gulp-file-include": "^1.0.0",
-    "gulp-gh-pages": "^0.5.4",
-    "gulp-if": "^2.0.0",
-    "gulp-imagemin": "^3.1.1",
-    "gulp-less": "^3.1.0",
-    "gulp-newer": "^1.1.0",
-    "gulp-notify": "^3.0.0",
-    "gulp-postcss": "^6.1.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-replace": "^0.5.4",
-    "gulp-size": "^2.1.0",
-    "gulp-sourcemaps": "^2.4.1",
-    "gulp-svgmin": "^1.2.1",
-    "gulp-svgstore": "^6.1.0",
-    "gulp-uglify": "^2.0.1",
-    "husky": "^0.13.1",
-    "imagemin-pngquant": "^5.0.0",
-    "mkdirp": "^0.5.1",
-    "stylelint": "^7.1.0",
-    "stylelint-declaration-use-variable": "^1.5.0"
-  },
-  "config": {
-    "ghPages": "http://nicothin.github.io/NTH-start-project/index.html",
-    "directories": {
-      "source": "./src",
-      "build": "./build"
+  "configProject": {
+    "blocks": {
+      "page-header": [],
+      "page-footer": []
+    },
+    "addCssBefore": [
+      "./src/scss/variables.scss"
+    ],
+    "addCssAfter": [
+      "./src/scss/print.scss"
+    ],
+    "addJsBefore": [
+      "./src/js/jquery.3.1.1.min.js"
+    ],
+    "addJsAfter": [
+      "./src/js/global-script.js"
+    ],
+    "addImages": [
+      "./src/img/"
+    ],
+    "dirs": {
+      "srcPath": "./src/",
+      "buildPath": "./build/",
+      "blocksDirName": "blocks"
     }
+  },
+  "scripts": {
+    "test": "stylelint \"src/**/*.less\"",
+    "start": "gulp",
+    "deploy": "cross-env NODE_ENV=production ./node_modules/.bin/gulp build && cross-env ./node_modules/.bin/gulp deploy",
+    "build": "cross-env NODE_ENV=production npm start build"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.7.7",
+    "css-mqpacker": "^5.0.1",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-cleancss": "^0.2.2",
+    "gulp-debug": "^3.1.0",
+    "gulp-if": "^2.0.2",
+    "gulp-notify": "^3.0.0",
+    "gulp-postcss": "^6.3.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-sequence": "^0.4.6",
+    "gulp-size": "^2.1.0",
+    "gulp-sourcemaps": "^2.4.1"
   }
 }
