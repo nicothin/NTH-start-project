@@ -44,6 +44,7 @@
     "build": "cross-env NODE_ENV=production npm start build"
   },
   "devDependencies": {
+    "autoprefixer": "^6.7.7",
     "del": "^2.2.2",
     "gulp": "^3.9.1",
     "gulp-cleancss": "^0.2.2",
@@ -55,6 +56,7 @@
     "gulp-sequence": "^0.4.6",
     "gulp-size": "^2.1.0",
     "gulp-sourcemaps": "^2.4.1",
-    "postcss-custom-properties": "^5.0.2"
+    "postcss-custom-properties": "^5.0.2",
+    "postcss-import": "^9.1.0"
   }
 }

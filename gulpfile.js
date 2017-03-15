@@ -5,7 +5,9 @@ const fs = require('fs');
 const gulp = require('gulp');
 const gulpSequence = require('gulp-sequence');
 const postcss = require('gulp-postcss');
+const atImport = require("postcss-import")
 const customProperties = require("postcss-custom-properties")
+const autoprefixer = require("autoprefixer")
 const notify = require('gulp-notify');
 const gulpIf = require('gulp-if');
 const debug = require('gulp-debug');
@@ -22,6 +24,13 @@ let lists = getFilesList(pjson.configProject);
 console.log('---------- Файлы и папки, взятые в работу:');
 console.log(lists);
 
+// Запишем стилевой файл диспетчер подключений
+let styleImports = '';
+lists.css.forEach(function(blockPath) {
+  styleImports += '@import url('+blockPath+');\n';
+});
+fs.writeFileSync('./src/css/style.css', styleImports);
+
 // Запуск `NODE_ENV=production npm start [задача]` приведет к сборке без sourcemaps
 const isDev = !process.env.NODE_ENV || process.env.NODE_ENV == 'dev';
 
@@ -37,12 +46,13 @@ gulp.task('clean', function () {
 // Компиляция стилей
 gulp.task('style', function () {
   console.log('---------- Компиляция стилей');
-  return gulp.src(lists.css)
+  return gulp.src('./src/css/style.css')
     .pipe(gulpIf(isDev, sourcemaps.init()))
     .pipe(debug({title: "Style:"}))
     .pipe(postcss([
-      customProperties({preserve: true}),
-      // autoprefixer({browsers: ['last 2 version']}),
+      // customProperties({preserve: true}),
+      atImport({resolve: function(id, basedir, importOptions){return basedir+id.replace(/^\.\/src\/css/,'');}}),
+      autoprefixer({browsers: ['last 2 version']}),
       // mqpacker({
       //   sort: true
       // }),

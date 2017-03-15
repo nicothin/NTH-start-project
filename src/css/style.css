@@ -1,12 +1,6 @@
-/**
- * ВНИМАНИЕ!
- * Список подключений из папки блоков при старте автоматизации сверяется со
- * списком используемых блоков в ./package.json и если там указаны какие-либо
- * блоки, отсутствующие здесь, их импорты будут добавлены в нижней части файла.
- */
-@import url(variables.css);
-@import url(some-block-TESE.css);
-/* @import url(global.css); */
-
-@import url(../blocks/page-header/page-header.css);
-@import url(../blocks/btn/btn.css);
+@import url(./src/css/variables.css);
+@import url(./src/blocks/page-header/page-header.css);
+@import url(./src/blocks/page-footer/page-footer.css);
+@import url(./src/blocks/page-footer/page-footer__inner.css);
+@import url(./src/blocks/page-footer/page-footer--some-mod.css);
+@import url(./src/css/print.css);
