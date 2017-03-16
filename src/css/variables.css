@@ -1,8 +1,0 @@
-:root {
-
-  --black:                    hsl(0, 0%, 0%);
-  --gray-darkest:             hsl(0, 0%, 10%);
-  --gray:                     hsl(0, 0%, 10%);
-  --text-color:               var(--gray-darkest, hsl(0, 0%, 10%));
-
-}
