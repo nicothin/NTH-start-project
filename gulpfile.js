@@ -11,6 +11,7 @@ const autoprefixer = require("autoprefixer")
 const mqpacker = require("css-mqpacker")
 const cleanss = require('gulp-cleancss');
 
+const plumber = require('gulp-plumber');
 const notify = require('gulp-notify');
 const gulpIf = require('gulp-if');
 const debug = require('gulp-debug');
@@ -60,16 +61,19 @@ gulp.task('style', function () {
   const sourcemaps = require('gulp-sourcemaps');
   console.log('---------- Компиляция стилей');
   return gulp.src(dirs.srcPath + 'scss/style.scss')
+    .pipe(plumber({
+      errorHandler: function(err) {
+        notify.onError({
+          title: 'Styles compilation error',
+          message: err.message
+        })(err);
+        this.emit('end');
+      }
+    }))
     .pipe(gulpIf(isDev, sourcemaps.init()))
     .pipe(debug({title: "Style:"}))
     .pipe(sass())
     .pipe(postcss(postCssPlugins))
-    .on('error', notify.onError(function(err){
-      return {
-        title: 'Styles compilation error',
-        message: err.message
-      }
-    }))
     .pipe(gulpIf(!isDev, cleanss()))
     .pipe(rename('style.min.css'))
     .pipe(gulpIf(isDev, sourcemaps.write('/')))
@@ -192,14 +196,17 @@ gulp.task('js', function (callback) {
   if(lists.js.length > 0){
     console.log('---------- Обработка JS');
     return gulp.src(lists.js)
-      .pipe(concat('script.min.js'))
-      .pipe(gulpIf(!isDev, uglify()))
-      .on('error', notify.onError(function(err){
-        return {
-          title: 'Javascript uglify error',
-          message: err.message
+      .pipe(plumber({
+        errorHandler: function(err) {
+          notify.onError({
+            title: 'Javascript concat/uglify error',
+            message: err.message
+          })(err);
+          this.emit('end');
         }
       }))
+      .pipe(concat('script.min.js'))
+      .pipe(gulpIf(!isDev, uglify()))
       .pipe(size({
         title: 'Размер',
         showFiles: true,
