@@ -278,6 +278,14 @@ gulp.task('serve', ['build'], function() {
       })
     });
   }
+  // Слежение за JS
+  if(lists.js) {
+    gulp.watch(lists.js, function (event) {
+      gulpSequence('js', browserSync.reload())(function (err) {
+        if (err) console.log(err);
+      })
+    });
+  }
   // Слежение за добавочными стилями
   if(pjson.configProject.copiedCss.length) {
     console.log(pjson.configProject.copiedCss);
@@ -294,9 +302,7 @@ gulp.task('serve', ['build'], function() {
 // });
 
 // Задача по умолчанию
-gulp.task('default',
-  gulpSequence(['serve'])
-);
+gulp.task('default', ['serve']);
 
 
 
