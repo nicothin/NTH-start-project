@@ -4,10 +4,10 @@
 const fs = require('fs');
 const gulp = require('gulp');
 const gulpSequence = require('gulp-sequence');
+const sass = require('gulp-sass');
 const postcss = require('gulp-postcss');
-const atImport = require("postcss-import")
-const customProperties = require("postcss-custom-properties")
 const autoprefixer = require("autoprefixer")
+const mqpacker = require("css-mqpacker")
 const notify = require('gulp-notify');
 const gulpIf = require('gulp-if');
 const debug = require('gulp-debug');
@@ -21,15 +21,15 @@ const del = require('del');
 let pjson = require('./package.json');
 let dirs = pjson.configProject.dirs;
 let lists = getFilesList(pjson.configProject);
-console.log('---------- Файлы и папки, взятые в работу:');
+// console.log('---------- Файлы и папки, взятые в работу:');
 console.log(lists);
 
 // Запишем стилевой файл диспетчер подключений
-let styleImports = '';
+let styleImports = '/**\n * ВНИМАНИЕ! Этот файл генерируется автоматически.\n * Не пишите сюда ничего вручную, все такие правки будут потеряны.\n * Читайте ./README.md для понимания.\n */\n\n';
 lists.css.forEach(function(blockPath) {
-  styleImports += '@import url('+blockPath+');\n';
+  styleImports += '@import "'+blockPath+'";\n';
 });
-fs.writeFileSync('./src/css/style.css', styleImports);
+fs.writeFileSync('./src/scss/style.scss', styleImports);
 
 // Запуск `NODE_ENV=production npm start [задача]` приведет к сборке без sourcemaps
 const isDev = !process.env.NODE_ENV || process.env.NODE_ENV == 'dev';
@@ -46,16 +46,15 @@ gulp.task('clean', function () {
 // Компиляция стилей
 gulp.task('style', function () {
   console.log('---------- Компиляция стилей');
-  return gulp.src('./src/css/style.css')
+  return gulp.src(dirs.srcPath + 'scss/style.scss')
     .pipe(gulpIf(isDev, sourcemaps.init()))
     .pipe(debug({title: "Style:"}))
+    .pipe(sass())
     .pipe(postcss([
-      // customProperties({preserve: true}),
-      atImport({resolve: function(id, basedir, importOptions){return basedir+id.replace(/^\.\/src\/css/,'');}}),
       autoprefixer({browsers: ['last 2 version']}),
-      // mqpacker({
-      //   sort: true
-      // }),
+      mqpacker({
+        sort: true
+      }),
     ]))
     .on('error', notify.onError(function(err){
       return {
@@ -75,6 +74,8 @@ gulp.task('style', function () {
     // .pipe(browserSync.stream());
 });
 
+
+
 /**
  * Вернет объект с обрабатываемыми файлами и папками
  * @param  {object}
@@ -88,12 +89,12 @@ function getFilesList(config){
     'img': [],
   };
 
-  // CSS
+  // Style
   for (let blockName in config.blocks) {
-    res.css.push(config.dirs.srcPath + config.dirs.blocksDirName + '/' + blockName + '/' + blockName + '.css');
+    res.css.push(config.dirs.srcPath + config.dirs.blocksDirName + '/' + blockName + '/' + blockName + '.scss');
     if(config.blocks[blockName].length) {
       config.blocks[blockName].forEach(function(elementName) {
-        res.css.push(config.dirs.srcPath + config.dirs.blocksDirName + '/' + blockName + '/' + blockName + elementName + '.css');
+        res.css.push(config.dirs.srcPath + config.dirs.blocksDirName + '/' + blockName + '/' + blockName + elementName + '.scss');
       });
     }
   }
