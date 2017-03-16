@@ -91,7 +91,8 @@ gulp.task('copy:css', function() {
       showFiles: true,
       showTotal: false,
     }))
-    .pipe(gulp.dest(dirs.buildPath + '/css'));
+    .pipe(gulp.dest(dirs.buildPath + '/css'))
+    .pipe(browserSync.stream());
 });
 
 // Копирование изображений
@@ -276,6 +277,11 @@ gulp.task('serve', ['build'], function() {
         if (err) console.log(err);
       })
     });
+  }
+  // Слежение за добавочными стилями
+  if(pjson.configProject.copiedCss.length) {
+    console.log(pjson.configProject.copiedCss);
+    gulp.watch(pjson.configProject.copiedCss, ['copy:css']);
   }
 });
 
