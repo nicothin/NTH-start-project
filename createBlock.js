@@ -6,18 +6,18 @@
 
 const fs = require('fs');                // будем работать с файловой системой
 const pjson = require('./package.json'); // получим настройки из package.json
-const dirs = pjson.config.directories;   // отдельно имеем объект с директориями (где лежаи папка с блоками)
+const dirs = pjson.configProject.dirs;   // отдельно имеем объект с директориями
 const mkdirp = require('mkdirp');        // зависимость
 
 let blockName = process.argv[2];          // получим имя блока
-let defaultExtensions = ['less', 'html']; // расширения по умолчанию
+let defaultExtensions = ['scss', 'html', 'img']; // расширения по умолчанию
 let extensions = uniqueArray(defaultExtensions.concat(process.argv.slice(3)));  // добавим введенные при вызове расширения (если есть)
 
 // Если есть имя блока
 if(blockName) {
 
-  let dirPath = dirs.source + '/blocks/' + blockName + '/'; // полный путь к создаваемой папке блока
-  mkdirp(dirPath, function(err){                            // создаем
+  let dirPath = dirs.srcPath + dirs.blocksDirName + '/' + blockName + '/'; // полный путь к создаваемой папке блока
+  mkdirp(dirPath, function(err){                                           // создаем
 
     // Если какая-то ошибка — покажем
     if(err) {
@@ -26,73 +26,40 @@ if(blockName) {
 
     // Нет ошибки, поехали!
     else {
-      console.log('[NTH] Создание папки ' + dirPath + ' (создана, если ещё не существует)');
-
-      // Читаем файл диспетчера подключений
-      let connectManager = fs.readFileSync(dirs.source + '/less/style.less', 'utf8');
-
-      // Делаем из строк массив, фильтруем массив, оставляя только строки с незакомментированными импортами
-      let fileSystem = connectManager.split('\n').filter(function(item) {
-        if(/^(\s*)@import/.test(item)) return true;
-        else return false;
-      });
+      console.log('[NTH] Создание папки ' + dirPath + ' (если отсутствует)');
 
       // Обходим массив расширений и создаем файлы, если они еще не созданы
       extensions.forEach(function(extention){
 
         let filePath = dirPath + blockName + '.' + extention; // полный путь к создаваемому файлу
         let fileContent = '';                                 // будущий контент файла
-        let LESSfileImport = '';                              // конструкция импорта будущего LESS
         let fileCreateMsg = '';                               // будущее сообщение в консоли при создании файла
 
-        // Если это LESS
-        if(extention == 'less') {
-          LESSfileImport = '@import \'' + dirs.source + '/blocks/' + blockName + '/' + blockName + '.less\';';
-          fileContent = '// Для импорта в диспетчер подключений: ' + LESSfileImport + '\n\n@import \'../../less/variables.less\';     // только для удобства обращения к переменным\n\n\n.' + blockName + ' {\n  \n}\n';
-          // fileCreateMsg = '[NTH] Для импорта стилей: ' + LESSfileImport;
+        // Если это SCSS
+        if(extention == 'scss') {
+          fileContent = '// В этом файле должны быть стили только для БЭМ-блока ' + blockName + ', его элементов, \n//модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...\n// Не пишите здесь другие селекторы.\n\n.' + blockName + ' {\n  \n}\n';
+          // fileCreateMsg = '';
 
-          // Создаем регулярку с импортом
-          let reg = new RegExp(LESSfileImport, '');
-
-          // Создадим флаг отсутствия блока среди импортов
-          let impotrtExist = false;
-
-          // Обойдём массив и проверим наличие импорта
-          for (var i = 0, j=fileSystem.length; i < j; i++) {
-            if(reg.test(fileSystem[i])) {
-              impotrtExist = true;
+          // Добавим созданный файл в ./package.json
+          let hasThisBlock = false;
+          for (let block in pjson.configProject.blocks) {
+            if(block === blockName) {
+              hasThisBlock = true;
               break;
             }
           }
-
-          // Если флаг наличия импорта по-прежнему опущен, допишем импорт
-          if(!impotrtExist) {
-            // Открываем файл
-            fs.open(dirs.source + '/less/style.less', 'a', function(err, fileHandle) {
-              // Если ошибок открытия нет...
-              if (!err) {
-                // Запишем в конец файла
-                fs.write(fileHandle, LESSfileImport + '\n', null, 'utf8', function(err, written) {
-                  if (!err) {
-                    console.log('[NTH] В диспетчер подключений ('+ dirs.source + '/less/style.less) записано: ' + LESSfileImport);
-                  } else {
-                    console.log('[NTH] ОШИБКА записи в '+ dirs.source + '/less/style.less: ' + err);
-                  }
-                });
-              } else {
-                console.log('[NTH] ОШИБКА открытия '+ dirs.source + '/less/style.less: ' + err);
-              }
-            });
-          }
-          else {
-            console.log('[NTH] Импорт НЕ прописан в '+ dirs.source + '/less/style.less (он там уже есть)');
+          if(!hasThisBlock) {
+            pjson.configProject.blocks[blockName] = [];
+            let newPackageJson = JSON.stringify(pjson, "", 2);
+            fs.writeFileSync('./package.json', newPackageJson);
+            fileCreateMsg = '[NTH] Подключение блока добавлено в package.json';
           }
         }
 
         // Если это HTML
         else if(extention == 'html') {
-          fileContent = '<!--DEV\n\nНужно убрать пробел между @-ами:\n\n@ @include(\'blocks/' + blockName + '/' + blockName + '.html\')\n\n-->\n<div class="' + blockName + '">content</div>\n';
-          fileCreateMsg = '[NTH] Для вставки разметки: @@include(\'blocks/' + blockName + '/' + blockName + '.html\') Подробнее: https://www.npmjs.com/package/gulp-file-include';
+          fileContent = '<!--DEV\n\nДля использования этого файла как шаблона:\n\n@ @include(\'blocks/' + blockName + '/' + blockName + '.html\')\n\n(Нужно убрать пробел между символами @)\nПодробнее: https://www.npmjs.com/package/gulp-file-include-->\n\n<div class="' + blockName + '">content</div>\n';
+          // fileCreateMsg = '';
         }
 
         // Если это JS
@@ -106,11 +73,11 @@ if(blockName) {
           if(fileExist(imgFolder) === false) {
             mkdirp(imgFolder, function (err) {
               if (err) console.error(err)
-              else console.log('[NTH] Папка создана: ' + imgFolder)
+              else console.log('[NTH] Создание папки: ' + imgFolder + ' (если отсутствует)')
             });
           }
           else {
-            console.log('[NTH] Папка НЕ создана (уже существует) ')
+            console.log('[NTH] Папка '+imgFolder+' НЕ создана (уже существует) ')
           }
         }
 

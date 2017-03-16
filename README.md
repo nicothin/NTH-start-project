@@ -70,12 +70,12 @@ demo-block/               # Папка блока
 
 ### Удобное создание нового блока
 
+Предусмотрена команда бля быстрого создания файловой структуры нового блока.
 
 ```bash
 # формат: node createBlock.js [имя блока] [доп. расширения через пробел]
-node createBlock.js block # создаст только папку блока, block.html и block.scss
-node createBlock.js new-block js pug # создаст папку блока, new-block.html, new-block.scss, new-block.js, new-block.pug
-node createBlock.js new-block js img # создаст папку блока, new-block.html, new-block.scss, new-block.js, подпапку img/
+node createBlock.js block # создаст папку блока, block.html, block.scss и подпапку img/ для этого блока
+node createBlock.js new-block js pug # создаст папку блока, new-block.html, new-block.scss, new-block.js, new-block.pug и подпапку img/ для этого блока
 ```
 
 Если блок уже существует, файлы не будут затёрты, но создадутся те файлы, которые ещё не существуют.
