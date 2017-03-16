@@ -33,6 +33,7 @@ lists.css.forEach(function(blockPath) {
 });
 fs.writeFileSync('./src/scss/style.scss', styleImports);
 
+// Определим разработка это или финальная сборка
 // Запуск `NODE_ENV=production npm start [задача]` приведет к сборке без sourcemaps
 const isDev = !process.env.NODE_ENV || process.env.NODE_ENV == 'dev';
 
@@ -78,7 +79,7 @@ gulp.task('style', function () {
       showTotal: false,
     }))
     .pipe(gulp.dest(dirs.buildPath + '/css'))
-    .pipe(browserSync.stream());
+    .pipe(browserSync.stream({match: '**/*.css'}));
 });
 
 // Копирование добавочных CSS, которые хочется иметь отдельными файлами
@@ -123,7 +124,7 @@ gulp.task('copy:js', function () {
 // Копирование шрифтов
 gulp.task('copy:fonts', function () {
   console.log('---------- Копирование шрифтов');
-  return gulp.src(dirs.source + '/fonts/*.{ttf,woff,woff2,eot,svg}')
+  return gulp.src(dirs.srcPath + '/fonts/*.{ttf,woff,woff2,eot,svg}')
     .pipe(newer(dirs.buildPath + '/fonts'))  // оставить в потоке только изменившиеся файлы
     .pipe(size({
       title: 'Размер',
@@ -134,11 +135,11 @@ gulp.task('copy:fonts', function () {
 });
 
 // Сборка SVG-спрайта для блока sprite-svg
+let spritePath = dirs.srcPath + dirs.blocksDirName + '/sprite-svg/svg/';
 gulp.task('sprite:svg', function (callback) {
   const svgstore = require('gulp-svgstore');
   const svgmin = require('gulp-svgmin');
   const cheerio = require('gulp-cheerio');
-  let spritePath = dirs.srcPath + dirs.blocksDirName + '/sprite-svg/svg/';
   if(fileExist(spritePath) !== false) {
     console.log('---------- Сборка SVG спрайта');
     return gulp.src(spritePath + '*.svg')
@@ -239,10 +240,21 @@ gulp.task('build', function (callback) {
   gulpSequence(
     'clean',
     'sprite:svg',
-    ['style', 'copy:css', 'copy:img', 'copy:js', 'copy:fonts'],
+    ['style', 'js', 'copy:css', 'copy:img', 'copy:js', 'copy:fonts'],
     'html',
     callback);
 });
+
+// Отправка в GH pages (ветку gh-pages репозитория)
+gulp.task('deploy', function() {
+  const ghPages = require('gulp-gh-pages');
+  console.log('---------- Публикация содержимого ./build/ на GH pages');
+  return gulp.src(dirs.buildPath + '**/*')
+    .pipe(ghPages());
+});
+
+// Задача по умолчанию
+gulp.task('default', ['serve']);
 
 // Локальный сервер, слежение
 gulp.task('serve', ['build'], function() {
@@ -255,54 +267,44 @@ gulp.task('serve', ['build'], function() {
   gulp.watch([
     dirs.srcPath + dirs.blocksDirName + '/**/*.scss',
     dirs.srcPath + '/scss/**/*.scss',
-  ], function (event) {
-    gulpSequence('style')(function (err) {
-      if (err) console.log(err);
-    })
-  });
+  ], ['style']);
+  // Слежение за добавочными стилями
+  if(pjson.configProject.copiedCss.length) {
+    gulp.watch(pjson.configProject.copiedCss, ['copy:css']);
+  }
+  // Слежение за изображениями
+  if(lists.img.length) {
+    gulp.watch(lists.img, ['watch:img']);
+  }
+  // Слежение за добавочными JS
+  if(pjson.configProject.copiedJs.length) {
+    gulp.watch(pjson.configProject.copiedJs, ['watch:copied:js']);
+  }
+  // Слежение за шрифтами
+  gulp.watch(dirs.srcPath + '/fonts/*.{ttf,woff,woff2,eot,svg}', ['watch:fonts']);
+  // Слежение за SVG для спрайта
+  if(fileExist(spritePath) !== false) {
+    gulp.watch(spritePath + '*.svg', ['watch:svg:sprite']);
+  }
   // Слежение за html
   gulp.watch([
     dirs.srcPath + '/*.html',
     dirs.srcPath + '/_include/*.html',
     dirs.srcPath + dirs.blocksDirName + '/**/*.html',
-  ], function (event) {
-    gulpSequence('html', browserSync.reload())(function (err) {
-      if (err) console.log(err);
-    })
-  });
-  // Слежение за изображениями
-  if(lists.img) {
-    gulp.watch(lists.img, function (event) {
-      gulpSequence('copy:img', browserSync.reload())(function (err) {
-        if (err) console.log(err);
-      })
-    });
-  }
+  ], ['watch:html']);
   // Слежение за JS
-  if(lists.js) {
-    gulp.watch(lists.js, function (event) {
-      gulpSequence('js', browserSync.reload())(function (err) {
-        if (err) console.log(err);
-      })
-    });
-  }
-  // Слежение за добавочными стилями
-  if(pjson.configProject.copiedCss.length) {
-    console.log(pjson.configProject.copiedCss);
-    gulp.watch(pjson.configProject.copiedCss, ['copy:css']);
+  if(lists.js.length) {
+    gulp.watch(lists.js, ['watch:js']);
   }
 });
 
-// Отправка в GH pages (ветку gh-pages репозитория)
-// gulp.task('deploy', function() {
-//   console.log('---------- Публикация ./build/ на GH pages');
-//   console.log('---------- '+ ghPagesUrl);
-//   return gulp.src('./build/**/*')
-//     .pipe(ghPages());
-// });
-
-// Задача по умолчанию
-gulp.task('default', ['serve']);
+// Браузерсинк с 3-м галпом — такой браузерсинк...
+gulp.task('watch:img', ['copy:img'], reload);
+gulp.task('watch:copied:js', ['copy:js'], reload);
+gulp.task('watch:fonts', ['copy:fonts'], reload);
+gulp.task('watch:svg:sprite', ['sprite:svg'], reload);
+gulp.task('watch:html', ['html'], reload);
+gulp.task('watch:js', ['js'], reload);
 
 
 
@@ -364,4 +366,10 @@ function fileExist(path) {
   } catch(err) {
     return !(err && err.code === 'ENOENT');
   }
+}
+
+// Перезагрузка браузера
+function reload (done) {
+  browserSync.reload();
+  done();
 }
