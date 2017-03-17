@@ -345,11 +345,16 @@ gulp.task('serve', ['build'], function() {
   // Слежение за шрифтами
   gulp.watch('/fonts/*.{ttf,woff,woff2,eot,svg}', {cwd: dirs.srcPath}, ['watch:fonts']);
   // Слежение за html
+  // gulp.watch([
+  //   dirs.srcPath + '/*.html',
+  //   dirs.srcPath + '/_include/*.html',
+  //   dirs.srcPath + dirs.blocksDirName + '/**/*.html',
+  // ], ['watch:html']);
   gulp.watch([
-    dirs.srcPath + '/*.html',
-    dirs.srcPath + '/_include/*.html',
-    dirs.srcPath + dirs.blocksDirName + '/**/*.html',
-  ], ['watch:html']);
+    '*.html',
+    '_include/*.html',
+    dirs.blocksDirName + '/**/*.html'
+  ], {cwd: dirs.srcPath}, ['watch:html']);
   // Слежение за JS
   if(lists.js.length) {
     gulp.watch(lists.js, ['watch:js']);
