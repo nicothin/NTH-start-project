@@ -24,7 +24,7 @@ const newer = require('gulp-newer');
 let pjson = require('./package.json');
 let dirs = pjson.configProject.dirs;
 let lists = getFilesList(pjson.configProject);
-console.log(lists);
+// console.log(lists);
 
 // Запишем стилевой файл диспетчер подключений
 let styleImports = '/**\n * ВНИМАНИЕ! Этот файл генерируется автоматически.\n * Не пишите сюда ничего вручную, все такие правки будут потеряны.\n * Читайте ./README.md для понимания.\n */\n\n';
@@ -54,7 +54,7 @@ gulp.task('clean', function () {
   ]);
 });
 
-// Компиляция стилей
+// Компиляция стилей блоков проекта (и  добавочных)
 gulp.task('style', function () {
   const sass = require('gulp-sass');
   const sourcemaps = require('gulp-sourcemaps');
@@ -83,6 +83,38 @@ gulp.task('style', function () {
     }))
     .pipe(gulp.dest(dirs.buildPath + '/css'))
     .pipe(browserSync.stream({match: '**/*.css'}));
+});
+
+// Компиляция отдельных файлов
+gulp.task('style:single', function () {
+  if(pjson.configProject.singleCompiled.length) {
+    const sass = require('gulp-sass');
+    const sourcemaps = require('gulp-sourcemaps');
+    console.log('---------- Компиляция добавочных стилей');
+    return gulp.src(pjson.configProject.singleCompiled)
+      .pipe(plumber({
+        errorHandler: function(err) {
+          notify.onError({
+            title: 'Styles compilation error',
+            message: err.message
+          })(err);
+          this.emit('end');
+        }
+      }))
+      .pipe(gulpIf(isDev, sourcemaps.init()))
+      .pipe(debug({title: "Single style:"}))
+      .pipe(sass())
+      .pipe(postcss(postCssPlugins))
+      .pipe(gulpIf(!isDev, cleanss()))
+      .pipe(gulpIf(isDev, sourcemaps.write('/')))
+      .pipe(size({
+        title: 'Размер',
+        showFiles: true,
+        showTotal: false,
+      }))
+      .pipe(gulp.dest(dirs.buildPath + '/css'))
+      .pipe(browserSync.stream({match: '**/*.css'}));
+  }
 });
 
 // Копирование добавочных CSS, которые хочется иметь отдельными файлами
@@ -301,7 +333,7 @@ gulp.task('build', function (callback) {
   gulpSequence(
     'clean',
     ['sprite:svg', 'sprite:png'],
-    ['style', 'js', 'copy:css', 'copy:img', 'copy:js', 'copy:fonts'],
+    ['style', 'style:single', 'js', 'copy:css', 'copy:img', 'copy:js', 'copy:fonts'],
     'html',
     callback
   );
@@ -330,6 +362,8 @@ gulp.task('serve', ['build'], function() {
     dirs.srcPath + dirs.blocksDirName + '/**/*.scss',
     dirs.srcPath + '/scss/**/*.scss',
   ], ['style']);
+  // Слежение за отдельными стилями
+  gulp.watch(pjson.configProject.singleCompiled, ['style:single',]);
   // Слежение за добавочными стилями
   if(pjson.configProject.copiedCss.length) {
     gulp.watch(pjson.configProject.copiedCss, ['copy:css']);
