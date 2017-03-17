@@ -31,7 +31,7 @@ let styleImports = '/**\n * ВНИМАНИЕ! Этот файл генериру
 lists.css.forEach(function(blockPath) {
   styleImports += '@import "'+blockPath+'";\n';
 });
-fs.writeFileSync('./src/scss/style.scss', styleImports);
+fs.writeFileSync(dirs.srcPath + 'scss/style.scss', styleImports);
 
 // Определим разработка это или финальная сборка
 // Запуск `NODE_ENV=production npm start [задача]` приведет к сборке без sourcemaps
