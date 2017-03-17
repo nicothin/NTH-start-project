@@ -134,36 +134,42 @@ gulp.task('copy:fonts', function () {
 
 // Сборка SVG-спрайта для блока sprite-svg
 gulp.task('sprite:svg', function (callback) {
-  const svgstore = require('gulp-svgstore');
-  const svgmin = require('gulp-svgmin');
-  const cheerio = require('gulp-cheerio');
-  let spritePath = dirs.srcPath + dirs.blocksDirName + '/sprite-svg/svg/';
-  if(fileExist(spritePath) !== false) {
-    console.log('---------- Сборка SVG спрайта');
-    return gulp.src(spritePath + '*.svg')
-      .pipe(svgmin(function (file) {
-        return {
-          plugins: [{
-            cleanupIDs: {
-              minify: true
-            }
-          }]
-        }
-      }))
-      .pipe(svgstore({ inlineSvg: true }))
-      .pipe(cheerio(function ($) {
-        $('svg').attr('style',  'display:none');
-      }))
-      .pipe(rename('sprite-svg.svg'))
-      .pipe(size({
-        title: 'Размер',
-        showFiles: true,
-        showTotal: false,
-      }))
-      .pipe(gulp.dest(dirs.srcPath + dirs.blocksDirName + '/sprite-svg/img/'));
+  if((pjson.configProject.blocks['sprite-svg']) !== undefined) {
+    const svgstore = require('gulp-svgstore');
+    const svgmin = require('gulp-svgmin');
+    const cheerio = require('gulp-cheerio');
+    let spritePath = dirs.srcPath + dirs.blocksDirName + '/sprite-svg/svg/';
+    if(fileExist(spritePath) !== false) {
+      console.log('---------- Сборка SVG спрайта');
+      return gulp.src(spritePath + '*.svg')
+        .pipe(svgmin(function (file) {
+          return {
+            plugins: [{
+              cleanupIDs: {
+                minify: true
+              }
+            }]
+          }
+        }))
+        .pipe(svgstore({ inlineSvg: true }))
+        .pipe(cheerio(function ($) {
+          $('svg').attr('style',  'display:none');
+        }))
+        .pipe(rename('sprite-svg.svg'))
+        .pipe(size({
+          title: 'Размер',
+          showFiles: true,
+          showTotal: false,
+        }))
+        .pipe(gulp.dest(dirs.srcPath + dirs.blocksDirName + '/sprite-svg/img/'));
+    }
+    else {
+      console.log('---------- Сборка SVG спрайта: ОТМЕНА, нет папки с картинками');
+      callback();
+    }
   }
   else {
-    console.log('---------- Сборка SVG спрайта: нет папки с картинками');
+    console.log('---------- Сборка SVG спрайта: ОТМЕНА, блок не используется на проекте');
     callback();
   }
 });
