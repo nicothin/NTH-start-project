@@ -15,7 +15,8 @@
       "sprite-svg": [],
       "sprite-png": [
         "__demo"
-      ]
+      ],
+      "is-mobile": []
     },
     "addCssBefore": [
       "./src/scss/variables.scss"
@@ -26,7 +27,8 @@
     "addJsBefore": [
       "./node_modules/jquery/dist/jquery.min.js",
       "./node_modules/jquery-migrate/dist/jquery-migrate.min.js",
-      "./node_modules/svg4everybody/dist/svg4everybody.js"
+      "./node_modules/svg4everybody/dist/svg4everybody.js",
+      "./node_modules/ismobilejs/isMobile.min.js"
     ],
     "addJsAfter": [
       "./src/js/global-script.js"
@@ -79,6 +81,7 @@
     "gulp-uglify": "^2.1.0",
     "gulp.spritesmith": "^6.3.0",
     "imagemin-pngquant": "^5.0.0",
+    "ismobilejs": "^0.4.0",
     "jquery": "^3.1.1",
     "jquery-migrate": "^3.0.0",
     "merge-stream": "^1.0.1",
