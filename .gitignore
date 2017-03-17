@@ -1,7 +1,10 @@
 build/*
 !build/readme.md
 design/
-src/blocks/sprite-svg/img/*.svg
+src/scss/style.scss
+src/blocks/sprite-svg/img/sprite-svg.svg
+src/blocks/sprite-png/sprite-png.scss
+src/blocks/sprite-png/img/sprite-*.png
 
 .Saved/
 _arc/

@@ -12,7 +12,10 @@
     "blocks": {
       "page-header": [],
       "page-footer": [],
-      "sprite-svg": []
+      "sprite-svg": [],
+      "sprite-png": [
+        "__demo"
+      ]
     },
     "addCssBefore": [
       "./src/scss/variables.scss"
