@@ -24,7 +24,6 @@ const newer = require('gulp-newer');
 let pjson = require('./package.json');
 let dirs = pjson.configProject.dirs;
 let lists = getFilesList(pjson.configProject);
-// console.log('---------- Файлы и папки, взятые в работу:');
 console.log(lists);
 
 // Запишем стилевой файл диспетчер подключений
@@ -87,17 +86,22 @@ gulp.task('style', function () {
 });
 
 // Копирование добавочных CSS, которые хочется иметь отдельными файлами
-gulp.task('copy:css', function() {
-  return gulp.src(pjson.configProject.copiedCss)
-    .pipe(postcss(postCssPlugins))
-    .pipe(cleanss())
-    .pipe(size({
-      title: 'Размер',
-      showFiles: true,
-      showTotal: false,
-    }))
-    .pipe(gulp.dest(dirs.buildPath + '/css'))
-    .pipe(browserSync.stream());
+gulp.task('copy:css', function(callback) {
+  if(pjson.configProject.copiedCss.length) {
+    return gulp.src(pjson.configProject.copiedCss)
+      .pipe(postcss(postCssPlugins))
+      .pipe(cleanss())
+      .pipe(size({
+        title: 'Размер',
+        showFiles: true,
+        showTotal: false,
+      }))
+      .pipe(gulp.dest(dirs.buildPath + '/css'))
+      .pipe(browserSync.stream());
+  }
+  else {
+    callback();
+  }
 });
 
 // Копирование изображений
@@ -114,15 +118,19 @@ gulp.task('copy:img', function () {
 });
 
 // Копирование JS
-gulp.task('copy:js', function () {
-  console.log('---------- Копирование отдельных JS-файлов');
-  return gulp.src(pjson.configProject.copiedJs)
-    .pipe(size({
-      title: 'Размер',
-      showFiles: true,
-      showTotal: false,
-    }))
-    .pipe(gulp.dest(dirs.buildPath + '/js'));
+gulp.task('copy:js', function (callback) {
+  if(pjson.configProject.copiedJs.length) {
+    return gulp.src(pjson.configProject.copiedJs)
+      .pipe(size({
+        title: 'Размер',
+        showFiles: true,
+        showTotal: false,
+      }))
+      .pipe(gulp.dest(dirs.buildPath + '/js'));
+  }
+  else {
+    callback();
+  }
 });
 
 // Копирование шрифтов
@@ -256,7 +264,8 @@ gulp.task('build', function (callback) {
     'sprite:svg',
     ['style', 'js', 'copy:css', 'copy:img', 'copy:js', 'copy:fonts'],
     'html',
-    callback);
+    callback
+  );
 });
 
 // Отправка в GH pages (ветку gh-pages репозитория)

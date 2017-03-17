@@ -50,7 +50,7 @@
 
 ### Стили
 
-Файл-диспетчер подключений (`.src/scss/style.scss`) формируется автоматически на основании указанных в `./package.json` блоков и доп. файлов.
+Файл-диспетчер подключений (`.src/scss/style.scss`) формируется автоматически на основании указанных в `./package.json` блоков и доп. файлов. Писать в этот файл что-либо руками бессмысленно: при старте автоматизации файл будет перезаписан.
 
 
 
@@ -74,6 +74,93 @@ demo-block/               # Папка блока
 
 
 
+### Подключение блоков
+
+Настройки подключаемых файлов указаны в `./package.json`, в секции `configProject`.
+
+`blocks` — объект с блоками, используемыми на проекте. Каждый блок — отдельная папка с файлами, по умолчанию лежат в `./src/blocks/`.
+
+Каждое подключение блока — массив, который можно оставить пустым или указать файлы элементов или модификаторов, если они написаны в виде отдельных файлов. В обоих случаях в обработку будут взяты одноименные стилевые файлы, js-файлы и картинки из папки `img/` блока.
+
+`addCssBefore` — массив с дополнительными стилевыми файлами, которые будут взяты в компиляцию ПЕРЕД стилевыми файлами блоков.
+
+`addCssAfter` — массив с дополнительными стилевыми файлами, которые будут взяты в компиляцию ПОСЛЕ стилевых файлов блоков.
+
+`addJsBefore` — массив js-файлов, которые будут взяты в обработку (конкатенация/сжатие) ПЕРЕД js-файлами блоков.
+
+`addJsAfter` — массив js-файлов, которые будут взяты в обработку (конкатенация/сжатие) ПОСЛЕ js-файлаов блоков.
+
+`addImages` — массив дополнительных изображений, добавляемый ПЕРЕД массивом изображений из блоков (внимание: при совпадении имен файлов, файлы из блоков имею бОльший приоритет и затрут файлы из этого массива)
+
+`copiedCss` — массив css-файлов, которые копируются в папку сборки, подпапку `css/`
+
+`copiedJs` — массив js-файлов, которые копируются в папку сборки, подпапку `js/`
+
+**ВНИМАНИЕ!** Это JSON. Это строгий синтаксис, у последнего элемента в любом контексте не должно быть запятой в конце строки.
+
+#### Пример секции в `./package.json`
+
+```json
+"configProject": {
+  "blocks": {
+    "page-header": [],
+    "page-footer": [
+      "__extra-element",
+      "--extra-modifier"
+    ]
+  },
+  "addCssBefore": [
+    "./src/scss/variables.scss"
+  ],
+  "addCssAfter": [
+    "./src/scss/print.scss"
+  ],
+  "addJsBefore": [
+    "./node_modules/jquery/dist/jquery.min.js",
+    "./node_modules/jquery-migrate/dist/jquery-migrate.min.js"
+  ],
+  "addJsAfter": [
+    "./src/js/global-script.js"
+  ],
+  "addImages": [
+    "./src/img/*.{jpg,jpeg,gif,png,svg}"
+  ],
+  "copiedCss": [],
+  "copiedJs": [],
+  "dirs": {
+    "srcPath": "./src/",
+    "buildPath": "./build/",
+    "blocksDirName": "blocks"
+  }
+}
+```
+
+В обработку будут взяты:
+
+```bash
+css:
+ [ './src/scss/variables.scss',
+   './src/blocks/page-header/page-header.scss',
+   './src/blocks/page-footer/page-footer.scss',
+   './src/blocks/page-footer/page-footer__extra-element.scss',
+   './src/blocks/page-footer/page-footer--extra-modifier.scss',
+   './src/scss/print.scss' ],
+js:
+ [ './node_modules/jquery/dist/jquery.min.js',
+   './node_modules/jquery-migrate/dist/jquery-migrate.min.js',
+   './src/blocks/page-header/page-header.js',
+   './src/blocks/page-footer/page-footer.js',
+   './src/blocks/page-footer/page-footer__extra-element.js',
+   './src/blocks/page-footer/page-footer--extra-modifier.js',
+   './src/js/global-script.js' ],
+img:
+ [ './src/img/',
+   './src/blocks/page-header/img',
+   './src/blocks/page-footer/img' ]
+```
+
+
+
 ### Удобное создание нового блока
 
 Предусмотрена команда бля быстрого создания файловой структуры нового блока.
@@ -88,71 +175,18 @@ node createBlock.js new-block js pug # создаст папку блока, new
 
 
 
-### Подключение блоков
-
-Настройки подключаемых файлов указаны в `./package.json`, в секции `configProject`:
-
-```json
-"blocks": {
-  "page-header": [],
-  "page-footer": [
-    "__extra-element",
-    "--extra-modifier"
-  ]
-},
-"addCssBefore": [
-  "./src/scss/variables.scss"
-],
-"addCssAfter": [
-  "./src/scss/print.scss"
-],
-"addJsBefore": [
-  "./src/js/jquery.3.1.1.min.js"
-],
-"addJsAfter": [
-  "./src/js/global-script.js"
-],
-"addImages": [
-  "./src/img/"
-],
-```
-
-При указанной записи в обработку будут взяты следующие папки и файлы (в указанной последовательности):
-
-```bash
-css:
- [ './src/scss/variables.scss',
-   './src/blocks/page-header/page-header.scss',
-   './src/blocks/page-footer/page-footer.scss',
-   './src/blocks/page-footer/page-footer__extra-element.scss',
-   './src/blocks/page-footer/page-footer--extra-modifier.scss',
-   './src/scss/print.scss' ],
-js:
- [ './src/js/jquery.3.1.1.min.js',
-   './src/blocks/page-header/page-header.js',
-   './src/blocks/page-footer/page-footer.js',
-   './src/blocks/page-footer/page-footer__extra-element.js',
-   './src/blocks/page-footer/page-footer--extra-modifier.js',
-   './src/js/global-script.js' ],
-img:
- [ './src/img/',
-   './src/blocks/page-header/img',
-   './src/blocks/page-footer/img' ]
-```
-
-
-
 ## Назначение папок
 
 ```bash
-build/          # Сюда собирается проект, здесь работает сервер автообновлений.
+build/          # Папка сборки, здесь работает сервер автообновлений.
 src/            # Исходные файлы
-  _include/     # - фрагменты html для самого верха (секция head) и самого низа (перед закрывающим body) страницы
-  blocks/       # - блоки (компоненты) проекта
-  css/          # - можно положить добавочные css-файлы
-  img/          # - можно положить добавочные картинки
-  js/           # - можно положить добавочные js-файлы
-  scss/         # - папка с диспетчером подключений стилей и глобальными файлами
+  _include/     # - фрагменты html для вставки на страницы
+  blocks/       # - блоки проекта
+  css/          # - можно положить добавочные css-файлы (нужно подключить в copiedCss, иначе игнорируются)
+  fonts/        # - можно положить шрифты проекта (будут автоматически скопированы в папку сборки)
+  img/          # - можно положить добавочные картинки (нужно подключить в addImages, иначе игнорируются)
+  js/           # - можно положить добавочные js-файлы (нужно подключить в addJsBefore или addJsAfter, иначе игнорируются)
+  scss/         # - стили (всё, кроме style.scss нужно подключить в addCssBefore или addCssAfter, иначе оно будет проигнорировано)
   index.html    # - главная страница проекта
 ```
 
