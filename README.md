@@ -22,7 +22,7 @@
     </tr>
     <tr>
       <td><code>npm run build</code></td>
-      <td>Сборка проекта без карт кода (минифицированый вид, как результат работы)</td>
+      <td>Сборка проекта без карт кода (сжатый вид, как результат работы)</td>
     </tr>
     <tr>
       <td><code>npm run deploy</code></td>
@@ -113,6 +113,7 @@ demo-block/               # Папка блока
   "addCssAfter": [
     "./src/scss/print.scss"
   ],
+  "singleCompiled": []
   "addJsBefore": [
     "./node_modules/jquery/dist/jquery.min.js",
     "./node_modules/jquery-migrate/dist/jquery-migrate.min.js"
@@ -161,10 +162,10 @@ img:
 
 ### Удобное создание нового блока
 
-Предусмотрена команда бля быстрого создания файловой структуры нового блока.
+Предусмотрена команда для быстрого создания файловой структуры нового блока.
 
 ```bash
-# формат: node createBlock.js [имя блока] [доп. расширения через пробел]
+# формат: node createBlock.js ИМЯБЛОКА [доп. расширения через пробел]
 node createBlock.js block-1 # создаст папку блока, block-1.html, block-1.scss и подпапку img/ для этого блока
 node createBlock.js block-2 js pug # создаст папку блока, block-2.html, block-2.scss, block-2.js, block-2.pug и подпапку img/ для этого блока
 ```
@@ -184,8 +185,9 @@ src/            # Исходные файлы
   fonts/        # - можно положить шрифты проекта (будут автоматически скопированы в папку сборки)
   img/          # - можно положить добавочные картинки (нужно подключить в addImages, иначе игнорируются)
   js/           # - можно положить добавочные js-файлы (нужно подключить в addJsBefore или addJsAfter, иначе игнорируются)
-  scss/         # - стили (всё, кроме style.scss нужно подключить в addCssBefore или addCssAfter, иначе оно будет проигнорировано)
+  scss/         # - стили (всё, кроме style.scss нужно подключить в addCssBefore, addCssAfter или singleCompiled, иначе оно будет проигнорировано)
   index.html    # - главная страница проекта
+  components-demo.html # - библиотека блоков
 ```
 
 
