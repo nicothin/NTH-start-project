@@ -266,6 +266,15 @@ gulp.task('html', function() {
   const replace = require('gulp-replace');
   console.log('---------- сборка HTML');
   return gulp.src(dirs.srcPath + '/*.html')
+    .pipe(plumber({
+      errorHandler: function(err) {
+        notify.onError({
+          title: 'HTML compilation error',
+          message: err.message
+        })(err);
+        this.emit('end');
+      }
+    }))
     .pipe(fileinclude({
       prefix: '@@',
       basepath: '@file',
