@@ -147,16 +147,15 @@ gulp.task('copy:fonts', function () {
 });
 
 // Сборка SVG-спрайта для блока sprite-svg
-let spritePath = dirs.srcPath + dirs.blocksDirName + '/sprite-svg/svg/';
+let spriteSvgPath = dirs.srcPath + dirs.blocksDirName + '/sprite-svg/svg/';
 gulp.task('sprite:svg', function (callback) {
   if((pjson.configProject.blocks['sprite-svg']) !== undefined) {
     const svgstore = require('gulp-svgstore');
     const svgmin = require('gulp-svgmin');
     const cheerio = require('gulp-cheerio');
-    let spritePath = dirs.srcPath + dirs.blocksDirName + '/sprite-svg/svg/';
-    if(fileExist(spritePath) !== false) {
+    if(fileExist(spriteSvgPath) !== false) {
       console.log('---------- Сборка SVG спрайта');
-      return gulp.src(spritePath + '*.svg')
+      return gulp.src(spriteSvgPath + '*.svg')
         .pipe(svgmin(function (file) {
           return {
             plugins: [{
@@ -185,6 +184,46 @@ gulp.task('sprite:svg', function (callback) {
   }
   else {
     console.log('---------- Сборка SVG спрайта: ОТМЕНА, блок не используется на проекте');
+    callback();
+  }
+});
+
+// Сборка SVG-спрайта для блока sprite-png
+let spritePngPath = dirs.srcPath + dirs.blocksDirName + '/sprite-png/png/';
+gulp.task('sprite:png', function () {
+  if((pjson.configProject.blocks['sprite-png']) !== undefined) {
+    const spritesmith = require('gulp.spritesmith');
+    const buffer = require('vinyl-buffer');
+    const merge = require('merge-stream');
+    const imagemin = require('gulp-imagemin');
+    const pngquant = require('imagemin-pngquant');
+    if(fileExist(spritePngPath) !== false) {
+      del(dirs.srcPath + dirs.blocksDirName + '/sprite-png/img/*.png');
+      let fileName = 'sprite-' + Math.random().toString().replace(/[^0-9]/g, '') + '.png';
+      let spriteData = gulp.src(spritePngPath + '*.png')
+        .pipe(spritesmith({
+          imgName: fileName,
+          cssName: 'sprite-png.scss',
+          padding: 4,
+          imgPath: '../img/' + fileName
+        }));
+      let imgStream = spriteData.img
+        .pipe(buffer())
+        .pipe(imagemin({
+          use: [pngquant()]
+        }))
+        .pipe(gulp.dest(dirs.srcPath + dirs.blocksDirName + '/sprite-png/img/'));
+      let cssStream = spriteData.css
+        .pipe(gulp.dest(dirs.srcPath + dirs.blocksDirName + '/sprite-png/'));
+      return merge(imgStream, cssStream);
+    }
+    else {
+      console.log('---------- Сборка PNG спрайта: ОТМЕНА, нет папки с картинками');
+      callback();
+    }
+  }
+  else {
+    console.log('---------- Сборка PNG спрайта: ОТМЕНА, блок не используется на проекте');
     callback();
   }
 });
@@ -244,9 +283,9 @@ gulp.task('img:opt', function (callback) {
     console.log('---------- Оптимизация картинок');
     return gulp.src(folder + '/*.{jpg,jpeg,gif,png,svg}')
       .pipe(imagemin({
-          progressive: true,
-          svgoPlugins: [{removeViewBox: false}],
-          use: [pngquant()]
+        progressive: true,
+        svgoPlugins: [{removeViewBox: false}],
+        use: [pngquant()]
       }))
       .pipe(gulp.dest(folder));
   }
@@ -261,7 +300,7 @@ gulp.task('img:opt', function (callback) {
 gulp.task('build', function (callback) {
   gulpSequence(
     'clean',
-    'sprite:svg',
+    ['sprite:svg', 'sprite:png'],
     ['style', 'js', 'copy:css', 'copy:img', 'copy:js', 'copy:fonts'],
     'html',
     callback
@@ -304,11 +343,7 @@ gulp.task('serve', ['build'], function() {
     gulp.watch(pjson.configProject.copiedJs, ['watch:copied:js']);
   }
   // Слежение за шрифтами
-  gulp.watch(dirs.srcPath + '/fonts/*.{ttf,woff,woff2,eot,svg}', ['watch:fonts']);
-  // Слежение за SVG для спрайта
-  if(fileExist(spritePath) !== false) {
-    gulp.watch(spritePath + '*.svg', ['watch:svg:sprite']);
-  }
+  gulp.watch('/fonts/*.{ttf,woff,woff2,eot,svg}', {cwd: dirs.srcPath}, ['watch:fonts']);
   // Слежение за html
   gulp.watch([
     dirs.srcPath + '/*.html',
@@ -319,15 +354,24 @@ gulp.task('serve', ['build'], function() {
   if(lists.js.length) {
     gulp.watch(lists.js, ['watch:js']);
   }
+  // Слежение за SVG (спрайты)
+  if((pjson.configProject.blocks['sprite-svg']) !== undefined) {
+    gulp.watch('*.svg', {cwd: spriteSvgPath}, ['watch:sprite:svg']); // следит за новыми и удаляемыми файлами
+  }
+  // Слежение за PNG (спрайты)
+  if((pjson.configProject.blocks['sprite-png']) !== undefined) {
+    gulp.watch('*.png', {cwd: spritePngPath}, ['watch:sprite:png']); // следит за новыми и удаляемыми файлами
+  }
 });
 
 // Браузерсинк с 3-м галпом — такой браузерсинк...
 gulp.task('watch:img', ['copy:img'], reload);
 gulp.task('watch:copied:js', ['copy:js'], reload);
 gulp.task('watch:fonts', ['copy:fonts'], reload);
-gulp.task('watch:svg:sprite', ['sprite:svg'], reload);
 gulp.task('watch:html', ['html'], reload);
 gulp.task('watch:js', ['js'], reload);
+gulp.task('watch:sprite:svg', ['sprite:svg'], reload);
+gulp.task('watch:sprite:png', ['sprite:png'], reload);
 
 
 
