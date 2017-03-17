@@ -379,11 +379,6 @@ gulp.task('serve', ['build'], function() {
   // Слежение за шрифтами
   gulp.watch('/fonts/*.{ttf,woff,woff2,eot,svg}', {cwd: dirs.srcPath}, ['watch:fonts']);
   // Слежение за html
-  // gulp.watch([
-  //   dirs.srcPath + '/*.html',
-  //   dirs.srcPath + '/_include/*.html',
-  //   dirs.srcPath + dirs.blocksDirName + '/**/*.html',
-  // ], ['watch:html']);
   gulp.watch([
     '*.html',
     '_include/*.html',
