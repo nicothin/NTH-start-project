@@ -19,7 +19,8 @@
       "is-mobile": []
     },
     "addCssBefore": [
-      "./src/scss/variables.scss"
+      "./src/scss/variables.scss",
+      "./src/scss/mixins.scss"
     ],
     "addCssAfter": [
       "./src/scss/print.scss"

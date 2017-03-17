@@ -1,0 +1,23 @@
+@mixin field-help-text {
+  $text-color--muted:         hsl(0, 0%, 50%) !default;
+  $font-size--small:          0.75em !default;
+
+  display: block;
+  padding-top: 0.4em;
+  font-size: $font-size--small;
+  line-height: 1.2em;
+  color: $text-color--muted;
+
+  &:empty {
+    display: none;
+  }
+}
+
+
+@mixin field-focus {
+  $color-main:                hsl(208, 98%, 43%) !default;
+  $opacity:                   0.7 !default;
+
+  outline: 0;
+  box-shadow: 0 0 0 2px rgba($color-main, $opacity);
+}
