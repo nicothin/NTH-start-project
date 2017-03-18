@@ -18,7 +18,8 @@
       ],
       "is-mobile": [],
       "logo": [],
-      "code": []
+      "code": [],
+      "thumb": []
     },
     "addCssBefore": [
       "./src/scss/variables.scss",

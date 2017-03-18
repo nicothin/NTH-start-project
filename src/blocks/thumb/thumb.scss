@@ -1,0 +1,24 @@
+// В этом файле должны быть стили только для БЭМ-блока thumb, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+// Не пишите здесь другие селекторы.
+
+$gray-light:                  hsl(0, 0%, 60%) !default;
+$link-color:                  hsl(208, 98%, 43%) !default;
+$line-height:                 1.375 !default;
+$body-bg:                     #fff !default;
+$border-radius:               3px !default;
+$transition-time:             0.3s !default;
+
+.thumb {
+  display: inline-block;
+  padding: 0.4rem;
+  line-height: $line-height;
+  background-color: $body-bg;
+  border: 1px solid $gray-light;
+  border-radius: $border-radius;
+  transition: all $transition-time;
+
+  a:hover & {
+    border-color: $link-color;
+  }
+}
