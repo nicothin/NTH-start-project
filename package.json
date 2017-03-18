@@ -16,7 +16,9 @@
       "sprite-png": [
         "__demo"
       ],
-      "is-mobile": []
+      "is-mobile": [],
+      "logo": [],
+      "code": []
     },
     "addCssBefore": [
       "./src/scss/variables.scss",
