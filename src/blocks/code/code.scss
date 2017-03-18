@@ -1,0 +1,21 @@
+// В этом файле должны быть стили только для БЭМ-блока code, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+// Не пишите здесь другие селекторы.
+
+.code {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  background-color: $gray-lightest;
+  padding: 1em;
+  border-radius: $border-radius;
+  border: 1px solid $gray-lighter;
+  white-space: normal;
+  tab-size: 2;
+  max-height: 50rem;
+
+  code {
+    display: block;
+    white-space: pre;
+  }
+}
