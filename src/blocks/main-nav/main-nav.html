@@ -1,8 +1,42 @@
-<!--DEV
-
-Нужно убрать пробел между @-ами:
-
-@ @include('blocks/main-nav/main-nav.html')
-
--->
-<div class="main-nav">content</div>
+<nav class="main-nav">
+  <ul class="main-nav__list">
+    <li class="main-nav__item">
+      <a class="main-nav__link">
+        <span class="main-nav__link-text">Библиотека</span>
+      </a>
+      <div class="main-nav__nested-lvl-1">
+        <ul class="main-nav__list">
+          <li class="main-nav__item">
+            <a href="#typo" class="main-nav__link">
+              <span class="main-nav__link-text">Типографика</span>
+            </a>
+            <div class="main-nav__nested-lvl-2">
+              <ul class="main-nav__list">
+                <li class="main-nav__item">
+                  <a href="#typo-p" class="main-nav__link">
+                    <span class="main-nav__link-text">Параграфы и заголовки</span>
+                  </a>
+                </li>
+                <li class="main-nav__item">
+                  <a href="#typo-lists" class="main-nav__link">
+                    <span class="main-nav__link-text">Списки</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <li class="main-nav__item">
+      <a href="https://github.com/nicothin/NTH-start-project" class="main-nav__link">
+        <span class="main-nav__link-text">Репозиторий</span>
+      </a>
+    </li>
+    <li class="main-nav__item">
+      <a href="http://nicothin.pro/" class="main-nav__link">
+        <span class="main-nav__link-text">Сайт автора</span>
+      </a>
+    </li>
+  </ul>
+</nav>

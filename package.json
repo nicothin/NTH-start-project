@@ -12,11 +12,12 @@
     "blocks": {
       "page-header": [],
       "page-footer": [],
+      "is-mobile": [],
+      "main-nav": [],
       "sprite-svg": [],
       "sprite-png": [
         "__demo"
       ],
-      "is-mobile": [],
       "logo": [],
       "code": [],
       "thumb": []
