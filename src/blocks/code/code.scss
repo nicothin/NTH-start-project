@@ -2,17 +2,21 @@
 // модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
 // Не пишите здесь другие селекторы.
 
+$gray-lighter:                hsl(0, 0%, 80%) !default;
+$gray-lightest:               hsl(0, 0%, 90%) !default;
+$border-radius                3px !default;
+
 .code {
   display: block;
   width: 100%;
+  max-height: 50rem;
   overflow-x: auto;
-  background-color: $gray-lightest;
   padding: 1em;
+  background-color: $gray-lightest;
   border-radius: $border-radius;
   border: 1px solid $gray-lighter;
   white-space: normal;
   tab-size: 2;
-  max-height: 50rem;
 
   code {
     display: block;
