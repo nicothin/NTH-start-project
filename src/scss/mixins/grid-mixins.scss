@@ -20,32 +20,67 @@ $grid-gutter-width:           30px !default;
 //  Генератор правил для контейнера
 //------------------------------------------------------------------------------
 
-@mixin container {
+@mixin container (
+    $xs-grid-gutter:  $grid-gutter-width,
+    $sm-grid-gutter:  $grid-gutter-width,
+    $md-grid-gutter:  $grid-gutter-width,
+    $lg-grid-gutter:  $grid-gutter-width,
+    $xl-grid-gutter:  $grid-gutter-width,
+    $xxl-grid-gutter: $grid-gutter-width
+  ) {
   display: block;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  padding-left: ($grid-gutter-width / 2);
-  padding-right: ($grid-gutter-width / 2);
+
+  @if ($xs-grid-gutter != 0) {
+    padding-left: ($xs-grid-gutter / 2);
+    padding-right: ($xs-grid-gutter / 2);
+  }
 
   @media (min-width: $screen-sm) {
     width: $container-sm;
+
+    @if ($sm-grid-gutter != $xs-grid-gutter) {
+      padding-left: ($sm-grid-gutter / 2);
+      padding-right: ($sm-grid-gutter / 2);
+    }
   }
 
   @media (min-width: $screen-md) {
     width: $container-md;
+
+    @if ($md-grid-gutter != $sm-grid-gutter) {
+      padding-left: ($md-grid-gutter / 2);
+      padding-right: ($md-grid-gutter / 2);
+    }
   }
 
   @media (min-width: $screen-lg) {
     width: $container-lg;
+
+    @if ($lg-grid-gutter != $md-grid-gutter) {
+      padding-left: ($lg-grid-gutter / 2);
+      padding-right: ($lg-grid-gutter / 2);
+    }
   }
 
   @media (min-width: $screen-xl) {
     width: $container-xl;
+
+    @if ($xl-grid-gutter != $lg-grid-gutter) {
+      padding-left: ($xl-grid-gutter / 2);
+      padding-right: ($xl-grid-gutter / 2);
+    }
   }
 
   @media (min-width: $screen-xxl) {
     width: $container-xxl;
+
+    @if ($xxl-grid-gutter != $xl-grid-gutter) {
+      padding-left: ($xxl-grid-gutter / 2);
+      padding-right: ($xxl-grid-gutter / 2);
+    }
   }
 }
 
@@ -146,6 +181,8 @@ $grid-gutter-width:           30px !default;
 //  Принимает:    По умолчанию:         Пояснение:
 //  $column:      1                     ширина (кол-во колонок в этой ячейке)
 //  $columns:     $grid-columns;        количество ячеек в ряду
+//
+//  Возвращает width.
 //------------------------------------------------------------------------------
 
 @mixin get-width ($column: 1, $columns: $grid-columns) {
@@ -163,7 +200,7 @@ $grid-gutter-width:           30px !default;
 //  Принимает:    По умолчанию:         Пояснение:
 //  $column:      1                     ширина (кол-во колонок для этой ячейки)
 //  $columns:     $grid-columns;        общее количество ячеек на 1 ряд
-//  $gutter:      $grid-gutter-width    промежуток между ячейками или false
+//  $gutter:      $grid-gutter-width    промежуток между ячейками
 //------------------------------------------------------------------------------
 
 @mixin make-col (
@@ -174,7 +211,7 @@ $grid-gutter-width:           30px !default;
   @include get-width($column, $columns);
 
   // ВНИМАНИЕ!
-  // если $gutter == false, правила padding-left и padding-right отсутствуют
+  // если $gutter == false, в CSS не попадут правила padding-left и padding-right
   @if ($gutter != false) {
     padding-left: ($gutter / 2);
     padding-right: ($gutter / 2);
@@ -189,7 +226,7 @@ $grid-gutter-width:           30px !default;
 //  Принимает:    По умолчанию:         Пояснение:
 //  $screen:      xs                    тип сетки [xs|sm|md|lg|xl|xxl]
 //  $column:      $grid-columns         ширина (кол-во колонок для этой ячейки)
-//  $columns:     $grid-columns;        общее количество колонок
+//  $columns:     $grid-columns;        общее количество ячеек на 1 ряд
 //  $gutter:      $grid-gutter-width    промежуток между ячейками
 //------------------------------------------------------------------------------
 
@@ -243,13 +280,12 @@ $grid-gutter-width:           30px !default;
 
 
 //------------------------------------------------------------------------------
-//  Генератор правил для отступа одной ячейки с возможностью указать @media,
-//  начиная с ширины которого правила ширины ячейки будут срабатывать
+//  Генератор правил для отступа одной ячейки с возможностью указать @media
 //------------------------------------------------------------------------------
 //  Принимает:    По умолчанию:         Пояснение:
 //  $screen:      xs                    тип сетки [xs|sm|md|lg|xl|xxl]
 //  $column:      1                     ширина отступа (кол-во колонок)
-//  $columns:     $grid-columns;        общее количество колонок
+//  $columns:     $grid-columns;        общее количество ячеек на 1 ряд
 //------------------------------------------------------------------------------
 
 @mixin col-offset (
