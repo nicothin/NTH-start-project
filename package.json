@@ -11,15 +11,15 @@
   "configProject": {
     "blocks": {
       "page": [],
-      "typo": [],
-      "page-header": [],
-      "page-footer": [],
       "is-mobile": [],
-      "main-nav": [],
+      "typo": [],
       "sprite-svg": [],
       "sprite-png": [
         "__demo"
       ],
+      "page-header": [],
+      "page-footer": [],
+      "main-nav": [],
       "logo": [],
       "code": [],
       "thumb": []
@@ -44,7 +44,7 @@
       "./src/js/global-script.js"
     ],
     "addImages": [
-      "./src/img/*.{jpg,jpeg,gif,png,svg}"
+      "./src/img/*.{jpg,jpeg,gif,png,svg,ico}"
     ],
     "copiedCss": [],
     "copiedJs": [],
