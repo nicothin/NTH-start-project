@@ -50,7 +50,7 @@
 
     <section class="blocks-library__item" id="page" data-name=".page">
 
-      <h2 class="blocks-library__item-title">Страница и типографика</h2>
+      <h2 class="blocks-library__item-title">Страница</h2>
 
       <p>Блок страницы (<code>&lt;html class="page"></code>), благодаря которому применяются некоторые глобальные стили:</p>
 
@@ -274,8 +274,38 @@
 
     </section>
 
-    <svg width="30" height="30"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite-svg.svg#temp-icon-right-arrow"></use></svg>
-    <svg width="30" height="30"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite-svg.svg#temp-icon-left-arrow"></use></svg>
+    <section class="blocks-library__item" id="sprite-svg" data-name=".sprite-svg">
+
+      <h2 class="blocks-library__item-title">SVG-спрайт</h2>
+
+      <p>Из файлов папки <code>sprite-svg/svg/</code> в папку <code>sprite-svg/img/</code> будет сгенерирован файл спрайта <code>sprite-svg.svg</code>, который далее будет скопирован в папку сборки. Сам спрайт имеет вид:</p>
+
+      <pre class="code">
+        <code>&lt;svg xmlns="http://www.w3.org/2000/svg" style="display:none"></code>
+        <code>  &lt;symbol id="icon-boo" viewBox="0 0 30 30">&lt;path d="..."/>&lt;/symbol></code>
+        <code>  &lt;symbol id="icon-bs" viewBox="0 0 28 28">&lt;path d="..."/>&lt;/symbol></code>
+        <code>  ...</code>
+        <code>&lt;/svg></code></p>
+      </pre>
+
+      <p>Для вставки на страницу используйте конструкции <code>svg > use</code> со ссылками на <code>id</code> символа:</p>
+
+      <pre class="code">
+        <code>&lt;svg width="30" height="30"></code>
+        <code>  &lt;use xlink:href="img/sprite-svg.svg#icon-boo">&lt;/use></code>
+        <code>&lt;/svg></code>
+      </pre>
+
+      <p class="alert">Чтобы использовать ссылки на внешние svg-файлы со спрайтами, используйте <a href="https://www.npmjs.com/package/svg4everybody">svg4everybody</a> (включен в сборку по умолчанию).</p>
+
+      <p>Демонстрационный контент блока (иконки стрелок):</p>
+
+      <svg width="30" height="30"><use xlink:href="img/sprite-svg.svg#temp-icon-right-arrow"></use></svg>
+      <svg width="30" height="30"><use xlink:href="img/sprite-svg.svg#temp-icon-left-arrow"></use></svg>
+
+    </section>
+
+
 
     <div class="temp-icon-right-arrow"></div>
     <div class="temp-icon-left-arrow"></div>
