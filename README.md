@@ -187,7 +187,7 @@ src/            # Исходные файлы
   js/           # - можно положить добавочные js-файлы (нужно подключить в addJsBefore, addJsAfter или copiedJs, иначе игнорируются)
   scss/         # - стили (style.scss скомпилируется, прочие нужно подключить в addCssBefore, addCssAfter или singleCompiled, иначе они будут проигнорированы)
   index.html    # - главная страница проекта
-  components-demo.html # - библиотека блоков
+  blocks-demo.html # - библиотека блоков
 ```
 
 

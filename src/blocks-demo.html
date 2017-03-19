@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html class="no-js  page" lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <title>NTH start project</title>
+  <meta name="description" content="">
+  @@include('_include/page_head.html')
+  <link rel="stylesheet" href="css/blocks-library.css">
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+
+      // Открытие/закрытие блока с кодом
+      var codeShowTriggers = document.querySelectorAll('.blocks-library__code-show-trigger');
+      for (var i = 0; i < codeShowTriggers.length; i++) {
+        codeShowTriggers[i].addEventListener('click', function(){
+          this.closest('.blocks-library__code-wrapper').querySelector('.blocks-library__code').classList.toggle('blocks-library__code--shown');
+        });
+      }
+
+      // Изменение размера шрифта на произвольном блоке
+      var parent, fontSizeEm;
+      $('.js-font-resizer')
+        .css('font-size', '1em')
+        .append('<div class="js-font-resizer__btns"><button class="btn btn--sm js-button-plus">+</button><button class="btn  btn--sm js-button-null">0</button><button class="btn  btn--sm js-button-minus">-</button></div>')
+        .on('click', 'button.js-button-plus', function(){
+          parent = $(this).closest('.js-font-resizer');
+          fontSizeEm = /(\d*\.?\d?)(em)/g.exec(parent.attr('style'));
+          parent.css('font-size', parent.css('font-size', parseFloat(fontSizeEm[0], 10) + 0.1 + 'em') );
+        }).on('click', 'button.js-button-minus', function(){
+          parent = $(this).closest('.js-font-resizer');
+          fontSizeEm = /(\d*\.?\d?)(em)/g.exec(parent.attr('style'));
+          parent.css('font-size', parent.css('font-size', parseFloat(fontSizeEm[0], 10) - 0.1 + 'em') );
+        }).on('click', 'button.js-button-null', function(){
+          parent = $(this).closest('.js-font-resizer');
+          parent.css('font-size', '1em' );
+        });
+
+    });
+  </script>
+</head>
+
+<body>
+
+  <div class="components-demo  blocks-library">
+
+    <h1>Страница демонстрации блоков</h1>
+
+    <p>Если какой-либо блок отображен криво, вероятно его стилизация отсутствует в общем стилевом файле (блок не используется на проекте).</p>
+
+    <section class="blocks-library__item" id="page" data-name=".page">
+
+      <h2 class="blocks-library__item-title">Страница и типографика</h2>
+
+      <p>Блок страницы, благодаря которому применяются некоторые глобальные стили.</p>
+
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre class="code">
+            <code>&lt;html class="page"></code>
+            <code>  &lt;head>...&lt;/head></code>
+            <code>  &lt;body>...&lt;/body></code>
+            <code>&lt;/html></code>
+          </pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="blocks-library__item" id="text">
+
+      <h2 class="blocks-library__item-title" id="text-text">Текст, теги</h2>
+
+      <div class="blocks-library__sub-item">
+        <p>Параграфы, расстояние между ними. <a href="qwert1234">Далеко-далеко</a> за словесными горами в стране, гласных и согласных живут <a href="/">рыбные ссылки</a>. Грустный предупредила, дал приставка составитель решила подпоясал запятых сих ручеек которой власти до, над жизни возвращайся силуэт что не курсивных.</p>
+        <div class="blocks-library__code-wrapper">
+          <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+          <div class="blocks-library__code">
+            <pre class="code">
+              <code>&lt;div class=&quot;p&quot;&gt;...&lt;/div&gt;</code>
+            </pre>
+          </div>
+        </div>
+        <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Грустный предупредила, дал приставка составитель решила подпоясал запятых сих ручеек которой власти до, над жизни возвращайся силуэт что не курсивных.</p>
+      </div>
+
+      <div class="blocks-library__sub-item" id="text-headers">
+        <h2 class="blocks-library__sub-item-title">Заголовки и параграфы</h2>
+        <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Грустный предупредила, дал приставка составитель решила подпоясал запятых сих ручеек которой власти до, над жизни возвращайся силуэт что не курсивных.</p>
+        <h1>Заголовок 1</h1>
+        <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Грустный предупредила, дал приставка составитель решила подпоясал запятых сих ручеек которой власти до, над жизни возвращайся силуэт что не курсивных.</p>
+        <h2>Заголовок 2</h2>
+        <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Грустный предупредила, дал приставка составитель решила подпоясал запятых сих ручеек которой власти до, над жизни возвращайся силуэт что не курсивных.</p>
+        <h3>Заголовок 3</h3>
+        <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Грустный предупредила, дал приставка составитель решила подпоясал запятых сих ручеек которой власти до, над жизни возвращайся силуэт что не курсивных.</p>
+        <h4>Заголовок 4</h4>
+        <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Грустный предупредила, дал приставка составитель решила подпоясал запятых сих ручеек которой власти до, над жизни возвращайся силуэт что не курсивных.</p>
+        <h5>Заголовок 5</h5>
+        <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Грустный предупредила, дал приставка составитель решила подпоясал запятых сих ручеек которой власти до, над жизни возвращайся силуэт что не курсивных.</p>
+        <h6>Заголовок 6</h6>
+        <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Грустный предупредила, дал приставка составитель решила подпоясал запятых сих ручеек которой власти до, над жизни возвращайся силуэт что не курсивных.</p>
+      </div>
+
+      <div class="blocks-library__sub-item" id="text-lists">
+        <h2 class="blocks-library__sub-item-title">Маркированный и нумерованный списки и параграфы</h2>
+        <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Грустный предупредила, дал приставка составитель решила подпоясал запятых сих ручеек которой власти до, над жизни возвращайся силуэт что не курсивных.</p>
+        <div class="row">
+          <div class="col-md-6">
+            <ul>
+              <li>Пункт 1
+                <ul>
+                  <li>Подпункт 1</li>
+                  <li>Подпункт 2</li>
+                </ul>
+              </li>
+              <li>Пункт 2</li>
+              <li>Пункт 3</li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <ol>
+              <li>Пункт 1
+                <ol>
+                  <li>Подпункт 1</li>
+                  <li>Подпункт 2</li>
+                </ol>
+              </li>
+              <li>Пункт 2</li>
+              <li>Пункт 3</li>
+            </ol>
+          </div>
+        </div>
+        <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Грустный предупредила, дал приставка составитель решила подпоясал запятых сих ручеек которой власти до, над жизни возвращайся силуэт что не курсивных.</p>
+      </div>
+
+      <div class="blocks-library__sub-item" id="text-lists-dl">
+        <h2 class="blocks-library__sub-item-title">Список определений и параграфы</h2>
+        <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Грустный предупредила, дал приставка составитель решила подпоясал запятых сих ручеек которой власти до, над жизни возвращайся силуэт что не курсивных.</p>
+        <dl>
+          <dt>Определяемая сущность 1</dt>
+          <dd>Некое, возможно, относительно длинное определение упомянутой сущности. Скорее всего, многострочное.</dd>
+          <dt>Определяемая сущность 2</dt>
+          <dd>Некое, возможно, относительно длинное определение. Скорее всего, длинное, весьма многострочное и многословное.</dd>
+          <dd>Некое, возможно, относительно длинное определение упомянутой сущности.</dd>
+        </dl>
+        <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Грустный предупредила, дал приставка составитель решила подпоясал запятых сих ручеек которой власти до, над жизни возвращайся силуэт что не курсивных.</p>
+      </div>
+
+      <div class="blocks-library__sub-item" id="text-hr">
+        <h2 class="blocks-library__sub-item-title">Разделитель уровня параграфа</h2>
+        <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Грустный предупредила, дал приставка составитель решила подпоясал запятых сих ручеек которой власти до, над жизни возвращайся силуэт что не курсивных.</p>
+         <hr>
+         <p>. Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Грустный предупредила, дал приставка составитель решила подпоясал запятых сих ручеек которой власти до, над жизни возвращайся силуэт что не курсивных.</p>
+      </div>
+
+      <div class="blocks-library__sub-item" id="text-inline-tags">
+        <h2 class="blocks-library__sub-item-title">Строчные теги</h2>
+        <div class="row">
+          <div class="col-lg-6">
+            <table>
+              <tbody><tr>
+                <td><code>&lt;a&gt;</code></td>
+                <td><a href="">ссылка</a></td>
+              </tr>
+              <tr>
+                <td><code>&lt;strong&gt;</code></td>
+                <td><strong>действительно значимый текст</strong></td>
+              </tr>
+              <tr>
+                <td><code>&lt;b&gt;</code></td>
+                <td><b>просто выделенный текст, лид</b></td>
+              </tr>
+              <tr>
+                <td><code>&lt;i&gt;</code></td>
+                <td><i>иностранное слово или термин</i></td>
+              </tr>
+              <tr>
+                <td><code>&lt;em&gt;</code></td>
+                <td><em>эмфатическое ударение</em></td>
+              </tr>
+              <tr>
+                <td><code>&lt;s&gt;</code></td>
+                <td><s>информация, утратившая актуальность</s></td>
+              </tr>
+              <tr>
+                <td><code>&lt;del&gt;</code></td>
+                <td><del>изменение, внесённое в документ (удаление)</del></td>
+              </tr>
+              <tr>
+                <td><code>&lt;ins&gt;</code></td>
+                <td><ins>изменение, внесённое в документ (добавление)</ins></td>
+              </tr>
+            </tbody></table>
+          </div>
+          <div class="col-lg-6">
+            <table>
+              <tbody><tr>
+                <td><code>&lt;mark&gt;</code></td>
+                <td><mark>акцент маркерным выделением</mark></td>
+              </tr>
+              <tr>
+                <td><code>&lt;small&gt;</code></td>
+                <td><small>малозначимый текст</small></td>
+              </tr>
+              <tr>
+                <td><code>&lt;abbr&gt;</code></td>
+                <td><abbr title="Аббревиатура">АББРЕВИАТУРА</abbr></td>
+              </tr>
+              <tr>
+                <td><code>&lt;kbd&gt;</code></td>
+                <td><kbd>Ctrl + C</kbd></td>
+              </tr>
+              <tr>
+                <td><code>&lt;sup&gt;</code></td>
+                <td>2<sup>3</sup></td>
+              </tr>
+              <tr>
+                <td><code>&lt;sub&gt;</code></td>
+                <td>H<sub>2</sub>O</td>
+              </tr>
+              <tr>
+                <td><code>&lt;code&gt;</code></td>
+                <td><code>code</code></td>
+              </tr>
+            </tbody></table>
+          </div>
+        </div>
+      </div>
+
+      <div class="blocks-library__sub-item" id="text-address">
+        <h2 class="blocks-library__sub-item-title">Контактная информация автора материала</h2>
+        <p>Тег <code>address</code> представляет контактную информацию для ближайшего элемента-предка <code>article</code> или <code>body</code>. Если это элемент <code>body</code>, то контактная информация применяется ко всему документу целиком. Тег обязан не использоваться для предоставления произвольного адреса (например, почтовых адресов), если эти адреса не являются реальной контактной информацией. <a href="http://spec.piraruco.com/html5/sections.htm#the-address-element">Подробнее</a></p>
+        <hr>
+        <address>
+          <strong>Имя Фамилия</strong>
+          <br>
+          г. Лондон, ул. Виндзорский сад, д. 32 (спросить мистера Имя) <br>
+          <a href="mailto:imya@mail.com">imya@mail.com</a>
+        </address>
+        <div class="blocks-library__code-wrapper">
+          <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+          <div class="blocks-library__code">
+            <pre class="code">            <code class="code__syntax  html hljs xml">
+                <span class="code__line"><span class="hljs-tag">&lt;<span class="hljs-name">address</span>&gt;</span></span>
+                <span class="code__line">  <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>Имя Фамилия<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span></span>
+                <span class="code__line">  <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span></span>
+                <span class="code__line">  г. Лондон, ул. Виндзорский сад, д. 32 (спросить мистера Имя) <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span></span>
+                <span class="code__line">  <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"mailto:imya@mail.com"</span>&gt;</span>imya@mail.com<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></span>
+                <span class="code__line"><span class="hljs-tag">&lt;/<span class="hljs-name">address</span>&gt;</span></span>
+              </code>
+            </pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="blocks-library__sub-item" id="text-blq">
+        <h2 class="blocks-library__sub-item-title">Блочные цитаты</h2>
+        <blockquote>
+          <p>Цитата. Далеко-далеко за словесными горами в стране. Далеко-далеко за словесными горами в стране.</p>
+        </blockquote>
+        <blockquote>
+          <p>Цитата. Далеко-далеко за словесными горами в стране. Далеко-далеко за словесными горами в стране.</p>
+          <footer>Emmet</footer>
+        </blockquote>
+        <div class="blocks-library__code-wrapper">
+          <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+          <div class="blocks-library__code">
+            <pre class="code">            <code class="code__syntax  html hljs xml">
+                <span class="code__line"><span class="hljs-tag">&lt;<span class="hljs-name">blockquote</span>&gt;</span></span>
+                <span class="code__line">  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Цитата. Далеко-далеко за словесными горами в стране. Далеко-далеко за словесными горами в стране.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span>
+                <span class="code__line">  <span class="hljs-tag">&lt;<span class="hljs-name">footer</span>&gt;</span>Emmet<span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span></span>
+                <span class="code__line"><span class="hljs-tag">&lt;/<span class="hljs-name">blockquote</span>&gt;</span></span>
+              </code>
+            </pre>
+          </div>
+        </div>
+        <blockquote>
+          <p>Цитата. Далеко-далеко за словесными горами в стране. Далеко-далеко за словесными горами в стране.</p>
+          <footer><cite>Emmet</cite></footer>
+        </blockquote>
+        <div class="blocks-library__code-wrapper">
+          <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+          <div class="blocks-library__code">
+            <pre class="code">            <code class="code__syntax  html hljs xml">
+                <span class="code__line"><span class="hljs-tag">&lt;<span class="hljs-name">blockquote</span>&gt;</span></span>
+                <span class="code__line">  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Цитата. Далеко-далеко за словесными горами в стране. Далеко-далеко за словесными горами в стране.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span>
+                <span class="code__line">  <span class="hljs-tag">&lt;<span class="hljs-name">footer</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">cite</span>&gt;</span>Emmet<span class="hljs-tag">&lt;/<span class="hljs-name">cite</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span></span>
+                <span class="code__line"><span class="hljs-tag">&lt;/<span class="hljs-name">blockquote</span>&gt;</span></span>
+              </code>
+            </pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="blocks-library__sub-item" id="text-pre">
+        <h2 class="blocks-library__sub-item-title">Форматированный текст</h2>
+        <p>Смотри так же <a href="#code">БЭМ-блок для кода</a>.</p>
+        <pre>// Блочный код с тегом переноса строки<br>// Вторая строка</pre>
+        <div class="blocks-library__code-wrapper">
+          <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+          <div class="blocks-library__code">
+            <pre class="code">            <code class="code__syntax  html hljs xml">
+                <span class="code__line"><span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>// Блочный код с тегом переноса строки<span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>// Вторая строка<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span></span>
+              </code>
+            </pre>
+          </div>
+        </div>
+        <pre>        // Блочный код с введённым переносом строки и табуляцией перед строками
+          // Вторая строка
+        </pre>
+        <div class="blocks-library__code-wrapper">
+          <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+          <div class="blocks-library__code">
+            <pre class="code">            <code class="code__syntax  html hljs xml">
+                <span class="code__line"><span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span></span>
+                <span class="code__line">  // Блочный код с введённым переносом строки и табуляцией перед строками</span>
+                <span class="code__line">  // Вторая строка</span>
+                <span class="code__line"><span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span></span>
+              </code>
+            </pre>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <svg width="30" height="30"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite-svg.svg#temp-icon-right-arrow"></use></svg>
+    <svg width="30" height="30"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite-svg.svg#temp-icon-left-arrow"></use></svg>
+
+    <div class="temp-icon-right-arrow"></div>
+    <div class="temp-icon-left-arrow"></div>
+
+    <p><img src="img/joker.jpg" alt="" width="824" height="460"></p>
+  </div>
+
+  <style>
+    .components-demo {
+      padding: 1em;
+      margin: auto;
+      max-width: 1200px;
+      font-family: sans-serif;
+    }
+  </style>
+
+  @@include('_include/page_bottom.html')
+</body>
+</html>

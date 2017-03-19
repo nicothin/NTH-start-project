@@ -10,6 +10,8 @@
   },
   "configProject": {
     "blocks": {
+      "page": [],
+      "typo": [],
       "page-header": [],
       "page-footer": [],
       "sprite-svg": [],
@@ -25,7 +27,9 @@
     "addCssAfter": [
       "./src/scss/print.scss"
     ],
-    "singleCompiled": [],
+    "singleCompiled": [
+      "./src/scss/blocks-library.scss"
+    ],
     "addJsBefore": [
       "./node_modules/jquery/dist/jquery.min.js",
       "./node_modules/jquery-migrate/dist/jquery-migrate.min.js",
