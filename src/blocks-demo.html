@@ -77,7 +77,7 @@
 
       <h2 class="blocks-library__item-title">Определение мобильного устройства</h2>
 
-      <p class="alert">Зависмость от <a href="https://github.com/kaimallea/isMobile">isMobile</a>. Последний должен быть включен в сборку (есть по умолчанию) или подключен к странице иным образом.</p>
+      <p class="alert  alert--danger">Зависмость от <a href="https://github.com/kaimallea/isMobile">isMobile</a>. Последний должен быть включен в сборку (есть по умолчанию) или подключен к странице иным образом.</p>
 
       <p>Javascript, добавляющий на <code>&lt;html></code> класс <code>is-mobile</code>, если страница открыта с мобильного устройства. Так же, добавляются модификаторы блока с указанием типа устройства и производителя.</p>
 
@@ -294,7 +294,7 @@
         <code>&lt;/svg></code>
       </pre>
 
-      <p class="alert">Чтобы использовать ссылки на внешние svg-файлы со спрайтами, используйте <a href="https://www.npmjs.com/package/svg4everybody">svg4everybody</a> (включен в сборку по умолчанию).</p>
+      <p class="alert  alert--danger">Чтобы использовать ссылки на внешние svg-файлы со спрайтами, используйте <a href="https://www.npmjs.com/package/svg4everybody">svg4everybody</a> (включен в сборку по умолчанию).</p>
 
       <p>Демонстрационный контент блока (иконки стрелок):</p>
 
@@ -460,6 +460,39 @@
             <code>&lt;a href=""></code>
             <code>  &lt;img class="thumb" src="img/joker.jpg" alt="" width="300"></code>
             <code>&lt;/a></code>
+          </pre>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="blocks-library__item" id="alert" data-name=".alert">
+
+      <h2 class="blocks-library__item-title">Сообщения</h2>
+
+      <p class="alert  alert--success">
+        <span class="alert__header">Заголовок</span>
+        Далеко-далеко за <a href="">словесными горами</a> в стране, гласных и согласных живут.
+      </p>
+
+      <div class="alert  alert--danger">
+        <h1 class="alert__header">Заголовок</h1>
+        Далеко-далеко за <a href="">словесными горами</a> в стране, гласных и согласных живут.
+      </div>
+
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre class="code">
+            <code>&lt;p class="alert  alert--success"></code>
+            <code>  &lt;span class="alert__header">Заголовок&lt;/span></code>
+            <code>  Далеко-далеко за &lt;a href="">словесными горами&lt;/a> в стране, гласных и согласных живут.</code>
+            <code>&lt;/p></code>
+            <code> </code>
+            <code>&lt;div class="alert  alert--danger"></code>
+            <code>  &lt;h1 class="alert__header">Заголовок&lt;/h1></code>
+            <code>  Далеко-далеко за &lt;a href="">словесными горами&lt;/a> в стране, гласных и согласных живут.</code>
+            <code>&lt;/div></code>
           </pre>
         </div>
       </div>
