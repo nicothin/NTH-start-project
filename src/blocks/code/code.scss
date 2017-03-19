@@ -7,19 +7,20 @@ $gray-lightest:               hsl(0, 0%, 90%) !default;
 $border-radius:               3px !default;
 
 .code {
-  // display: block;
-  // width: 100%;
-  // max-height: 50rem;
-  // overflow-x: auto;
-  // padding: 1em;
-  // background-color: $gray-lightest;
-  // border-radius: $border-radius;
-  // border: 1px solid $gray-lighter;
-  // white-space: normal;
-  // tab-size: 2;
+  display: block;
+  width: 100%;
+  max-height: 50rem;
+  overflow-x: auto;
+  padding: 1em;
+  background-color: $gray-lightest;
+  border-radius: $border-radius;
+  border: 1px solid $gray-lighter;
+  white-space: normal;
+  tab-size: 2;
 
-  // code {
-  //   display: block;
-  //   white-space: pre;
-  // }
+  code {
+    display: block;
+    padding: 0;
+    white-space: pre;
+  }
 }
