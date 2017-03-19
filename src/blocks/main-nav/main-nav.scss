@@ -2,124 +2,245 @@
 // модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
 // Не пишите здесь другие селекторы.
 
+$screen-xs:                   0 !default;
+$screen-sm:                   480px !default;
+$screen-md:                   768px !default;
+$screen-lg:                   992px !default;
+$screen-xl:                   1200px !default;
+$screen-xxl:                  1800px !default;
+
+// специфические для этого блока переменные:
+
+$menu-desktop-width:          $screen-xl !default;
+$toggler-part-height:         3px !default;
+$toggler-part-bg-color:       #000 !default;
+
 .main-nav {
-  // position: relative;
-  // z-index: 1;
-  // margin-left: (@grid-gutter-width / -2);
-  // margin-right: (@grid-gutter-width / -2);
+  position: relative;
+  z-index: 10;
 
-  // &__list {
-  //   padding: 0;
-  //   margin: 0;
-  //   list-style: none;
+  // первый уровень
 
-  //   @media (min-width: @screen-lg) {
-  //     display: flex;
-  //     flex-wrap: wrap;
-  //   }
-  // }
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
 
-  // &__nested-lvl {
+    @media (max-width: ($menu-desktop-width - 1)) {
 
-  //   @media (min-width: @screen-lg) {
-  //     position: absolute;
-  //     left: 0;
-  //     top: 100%;
-  //     background-color: @gray-lightest;
-  //     padding-top: 0.3em;
-  //     width: auto;
-  //     border: 1px solid @gray-lighter;
-  //     border-top: 0;
-  //     box-shadow: @shadow;
+      // открытие/закрытие меню только в случае работающего JS
 
-  //     .main-nav__item:not(:last-child) {
-  //       border-bottom: 1px solid @gray-lighter;
-  //     }
-  //   }
+      .js & {
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.2s;
+      }
+      .js .main-nav--open & {
+        max-height: 100vh;
+        transition: max-height 0.6s;
+      }
+    }
 
-  //   .main-nav__list {
-  //     display: block;
-  //   }
+    @media (min-width: $menu-desktop-width) {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
 
-  //   .main-nav__link {
-  //     padding-left: @grid-gutter-width;
-  //     min-width: 15em;
+  &__item {
+    position: relative;
 
-  //     @media (min-width: @screen-lg) {
-  //       padding-left: (@grid-gutter-width / 2);
-  //     }
-  //   }
+    &--active {}
+  }
 
-  //   // Вложение внутри вложения
-  //   & & {
+  &__link {
+    display: block;
+    padding: 0.5em;
+    text-decoration: none;
 
-  //     @media (min-width: @screen-lg) {
-  //       position: absolute;
-  //       top: 0;
-  //       left: 100%;
-  //       background-color: @gray-lightest;
-  //       width: auto;
-  //       padding-top: 0;
-  //       border-top: 1px solid @gray-lighter;
+    &:hover,
+    &:focus {
+      text-decoration: none;
+    }
+  }
 
-  //       .main-nav__link {
-  //         padding-left: (@grid-gutter-width / 2);
-  //       }
-  //     }
 
-  //     .main-nav__link {
-  //       padding-left: @grid-gutter-width * 1.5;
-  //     }
-  //   }
-  // }
 
-  // &__item {
-  //   display: block;
-  //   position: relative;
+  // второй уровень
 
-  //   &--divider {
+  &__lvl-2 {
 
-  //     &:before {
-  //       content: '';
-  //       position: absolute;
-  //       top: -1px;
-  //       left: 0;
-  //       right: 0;
-  //       border-top: 1px solid @gray-light;
-  //     }
-  //   }
+    @media (min-width: $menu-desktop-width) {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      z-index: 1;
+      opacity: 0;
+      height: 0;
+      overflow: hidden;
+      transition: opacity 0.3s;
 
-  //   // Сокрытие и показ по наведению
-  //   @media (min-width: @screen-lg) {
+      .main-nav__item:hover & {
+        opacity: 1;
+        height: auto;
+        overflow: visible;
+      }
+    }
+  }
 
-  //     & > .main-nav__nested-lvl {
-  //       display: none;
-  //     }
+  &__list-lvl-2 {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
 
-  //     &:hover {
+  &__item-lvl-2 {
+    position: relative;
 
-  //       & > .main-nav__nested-lvl {
-  //         display: block;
-  //       }
-  //     }
-  //   }
-  // }
+    &--active {}
+  }
 
-  // &__link {
-  //   display: block;
-  //   padding-top: 0.9rem;
-  //   padding-bottom: 0.9rem;
-  //   padding-left: (@grid-gutter-width / 2);
-  //   padding-right: (@grid-gutter-width / 2);
-  //   color: @gray;
-  //   text-decoration: none;
-  //   cursor: pointer;
+  &__link-lvl-2 {
+    display: block;
+    padding: 0.5em;
+    text-decoration: none;
 
-  //   &:hover,
-  //   &:focus {
-  //     color: @text-color;
-  //     background-color: @gray-lighter;
-  //     text-decoration: none;
-  //   }
-  // }
+    @media (max-width: ($menu-desktop-width - 1)) {
+      padding-left: 1.2em;
+    }
+
+    &:hover,
+    &:focus {
+      text-decoration: none;
+    }
+  }
+
+
+
+  // третий уровень
+
+  &__lvl-3 {
+
+    @media (min-width: $menu-desktop-width) {
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      left: 100%;
+      opacity: 0;
+      height: 0;
+      overflow: hidden;
+      transition: opacity 0.3s;
+
+      .main-nav__item-lvl-2:hover & {
+        opacity: 1;
+        height: auto;
+        overflow: visible;
+      }
+    }
+  }
+
+  &__list-lvl-3 {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item-lvl-3 {
+    position: relative;
+
+    &--active {}
+  }
+
+  &__link-lvl-3 {
+    display: block;
+    padding: 0.5em;
+    text-decoration: none;
+
+    @media (max-width: ($menu-desktop-width - 1)) {
+      padding-left: 2.4em;
+    }
+
+    &:hover,
+    &:focus {
+      text-decoration: none;
+    }
+  }
+
+
+
+  // переключатель
+
+  &__toggler {
+    position: relative;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    user-select: none;
+    cursor: pointer;
+
+    .no-js & {
+      display: none;
+    }
+
+    @media (min-width: $menu-desktop-width) {
+      display: none;
+    }
+
+    > span {
+      display: inline-block;
+      vertical-align: bottom;
+      width: 100%;
+      height: $toggler-part-height;
+      background: $toggler-part-bg-color;
+      position: relative;
+      transition: background 0.3s 0.3s;
+
+      &:before,
+      &:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: $toggler-part-height;
+        background: $toggler-part-bg-color;
+        transform-origin: 50% 50%;
+        transition: top 0.3s 0.3s, transform 0.3s;
+      }
+
+      &:before {
+        top: -10px;
+      }
+
+      &:after {
+        top: 10px;
+      }
+    }
+
+    &--close {
+
+      > span {
+        transition: background 0.2s 0s;
+        background: transparent;
+
+        &:before,
+        &:after {
+          transition: top 0.3s, transform 0.3s 0.3s;
+          top: 0;
+        }
+
+        &:before {
+          transform: rotate3d(0, 0, 1, 45deg);
+        }
+
+        &:after {
+          transform: rotate3d(0, 0, 1, -45deg);
+        }
+      }
+    }
+  }
+
 }
