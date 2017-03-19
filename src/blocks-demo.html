@@ -44,9 +44,7 @@
 
   <div class="components-demo  blocks-library">
 
-    <h1>Страница демонстрации блоков</h1>
-
-    <p>Если какой-либо блок отображен криво, вероятно его стилизация отсутствует в общем стилевом файле (блок не используется на проекте).</p>
+    <h1>Страница демонстрации блоков, доступных на <a href="index.html">проекте</a></h1>
 
     <section class="blocks-library__item" id="page" data-name=".page">
 
@@ -441,9 +439,33 @@
 
     </section>
 
+    <section class="blocks-library__item" id="tumb" data-name=".tumb">
 
+      <h2 class="blocks-library__item-title">Картинки-миниатюры</h2>
 
-    <p><img src="img/joker.jpg" alt="" width="824" height="460"></p>
+      <p>Оформление вставок изображений.</p>
+
+      <div style="margin-bottom: 0.7em">
+        <img class="thumb" src="img/joker.jpg" alt="" width="300">
+        <a href="">
+          <img class="thumb" src="img/joker.jpg" alt="" width="300">
+        </a>
+      </div>
+
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre class="code">
+            <code>&lt;img class="thumb" src="img/joker.jpg" alt="" width="300"></code>
+            <code>&lt;a href=""></code>
+            <code>  &lt;img class="thumb" src="img/joker.jpg" alt="" width="300"></code>
+            <code>&lt;/a></code>
+          </pre>
+        </div>
+      </div>
+
+    </section>
+
   </div>
 
   <style>
