@@ -276,9 +276,9 @@
 
     <section class="blocks-library__item" id="sprite-svg" data-name=".sprite-svg">
 
-      <h2 class="blocks-library__item-title">SVG-спрайт</h2>
+      <h2 class="blocks-library__item-title">SVG-спрайт c <a href="https://github.com/w0rm/gulp-svgstore">gulp-svgstore</a></h2>
 
-      <p>Из файлов папки <code>sprite-svg/svg/</code> в папку <code>sprite-svg/img/</code> будет сгенерирован файл спрайта <code>sprite-svg.svg</code>, который далее будет скопирован в папку сборки. Сам спрайт имеет вид:</p>
+      <p>Из файлов папки <code>sprite-svg/svg/</code> в папку <code>sprite-svg/img/</code> будет сгенерирован файл спрайта <code>sprite-svg.svg</code>, который далее будет скопирован в папку сборки. Стилевой файл блока не используется. Сам спрайт имеет вид:</p>
 
       <pre class="code">
         <code>&lt;svg xmlns="http://www.w3.org/2000/svg" style="display:none"></code>
@@ -305,10 +305,22 @@
 
     </section>
 
+    <section class="blocks-library__item" id="sprite-png" data-name=".sprite-png">
+
+      <h2 class="blocks-library__item-title">PNG-спрайт с <a href="https://github.com/Ensighten/spritesmith">spritesmith</a></h2>
+
+      <p>Из файлов папки <code>sprite-png/png/</code> в папку <code>sprite-png/img/</code> будет сгенерирован файл спрайта <code>sprite-[ЧИСЛОВОЙ_ИНДЕКС].svg</code>, который далее будет скопирован в папку сборки.</p>
+
+      <p><strong>Стилевой файл блока генерируется автоматически</strong> и содержит примеси для использования спрайтов. Отдельный файл элемента <code>sprite-png__demo.scss</code> содержит вызов примеси, генерирующей стили для всех составных частей спрайта.</p>
+
+      <p>Демонстрационный контент блока (иконки стрелок):</p>
+
+      <div class="temp-icon-right-arrow" style="display: inline-block;"></div>
+      <div class="temp-icon-left-arrow" style="display: inline-block;"></div>
+
+    </section>
 
 
-    <div class="temp-icon-right-arrow"></div>
-    <div class="temp-icon-left-arrow"></div>
 
     <p><img src="img/joker.jpg" alt="" width="824" height="460"></p>
   </div>
