@@ -1,0 +1,76 @@
+// В этом файле должны быть стили только для БЭМ-блока alert, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, $media-условий...
+// Не пишите здесь другие селекторы.
+
+$gray-lighter:                hsl(0, 0%, 80%) !default;
+$gray-lightest:               hsl(0, 0%, 90%) !default;
+$color-success:               hsl(120, 39%, 54%) !default;
+$color-danger:                hsl(2, 64%, 58%) !default;
+$text-color:                  hsl(0, 0%, 10%) !default;
+$font-size--h3:               1.5em !default;
+$border-radius:               3px !default;
+
+.alert {
+  position: relative;
+  padding: 0.7em 1em;
+  background-color: $gray-lightest;
+  color: $text-color;
+  border: 1px solid $gray-lighter;
+  border-radius: $border-radius;
+  margin-top: 1em;
+  margin-bottom: 1em;
+
+  > * {
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__header {
+    font-size: $font-size--h3;
+    color: inherit;
+    margin-top: 0;
+    margin-bottom: 0;
+
+    &:not(:last-child) {
+      margin-top: 0.3em;
+    }
+  }
+
+  &--danger {
+    background-color: $color-danger;
+    border: 1px solid darken($color-danger, 10%);
+    color: #fff;
+
+    a {
+      color: inherit;
+      text-decoration: underline;
+
+      &:hover,
+      &:focus {
+        text-decoration: none;
+      }
+    }
+  }
+
+  &--success {
+    background-color: $color-success;
+    border: 1px solid darken($color-success, 10%);
+    color: #fff;
+
+    a {
+      color: inherit;
+      text-decoration: underline;
+
+      &:hover,
+      &:focus {
+        text-decoration: none;
+      }
+    }
+  }
+}

@@ -43,6 +43,7 @@ let postCssPlugins = [
   mqpacker({
     sort: true
   }),
+  atImport()
 ];
 
 // Очистка папки сборки
@@ -59,6 +60,7 @@ gulp.task('style', function () {
   const sass = require('gulp-sass');
   const sourcemaps = require('gulp-sourcemaps');
   const wait = require('gulp-wait');
+  const atImport = require("postcss-import");
   console.log('---------- Компиляция стилей');
   return gulp.src(dirs.srcPath + 'scss/style.scss')
     .pipe(plumber({

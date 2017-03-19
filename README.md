@@ -48,6 +48,13 @@
 
 Файл-диспетчер подключений (`.src/scss/style.scss`) формируется автоматически на основании указанных в `./package.json` блоков и доп. файлов. Писать в этот файл что-либо руками бессмысленно: при старте автоматизации файл будет перезаписан.
 
+Используемый постпроцессинг:
+
+1. [autoprefixer](https://github.com/postcss/autoprefixer)
+2. [css-mqpacker](https://github.com/hail2u/node-css-mqpacker)
+3. [postcss-import](https://github.com/postcss/postcss-import)
+3. [gulp-cleancss](https://github.com/mgcrea/gulp-cleancss) (только в режиме сборки без карт кода)
+
 
 
 ### Блоки
