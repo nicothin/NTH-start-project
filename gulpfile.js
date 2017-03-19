@@ -226,7 +226,7 @@ gulp.task('sprite:svg', function (callback) {
 
 // Сборка SVG-спрайта для блока sprite-png
 let spritePngPath = dirs.srcPath + dirs.blocksDirName + '/sprite-png/png/';
-gulp.task('sprite:png', function () {
+gulp.task('sprite:png', function (callback) {
   if((pjson.configProject.blocks['sprite-png']) !== undefined) {
     const spritesmith = require('gulp.spritesmith');
     const buffer = require('vinyl-buffer');
