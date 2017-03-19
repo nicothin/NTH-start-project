@@ -1,3 +1,147 @@
 @import "./src/scss/variables.scss";
 @import "./src/scss/mixins.scss";
-@import "./src/blocks/blocks-library/blocks-library.scss";
+
+.blocks-library {
+
+  &__item {
+    position: relative;
+    padding: 1rem;
+    border: 2px dashed $gray-lighter;
+    margin: 2.5em 0;
+
+    @media (min-width: $screen-md) {
+      padding: 1.5rem 2rem 1.5rem 5rem;
+      min-height: 18rem;
+      margin: 5rem 0;
+    }
+
+    &:before {
+      content: attr(data-name);
+      position: absolute;
+      top: -1em;
+      left: 0;
+      font-weight: 700;
+      text-transform: lowercase;
+      font-size: 1.7rem;
+      line-height: 2rem;
+      height: 2rem;
+      text-align: right;
+      white-space: nowrap;
+      color: $gray-light;
+
+      @media (min-width: $screen-md) {
+        left: 2.5rem;
+        top: 20rem;
+        width: 21rem;
+        transform: rotate(-90deg);
+        transform-origin: 0 100%;
+      }
+    }
+  }
+
+  &__item-title {
+    margin: 0.3em 0;
+  }
+
+  &__sub-item {}
+
+  &__sub-item-title {}
+
+  &__code-wrapper {
+    position: relative;
+  }
+
+  &__code-show-trigger {
+    display: block;
+    width: 3rem;
+    height: 20px;
+    cursor: pointer;
+    margin-bottom: 0.3em;
+
+    @media (min-width: $screen-md) {
+      position: absolute;
+      top: -1.8rem;
+      left: -4rem;
+    }
+  }
+
+  &__code-icon {
+    display: block;
+    width: 3rem;
+    height: 2px;
+    background-color: $gray-light;
+
+    &:before,
+    &:after {
+      position: absolute;
+      background-color: $gray-light;
+      width: 3rem;
+      height: 2px;
+      left: 0;
+      content: '';
+    }
+
+    &:before {
+      top: 8px;
+    }
+
+    &:after {
+      top: 16px;
+    }
+  }
+
+  &__code {
+    overflow: hidden;
+
+    .js & {
+      max-height: 0;
+      transition-duration: $transition-time;
+      transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+    }
+
+    .js &--shown {
+      transition-duration: $transition-time;
+      transition-timing-function: ease-in;
+      max-height: 1000px;
+    }
+
+    pre {
+      margin: 0;
+      max-height: 500px;
+    }
+  }
+
+  .js-font-resizer {
+    position: relative;
+
+    @media (min-width: $screen-md) {
+
+      &:hover {
+
+        .js-font-resizer__btns {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  .js-font-resizer__btns {
+    margin-bottom: 1em;
+    font-size: 2rem;
+    transition: opacity 0.3s;
+
+    @media (min-width: $screen-md) {
+      opacity: 0.2;
+      position: absolute;
+      top: 0;
+      left: -4rem;
+      width: 4rem;
+    }
+
+    .btn {
+      width: 3rem;
+      text-align: center;
+    }
+  }
+}
+

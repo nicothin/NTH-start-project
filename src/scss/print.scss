@@ -18,13 +18,13 @@
     content: ' (' attr(href) ')';
   }
 
-  abbr[title]:after {
-    content: ' (' attr(title) ')';
-  }
-
   a[href^='#']:after,
   a[href^='javascript:']:after {
     content: '';
+  }
+
+  abbr[title]:after {
+    content: ' (' attr(title) ')';
   }
 
   pre,

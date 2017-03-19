@@ -95,7 +95,7 @@ gulp.task('style:single', function () {
       .pipe(plumber({
         errorHandler: function(err) {
           notify.onError({
-            title: 'Styles compilation error',
+            title: 'Single style compilation error',
             message: err.message
           })(err);
           this.emit('end');
@@ -368,8 +368,10 @@ gulp.task('serve', ['build'], function() {
   });
   // Слежение за стилями
   gulp.watch([
+    dirs.srcPath + 'scss/style.scss',
     dirs.srcPath + dirs.blocksDirName + '/**/*.scss',
-    dirs.srcPath + '/scss/**/*.scss',
+    pjson.configProject.addCssBefore,
+    pjson.configProject.addCssAfter,
   ], ['style']);
   // Слежение за отдельными стилями
   gulp.watch(pjson.configProject.singleCompiled, ['style:single',]);

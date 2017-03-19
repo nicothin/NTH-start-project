@@ -228,7 +228,7 @@ samp {
 
 code {
   color: $text-color;
-  background-color: $gray-lighter;
+  background-color: $gray-lightest;
   padding: 0.06em 0.3em;
   border-radius: $border-radius;
 }
@@ -236,7 +236,7 @@ code {
 kbd {
   padding: 0.06em 0.3em;
   color: $text-color;
-  background-color: $gray-lighter;
+  background-color: $gray-lightest;
   border-radius: $border-radius;
 
   kbd {
@@ -254,4 +254,8 @@ pre {
   border: 1px solid $gray-lighter;
   white-space: normal;
   tab-size: 2;
+
+  code {
+    background-color: transparent;
+  }
 }
