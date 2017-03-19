@@ -7,8 +7,9 @@ const gulpSequence = require('gulp-sequence');
 const browserSync = require('browser-sync').create();
 
 const postcss = require('gulp-postcss');
-const autoprefixer = require("autoprefixer")
-const mqpacker = require("css-mqpacker")
+const autoprefixer = require("autoprefixer");
+const mqpacker = require("css-mqpacker");
+const atImport = require("postcss-import");
 const cleanss = require('gulp-cleancss');
 
 const plumber = require('gulp-plumber');
@@ -60,7 +61,6 @@ gulp.task('style', function () {
   const sass = require('gulp-sass');
   const sourcemaps = require('gulp-sourcemaps');
   const wait = require('gulp-wait');
-  const atImport = require("postcss-import");
   console.log('---------- Компиляция стилей');
   return gulp.src(dirs.srcPath + 'scss/style.scss')
     .pipe(plumber({
