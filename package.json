@@ -89,6 +89,7 @@
     "gulp-svgmin": "^1.2.3",
     "gulp-svgstore": "^6.1.0",
     "gulp-uglify": "^2.1.0",
+    "gulp-wait": "0.0.2",
     "gulp.spritesmith": "^6.3.0",
     "imagemin-pngquant": "^5.0.0",
     "ismobilejs": "^0.4.0",

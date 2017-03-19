@@ -10,8 +10,8 @@ $border-radius:               3px !default;
   display: block;
   width: 100%;
   max-height: 50rem;
-  overflow-x: auto;
   padding: 1em;
+  overflow-x: auto;
   background-color: $gray-lightest;
   border-radius: $border-radius;
   border: 1px solid $gray-lighter;
@@ -22,5 +22,6 @@ $border-radius:               3px !default;
     display: block;
     padding: 0;
     white-space: pre;
+    background-color: transparent;
   }
 }

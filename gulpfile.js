@@ -58,6 +58,7 @@ gulp.task('clean', function () {
 gulp.task('style', function () {
   const sass = require('gulp-sass');
   const sourcemaps = require('gulp-sourcemaps');
+  const wait = require('gulp-wait');
   console.log('---------- Компиляция стилей');
   return gulp.src(dirs.srcPath + 'scss/style.scss')
     .pipe(plumber({
@@ -69,6 +70,7 @@ gulp.task('style', function () {
         this.emit('end');
       }
     }))
+    .pipe(wait(100))
     .pipe(gulpIf(isDev, sourcemaps.init()))
     .pipe(debug({title: "Style:"}))
     .pipe(sass())
@@ -90,6 +92,7 @@ gulp.task('style:single', function () {
   if(pjson.configProject.singleCompiled.length) {
     const sass = require('gulp-sass');
     const sourcemaps = require('gulp-sourcemaps');
+    const wait = require('gulp-wait');
     console.log('---------- Компиляция добавочных стилей');
     return gulp.src(pjson.configProject.singleCompiled)
       .pipe(plumber({
@@ -101,6 +104,7 @@ gulp.task('style:single', function () {
           this.emit('end');
         }
       }))
+      .pipe(wait(100))
       .pipe(gulpIf(isDev, sourcemaps.init()))
       .pipe(debug({title: "Single style:"}))
       .pipe(sass())

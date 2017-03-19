@@ -101,7 +101,7 @@ h6 {
   margin-bottom: ($line-height / 2);
 }
 
-.p,
+// .p,
 p,
 ul,
 ol,
@@ -121,7 +121,7 @@ address {
 
 ul,
 ol {
-  padding-left: 1.8em;
+  padding-left: 1.2em;
 }
 
 ol ol,
@@ -133,7 +133,7 @@ ul ol {
 }
 
 li {
-  line-height: $line-height;
+  line-height: inherit;
 }
 
 dt {
@@ -185,38 +185,9 @@ abbr[title] {
 }
 
 blockquote {
-  padding: 0 0 0 0.5em;
+  padding: 0;
   margin-left: 0;
   margin-right: 0;
-  border-left: 1px solid $border-color;
-
-  @media (min-width: $screen-sm) {
-    padding: 0 0 0 1.8em;
-    margin-left: 0;
-    border-left-width: 5px;
-  }
-
-  p,
-  ul,
-  ol {
-
-    &:first-child {
-      margin-top: 0;
-    }
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-
-  footer {
-    text-align: right;
-    color: $gray;
-
-    // &:before {
-    //   content: '— ';
-    // }
-  }
 }
 
 code,
@@ -227,9 +198,9 @@ samp {
 }
 
 code {
+  padding: 0.06em 0.3em;
   color: $text-color;
   background-color: $gray-lightest;
-  padding: 0.06em 0.3em;
   border-radius: $border-radius;
 }
 
@@ -249,8 +220,4 @@ pre {
   width: 100%;
   overflow-x: auto;
   tab-size: 2;
-
-  code {
-    background-color: transparent;
-  }
 }
