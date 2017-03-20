@@ -558,6 +558,95 @@
 
     </section>
 
+    <section class="blocks-library__item" id="field-text" data-name=".field-text">
+
+      <h2 class="blocks-library__item-title">Текстовое поле формы</h2>
+
+      <label class="field-text">
+        <span class="field-text__name">Текстовое поле</span>
+        <span class="field-text__input-wrap">
+          <input class="field-text__input" type="text" placeholder="input[type=text]">
+          <span class="field-text__help-text">Обёртка — <code>label</code>. Можно сделать обёртку <code>div</code>, но тогда, возможно, захочется элемент <code>.field-text__name</code> делать <code>label</code> и связывать его с полем по <code>id</code> поля.</span>
+        </span>
+      </label>
+
+      <div class="field-text">
+        <label class="field-text__name" for="demo-field">Текстовое поле</label>
+        <span class="field-text__input-wrap">
+          <input class="field-text__input" type="text" id="demo-field" placeholder="input[type=text]">
+          <span class="field-text__help-text">Обёртка — <code>div</code>. Внутри <code>label</code></span>
+        </span>
+      </div>
+
+      <label class="field-text">
+        <span class="field-text__name">Многострочное текстовое поле</span>
+        <span class="field-text__input-wrap">
+          <textarea class="field-text__input" placeholder="textarea"></textarea>
+          <span class="field-text__help-text">Обёртка — <code>label</code>.</span>
+        </span>
+      </label>
+
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <label class="field-text">
+            <span class="field-text__name">Число</span>
+            <span class="field-text__input-wrap">
+              <input class="field-text__input" type="number" placeholder="input[type=number]">
+              <span class="field-text__help-text"></span>
+            </span>
+          </label>
+          <label class="field-text">
+            <span class="field-text__name">Дата</span>
+            <span class="field-text__input-wrap">
+              <input class="field-text__input" type="date">
+              <span class="field-text__help-text"></span>
+            </span>
+          </label>
+          <label class="field-text">
+            <span class="field-text__name">Время</span>
+            <span class="field-text__input-wrap">
+              <input class="field-text__input" type="time">
+              <span class="field-text__help-text"></span>
+            </span>
+          </label>
+          <label class="field-text">
+            <span class="field-text__name">Поиск</span>
+            <span class="field-text__input-wrap">
+              <input class="field-text__input" type="search" placeholder="input[type=search]">
+              <span class="field-text__help-text"></span>
+            </span>
+          </label>
+          <pre class="code">
+            <code>&lt;label class="field-text"></code>
+            <code>  &lt;span class="field-text__name">...&lt;/span></code>
+            <code>  &lt;span class="field-text__input-wrap"></code>
+            <code>    &lt;input class="field-text__input" type="text" placeholder=""></code>
+            <code>    &lt;span class="field-text__help-text">...&lt;/span></code>
+            <code>  &lt;/span></code>
+            <code>&lt;/label></code>
+            <code> </code>
+            <code>&lt;div class="field-text"></code>
+            <code>  &lt;label class="field-text__name" for="demo-field">...&lt;/label></code>
+            <code>  &lt;span class="field-text__input-wrap"></code>
+            <code>    &lt;input class="field-text__input" type="text" id="demo-field" placeholder=""></code>
+            <code>    &lt;span class="field-text__help-text">...&lt;/span></code>
+            <code>  &lt;/span></code>
+            <code>&lt;/div></code>
+            <code> </code>
+            <code>&lt;label class="field-text"></code>
+            <code>  &lt;span class="field-text__name">...&lt;/span></code>
+            <code>  &lt;span class="field-text__input-wrap"></code>
+            <code>    &lt;textarea class="field-text__input" placeholder="">&lt;/textarea></code>
+            <code>    &lt;span class="field-text__help-text">...&lt;/span></code>
+            <code>  &lt;/span></code>
+            <code>&lt;/label></code>
+          </pre>
+        </div>
+      </div>
+
+    </section>
+
   </div>
 
   <style>

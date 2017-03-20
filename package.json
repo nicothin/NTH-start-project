@@ -25,7 +25,8 @@
       "thumb": [],
       "alert": [],
       "btn": [],
-      "to-top": []
+      "to-top": [],
+      "field-text": []
     },
     "addCssBefore": [
       "./src/scss/variables.scss",
