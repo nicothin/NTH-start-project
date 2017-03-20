@@ -55,7 +55,8 @@
 1. [autoprefixer](https://github.com/postcss/autoprefixer)
 2. [css-mqpacker](https://github.com/hail2u/node-css-mqpacker)
 3. [postcss-import](https://github.com/postcss/postcss-import)
-3. [gulp-cleancss](https://github.com/mgcrea/gulp-cleancss) (только в режиме сборки без карт кода)
+4. [postcss-inline-svg](https://github.com/TrySound/postcss-inline-svg)
+5. [gulp-cleancss](https://github.com/mgcrea/gulp-cleancss) (только в режиме сборки без карт кода)
 
 
 
