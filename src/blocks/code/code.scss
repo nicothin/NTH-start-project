@@ -4,6 +4,9 @@
 
 $gray-lighter:                hsl(0, 0%, 80%) !default;
 $gray-lightest:               hsl(0, 0%, 90%) !default;
+
+$line-height:                 1.375em !default;
+
 $border-radius:               3px !default;
 
 .code {
@@ -11,6 +14,7 @@ $border-radius:               3px !default;
   width: 100%;
   max-height: 50rem;
   padding: 1em;
+  margin-bottom: ($line-height / 2);
   overflow-x: auto;
   background-color: $gray-lightest;
   border-radius: $border-radius;
