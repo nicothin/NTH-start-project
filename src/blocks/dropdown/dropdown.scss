@@ -2,6 +2,14 @@
 // модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
 // Не пишите здесь другие селекторы.
 
+$text-color:                  hsl(0, 0%, 10%) !default;
+
+$border-color:                hsl(0, 0%, 60%) !default;
+
+$border-radius:               3px !default;
+
+$transition-time:             0.3s !default;
+
 .dropdown {
   position: relative;
   display: inline-block;

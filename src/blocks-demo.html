@@ -641,6 +641,20 @@
         </ul>
       </div>
 
+      <p>События</p>
+
+      <pre class="code">
+        <code>// Факт открытия</code>
+        <code>$('#test').on('shown.nth.dropdown', function () {</code>
+        <code>  console.log('shown.nth.dropdown');</code>
+        <code>});</code>
+        <code> </code>
+        <code>// Факт закрытия</code>
+        <code>$('#test').on('hidden.nth.dropdown', function () {</code>
+        <code>  console.log('hidden.nth.dropdown');</code>
+        <code>});</code>
+      </pre>
+
       <div class="blocks-library__code-wrapper">
         <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
         <div class="blocks-library__code">
