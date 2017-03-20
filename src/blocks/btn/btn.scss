@@ -1,0 +1,90 @@
+// В этом файле должны быть стили только для БЭМ-блока alert, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, $media-условий...
+// Не пишите здесь другие селекторы.
+
+
+$gray-lighter:                hsl(0, 0%, 80%);
+$gray-lightest:               hsl(0, 0%, 90%);
+$text-color:                  hsl(0, 0%, 10%);
+$line-height:                 1.375em;
+
+$field-padding-vertical:      0.3em;
+$field-padding-horizontal:    0.7em;
+
+$border-radius:               3px;
+
+.btn {
+  box-sizing: border-box;
+  display: inline-block;
+  margin: 0;
+  padding: $field-padding-vertical  $field-padding-horizontal;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+
+  text-align: center;
+  font-size: 1em;
+  font-family: inherit;
+  line-height: $line-height;
+  text-decoration: none;
+  text-transform: none;
+  // min-height: 2.125em;
+  color: $text-color;
+
+  border-radius: $border-radius;
+  border: 1px solid $gray-lighter;
+  background-color: $gray-lightest;
+  background-image: none;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    color: $text-color;
+    background-color: darken($gray-lightest, 10%);
+    border-color: darken($gray-lighter, 12%);
+  }
+
+  &:active,
+  &:focus {
+    @include field-focus;
+  }
+
+  &--disabled,
+  &:disabled {
+    cursor: not-allowed;
+    opacity: $opacity;
+    color: $text-color;
+    background-color: $gray-lightest;
+    border-color: $gray-lighter;
+
+    @at-root {
+      a.btn--disabled {
+        pointer-events: none;
+      }
+    }
+  }
+
+
+
+  // &--main {
+  //   color: #fff;
+  //   background-color: $color-main;
+  //   border: 1px solid $color-main;
+
+  //   &:hover,
+  //   &:focus {
+  //     color: #fff;
+  //     background-color: darken($color-main, 10%);
+  //     border-color: darken($color-main, 12%);
+  //   }
+
+  //   &--disabled,
+  //   &:disabled {
+  //     color: #fff;
+  //     background-color: $color-main;
+  //     border-color: $color-main;
+  //   }
+  // }
+
+}

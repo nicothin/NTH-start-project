@@ -23,7 +23,8 @@
       "logo": [],
       "code": [],
       "thumb": [],
-      "alert": []
+      "alert": [],
+      "btn": []
     },
     "addCssBefore": [
       "./src/scss/variables.scss",
