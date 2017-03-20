@@ -2,17 +2,17 @@
 // модификаторов, псевдоселекторов, псевдоэлементов, $media-условий...
 // Не пишите здесь другие селекторы.
 
-$border-color:                hsl(0, 0%, 60%);
-$gray-lighter:                hsl(0, 0%, 80%);
+$border-color:                hsl(0, 0%, 60%) !default;
+$gray-lighter:                hsl(0, 0%, 80%) !default;
 
-$text-color--muted:           hsl(0, 0%, 50%);
+$text-color--muted:           hsl(0, 0%, 50%) !default;
 
-$line-height:                 1.375em;
+$line-height:                 1.375em !default;
 
-$field-padding-vertical:      0.3em;
-$field-padding-horizontal:    0.7em;
+$field-padding-vertical:      0.3em !default;
+$field-padding-horizontal:    0.7em !default;
 
-$border-radius:               3px;
+$border-radius:               3px !default;
 
 .field-text {
   display: block;
