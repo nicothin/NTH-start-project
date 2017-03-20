@@ -73,11 +73,13 @@ $border-radius:               3px !default;
       opacity: 1;
     }
 
-    // textarea.& {
-    //   height: auto;
-    //   min-height: ($line-height * 2) + ($field-padding-vertical * 2);
-    //   resize: vertical;
-    // }
+    @at-root textarea#{&} {
+      $textarea-height: ($line-height * 2) + ($field-padding-vertical * 2);
+
+      height: auto;
+      min-height: calc(#{$textarea-height} + 2px);
+      resize: vertical;
+    }
   }
 
   &__help-text {
