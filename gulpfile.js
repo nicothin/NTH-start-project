@@ -371,6 +371,7 @@ gulp.task('serve', ['build'], function() {
     server: dirs.buildPath,
     startPath: 'index.html',
     open: false,
+    port: 8080,
   });
   // Слежение за стилями
   gulp.watch([
