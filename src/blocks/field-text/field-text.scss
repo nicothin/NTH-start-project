@@ -2,6 +2,18 @@
 // модификаторов, псевдоселекторов, псевдоэлементов, $media-условий...
 // Не пишите здесь другие селекторы.
 
+$border-color:                hsl(0, 0%, 60%);
+$gray-lighter:                hsl(0, 0%, 80%);
+
+$text-color--muted:           hsl(0, 0%, 50%);
+
+$line-height:                 1.375em;
+
+$field-padding-vertical:      0.3em;
+$field-padding-horizontal:    0.7em;
+
+$border-radius:               3px;
+
 .field-text {
   display: block;
   margin-bottom: ($line-height / 2);
