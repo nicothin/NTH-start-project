@@ -27,7 +27,9 @@
       "btn": [],
       "to-top": [],
       "field-text": [],
-      "field-actions": []
+      "field-actions": [],
+      "dropdown": [],
+      "menu": []
     },
     "addCssBefore": [
       "./src/scss/variables.scss",

@@ -1,0 +1,44 @@
+// В этом файле должны быть стили только для БЭМ-блока menu, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+// Не пишите здесь другие селекторы.
+
+$gray-lightest:               hsl(0, 0%, 90%) !default;
+
+$text-color:                  hsl(0, 0%, 10%) !default;
+
+$border-color:                hsl(0, 0%, 60%) !default;
+
+.menu {
+  min-width: 10em;
+  margin: 0;
+  padding: 0.3em 0;
+  list-style: none;
+
+  &__item {
+
+    &--separator {
+
+      &:not(:last-child) {
+        padding-bottom: 0.3em;
+        margin-bottom: 0.3em;
+        border-bottom: 1px solid $border-color;
+      }
+    }
+  }
+
+  &__link {
+    display: block;
+    white-space: nowrap;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0.3em 1em;
+    color: $text-color;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      background-color: $gray-lightest;
+    }
+  }
+}
