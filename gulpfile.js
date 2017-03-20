@@ -11,6 +11,7 @@ const autoprefixer = require("autoprefixer");
 const mqpacker = require("css-mqpacker");
 const atImport = require("postcss-import");
 const cleanss = require('gulp-cleancss');
+const inlineSVG = require('postcss-inline-svg');
 
 const plumber = require('gulp-plumber');
 const notify = require('gulp-notify');
@@ -44,7 +45,8 @@ let postCssPlugins = [
   mqpacker({
     sort: true
   }),
-  atImport()
+  atImport(),
+  inlineSVG()
 ];
 
 // Очистка папки сборки

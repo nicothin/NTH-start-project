@@ -27,6 +27,7 @@
       "btn": [],
       "to-top": [],
       "field-text": [],
+      "field-checkbox": [],
       "field-actions": [],
       "dropdown": [],
       "menu": []
@@ -104,6 +105,7 @@
     "jquery-migrate": "^3.0.0",
     "merge-stream": "^1.0.1",
     "postcss-import": "^9.1.0",
+    "postcss-inline-svg": "^2.3.0",
     "svg4everybody": "^2.1.7",
     "vinyl-buffer": "^1.0.0"
   }

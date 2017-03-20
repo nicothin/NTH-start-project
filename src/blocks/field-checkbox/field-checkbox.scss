@@ -1,0 +1,76 @@
+// В этом файле должны быть стили только для БЭМ-блока menu, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, $media-условий...
+// Не пишите здесь другие селекторы.
+
+$line-height:                 1.375em !default;
+
+.field-checkbox {
+  display: block;
+  margin-bottom: ($line-height / 2);
+
+  &__title {
+    display: block;
+    font-weight: 700;
+    line-height: $line-height;
+    margin-bottom: round($line-height / 2);
+  }
+
+  &__input-wrap {
+
+    & + & {
+      margin-top: ($line-height / 2);
+    }
+  }
+
+  &__name {
+    position: relative;
+    display: inline-block;
+    padding-left: 1.5em;
+    margin-right: 0.6em;
+    font-weight: 400;
+    line-height: $line-height;
+  }
+
+  &__name-text {
+
+    // свой чекбокс
+    // &:before {
+    //   content: '';
+    //   position: absolute;
+    //   top: 0.1em;
+    //   left: 0;
+    //   width: 14px;
+    //   height: 14px;
+    //   background-image: svg-load('../blocks/field-checkbox/img_to_bg/checkbox.svg');
+    //   background-size: 100%;
+    // }
+    // @at-root input:checked ~ &:before {
+    //   background-image: svg-load('../blocks/field-checkbox/img_to_bg/checkbox--checked.svg');
+    // }
+  }
+
+  &__input {
+    position: absolute;
+    top: 0.8em;
+    left: 0;
+    padding: 0;
+    margin: 0;
+    transform: translateY(-50%);
+
+    // сокрытие инпута в случае использования своего чекбокса
+    // top: 0;
+    // left: 0;
+    // width: 0;
+    // height: 0;
+    // overflow: hidden;
+    // visibility: hidden;
+  }
+
+  &__help-text-wrap {
+    padding-left: 1.5em;
+  }
+
+  &__help-text {
+    @include field-help-text;
+  }
+}
