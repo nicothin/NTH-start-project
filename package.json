@@ -24,7 +24,8 @@
       "code": [],
       "thumb": [],
       "alert": [],
-      "btn": []
+      "btn": [],
+      "to-top": []
     },
     "addCssBefore": [
       "./src/scss/variables.scss",

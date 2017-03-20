@@ -17,7 +17,7 @@ $( document ).ready(function() {
   showScrollTopButton();
 
   function showScrollTopButton(){
-    if ( $(document).scrollTop() >= 500 ) {
+    if ( $(document).scrollTop() >= 900 ) {
       $('#toTop').fadeIn();
     }
     else {
