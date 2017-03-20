@@ -1,0 +1,28 @@
+// В этом файле должны быть стили только для БЭМ-блока alert, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, $media-условий...
+// Не пишите здесь другие селекторы.
+
+$text-color--muted:           hsl(0, 0%, 50%) !default;
+
+$font-size--small:            0.75em !default;
+
+$line-height:                 1.375em !default;
+
+.field-actions {
+  display: block;
+  margin-top: $line-height;
+  margin-bottom: ($line-height / 2);
+
+  .btn {
+    margin-bottom: ($line-height / 2);
+  }
+
+  &__text {
+    display: block;
+    margin-top: ($line-height / 2);
+    margin-bottom: ($line-height / 2);
+    font-size: $font-size--small;
+    color: $text-color--muted;
+    line-height: 1.2em;
+  }
+}
