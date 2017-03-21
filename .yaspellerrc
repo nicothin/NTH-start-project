@@ -1,0 +1,47 @@
+{
+  "excludeFiles": [
+    ".git",
+    ".public",
+    "build",
+    "yaspeller",
+    "node_modules"
+  ],
+  "lang": "en,ru",
+  "fileExtensions": [
+    ".md",
+    ".html"
+  ],
+  "dictionary": [
+    "микрошаблонизац.*\\B",
+    "постпроцессинг.*\\B",
+    "контент.*\\B",
+    "вьюпорт.*\\B",
+    "радиокнопк.*\\B",
+    "скролл.*\\B",
+    "селект.*\\B",
+    "чекбокс.*\\B",
+    "псевдоселектор.*\\B",
+    "псевдоэлемент.*\\B",
+    "пиксел.*\\B",
+    "пикс",
+    "лид",
+    "ктулху",
+    "autoprefixer",
+    "isMobile",
+    "spritesmith",
+    "postcss",
+    "mqpacker",
+    "stylelint",
+    "yaspeller",
+    "github",
+    "js",
+    "scss",
+    "com",
+    "ru",
+    "svg",
+    "tbody",
+    "tfoot",
+    "thead",
+    "cleancss"
+  ]
+}

@@ -75,6 +75,7 @@
   },
   "scripts": {
     "test:style": "stylelint \"src/**/*.scss\" --syntax=scss",
+    "yaspeller": "yaspeller ./src/*.html ./README.md",
     "start": "gulp",
     "deploy": "cross-env NODE_ENV=production ./node_modules/.bin/gulp build && cross-env ./node_modules/.bin/gulp deploy",
     "build": "cross-env NODE_ENV=production npm start build",
@@ -82,7 +83,8 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.scss": "stylelint --syntax=scss"
+    "*.scss": "stylelint --syntax=scss",
+    "*.{html,md}": "yaspeller"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.7",
@@ -126,6 +128,7 @@
     "postcss-inline-svg": "^2.3.0",
     "stylelint": "^7.9.0",
     "svg4everybody": "^2.1.7",
-    "vinyl-buffer": "^1.0.0"
+    "vinyl-buffer": "^1.0.0",
+    "yaspeller": "^3.1.0"
   }
 }
