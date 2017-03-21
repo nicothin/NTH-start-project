@@ -963,6 +963,41 @@
 
     </section>
 
+    <section class="blocks-library__item" id="field-toggler" data-name=".field-toggler">
+
+      <h2 class="blocks-library__item-title">Переключатели</h2>
+
+      <div class="field-toggler">
+        <div class="field-toggler__title">Переключатели-флажки</div>
+        <div class="field-toggler__input-wrap">
+          <label class="field-toggler__name">
+            <input class="field-toggler__input" type="checkbox">
+            <span class="field-toggler__name-text">Использовать</span>
+          </label>
+          <div class="field-toggler__help-text">Графика не используется, всё нарисовано CSS-ом.</div>
+        </div>
+      </div>
+
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre class="code">
+            <code>&lt;div class="field-toggler"></code>
+            <code>  &lt;div class="field-toggler__title">Переключатели-флажки&lt;/div></code>
+            <code>  &lt;div class="field-toggler__input-wrap"></code>
+            <code>    &lt;label class="field-toggler__name"></code>
+            <code>      &lt;input class="field-toggler__input" type="checkbox"></code>
+            <code>      &lt;span class="field-toggler__name-text">Использовать&lt;/span></code>
+            <code>    &lt;/label></code>
+            <code>    &lt;div class="field-toggler__help-text">Графика не используется, всё нарисовано CSS-ом.&lt;/div></code>
+            <code>  &lt;/div></code>
+            <code>&lt;/div></code>
+          </pre>
+        </div>
+      </div>
+
+    </section>
+
     <section class="blocks-library__item" id="field-file" data-name=".field-file">
 
       <h2 class="blocks-library__item-title">Файл</h2>
@@ -1013,6 +1048,49 @@
             <code>    &lt;div class="field-range__help-text">&lt;code>min="1" max="100" step="1" value="70"&lt;/code>&lt;/div></code>
             <code>  &lt;/div></code>
             <code>&lt;/div></code>
+          </pre>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="blocks-library__item" id="field-select" data-name=".field-select">
+
+      <h2 class="blocks-library__item-title">Селект</h2>
+
+      <label class="field-select">
+        <div class="field-select__name">Селект</div>
+        <div class="field-select__select-wrap">
+          <select class="field-select__select">
+            <optgroup label="Группа">
+              <option>Значение 1</option>
+              <option>Значение 2</option>
+              <option>Значение 3</option>
+            </optgroup>
+            <option>Значение 10</option>
+          </select>
+          <div class="field-select__help-text">Обёртка — <code>&lt;label&gt;</code>.</div>
+        </div>
+      </label>
+
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre class="code">
+            <code>&lt;label class="field-select"></code>
+            <code>  &lt;div class="field-select__name">Селект&lt;/div></code>
+            <code>  &lt;div class="field-select__select-wrap"></code>
+            <code>    &lt;select class="field-select__select"></code>
+            <code>      &lt;optgroup label="Группа"></code>
+            <code>        &lt;option>Значение 1&lt;/option></code>
+            <code>        &lt;option>Значение 2&lt;/option></code>
+            <code>        &lt;option>Значение 3&lt;/option></code>
+            <code>      &lt;/optgroup></code>
+            <code>      &lt;option>Значение 10&lt;/option></code>
+            <code>    &lt;/select></code>
+            <code>    &lt;div class="field-select__help-text">Обёртка — &lt;code>&lt;label&gt;&lt;/code>.&lt;/div></code>
+            <code>  &lt;/div></code>
+            <code>&lt;/label></code>
           </pre>
         </div>
       </div>

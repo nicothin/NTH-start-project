@@ -29,8 +29,10 @@
       "field-text": [],
       "field-checkbox": [],
       "field-radio": [],
+      "field-toggler": [],
       "field-file": [],
       "field-range": [],
+      "field-select": [],
       "field-actions": [],
       "dropdown": [],
       "menu": []

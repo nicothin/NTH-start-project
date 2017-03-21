@@ -1,0 +1,90 @@
+// В этом файле должны быть стили только для БЭМ-блока field-select, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, $media-условий...
+// Не пишите здесь другие селекторы.
+
+$gray-lightest:               hsl(0, 0%, 90%);
+$border-color:                hsl(0, 0%, 60%) !default;
+
+$line-height:                 1.375em !default;
+
+.field-toggler {
+  display: block;
+  margin-bottom: ($line-height / 2);
+
+  &__title {
+    display: block;
+    font-weight: 700;
+    line-height: $line-height;
+    margin-bottom: 0.4em;
+  }
+
+  &__input-wrap {
+
+    & + & {
+      margin-top: ($line-height / 2);
+    }
+  }
+
+  &__name {
+    position: relative;
+    display: inline-block;
+    padding-left: 3.2em;
+    margin-right: 0.6em;
+    font-weight: 400;
+    line-height: $line-height;
+  }
+
+  &__name-text {
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0.6em;
+      left: 0;
+      width: 2.6em;
+      height: 1.2em;
+      transform: translateY(-50%);
+      background-color: #fff;
+      border: 1px solid $border-color;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0.6em;
+      left: 0;
+      width: 1.2em;
+      height: 1.2em;
+      transform: translateY(-50%);
+      background-color: $gray-lightest;
+      border: 1px solid $border-color;
+      transition: all 0.3s;
+    }
+
+    @at-root input:checked ~ &:after {
+      transform: translate(1.4em, -50%);
+    }
+  }
+
+  &__input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+
+    &:focus,
+    &:active {
+      @include field-focus;
+    }
+  }
+
+  &__help-text-wrap {
+    padding-left: 1.5em;
+  }
+
+  &__help-text {
+    @include field-help-text;
+  }
+}
