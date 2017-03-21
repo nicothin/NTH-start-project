@@ -15,19 +15,20 @@ $transition-time:             0.3s !default;
   display: inline-block;
 
   &__menu {
-    max-width: 90vw;
-    width: 1px;
     position: absolute;
+    z-index: -1;
     top: 100%;
     left: 0;
-    z-index: -1;
+    max-width: 90vw;
+    width: 1px;
+    margin: 0;
     background-color: #fff;
     color: $text-color;
-    margin: 0;
     border: 1px solid $border-color;
     border-radius: $border-radius;
     opacity: 0;
     visibility: hidden;
+    overflow: hidden;
     transition: opacity $transition-time;
 
     &--up {
@@ -38,10 +39,6 @@ $transition-time:             0.3s !default;
     &--right {
       left: auto;
       right: 0;
-    }
-
-    @at-root div#{&} {
-      min-width: 26rem;
     }
   }
 
