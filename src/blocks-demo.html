@@ -1215,73 +1215,77 @@
 
       <h2 class="blocks-library__item-title">Таблицы</h2>
 
-      <table class="table">
-        <caption>Таблица как БЭМ-блок, нет прописанных thead, tbody, tfoot</caption>
-        <tbody>
-          <tr>
-            <th>Имя</th>
-            <th>Фамилия</th>
-            <th>Мыло</th>
-            <th>Статус</th>
-            <th>Политическая ориентация</th>
-          </tr>
-          <tr>
-            <td>Иннокентий</td>
-            <td>Барлаухенштицкен-Ламанческий</td>
-            <td>Хозяйственное</td>
-            <td>Администратор</td>
-            <td>«ВСЕГДА!»</td>
-          </tr>
-          <tr>
-            <td>Васисуалий</td>
-            <td>Пылепневмомешковыколачивателев</td>
-            <td>Душистое</td>
-            <td>Юзверь</td>
-            <td>Нижняя</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="table-mobile-scroll">
+        <table class="table">
+          <caption>Таблица как БЭМ-блок, нет прописанных thead, tbody, tfoot</caption>
+          <tbody>
+            <tr>
+              <th>Имя</th>
+              <th>Фамилия</th>
+              <th>Мыло</th>
+              <th>Статус</th>
+              <th>Политическая ориентация</th>
+            </tr>
+            <tr>
+              <td>Иннокентий</td>
+              <td>Барлаухенштицкен-Ламанческий</td>
+              <td>Хозяйственное</td>
+              <td>Администратор</td>
+              <td>«ВСЕГДА!»</td>
+            </tr>
+            <tr>
+              <td>Васисуалий</td>
+              <td>Пылепневмомешковыколачивателев</td>
+              <td>Душистое</td>
+              <td>Юзверь</td>
+              <td>Нижняя</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-      <table class="table">
-        <caption>Таблица как БЭМ-блок, есть thead, tbody, tfoot и у них есть классы</caption>
-        <thead class="table__header">
-          <tr>
-            <th>Имя</th>
-            <th>Фамилия</th>
-            <th>Мыло</th>
-            <th>Статус</th>
-            <th>Политическая ориентация</th>
-          </tr>
-        </thead>
-        <tbody class="table__body">
-          <tr>
-            <td>Иннокентий</td>
-            <td>Барлаухенштицкен-Ламанческий</td>
-            <td>Хозяйственное</td>
-            <td>Администратор</td>
-            <td>«ВСЕГДА!»</td>
-          </tr>
-          <tr>
-            <td>Васисуалий</td>
-            <td>Пылепневмомешковыколачивателев</td>
-            <td>Душистое</td>
-            <td>Юзверь</td>
-            <td>Нижняя</td>
-          </tr>
-          <tr>
-            <td>Ктулху</td>
-            <td>Втанк</td>
-            <td>ktulkhu@ad.ru</td>
-            <td>Патриарх</td>
-            <td>Яизм</td>
-          </tr>
-        </tbody>
-        <tfoot class="table__footer">
-          <tr>
-            <td colspan="5">Итого: 18 попугаев, 15 длинных червяков, надувная женщина и украденный из церкви огарок дешевой свечи.</td>
-          </tr>
-        </tfoot>
-      </table>
+      <div class="table-mobile-scroll">
+        <table class="table">
+          <caption>Таблица как БЭМ-блок, есть thead, tbody, tfoot и у них есть классы</caption>
+          <thead class="table__header">
+            <tr>
+              <th>Имя</th>
+              <th>Фамилия</th>
+              <th>Мыло</th>
+              <th>Статус</th>
+              <th>Политическая ориентация</th>
+            </tr>
+          </thead>
+          <tbody class="table__body">
+            <tr>
+              <td>Иннокентий</td>
+              <td>Барлаухенштицкен-Ламанческий</td>
+              <td>Хозяйственное</td>
+              <td>Администратор</td>
+              <td>«ВСЕГДА!»</td>
+            </tr>
+            <tr>
+              <td>Васисуалий</td>
+              <td>Пылепневмомешковыколачивателев</td>
+              <td>Душистое</td>
+              <td>Юзверь</td>
+              <td>Нижняя</td>
+            </tr>
+            <tr>
+              <td>Ктулху</td>
+              <td>Втанк</td>
+              <td>ktulkhu@ad.ru</td>
+              <td>Патриарх</td>
+              <td>Яизм</td>
+            </tr>
+          </tbody>
+          <tfoot class="table__footer">
+            <tr>
+              <td colspan="5">Итого: 18 попугаев, 15 длинных червяков, надувная женщина и украденный из церкви огарок дешевой свечи.</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
 
       <div class="blocks-library__code-wrapper">
         <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
@@ -1315,6 +1319,55 @@
             <code>    &lt;/tr></code>
             <code>  &lt;/tfoot></code>
             <code>&lt;/table></code>
+          </pre>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="blocks-library__item" id="table-mobile-scroll" data-name=".table-mobile-scroll">
+
+      <h2 class="blocks-library__item-title">Таблицы со скроллом на малых вьюпортах</h2>
+
+
+
+      <div class="table-mobile-scroll">
+        <table class="table">
+          <tbody>
+            <tr>
+              <th>Имя</th>
+              <th>Фамилия</th>
+              <th>Мыло</th>
+              <th>Статус</th>
+              <th>Политическая ориентация</th>
+            </tr>
+            <tr>
+              <td>Иннокентий</td>
+              <td>Барлаухенштицкен-Ламанческий</td>
+              <td>Хозяйственное</td>
+              <td>Администратор</td>
+              <td>«ВСЕГДА!»</td>
+            </tr>
+            <tr>
+              <td>Васисуалий</td>
+              <td>Пылепневмомешковыколачивателев</td>
+              <td>Душистое</td>
+              <td>Юзверь</td>
+              <td>Нижняя</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre class="code">
+            <code>&lt;div class="table-mobile-scroll"></code>
+            <code>  &lt;table class="table"></code>
+            <code>    ...</code>
+            <code>  &lt;/table></code>
+            <code>&lt;/div></code>
           </pre>
         </div>
       </div>

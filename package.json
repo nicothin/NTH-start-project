@@ -40,7 +40,8 @@
       "label": [],
       "loader": [],
       "table": [],
-      "table-responsive": []
+      "table-responsive": [],
+      "table-mobile-scroll": []
     },
     "addCssBefore": [
       "./src/scss/variables.scss",
