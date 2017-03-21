@@ -1,0 +1,1476 @@
+<!DOCTYPE html>
+<html class="no-js  page" lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <title>NTH start project</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="css/style.min.css" rel="stylesheet" media="screen">
+
+  <script>
+    // Маркер работающего javascript
+    document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+    document.addEventListener('DOMContentLoaded', function(){
+      if (window.isMobile !== undefined) {
+        // console.log(isMobile);
+        if(isMobile.any) {
+          var rootClasses = ' is-mobile';
+          for (key in isMobile) {
+            if(typeof isMobile[key] === 'boolean' && isMobile[key] && key !== 'any') rootClasses += ' is-mobile--'+key;
+            if(typeof isMobile[key] === 'object' && key !== 'other') {
+              for (type in isMobile[key]) {
+                if(isMobile[key][type]) rootClasses += ' is-mobile--'+key+'-'+type;
+              }
+            }
+          }
+          document.documentElement.className += rootClasses;
+        }
+      }
+      else {
+        console.log('Классы для мобильных не добавлены: в сборке отсутствует isMobile.js');
+      }
+    });
+
+  </script>
+
+  <link href="img/favicon.ico" rel="icon" type="image/x-icon">
+
+  <link rel="stylesheet" href="css/blocks-library.css">
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+
+      // Открытие/закрытие блока с кодом
+      var codeShowTriggers = document.querySelectorAll('.blocks-library__code-show-trigger');
+      for (var i = 0; i < codeShowTriggers.length; i++) {
+        codeShowTriggers[i].addEventListener('click', function(){
+          this.closest('.blocks-library__code-wrapper').querySelector('.blocks-library__code').classList.toggle('blocks-library__code--shown');
+        });
+      }
+
+      // Изменение размера шрифта на произвольном блоке
+      var parent, fontSizeEm;
+      $('.js-font-resizer')
+        .css('font-size', '1em')
+        .append('<div class="js-font-resizer__btns"><button class="btn btn--sm js-button-plus">+</button><button class="btn  btn--sm js-button-null">0</button><button class="btn  btn--sm js-button-minus">-</button></div>')
+        .on('click', 'button.js-button-plus', function(){
+          parent = $(this).closest('.js-font-resizer');
+          fontSizeEm = /(\d*\.?\d?)(em)/g.exec(parent.attr('style'));
+          parent.css('font-size', parent.css('font-size', parseFloat(fontSizeEm[0], 10) + 0.1 + 'em') );
+        }).on('click', 'button.js-button-minus', function(){
+          parent = $(this).closest('.js-font-resizer');
+          fontSizeEm = /(\d*\.?\d?)(em)/g.exec(parent.attr('style'));
+          parent.css('font-size', parent.css('font-size', parseFloat(fontSizeEm[0], 10) - 0.1 + 'em') );
+        }).on('click', 'button.js-button-null', function(){
+          parent = $(this).closest('.js-font-resizer');
+          parent.css('font-size', '1em' );
+        });
+
+    });
+  </script>
+</head>
+
+<body>
+
+  <div class="components-demo  blocks-library">
+
+    <h1>Страница демонстрации блоков, доступных на <a href="index.html">проекте</a></h1>
+
+    <section class="blocks-library__item" id="page" data-name=".page">
+
+      <h2 class="blocks-library__item-title">Страница</h2>
+
+      <p>Блок страницы (<code>&lt;html class="page"></code>), благодаря которому применяются некоторые глобальные стили:</p>
+
+      <ul>
+        <li>Смена боксовой модели на всех узлах: <code>box-sizing: border-box;</code> наследуется от <code>html</code></li>
+        <li>Нормализация вьюпорта для windows-телефонов.</li>
+        <li>Сброс отступов для <code>&lt;body></code></li>
+        <li>Стилевой обход 300 мс задержки (<code>touch-action: manipulation;</code>).</li>
+        <li>Ограничение размера картинок до 100% ширины родителя.</li>
+      </ul>
+
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre class="code">
+            <code>&lt;html class="page"></code>
+            <code>  &lt;head>...&lt;/head></code>
+            <code>  &lt;body>...&lt;/body></code>
+            <code>&lt;/html></code>
+          </pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="blocks-library__item" id="is-mobile" data-name=".is-mobile">
+
+      <h2 class="blocks-library__item-title">Определение мобильного устройства</h2>
+
+      <p class="alert  alert--warning">Зависимость от <a href="https://github.com/kaimallea/isMobile">isMobile</a>. Последний должен быть включен в сборку (есть по умолчанию) или подключен к странице иным образом.</p>
+
+      <p>JavaScript, добавляющий на <code>&lt;html></code> класс <code>is-mobile</code>, если страница открыта с мобильного устройства. Так же, добавляются модификаторы блока с указанием типа устройства и производителя.</p>
+
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre class="code">
+            <code>&lt;html class="is-mobile  is-mobile--android-phone  is-mobile--android-device  is-mobile--phone"></code>
+            <code>  ...</code>
+            <code>&lt;/html></code>
+          </pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="blocks-library__item" id="text">
+
+      <h2 class="blocks-library__item-title" id="text-text">Текст, теги</h2>
+
+      <p>Реализуется блоком <code>typo</code>, все стили которого являются глобальными.</p>
+
+      <p>Параграфы, расстояние между ними. <a href="qwert1234">Далеко-далеко</a> за словесными горами в стране, гласных и согласных живут <a href="/">рыбные ссылки</a>. Грустный предупредила, дал приставка составитель решила подпоясал запятых сих ручеек которой власти до, над жизни возвращайся силуэт что не курсивных.</p>
+      <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Грустный предупредила, дал приставка составитель решила подпоясал запятых сих ручеек которой власти до, над жизни возвращайся силуэт что не курсивных.</p>
+      <h1>Заголовок 1</h1>
+      <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Грустный предупредила, дал приставка составитель решила подпоясал запятых сих ручеек которой власти до, над жизни возвращайся силуэт что не курсивных.</p>
+      <h2>Заголовок 2</h2>
+      <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Грустный предупредила, дал приставка составитель решила подпоясал запятых сих ручеек которой власти до, над жизни возвращайся силуэт что не курсивных.</p>
+      <h3>Заголовок 3</h3>
+      <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Грустный предупредила, дал приставка составитель решила подпоясал запятых сих ручеек которой власти до, над жизни возвращайся силуэт что не курсивных.</p>
+      <h4>Заголовок 4</h4>
+      <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Грустный предупредила, дал приставка составитель решила подпоясал запятых сих ручеек которой власти до, над жизни возвращайся силуэт что не курсивных.</p>
+      <h5>Заголовок 5</h5>
+      <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Грустный предупредила, дал приставка составитель решила подпоясал запятых сих ручеек которой власти до, над жизни возвращайся силуэт что не курсивных.</p>
+      <h6>Заголовок 6</h6>
+      <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Грустный предупредила, дал приставка составитель решила подпоясал запятых сих ручеек которой власти до, над жизни возвращайся силуэт что не курсивных.</p>
+      <ul>
+        <li>Пункт 1
+          <ul>
+            <li>Подпункт 1</li>
+            <li>Подпункт 2</li>
+          </ul>
+        </li>
+        <li>Пункт 2</li>
+        <li>Пункт 3</li>
+      </ul>
+      <ol>
+        <li>Пункт 1
+          <ol>
+            <li>Подпункт 1</li>
+            <li>Подпункт 2</li>
+          </ol>
+        </li>
+        <li>Пункт 2</li>
+        <li>Пункт 3</li>
+      </ol>
+      <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Грустный предупредила, дал приставка составитель решила подпоясал запятых сих ручеек которой власти до, над жизни возвращайся силуэт что не курсивных.</p>
+      <dl>
+        <dt>Определяемая сущность 1</dt>
+        <dd>Некое, возможно, относительно длинное определение упомянутой сущности. Скорее всего, многострочное.</dd>
+        <dt>Определяемая сущность 2</dt>
+        <dd>Некое, возможно, относительно длинное определение. Скорее всего, длинное, весьма многострочное и многословное.</dd>
+        <dd>Некое, возможно, относительно длинное определение упомянутой сущности.</dd>
+      </dl>
+      <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Грустный предупредила, дал приставка составитель решила подпоясал запятых сих ручеек которой власти до, над жизни возвращайся силуэт что не курсивных.</p>
+      <hr>
+      <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Грустный предупредила, дал приставка составитель решила подпоясал запятых сих ручеек которой власти до, над жизни возвращайся силуэт что не курсивных.</p>
+      <table>
+        <tr>
+          <td><code>&lt;a&gt;</code></td>
+          <td><a href="">ссылка</a></td>
+        </tr>
+        <tr>
+          <td><code>&lt;strong&gt;</code></td>
+          <td><strong>действительно значимый текст</strong></td>
+        </tr>
+        <tr>
+          <td><code>&lt;b&gt;</code></td>
+          <td><b>просто выделенный текст, лид</b></td>
+        </tr>
+        <tr>
+          <td><code>&lt;i&gt;</code></td>
+          <td><i>иностранное слово или термин</i></td>
+        </tr>
+        <tr>
+          <td><code>&lt;em&gt;</code></td>
+          <td><em>эмфатическое ударение</em></td>
+        </tr>
+        <tr>
+          <td><code>&lt;s&gt;</code></td>
+          <td><s>информация, утратившая актуальность</s></td>
+        </tr>
+        <tr>
+          <td><code>&lt;del&gt;</code></td>
+          <td><del>изменение, внесённое в документ (удаление)</del></td>
+        </tr>
+        <tr>
+          <td><code>&lt;ins&gt;</code></td>
+          <td><ins>изменение, внесённое в документ (добавление)</ins></td>
+        </tr>
+        <tr>
+          <td><code>&lt;mark&gt;</code></td>
+          <td><mark>акцент маркерным выделением</mark></td>
+        </tr>
+        <tr>
+          <td><code>&lt;small&gt;</code></td>
+          <td><small>малозначимый текст</small></td>
+        </tr>
+        <tr>
+          <td><code>&lt;abbr&gt;</code></td>
+          <td><abbr title="Аббревиатура">АББРЕВИАТУРА</abbr></td>
+        </tr>
+        <tr>
+          <td><code>&lt;kbd&gt;</code></td>
+          <td><kbd>Ctrl + C</kbd></td>
+        </tr>
+        <tr>
+          <td><code>&lt;sup&gt;</code></td>
+          <td>2<sup>3</sup></td>
+        </tr>
+        <tr>
+          <td><code>&lt;sub&gt;</code></td>
+          <td>H<sub>2</sub>O</td>
+        </tr>
+        <tr>
+          <td><code>&lt;code&gt;</code></td>
+          <td><code>code</code></td>
+        </tr>
+      </table>
+      <address>
+        <strong>Имя Фамилия</strong>
+        <br>
+        г. Лондон, ул. Виндзорский сад, д. 32 (спросить мистера Имя) <br>
+        <a href="mailto:user@mail.com">user@mail.com</a>
+      </address>
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre class="code">
+            <code>&lt;address></code>
+            <code>  &lt;strong>Имя Фамилия&lt;/strong></code>
+            <code>  &lt;br></code>
+            <code>  г. Лондон, ул. Виндзорский сад, д. 32 (спросить мистера Имя) &lt;br></code>
+            <code>  &lt;a href="mailto:user@mail.com">user@mail.com&lt;/a></code>
+            <code>&lt;/address></code>
+          </pre>
+        </div>
+      </div>
+      <blockquote>
+        <p>Цитата. Далеко-далеко за словесными горами в стране. Далеко-далеко за словесными горами в стране.</p>
+        <footer>Emmet</footer>
+      </blockquote>
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre class="code">
+            <code>&lt;blockquote></code>
+            <code>  &lt;p>Цитата. Далеко-далеко за словесными горами в стране. Далеко-далеко за словесными горами в стране.&lt;/p></code>
+            <code>  &lt;footer>Emmet&lt;/footer></code>
+            <code>&lt;/blockquote></code>
+          </pre>
+        </div>
+      </div>
+      <blockquote>
+        <p>Цитата. Далеко-далеко за словесными горами в стране. Далеко-далеко за словесными горами в стране.</p>
+        <footer><cite>Emmet</cite></footer>
+      </blockquote>
+
+      <div class="blocks-library__sub-item" id="text-pre">
+        <h2 class="blocks-library__sub-item-title">Форматированный текст</h2>
+        <p>Смотри так же <a href="#code">БЭМ-блок для кода</a>.</p>
+        <pre>// Блочный код с тегом переноса строки <br>// Вторая строка, написанная без символа переноса строки</pre>
+        <div class="blocks-library__code-wrapper">
+          <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+          <div class="blocks-library__code">
+            <pre class="code">
+              <code>&lt;pre>// Блочный код с тегом переноса строки &lt;br>// Вторая строка, написанная без символа переноса строки&lt;/pre></code>
+            </pre>
+          </div>
+        </div>
+        <pre>// Блочный код с символом переноса строки
+// Вторая строка</pre>
+        <div class="blocks-library__code-wrapper">
+          <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+          <div class="blocks-library__code">
+            <pre class="code">
+              <code>&lt;pre>// Блочный код с символом переноса строки</code>
+              <code>// Вторая строка&lt;/pre></code>
+            </pre>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="blocks-library__item" id="sprite-svg" data-name=".sprite-svg">
+
+      <h2 class="blocks-library__item-title">svg-спрайт c <a href="https://github.com/w0rm/gulp-svgstore">gulp-svgstore</a></h2>
+
+      <p>Из файлов папки <code>sprite-svg/svg/</code> в папку <code>sprite-svg/img/</code> будет сгенерирован файл спрайта <code>sprite-svg.svg</code>, который далее будет скопирован в папку сборки. Стилевой файл блока не используется. Сам спрайт имеет вид:</p>
+
+      <pre class="code">
+        <code>&lt;svg xmlns="http://www.w3.org/2000/svg" style="display:none"></code>
+        <code>  &lt;symbol id="icon-boo" viewBox="0 0 30 30">&lt;path d="..."/>&lt;/symbol></code>
+        <code>  &lt;symbol id="icon-bs" viewBox="0 0 28 28">&lt;path d="..."/>&lt;/symbol></code>
+        <code>  ...</code>
+        <code>&lt;/svg></code>
+      </pre>
+
+      <p>Для вставки на страницу используйте конструкции <code>svg > use</code> со ссылками на <code>id</code> символа:</p>
+
+      <pre class="code">
+        <code>&lt;svg width="30" height="30"></code>
+        <code>  &lt;use xlink:href="img/sprite-svg.svg#icon-boo">&lt;/use></code>
+        <code>&lt;/svg></code>
+      </pre>
+
+      <p class="alert  alert--warning">Чтобы использовать ссылки на внешние svg-файлы со спрайтами, используйте <a href="https://www.npmjs.com/package/svg4everybody">svg4everybody</a> (включен в сборку по умолчанию).</p>
+
+      <p>Демонстрационный контент блока (иконки стрелок):</p>
+
+      <svg width="30" height="30"><use xlink:href="img/sprite-svg.svg#temp-icon-right-arrow"></use></svg>
+      <svg width="30" height="30"><use xlink:href="img/sprite-svg.svg#temp-icon-left-arrow"></use></svg>
+
+    </section>
+
+    <section class="blocks-library__item" id="sprite-png" data-name=".sprite-png">
+
+      <h2 class="blocks-library__item-title">PNG-спрайт с <a href="https://github.com/Ensighten/spritesmith">spritesmith</a></h2>
+
+      <p>Из файлов папки <code>sprite-png/png/</code> в папку <code>sprite-png/img/</code> будет сгенерирован файл спрайта <code>sprite-[ЧИСЛОВОЙ_ИНДЕКС].svg</code>, который далее будет скопирован в папку сборки.</p>
+
+      <p><strong>Стилевой файл блока генерируется автоматически</strong> и содержит примеси для использования спрайтов. Отдельный файл элемента <code>sprite-png__demo.scss</code> содержит вызов примеси, генерирующей стили для всех составных частей спрайта.</p>
+
+      <p>Демонстрационный контент блока (иконки стрелок):</p>
+
+      <div class="temp-icon-right-arrow" style="display: inline-block;"></div>
+      <div class="temp-icon-left-arrow" style="display: inline-block;"></div>
+
+    </section>
+
+    <section class="blocks-library__item" id="main-nav-block" data-name=".main-nav">
+
+      <h2 class="blocks-library__item-title">Главная навигация</h2>
+
+      <p>Демонстрационный контент блока:</p>
+
+      <nav id="main-nav" class="main-nav">
+        <div id="main-nav-toggler" class="main-nav__toggler"><span></span></div>
+        <ul class="main-nav__list">
+          <li class="main-nav__item  main-nav__item--active">
+            <a href="" class="main-nav__link">
+              Страницы
+            </a>
+            <div class="main-nav__lvl-2">
+              <ul class="main-nav__list-lvl-2">
+                <li class="main-nav__item-lvl-2">
+                  <a href="" class="main-nav__link-lvl-2">
+                    Контакты
+                  </a>
+                </li>
+                <li class="main-nav__item-lvl-2">
+                  <a href="" class="main-nav__link-lvl-2">
+                    Услуги
+                  </a>
+                  <div class="main-nav__lvl-3">
+                    <ul class="main-nav__list-lvl-3">
+                      <li class="main-nav__item-lvl-3">
+                        <a href="" class="main-nav__link-lvl-3">
+                          Вёрстка HTML-CSS
+                        </a>
+                      </li>
+                      <li class="main-nav__item-lvl-3">
+                        <a href="" class="main-nav__link-lvl-3">
+                          Стриптиз
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="main-nav__item">
+            <a href="https://github.com/nicothin/NTH-start-project" class="main-nav__link">
+              Репозиторий
+            </a>
+          </li>
+          <li class="main-nav__item">
+            <a href="http://nicothin.pro/" class="main-nav__link">
+              Сайт автора
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre class="code">
+            <code>&lt;nav id="main-nav" class="main-nav"></code>
+            <code>  &lt;div id="main-nav-toggler" class="main-nav__toggler">&lt;span>&lt;/span>&lt;/div></code>
+            <code>  &lt;ul class="main-nav__list"></code>
+            <code>    &lt;li class="main-nav__item  main-nav__item--active"></code>
+            <code>      &lt;a href="" class="main-nav__link"></code>
+            <code>        Страницы</code>
+            <code>      &lt;/a></code>
+            <code>      &lt;div class="main-nav__lvl-2"></code>
+            <code>        &lt;ul class="main-nav__list-lvl-2"></code>
+            <code>          &lt;li class="main-nav__item-lvl-2"></code>
+            <code>            &lt;a href="" class="main-nav__link-lvl-2"></code>
+            <code>              Контакты</code>
+            <code>            &lt;/a></code>
+            <code>          &lt;/li></code>
+            <code>          &lt;li class="main-nav__item-lvl-2"></code>
+            <code>            &lt;a href="" class="main-nav__link-lvl-2"></code>
+            <code>              Услуги</code>
+            <code>            &lt;/a></code>
+            <code>            &lt;div class="main-nav__lvl-3"></code>
+            <code>              &lt;ul class="main-nav__list-lvl-3"></code>
+            <code>                &lt;li class="main-nav__item-lvl-3"></code>
+            <code>                  &lt;a href="" class="main-nav__link-lvl-3"></code>
+            <code>                    Вёрстка HTML-CSS</code>
+            <code>                  &lt;/a></code>
+            <code>                &lt;/li></code>
+            <code>                ...</code>
+            <code>              &lt;/ul></code>
+            <code>            &lt;/div></code>
+            <code>          &lt;/li></code>
+            <code>        &lt;/ul></code>
+            <code>      &lt;/div></code>
+            <code>    &lt;/li></code>
+            <code>    &lt;li class="main-nav__item"></code>
+            <code>      &lt;a href="https://github.com/nicothin/NTH-start-project" class="main-nav__link"></code>
+            <code>        Репозиторий</code>
+            <code>      &lt;/a></code>
+            <code>    &lt;/li></code>
+            <code>    ...</code>
+            <code>  &lt;/ul></code>
+            <code>&lt;/nav></code>
+          </pre>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="blocks-library__item" id="code" data-name=".code">
+
+      <h2 class="blocks-library__item-title">Код</h2>
+
+      <p>Оформление блочных вставок кода.</p>
+
+      <pre class="code">
+        <code>&lt;pre class="code"&gt;</code>
+        <code>  &lt;code&gt;&amp;lt;div&amp;gt;</code>
+        <code>  &lt;code&gt;  Content&lt;/code&gt;</code>
+        <code>  &lt;code&gt;&amp;lt;/div&amp;gt;&lt;/code&gt;</code>
+        <code>&lt;/pre&gt;</code>
+      </pre>
+
+    </section>
+
+    <section class="blocks-library__item" id="tumb" data-name=".tumb">
+
+      <h2 class="blocks-library__item-title">Картинки-миниатюры</h2>
+
+      <p>Оформление вставок изображений.</p>
+
+      <div style="margin-bottom: 0.7em">
+        <img class="thumb" src="img/joker.jpg" alt="" width="300">
+        <a href="">
+          <img class="thumb" src="img/joker.jpg" alt="" width="300">
+        </a>
+      </div>
+
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre class="code">
+            <code>&lt;img class="thumb" src="img/joker.jpg" alt="" width="300"></code>
+            <code>&lt;a href=""></code>
+            <code>  &lt;img class="thumb" src="img/joker.jpg" alt="" width="300"></code>
+            <code>&lt;/a></code>
+          </pre>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="blocks-library__item" id="alert" data-name=".alert">
+
+      <h2 class="blocks-library__item-title">Сообщения</h2>
+
+      <p class="alert  alert--success">
+        <span class="alert__header">Заголовок</span>
+        Далеко-далеко за <a href="">словесными горами</a> в стране, гласных и согласных живут.
+      </p>
+
+      <div class="alert  alert--danger">
+        <h1 class="alert__header">Заголовок</h1>
+        Далеко-далеко за <a href="">словесными горами</a> в стране, гласных и согласных живут.
+      </div>
+
+      <div class="alert  alert--warning">
+        <h4 class="alert__header">Заголовок</h4>
+        Далеко-далеко за <a href="">словесными горами</a> в стране, гласных и согласных живут.
+      </div>
+
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre class="code">
+            <code>&lt;p class="alert  alert--success"></code>
+            <code>  &lt;span class="alert__header">Заголовок&lt;/span></code>
+            <code>  Далеко-далеко за &lt;a href="">словесными горами&lt;/a> в стране, гласных и согласных живут.</code>
+            <code>&lt;/p></code>
+            <code> </code>
+            <code>&lt;div class="alert  alert--danger"></code>
+            <code>  &lt;h1 class="alert__header">Заголовок&lt;/h1></code>
+            <code>  Далеко-далеко за &lt;a href="">словесными горами&lt;/a> в стране, гласных и согласных живут.</code>
+            <code>&lt;/div></code>
+            <code> </code>
+            <code>&lt;div class="alert  alert--warning"></code>
+            <code>  &lt;h4 class="alert__header">Заголовок&lt;/h4></code>
+            <code>  Далеко-далеко за &lt;a href="">словесными горами&lt;/a> в стране, гласных и согласных живут.</code>
+            <code>&lt;/div></code>
+          </pre>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="blocks-library__item" id="btn" data-name=".btn">
+
+      <h2 class="blocks-library__item-title">Кнопки</h2>
+
+      <p>
+        <a class="btn" href="">Ссылка</a>
+        <input class="btn" type="submit" value="Input">
+        <button class="btn">Button</button>
+        <a class="btn  btn--disabled" href="">Ссылка</a>
+        <input class="btn" type="submit" value="Input" disabled>
+        <button class="btn" disabled>Button</button>
+      </p>
+
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre class="code">
+            <code>&lt;a class="btn" href="">Ссылка&lt;/a></code>
+            <code>&lt;input class="btn" type="submit" value="Input"></code>
+            <code>&lt;button class="btn">Button&lt;/button></code>
+            <code> </code>
+            <code>&lt;a class="btn  btn--disabled" href="">Ссылка&lt;/a></code>
+            <code>&lt;input class="btn" type="submit" value="Input" disabled></code>
+            <code>&lt;button class="btn" disabled>Button&lt;/button></code>
+          </pre>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="blocks-library__item" id="btn" data-name=".btn">
+
+      <h2 class="blocks-library__item-title">Кнопка скролла вверх</h2>
+
+      <p>Кнопка появляется, если вертикальный скролл более 900 пикс.</p>
+
+      <p class="alert  alert--warning">Зависит от <a href="https://jquery.com/">jQuery</a> (включен в сборку по умолчанию).</p>
+
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre class="code">
+            <code>&lt;a href="#" class="to-top" id="toTop">↑&lt;/a></code>
+          </pre>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="blocks-library__item" id="menu" data-name=".menu">
+
+      <h2 class="blocks-library__item-title">Меню</h2>
+
+      <ul class="menu">
+        <li class="menu__item"><a class="menu__link" href="#">Пункт списка</a></li>
+        <li class="menu__item  menu__item--separator"><a class="menu__link" href="#">Пункт списка, после которого следует разделитель</a></li>
+        <li class="menu__item"><a class="menu__link" href="#">Пункт меню весьма длинный, такой, что прямо адски длинный, очень много, реально много слов!</a></li>
+      </ul>
+
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre class="code">
+            <code>&lt;ul class="menu"></code>
+            <code>  &lt;li class="menu__item">&lt;a class="menu__link" href="#">...&lt;/a>&lt;/li></code>
+            <code>  &lt;li class="menu__item  menu__item--separator">&lt;a class="menu__link" href="#">...&lt;/a>&lt;/li></code>
+            <code>  &lt;li class="menu__item">&lt;a class="menu__link" href="#">...&lt;/a>&lt;/li></code>
+            <code>&lt;/ul></code>
+          </pre>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="blocks-library__item" id="dropdown" data-name=".dropdown">
+
+      <h2 class="blocks-library__item-title">Выпадающий блок</h2>
+
+      <p class="alert  alert--warning">Зависит от <a href="https://jquery.com/">jQuery</a> (включен в сборку по умолчанию).</p>
+
+      <div class="dropdown">
+        <a id="dropdown-demo-1" href="#" class="dropdown__toggler" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ссылка</a>
+        <ul class="dropdown__menu  menu" aria-labelledby="dropdown-demo-1">
+          <li class="menu__item"><a class="menu__link" href="#">Пункт списка (выпадает <code>ul</code>)</a></li>
+          <li class="menu__item"><a class="menu__link" href="#">Пункт списка, после которого следует разделитель</a></li>
+          <li class="menu__item"><a class="menu__link" href="#">Пункт меню весьма длинный, такой, что прямо адски длинный, очень много, реально много слов!</a></li>
+        </ul>
+      </div>
+
+      <span class="dropdown">
+        <button class="dropdown__toggler  btn" id="dropdown-demo-2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Выпадает список
+        </button>
+        <span class="dropdown__menu  menu" aria-labelledby="dropdown-demo-2">
+          <span class="menu__item"><a class="menu__link" href="#">Пункт списка (выпадает <code>span</code>)</a></span>
+          <span class="menu__item"><a class="menu__link" href="">Пункт меню весьма длинный</a></span>
+          <span class="menu__item"><a class="menu__link" href="">Второй пункт</a></span>
+        </span>
+      </span>
+
+      <div class="dropdown">
+        <a id="dropdown-demo-3" href="#" class="dropdown__toggler" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ссылка</a>
+        <div class="dropdown__menu" aria-labelledby="dropdown-demo-3">
+          <form action="">
+            <input type="text">
+            <select>
+              <option>Название пункта</option>
+            </select>
+            <textarea rows="3"></textarea>
+            <button class="btn">Отправить эту форму</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropdown__toggler  btn" id="dropdown-demo-4" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Выпадает список вверх
+        </button>
+        <ul class="dropdown__menu  dropdown__menu--up  menu" aria-labelledby="dropdown-demo-4">
+          <li class="menu__item"><a class="menu__link" href="#">Пункт списка (выпадает <code>ul</code>)</a></li>
+        </ul>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropdown__toggler  btn" id="dropdown-demo-5" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Выпадает список вверх от пр. края
+        </button>
+        <ul class="dropdown__menu  dropdown__menu--up  dropdown__menu--right  menu" aria-labelledby="dropdown-demo-5">
+          <li class="menu__item"><a class="menu__link" href="#">Пункт списка (выпадает <code>ul</code>)</a></li>
+        </ul>
+      </div>
+
+      <p>События</p>
+
+      <pre class="code">
+        <code>// Факт открытия</code>
+        <code>$('#test').on('shown.nth.dropdown', function () {</code>
+        <code>  console.log('shown.nth.dropdown');</code>
+        <code>});</code>
+        <code> </code>
+        <code>// Факт закрытия</code>
+        <code>$('#test').on('hidden.nth.dropdown', function () {</code>
+        <code>  console.log('hidden.nth.dropdown');</code>
+        <code>});</code>
+      </pre>
+
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre class="code">
+            <code>  &lt;div class="dropdown"></code>
+            <code>    &lt;a id="dropdown-demo-1" href="#" class="dropdown__toggler" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ссылка&lt;/a></code>
+            <code>    &lt;ul class="dropdown__menu  menu" aria-labelledby="dropdown-demo-1"></code>
+            <code>      &lt;li class="menu__item">&lt;a class="menu__link" href="#">Пункт списка (выпадает &lt;code>ul&lt;/code>)&lt;/a>&lt;/li></code>
+            <code>      &lt;li class="menu__item">&lt;a class="menu__link" href="#">Пункт списка, после которого следует разделитель&lt;/a>&lt;/li></code>
+            <code>      &lt;li class="menu__item">&lt;a class="menu__link" href="#">Пункт меню весьма длинный, такой, что прямо адски длинный, очень много, реально много слов!&lt;/a>&lt;/li></code>
+            <code>    &lt;/ul></code>
+            <code>  &lt;/div></code>
+            <code>  </code>
+            <code>  &lt;span class="dropdown"></code>
+            <code>    &lt;button class="dropdown__toggler  btn" id="dropdown-demo-2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></code>
+            <code>      Выпадает список</code>
+            <code>    &lt;/button></code>
+            <code>    &lt;span class="dropdown__menu  menu" aria-labelledby="dropdown-demo-2"></code>
+            <code>      &lt;span class="menu__item">&lt;a class="menu__link" href="#">Пункт списка (выпадает &lt;code>span&lt;/code>)&lt;/a>&lt;/span></code>
+            <code>      &lt;span class="menu__item">&lt;a class="menu__link" href="">Пункт меню весьма длинный&lt;/a>&lt;/span></code>
+            <code>      &lt;span class="menu__item">&lt;a class="menu__link" href="">Второй пункт&lt;/a>&lt;/span></code>
+            <code>    &lt;/span></code>
+            <code>  &lt;/span></code>
+            <code>  </code>
+            <code>  &lt;div class="dropdown"></code>
+            <code>    &lt;a id="dropdown-demo-3" href="#" class="dropdown__toggler" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ссылка&lt;/a></code>
+            <code>    &lt;div class="dropdown__menu" aria-labelledby="dropdown-demo-3"></code>
+            <code>      &lt;form action=""></code>
+            <code>        &lt;input type="text"></code>
+            <code>        &lt;select></code>
+            <code>          &lt;option>Название пункта&lt;/option></code>
+            <code>        &lt;/select></code>
+            <code>        &lt;textarea rows="3">&lt;/textarea></code>
+            <code>        &lt;button class="btn">Отправить эту форму&lt;/button></code>
+            <code>      &lt;/form></code>
+            <code>    &lt;/div></code>
+            <code>  &lt;/div></code>
+            <code>  </code>
+            <code>  &lt;div class="dropdown"></code>
+            <code>    &lt;button class="dropdown__toggler  btn" id="dropdown-demo-4" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></code>
+            <code>      Выпадает список вверх</code>
+            <code>    &lt;/button></code>
+            <code>    &lt;ul class="dropdown__menu  dropdown__menu--up  menu" aria-labelledby="dropdown-demo-4"></code>
+            <code>      &lt;li class="menu__item">&lt;a class="menu__link" href="#">Пункт списка (выпадает &lt;code>ul&lt;/code>)&lt;/a>&lt;/li></code>
+            <code>    &lt;/ul></code>
+            <code>  &lt;/div></code>
+            <code>  </code>
+            <code>  &lt;div class="dropdown"></code>
+            <code>    &lt;button class="dropdown__toggler  btn" id="dropdown-demo-5" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></code>
+            <code>      Выпадает список вверх от пр. края</code>
+            <code>    &lt;/button></code>
+            <code>    &lt;ul class="dropdown__menu  dropdown__menu--up  dropdown__menu--right  menu" aria-labelledby="dropdown-demo-5"></code>
+            <code>      &lt;li class="menu__item">&lt;a class="menu__link" href="#">Пункт списка (выпадает &lt;code>ul&lt;/code>)&lt;/a>&lt;/li></code>
+            <code>    &lt;/ul></code>
+            <code>  &lt;/div></code>
+          </pre>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="blocks-library__item" id="field-text" data-name=".field-text">
+
+      <h2 class="blocks-library__item-title">Текстовое поле формы</h2>
+
+      <label class="field-text">
+        <span class="field-text__name">Текстовое поле</span>
+        <span class="field-text__input-wrap">
+          <input class="field-text__input" type="text" placeholder="input[type=text]">
+          <span class="field-text__help-text">Обёртка — <code>label</code>. Можно сделать обёртку <code>div</code>, но тогда, возможно, захочется элемент <code>.field-text__name</code> делать <code>label</code> и связывать его с полем по <code>id</code> поля.</span>
+        </span>
+      </label>
+
+      <div class="field-text">
+        <label class="field-text__name" for="demo-field">Текстовое поле</label>
+        <span class="field-text__input-wrap">
+          <input class="field-text__input" type="text" id="demo-field" placeholder="input[type=text]">
+          <span class="field-text__help-text">Обёртка — <code>div</code>. Внутри <code>label</code></span>
+        </span>
+      </div>
+
+      <label class="field-text">
+        <span class="field-text__name">Многострочное текстовое поле</span>
+        <span class="field-text__input-wrap">
+          <textarea class="field-text__input" placeholder="textarea"></textarea>
+          <span class="field-text__help-text">Обёртка — <code>label</code>.</span>
+        </span>
+      </label>
+
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <label class="field-text">
+            <span class="field-text__name">Число</span>
+            <span class="field-text__input-wrap">
+              <input class="field-text__input" type="number" placeholder="input[type=number]">
+              <span class="field-text__help-text"></span>
+            </span>
+          </label>
+          <label class="field-text">
+            <span class="field-text__name">Дата</span>
+            <span class="field-text__input-wrap">
+              <input class="field-text__input" type="date">
+              <span class="field-text__help-text"></span>
+            </span>
+          </label>
+          <label class="field-text">
+            <span class="field-text__name">Время</span>
+            <span class="field-text__input-wrap">
+              <input class="field-text__input" type="time">
+              <span class="field-text__help-text"></span>
+            </span>
+          </label>
+          <label class="field-text">
+            <span class="field-text__name">Поиск</span>
+            <span class="field-text__input-wrap">
+              <input class="field-text__input" type="search" placeholder="input[type=search]">
+              <span class="field-text__help-text"></span>
+            </span>
+          </label>
+          <pre class="code">
+            <code>&lt;label class="field-text"></code>
+            <code>  &lt;span class="field-text__name">...&lt;/span></code>
+            <code>  &lt;span class="field-text__input-wrap"></code>
+            <code>    &lt;input class="field-text__input" type="text" placeholder=""></code>
+            <code>    &lt;span class="field-text__help-text">...&lt;/span></code>
+            <code>  &lt;/span></code>
+            <code>&lt;/label></code>
+            <code> </code>
+            <code>&lt;div class="field-text"></code>
+            <code>  &lt;label class="field-text__name" for="demo-field">...&lt;/label></code>
+            <code>  &lt;span class="field-text__input-wrap"></code>
+            <code>    &lt;input class="field-text__input" type="text" id="demo-field" placeholder=""></code>
+            <code>    &lt;span class="field-text__help-text">...&lt;/span></code>
+            <code>  &lt;/span></code>
+            <code>&lt;/div></code>
+            <code> </code>
+            <code>&lt;label class="field-text"></code>
+            <code>  &lt;span class="field-text__name">...&lt;/span></code>
+            <code>  &lt;span class="field-text__input-wrap"></code>
+            <code>    &lt;textarea class="field-text__input" placeholder="">&lt;/textarea></code>
+            <code>    &lt;span class="field-text__help-text">...&lt;/span></code>
+            <code>  &lt;/span></code>
+            <code>&lt;/label></code>
+          </pre>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="blocks-library__item" id="field-checkbox" data-name=".field-checkbox">
+
+      <h2 class="blocks-library__item-title">Флажки</h2>
+
+      <p>В стилевом файле есть закомментированные фрагменты для замены нативного элемента своим (svg).</p>
+
+      <div class="field-checkbox">
+        <label class="field-checkbox__name">
+          <input class="field-checkbox__input" type="checkbox" checked>
+          <span class="field-checkbox__name-text">Одинокий чекбокс такой одинокий, но с длинным... текстом внутри label-а. Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Жизни, свое рыбного решила. Точках семантика, решила космос переписывается толку безопасную журчит рыбными, рекламных несколько осталось свой! Знаках, дороге грамматики.</span>
+        </label>
+      </div>
+
+      <div class="field-checkbox">
+        <div class="field-checkbox__title">Необязательный общий заголовок</div>
+        <div class="field-checkbox__input-wrap">
+          <label class="field-checkbox__name">
+            <input class="field-checkbox__input" type="checkbox" checked>
+            <span class="field-checkbox__name-text">Текст у флажка</span>
+          </label>
+          <div class="field-checkbox__help-text-wrap">
+            <div class="field-checkbox__help-text">Пояснение не обязательно.</div>
+          </div>
+        </div>
+        <div class="field-checkbox__input-wrap">
+          <label class="field-checkbox__name">
+            <input class="field-checkbox__input" type="checkbox">
+            <span class="field-checkbox__name-text">Текст у флажка</span>
+          </label>
+        </div>
+        <div class="field-checkbox__input-wrap">
+          <label class="field-checkbox__name">
+            <input class="field-checkbox__input" type="checkbox">
+            <span class="field-checkbox__name-text">Текст у флажка</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre class="code">
+            <code>&lt;div class="field-checkbox"></code>
+            <code>  &lt;label class="field-checkbox__name"></code>
+            <code>    &lt;input class="field-checkbox__input" type="checkbox" checked></code>
+            <code>    &lt;span class="field-checkbox__name-text">Одинокий чекбокс такой одинокий, но с длинным... текстом внутри label-а. Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Жизни, свое рыбного решила. Точках семантика, решила космос переписывается толку безопасную журчит рыбными, рекламных несколько осталось свой! Знаках, дороге грамматики.&lt;/span></code>
+            <code>  &lt;/label></code>
+            <code>&lt;/div></code>
+            <code> </code>
+            <code>&lt;div class="field-checkbox"></code>
+            <code>  &lt;div class="field-checkbox__title">Необязательный общий заголовок&lt;/div></code>
+            <code>  &lt;div class="field-checkbox__input-wrap"></code>
+            <code>    &lt;label class="field-checkbox__name"></code>
+            <code>      &lt;input class="field-checkbox__input" type="checkbox" checked></code>
+            <code>      &lt;span class="field-checkbox__name-text">Текст у флажка&lt;/span></code>
+            <code>    &lt;/label></code>
+            <code>    &lt;div class="field-checkbox__help-text-wrap"></code>
+            <code>      &lt;div class="field-checkbox__help-text">Пояснение не обязательно.&lt;/div></code>
+            <code>    &lt;/div></code>
+            <code>  &lt;/div></code>
+            <code>  &lt;div class="field-checkbox__input-wrap"></code>
+            <code>    &lt;label class="field-checkbox__name"></code>
+            <code>      &lt;input class="field-checkbox__input" type="checkbox"></code>
+            <code>      &lt;span class="field-checkbox__name-text">Текст у флажка&lt;/span></code>
+            <code>    &lt;/label></code>
+            <code>  &lt;/div></code>
+            <code>  &lt;div class="field-checkbox__input-wrap"></code>
+            <code>    &lt;label class="field-checkbox__name"></code>
+            <code>      &lt;input class="field-checkbox__input" type="checkbox"></code>
+            <code>      &lt;span class="field-checkbox__name-text">Текст у флажка&lt;/span></code>
+            <code>    &lt;/label></code>
+            <code>  &lt;/div></code>
+            <code>&lt;/div></code>
+          </pre>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="blocks-library__item" id="field-radio" data-name=".field-radio">
+
+      <h2 class="blocks-library__item-title">Радиокнопки</h2>
+
+      <p>В стилевом файле есть закомментированные фрагменты для замены нативного элемента своим (svg).</p>
+
+      <div class="field-radio">
+        <label class="field-radio__name">
+          <input class="field-radio__input" type="radio" checked>
+          <span class="field-radio__name-text">Одинокая радиокнопка такой одинокий, но с длинным... текстом внутри label-а. Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Жизни, свое рыбного решила. Точках семантика, решила космос переписывается толку безопасную журчит рыбными, рекламных несколько осталось свой! Знаках, дороге грамматики.</span>
+        </label>
+      </div>
+
+      <div class="field-radio">
+        <div class="field-radio__title">Необязательный общий заголовок</div>
+        <div class="field-radio__input-wrap">
+          <label class="field-radio__name">
+            <input class="field-radio__input" type="radio" name="demo-radio" checked>
+            <span class="field-radio__name-text">Текст у радиокнопки</span>
+          </label>
+          <div class="field-radio__help-text-wrap">
+            <div class="field-radio__help-text">Пояснение не обязательно.</div>
+          </div>
+        </div>
+        <div class="field-radio__input-wrap">
+          <label class="field-radio__name">
+            <input class="field-radio__input" type="radio" name="demo-radio">
+            <span class="field-radio__name-text">Текст у радиокнопки</span>
+          </label>
+        </div>
+        <div class="field-radio__input-wrap">
+          <label class="field-radio__name">
+            <input class="field-radio__input" type="radio" name="demo-radio">
+            <span class="field-radio__name-text">Текст у радиокнопки</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre class="code">
+            <code>&lt;div class="field-radio"></code>
+            <code>  &lt;label class="field-radio__name"></code>
+            <code>    &lt;input class="field-radio__input" type="radio" checked></code>
+            <code>    &lt;span class="field-radio__name-text">Одинокая радиокнопка такой одинокий, но с длинным... текстом внутри label-а. Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Жизни, свое рыбного решила. Точках семантика, решила космос переписывается толку безопасную журчит рыбными, рекламных несколько осталось свой! Знаках, дороге грамматики.&lt;/span></code>
+            <code>  &lt;/label></code>
+            <code>&lt;/div></code>
+            <code> </code>
+            <code>&lt;div class="field-radio"></code>
+            <code>  &lt;div class="field-radio__title">Необязательный общий заголовок&lt;/div></code>
+            <code>  &lt;div class="field-radio__input-wrap"></code>
+            <code>    &lt;label class="field-radio__name"></code>
+            <code>      &lt;input class="field-radio__input" type="radio" name="demo-radio" checked></code>
+            <code>      &lt;span class="field-radio__name-text">Текст у радиокнопки&lt;/span></code>
+            <code>    &lt;/label></code>
+            <code>    &lt;div class="field-radio__help-text-wrap"></code>
+            <code>      &lt;div class="field-radio__help-text">Пояснение не обязательно.&lt;/div></code>
+            <code>    &lt;/div></code>
+            <code>  &lt;/div></code>
+            <code>  &lt;div class="field-radio__input-wrap"></code>
+            <code>    &lt;label class="field-radio__name"></code>
+            <code>      &lt;input class="field-radio__input" type="radio" name="demo-radio"></code>
+            <code>      &lt;span class="field-radio__name-text">Текст у радиокнопки&lt;/span></code>
+            <code>    &lt;/label></code>
+            <code>  &lt;/div></code>
+            <code>  &lt;div class="field-radio__input-wrap"></code>
+            <code>    &lt;label class="field-radio__name"></code>
+            <code>      &lt;input class="field-radio__input" type="radio" name="demo-radio"></code>
+            <code>      &lt;span class="field-radio__name-text">Текст у радиокнопки&lt;/span></code>
+            <code>    &lt;/label></code>
+            <code>  &lt;/div></code>
+            <code>&lt;/div></code>
+          </pre>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="blocks-library__item" id="field-toggler" data-name=".field-toggler">
+
+      <h2 class="blocks-library__item-title">Переключатели</h2>
+
+      <div class="field-toggler">
+        <div class="field-toggler__title">Переключатели-флажки</div>
+        <div class="field-toggler__input-wrap">
+          <label class="field-toggler__name">
+            <input class="field-toggler__input" type="checkbox">
+            <span class="field-toggler__name-text">Использовать</span>
+          </label>
+          <div class="field-toggler__help-text">Графика не используется, всё нарисовано CSS-ом.</div>
+        </div>
+      </div>
+
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre class="code">
+            <code>&lt;div class="field-toggler"></code>
+            <code>  &lt;div class="field-toggler__title">Переключатели-флажки&lt;/div></code>
+            <code>  &lt;div class="field-toggler__input-wrap"></code>
+            <code>    &lt;label class="field-toggler__name"></code>
+            <code>      &lt;input class="field-toggler__input" type="checkbox"></code>
+            <code>      &lt;span class="field-toggler__name-text">Использовать&lt;/span></code>
+            <code>    &lt;/label></code>
+            <code>    &lt;div class="field-toggler__help-text">Графика не используется, всё нарисовано CSS-ом.&lt;/div></code>
+            <code>  &lt;/div></code>
+            <code>&lt;/div></code>
+          </pre>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="blocks-library__item" id="field-file" data-name=".field-file">
+
+      <h2 class="blocks-library__item-title">Файл</h2>
+
+      <div class="field-file">
+        <div class="field-file__name">Выбор файлов</div>
+        <label class="field-file__input-wrap">
+          <input class="field-file__input" type="file" data-multiple-caption="файлов выбрано: {count}" multiple>
+          <div class="field-file__name-text" data-button-text="Выбрать файл(ы)">Ничего не выбрано</div>
+          <div class="field-file__help-text">Отображение выбранного файла/файлов требует js. Стилизация — не требует.</div>
+        </label>
+      </div>
+
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre class="code">
+            <code>&lt;div class="field-actions"></code>
+            <code>  &lt;div class="field-actions__text">* — обязательные поля&lt;/div></code>
+            <code>  &lt;button class="btn">Отправить&lt;/button></code>
+            <code>&lt;/div></code>
+          </pre>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="blocks-library__item" id="field-range" data-name=".field-range">
+
+      <h2 class="blocks-library__item-title">Range</h2>
+
+      <div class="field-range">
+        <div class="field-range__name">Range</div>
+        <div class="field-range__input-wrap">
+          <input class="field-range__input" type="range" min="1" max="100" step="1" value="70">
+          <div class="field-range__help-text"><code>min="1" max="100" step="1" value="70"</code>, стилизован без js.</div>
+        </div>
+      </div>
+
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre class="code">
+            <code>&lt;div class="field-range"></code>
+            <code>  &lt;div class="field-range__name">Range&lt;/div></code>
+            <code>  &lt;div class="field-range__input-wrap"></code>
+            <code>    &lt;input class="field-range__input" type="range" min="1" max="100" step="1" value="70"></code>
+            <code>    &lt;div class="field-range__help-text">&lt;code>min="1" max="100" step="1" value="70"&lt;/code>&lt;/div></code>
+            <code>  &lt;/div></code>
+            <code>&lt;/div></code>
+          </pre>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="blocks-library__item" id="field-select" data-name=".field-select">
+
+      <h2 class="blocks-library__item-title">Селект</h2>
+
+      <label class="field-select">
+        <div class="field-select__name">Селект</div>
+        <div class="field-select__select-wrap">
+          <select class="field-select__select">
+            <optgroup label="Группа">
+              <option>Значение 1</option>
+              <option>Значение 2</option>
+              <option>Значение 3</option>
+            </optgroup>
+            <option>Значение 10</option>
+          </select>
+          <div class="field-select__help-text">Обёртка — <code>&lt;label&gt;</code>.</div>
+        </div>
+      </label>
+
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre class="code">
+            <code>&lt;label class="field-select"></code>
+            <code>  &lt;div class="field-select__name">Селект&lt;/div></code>
+            <code>  &lt;div class="field-select__select-wrap"></code>
+            <code>    &lt;select class="field-select__select"></code>
+            <code>      &lt;optgroup label="Группа"></code>
+            <code>        &lt;option>Значение 1&lt;/option></code>
+            <code>        &lt;option>Значение 2&lt;/option></code>
+            <code>        &lt;option>Значение 3&lt;/option></code>
+            <code>      &lt;/optgroup></code>
+            <code>      &lt;option>Значение 10&lt;/option></code>
+            <code>    &lt;/select></code>
+            <code>    &lt;div class="field-select__help-text">Обёртка — &lt;code>&lt;label&gt;&lt;/code>.&lt;/div></code>
+            <code>  &lt;/div></code>
+            <code>&lt;/label></code>
+          </pre>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="blocks-library__item" id="field-actions" data-name=".field-actions">
+
+      <h2 class="blocks-library__item-title">Блок отправки формы</h2>
+
+      <div class="field-actions">
+        <div class="field-actions__text">* — обязательные поля</div>
+        <button class="btn">Отправить</button>
+      </div>
+
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre class="code">
+            <code>&lt;div class="field-actions"></code>
+            <code>  &lt;div class="field-actions__text">* — обязательные поля&lt;/div></code>
+            <code>  &lt;button class="btn">Отправить&lt;/button></code>
+            <code>&lt;/div></code>
+          </pre>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="blocks-library__item" id="form" data-name=".form">
+
+      <h2 class="blocks-library__item-title">Форма</h2>
+
+      <form action="https://httpbin.org/post" class="form" method="post">
+        <fieldset>
+          <legend>Название формы</legend>
+          <label class="field-text">
+            <span class="field-text__name">Текстовое поле</span>
+            <span class="field-text__input-wrap">
+              <input class="field-text__input" type="text" placeholder="input[type=text]">
+              <span class="field-text__help-text">Обёртка — <code>label</code>. Можно сделать обёртку <code>div</code>, но тогда, возможно, захочется элемент <code>.field-text__name</code> делать <code>label</code> и связывать его с полем по <code>id</code> поля.</span>
+            </span>
+          </label>
+          <div class="field-checkbox">
+            <label class="field-checkbox__name">
+              <input class="field-checkbox__input" type="checkbox" checked>
+              <span class="field-checkbox__name-text">Одинокий чекбокс</span>
+            </label>
+          </div>
+          <label class="field-text">
+            <span class="field-text__name">Текстовое поле</span>
+            <span class="field-text__input-wrap">
+              <input class="field-text__input" type="text" placeholder="input[type=text]">
+              <span class="field-text__help-text">Обёртка — <code>label</code>. Можно сделать обёртку <code>div</code>, но тогда, возможно, захочется элемент <code>.field-text__name</code> делать <code>label</code> и связывать его с полем по <code>id</code> поля.</span>
+            </span>
+          </label>
+          <div class="field-actions">
+            <div class="field-actions__text">* — обязательные поля</div>
+            <button class="btn">Отправить</button>
+          </div>
+        </fieldset>
+      </form>
+
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre class="code">
+            <code>&lt;form action="https://httpbin.org/post" class="form" method="post"></code>
+            <code>  &lt;fieldset></code>
+            <code>    &lt;legend>Название формы&lt;/legend></code>
+            <code>    &lt;label class="field-text">...&lt;/label></code>
+            <code>    &lt;div class="field-actions">...&lt;/div></code>
+            <code>  &lt;/fieldset></code>
+            <code>&lt;/form></code>
+          </pre>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="blocks-library__item" id="label" data-name=".label">
+
+      <h2 class="blocks-library__item-title">Лейблы</h2>
+
+      <div class="label">Метка-<code>div</code></div>
+      <span class="label">Метка-<code>span</code></span>
+      <a href="" class="label">Метка-<code>a</code></a>
+
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre class="code">
+            <code>&lt;div class="label">Метка-&lt;code>div&lt;/code>&lt;/div></code>
+            <code>&lt;span class="label">Метка-&lt;code>span&lt;/code>&lt;/span></code>
+            <code>&lt;a href="" class="label">Метка-&lt;code>a&lt;/code>&lt;/a></code>
+          </pre>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="blocks-library__item" id="loader" data-name=".loader">
+
+      <h2 class="blocks-library__item-title">Загрузчик</h2>
+
+      <p>
+        <span class="loader"></span>
+      </p>
+
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre class="code">
+            <code>&lt;span class="loader">&lt;/span></code>
+          </pre>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="blocks-library__item" id="table" data-name=".table">
+
+      <h2 class="blocks-library__item-title">Таблицы</h2>
+
+      <div class="table-mobile-scroll">
+        <table class="table">
+          <caption>Таблица как БЭМ-блок, нет прописанных thead, tbody, tfoot</caption>
+          <tbody>
+            <tr>
+              <th>Имя</th>
+              <th>Фамилия</th>
+              <th>Мыло</th>
+              <th>Статус</th>
+              <th>Политическая ориентация</th>
+            </tr>
+            <tr>
+              <td>Иннокентий</td>
+              <td>Иванов</td>
+              <td>Хозяйственное</td>
+              <td>Администратор</td>
+              <td>«ВСЕГДА!»</td>
+            </tr>
+            <tr>
+              <td>Васисуалий</td>
+              <td>Римский-Корсаков</td>
+              <td>Душистое</td>
+              <td>Пользователь</td>
+              <td>Нижняя</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="table-mobile-scroll">
+        <table class="table">
+          <caption>Таблица как БЭМ-блок, есть thead, tbody, tfoot и у них есть классы</caption>
+          <thead class="table__header">
+            <tr>
+              <th>Имя</th>
+              <th>Фамилия</th>
+              <th>Мыло</th>
+              <th>Статус</th>
+              <th>Политическая ориентация</th>
+            </tr>
+          </thead>
+          <tbody class="table__body">
+            <tr>
+              <td>Иннокентий</td>
+              <td>Иванов</td>
+              <td>Хозяйственное</td>
+              <td>Администратор</td>
+              <td>«ВСЕГДА!»</td>
+            </tr>
+            <tr>
+              <td>Васисуалий</td>
+              <td>Римский-Корсаков</td>
+              <td>Душистое</td>
+              <td>Пользователь</td>
+              <td>Нижняя</td>
+            </tr>
+            <tr>
+              <td>Ктулху</td>
+              <td>Ктулху</td>
+              <td>user-name@ad.ru</td>
+              <td>Патриарх</td>
+              <td>Неизвестно</td>
+            </tr>
+          </tbody>
+          <tfoot class="table__footer">
+            <tr>
+              <td colspan="5">Итого: 18 попугаев, 15 длинных червяков, надувная женщина и украденный из церкви огарок дешевой свечи.</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre class="code">
+            <code>&lt;table class="table"></code>
+            <code>  &lt;caption>Таблица&lt;/caption></code>
+            <code>  &lt;thead class="table__header"></code>
+            <code>    &lt;tr></code>
+            <code>      &lt;th>Имя&lt;/th></code>
+            <code>      &lt;th>Фамилия&lt;/th></code>
+            <code>    &lt;/tr></code>
+            <code>  &lt;/thead></code>
+            <code>  &lt;tbody class="table__body"></code>
+            <code>    &lt;tr></code>
+            <code>      &lt;td>Иннокентий&lt;/td></code>
+            <code>      &lt;td>Иванов&lt;/td></code>
+            <code>    &lt;/tr></code>
+            <code>    &lt;tr></code>
+            <code>      &lt;td>Васисуалий&lt;/td></code>
+            <code>      &lt;td>Римский-Корсаков&lt;/td></code>
+            <code>    &lt;/tr></code>
+            <code>    &lt;tr></code>
+            <code>      &lt;td>Ктулху&lt;/td></code>
+            <code>      &lt;td>Ктулху&lt;/td></code>
+            <code>    &lt;/tr></code>
+            <code>  &lt;/tbody></code>
+            <code>  &lt;tfoot class="table__footer"></code>
+            <code>    &lt;tr></code>
+            <code>      &lt;td colspan="2">Итого:&lt;/td></code>
+            <code>    &lt;/tr></code>
+            <code>  &lt;/tfoot></code>
+            <code>&lt;/table></code>
+          </pre>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="blocks-library__item" id="table-mobile-scroll" data-name=".table-mobile-scroll">
+
+      <h2 class="blocks-library__item-title">Таблицы со скроллом на малых вьюпортах</h2>
+
+
+
+      <div class="table-mobile-scroll">
+        <table class="table">
+          <tbody>
+            <tr>
+              <th>Имя</th>
+              <th>Фамилия</th>
+              <th>Мыло</th>
+              <th>Статус</th>
+              <th>Политическая ориентация</th>
+            </tr>
+            <tr>
+              <td>Иннокентий</td>
+              <td>Иванов</td>
+              <td>Хозяйственное</td>
+              <td>Администратор</td>
+              <td>«ВСЕГДА!»</td>
+            </tr>
+            <tr>
+              <td>Васисуалий</td>
+              <td>Римский-Корсаков</td>
+              <td>Душистое</td>
+              <td>Пользователь</td>
+              <td>Нижняя</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre class="code">
+            <code>&lt;div class="table-mobile-scroll"></code>
+            <code>  &lt;table class="table"></code>
+            <code>    ...</code>
+            <code>  &lt;/table></code>
+            <code>&lt;/div></code>
+          </pre>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="blocks-library__item" id="table-responsive" data-name=".table-responsive">
+
+      <h2 class="blocks-library__item-title">Адаптивность для таблиц</h2>
+
+      <p class="alert  alert--warning">Требует добавления атрибутов <code>data-label</code> для каждой ячейки.</p>
+
+      <table class="table-responsive  table">
+        <thead>
+          <tr>
+            <th>Имя и фамилия</th>
+            <th>Тип мироощущения</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Имя и фамилия">Анатоле Вассерман</td>
+            <td data-label="Тип мироощущения">Девственность</td>
+          </tr>
+          <tr>
+            <td data-label="Имя и фамилия">Джакомо Казанова</td>
+            <td data-label="Тип мироощущения">Небольшая распущенность с лёгкой примесью леденящих душу извращений, чудовищной лжи и имитатора известного органа, обитого телячьей кожей.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre class="code">
+            <code>&lt;table class="table-responsive  table"></code>
+            <code>  &lt;thead></code>
+            <code>    &lt;tr></code>
+            <code>      &lt;th>Имя и фамилия&lt;/th></code>
+            <code>      &lt;th>Тип мироощущения&lt;/th></code>
+            <code>    &lt;/tr></code>
+            <code>  &lt;/thead></code>
+            <code>  &lt;tbody></code>
+            <code>    &lt;tr></code>
+            <code>      &lt;td data-label="Имя и фамилия">Анатоле Вассерман&lt;/td></code>
+            <code>      &lt;td data-label="Тип мироощущения">Девственность&lt;/td></code>
+            <code>    &lt;/tr></code>
+            <code>    &lt;tr></code>
+            <code>      &lt;td data-label="Имя и фамилия">Джакомо Казанова&lt;/td></code>
+            <code>      &lt;td data-label="Тип мироощущения">Небольшая распущенность с лёгкой примесью леденящих душу извращений, чудовищной лжи.&lt;/td></code>
+            <code>    &lt;/tr></code>
+            <code>  &lt;/tbody></code>
+            <code>&lt;/table></code>
+          </pre>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <style>
+    .components-demo {
+      padding: 1em;
+      margin: auto;
+      max-width: 1200px;
+      font-family: sans-serif;
+    }
+  </style>
+
+  <a href="#" class="to-top" id="toTop">↑</a>
+  <script src="js/script.min.js"></script>
+
+</body>
+</html>

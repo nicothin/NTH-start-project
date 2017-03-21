@@ -1,34 +1,50 @@
 <!DOCTYPE html>
-<html class="no-js" lang="ru">
+<html class="no-js  page" lang="ru">
 
 <head>
-<meta charset="utf-8">
-<title>Заголовок</title>
-<meta name="description" content="">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title>NTH start project</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link href="css/style.min.css" rel="stylesheet" media="screen">
+  <link href="css/style.min.css" rel="stylesheet" media="screen">
 
-<script>
-  // Маркер работающего javascript
-  document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
-</script>
+  <script>
+    // Маркер работающего javascript
+    document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+    document.addEventListener('DOMContentLoaded', function(){
+      if (window.isMobile !== undefined) {
+        // console.log(isMobile);
+        if(isMobile.any) {
+          var rootClasses = ' is-mobile';
+          for (key in isMobile) {
+            if(typeof isMobile[key] === 'boolean' && isMobile[key] && key !== 'any') rootClasses += ' is-mobile--'+key;
+            if(typeof isMobile[key] === 'object' && key !== 'other') {
+              for (type in isMobile[key]) {
+                if(isMobile[key][type]) rootClasses += ' is-mobile--'+key+'-'+type;
+              }
+            }
+          }
+          document.documentElement.className += rootClasses;
+        }
+      }
+      else {
+        console.log('Классы для мобильных не добавлены: в сборке отсутствует isMobile.js');
+      }
+    });
+
+  </script>
+
+  <link href="img/favicon.ico" rel="icon" type="image/x-icon">
 
 </head>
 
 <body>
-<header class="page-header">
-  page-header
-</header>
 
+  <h1>NTH start project</h1>
 
-<h1>Содержимое</h1>
-<footer class="page-footer">
-  page-footer
-</footer>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="js/jquery.js"><\/script>')</script>
-<script src="js/script.min.js"></script>
+  <p><a href="blocks-demo.html">Страница с демкой компонентов</a></p>
+  <script src="js/script.min.js"></script>
 
 </body>
 </html>
