@@ -1,0 +1,31 @@
+// В этом файле должны быть стили только для БЭМ-блока loader, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, $media-условий...
+// Не пишите здесь другие селекторы.
+
+.loader {
+  display: inline-block;
+
+  &:before {
+    content: '';
+    display: block;
+    width: 1.2em;
+    height: 1.2em;
+    border: 3px solid $gray-lightest;
+    border-top: 3px solid $gray-lighter;
+    border-radius: 50%;
+    animation: loader-rotate 1s linear infinite;
+  }
+}
+
+
+
+@keyframes loader-rotate {
+
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
