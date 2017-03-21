@@ -28,6 +28,10 @@
       <td><code>npm run deploy</code></td>
       <td>Сборка проекта без карт кода и отправка содержимого папки сборки на GH-pages (для корректного сообщения адреса просмотра введите его в <code>./package.json</code>)</td>
     </tr>
+    <tr>
+      <td><code>npm run test:style</code></td>
+      <td>Проверка стилевой составляющей проекта <a href="https://stylelint.io/">stylelint</a></td>
+    </tr>
   </tbody>
 </table>
 

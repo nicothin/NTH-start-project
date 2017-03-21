@@ -1,20 +1,42 @@
 {
+  "syntax": "scss",
   "plugins": [
     "stylelint-scss",
-    "stylelint-declaration-use-variable"
   ],
   # http://stylelint.io/user-guide/rules/
   "rules": {
-    # "sh-waqar/declaration-use-variable": [["z-index"], {
-    #   "message": "В свойстве этом переменная необходима"
-    # }],
+    "at-else-closing-brace-newline-after": ["always-last-in-chain", {
+      "message": "После } перенос строки следовать должен"
+    }],
+    "at-if-closing-brace-newline-after": ["always-last-in-chain", {
+      "message": "После } перенос строки следовать должен"
+    }],
+    "dollar-variable-colon-newline-after": ["always-multi-line", {
+      "message": "Перенос строки в значении переменной добавь"
+    }],
+    "dollar-variable-colon-space-after": ["always", {
+      "message": "Пробел после двоеточия добавь"
+    }],
+    "dollar-variable-colon-space-before": ["never", {
+      "message": "Пробел перед двоеточием убери"
+    }],
+    "dollar-variable-pattern": ["/[a-zA-z]/", {
+      "message": "Недопустимые символы в имени переменной"
+    }],
+    "double-slash-comment-whitespace-inside": ["always", {
+      "message": "Пробел после // следовать должен"
+    }],
+    "declaration-nested-properties": ["never", {
+      "message": "Не вкладывай свойства, используй Emmet"
+    }],
+    "operator-no-unspaced": [true, {
+      "message": "Оператор пробелами отделяй"
+    }],
+
     "color-hex-case": ["lower", {
       "message": "HEX цвета буквами строчными указывать следует",
       "severity": "warning"
     }],
-    # "color-hex-length": ["long", {
-    #   "message": "HEX цвета полностью писать нужно.",
-    # }],
     "color-named": ["never", {
       "message": "Цвета ключевыми словами нельзя писать"
     }],
@@ -28,9 +50,6 @@
       "message": "Плотность — цифрой: https://goo.gl/58eKi7",
       ignore: ["relative"]
     }],
-    # "function-blacklist": [["scale", "rgba", "linear-gradient"], {
-    #   "message": "Запрещено функцию эту использовать."
-    # }],
     "function-calc-no-unspaced-operator": [true, {
       "message": "Для calc() пробелы вокруг операторов нужны"
     }],
@@ -49,23 +68,14 @@
     "function-name-case": ["lower", {
       "message": "Функций имена строчными буквами набирать следует"
     }],
-    # "function-parentheses-newline-inside": ["never-multi-line", {
-    #   "message": "Внутри скобок () не ставь переносы"
-    # }],
-    # "function-url-data-uris": ["never", {
-    #   "message": "Нельзя использовать data URI"
-    # }],
-    # "function-url-quotes": ["always", {
-    #   "message": "Всегда нужно ставить кавычки для url"
-    # }],
     "function-whitespace-after": ["always", {
       "message": "Всегда нужны пробелы между функциями"
     }],
     "number-leading-zero": ["always", {
       "message": "Нуль перед точкой явно указать следует"
     }],
-    "number-max-precision": [8, {
-      "message": "Максимум 8 символов после точки в десятичной дроби"
+    "number-max-precision": [6, {
+      "message": "Максимум 6 символов после точки в десятичной дроби"
     }],
     "number-no-trailing-zeros": [true, {
       "message": "Лишний (необязательный) нуль в дроби"
@@ -79,25 +89,15 @@
     "length-zero-no-unit": [true, {
       "message": "Нулю не нужны измерения единицы"
     }],
-    "time-no-imperceptible": [true, {
+    "time-min-milliseconds": [100, {
       "message": "Время менее 100мс — нет смысла использовать"
     }],
-    # "unit-blacklist": [["px", "deg"], {
-    #   "message": "Запрещенные единицы измерения"
-    # }],
     "unit-case": ["lower", {
       "message": "Измерения единицы буквами строчными надобно"
     }],
     "unit-no-unknown": [true, {
       "message": "Нет единиц измерения таких"
     }],
-    # "unit-whitelist": [["rem", "ms", "deg"], {
-    #   "message": "Единицы измерения не соответствуют белому списку"
-    # }],
-    # Реагирует на названия шрифтов, в топку
-    # "value-keyword-case": ["lower", {
-    #   "message": "Свойств значение буквами строчными быть должны"
-    # }],
     "value-no-vendor-prefix": [true, {
       "message": "Вендорные префиксы использовать не следует"
     }],
@@ -135,7 +135,7 @@
       "message": "Перед знаком восклицательным пробел оставить хочешь ты"
     }],
     "declaration-colon-newline-after": ["always-multi-line", {
-      "message": "Для свойств множественных каждое — на строке свой быть должно"
+      "message": "Для свойств множественных каждое — на строке своей быть должно"
     }],
     "declaration-colon-space-after": ["always", {
       "message": "Правило задавая, один пробел после двоеточия ставь"
@@ -143,45 +143,18 @@
     "declaration-colon-space-before": ["never", {
       "message": "Правило задавая, пробел перед двоеточием не используй"
     }],
-    "declaration-empty-line-before": ["never", {
-      "message": "Пустые строки между правилами убрать следует"
+    "declaration-no-important": [true, {
+      "message": "!important с опаской применять следует",
+      "severity": "warning"
     }],
-    # "declaration-no-important": [true, {
-    #   "message": "!important с опаской применять следует",
-    #   "severity": "warning"
-    # }],
-    # "declaration-property-unit-blacklist": [{
-    #   "font-size": ["em", "px"],
-    #   "/^animation/": ["s"]
-    # }, {
-    #   "message": "Для этого свойства данные единицы измерения в чёрном списке"
-    # }],
-    # "declaration-property-unit-whitelist": [{
-    #   "font-size": ["em", "px"],
-    #   "/^animation/": ["s"]
-    # }, {
-    #   "message": "Для этого свойства данные единицы измерения не в белом списке"
-    # }],
-    # "declaration-property-value-blacklist": [{
-    #   "transform": ["/scale3d/", "/rotate3d/", "/translate3d/"],
-    #   "position": ["fixed"],
-    #   "color": ["/^green/"]
-    #   "/^animation/": ["/ease/"]
-    # }, {
-    #   "message": "Это значение данного свойства в чёрном списке"
-    # }],
-    # "declaration-property-value-whitelist": [{
-    #   "transform": ["/scale/"],
-    #   "whitespace": ["nowrap"],
-    #   "/color/": ["/^green/"]
-    # }, {
-    #   "message": "Это значение данного свойства отсутствует в белом списке"
-    # }],
+    "declaration-property-unit-blacklist": [{
+        "font-size": ["pt"],
+        "/^animation/": ["ms"]
+      }, {
+      "message": "Для этого свойства данные единицы измерения в чёрном списке"
+    }],
     "declaration-block-no-duplicate-properties": [true, {
       "message": "Правила повторять не следует"
-    }],
-    "declaration-block-no-ignored-properties": [true, {
-      "message": "Правило это не сработает"
     }],
     "declaration-block-no-shorthand-property-overrides": [true, {
       "message": "Свойство это неочевидно перебивает другое для селектора этого"
@@ -207,10 +180,6 @@
     # "block-no-empty": [true, {
     #   "message": "Пустые блоки писать не следует"
     # }],
-    "block-no-single-line": [true, {
-      "message": "Селекторы строкой одной писать не следует",
-      "severity": "warning"
-    }],
     "block-opening-brace-newline-after": ["always", {
       "message": "После «{» перенос строки быть должен"
     }],
@@ -236,8 +205,7 @@
       "message": "Перед комбинатором в селекторе пробел нужен"
     }],
     "selector-no-id": [true, {
-      "message": "По ID джедай стилизовать не должен",
-      # "severity": "warning"
+      "message": "По ID джедай стилизовать не должен"
     }],
     "selector-max-compound-selectors": [3, {
       "message": "Селектор более чем 3-составной не хочешь ты",
@@ -246,7 +214,7 @@
     "selector-no-qualifying-type": [true, {
       "message": "Возможно, перенасыщенный селектор (использован селектор типа)",
       ignore: ["attribute"],
-      # "severity": "warning"
+      "severity": "warning"
     }],
     "selector-pseudo-class-case": ["lower", {
       "message": "Псевдоклассы набирать буквами строчными надо"
@@ -263,11 +231,8 @@
     "selector-pseudo-element-no-unknown": [true, {
       "message": "Псевдоэлемента такого на светлой строне силы нет"
     }],
-    "selector-root-no-composition": [true, {
-      "message": ":root всегда должен быть самостоятелен"
-    }],
     "selector-type-case": ["lower", {
-      "message": "Селкторы буквами строчными набирать следует"
+      "message": "Селекторы буквами строчными набирать следует"
     }],
     "selector-type-no-unknown": [true, {
       "message": "Селектора такого на светлой стороне силы нет"
@@ -287,12 +252,8 @@
     "selector-list-comma-space-before": ["never", {
       "message": "Перед запятой пробела быть не должно"
     }],
-    "rule-nested-empty-line-before": ["always", {
+    "rule-empty-line-before": ["always", {
       "message": "Перед селектором вложенным строку пустую оставь",
-      ignore: ["after-comment"]
-    }],
-    "rule-non-nested-empty-line-before": ["always", {
-      "message": "Между селекторами строку пустую оставь",
       ignore: ["after-comment"]
     }],
     "media-feature-colon-space-after": ["always", {
@@ -308,9 +269,6 @@
       "message": "Использовать вендорные префиксы не следует",
       "severity": "warning"
     }],
-    "media-feature-no-missing-punctuation": [true, {
-      "message": "Пунктуация в медиа нарушена в строке этой"
-    }],
     "media-feature-parentheses-space-inside": ["never", {
       "message": "Пробелы после «(» и перед «)» нельзя использовать"
     }],
@@ -324,22 +282,25 @@
       "message": "В чёрном списке @-правило это"
     }],
     "at-rule-empty-line-before": ["always", {
-      "message": "Перед @-правилами строку пустую оставь (кроме @import)",
-      ignoreAtRules: ["import"],
+      "message": "Перед @-правилами строку пустую оставь (кроме @import и @include)",
+      ignoreAtRules: ["import", "include"],
       ignore: ["after-comment"]
     }],
     "at-rule-name-case": ["lower", {
       "message": "@-правила буквами строчными набирать следует"
-    }],
-    "at-rule-name-newline-after": ["always-multi-line", {
-      "message": "Для @-правил переносов строк избегать следует"
     }],
     "at-rule-name-space-after": ["always", {
       "message": "После @-правила пробел ставить следует"
     }],
     "at-rule-no-unknown": [true, {
       "message": "Неизвестное @-правило",
-      ignoreAtRules: ["/^at-/"]
+      ignoreAtRules: [
+        "/^at-/",
+        "/^mixin/",
+        "/^include/",
+        "/^if/",
+        "/^else/",
+      ]
     }],
     "at-rule-no-vendor-prefix": [true, {
       "message": "Для @-правил вендорные префиксы использовать не следует"
@@ -355,10 +316,6 @@
     "comment-no-empty": [true, {
       "message": "Пустой коммент убрать нужно"
     }],
-    # Сейчас не работает или работает наоборот
-    # "comment-whitespace-inside": ["always", {
-    #   "message": "Коммент начинаться и заканчиваться пробелом должен"
-    # }],
     "comment-word-blacklist": [ [/((Х|х)+уй|(Х|х)уе|(Х|х)уё|(Б|б)ляд|(М|м)уда|(П|п)идо|(П|п)еди|(П|п)еде|(^|\s)+(Б|б)ля)/], {
       "message": "Комментарий херовый, при себе оставь его"
     }],
@@ -366,21 +323,15 @@
       "message": "Использовать пробела два для отступов должен ты"
     }],
     "max-empty-lines": [3, {
-      "message": "Максимум линий пустых допустимо — 3"
+      "message": "Максимум линий пустых допустимо: 3"
     }],
     "max-nesting-depth": [3, {
       "message": "Вложения боле 3 уровней — на тёмную сторону путь",
-      "ignore": ["at-rules-without-declaration-blocks"],
+      "ignore": ["blockless-at-rules"],
       "severity": "warning"
-    }],
-    "no-browser-hacks": [true, {
-      "message": "Браузерные хаки не используем мы"
     }],
     "no-duplicate-selectors": [true, {
       "message": "Селкторы дублировать не хочешь ты"
-    }],
-    "no-empty-source": [true, {
-      "message": "Пелевинскую пустоту в файлах не хочешь ты"
     }],
     "no-eol-whitespace": [true, {
       "message": "Пустые символы в конце строки. Используй https://goo.gl/Co2tZ8"
@@ -390,13 +341,6 @@
     }],
     "no-missing-end-of-source-newline": [true, {
       "message": "Файл пустой строкой кончаться должен: https://goo.gl/Co2tZ8"
-    }],
-    "no-descending-specificity": [true, {
-      "message": "Осторожно, выше по коду есть более специфичный селектор",
-      "severity": "warning"
-    }],
-    "selector-no-empty": [true, {
-      "message": "Пустой селектор не хочешь ты"
     }],
   }
 }

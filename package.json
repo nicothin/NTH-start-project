@@ -74,7 +74,7 @@
     }
   },
   "scripts": {
-    "test": "stylelint \"src/**/*.scss\" --syntax scss",
+    "test:style": "stylelint \"src/**/*.scss\" --syntax scss",
     "start": "gulp",
     "deploy": "cross-env NODE_ENV=production ./node_modules/.bin/gulp build && cross-env ./node_modules/.bin/gulp deploy",
     "build": "cross-env NODE_ENV=production npm start build"
@@ -120,7 +120,6 @@
     "postcss-import": "^9.1.0",
     "postcss-inline-svg": "^2.3.0",
     "stylelint": "^7.9.0",
-    "stylelint-declaration-use-variable": "^1.6.0",
     "stylelint-scss": "^1.4.3",
     "svg4everybody": "^2.1.7",
     "vinyl-buffer": "^1.0.0"

@@ -1,1 +1,2 @@
 # перечисление игнорируемых stylelint-ом файлов
+src/blocks/sprite-png/sprite-png.scss
