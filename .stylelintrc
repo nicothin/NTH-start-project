@@ -1,38 +1,7 @@
 {
   "syntax": "scss",
-  "plugins": [
-    "stylelint-scss",
-  ],
   # http://stylelint.io/user-guide/rules/
   "rules": {
-    "at-else-closing-brace-newline-after": ["always-last-in-chain", {
-      "message": "После } перенос строки следовать должен"
-    }],
-    "at-if-closing-brace-newline-after": ["always-last-in-chain", {
-      "message": "После } перенос строки следовать должен"
-    }],
-    "dollar-variable-colon-newline-after": ["always-multi-line", {
-      "message": "Перенос строки в значении переменной добавь"
-    }],
-    "dollar-variable-colon-space-after": ["always", {
-      "message": "Пробел после двоеточия добавь"
-    }],
-    "dollar-variable-colon-space-before": ["never", {
-      "message": "Пробел перед двоеточием убери"
-    }],
-    "dollar-variable-pattern": ["/[a-zA-z]/", {
-      "message": "Недопустимые символы в имени переменной"
-    }],
-    "double-slash-comment-whitespace-inside": ["always", {
-      "message": "Пробел после // следовать должен"
-    }],
-    "declaration-nested-properties": ["never", {
-      "message": "Не вкладывай свойства, используй Emmet"
-    }],
-    "operator-no-unspaced": [true, {
-      "message": "Оператор пробелами отделяй"
-    }],
-
     "color-hex-case": ["lower", {
       "message": "HEX цвета буквами строчными указывать следует",
       "severity": "warning"
