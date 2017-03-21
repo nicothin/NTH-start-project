@@ -1211,6 +1211,116 @@
 
     </section>
 
+    <section class="blocks-library__item" id="table" data-name=".table">
+
+      <h2 class="blocks-library__item-title">Таблицы</h2>
+
+      <table class="table">
+        <caption>Таблица как БЭМ-блок, нет прописанных thead, tbody, tfoot</caption>
+        <tbody>
+          <tr>
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Мыло</th>
+            <th>Статус</th>
+            <th>Политическая ориентация</th>
+          </tr>
+          <tr>
+            <td>Иннокентий</td>
+            <td>Барлаухенштицкен-Ламанческий</td>
+            <td>Хозяйственное</td>
+            <td>Администратор</td>
+            <td>«ВСЕГДА!»</td>
+          </tr>
+          <tr>
+            <td>Васисуалий</td>
+            <td>Пылепневмомешковыколачивателев</td>
+            <td>Душистое</td>
+            <td>Юзверь</td>
+            <td>Нижняя</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="table">
+        <caption>Таблица как БЭМ-блок, есть thead, tbody, tfoot и у них есть классы</caption>
+        <thead class="table__header">
+          <tr>
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Мыло</th>
+            <th>Статус</th>
+            <th>Политическая ориентация</th>
+          </tr>
+        </thead>
+        <tbody class="table__body">
+          <tr>
+            <td>Иннокентий</td>
+            <td>Барлаухенштицкен-Ламанческий</td>
+            <td>Хозяйственное</td>
+            <td>Администратор</td>
+            <td>«ВСЕГДА!»</td>
+          </tr>
+          <tr>
+            <td>Васисуалий</td>
+            <td>Пылепневмомешковыколачивателев</td>
+            <td>Душистое</td>
+            <td>Юзверь</td>
+            <td>Нижняя</td>
+          </tr>
+          <tr>
+            <td>Ктулху</td>
+            <td>Втанк</td>
+            <td>ktulkhu@ad.ru</td>
+            <td>Патриарх</td>
+            <td>Яизм</td>
+          </tr>
+        </tbody>
+        <tfoot class="table__footer">
+          <tr>
+            <td colspan="5">Итого: 18 попугаев, 15 длинных червяков, надувная женщина и украденный из церкви огарок дешевой свечи.</td>
+          </tr>
+        </tfoot>
+      </table>
+
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre class="code">
+            <code>&lt;table class="table"></code>
+            <code>  &lt;caption>Таблица&lt;/caption></code>
+            <code>  &lt;thead class="table__header"></code>
+            <code>    &lt;tr></code>
+            <code>      &lt;th>Имя&lt;/th></code>
+            <code>      &lt;th>Фамилия&lt;/th></code>
+            <code>    &lt;/tr></code>
+            <code>  &lt;/thead></code>
+            <code>  &lt;tbody class="table__body"></code>
+            <code>    &lt;tr></code>
+            <code>      &lt;td>Иннокентий&lt;/td></code>
+            <code>      &lt;td>Барлаухенштицкен-Ламанческий&lt;/td></code>
+            <code>    &lt;/tr></code>
+            <code>    &lt;tr></code>
+            <code>      &lt;td>Васисуалий&lt;/td></code>
+            <code>      &lt;td>Пылепневмомешковыколачивателев&lt;/td></code>
+            <code>    &lt;/tr></code>
+            <code>    &lt;tr></code>
+            <code>      &lt;td>Ктулху&lt;/td></code>
+            <code>      &lt;td>Втанк&lt;/td></code>
+            <code>    &lt;/tr></code>
+            <code>  &lt;/tbody></code>
+            <code>  &lt;tfoot class="table__footer"></code>
+            <code>    &lt;tr></code>
+            <code>      &lt;td colspan="2">Итого:&lt;/td></code>
+            <code>    &lt;/tr></code>
+            <code>  &lt;/tfoot></code>
+            <code>&lt;/table></code>
+          </pre>
+        </div>
+      </div>
+
+    </section>
+
   </div>
 
   <style>

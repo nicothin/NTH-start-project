@@ -38,7 +38,8 @@
       "dropdown": [],
       "menu": [],
       "label": [],
-      "loader": []
+      "loader": [],
+      "table": []
     },
     "addCssBefore": [
       "./src/scss/variables.scss",
