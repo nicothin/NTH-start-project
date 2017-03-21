@@ -2,6 +2,19 @@
 // модификаторов, псевдоселекторов, псевдоэлементов, $media-условий...
 // Не пишите здесь другие селекторы.
 
+$gray-lightest:               hsl(0, 0%, 90%) !default;
+
+$text-color--muted:           hsl(0, 0%, 50%) !default;
+
+$border-color:                hsl(0, 0%, 60%) !default;
+
+$font-size--small:            0.75em !default;
+
+$line-height:                 1.375em !default;
+
+$field-padding-vertical:      0.3em !default;
+$field-padding-horizontal:    0.7em !default;
+
 .table {
   border-collapse: collapse;
   width: 100%;

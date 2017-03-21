@@ -39,7 +39,8 @@
       "menu": [],
       "label": [],
       "loader": [],
-      "table": []
+      "table": [],
+      "table-responsive": []
     },
     "addCssBefore": [
       "./src/scss/variables.scss",

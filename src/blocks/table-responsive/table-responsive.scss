@@ -1,15 +1,21 @@
-// Для импорта в диспетчер подключений: @import './src/blocks/table-responsive/table-responsive.less';
+// В этом файле должны быть стили только для БЭМ-блока table-responsive, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, $media-условий...
+// Не пишите здесь другие селекторы.
 
-@import '../../less/variables.less';     // только для удобства обращения к переменным
+$border-color:                hsl(0, 0%, 60%) !default;
 
+$line-height:                 1.375em !default;
 
-//------------------------------------------------------------------------------
-//  Адаптивные таблицы (требуют наличия атрибутов data-label на тегах td)
-//------------------------------------------------------------------------------
+$screen-xs:                   0 !default;
+$screen-sm:                   480px !default;
+$screen-md:                   768px !default;
+$screen-lg:                   992px !default;
+$screen-xl:                   1200px !default;
+$screen-xxl:                  1800px !default;
 
 .table-responsive {
 
-  @media (max-width: (@screen-md - 1)) {
+  @media (max-width: ($screen-md - 1)) {
     display: block;
     border: 0;
 
@@ -29,11 +35,11 @@
 
       tr {
         display: block;
-        border: 1px solid @gray-lighter;
+        border: 1px solid $border-color;
         border-bottom: 0;
 
         &:not(:last-child) {
-          margin-bottom: @line-height;
+          margin-bottom: $line-height;
         }
       }
 
