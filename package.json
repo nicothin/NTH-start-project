@@ -36,7 +36,8 @@
       "field-actions": [],
       "form": [],
       "dropdown": [],
-      "menu": []
+      "menu": [],
+      "label": []
     },
     "addCssBefore": [
       "./src/scss/variables.scss",
