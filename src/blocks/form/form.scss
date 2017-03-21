@@ -1,0 +1,39 @@
+// В этом файле должны быть стили только для БЭМ-блока form, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, $media-условий...
+// Не пишите здесь другие селекторы.
+
+$font-family--headings:       -apple-system, BlinkMacSystemFont, 'Roboto', 'Ubuntu', 'Droid Sans', 'Helvetica Neue', 'Arial', sans-serif !default;
+
+$font-size--h3:               1.5em !default;
+
+$line-height:                 1.375em !default;
+
+.form {
+
+  &:not(:last-child) {
+    margin-bottom: $line-height;
+  }
+
+  fieldset {
+    min-width: 0;
+    padding: 0;
+    margin: 0;
+    border: 0;
+
+    &:not(:last-child) {
+      margin-bottom: $line-height;
+    }
+  }
+
+  legend {
+    display: block;
+    width: 100%;
+    font-size: $font-size--h3;
+    font-family: $font-family--headings;
+    font-weight: 700;
+    line-height: $line-height;
+    color: currentColor;
+    margin-top: $line-height;
+    margin-bottom: ($line-height / 2);
+  }
+}

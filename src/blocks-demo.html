@@ -1120,6 +1120,57 @@
 
     </section>
 
+    <section class="blocks-library__item" id="form" data-name=".form">
+
+      <h2 class="blocks-library__item-title">Форма</h2>
+
+      <form action="https://httpbin.org/post" class="form" method="post">
+        <fieldset>
+          <legend>Название формы</legend>
+          <label class="field-text">
+            <span class="field-text__name">Текстовое поле</span>
+            <span class="field-text__input-wrap">
+              <input class="field-text__input" type="text" placeholder="input[type=text]">
+              <span class="field-text__help-text">Обёртка — <code>label</code>. Можно сделать обёртку <code>div</code>, но тогда, возможно, захочется элемент <code>.field-text__name</code> делать <code>label</code> и связывать его с полем по <code>id</code> поля.</span>
+            </span>
+          </label>
+          <div class="field-checkbox">
+            <label class="field-checkbox__name">
+              <input class="field-checkbox__input" type="checkbox" checked>
+              <span class="field-checkbox__name-text">Одинокий чекбокс</span>
+            </label>
+          </div>
+          <label class="field-text">
+            <span class="field-text__name">Текстовое поле</span>
+            <span class="field-text__input-wrap">
+              <input class="field-text__input" type="text" placeholder="input[type=text]">
+              <span class="field-text__help-text">Обёртка — <code>label</code>. Можно сделать обёртку <code>div</code>, но тогда, возможно, захочется элемент <code>.field-text__name</code> делать <code>label</code> и связывать его с полем по <code>id</code> поля.</span>
+            </span>
+          </label>
+          <div class="field-actions">
+            <div class="field-actions__text">* — обязательные поля</div>
+            <button class="btn">Отправить</button>
+          </div>
+        </fieldset>
+      </form>
+
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre class="code">
+            <code>&lt;form action="https://httpbin.org/post" class="form" method="post"></code>
+            <code>  &lt;fieldset></code>
+            <code>    &lt;legend>Название формы&lt;/legend></code>
+            <code>    &lt;label class="field-text">...&lt;/label></code>
+            <code>    &lt;div class="field-actions">...&lt;/div></code>
+            <code>  &lt;/fieldset></code>
+            <code>&lt;/form></code>
+          </pre>
+        </div>
+      </div>
+
+    </section>
+
   </div>
 
   <style>
