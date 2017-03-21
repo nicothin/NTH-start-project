@@ -1,10 +1,10 @@
-// В этом файле должны быть стили только для БЭМ-блока field-checkbox, его элементов,
+// В этом файле должны быть стили только для БЭМ-блока field-radio, его элементов,
 // модификаторов, псевдоселекторов, псевдоэлементов, $media-условий...
 // Не пишите здесь другие селекторы.
 
 $line-height:                 1.375em !default;
 
-.field-checkbox {
+.field-radio {
   display: block;
   margin-bottom: ($line-height / 2);
 
@@ -41,11 +41,11 @@ $line-height:                 1.375em !default;
     //   left: 0;
     //   width: 14px;
     //   height: 14px;
-    //   background-image: svg-load('../blocks/field-checkbox/img_to_bg/checkbox.svg');
+    //   background-image: svg-load('../blocks/field-radio/img_to_bg/radiobutton.svg');
     //   background-size: 100%;
     // }
     // @at-root input:checked ~ &:before {
-    //   background-image: svg-load('../blocks/field-checkbox/img_to_bg/checkbox--checked.svg');
+    //   background-image: svg-load('../blocks/field-radio/img_to_bg/radiobutton--checked.svg');
     // }
   }
 
