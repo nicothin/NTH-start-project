@@ -1,0 +1,79 @@
+// В этом файле должны быть стили только для БЭМ-блока field-file, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, $media-условий...
+// Не пишите здесь другие селекторы.
+
+$gray-lightest:               hsl(0, 0%, 90%);
+$border-color:                hsl(0, 0%, 60%) !default;
+
+$line-height:                 1.375em !default;
+
+$field-padding-vertical:      0.3em !default;
+$field-padding-horizontal:    0.7em !default;
+
+$border-radius:               3px !default;
+
+.field-file {
+  display: block;
+  margin-bottom: ($line-height / 2);
+
+  &__name {
+    font-weight: 700;
+    display: block;
+    margin-bottom: 0.4em;
+  }
+
+  &__input-wrap {
+    display: block;
+    position: relative;
+  }
+
+  &__input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+
+    &:active ~ .field-file__name-text,
+    &:focus ~ .field-file__name-text {
+      @include field-focus;
+    }
+  }
+
+  &__name-text {
+    position: relative;
+    display: flex;
+    align-items: baseline;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+
+    &:before {
+      content: attr(data-button-text);
+      display: block;
+      background-color: $gray-lightest;
+      border-right: 1px solid $border-color;
+      margin-right: $field-padding-horizontal;
+      line-height: $line-height;
+      padding: $field-padding-vertical  $field-padding-horizontal;
+      border-top-left-radius: $border-radius;
+      border-bottom-left-radius: $border-radius;
+    }
+
+    &:hover,
+    &:focus {
+
+      &:before {
+        background-color: darken($gray-lightest, 10%); // как у обычных кнопок
+      }
+    }
+  }
+
+  &__help-text {
+    @include field-help-text;
+  }
+}

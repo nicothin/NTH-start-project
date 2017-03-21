@@ -12,7 +12,7 @@ $line-height:                 1.375em !default;
     display: block;
     font-weight: 700;
     line-height: $line-height;
-    margin-bottom: round($line-height / 2);
+    margin-bottom: 0.4em;
   }
 
   &__input-wrap {
