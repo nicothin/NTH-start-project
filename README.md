@@ -132,7 +132,7 @@ demo-block/               # Папка блока
   "addCssAfter": [
     "./src/scss/print.scss"
   ],
-  "singleCompiled": []
+  "singleCompiled": [],
   "addJsBefore": [
     "./node_modules/jquery/dist/jquery.min.js",
     "./node_modules/jquery-migrate/dist/jquery-migrate.min.js"
