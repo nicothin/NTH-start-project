@@ -2,6 +2,10 @@
 // модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
 // Не пишите здесь другие селекторы.
 
+$line-height:                 1.375em !default;
+
+$border-color:                hsl(0, 0%, 60%) !default;
+
 .table-mobile-scroll {
   display: block;
   width: 100%;
