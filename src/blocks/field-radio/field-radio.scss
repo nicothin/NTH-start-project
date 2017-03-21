@@ -57,6 +57,11 @@ $line-height:                 1.375em !default;
     margin: 0;
     transform: translateY(-50%);
 
+    &:focus,
+    &:active {
+      @include field-focus;
+    }
+
     // сокрытие инпута в случае использования своего чекбокса
     // top: 0;
     // left: 0;

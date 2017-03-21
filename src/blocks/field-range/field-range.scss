@@ -1,15 +1,23 @@
-@import '../../less/variables.less';     // только для удобства обращения к переменным
+// В этом файле должны быть стили только для БЭМ-блока field-range, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, $media-условий...
+// Не пишите здесь другие селекторы.
 
+$gray-lightest:               hsl(0, 0%, 90%);
+$border-color:                hsl(0, 0%, 60%) !default;
+
+$line-height:                 1.375em !default;
+
+$border-radius:               3px !default;
 
 .field-range {
   display: block;
-  margin-bottom: (@line-height / 2);
+  margin-bottom: ($line-height / 2);
 
   &__name {
     font-weight: 700;
     display: block;
-    margin-bottom: round(@line-height / 4, 2);
-    line-height: @line-height;
+    margin-bottom: 0.4em;
+    line-height: $line-height;
   }
 
   &__input-wrap {
@@ -34,8 +42,7 @@
     }
 
     &:focus {
-      outline: 0;
-      box-shadow: 0 0 0 2px rgba(2, 117, 216, 0.3);
+      @include field-focus;
     }
 
 
@@ -43,26 +50,26 @@
     // Фоновая линия ползунка
 
     // Да, да, и это — локальная примесь.
-    .field-range-runnable-track() {
+    @mixin field-range-runnable-track {
       box-sizing: border-box;
       width: 100%;
       height: 0.75em;
-      border-radius: @border-radius;
-      background: @gray-lighter;
-      border: 1px solid @border-color;
+      border-radius: $border-radius;
+      background: #fff;
+      border: 1px solid $border-color;
     }
 
     // Увы, тут похожие наборы свойств приходится писать порознь.
     &::-webkit-slider-runnable-track {
-      .field-range-runnable-track(); // локальная примесь!
+      @include field-range-runnable-track;
     }
 
     &::-moz-range-track {
-      .field-range-runnable-track(); // локальная примесь!
+      @include field-range-runnable-track;
     }
 
     &::-ms-track {
-      .field-range-runnable-track(); // локальная примесь!
+      @include field-range-runnable-track;
       color: transparent;
     }
 
@@ -70,7 +77,7 @@
     // Смещающийся элемент ползунка
 
     // Да, да, и это — локальная примесь.
-    .field-range-slider-thumb() {
+    @mixin field-range-slider-thumb {
       box-sizing: border-box;
       padding: 0;
       width: 2em;
@@ -78,21 +85,21 @@
       border-radius: 1em;
       box-shadow: none;
       cursor: ew-resize;
-      background: @gray-lightest;
-      border: 1px solid @border-color;
+      background: $gray-lightest;
+      border: 1px solid $border-color;
     }
 
     &::-webkit-slider-thumb {
       margin-top: -0.68em;
-      .field-range-slider-thumb(); // локальная примесь!
+      @include field-range-slider-thumb; // локальная примесь!
     }
 
     &::-moz-range-thumb {
-      .field-range-slider-thumb(); // локальная примесь!
+      @include field-range-slider-thumb; // локальная примесь!
     }
 
     &::-ms-thumb {
-      .field-range-slider-thumb(); // локальная примесь!
+      @include field-range-slider-thumb; // локальная примесь!
     }
 
     &::-ms-fill-lower,
@@ -102,7 +109,7 @@
   }
 
   &__help-text {
-    .help-text();
+    @include field-help-text;
     padding-top: 0;
   }
 }
