@@ -21,13 +21,13 @@ $grid-gutter-width:           30px !default;
 //------------------------------------------------------------------------------
 
 @mixin container (
-    $xs-grid-gutter:  $grid-gutter-width,
-    $sm-grid-gutter:  $grid-gutter-width,
-    $md-grid-gutter:  $grid-gutter-width,
-    $lg-grid-gutter:  $grid-gutter-width,
-    $xl-grid-gutter:  $grid-gutter-width,
-    $xxl-grid-gutter: $grid-gutter-width
-  ) {
+  $xs-grid-gutter:  $grid-gutter-width,
+  $sm-grid-gutter:  $grid-gutter-width,
+  $md-grid-gutter:  $grid-gutter-width,
+  $lg-grid-gutter:  $grid-gutter-width,
+  $xl-grid-gutter:  $grid-gutter-width,
+  $xxl-grid-gutter: $grid-gutter-width
+) {
   display: block;
   width: 100%;
   margin-left: auto;
@@ -113,13 +113,13 @@ $grid-gutter-width:           30px !default;
 //------------------------------------------------------------------------------
 
 @mixin row (
-    $xs-grid-gutter:  $grid-gutter-width,
-    $sm-grid-gutter:  $grid-gutter-width,
-    $md-grid-gutter:  $grid-gutter-width,
-    $lg-grid-gutter:  $grid-gutter-width,
-    $xl-grid-gutter:  $grid-gutter-width,
-    $xxl-grid-gutter: $grid-gutter-width
-  ) {
+  $xs-grid-gutter:  $grid-gutter-width,
+  $sm-grid-gutter:  $grid-gutter-width,
+  $md-grid-gutter:  $grid-gutter-width,
+  $lg-grid-gutter:  $grid-gutter-width,
+  $xl-grid-gutter:  $grid-gutter-width,
+  $xxl-grid-gutter: $grid-gutter-width
+) {
   display: flex;
   flex-wrap: wrap;
 
@@ -193,7 +193,6 @@ $grid-gutter-width:           30px !default;
 
 
 
-
 //------------------------------------------------------------------------------
 //  Генератор правил для одной ячейки
 //------------------------------------------------------------------------------
@@ -204,10 +203,10 @@ $grid-gutter-width:           30px !default;
 //------------------------------------------------------------------------------
 
 @mixin make-col (
-    $column:  1,
-    $columns: $grid-columns,
-    $gutter:  $grid-gutter-width
-  ) {
+  $column:  1,
+  $columns: $grid-columns,
+  $gutter:  $grid-gutter-width
+) {
   @include get-width($column, $columns);
 
   // ВНИМАНИЕ!
@@ -231,11 +230,11 @@ $grid-gutter-width:           30px !default;
 //------------------------------------------------------------------------------
 
 @mixin col (
-    $screen:  xs,
-    $column:  $grid-columns,
-    $columns: $grid-columns,
-    $gutter:  $grid-gutter-width
-  ) {
+  $screen:  xs,
+  $column:  $grid-columns,
+  $columns: $grid-columns,
+  $gutter:  $grid-gutter-width
+) {
 
   @if ($screen == xs) {
     @include make-col($column, $columns, $gutter);
@@ -289,10 +288,10 @@ $grid-gutter-width:           30px !default;
 //------------------------------------------------------------------------------
 
 @mixin col-offset (
-    $screen: xs,
-    $column: 1,
-    $columns: $grid-columns
-  ) {
+  $screen: xs,
+  $column: 1,
+  $columns: $grid-columns
+) {
 
   @if ($screen == xs) {
     margin-left: ($column * 100% / $columns);

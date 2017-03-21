@@ -20,16 +20,13 @@ $border-radius:               3px;
   white-space: nowrap;
   vertical-align: middle;
   user-select: none;
-
   text-align: center;
   font-size: 1em;
   font-family: inherit;
   line-height: $line-height;
   text-decoration: none;
   text-transform: none;
-  // min-height: 2.125em;
   color: $text-color;
-
   border-radius: $border-radius;
   border: 1px solid $gray-lighter;
   background-color: $gray-lightest;
@@ -57,10 +54,8 @@ $border-radius:               3px;
     background-color: $gray-lightest;
     border-color: $gray-lighter;
 
-    @at-root {
-      a.btn--disabled {
-        pointer-events: none;
-      }
+    @at-root a.btn--disabled {
+      pointer-events: none;
     }
   }
 
@@ -85,5 +80,4 @@ $border-radius:               3px;
   //     border-color: $color-main;
   //   }
   // }
-
 }
