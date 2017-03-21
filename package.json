@@ -74,7 +74,7 @@
     }
   },
   "scripts": {
-    "test": "stylelint \"src/**/*.scss\"",
+    "test": "stylelint \"src/**/*.scss\" --syntax scss",
     "start": "gulp",
     "deploy": "cross-env NODE_ENV=production ./node_modules/.bin/gulp build && cross-env ./node_modules/.bin/gulp deploy",
     "build": "cross-env NODE_ENV=production npm start build"
@@ -110,13 +110,18 @@
     "gulp-uglify": "^2.1.0",
     "gulp-wait": "0.0.2",
     "gulp.spritesmith": "^6.3.0",
+    "husky": "^0.13.2",
     "imagemin-pngquant": "^5.0.0",
     "ismobilejs": "^0.4.0",
     "jquery": "^3.1.1",
     "jquery-migrate": "^3.0.0",
+    "lint-staged": "^3.4.0",
     "merge-stream": "^1.0.1",
     "postcss-import": "^9.1.0",
     "postcss-inline-svg": "^2.3.0",
+    "stylelint": "^7.9.0",
+    "stylelint-declaration-use-variable": "^1.6.0",
+    "stylelint-scss": "^1.4.3",
     "svg4everybody": "^2.1.7",
     "vinyl-buffer": "^1.0.0"
   }

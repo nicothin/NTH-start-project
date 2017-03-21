@@ -1,6 +1,6 @@
 {
-  "syntax": "less",
   "plugins": [
+    "stylelint-scss",
     "stylelint-declaration-use-variable"
   ],
   # http://stylelint.io/user-guide/rules/
@@ -79,7 +79,7 @@
     "length-zero-no-unit": [true, {
       "message": "Нулю не нужны измерения единицы"
     }],
-    "time-min-milliseconds": [100, {
+    "time-no-imperceptible": [true, {
       "message": "Время менее 100мс — нет смысла использовать"
     }],
     # "unit-blacklist": [["px", "deg"], {
@@ -180,6 +180,9 @@
     "declaration-block-no-duplicate-properties": [true, {
       "message": "Правила повторять не следует"
     }],
+    "declaration-block-no-ignored-properties": [true, {
+      "message": "Правило это не сработает"
+    }],
     "declaration-block-no-shorthand-property-overrides": [true, {
       "message": "Свойство это неочевидно перебивает другое для селектора этого"
     }],
@@ -204,6 +207,10 @@
     # "block-no-empty": [true, {
     #   "message": "Пустые блоки писать не следует"
     # }],
+    "block-no-single-line": [true, {
+      "message": "Селекторы строкой одной писать не следует",
+      "severity": "warning"
+    }],
     "block-opening-brace-newline-after": ["always", {
       "message": "После «{» перенос строки быть должен"
     }],
@@ -256,6 +263,9 @@
     "selector-pseudo-element-no-unknown": [true, {
       "message": "Псевдоэлемента такого на светлой строне силы нет"
     }],
+    "selector-root-no-composition": [true, {
+      "message": ":root всегда должен быть самостоятелен"
+    }],
     "selector-type-case": ["lower", {
       "message": "Селкторы буквами строчными набирать следует"
     }],
@@ -277,8 +287,12 @@
     "selector-list-comma-space-before": ["never", {
       "message": "Перед запятой пробела быть не должно"
     }],
-    "rule-empty-line-before": ["always", {
+    "rule-nested-empty-line-before": ["always", {
       "message": "Перед селектором вложенным строку пустую оставь",
+      ignore: ["after-comment"]
+    }],
+    "rule-non-nested-empty-line-before": ["always", {
+      "message": "Между селекторами строку пустую оставь",
       ignore: ["after-comment"]
     }],
     "media-feature-colon-space-after": ["always", {
@@ -293,6 +307,9 @@
     "media-feature-name-no-vendor-prefix": [true, {
       "message": "Использовать вендорные префиксы не следует",
       "severity": "warning"
+    }],
+    "media-feature-no-missing-punctuation": [true, {
+      "message": "Пунктуация в медиа нарушена в строке этой"
     }],
     "media-feature-parentheses-space-inside": ["never", {
       "message": "Пробелы после «(» и перед «)» нельзя использовать"
@@ -353,8 +370,11 @@
     }],
     "max-nesting-depth": [3, {
       "message": "Вложения боле 3 уровней — на тёмную сторону путь",
-      "ignore": ["blockless-at-rules"],
+      "ignore": ["at-rules-without-declaration-blocks"],
       "severity": "warning"
+    }],
+    "no-browser-hacks": [true, {
+      "message": "Браузерные хаки не используем мы"
     }],
     "no-duplicate-selectors": [true, {
       "message": "Селкторы дублировать не хочешь ты"
@@ -370,6 +390,13 @@
     }],
     "no-missing-end-of-source-newline": [true, {
       "message": "Файл пустой строкой кончаться должен: https://goo.gl/Co2tZ8"
+    }],
+    "no-descending-specificity": [true, {
+      "message": "Осторожно, выше по коду есть более специфичный селектор",
+      "severity": "warning"
+    }],
+    "selector-no-empty": [true, {
+      "message": "Пустой селектор не хочешь ты"
     }],
   }
 }
