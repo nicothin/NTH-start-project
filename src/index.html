@@ -10,9 +10,23 @@
 
 <body>
 
-  <h1>NTH start project</h1>
+  <div class="page__inner">
 
-  <p><a href="blocks-demo.html">Страница с демкой компонентов</a></p>
+    <div class="page__content">
+
+      @@include('blocks/page-header/page-header.html')
+
+      <h1>NTH start project</h1>
+
+      <p><a href="blocks-demo.html">Страница с демкой компонентов</a></p>
+
+    </div>
+
+    <div class="page__footer-wrapper">
+      @@include('blocks/page-footer/page-footer.html')
+    </div>
+
+  </div>
 
   @@include('_include/page_bottom.html')
 </body>
