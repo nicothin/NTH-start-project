@@ -1,0 +1,16 @@
+// В этом файле должны быть стили только для БЭМ-блока field-radio, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, $media-условий...
+// Не пишите здесь другие селекторы.
+
+$color-danger:                hsl(2, 64%, 58%) !default;
+
+.field-radio {
+
+  &__input-wrap--error {
+
+    .field-radio__name-text,
+    .field-radio__help-text {
+      color: $color-danger;
+    }
+  }
+}

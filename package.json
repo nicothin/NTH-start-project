@@ -26,13 +26,23 @@
       "alert": [],
       "btn": [],
       "to-top": [],
-      "field-text": [],
-      "field-checkbox": [],
-      "field-radio": [],
+      "field-text": [
+        "--error"
+      ],
+      "field-checkbox": [
+        "__input-wrap--error"
+      ],
+      "field-radio": [
+        "__input-wrap--error"
+      ],
       "field-toggler": [],
-      "field-file": [],
+      "field-file": [
+        "--error"
+      ],
       "field-range": [],
-      "field-select": [],
+      "field-select": [
+        "--error"
+      ],
       "field-actions": [],
       "form": [],
       "dropdown": [],

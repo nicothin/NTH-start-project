@@ -1,0 +1,22 @@
+// В этом файле должны быть стили только для БЭМ-блока field-select, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, $media-условий...
+// Не пишите здесь другие селекторы.
+
+$color-danger:                hsl(2, 64%, 58%) !default;
+
+.field-select {
+
+  &--error {
+
+    .field-select__name,
+    .field-select__select,
+    .field-select__help-text {
+      color: $color-danger;
+    }
+
+    .field-select__select {
+      border-color: $color-danger;
+      background-color: lighten($color-danger, 35%);
+    }
+  }
+}
