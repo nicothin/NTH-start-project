@@ -152,12 +152,12 @@ pre {
   -moz-tab-size: 2;
        tab-size: 2; }
 .temp-icon-left-arrow {
-  background-image: url(../img/sprite-018085500057938675.png);
+  background-image: url(../img/sprite-06694556996635566.png);
   background-position: 0px 0px;
   width: 32px;
   height: 32px; }
 .temp-icon-right-arrow {
-  background-image: url(../img/sprite-018085500057938675.png);
+  background-image: url(../img/sprite-06694556996635566.png);
   background-position: -36px 0px;
   width: 32px;
   height: 32px; }
@@ -435,6 +435,13 @@ textarea.field-text__input {
     color: gray; }
 .field-text__help-text:empty {
       display: none; }
+.field-text--error .field-text__name,
+.field-text--error .field-text__input,
+.field-text--error .field-text__help-text {
+  color: #d8544f; }
+.field-text--error .field-text__input {
+  border-color: #d8544f;
+  background-color: #f9e2e2; }
 .field-checkbox {
   display: block;
   margin-bottom: 0.6875em; }
@@ -472,6 +479,9 @@ textarea.field-text__input {
     color: gray; }
 .field-checkbox__help-text:empty {
       display: none; }
+.field-checkbox__input-wrap--error .field-checkbox__name-text,
+.field-checkbox__input-wrap--error .field-checkbox__help-text {
+  color: #d8544f; }
 .field-radio {
   display: block;
   margin-bottom: 0.6875em; }
@@ -509,6 +519,9 @@ textarea.field-text__input {
     color: gray; }
 .field-radio__help-text:empty {
       display: none; }
+.field-radio__input-wrap--error .field-radio__name-text,
+.field-radio__input-wrap--error .field-radio__help-text {
+  color: #d8544f; }
 .field-toggler {
   display: block;
   margin-bottom: 0.6875em; }
@@ -622,6 +635,14 @@ input:checked ~ .field-toggler__name-text:after {
     color: gray; }
 .field-file__help-text:empty {
       display: none; }
+.field-file--error .field-file__name,
+.field-file--error .field-file__name-text,
+.field-file--error .field-file__input,
+.field-file--error .field-file__help-text {
+  color: #d8544f; }
+.field-file--error .field-file__name-text {
+  border-color: #d8544f;
+  background-color: #f9e2e2; }
 .field-range {
   display: block;
   margin-bottom: 0.6875em; }
@@ -761,6 +782,13 @@ input:checked ~ .field-toggler__name-text:after {
     color: gray; }
 .field-select__help-text:empty {
       display: none; }
+.field-select--error .field-select__name,
+.field-select--error .field-select__select,
+.field-select--error .field-select__help-text {
+  color: #d8544f; }
+.field-select--error .field-select__select {
+  border-color: #d8544f;
+  background-color: #f9e2e2; }
 .field-actions {
   display: block;
   margin-top: 1.375em;
