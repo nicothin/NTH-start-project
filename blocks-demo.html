@@ -99,13 +99,21 @@
         <li>Ограничение размера картинок до 100% ширины родителя.</li>
       </ul>
 
+      <p>В стилизацию блока включена стилизация «прибитого подвала».</p>
+
       <div class="blocks-library__code-wrapper">
         <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
         <div class="blocks-library__code">
           <pre class="code">
-            <code>&lt;html class="page"></code>
-            <code>  &lt;head>...&lt;/head></code>
-            <code>  &lt;body>...&lt;/body></code>
+            <code>&lt;!DOCTYPE html></code>
+            <code>&lt;html class="no-js  page" lang="ru"></code>
+            <code>&lt;head>...&lt;/head></code>
+            <code>&lt;body></code>
+            <code>  &lt;div class="page__inner"></code>
+            <code>    &lt;div class="page__content">Основное содержимое&lt;/div></code>
+            <code>    &lt;div class="page__footer-wrapper">Прибитый «подвал»&lt;/div></code>
+            <code>  &lt;/div></code>
+            <code>&lt;/body></code>
             <code>&lt;/html></code>
           </pre>
         </div>
@@ -1156,6 +1164,8 @@
           <span class="field-select__help-text">Описание ошибки.</span>
         </span>
       </label>
+
+      <p class="alert  alert--warning">Стилизация ошибочного состояния вынесена в отдельный файл.</p>
 
       <div class="blocks-library__code-wrapper">
         <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>

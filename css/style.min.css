@@ -16,6 +16,18 @@
   /* stylelint-disable-line  property-no-vendor-prefix */
   min-width: 320px;
   min-height: 100%; }
+.page__inner {
+    min-height: 100vh;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+        flex-direction: column; }
+.page__content {
+    -ms-flex-positive: 1;
+        flex-grow: 1; }
+.page__footer-wrapper {
+    -ms-flex-negative: 0;
+        flex-shrink: 0; }
 *,
 *:before,
 *:after {
@@ -152,12 +164,12 @@ pre {
   -moz-tab-size: 2;
        tab-size: 2; }
 .temp-icon-left-arrow {
-  background-image: url(../img/sprite-06694556996635566.png);
+  background-image: url(../img/sprite-07118459642966068.png);
   background-position: 0px 0px;
   width: 32px;
   height: 32px; }
 .temp-icon-right-arrow {
-  background-image: url(../img/sprite-06694556996635566.png);
+  background-image: url(../img/sprite-07118459642966068.png);
   background-position: -36px 0px;
   width: 32px;
   height: 32px; }
