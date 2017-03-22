@@ -7,6 +7,14 @@
   <meta name="description" content="">
   @@include('_include/page_head.html')
   <link rel="stylesheet" href="css/blocks-library.css">
+  <style>
+    .components-demo {
+      padding: 1em;
+      margin: auto;
+      max-width: 1200px;
+      font-family: sans-serif;
+    }
+  </style>
   <script>
     document.addEventListener('DOMContentLoaded', function(){
 
@@ -539,7 +547,7 @@
 
     </section>
 
-    <section class="blocks-library__item" id="btn" data-name=".btn">
+    <section class="blocks-library__item" id="to-top" data-name=".to-top">
 
       <h2 class="blocks-library__item-title">Кнопка скролла вверх</h2>
 
@@ -612,7 +620,7 @@
       <div class="dropdown">
         <a id="dropdown-demo-3" href="#" class="dropdown__toggler" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ссылка</a>
         <div class="dropdown__menu" aria-labelledby="dropdown-demo-3">
-          <form action="">
+          <form action="https://httpbin.org/post" method="post">
             <input type="text">
             <select>
               <option>Название пункта</option>
@@ -682,7 +690,7 @@
             <code>  &lt;div class="dropdown"></code>
             <code>    &lt;a id="dropdown-demo-3" href="#" class="dropdown__toggler" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ссылка&lt;/a></code>
             <code>    &lt;div class="dropdown__menu" aria-labelledby="dropdown-demo-3"></code>
-            <code>      &lt;form action=""></code>
+            <code>      &lt;form action="https://httpbin.org/post" method="post"></code>
             <code>        &lt;input type="text"></code>
             <code>        &lt;select></code>
             <code>          &lt;option>Название пункта&lt;/option></code>
@@ -1006,8 +1014,8 @@
         <div class="field-file__name">Выбор файлов</div>
         <label class="field-file__input-wrap">
           <input class="field-file__input" type="file" data-multiple-caption="файлов выбрано: {count}" multiple>
-          <div class="field-file__name-text" data-button-text="Выбрать файл(ы)">Ничего не выбрано</div>
-          <div class="field-file__help-text">Отображение выбранного файла/файлов требует js. Стилизация — не требует.</div>
+          <span class="field-file__name-text" data-button-text="Выбрать файл(ы)">Ничего не выбрано</span>
+          <span class="field-file__help-text">Отображение выбранного файла/файлов требует js. Стилизация — не требует.</span>
         </label>
       </div>
 
@@ -1015,9 +1023,13 @@
         <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
         <div class="blocks-library__code">
           <pre class="code">
-            <code>&lt;div class="field-actions"></code>
-            <code>  &lt;div class="field-actions__text">* — обязательные поля&lt;/div></code>
-            <code>  &lt;button class="btn">Отправить&lt;/button></code>
+            <code>&lt;div class="field-file"></code>
+            <code>  &lt;div class="field-file__name">Выбор файлов&lt;/div></code>
+            <code>  &lt;label class="field-file__input-wrap"></code>
+            <code>    &lt;input class="field-file__input" type="file" data-multiple-caption="файлов выбрано: {count}" multiple></code>
+            <code>    &lt;span class="field-file__name-text" data-button-text="Выбрать файл(ы)">Ничего не выбрано&lt;/span></code>
+            <code>    &lt;span class="field-file__help-text">Отображение выбранного файла/файлов требует js. Стилизация — не требует.&lt;/span></code>
+            <code>  &lt;/label></code>
             <code>&lt;/div></code>
           </pre>
         </div>
@@ -1059,8 +1071,8 @@
       <h2 class="blocks-library__item-title">Селект</h2>
 
       <label class="field-select">
-        <div class="field-select__name">Селект</div>
-        <div class="field-select__select-wrap">
+        <span class="field-select__name">Селект</span>
+        <span class="field-select__select-wrap">
           <select class="field-select__select">
             <optgroup label="Группа">
               <option>Значение 1</option>
@@ -1069,8 +1081,8 @@
             </optgroup>
             <option>Значение 10</option>
           </select>
-          <div class="field-select__help-text">Обёртка — <code>&lt;label&gt;</code>.</div>
-        </div>
+          <span class="field-select__help-text">Обёртка — <code>&lt;label&gt;</code>.</span>
+        </span>
       </label>
 
       <div class="blocks-library__code-wrapper">
@@ -1078,8 +1090,8 @@
         <div class="blocks-library__code">
           <pre class="code">
             <code>&lt;label class="field-select"></code>
-            <code>  &lt;div class="field-select__name">Селект&lt;/div></code>
-            <code>  &lt;div class="field-select__select-wrap"></code>
+            <code>  &lt;span class="field-select__name">Селект&lt;/span></code>
+            <code>  &lt;span class="field-select__select-wrap"></code>
             <code>    &lt;select class="field-select__select"></code>
             <code>      &lt;optgroup label="Группа"></code>
             <code>        &lt;option>Значение 1&lt;/option></code>
@@ -1088,8 +1100,8 @@
             <code>      &lt;/optgroup></code>
             <code>      &lt;option>Значение 10&lt;/option></code>
             <code>    &lt;/select></code>
-            <code>    &lt;div class="field-select__help-text">Обёртка — &lt;code>&lt;label&gt;&lt;/code>.&lt;/div></code>
-            <code>  &lt;/div></code>
+            <code>    &lt;span class="field-select__help-text">Обёртка — &lt;code>&lt;label&gt;&lt;/code>.&lt;/span></code>
+            <code>  &lt;/span></code>
             <code>&lt;/label></code>
           </pre>
         </div>
@@ -1428,15 +1440,6 @@
     </section>
 
   </div>
-
-  <style>
-    .components-demo {
-      padding: 1em;
-      margin: auto;
-      max-width: 1200px;
-      font-family: sans-serif;
-    }
-  </style>
 
   <a href="#" class="to-top" id="toTop">↑</a>
 

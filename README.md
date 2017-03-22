@@ -33,8 +33,8 @@
       <td>Проверка стилевой составляющей проекта <a href="https://stylelint.io/">stylelint</a></td>
     </tr>
     <tr>
-      <td><code>npm run yaspeller</code></td>
-      <td>Проверка разметки и <code>./README.md</code> проекта <a href="https://github.com/hcodes/yaspeller">yaspeller</a></td>
+      <td><code>npm run test:orpho</code></td>
+      <td>Поиск ошибок и опечаток в <code>.html</code> и <code>.md</code> файлах в <code>./src</code> с помощью <a href="https://github.com/hcodes/yaspeller">yaspeller</a></td>
     </tr>
   </tbody>
 </table>

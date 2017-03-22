@@ -75,7 +75,7 @@
   },
   "scripts": {
     "test:style": "stylelint \"src/**/*.scss\" --syntax=scss",
-    "yaspeller": "yaspeller ./src/*.html ./README.md",
+    "test:orpho": "yaspeller -e \".md,.html\" ./src/",
     "start": "gulp",
     "deploy": "cross-env NODE_ENV=production ./node_modules/.bin/gulp build && cross-env ./node_modules/.bin/gulp deploy",
     "build": "cross-env NODE_ENV=production npm start build",
@@ -84,7 +84,7 @@
   },
   "lint-staged": {
     "*.scss": "stylelint --syntax=scss",
-    "*.{html,md}": "yaspeller"
+    "*.{html,md}": "yaspeller -e \".md,.html\""
   },
   "devDependencies": {
     "autoprefixer": "^6.7.7",
