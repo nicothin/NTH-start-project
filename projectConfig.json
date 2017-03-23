@@ -41,11 +41,13 @@
     "loader": [],
     "table": [],
     "table-responsive": [],
-    "table-mobile-scroll": []
+    "table-mobile-scroll": [],
+    "owl-carousel": []
   },
   "addCssBefore": [
     "./src/scss/variables.scss",
-    "./src/scss/mixins.scss"
+    "./src/scss/mixins.scss",
+    "../../node_modules/owl.carousel/dist/assets/owl.carousel.css"
   ],
   "addCssAfter": [
     "./src/scss/print.scss"
@@ -57,7 +59,8 @@
     "./node_modules/jquery/dist/jquery.min.js",
     "./node_modules/jquery-migrate/dist/jquery-migrate.min.js",
     "./node_modules/svg4everybody/dist/svg4everybody.js",
-    "./node_modules/ismobilejs/isMobile.min.js"
+    "./node_modules/ismobilejs/isMobile.min.js",
+    "./node_modules/owl.carousel/dist/owl.carousel.js"
   ],
   "addJsAfter": [
     "./src/js/global-script.js"

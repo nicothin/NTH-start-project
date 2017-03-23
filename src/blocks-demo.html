@@ -599,139 +599,6 @@
 
     </section>
 
-    <section class="blocks-library__item" id="dropdown" data-name=".dropdown">
-
-      <h2 class="blocks-library__item-title">Выпадающий блок</h2>
-
-      <p class="alert  alert--warning">Зависит от <a href="https://jquery.com/">jQuery</a> (включен в сборку по умолчанию).</p>
-
-      <div class="dropdown">
-        <a id="dropdown-demo-1" href="#" class="dropdown__toggler" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ссылка</a>
-        <ul class="dropdown__menu  menu" aria-labelledby="dropdown-demo-1">
-          <li class="menu__item"><a class="menu__link" href="#">Пункт списка (выпадает <code>ul</code>)</a></li>
-          <li class="menu__item"><a class="menu__link" href="#">Пункт списка, после которого следует разделитель</a></li>
-          <li class="menu__item"><a class="menu__link" href="#">Пункт меню весьма длинный, такой, что прямо адски длинный, очень много, реально много слов!</a></li>
-        </ul>
-      </div>
-
-      <span class="dropdown">
-        <button class="dropdown__toggler  btn" id="dropdown-demo-2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Выпадает список
-        </button>
-        <span class="dropdown__menu  menu" aria-labelledby="dropdown-demo-2">
-          <span class="menu__item"><a class="menu__link" href="#">Пункт списка (выпадает <code>span</code>)</a></span>
-          <span class="menu__item"><a class="menu__link" href="">Пункт меню весьма длинный</a></span>
-          <span class="menu__item"><a class="menu__link" href="">Второй пункт</a></span>
-        </span>
-      </span>
-
-      <div class="dropdown">
-        <a id="dropdown-demo-3" href="#" class="dropdown__toggler" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ссылка</a>
-        <div class="dropdown__menu" aria-labelledby="dropdown-demo-3">
-          <form action="https://httpbin.org/post" method="post">
-            <input type="text">
-            <select>
-              <option>Название пункта</option>
-            </select>
-            <textarea rows="3"></textarea>
-            <button class="btn">Отправить эту форму</button>
-          </form>
-        </div>
-      </div>
-
-      <div class="dropdown">
-        <button class="dropdown__toggler  btn" id="dropdown-demo-4" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Выпадает список вверх
-        </button>
-        <ul class="dropdown__menu  dropdown__menu--up  menu" aria-labelledby="dropdown-demo-4">
-          <li class="menu__item"><a class="menu__link" href="#">Пункт списка (выпадает <code>ul</code>)</a></li>
-        </ul>
-      </div>
-
-      <div class="dropdown">
-        <button class="dropdown__toggler  btn" id="dropdown-demo-5" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Выпадает список вверх от пр. края
-        </button>
-        <ul class="dropdown__menu  dropdown__menu--up  dropdown__menu--right  menu" aria-labelledby="dropdown-demo-5">
-          <li class="menu__item"><a class="menu__link" href="#">Пункт списка (выпадает <code>ul</code>)</a></li>
-        </ul>
-      </div>
-
-      <p>События</p>
-
-      <pre class="code">
-        <code>// Факт открытия</code>
-        <code>$('#test').on('shown.nth.dropdown', function () {</code>
-        <code>  console.log('shown.nth.dropdown');</code>
-        <code>});</code>
-        <code> </code>
-        <code>// Факт закрытия</code>
-        <code>$('#test').on('hidden.nth.dropdown', function () {</code>
-        <code>  console.log('hidden.nth.dropdown');</code>
-        <code>});</code>
-      </pre>
-
-      <div class="blocks-library__code-wrapper">
-        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
-        <div class="blocks-library__code">
-          <pre class="code">
-            <code>  &lt;div class="dropdown"></code>
-            <code>    &lt;a id="dropdown-demo-1" href="#" class="dropdown__toggler" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ссылка&lt;/a></code>
-            <code>    &lt;ul class="dropdown__menu  menu" aria-labelledby="dropdown-demo-1"></code>
-            <code>      &lt;li class="menu__item">&lt;a class="menu__link" href="#">Пункт списка (выпадает &lt;code>ul&lt;/code>)&lt;/a>&lt;/li></code>
-            <code>      &lt;li class="menu__item">&lt;a class="menu__link" href="#">Пункт списка, после которого следует разделитель&lt;/a>&lt;/li></code>
-            <code>      &lt;li class="menu__item">&lt;a class="menu__link" href="#">Пункт меню весьма длинный, такой, что прямо адски длинный, очень много, реально много слов!&lt;/a>&lt;/li></code>
-            <code>    &lt;/ul></code>
-            <code>  &lt;/div></code>
-            <code>  </code>
-            <code>  &lt;span class="dropdown"></code>
-            <code>    &lt;button class="dropdown__toggler  btn" id="dropdown-demo-2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></code>
-            <code>      Выпадает список</code>
-            <code>    &lt;/button></code>
-            <code>    &lt;span class="dropdown__menu  menu" aria-labelledby="dropdown-demo-2"></code>
-            <code>      &lt;span class="menu__item">&lt;a class="menu__link" href="#">Пункт списка (выпадает &lt;code>span&lt;/code>)&lt;/a>&lt;/span></code>
-            <code>      &lt;span class="menu__item">&lt;a class="menu__link" href="">Пункт меню весьма длинный&lt;/a>&lt;/span></code>
-            <code>      &lt;span class="menu__item">&lt;a class="menu__link" href="">Второй пункт&lt;/a>&lt;/span></code>
-            <code>    &lt;/span></code>
-            <code>  &lt;/span></code>
-            <code>  </code>
-            <code>  &lt;div class="dropdown"></code>
-            <code>    &lt;a id="dropdown-demo-3" href="#" class="dropdown__toggler" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ссылка&lt;/a></code>
-            <code>    &lt;div class="dropdown__menu" aria-labelledby="dropdown-demo-3"></code>
-            <code>      &lt;form action="https://httpbin.org/post" method="post"></code>
-            <code>        &lt;input type="text"></code>
-            <code>        &lt;select></code>
-            <code>          &lt;option>Название пункта&lt;/option></code>
-            <code>        &lt;/select></code>
-            <code>        &lt;textarea rows="3">&lt;/textarea></code>
-            <code>        &lt;button class="btn">Отправить эту форму&lt;/button></code>
-            <code>      &lt;/form></code>
-            <code>    &lt;/div></code>
-            <code>  &lt;/div></code>
-            <code>  </code>
-            <code>  &lt;div class="dropdown"></code>
-            <code>    &lt;button class="dropdown__toggler  btn" id="dropdown-demo-4" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></code>
-            <code>      Выпадает список вверх</code>
-            <code>    &lt;/button></code>
-            <code>    &lt;ul class="dropdown__menu  dropdown__menu--up  menu" aria-labelledby="dropdown-demo-4"></code>
-            <code>      &lt;li class="menu__item">&lt;a class="menu__link" href="#">Пункт списка (выпадает &lt;code>ul&lt;/code>)&lt;/a>&lt;/li></code>
-            <code>    &lt;/ul></code>
-            <code>  &lt;/div></code>
-            <code>  </code>
-            <code>  &lt;div class="dropdown"></code>
-            <code>    &lt;button class="dropdown__toggler  btn" id="dropdown-demo-5" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></code>
-            <code>      Выпадает список вверх от пр. края</code>
-            <code>    &lt;/button></code>
-            <code>    &lt;ul class="dropdown__menu  dropdown__menu--up  dropdown__menu--right  menu" aria-labelledby="dropdown-demo-5"></code>
-            <code>      &lt;li class="menu__item">&lt;a class="menu__link" href="#">Пункт списка (выпадает &lt;code>ul&lt;/code>)&lt;/a>&lt;/li></code>
-            <code>    &lt;/ul></code>
-            <code>  &lt;/div></code>
-          </pre>
-        </div>
-      </div>
-
-    </section>
-
     <section class="blocks-library__item" id="field-text" data-name=".field-text">
 
       <h2 class="blocks-library__item-title">Текстовое поле формы</h2>
@@ -1490,10 +1357,195 @@
 
     </section>
 
+    <section class="blocks-library__item" id="dropdown" data-name=".dropdown">
+
+      <h2 class="blocks-library__item-title">Выпадающий блок</h2>
+
+      <p class="alert  alert--warning">Зависит от <a href="https://jquery.com/">jQuery</a> (включен в сборку по умолчанию).</p>
+
+      <div class="dropdown">
+        <a id="dropdown-demo-1" href="#" class="dropdown__toggler" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ссылка</a>
+        <ul class="dropdown__menu  menu" aria-labelledby="dropdown-demo-1">
+          <li class="menu__item"><a class="menu__link" href="#">Пункт списка (выпадает <code>ul</code>)</a></li>
+          <li class="menu__item"><a class="menu__link" href="#">Пункт списка, после которого следует разделитель</a></li>
+          <li class="menu__item"><a class="menu__link" href="#">Пункт меню весьма длинный, такой, что прямо адски длинный, очень много, реально много слов!</a></li>
+        </ul>
+      </div>
+
+      <span class="dropdown">
+        <button class="dropdown__toggler  btn" id="dropdown-demo-2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Выпадает список
+        </button>
+        <span class="dropdown__menu  menu" aria-labelledby="dropdown-demo-2">
+          <span class="menu__item"><a class="menu__link" href="#">Пункт списка (выпадает <code>span</code>)</a></span>
+          <span class="menu__item"><a class="menu__link" href="">Пункт меню весьма длинный</a></span>
+          <span class="menu__item"><a class="menu__link" href="">Второй пункт</a></span>
+        </span>
+      </span>
+
+      <div class="dropdown">
+        <a id="dropdown-demo-3" href="#" class="dropdown__toggler" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ссылка</a>
+        <div class="dropdown__menu" aria-labelledby="dropdown-demo-3">
+          <form action="https://httpbin.org/post" method="post">
+            <input type="text">
+            <select>
+              <option>Название пункта</option>
+            </select>
+            <textarea rows="3"></textarea>
+            <button class="btn">Отправить эту форму</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropdown__toggler  btn" id="dropdown-demo-4" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Выпадает список вверх
+        </button>
+        <ul class="dropdown__menu  dropdown__menu--up  menu" aria-labelledby="dropdown-demo-4">
+          <li class="menu__item"><a class="menu__link" href="#">Пункт списка (выпадает <code>ul</code>)</a></li>
+        </ul>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropdown__toggler  btn" id="dropdown-demo-5" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Выпадает список вверх от пр. края
+        </button>
+        <ul class="dropdown__menu  dropdown__menu--up  dropdown__menu--right  menu" aria-labelledby="dropdown-demo-5">
+          <li class="menu__item"><a class="menu__link" href="#">Пункт списка (выпадает <code>ul</code>)</a></li>
+        </ul>
+      </div>
+
+      <p>События</p>
+
+      <pre class="code">
+        <code>// Факт открытия</code>
+        <code>$('#test').on('shown.nth.dropdown', function () {</code>
+        <code>  console.log('shown.nth.dropdown');</code>
+        <code>});</code>
+        <code> </code>
+        <code>// Факт закрытия</code>
+        <code>$('#test').on('hidden.nth.dropdown', function () {</code>
+        <code>  console.log('hidden.nth.dropdown');</code>
+        <code>});</code>
+      </pre>
+
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre class="code">
+            <code>  &lt;div class="dropdown"></code>
+            <code>    &lt;a id="dropdown-demo-1" href="#" class="dropdown__toggler" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ссылка&lt;/a></code>
+            <code>    &lt;ul class="dropdown__menu  menu" aria-labelledby="dropdown-demo-1"></code>
+            <code>      &lt;li class="menu__item">&lt;a class="menu__link" href="#">Пункт списка (выпадает &lt;code>ul&lt;/code>)&lt;/a>&lt;/li></code>
+            <code>      &lt;li class="menu__item">&lt;a class="menu__link" href="#">Пункт списка, после которого следует разделитель&lt;/a>&lt;/li></code>
+            <code>      &lt;li class="menu__item">&lt;a class="menu__link" href="#">Пункт меню весьма длинный, такой, что прямо адски длинный, очень много, реально много слов!&lt;/a>&lt;/li></code>
+            <code>    &lt;/ul></code>
+            <code>  &lt;/div></code>
+            <code>  </code>
+            <code>  &lt;span class="dropdown"></code>
+            <code>    &lt;button class="dropdown__toggler  btn" id="dropdown-demo-2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></code>
+            <code>      Выпадает список</code>
+            <code>    &lt;/button></code>
+            <code>    &lt;span class="dropdown__menu  menu" aria-labelledby="dropdown-demo-2"></code>
+            <code>      &lt;span class="menu__item">&lt;a class="menu__link" href="#">Пункт списка (выпадает &lt;code>span&lt;/code>)&lt;/a>&lt;/span></code>
+            <code>      &lt;span class="menu__item">&lt;a class="menu__link" href="">Пункт меню весьма длинный&lt;/a>&lt;/span></code>
+            <code>      &lt;span class="menu__item">&lt;a class="menu__link" href="">Второй пункт&lt;/a>&lt;/span></code>
+            <code>    &lt;/span></code>
+            <code>  &lt;/span></code>
+            <code>  </code>
+            <code>  &lt;div class="dropdown"></code>
+            <code>    &lt;a id="dropdown-demo-3" href="#" class="dropdown__toggler" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ссылка&lt;/a></code>
+            <code>    &lt;div class="dropdown__menu" aria-labelledby="dropdown-demo-3"></code>
+            <code>      &lt;form action="https://httpbin.org/post" method="post"></code>
+            <code>        &lt;input type="text"></code>
+            <code>        &lt;select></code>
+            <code>          &lt;option>Название пункта&lt;/option></code>
+            <code>        &lt;/select></code>
+            <code>        &lt;textarea rows="3">&lt;/textarea></code>
+            <code>        &lt;button class="btn">Отправить эту форму&lt;/button></code>
+            <code>      &lt;/form></code>
+            <code>    &lt;/div></code>
+            <code>  &lt;/div></code>
+            <code>  </code>
+            <code>  &lt;div class="dropdown"></code>
+            <code>    &lt;button class="dropdown__toggler  btn" id="dropdown-demo-4" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></code>
+            <code>      Выпадает список вверх</code>
+            <code>    &lt;/button></code>
+            <code>    &lt;ul class="dropdown__menu  dropdown__menu--up  menu" aria-labelledby="dropdown-demo-4"></code>
+            <code>      &lt;li class="menu__item">&lt;a class="menu__link" href="#">Пункт списка (выпадает &lt;code>ul&lt;/code>)&lt;/a>&lt;/li></code>
+            <code>    &lt;/ul></code>
+            <code>  &lt;/div></code>
+            <code>  </code>
+            <code>  &lt;div class="dropdown"></code>
+            <code>    &lt;button class="dropdown__toggler  btn" id="dropdown-demo-5" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></code>
+            <code>      Выпадает список вверх от пр. края</code>
+            <code>    &lt;/button></code>
+            <code>    &lt;ul class="dropdown__menu  dropdown__menu--up  dropdown__menu--right  menu" aria-labelledby="dropdown-demo-5"></code>
+            <code>      &lt;li class="menu__item">&lt;a class="menu__link" href="#">Пункт списка (выпадает &lt;code>ul&lt;/code>)&lt;/a>&lt;/li></code>
+            <code>    &lt;/ul></code>
+            <code>  &lt;/div></code>
+          </pre>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="blocks-library__item" id="owl-carousel" data-name=".owl-carousel">
+
+      <h2 class="blocks-library__item-title">Карусель <a href="http://owlcarousel2.github.io/OwlCarousel2/">owl-carousel</a></h2>
+
+      <p class="alert  alert--warning">Зависит от <a href="https://jquery.com/">jQuery</a> (включен в сборку по умолчанию).</p>
+
+      <div class="owl-carousel" id="owl-carousel-demo">
+        <div>
+          slide content 1
+        </div>
+        <div>
+          slide content 2
+        </div>
+        <div>
+          slide content 3
+        </div>
+        <div>
+          slide content 4
+        </div>
+        <div>
+          slide content 5
+        </div>
+        <div>
+          slide content 6
+        </div>
+      </div>
+
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre class="code">
+            <code>&lt;div class="owl-carousel" id="owl-carousel-demo"></code>
+            <code>  &lt;div>slide content 1&lt;/div></code>
+            <code>  &lt;div>slide content 2&lt;/div></code>
+            <code>  ...</code>
+            <code>&lt;/div></code>
+          </pre>
+        </div>
+      </div>
+
+    </section>
+
   </div>
 
   <a href="#" class="to-top" id="toTop">↑</a>
 
   @@include('_include/page_bottom.html')
+
+  <script>
+    $(document).ready(function(){
+      $("#owl-carousel-demo").owlCarousel({
+        items: 3,
+        nav: true,
+        loop: true
+      });
+    });
+  </script>
 </body>
 </html>
