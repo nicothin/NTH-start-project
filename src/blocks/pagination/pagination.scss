@@ -1,0 +1,48 @@
+// В этом файле должны быть стили только для БЭМ-блока pagination, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+// Не пишите здесь другие селекторы.
+
+$line-height:                 1.375em !default;
+
+$text-color:                  hsl(0, 0%, 10%) !default;
+
+$border-color:                hsl(0, 0%, 60%) !default;
+
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: $line-height;
+  margin-bottom: $line-height;
+
+  &__item {
+    display: block;
+    padding: 0.5em;
+    min-width: 2.5em;
+    border: 1px solid $border-color;
+    text-decoration: none;
+    text-align: center;
+    color: $text-color;
+
+    & + & {
+      border-left: 0;
+    }
+
+    &:hover,
+    &:focus {
+      text-decoration: none;
+      color: $text-color;
+    }
+
+    @at-root a#{&} {
+
+      &:hover,
+      &:focus {
+        background-color: $gray-lightest;
+      }
+    }
+
+    &--active {
+      background-color: $gray-lightest;
+    }
+  }
+}
