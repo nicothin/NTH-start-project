@@ -4,10 +4,10 @@
 
 // Использование: node createBlock.js [имя блока] [доп. расширения через пробел]
 
-const fs = require('fs');                // будем работать с файловой системой
-const pjson = require('./package.json'); // получим настройки из package.json
-const dirs = pjson.configProject.dirs;   // отдельно имеем объект с директориями
-const mkdirp = require('mkdirp');        // зависимость
+const fs = require('fs');
+const projectConfig = require('./projectConfig.json');
+const dirs = projectConfig.dirs;
+const mkdirp = require('mkdirp');
 
 let blockName = process.argv[2];          // получим имя блока
 let defaultExtensions = ['scss', 'html', 'img']; // расширения по умолчанию
@@ -40,19 +40,19 @@ if(blockName) {
           fileContent = '// В этом файле должны быть стили только для БЭМ-блока ' + blockName + ', его элементов, \n// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...\n// Не пишите здесь другие селекторы.\n\n.' + blockName + ' {\n  \n}\n';
           // fileCreateMsg = '';
 
-          // Добавим созданный файл в ./package.json
+          // Добавим созданный файл
           let hasThisBlock = false;
-          for (let block in pjson.configProject.blocks) {
+          for (let block in projectConfig.blocks) {
             if(block === blockName) {
               hasThisBlock = true;
               break;
             }
           }
           if(!hasThisBlock) {
-            pjson.configProject.blocks[blockName] = [];
-            let newPackageJson = JSON.stringify(pjson, "", 2);
-            fs.writeFileSync('./package.json', newPackageJson);
-            fileCreateMsg = '[NTH] Подключение блока добавлено в package.json';
+            projectConfig.blocks[blockName] = [];
+            let newPackageJson = JSON.stringify(projectConfig, "", 2);
+            fs.writeFileSync('./projectConfig.json', newPackageJson);
+            fileCreateMsg = '[NTH] Подключение блока добавлено в projectConfig.json';
           }
         }
 
