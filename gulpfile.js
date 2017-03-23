@@ -22,10 +22,10 @@ const size = require('gulp-size');
 const del = require('del');
 const newer = require('gulp-newer');
 
-// Получим настройки проекта из package.json
-let pjson = require('./package.json');
-let dirs = pjson.configProject.dirs;
-let lists = getFilesList(pjson.configProject);
+// Получим настройки проекта из projectConfig.json
+let projectConfig = require('./projectConfig.json');
+let dirs = projectConfig.dirs;
+let lists = getFilesList(projectConfig);
 // console.log(lists);
 
 // Запишем стилевой файл диспетчер подключений
@@ -93,12 +93,12 @@ gulp.task('style', function () {
 
 // Компиляция отдельных файлов
 gulp.task('style:single', function () {
-  if(pjson.configProject.singleCompiled.length) {
+  if(projectConfig.singleCompiled.length) {
     const sass = require('gulp-sass');
     const sourcemaps = require('gulp-sourcemaps');
     const wait = require('gulp-wait');
     console.log('---------- Компиляция добавочных стилей');
-    return gulp.src(pjson.configProject.singleCompiled)
+    return gulp.src(projectConfig.singleCompiled)
       .pipe(plumber({
         errorHandler: function(err) {
           notify.onError({
@@ -127,8 +127,8 @@ gulp.task('style:single', function () {
 
 // Копирование добавочных CSS, которые хочется иметь отдельными файлами
 gulp.task('copy:css', function(callback) {
-  if(pjson.configProject.copiedCss.length) {
-    return gulp.src(pjson.configProject.copiedCss)
+  if(projectConfig.copiedCss.length) {
+    return gulp.src(projectConfig.copiedCss)
       .pipe(postcss(postCssPlugins))
       .pipe(cleanss())
       .pipe(size({
@@ -159,8 +159,8 @@ gulp.task('copy:img', function () {
 
 // Копирование JS
 gulp.task('copy:js', function (callback) {
-  if(pjson.configProject.copiedJs.length) {
-    return gulp.src(pjson.configProject.copiedJs)
+  if(projectConfig.copiedJs.length) {
+    return gulp.src(projectConfig.copiedJs)
       .pipe(size({
         title: 'Размер',
         showFiles: true,
@@ -189,7 +189,7 @@ gulp.task('copy:fonts', function () {
 // Сборка SVG-спрайта для блока sprite-svg
 let spriteSvgPath = dirs.srcPath + dirs.blocksDirName + '/sprite-svg/svg/';
 gulp.task('sprite:svg', function (callback) {
-  if((pjson.configProject.blocks['sprite-svg']) !== undefined) {
+  if((projectConfig.blocks['sprite-svg']) !== undefined) {
     const svgstore = require('gulp-svgstore');
     const svgmin = require('gulp-svgmin');
     const cheerio = require('gulp-cheerio');
@@ -231,7 +231,7 @@ gulp.task('sprite:svg', function (callback) {
 // Сборка SVG-спрайта для блока sprite-png
 let spritePngPath = dirs.srcPath + dirs.blocksDirName + '/sprite-png/png/';
 gulp.task('sprite:png', function (callback) {
-  if((pjson.configProject.blocks['sprite-png']) !== undefined) {
+  if((projectConfig.blocks['sprite-png']) !== undefined) {
     const spritesmith = require('gulp.spritesmith');
     const buffer = require('vinyl-buffer');
     const merge = require('merge-stream');
@@ -379,22 +379,22 @@ gulp.task('serve', ['build'], function() {
   gulp.watch([
     dirs.srcPath + 'scss/style.scss',
     dirs.srcPath + dirs.blocksDirName + '/**/*.scss',
-    pjson.configProject.addCssBefore,
-    pjson.configProject.addCssAfter,
+    projectConfig.addCssBefore,
+    projectConfig.addCssAfter,
   ], ['style']);
   // Слежение за отдельными стилями
-  gulp.watch(pjson.configProject.singleCompiled, ['style:single',]);
+  gulp.watch(projectConfig.singleCompiled, ['style:single',]);
   // Слежение за добавочными стилями
-  if(pjson.configProject.copiedCss.length) {
-    gulp.watch(pjson.configProject.copiedCss, ['copy:css']);
+  if(projectConfig.copiedCss.length) {
+    gulp.watch(projectConfig.copiedCss, ['copy:css']);
   }
   // Слежение за изображениями
   if(lists.img.length) {
     gulp.watch(lists.img, ['watch:img']);
   }
   // Слежение за добавочными JS
-  if(pjson.configProject.copiedJs.length) {
-    gulp.watch(pjson.configProject.copiedJs, ['watch:copied:js']);
+  if(projectConfig.copiedJs.length) {
+    gulp.watch(projectConfig.copiedJs, ['watch:copied:js']);
   }
   // Слежение за шрифтами
   gulp.watch('/fonts/*.{ttf,woff,woff2,eot,svg}', {cwd: dirs.srcPath}, ['watch:fonts']);
@@ -409,11 +409,11 @@ gulp.task('serve', ['build'], function() {
     gulp.watch(lists.js, ['watch:js']);
   }
   // Слежение за SVG (спрайты)
-  if((pjson.configProject.blocks['sprite-svg']) !== undefined) {
+  if((projectConfig.blocks['sprite-svg']) !== undefined) {
     gulp.watch('*.svg', {cwd: spriteSvgPath}, ['watch:sprite:svg']); // следит за новыми и удаляемыми файлами
   }
   // Слежение за PNG (спрайты)
-  if((pjson.configProject.blocks['sprite-png']) !== undefined) {
+  if((projectConfig.blocks['sprite-png']) !== undefined) {
     gulp.watch('*.png', {cwd: spritePngPath}, ['watch:sprite:png']); // следит за новыми и удаляемыми файлами
   }
 });
