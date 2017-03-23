@@ -1388,6 +1388,39 @@
 
     </section>
 
+    <section class="blocks-library__item" id="pagination" data-name=".pagination">
+
+      <h2 class="blocks-library__item-title">Пагинация</h2>
+
+      <div class="pagination">
+        <a href="" class="pagination__item">1</a>
+        <span class="pagination__item">...</span>
+        <a href="" class="pagination__item">5</a>
+        <a href="" class="pagination__item  pagination__item--active">6</a>
+        <a href="" class="pagination__item">123</a>
+        <span class="pagination__item">...</span>
+        <a href="" class="pagination__item">999</a>
+      </div>
+
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre class="code">
+            <code>&lt;/div class="pagination"></code>
+            <code>  &lt;/a href="" class="pagination__item">1&lt;//a></code>
+            <code>  &lt;/a href="" class="pagination__item">...&lt;//a></code>
+            <code>  &lt;/a href="" class="pagination__item">5&lt;//a></code>
+            <code>  &lt;/a href="" class="pagination__item  pagination__item--active">6&lt;//a></code>
+            <code>  &lt;/a href="" class="pagination__item">123&lt;//a></code>
+            <code>  &lt;/a href="" class="pagination__item">...&lt;//a></code>
+            <code>  &lt;/a href="" class="pagination__item">999&lt;//a></code>
+            <code>&lt;//div></code>
+          </pre>
+        </div>
+      </div>
+
+    </section>
+
     <section class="blocks-library__item" id="dropdown" data-name=".dropdown">
 
       <h2 class="blocks-library__item-title">Выпадающий блок</h2>
@@ -1558,6 +1591,55 @@
             <code>  ...</code>
             <code>&lt;/div></code>
           </pre>
+          <pre class="code">
+            <code>$("#owl-carousel-demo").owlCarousel({</code>
+            <code>  items: 3,</code>
+            <code>  nav: true,</code>
+            <code>  loop: true</code>
+            <code>});</code>
+          </pre>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="blocks-library__item" id="swipe" data-name=".swipe">
+
+      <h2 class="blocks-library__item-title">Карусель <a href="https://github.com/lyfeyaj/swipe">swipe</a></h2>
+
+      <div id="swipe-slider" class="swipe">
+        <div class="swipe-wrap">
+          <div>1111</div>
+          <div>2222</div>
+          <div>3333</div>
+        </div>
+      </div>
+
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre class="code">
+            <code>&lt;div id="swipe-slider" class="swipe"></code>
+            <code>  &lt;div class="swipe-wrap"></code>
+            <code>    &lt;div>1111&lt;/div></code>
+            <code>    &lt;div>2222&lt;/div></code>
+            <code>    &lt;div>3333&lt;/div></code>
+            <code>  &lt;/div></code>
+            <code>&lt;/div></code>
+          </pre>
+          <pre class="code">
+            <code>window.mySwipe = new Swipe(document.getElementById('swipe-slider'), {</code>
+            <code>  startSlide: 0,</code>
+            <code>  speed: 400,</code>
+            <code>  auto: 3000,</code>
+            <code>  draggable: true,</code>
+            <code>  continuous: true,</code>
+            <code>  disableScroll: true,</code>
+            <code>  stopPropagation: true,</code>
+            <code>  callback: function(index, elem, dir) {},</code>
+            <code>  transitionEnd: function(index, elem) {}</code>
+            <code>});</code>
+          </pre>
         </div>
       </div>
 
@@ -1571,10 +1653,23 @@
 
   <script>
     $(document).ready(function(){
+
       $("#owl-carousel-demo").owlCarousel({
         items: 3,
         nav: true,
         loop: true
+      });
+
+      window.mySwipe = new Swipe(document.getElementById('swipe-slider'), {
+        startSlide: 0,
+        speed: 400,
+        auto: 3000,
+        draggable: true,
+        continuous: true,
+        disableScroll: true,
+        stopPropagation: true,
+        callback: function(index, elem, dir) {},
+        transitionEnd: function(index, elem) {}
       });
     });
   </script>
