@@ -6,16 +6,18 @@ $color-danger:                hsl(2, 64%, 58%) !default;
 
 .field-file {
 
+  $block-name:                &;
+
   &--error {
 
-    .field-file__name,
-    .field-file__name-text,
-    .field-file__input,
-    .field-file__help-text {
+    #{$block-name}__name,
+    #{$block-name}__name-text,
+    #{$block-name}__input,
+    #{$block-name}__help-text {
       color: $color-danger;
     }
 
-    .field-file__name-text {
+    #{$block-name}__name-text {
       border-color: $color-danger;
       background-color: lighten($color-danger, 35%);
     }
