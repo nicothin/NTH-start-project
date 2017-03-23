@@ -44,7 +44,8 @@
     "table-mobile-scroll": [],
     "owl-carousel": [],
     "swipe": [],
-    "pagination": []
+    "pagination": [],
+    "breadcrumbs": []
   },
   "addCssBefore": [
     "./src/scss/variables.scss",
