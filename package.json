@@ -64,6 +64,7 @@
     "postcss-inline-svg": "^2.3.0",
     "stylelint": "^7.9.0",
     "svg4everybody": "^2.1.7",
+    "swipejs": "^2.2.4",
     "vinyl-buffer": "^1.0.0",
     "yaspeller": "^3.1.0"
   }

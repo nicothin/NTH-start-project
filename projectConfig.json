@@ -42,7 +42,8 @@
     "table": [],
     "table-responsive": [],
     "table-mobile-scroll": [],
-    "owl-carousel": []
+    "owl-carousel": [],
+    "swipe": []
   },
   "addCssBefore": [
     "./src/scss/variables.scss",
@@ -60,7 +61,8 @@
     "./node_modules/jquery-migrate/dist/jquery-migrate.min.js",
     "./node_modules/svg4everybody/dist/svg4everybody.js",
     "./node_modules/ismobilejs/isMobile.min.js",
-    "./node_modules/owl.carousel/dist/owl.carousel.js"
+    "./node_modules/owl.carousel/dist/owl.carousel.js",
+    "./node_modules/swipejs/build/swipe.min.js"
   ],
   "addJsAfter": [
     "./src/js/global-script.js"
