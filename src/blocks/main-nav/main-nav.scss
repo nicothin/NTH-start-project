@@ -9,8 +9,6 @@ $screen-lg:                   992px !default;
 $screen-xl:                   1200px !default;
 $screen-xxl:                  1800px !default;
 
-// специфические для этого блока переменные:
-
 $menu-desktop-width:          $screen-xl !default;
 $toggler-part-height:         3px !default;
 $toggler-part-bg-color:       #000 !default;
@@ -172,16 +170,6 @@ $toggler-part-bg-color:       #000 !default;
   // переключатель
 
   &__toggler {
-    position: relative;
-    z-index: 1;
-    top: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
-    width: 30px;
-    height: 30px;
-    user-select: none;
-    cursor: pointer;
 
     .no-js & {
       display: none;
@@ -189,58 +177,6 @@ $toggler-part-bg-color:       #000 !default;
 
     @media (min-width: $menu-desktop-width) {
       display: none;
-    }
-
-    > span {
-      display: inline-block;
-      vertical-align: bottom;
-      width: 100%;
-      height: $toggler-part-height;
-      background: $toggler-part-bg-color;
-      position: relative;
-      transition: background 0.3s 0.3s;
-
-      &:before,
-      &:after {
-        content: '';
-        position: absolute;
-        left: 0;
-        width: 100%;
-        height: $toggler-part-height;
-        background: $toggler-part-bg-color;
-        transform-origin: 50% 50%;
-        transition: top 0.3s 0.3s, transform 0.3s;
-      }
-
-      &:before {
-        top: -10px;
-      }
-
-      &:after {
-        top: 10px;
-      }
-    }
-
-    &--close {
-
-      > span {
-        transition: background 0.2s 0s;
-        background: transparent;
-
-        &:before,
-        &:after {
-          transition: top 0.3s, transform 0.3s 0.3s;
-          top: 0;
-        }
-
-        &:before {
-          transform: rotate3d(0, 0, 1, 45deg);
-        }
-
-        &:after {
-          transform: rotate3d(0, 0, 1, -45deg);
-        }
-      }
     }
   }
 }

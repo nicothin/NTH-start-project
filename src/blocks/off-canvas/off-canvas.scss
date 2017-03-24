@@ -1,0 +1,135 @@
+// В этом файле должны быть стили только для БЭМ-блока off-canvas, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+// Не пишите здесь другие селекторы.
+
+$gray-darkest:                hsl(0, 0%, 10%);
+
+$opacity:                     0.7 !default;
+$transition-time:             0.3s !default;
+
+$toggler-part-height:         3px !default;
+
+.off-canvas {
+
+  $block-name:                &;
+
+  position: relative;
+  overflow: hidden;
+
+  &__aside {
+    position: fixed;
+    z-index: 2;
+    width: 250px;
+    height: 100%;
+    backface-visibility: hidden;
+    background-color: $gray-darkest;
+    color: #fff;
+    transform: translateX(-250px);
+    transition: transform $transition-time ease;
+
+    a {
+      color: #fff;
+
+      &:hover,
+      &:focus {
+        color: #fff;
+      }
+    }
+  }
+
+  &__aside-inner {
+    overflow-y: auto;
+  }
+
+  &__close {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    background-color: $gray-darkest;
+    opacity: 0;
+    visibility: hidden;
+    z-index: -1;
+    display: flex;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    user-select: none;
+    cursor: pointer;
+    transition: opacity $transition-time ease;
+
+    .no-js & {
+      display: none;
+    }
+
+    > span {
+      width: 100%;
+      height: 100%;
+      position: relative;
+
+      &:before,
+      &:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: $toggler-part-height;
+        background: #fff;
+        transform-origin: 50% 50%;
+      }
+
+      &:before {
+        transform: translateY(-50%) rotate3d(0, 0, 1, 45deg);
+      }
+
+      &:after {
+        transform: translateY(-50%) rotate3d(0, 0, 1, -45deg);
+      }
+    }
+  }
+
+  &__page-content {
+    backface-visibility: hidden;
+    transition: transform $transition-time ease;
+  }
+
+  &__overlay {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    // transition: opacity $transition-time ease;
+    background: rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+  }
+
+
+
+  &--open {
+
+    #{$block-name}__overlay {
+      position: fixed;
+      z-index: 1;
+      opacity: 1;
+      visibility: visible;
+      transition: opacity $transition-time ease;
+    }
+
+    #{$block-name}__close {
+      z-index: 1;
+      opacity: 1;
+      visibility: visible;
+    }
+
+    #{$block-name}__aside {
+      transform: translateX(0);
+    }
+
+    #{$block-name}__page-content {
+      transform: translateX(250px);
+    }
+  }
+}

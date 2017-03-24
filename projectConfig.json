@@ -46,7 +46,9 @@
     "swipe": [],
     "pagination": [],
     "breadcrumbs": [],
-    "nouislider": []
+    "nouislider": [],
+    "off-canvas": [],
+    "burger": []
   },
   "addCssBefore": [
     "./src/scss/variables.scss",

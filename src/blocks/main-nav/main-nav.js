@@ -7,7 +7,7 @@
 
     function mainNavVisibleToggle(e) {
       e.preventDefault();
-      toggler.classList.toggle('main-nav__toggler--close');
+      toggler.classList.toggle('burger--close');
       document.getElementById('main-nav').classList.toggle('main-nav--open');
     }
   }
