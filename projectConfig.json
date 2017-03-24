@@ -45,12 +45,14 @@
     "owl-carousel": [],
     "swipe": [],
     "pagination": [],
-    "breadcrumbs": []
+    "breadcrumbs": [],
+    "nouislider": []
   },
   "addCssBefore": [
     "./src/scss/variables.scss",
     "./src/scss/mixins.scss",
-    "../../node_modules/owl.carousel/dist/assets/owl.carousel.css"
+    "../../node_modules/owl.carousel/dist/assets/owl.carousel.css",
+    "../../node_modules/nouislider/distribute/nouislider.css"
   ],
   "addCssAfter": [
     "./src/scss/print.scss"
@@ -64,7 +66,8 @@
     "./node_modules/svg4everybody/dist/svg4everybody.js",
     "./node_modules/ismobilejs/isMobile.min.js",
     "./node_modules/owl.carousel/dist/owl.carousel.js",
-    "./node_modules/swipejs/build/swipe.min.js"
+    "./node_modules/swipejs/build/swipe.min.js",
+    "./node_modules/nouislider/distribute/nouislider.js"
   ],
   "addJsAfter": [
     "./src/js/global-script.js"

@@ -43,6 +43,7 @@
     "tbody",
     "tfoot",
     "thead",
+    "noUiSlider",
     "cleancss"
   ]
 }
