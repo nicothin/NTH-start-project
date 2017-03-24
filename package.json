@@ -3,7 +3,6 @@
   "version": "2.0.1",
   "description": "Start a library of blocks and technical solutions for HTML/CSS/js page layout.",
   "author": "Nikolay Gromov",
-  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/nicothin/NTH-start-project.git"
