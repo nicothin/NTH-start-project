@@ -57,31 +57,24 @@
         });
       }
 
-      // Изменение размера шрифта на произвольном блоке
-      var parent, fontSizeEm;
-      $('.js-font-resizer')
-        .css('font-size', '1em')
-        .append('<div class="js-font-resizer__btns"><button class="btn btn--sm js-button-plus">+</button><button class="btn  btn--sm js-button-null">0</button><button class="btn  btn--sm js-button-minus">-</button></div>')
-        .on('click', 'button.js-button-plus', function(){
-          parent = $(this).closest('.js-font-resizer');
-          fontSizeEm = /(\d*\.?\d?)(em)/g.exec(parent.attr('style'));
-          parent.css('font-size', parent.css('font-size', parseFloat(fontSizeEm[0], 10) + 0.1 + 'em') );
-        }).on('click', 'button.js-button-minus', function(){
-          parent = $(this).closest('.js-font-resizer');
-          fontSizeEm = /(\d*\.?\d?)(em)/g.exec(parent.attr('style'));
-          parent.css('font-size', parent.css('font-size', parseFloat(fontSizeEm[0], 10) - 0.1 + 'em') );
-        }).on('click', 'button.js-button-null', function(){
-          parent = $(this).closest('.js-font-resizer');
-          parent.css('font-size', '1em' );
-        });
-
     });
   </script>
 </head>
 
 <body>
 
-  <div class="components-demo  blocks-library">
+<div class="off-canvas" id="off-canvas">
+
+  <div class="off-canvas__aside">
+    <div class="off-canvas__aside-inner">
+      1111
+      <br>
+      222
+    </div>
+    <div class="off-canvas__close"><span data-toggle="off-canvas"></span></div>
+  </div>
+
+  <div class="components-demo  blocks-library  off-canvas__page-content">
 
     <h1>Страница демонстрации блоков, доступных на <a href="index.html">проекте</a></h1>
 
@@ -305,7 +298,7 @@
           </div>
         </div>
         <pre>// Блочный код с символом переноса строки
-// Вторая строка</pre>
+        // Вторая строка</pre>
         <div class="blocks-library__code-wrapper">
           <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
           <div class="blocks-library__code">
@@ -365,6 +358,27 @@
 
     </section>
 
+    <section class="blocks-library__item" id="burger" data-name=".burger">
+
+      <h2 class="blocks-library__item-title">Бургер</h2>
+
+      <p>Анимированное превращение в крестик по добавлению модификатора.</p>
+
+      <div class="burger"><span></span></div>
+      <div class="burger  burger--close"><span></span></div>
+
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre class="code">
+            <code>&lt;div class="burger">&lt;span>&lt;/span>&lt;/div></code>
+            <code>&lt;div class="burger  burger--close">&lt;span>&lt;/span>&lt;/div></code>
+          </pre>
+        </div>
+      </div>
+
+    </section>
+
     <section class="blocks-library__item" id="main-nav-block" data-name=".main-nav">
 
       <h2 class="blocks-library__item-title">Главная навигация</h2>
@@ -372,7 +386,7 @@
       <p>Демонстрационный контент блока:</p>
 
       <nav id="main-nav" class="main-nav">
-        <div id="main-nav-toggler" class="main-nav__toggler"><span></span></div>
+        <div id="main-nav-toggler" class="main-nav__toggler  burger"><span></span></div>
         <ul class="main-nav__list">
           <li class="main-nav__item  main-nav__item--active">
             <a href="" class="main-nav__link">
@@ -425,7 +439,7 @@
         <div class="blocks-library__code">
           <pre class="code">
             <code>&lt;nav id="main-nav" class="main-nav"></code>
-            <code>  &lt;div id="main-nav-toggler" class="main-nav__toggler">&lt;span>&lt;/span>&lt;/div></code>
+            <code>  &lt;div id="main-nav-toggler" class="main-nav__toggler  burger">&lt;span>&lt;/span>&lt;/div></code>
             <code>  &lt;ul class="main-nav__list"></code>
             <code>    &lt;li class="main-nav__item  main-nav__item--active"></code>
             <code>      &lt;a href="" class="main-nav__link"></code>
@@ -1722,7 +1736,39 @@
 
     </section>
 
+    <section class="blocks-library__item" id="off-canvas" data-name=".off-canvas">
+
+      <h2 class="blocks-library__item-title">Боковое меню</h2>
+
+      <p>Простейший компонент, 3 строчки JavaScript. Меню показывается по клику на любой элемент с <code>data-toggle="off-canvas"</code>.</p>
+
+      <button class="btn" type="button" data-toggle="off-canvas">Показать боковое меню</button>
+      <a href="#" data-toggle="off-canvas">Показать боковое меню</a>
+      <span data-toggle="off-canvas">Показать боковое меню</span>
+
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre class="code">
+            <code>&lt;div class="off-canvas" id="off-canvas"></code>
+            <code>  &lt;div class="off-canvas__aside"></code>
+            <code>    &lt;div class="off-canvas__aside-inner">...&lt;/div></code>
+            <code>    &lt;div class="off-canvas__close">&lt;span data-toggle="off-canvas">&lt;/span>&lt;/div></code>
+            <code>  &lt;/div></code>
+            <code>  &lt;div class="off-canvas__page-content">...&lt;/div></code>
+            <code>  &lt;div class="off-canvas__overlay" data-toggle="off-canvas">&lt;/div></code>
+            <code>&lt;/div></code>
+          </pre>
+        </div>
+      </div>
+
+    </section>
+
   </div>
+
+  <div class="off-canvas__overlay" data-toggle="off-canvas"></div>
+
+</div>
 
   <a href="#" class="to-top" id="toTop">↑</a>
   <script src="js/script.min.js"></script>
