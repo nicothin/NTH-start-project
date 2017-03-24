@@ -1421,6 +1421,31 @@
 
     </section>
 
+    <section class="blocks-library__item" id="breadcrumbs" data-name=".breadcrumbs">
+
+      <h2 class="blocks-library__item-title">Хлебные крошки</h2>
+
+      <ul class="breadcrumbs">
+        <li class="breadcrumbs__item"><a href="" class="breadcrumbs__link">Главная</a></li>
+        <li class="breadcrumbs__item"><a href="" class="breadcrumbs__link">Каталог</a></li>
+        <li class="breadcrumbs__item"><a href="" class="breadcrumbs__link">Маркеры</a></li>
+      </ul>
+
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre class="code">
+              <code>&lt;ul class="breadcrumbs"></code>
+              <code>  &lt;li class="breadcrumbs__item">&lt;a href="" class="breadcrumbs__link">Главная&lt;/a>&lt;/li></code>
+              <code>  &lt;li class="breadcrumbs__item">&lt;a href="" class="breadcrumbs__link">Каталог&lt;/a>&lt;/li></code>
+              <code>  &lt;li class="breadcrumbs__item">&lt;a href="" class="breadcrumbs__link">Маркеры&lt;/a>&lt;/li></code>
+              <code>&lt;/ul></code>
+          </pre>
+        </div>
+      </div>
+
+    </section>
+
     <section class="blocks-library__item" id="dropdown" data-name=".dropdown">
 
       <h2 class="blocks-library__item-title">Выпадающий блок</h2>
@@ -1645,6 +1670,58 @@
 
     </section>
 
+    <section class="blocks-library__item" id="nouislider" data-name=".nouislider">
+
+      <h2 class="blocks-library__item-title">Выбор диапазона с <a href="https://refreshless.com/nouislider/">noUiSlider</a></h2>
+
+      <div class="nouislider" id="demo-nouislider"></div>
+
+      <p>
+        <input type="number" value="10" id="demo-nouislider-start">
+        <input type="number" value="90" id="demo-nouislider-end">
+      </p>
+
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre class="code">
+            <code>&lt;div class="nouislider" id="demo-nouislider">&lt;/div></code>
+            <code>&lt;input type="number" value="10" id="demo-nouislider-start"></code>
+            <code>&lt;input type="number" value="90" id="demo-nouislider-end"></code>
+          </pre>
+          <pre class="code">
+            <code>var demoNoUiSlider = document.getElementById('demo-nouislider');</code>
+            <code>var demoNoUiSliderStartInput = document.getElementById('demo-nouislider-start');</code>
+            <code>var demoNoUiSliderEndInput = document.getElementById('demo-nouislider-end');</code>
+            <code>noUiSlider.create(demoNoUiSlider, {</code>
+            <code>  start: [demoNoUiSliderStartInput.value, demoNoUiSliderEndInput.value],</code>
+            <code>  connect: true,</code>
+            <code>  step: 1,</code>
+            <code>  range: {</code>
+            <code>    'min': 0,</code>
+            <code>    'max': 100</code>
+            <code>  }</code>
+            <code>});</code>
+            <code>demoNoUiSlider.noUiSlider.on('update', function( values, handle ) {</code>
+            <code>  var value = values[handle];</code>
+            <code>  if ( handle ) {</code>
+            <code>    demoNoUiSliderEndInput.value = Math.round(value);</code>
+            <code>  } else {</code>
+            <code>    demoNoUiSliderStartInput.value = Math.round(value);</code>
+            <code>  }</code>
+            <code>});</code>
+            <code>demoNoUiSliderEndInput.addEventListener('change', function(){</code>
+            <code>  demoNoUiSlider.noUiSlider.set([null, this.value]);</code>
+            <code>});</code>
+            <code>demoNoUiSliderStartInput.addEventListener('change', function(){</code>
+            <code>  demoNoUiSlider.noUiSlider.set([this.value, null]);</code>
+            <code>});</code>
+          </pre>
+        </div>
+      </div>
+
+    </section>
+
   </div>
 
   <a href="#" class="to-top" id="toTop">↑</a>
@@ -1671,6 +1748,34 @@
         callback: function(index, elem, dir) {},
         transitionEnd: function(index, elem) {}
       });
+
+      var demoNoUiSlider = document.getElementById('demo-nouislider');
+      var demoNoUiSliderStartInput = document.getElementById('demo-nouislider-start');
+      var demoNoUiSliderEndInput = document.getElementById('demo-nouislider-end');
+      noUiSlider.create(demoNoUiSlider, {
+        start: [demoNoUiSliderStartInput.value, demoNoUiSliderEndInput.value],
+        connect: true,
+        step: 1,
+        range: {
+          'min': 0,
+          'max': 100
+        }
+      });
+      demoNoUiSlider.noUiSlider.on('update', function( values, handle ) {
+        var value = values[handle];
+        if ( handle ) {
+          demoNoUiSliderEndInput.value = Math.round(value);
+        } else {
+          demoNoUiSliderStartInput.value = Math.round(value);
+        }
+      });
+      demoNoUiSliderEndInput.addEventListener('change', function(){
+        demoNoUiSlider.noUiSlider.set([null, this.value]);
+      });
+      demoNoUiSliderStartInput.addEventListener('change', function(){
+        demoNoUiSlider.noUiSlider.set([this.value, null]);
+      });
+
     });
   </script>
 </body>
