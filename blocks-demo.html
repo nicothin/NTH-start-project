@@ -66,12 +66,7 @@
 <div class="off-canvas" id="off-canvas">
 
   <div class="off-canvas__aside">
-    <div class="off-canvas__aside-inner">
-      1111
-      <br>
-      222
-    </div>
-    <div class="off-canvas__close"><span data-toggle="off-canvas"></span></div>
+    <ul class="menu" id="off-canvas-menu"></ul>
   </div>
 
   <div class="components-demo  blocks-library  off-canvas__page-content">
@@ -314,7 +309,7 @@
 
     <section class="blocks-library__item" id="sprite-svg" data-name=".sprite-svg">
 
-      <h2 class="blocks-library__item-title">svg-спрайт c <a href="https://github.com/w0rm/gulp-svgstore">gulp-svgstore</a></h2>
+      <h2 class="blocks-library__item-title">SVG-спрайт c <a href="https://github.com/w0rm/gulp-svgstore">gulp-svgstore</a></h2>
 
       <p>Из файлов папки <code>sprite-svg/svg/</code> в папку <code>sprite-svg/img/</code> будет сгенерирован файл спрайта <code>sprite-svg.svg</code>, который далее будет скопирован в папку сборки. Стилевой файл блока не используется. Сам спрайт имеет вид:</p>
 
@@ -1736,7 +1731,7 @@
 
     </section>
 
-    <section class="blocks-library__item" id="off-canvas" data-name=".off-canvas">
+    <section class="blocks-library__item" id="off-canvas-demo" data-name=".off-canvas">
 
       <h2 class="blocks-library__item-title">Боковое меню</h2>
 
@@ -1751,10 +1746,7 @@
         <div class="blocks-library__code">
           <pre class="code">
             <code>&lt;div class="off-canvas" id="off-canvas"></code>
-            <code>  &lt;div class="off-canvas__aside"></code>
-            <code>    &lt;div class="off-canvas__aside-inner">...&lt;/div></code>
-            <code>    &lt;div class="off-canvas__close">&lt;span data-toggle="off-canvas">&lt;/span>&lt;/div></code>
-            <code>  &lt;/div></code>
+            <code>  &lt;div class="off-canvas__aside">...&lt;/div></code>
             <code>  &lt;div class="off-canvas__page-content">...&lt;/div></code>
             <code>  &lt;div class="off-canvas__overlay" data-toggle="off-canvas">&lt;/div></code>
             <code>&lt;/div></code>
@@ -1763,6 +1755,8 @@
       </div>
 
     </section>
+
+    <div class="burger  blocks-library__menu-toggler" data-toggle="off-canvas"><span data-toggle="off-canvas"></span></div>
 
   </div>
 
@@ -1821,6 +1815,14 @@
       demoNoUiSliderStartInput.addEventListener('change', function(){
         demoNoUiSlider.noUiSlider.set([this.value, null]);
       });
+
+      var demoBlocks = document.querySelectorAll('.blocks-library__item');
+      var offCanvasMenu = '';
+      demoBlocks.forEach(function(block) {
+        offCanvasMenu += '<li class="menu__item"><a class="menu__link" data-toggle-native="off-canvas" href="#'+block.getAttribute('id')+'">'+block.querySelector('.blocks-library__item-title').textContent+'</a></li>';
+      });
+      var offCanvasMenuContent = document.getElementById('off-canvas-menu');
+      offCanvasMenuContent.innerHTML = offCanvasMenu;
 
     });
   </script>
