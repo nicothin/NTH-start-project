@@ -2,8 +2,6 @@
 // модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
 // Не пишите здесь другие селекторы.
 
-$gray-lightest:               hsl(0, 0%, 90%) !default;
-
 $text-color:                  hsl(0, 0%, 10%) !default;
 
 $border-color:                hsl(0, 0%, 60%) !default;
@@ -37,8 +35,6 @@ $border-color:                hsl(0, 0%, 60%) !default;
     text-decoration: none;
 
     &:hover,
-    &:focus {
-      background-color: $gray-lightest;
-    }
+    &:focus {}
   }
 }

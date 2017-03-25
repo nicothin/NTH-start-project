@@ -9,6 +9,10 @@ $transition-time:             0.3s !default;
 
 $toggler-part-height:         3px !default;
 
+// Переменная ширины этого блока
+//
+$off-canvas-width:            250px !default;
+
 .off-canvas {
 
   $block-name:                &;
@@ -17,15 +21,21 @@ $toggler-part-height:         3px !default;
   overflow: hidden;
 
   &__aside {
-    position: fixed;
-    z-index: 2;
-    width: 250px;
-    height: 100%;
+    max-height: 30vh;
+    overflow-y: auto;
     backface-visibility: hidden;
     background-color: $gray-darkest;
     color: #fff;
-    transform: translateX(-250px);
     transition: transform $transition-time ease;
+
+    .js & {
+      position: fixed;
+      z-index: 2;
+      width: $off-canvas-width;
+      height: 100%;
+      max-height: none;
+      transform: translateX(($off-canvas-width * -1));
+    }
 
     a {
       color: #fff;
@@ -33,57 +43,6 @@ $toggler-part-height:         3px !default;
       &:hover,
       &:focus {
         color: #fff;
-      }
-    }
-  }
-
-  &__aside-inner {
-    overflow-y: auto;
-  }
-
-  &__close {
-    position: absolute;
-    top: 0;
-    left: 100%;
-    background-color: $gray-darkest;
-    opacity: 0;
-    visibility: hidden;
-    z-index: -1;
-    display: flex;
-    align-items: center;
-    width: 30px;
-    height: 30px;
-    user-select: none;
-    cursor: pointer;
-    transition: opacity $transition-time ease;
-
-    .no-js & {
-      display: none;
-    }
-
-    > span {
-      width: 100%;
-      height: 100%;
-      position: relative;
-
-      &:before,
-      &:after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 0;
-        width: 100%;
-        height: $toggler-part-height;
-        background: #fff;
-        transform-origin: 50% 50%;
-      }
-
-      &:before {
-        transform: translateY(-50%) rotate3d(0, 0, 1, 45deg);
-      }
-
-      &:after {
-        transform: translateY(-50%) rotate3d(0, 0, 1, -45deg);
       }
     }
   }
@@ -100,7 +59,6 @@ $toggler-part-height:         3px !default;
     left: 0;
     width: 100%;
     height: 100%;
-    // transition: opacity $transition-time ease;
     background: rgba(0, 0, 0, 0.2);
     opacity: 0;
     visibility: hidden;
@@ -108,7 +66,7 @@ $toggler-part-height:         3px !default;
 
 
 
-  &--open {
+  .js &--open {
 
     #{$block-name}__overlay {
       position: fixed;
@@ -129,7 +87,7 @@ $toggler-part-height:         3px !default;
     }
 
     #{$block-name}__page-content {
-      transform: translateX(250px);
+      transform: translateX($off-canvas-width);
     }
   }
 }

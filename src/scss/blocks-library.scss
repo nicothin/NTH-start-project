@@ -111,36 +111,24 @@
     }
   }
 
-  .js-font-resizer {
-    position: relative;
+  &__menu-toggler {
+    position: fixed;
+    backface-visibility: hidden;
+    bottom: 0;
+    left: 0;
+    background-color: #000;
+    width: 40px;
+    height: 40px;
+    padding: 5px;
 
-    @media (min-width: $screen-md) {
-
-      &:hover {
-
-        .js-font-resizer__btns {
-          opacity: 1;
-        }
-      }
-    }
-  }
-
-  .js-font-resizer__btns {
-    margin-bottom: 1em;
-    font-size: 2rem;
-    transition: opacity 0.3s;
-
-    @media (min-width: $screen-md) {
-      opacity: 0.2;
-      position: absolute;
-      top: 0;
-      left: -4rem;
-      width: 4rem;
+    .off-canvas--open & {
+      display: none;
     }
 
-    .btn {
-      width: 3rem;
-      text-align: center;
+    & > span,
+    & > span:before,
+    & > span:after {
+      background-color: #fff;
     }
   }
 }
