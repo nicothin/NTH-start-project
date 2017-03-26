@@ -41,20 +41,24 @@ $line-height:                 1.375em !default;
       position: absolute;
       top: 0.6em;
       left: 0;
-      width: 2.6em;
-      height: 1.2em;
+      width: px-to-em(35);
+      height: px-to-em(18);
       transform: translateY(-50%);
       background-color: #fff;
       border: 1px solid $border-color;
+
+      @at-root input:focus ~ & {
+        @include field-focus;
+      }
     }
 
     &:after {
       content: '';
       position: absolute;
       top: 0.6em;
-      left: 0;
-      width: 1.2em;
-      height: 1.2em;
+      left: 2px;
+      width: px-to-em(14);
+      height: px-to-em(14);
       transform: translateY(-50%);
       background-color: $gray-lightest;
       border: 1px solid $border-color;
@@ -62,7 +66,7 @@ $line-height:                 1.375em !default;
     }
 
     @at-root input:checked ~ &:after {
-      transform: translate(1.4em, -50%);
+      transform: translate(px-to-em(17), -50%);
     }
   }
 
@@ -72,12 +76,7 @@ $line-height:                 1.375em !default;
     left: 0;
     width: 0;
     height: 0;
-    visibility: hidden;
-
-    &:focus,
-    &:active {
-      @include field-focus;
-    }
+    opacity: 0;
   }
 
   &__help-text-wrap {

@@ -252,7 +252,7 @@
     }],
     "at-rule-empty-line-before": ["always", {
       "message": "Перед @-правилами строку пустую оставь (кроме @import и @include)",
-      ignoreAtRules: ["import", "include"],
+      ignoreAtRules: ["import", "include", "function", "return", "if", "else"],
       ignore: ["after-comment"]
     }],
     "at-rule-name-case": ["lower", {
@@ -269,6 +269,8 @@
         "/^include/",
         "/^if/",
         "/^else/",
+        "/^function/",
+        "/^return/",
       ]
     }],
     "at-rule-no-vendor-prefix": [true, {
