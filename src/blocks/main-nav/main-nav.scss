@@ -2,6 +2,8 @@
 // модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
 // Не пишите здесь другие селекторы.
 
+$gray-lightest:               hsl(0, 0%, 90%) !default;
+
 $screen-xs:                   0 !default;
 $screen-sm:                   480px !default;
 $screen-md:                   768px !default;
@@ -14,8 +16,13 @@ $toggler-part-height:         3px !default;
 $toggler-part-bg-color:       #000 !default;
 
 .main-nav {
+
+  $block-name:                &;
+
   position: relative;
   z-index: 10;
+
+
 
   // первый уровень
 
@@ -34,7 +41,7 @@ $toggler-part-bg-color:       #000 !default;
         transition: max-height 0.2s;
       }
 
-      .js .main-nav--open & {
+      .js #{$block-name}--open & {
         max-height: 100vh;
         transition: max-height 0.6s;
       }
@@ -56,112 +63,71 @@ $toggler-part-bg-color:       #000 !default;
     display: block;
     padding: 0.5em;
     text-decoration: none;
+    background-color: #fff;
 
     &:hover,
     &:focus {
       text-decoration: none;
+      background-color: $gray-lightest;
     }
-  }
 
+    &--lvl-2 {
 
+      @media (max-width: ($menu-desktop-width - 1)) {
+        padding-left: 1.2em;
+      }
+    }
 
-  // второй уровень
+    &--lvl-3 {
 
-  &__lvl-2 {
-
-    @media (min-width: $menu-desktop-width) {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      z-index: 1;
-      opacity: 0;
-      height: 0;
-      overflow: hidden;
-      transition: opacity 0.3s;
-
-      .main-nav__item:hover & {
-        opacity: 1;
-        height: auto;
-        overflow: visible;
+      @media (max-width: ($menu-desktop-width - 1)) {
+        padding-left: 2.4em;
       }
     }
   }
 
-  &__list-lvl-2 {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
+  &__lvl {
 
-  &__item-lvl-2 {
-    position: relative;
+    &--2 {
 
-    &--active {}
-  }
+      @media (min-width: $menu-desktop-width) {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 1;
+        opacity: 0;
+        height: 0;
+        overflow: hidden;
+        transition: opacity 0.3s;
 
-  &__link-lvl-2 {
-    display: block;
-    padding: 0.5em;
-    text-decoration: none;
-
-    @media (max-width: ($menu-desktop-width - 1)) {
-      padding-left: 1.2em;
-    }
-
-    &:hover,
-    &:focus {
-      text-decoration: none;
-    }
-  }
-
-
-
-  // третий уровень
-
-  &__lvl-3 {
-
-    @media (min-width: $menu-desktop-width) {
-      position: absolute;
-      z-index: 1;
-      top: 0;
-      left: 100%;
-      opacity: 0;
-      height: 0;
-      overflow: hidden;
-      transition: opacity 0.3s;
-
-      .main-nav__item-lvl-2:hover & {
-        opacity: 1;
-        height: auto;
-        overflow: visible;
+        #{$block-name}__item--show-child > &,
+        #{$block-name}__item:hover & {
+          opacity: 1;
+          height: auto;
+          overflow: visible;
+        }
       }
     }
-  }
 
-  &__list-lvl-3 {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
+    &--3 {
 
-  &__item-lvl-3 {
-    position: relative;
+      @media (min-width: $menu-desktop-width) {
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        left: 100%;
+        opacity: 0;
+        height: 0;
+        overflow: hidden;
+        transition: opacity 0.3s;
 
-    &--active {}
-  }
-
-  &__link-lvl-3 {
-    display: block;
-    padding: 0.5em;
-    text-decoration: none;
-
-    @media (max-width: ($menu-desktop-width - 1)) {
-      padding-left: 2.4em;
-    }
-
-    &:hover,
-    &:focus {
-      text-decoration: none;
+        #{$block-name}__item--show-child > &,
+        #{$block-name}__item--lvl-2:hover & {
+          opacity: 1;
+          height: auto;
+          overflow: visible;
+        }
+      }
     }
   }
 
