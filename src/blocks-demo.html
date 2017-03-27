@@ -503,6 +503,31 @@
 
     </section>
 
+    <section class="blocks-library__item  blocks-library__item--menusep" id="menu" data-name=".menu">
+
+      <h2 class="blocks-library__item-title">Меню</h2>
+
+      <ul class="menu">
+        <li class="menu__item"><a class="menu__link" href="#">Пункт списка</a></li>
+        <li class="menu__item  menu__item--separator"><a class="menu__link" href="#">Пункт списка, после которого следует разделитель</a></li>
+        <li class="menu__item"><a class="menu__link" href="#">Пункт меню весьма длинный, такой, что прямо адски длинный, очень много, реально много слов!</a></li>
+      </ul>
+
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre class="code">
+            <code>&lt;ul class="menu"></code>
+            <code>  &lt;li class="menu__item">&lt;a class="menu__link" href="#">...&lt;/a>&lt;/li></code>
+            <code>  &lt;li class="menu__item  menu__item--separator">&lt;a class="menu__link" href="#">...&lt;/a>&lt;/li></code>
+            <code>  &lt;li class="menu__item">&lt;a class="menu__link" href="#">...&lt;/a>&lt;/li></code>
+            <code>&lt;/ul></code>
+          </pre>
+        </div>
+      </div>
+
+    </section>
+
     <section class="blocks-library__item" id="btn" data-name=".btn">
 
       <h2 class="blocks-library__item-title">Кнопки</h2>
@@ -527,31 +552,6 @@
             <code>&lt;a class="btn  btn--disabled" href="">Ссылка&lt;/a></code>
             <code>&lt;input class="btn" type="submit" value="Input" disabled></code>
             <code>&lt;button class="btn" disabled>Button&lt;/button></code>
-          </pre>
-        </div>
-      </div>
-
-    </section>
-
-    <section class="blocks-library__item" id="menu" data-name=".menu">
-
-      <h2 class="blocks-library__item-title">Меню</h2>
-
-      <ul class="menu">
-        <li class="menu__item"><a class="menu__link" href="#">Пункт списка</a></li>
-        <li class="menu__item  menu__item--separator"><a class="menu__link" href="#">Пункт списка, после которого следует разделитель</a></li>
-        <li class="menu__item"><a class="menu__link" href="#">Пункт меню весьма длинный, такой, что прямо адски длинный, очень много, реально много слов!</a></li>
-      </ul>
-
-      <div class="blocks-library__code-wrapper">
-        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
-        <div class="blocks-library__code">
-          <pre class="code">
-            <code>&lt;ul class="menu"></code>
-            <code>  &lt;li class="menu__item">&lt;a class="menu__link" href="#">...&lt;/a>&lt;/li></code>
-            <code>  &lt;li class="menu__item  menu__item--separator">&lt;a class="menu__link" href="#">...&lt;/a>&lt;/li></code>
-            <code>  &lt;li class="menu__item">&lt;a class="menu__link" href="#">...&lt;/a>&lt;/li></code>
-            <code>&lt;/ul></code>
           </pre>
         </div>
       </div>
@@ -1009,7 +1009,7 @@
 
     </section>
 
-    <section class="blocks-library__item" id="form" data-name=".form">
+    <section class="blocks-library__item  blocks-library__item--menusep" id="form" data-name=".form">
 
       <h2 class="blocks-library__item-title">Форма</h2>
 
@@ -1387,7 +1387,13 @@
       <div class="blocks-library__code-wrapper">
         <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
         <div class="blocks-library__code">
-          <pre class="code">111</pre>
+          <pre class="code">
+            <code>&lt;div class="progress"></code>
+            <code>  &lt;div class="progress__bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%;"></code>
+            <code>    &lt;span class="progress__bartext">10%&lt;/span></code>
+            <code>  &lt;/div></code>
+            <code>&lt;/div></code>
+          </pre>
         </div>
       </div>
 
@@ -1798,7 +1804,7 @@
       });
 
       var demoBlocks = document.querySelectorAll('.blocks-library__item');
-      var offCanvasMenu = '';
+      var offCanvasMenu = '<li class="menu__item"><a class="menu__link" data-toggle-native="off-canvas" href="https://github.com/nicothin/NTH-start-project">Исходный репозиторий</a></li><li class="menu__item menu__item--separator"><a class="menu__link" data-toggle-native="off-canvas" href="http://nicothin.github.io/NTH-start-project/blocks-demo.html">Демка на github pages</a></li>';
       demoBlocks.forEach(function(block) {
         var classes = 'menu__item';
         if (block.classList.contains('blocks-library__item--menusep')) { classes += ' menu__item--separator'; }
