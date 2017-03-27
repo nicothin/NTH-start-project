@@ -65,11 +65,11 @@
 
 <div class="off-canvas" id="off-canvas">
 
-  <div class="off-canvas__aside">
+  <aside class="off-canvas__aside" role="complementary" aria-label="Список компонентов">
     <ul class="menu" id="off-canvas-menu"></ul>
-  </div>
+  </aside>
 
-  <div class="components-demo  blocks-library  off-canvas__page-content">
+  <main class="components-demo  blocks-library  off-canvas__page-content" role="main">
 
     <h1>Страница демонстрации блоков, доступных на <a href="index.html">проекте</a></h1>
 
@@ -380,7 +380,7 @@
 
       <p>По получению ссылками фокуса на их родителей с <code>.main-nav__item</code> добавляется модификатор <code>.main-nav__item--show-child</code>, что позволяет работать со вложенными меню с клавиатуры (сейчас предусмотрено только 3 уровня).</p>
 
-      <nav id="main-nav" class="main-nav">
+      <nav id="main-nav" class="main-nav" role="navigation">
         <div id="main-nav-toggler" class="main-nav__toggler  burger"><span></span></div>
         <ul class="main-nav__list">
           <li class="main-nav__item  main-nav__item--active">
@@ -433,7 +433,7 @@
         <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
         <div class="blocks-library__code">
           <pre class="code">
-            <code>&lt;nav class="main-nav"></code>
+            <code>&lt;nav class="main-nav" role="navigation"></code>
             <code>  &lt;div id="main-nav-toggler" class="main-nav__toggler  burger">&lt;span>&lt;/span>&lt;/div></code>
             <code>  &lt;ul class="main-nav__list"></code>
             <code>    &lt;li class="main-nav__item  main-nav__item--active"></code>
@@ -1731,7 +1731,7 @@
         <div class="blocks-library__code">
           <pre class="code">
             <code>&lt;div class="off-canvas" id="off-canvas"></code>
-            <code>  &lt;div class="off-canvas__aside">...&lt;/div></code>
+            <code>  &lt;aside class="off-canvas__aside" role="complementary" aria-label="Боковое меню">...&lt;/aside></code>
             <code>  &lt;div class="off-canvas__page-content">...&lt;/div></code>
             <code>  &lt;div class="off-canvas__overlay" data-toggle="off-canvas">&lt;/div></code>
             <code>&lt;/div></code>
@@ -1743,7 +1743,7 @@
 
     <div class="burger  blocks-library__menu-toggler" data-toggle="off-canvas"><span data-toggle="off-canvas"></span></div>
 
-  </div>
+  </main>
 
   <div class="off-canvas__overlay" data-toggle="off-canvas"></div>
 
