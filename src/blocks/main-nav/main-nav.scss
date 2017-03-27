@@ -15,6 +15,8 @@ $menu-desktop-width:          $screen-xl !default;
 $toggler-part-height:         3px !default;
 $toggler-part-bg-color:       #000 !default;
 
+$transition-time:             0.3s !default;
+
 .main-nav {
 
   $block-name:                &;
@@ -98,7 +100,7 @@ $toggler-part-bg-color:       #000 !default;
         opacity: 0;
         height: 0;
         overflow: hidden;
-        transition: opacity 0.3s;
+        transition: opacity $transition-time;
 
         #{$block-name}__item--show-child > &,
         #{$block-name}__item:hover & {
@@ -119,7 +121,7 @@ $toggler-part-bg-color:       #000 !default;
         opacity: 0;
         height: 0;
         overflow: hidden;
-        transition: opacity 0.3s;
+        transition: opacity $transition-time;
 
         #{$block-name}__item--show-child > &,
         #{$block-name}__item--lvl-2:hover & {

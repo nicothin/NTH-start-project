@@ -1,0 +1,28 @@
+// В этом файле должны быть стили только для БЭМ-блока progress, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+// Не пишите здесь другие селекторы.
+
+$gray-lightest:               hsl(0, 0%, 90%) !default;
+$border-color:                hsl(0, 0%, 60%) !default;
+
+$line-height:                 1.375em !default;
+
+$border-radius:               3px !default;
+
+$transition-time:             0.3s !default;
+
+.progress {
+  margin-top: $line-height;
+  margin-bottom: $line-height;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  text-align: center;
+
+  &__bar {
+    background-color: $gray-lightest;
+    border-radius: $border-radius;
+    padding: 0.5em;
+    max-width: 100%;
+    transition: width $transition-time;
+  }
+}

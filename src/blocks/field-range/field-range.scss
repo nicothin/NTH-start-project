@@ -2,7 +2,7 @@
 // модификаторов, псевдоселекторов, псевдоэлементов, $media-условий...
 // Не пишите здесь другие селекторы.
 
-$gray-lightest:               hsl(0, 0%, 90%);
+$gray-lightest:               hsl(0, 0%, 90%) !default;
 $border-color:                hsl(0, 0%, 60%) !default;
 
 $line-height:                 1.375em !default;

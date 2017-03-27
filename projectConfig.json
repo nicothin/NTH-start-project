@@ -48,7 +48,8 @@
     "breadcrumbs": [],
     "nouislider": [],
     "off-canvas": [],
-    "burger": []
+    "burger": [],
+    "progress": []
   },
   "addCssBefore": [
     "./src/scss/variables.scss",

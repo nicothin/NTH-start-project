@@ -14,6 +14,10 @@
       max-width: 1200px;
       font-family: sans-serif;
     }
+    .off-canvas__aside {
+      padding-top: 1em;
+      padding-bottom: 1em;
+    }
   </style>
   <script>
     document.addEventListener('DOMContentLoaded', function(){
@@ -77,27 +81,7 @@
       </div>
     </section>
 
-    <section class="blocks-library__item" id="is-mobile" data-name=".is-mobile">
-
-      <h2 class="blocks-library__item-title">Определение мобильного устройства</h2>
-
-      <p class="alert  alert--warning">Зависимость от <a href="https://github.com/kaimallea/isMobile">isMobile</a>. Последний должен быть включен в сборку (есть по умолчанию) или подключен к странице иным образом.</p>
-
-      <p>JavaScript, добавляющий на <code>&lt;html></code> класс <code>is-mobile</code>, если страница открыта с мобильного устройства. Так же, добавляются модификаторы блока с указанием типа устройства и производителя.</p>
-
-      <div class="blocks-library__code-wrapper">
-        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
-        <div class="blocks-library__code">
-          <pre class="code">
-            <code>&lt;html class="is-mobile  is-mobile--android-phone  is-mobile--android-device  is-mobile--phone"></code>
-            <code>  ...</code>
-            <code>&lt;/html></code>
-          </pre>
-        </div>
-      </div>
-    </section>
-
-    <section class="blocks-library__item" id="text">
+    <section class="blocks-library__item  blocks-library__item--menusep" id="text">
 
       <h2 class="blocks-library__item-title" id="text-text">Текст, теги</h2>
 
@@ -307,7 +291,7 @@
 
     </section>
 
-    <section class="blocks-library__item" id="sprite-png" data-name=".sprite-png">
+    <section class="blocks-library__item  blocks-library__item--menusep" id="sprite-png" data-name=".sprite-png">
 
       <h2 class="blocks-library__item-title">PNG-спрайт с <a href="https://github.com/Ensighten/spritesmith">spritesmith</a></h2>
 
@@ -543,25 +527,6 @@
             <code>&lt;a class="btn  btn--disabled" href="">Ссылка&lt;/a></code>
             <code>&lt;input class="btn" type="submit" value="Input" disabled></code>
             <code>&lt;button class="btn" disabled>Button&lt;/button></code>
-          </pre>
-        </div>
-      </div>
-
-    </section>
-
-    <section class="blocks-library__item" id="to-top" data-name=".to-top">
-
-      <h2 class="blocks-library__item-title">Кнопка скролла вверх</h2>
-
-      <p>Кнопка появляется, если вертикальный скролл более 900 пикс.</p>
-
-      <p class="alert  alert--warning">Зависит от <a href="https://jquery.com/">jQuery</a> (включен в сборку по умолчанию).</p>
-
-      <div class="blocks-library__code-wrapper">
-        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
-        <div class="blocks-library__code">
-          <pre class="code">
-            <code>&lt;a href="#" class="to-top" id="toTop">↑&lt;/a></code>
           </pre>
         </div>
       </div>
@@ -1398,11 +1363,73 @@
         <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
         <div class="blocks-library__code">
           <pre class="code">
-              <code>&lt;ul class="breadcrumbs"></code>
-              <code>  &lt;li class="breadcrumbs__item">&lt;a href="" class="breadcrumbs__link">Главная&lt;/a>&lt;/li></code>
-              <code>  &lt;li class="breadcrumbs__item">&lt;a href="" class="breadcrumbs__link">Каталог&lt;/a>&lt;/li></code>
-              <code>  &lt;li class="breadcrumbs__item">&lt;a href="" class="breadcrumbs__link">Маркеры&lt;/a>&lt;/li></code>
-              <code>&lt;/ul></code>
+            <code>&lt;ul class="breadcrumbs"></code>
+            <code>  &lt;li class="breadcrumbs__item">&lt;a href="" class="breadcrumbs__link">Главная&lt;/a>&lt;/li></code>
+            <code>  &lt;li class="breadcrumbs__item">&lt;a href="" class="breadcrumbs__link">Каталог&lt;/a>&lt;/li></code>
+            <code>  &lt;li class="breadcrumbs__item">&lt;a href="" class="breadcrumbs__link">Маркеры&lt;/a>&lt;/li></code>
+            <code>&lt;/ul></code>
+          </pre>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="blocks-library__item  blocks-library__item--menusep" id="progress" data-name=".progress">
+
+      <h2 class="blocks-library__item-title">Прогресс</h2>
+
+      <div class="progress">
+        <div class="progress__bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%;">
+          <span class="progress__bartext">10%</span>
+        </div>
+      </div>
+
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre class="code">111</pre>
+        </div>
+      </div>
+
+    </section>
+
+
+
+
+
+    <section class="blocks-library__item" id="is-mobile" data-name=".is-mobile">
+
+      <h2 class="blocks-library__item-title">Определение мобильного устройства</h2>
+
+      <p class="alert  alert--warning">Зависимость от <a href="https://github.com/kaimallea/isMobile">isMobile</a>. Последний должен быть включен в сборку (есть по умолчанию) или подключен к странице иным образом.</p>
+
+      <p>JavaScript, добавляющий на <code>&lt;html></code> класс <code>is-mobile</code>, если страница открыта с мобильного устройства. Так же, добавляются модификаторы блока с указанием типа устройства и производителя.</p>
+
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre class="code">
+            <code>&lt;html class="is-mobile  is-mobile--android-phone  is-mobile--android-device  is-mobile--phone"></code>
+            <code>  ...</code>
+            <code>&lt;/html></code>
+          </pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="blocks-library__item" id="to-top" data-name=".to-top">
+
+      <h2 class="blocks-library__item-title">Кнопка скролла вверх</h2>
+
+      <p>Кнопка появляется, если вертикальный скролл более 900 пикс.</p>
+
+      <p class="alert  alert--warning">Зависит от <a href="https://jquery.com/">jQuery</a> (включен в сборку по умолчанию).</p>
+
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre class="code">
+            <code>&lt;a href="#" class="to-top" id="toTop">↑&lt;/a></code>
           </pre>
         </div>
       </div>
@@ -1773,7 +1800,9 @@
       var demoBlocks = document.querySelectorAll('.blocks-library__item');
       var offCanvasMenu = '';
       demoBlocks.forEach(function(block) {
-        offCanvasMenu += '<li class="menu__item"><a class="menu__link" data-toggle-native="off-canvas" href="#'+block.getAttribute('id')+'">'+block.querySelector('.blocks-library__item-title').textContent+'</a></li>';
+        var classes = 'menu__item';
+        if (block.classList.contains('blocks-library__item--menusep')) { classes += ' menu__item--separator'; }
+        offCanvasMenu += '<li class="'+classes+'"><a class="menu__link" data-toggle-native="off-canvas" href="#'+block.getAttribute('id')+'">'+block.querySelector('.blocks-library__item-title').textContent+'</a></li>';
       });
       var offCanvasMenuContent = document.getElementById('off-canvas-menu');
       offCanvasMenuContent.innerHTML = offCanvasMenu;
