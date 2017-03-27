@@ -1835,7 +1835,7 @@
       });
 
       var demoBlocks = document.querySelectorAll('.blocks-library__item');
-      var offCanvasMenu = '';
+      var offCanvasMenu = '<li class="menu__item"><a class="menu__link" data-toggle-native="off-canvas" href="https://github.com/nicothin/NTH-start-project">Исходный репозиторий</a></li><li class="menu__item menu__item--separator"><a class="menu__link" data-toggle-native="off-canvas" href="http://nicothin.github.io/NTH-start-project/blocks-demo.html">Демка на github pages</a></li>';
       demoBlocks.forEach(function(block) {
         var classes = 'menu__item';
         if (block.classList.contains('blocks-library__item--menusep')) { classes += ' menu__item--separator'; }
