@@ -49,7 +49,8 @@
     "nouislider": [],
     "off-canvas": [],
     "burger": [],
-    "progress": []
+    "progress": [],
+    "media": []
   },
   "addCssBefore": [
     "./src/scss/variables.scss",

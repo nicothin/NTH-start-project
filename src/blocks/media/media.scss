@@ -1,0 +1,22 @@
+// В этом файле должны быть стили только для БЭМ-блока media, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+// Не пишите здесь другие селекторы.
+
+.media {
+  display: flex;
+  margin-top: $line-height;
+  margin-bottom: $line-height;
+
+  &__picture {
+    flex-shrink: 0;
+    margin-right: 1em;
+  }
+
+  &__body {
+    flex-grow: 1;
+
+    *:first-child {
+      margin-top: 0;
+    }
+  }
+}
