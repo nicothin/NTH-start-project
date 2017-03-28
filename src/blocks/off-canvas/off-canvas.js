@@ -1,4 +1,4 @@
-(function(){
+document.addEventListener('DOMContentLoaded', function(){
 
   document.addEventListener('click', function(event) {
     if(event.target.dataset.toggle === 'off-canvas') {
@@ -54,4 +54,4 @@
     document.getElementById('off-canvas').classList.toggle('off-canvas--open');
   }
 
-}());
+});
