@@ -1,0 +1,45 @@
+// В этом файле должны быть стили только для БЭМ-блока close, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+// Не пишите здесь другие селекторы.
+
+$toggler-part-height:         3px !default;
+$toggler-part-bg-color:       #000 !default;
+
+.close {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  user-select: none;
+  cursor: pointer;
+
+  > span {
+    display: inline-block;
+    width: 100%;
+    height: $toggler-part-height;
+    background: transparent;
+    position: relative;
+
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: $toggler-part-height;
+      background: $toggler-part-bg-color;
+      transform-origin: 50% 50%;
+    }
+
+    &:before {
+      transform: rotate3d(0, 0, 1, 45deg);
+    }
+
+    &:after {
+      transform: rotate3d(0, 0, 1, -45deg);
+    }
+  }
+}
