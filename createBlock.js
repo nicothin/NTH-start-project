@@ -64,7 +64,7 @@ if(blockName) {
 
         // Если это JS
         else if(extention == 'js') {
-          fileContent = '// (function(){\n// код\n// }());\n';
+          fileContent = '// document.addEventListener(\'DOMContentLoaded\', function(){});\n// (function(){\n// код\n// }());\n';
         }
 
         // Если нужна подпапка для картинок
