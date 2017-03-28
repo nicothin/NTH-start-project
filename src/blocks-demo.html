@@ -1492,6 +1492,8 @@
 
       <h2 class="blocks-library__item-title">Выпадающий блок</h2>
 
+      <p>Основан на dropdown.js из Bootstrap. Изменения минимальны.</p>
+
       <p class="alert  alert--warning">Зависит от <a href="https://jquery.com/">jQuery</a> (включен в сборку по умолчанию).</p>
 
       <div class="dropdown">
@@ -1789,6 +1791,27 @@
 
     </section>
 
+    <section class="blocks-library__item" id="modal-demo" data-name=".modal">
+
+      <h2 class="blocks-library__item-title">Модальные окна</h2>
+
+      <p>Основан на modal.js из Bootstrap. Изменения минимальны (имена классов, пространство имен событий).</p>
+
+      <p class="alert  alert--warning">Зависит от <a href="https://jquery.com/">jQuery</a> (включен в сборку по умолчанию).</p>
+
+      <button class="btn" type="button" data-toggle="modal" data-target="#modal-demo-01">Показать модальное окно 1</button>
+      <a href="#modal-demo-02" data-toggle="modal">Показать модальное окно 2</a>
+      <span data-toggle="modal" data-target="#modal-demo-03">Показать модальное окно 3</span>
+
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre class="code">111</pre>
+        </div>
+      </div>
+
+    </section>
+
     <div class="burger  blocks-library__menu-toggler" data-toggle="off-canvas"><span data-toggle="off-canvas"></span></div>
 
   </main>
@@ -1861,5 +1884,57 @@
 
     });
   </script>
+
+  <div id="modal-demo-01" class="modal" tabindex="-1" role="dialog">
+    <div class="modal__dialog" role="document">
+      <div class="modal__content">
+        <div class="modal__header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Закрыть"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal__title">Modal 01 title</h4>
+        </div>
+        <div class="modal__body">
+          <p>Далеко-далеко за словесными горами...</p>
+        </div>
+        <div class="modal__footer">
+          <button type="button" class="btn" data-dismiss="modal">Закрыть</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-demo-02" class="modal" tabindex="-1" role="dialog">
+    <div class="modal__dialog" role="document">
+      <div class="modal__content">
+        <div class="modal__header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Закрыть"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal__title">Modal 02 title</h4>
+        </div>
+        <div class="modal__body">
+          <p>Далеко-далеко за словесными горами...</p>
+        </div>
+        <div class="modal__footer">
+          <button type="button" class="btn" data-dismiss="modal">Закрыть</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-demo-03" class="modal" tabindex="-1" role="dialog">
+    <div class="modal__dialog" role="document">
+      <div class="modal__content">
+        <div class="modal__header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Закрыть"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal__title">Modal 03 title</h4>
+        </div>
+        <div class="modal__body">
+          <p>Далеко-далеко за словесными горами...</p>
+        </div>
+        <div class="modal__footer">
+          <button type="button" class="btn" data-dismiss="modal">Закрыть</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
