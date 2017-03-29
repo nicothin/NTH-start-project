@@ -25,21 +25,21 @@
     this.scrollbarWidth      = 0
     this.ignoreBackdropClick = false
 
-    if (this.options.remote) {
-      this.$element
-        // .find('.modal-content')
-        .find('.modal__content')
-        .load(this.options.remote, $.proxy(function () {
-          // this.$element.trigger('loaded.bs.modal')
-          this.$element.trigger('loaded.nth.modal')
-        }, this))
-    }
+    // if (this.options.remote) {
+    //   this.$element
+    //     // .find('.modal-content')
+    //     .find('.modal__content')
+    //     .load(this.options.remote, $.proxy(function () {
+    //       // this.$element.trigger('loaded.bs.modal')
+    //       this.$element.trigger('loaded.nth.modal')
+    //     }, this))
+    // }
   }
 
   Modal.VERSION  = '3.3.7'
 
-  Modal.TRANSITION_DURATION = 300
-  Modal.BACKDROP_TRANSITION_DURATION = 150
+  // Modal.TRANSITION_DURATION = 300
+  // Modal.BACKDROP_TRANSITION_DURATION = 150
 
   Modal.DEFAULTS = {
     backdrop: true,
@@ -89,7 +89,8 @@
       }
 
       that.$element
-        .show()
+        // .show()
+        .css('display', 'flex')
         .scrollTop(0)
 
       that.adjustDialog()
