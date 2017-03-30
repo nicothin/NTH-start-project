@@ -48,6 +48,7 @@
     "tfoot",
     "thead",
     "noUiSlider",
+    "dropdown",
     "cleancss"
   ]
 }

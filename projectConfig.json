@@ -50,7 +50,9 @@
     "off-canvas": [],
     "burger": [],
     "progress": [],
-    "media": []
+    "media": [],
+    "modal": [],
+    "close": []
   },
   "addCssBefore": [
     "./src/scss/variables.scss",

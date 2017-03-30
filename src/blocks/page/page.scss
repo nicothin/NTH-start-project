@@ -8,10 +8,10 @@
   }
 }
 
-.page {
+.page { // html
   box-sizing: border-box;
   font-size: 10px;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 1);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -ms-overflow-style: scrollbar;
   -ms-text-size-adjust: 100%; /* stylelint-disable-line  property-no-vendor-prefix */
   min-width: 320px;
