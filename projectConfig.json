@@ -52,7 +52,8 @@
     "progress": [],
     "media": [],
     "modal": [],
-    "close": []
+    "close": [],
+    "tabs": []
   },
   "addCssBefore": [
     "./src/scss/variables.scss",

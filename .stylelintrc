@@ -153,7 +153,7 @@
       "message": "После «{» перенос строки быть должен"
     }],
     "block-opening-brace-space-before": ["always", {
-      "message": "Перед «{» пробел нужен"
+      "message": "Перед «{» один пробел нужен"
     }],
     "selector-attribute-brackets-space-inside": ["never", {
       "message": "В селекторе атрибута пробел использовать не следует"
