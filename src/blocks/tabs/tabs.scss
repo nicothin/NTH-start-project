@@ -26,6 +26,10 @@ $field-padding-horizontal:    0.7em !default;
     flex-wrap: wrap;
     align-items: flex-end;
 
+    .no-js & {
+      display: none;
+    }
+
     &:after {
       content: '';
       flex-grow: 1;
