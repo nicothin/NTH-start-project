@@ -29,7 +29,7 @@ let lists = getFilesList(projectConfig);
 // console.log(lists);
 
 // Запишем стилевой файл диспетчер подключений
-let styleImports = '/**\n * ВНИМАНИЕ! Этот файл генерируется автоматически.\n * Не пишите сюда ничего вручную, все такие правки будут потеряны.\n * Читайте ./README.md для понимания.\n */\n\n';
+let styleImports = '/*!*\n * ВНИМАНИЕ! Этот файл генерируется автоматически.\n * Не пишите сюда ничего вручную, все такие правки будут потеряны.\n * Читайте ./README.md для понимания.\n */\n\n';
 lists.css.forEach(function(blockPath) {
   styleImports += '@import \''+blockPath+'\';\n';
 });

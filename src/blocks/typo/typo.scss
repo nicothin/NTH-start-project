@@ -29,6 +29,17 @@ $border-radius:               3px !default;
 
 
 
+// @font-face {
+//   font-family: 'Web font';
+//   src: url('../fonts/webfont.woff2') format('woff2'),
+//        url('../fonts/webfont.ttf')  format('truetype'),
+//        url('../fonts/webfont.woff') format('woff');
+//   font-weight: normal;
+//   font-style: normal;
+// }
+
+
+
 body {
   font-family: $font-family;
   font-size: $font-size;

@@ -1,0 +1,78 @@
+// В этом файле должны быть стили только для БЭМ-блока tabs, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+// Не пишите здесь другие селекторы.
+
+$text-color:                  hsl(0, 0%, 10%) !default;
+
+$border-color:                hsl(0, 0%, 60%) !default;
+
+$line-height:                 1.375em !default;
+
+$field-padding-vertical:      0.3em !default;
+$field-padding-horizontal:    0.7em !default;
+
+.tabs {
+
+  $block-name:                &;
+
+  margin-top: $line-height;
+  margin-bottom: $line-height;
+
+  &__links {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+
+    .no-js & {
+      display: none;
+    }
+
+    &:after {
+      content: '';
+      flex-grow: 1;
+      height: 1px;
+      background-color: $border-color;
+    }
+  }
+
+  &__link-wrap {
+    position: relative;
+    border: 1px solid $border-color;
+
+    &:not(:first-child) {
+      margin-left: -1px;
+    }
+
+    &--active {
+      z-index: 1;
+    }
+  }
+
+  &__link {
+    display: block;
+    padding: $field-padding-vertical $field-padding-horizontal;
+    color: $text-color;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      color: $text-color;
+    }
+  }
+
+  &__content-wrapper {
+    display: block;
+    padding: $field-padding-vertical $field-padding-horizontal;
+    border: 1px solid $border-color;
+    border-top: none;
+  }
+
+  &__content-item {
+
+    &--active {}
+  }
+}
+
