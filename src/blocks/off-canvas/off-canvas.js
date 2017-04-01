@@ -5,9 +5,10 @@ document.addEventListener('DOMContentLoaded', function(){
       event.preventDefault();
       offCanvasToggle();
     }
-    // if(event.target.dataset.toggleNative === 'off-canvas') {
-    //   offCanvasToggle();
-    // }
+    // возможность совместить переключение off-canvas и встроенную функ-сть
+    if(event.target.dataset.toggleNative === 'off-canvas') {
+      offCanvasToggle();
+    }
   });
 
   // реакция на свайп

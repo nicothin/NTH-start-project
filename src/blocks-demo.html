@@ -1770,7 +1770,7 @@
 
       <h2 class="blocks-library__item-title">Боковое меню</h2>
 
-      <p>Простейший компонент, 3 строчки JavaScript. Меню показывается по клику на любой элемент с <code>data-toggle="off-canvas"</code>.</p>
+      <p>Простейший компонент, 3 строчки JavaScript. Меню показывается по клику на любой элемент с <code>data-toggle="off-canvas"</code> или <code>data-toggle-native="off-canvas"</code>. В последнем случае произойдет и действие браузера по умолчанию.</p>
 
       <button class="btn" type="button" data-toggle="off-canvas">Показать боковое меню</button>
       <a href="#" data-toggle="off-canvas">Показать боковое меню</a>
@@ -1785,6 +1785,9 @@
             <code>  &lt;div class="off-canvas__page-content">...&lt;/div></code>
             <code>  &lt;div class="off-canvas__overlay" data-toggle="off-canvas">&lt;/div></code>
             <code>&lt;/div></code>
+            <code> </code>
+            <code>&lt;button class="btn" type="button" data-toggle="off-canvas">Показать/скрыть боковое меню&lt;/button></code>
+            <code>&lt;a href="#SOME_HASH" data-toggle-native="off-canvas">Показать/скрыть боковое меню и перейти на якорь&lt;/a></code>
           </pre>
         </div>
       </div>
