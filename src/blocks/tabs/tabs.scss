@@ -25,6 +25,7 @@ $field-padding-horizontal:    0.7em !default;
     display: flex;
     flex-wrap: wrap;
     align-items: flex-end;
+    cursor: pointer;
 
     .no-js & {
       display: none;

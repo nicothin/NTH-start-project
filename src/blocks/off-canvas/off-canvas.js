@@ -5,11 +5,12 @@ document.addEventListener('DOMContentLoaded', function(){
       event.preventDefault();
       offCanvasToggle();
     }
-    if(event.target.dataset.toggleNative === 'off-canvas') {
-      offCanvasToggle();
-    }
+    // if(event.target.dataset.toggleNative === 'off-canvas') {
+    //   offCanvasToggle();
+    // }
   });
 
+  // реакция на свайп
   document.addEventListener('touchstart', handleTouchStart, false);
   document.addEventListener('touchmove', handleTouchMove, false);
   var xDown = null;
@@ -28,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
     var xDiff = xDown - xUp;
     var yDiff = yDown - yUp;
-    if(Math.abs( xDiff )+Math.abs( yDiff )>150){ //to deal with to short swipes
+    if(Math.abs( xDiff )+Math.abs( yDiff )>100){ //to deal with to short swipes
 
       if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
         if ( xDiff > 0 ) {/* left swipe */
