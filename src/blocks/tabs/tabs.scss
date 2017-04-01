@@ -2,7 +2,10 @@
 // модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
 // Не пишите здесь другие селекторы.
 
+$gray-lightest:               hsl(0, 0%, 90%) !default;
+
 $text-color:                  hsl(0, 0%, 10%) !default;
+$text-color--muted:           hsl(0, 0%, 50%) !default;
 
 $border-color:                hsl(0, 0%, 60%) !default;
 
@@ -43,24 +46,29 @@ $field-padding-horizontal:    0.7em !default;
     position: relative;
     border: 1px solid $border-color;
 
-    &:not(:first-child) {
-      margin-left: -1px;
+    &:not(:last-child) {
+      border-right: none;
     }
 
     &--active {
-      z-index: 1;
+
+      #{$block-name}__link {
+        color: $text-color;
+        background-color: #fff;
+      }
     }
   }
 
   &__link {
     display: block;
     padding: $field-padding-vertical $field-padding-horizontal;
-    color: $text-color;
+    color: $text-color--muted;
     text-decoration: none;
+    background-color: $gray-lightest;
 
     &:hover,
     &:focus {
-      color: $text-color;
+      color: $text-color--muted;
     }
   }
 
