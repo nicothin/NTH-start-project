@@ -3,19 +3,15 @@
     "page": [],
     "is-mobile": [],
     "typo": [],
-    "sprite-svg": [],
-    "sprite-png": [
-      "__demo"
-    ],
     "page-header": [],
     "page-footer": [],
     "main-nav": [],
     "logo": [],
-    "code": [],
-    "thumb": [],
-    "alert": [],
     "btn": [],
-    "to-top": [],
+    "sprite-svg": [],
+    "sprite-png": [
+      "__demo"
+    ],
     "field-text": [
       "--error"
     ],
@@ -35,6 +31,10 @@
     ],
     "field-actions": [],
     "form": [],
+    "code": [],
+    "thumb": [],
+    "alert": [],
+    "to-top": [],
     "dropdown": [],
     "menu": [],
     "label": [],
