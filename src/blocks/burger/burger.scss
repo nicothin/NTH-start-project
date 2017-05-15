@@ -2,6 +2,9 @@
 // модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
 // Не пишите здесь другие селекторы.
 
+$toggler-part-height:         3px !default;
+$toggler-part-bg-color:       #000 !default;
+
 .burger {
   position: relative;
   z-index: 1;
