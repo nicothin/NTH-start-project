@@ -66,8 +66,9 @@ textarea {
   touch-action: manipulation;
 }
 
+// We a love EDGE! Is a browser!
 a svg {
-  pointer-events: none; // We a love shit EDGE
+  pointer-events: none;
 }
 
 img {
