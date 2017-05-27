@@ -21,6 +21,7 @@ const rename = require('gulp-rename');
 const size = require('gulp-size');
 const del = require('del');
 const newer = require('gulp-newer');
+const replace = require('gulp-replace');
 
 // Получим настройки проекта из projectConfig.json
 let projectConfig = require('./projectConfig.json');
@@ -210,6 +211,7 @@ gulp.task('sprite:svg', function (callback) {
           $('svg').attr('style',  'display:none');
         }))
         .pipe(rename('sprite-svg.svg'))
+        .pipe(replace(/viewbox/gm, 'viewBox')) // увы, сборщик пока портит этот атрибут https://github.com/w0rm/gulp-svgstore/issues/83
         .pipe(size({
           title: 'Размер',
           showFiles: true,
@@ -271,7 +273,6 @@ gulp.task('sprite:png', function (callback) {
 // Сборка HTML
 gulp.task('html', function() {
   const fileinclude = require('gulp-file-include');
-  const replace = require('gulp-replace');
   console.log('---------- сборка HTML');
   return gulp.src(dirs.srcPath + '/*.html')
     .pipe(plumber({
