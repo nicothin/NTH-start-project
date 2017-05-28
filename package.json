@@ -62,12 +62,22 @@
     "yaspeller": "^3.1.0"
   },
   "dependencies": {
+    "browser-sync": "^2.18.12",
+    "gulp-file-include": "^1.1.0",
+    "gulp-imagemin": "^3.2.0",
+    "gulp-sourcemaps": "^2.6.0",
+    "gulp-svgmin": "^1.2.4",
+    "gulp.spritesmith": "^6.5.0",
     "ismobilejs": "^0.4.0",
     "jquery": "^3.1.1",
     "jquery-migrate": "^3.0.0",
+    "lint-staged": "^3.5.0",
     "nouislider": "^9.2.0",
     "owl.carousel": "^2.2.0",
-    "svg4everybody": "^2.1.7",
-    "swipejs": "^2.2.4"
+    "postcss-inline-svg": "^2.3.1",
+    "stylelint": "^7.10.1",
+    "svg4everybody": "^2.1.8",
+    "swipejs": "^2.2.6",
+    "yaspeller": "^3.2.0"
   }
 }
