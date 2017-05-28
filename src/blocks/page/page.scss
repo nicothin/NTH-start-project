@@ -1,5 +1,5 @@
 
-// Make viewport responsive
+// Make viewport great again (responsive)
 // http://timkadlec.com/2012/10/ie10-snap-mode-and-responsive-design/
 @at-root {
 
@@ -53,6 +53,11 @@ body {
   cursor: pointer;
 }
 
+// We love Safari
+input[type="search"] {
+  -webkit-appearance: textfield;
+}
+
 // Avoid 300ms click delay on touch devices that support the `touch-action` CSS property.
 a,
 // area,
@@ -64,6 +69,15 @@ select,
 // summary,
 textarea {
   touch-action: manipulation;
+}
+
+// We love EDGE! This is a browser!
+svg {
+
+  a &,
+  button & {
+    pointer-events: none;
+  }
 }
 
 img {

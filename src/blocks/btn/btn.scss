@@ -2,15 +2,15 @@
 // модификаторов, псевдоселекторов, псевдоэлементов, $media-условий...
 // Не пишите здесь другие селекторы.
 
-$gray-lighter:                hsl(0, 0%, 80%);
-$gray-lightest:               hsl(0, 0%, 90%);
-$text-color:                  hsl(0, 0%, 10%);
+$gray-lighter:                hsl(0, 0%, 80%) !default;
+$gray-lightest:               hsl(0, 0%, 90%) !default;
+$text-color:                  hsl(0, 0%, 10%) !default;
 $line-height:                 1.375em;
 
-$field-padding-vertical:      0.3em;
-$field-padding-horizontal:    0.7em;
+$field-padding-vertical:      0.3em !default;
+$field-padding-horizontal:    0.7em !default;
 
-$border-radius:               3px;
+$border-radius:               3px !default;
 
 .btn {
   box-sizing: border-box;

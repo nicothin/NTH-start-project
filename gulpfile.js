@@ -206,8 +206,13 @@ gulp.task('sprite:svg', function (callback) {
           }
         }))
         .pipe(svgstore({ inlineSvg: true }))
-        .pipe(cheerio(function ($) {
-          $('svg').attr('style',  'display:none');
+        .pipe(cheerio({
+          run: function($) {
+            $('svg').attr('style',  'display:none');
+          },
+          parserOptions: {
+            xmlMode: true
+          }
         }))
         .pipe(rename('sprite-svg.svg'))
         .pipe(size({
