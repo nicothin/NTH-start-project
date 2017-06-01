@@ -1,0 +1,7 @@
+// Никакая стилизация этого Блока по умолчанию не нужна.
+// Полифил включается в js-файле, добавочная стилизация для картинок с указанным object-fit: cover;
+// добавится с помощью PostCSS-плагина на этапе постобработки css-файла(ов).
+// Полифил:                    https://github.com/bfred-it/object-fit-images
+// Добавленный PostCSS-плагин: https://github.com/ronik-design/postcss-object-fit-images
+
+.object-fit-polyfill {}

@@ -12,6 +12,7 @@ const mqpacker = require("css-mqpacker");
 const atImport = require("postcss-import");
 const cleanss = require('gulp-cleancss');
 const inlineSVG = require('postcss-inline-svg');
+const objectFitImages = require('postcss-object-fit-images');
 
 const plumber = require('gulp-plumber');
 const notify = require('gulp-notify');
@@ -46,7 +47,8 @@ let postCssPlugins = [
     sort: true
   }),
   atImport(),
-  inlineSVG()
+  inlineSVG(),
+  objectFitImages()
 ];
 
 // Очистка папки сборки

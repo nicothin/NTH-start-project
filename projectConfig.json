@@ -53,7 +53,8 @@
     "media": [],
     "modal": [],
     "close": [],
-    "tabs": []
+    "tabs": [],
+    "object-fit-polyfill": []
   },
   "addCssBefore": [
     "./src/scss/variables.scss",
@@ -75,7 +76,8 @@
     "./node_modules/ismobilejs/isMobile.min.js",
     "./node_modules/owl.carousel/dist/owl.carousel.js",
     "./node_modules/swipejs/build/swipe.min.js",
-    "./node_modules/nouislider/distribute/nouislider.js"
+    "./node_modules/nouislider/distribute/nouislider.js",
+    "./node_modules/object-fit-images/dist/ofi.js"
   ],
   "addJsAfter": [
     "./src/js/global-script.js"

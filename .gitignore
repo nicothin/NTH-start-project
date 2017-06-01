@@ -10,6 +10,7 @@ src/blocks/sprite-png/img/sprite-*.png
 _arc/
 bower_components/
 node_modules/
+package-lock.json
 .vscode/
 .DS_Store
 *.log
