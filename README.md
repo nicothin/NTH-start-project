@@ -66,6 +66,7 @@
 3. [postcss-import](https://github.com/postcss/postcss-import)
 4. [postcss-inline-svg](https://github.com/TrySound/postcss-inline-svg)
 5. [gulp-cleancss](https://github.com/mgcrea/gulp-cleancss) (только в режиме сборки без карт кода)
+6. [postcss-object-fit-images](https://github.com/ronik-design/postcss-object-fit-images) (в паре с [полифилом](https://github.com/bfred-it/object-fit-images))
 
 
 
