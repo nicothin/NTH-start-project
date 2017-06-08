@@ -17,8 +17,7 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.scss": "stylelint --syntax=scss",
-    "*.{html,md}": "yaspeller -e \".md,.html\""
+    "*.scss": "stylelint --syntax=scss"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.1",
