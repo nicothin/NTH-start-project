@@ -16,6 +16,7 @@ $off-canvas-width:            250px !default;
 .off-canvas {
 
   $block-name:                &;
+  // #{$block-name}__element
 
   position: relative;
   overflow: hidden;

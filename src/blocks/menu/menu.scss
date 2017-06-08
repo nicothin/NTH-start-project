@@ -7,6 +7,10 @@ $text-color:                  hsl(0, 0%, 10%) !default;
 $border-color:                hsl(0, 0%, 60%) !default;
 
 .menu {
+
+  $block-name:                &;
+  // #{$block-name}__element
+
   min-width: 10em;
   margin: 0;
   padding: 0.3em 0;

@@ -7,6 +7,10 @@ $line-height:                 1.375em !default;
 $text-color:                  hsl(0, 0%, 10%) !default;
 
 .breadcrumbs {
+
+  $block-name:                &;
+  // #{$block-name}__element
+
   padding: 0;
   list-style: none;
   margin: $line-height 0;

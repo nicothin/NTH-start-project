@@ -13,6 +13,10 @@ $field-padding-horizontal:    0.7em !default;
 $border-radius:               3px !default;
 
 .field-file {
+
+  $block-name:                &;
+  // #{$block-name}__element
+
   display: block;
   margin-bottom: ($line-height / 2);
 

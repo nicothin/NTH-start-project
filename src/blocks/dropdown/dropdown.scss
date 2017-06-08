@@ -11,6 +11,10 @@ $border-radius:               3px !default;
 $transition-time:             0.3s !default;
 
 .dropdown {
+
+  $block-name:                &;
+  // #{$block-name}__element
+
   position: relative;
   display: inline-block;
 

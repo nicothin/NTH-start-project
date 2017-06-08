@@ -20,6 +20,7 @@ $transition-time:             0.3s !default;
 .main-nav {
 
   $block-name:                &;
+  // #{$block-name}__element
 
   position: relative;
   z-index: 10;

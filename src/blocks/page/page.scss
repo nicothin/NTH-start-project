@@ -9,6 +9,10 @@
 }
 
 .page { // html
+
+  $block-name:                &;
+  // #{$block-name}__element
+
   box-sizing: border-box;
   font-size: 10px;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -54,8 +58,8 @@ body {
 }
 
 // We love Safari
-input[type="search"] {
-  -webkit-appearance: textfield;
+input[type='search'] {
+  -webkit-appearance: textfield; /* stylelint-disable-line  property-no-vendor-prefix */
 }
 
 // Avoid 300ms click delay on touch devices that support the `touch-action` CSS property.

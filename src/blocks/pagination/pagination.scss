@@ -9,6 +9,10 @@ $text-color:                  hsl(0, 0%, 10%) !default;
 $border-color:                hsl(0, 0%, 60%) !default;
 
 .pagination {
+
+  $block-name:                &;
+  // #{$block-name}__element
+
   display: flex;
   flex-wrap: wrap;
   margin-top: $line-height;

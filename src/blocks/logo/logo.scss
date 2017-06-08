@@ -3,6 +3,10 @@
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
 .logo {
+
+  $block-name:                &;
+  // #{$block-name}__element
+
   display: block;
   white-space: nowrap;
 }

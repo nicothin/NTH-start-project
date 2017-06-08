@@ -3,6 +3,10 @@
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
 .media {
+
+  $block-name:                &;
+  // #{$block-name}__element
+
   display: flex;
   margin-top: $line-height;
   margin-bottom: $line-height;

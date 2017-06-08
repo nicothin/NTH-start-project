@@ -10,6 +10,10 @@ $border-radius:               3px !default;
 $transition-time:             0.3s !default;
 
 .thumb {
+
+  $block-name:                &;
+  // #{$block-name}__element
+
   display: inline-block;
   padding: 0.4rem;
   line-height: $line-height;

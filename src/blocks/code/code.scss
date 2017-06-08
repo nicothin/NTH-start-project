@@ -10,6 +10,10 @@ $line-height:                 1.375em !default;
 $border-radius:               3px !default;
 
 .code {
+
+  $block-name:                &;
+  // #{$block-name}__element
+
   display: block;
   width: 100%;
   max-height: 50rem;

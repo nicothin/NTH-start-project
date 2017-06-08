@@ -16,6 +16,10 @@ $field-padding-vertical:      0.3em !default;
 $field-padding-horizontal:    0.7em !default;
 
 .table {
+
+  $block-name:                &;
+  // #{$block-name}__element
+
   border-collapse: collapse;
   width: 100%;
   border: 1px solid $border-color;

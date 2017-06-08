@@ -10,6 +10,9 @@ $line-height:                 1.375em !default;
 
 .form {
 
+  $block-name:                &;
+  // #{$block-name}__element
+
   &:not(:last-child) {
     margin-bottom: $line-height;
   }

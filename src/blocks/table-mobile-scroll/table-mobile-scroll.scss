@@ -7,6 +7,10 @@ $line-height:                 1.375em !default;
 $border-color:                hsl(0, 0%, 60%) !default;
 
 .table-mobile-scroll {
+
+  $block-name:                &;
+  // #{$block-name}__element
+
   display: block;
   width: 100%;
   overflow-x: auto;

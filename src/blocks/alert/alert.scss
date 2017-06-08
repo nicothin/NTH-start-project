@@ -12,6 +12,10 @@ $font-size--h3:               1.5em !default;
 $border-radius:               3px !default;
 
 .alert {
+
+  $block-name:                &;
+  // #{$block-name}__element
+
   position: relative;
   padding: 0.7em 1em;
   background-color: $gray-lightest;

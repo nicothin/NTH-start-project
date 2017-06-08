@@ -10,6 +10,10 @@ $line-height:                 1.375em !default;
 $border-radius:               3px !default;
 
 .field-select {
+
+  $block-name:                &;
+  // #{$block-name}__element
+
   display: block;
   margin-bottom: ($line-height / 2);
 

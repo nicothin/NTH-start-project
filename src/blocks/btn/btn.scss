@@ -13,6 +13,10 @@ $field-padding-horizontal:    0.7em !default;
 $border-radius:               3px !default;
 
 .btn {
+
+  $block-name:                &;
+  // #{$block-name}__element
+
   box-sizing: border-box;
   display: inline-block;
   margin: 0;

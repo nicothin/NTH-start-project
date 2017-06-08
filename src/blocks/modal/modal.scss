@@ -23,6 +23,7 @@ $z-index-modal:               100 !default;
 .modal {
 
   $block-name:                &;
+  // #{$block-name}__element
 
   display: none;
   overflow: hidden;

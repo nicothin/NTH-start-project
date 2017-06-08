@@ -15,6 +15,9 @@ $screen-xxl:                  1800px !default;
 
 .table-responsive {
 
+  $block-name:                &;
+  // #{$block-name}__element
+
   @media (max-width: ($screen-md - 1)) {
     display: block;
     border: 0;

@@ -7,6 +7,7 @@ $color-danger:                hsl(2, 64%, 58%) !default;
 .field-text {
 
   $block-name:                &;
+  // #{$block-name}__element
 
   &--error {
 

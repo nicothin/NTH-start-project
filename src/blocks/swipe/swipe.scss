@@ -3,6 +3,10 @@
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
 .swipe {
+
+  $block-name:                &;
+  // #{$block-name}__element
+
   overflow: hidden;
   visibility: hidden;
   position: relative;

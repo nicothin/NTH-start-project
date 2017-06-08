@@ -6,6 +6,10 @@ $toggler-part-height:         3px !default;
 $toggler-part-bg-color:       #000 !default;
 
 .burger {
+
+  $block-name:                &;
+  // #{$block-name}__element
+
   position: relative;
   z-index: 1;
   display: flex;
