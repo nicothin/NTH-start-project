@@ -54,7 +54,8 @@
     "modal": [],
     "close": [],
     "tabs": [],
-    "object-fit-polyfill": []
+    "object-fit-polyfill": [],
+    "embed-responsive": []
   },
   "addCssBefore": [
     "./src/scss/variables.scss",
