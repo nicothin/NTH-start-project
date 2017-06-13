@@ -490,6 +490,26 @@ body {
   font-size: 14px;
   line-height: 1.375em;
   color: #1a1a1a; }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Ubuntu", "Droid Sans", "Helvetica Neue", "Arial", sans-serif;
+  font-weight: 700;
+  line-height: 1.375em;
+  color: currentColor; }
+h1,
+h2,
+h3 {
+  margin-top: 1.375em;
+  margin-bottom: 0.6875em; }
+h4,
+h5,
+h6 {
+  margin-top: 0.6875em;
+  margin-bottom: 0.6875em; }
 h1 {
   font-size: 2.25em; }
 h2 {
@@ -502,26 +522,6 @@ h5 {
   font-size: 1em; }
 h6 {
   font-size: 1em; }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Ubuntu", "Droid Sans", "Helvetica Neue", "Arial", sans-serif;
-  font-weight: 700;
-  line-height: 1.4;
-  color: currentColor; }
-h1,
-h2,
-h3 {
-  margin-top: 1.375em;
-  margin-bottom: 0.6875em; }
-h4,
-h5,
-h6 {
-  margin-top: 0.6875em;
-  margin-bottom: 0.6875em; }
 p,
 ul,
 ol,
@@ -661,12 +661,12 @@ pre {
 a.btn--disabled {
       pointer-events: none; }
 .temp-icon-left-arrow {
-  background-image: url(../img/sprite-044941391209601855.png);
+  background-image: url(../img/sprite-09335585257082895.png);
   background-position: 0px 0px;
   width: 32px;
   height: 32px; }
 .temp-icon-right-arrow {
-  background-image: url(../img/sprite-044941391209601855.png);
+  background-image: url(../img/sprite-09335585257082895.png);
   background-position: -36px 0px;
   width: 32px;
   height: 32px; }
@@ -1748,6 +1748,27 @@ a.pagination__item:hover, a.pagination__item:focus {
     display: none; }
 .js .tabs__content-item--active {
     display: block; }
+.embed-responsive {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  overflow: hidden; }
+.embed-responsive::before {
+    content: "";
+    display: block;
+    padding-top: 56.25%; }
+.embed-responsive iframe,
+  .embed-responsive video {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0; }
+.embed-responsive--4-3::before {
+    padding-top: 75%; }
 @media (min-width: 480px) {
     dd {
       margin-left: 1.8em; } }
