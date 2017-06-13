@@ -48,6 +48,44 @@ body {
 }
 
 // .h1,
+// .h2,
+// .h3,
+// .h4,
+// .h5,
+// .h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-family--headings;
+  font-weight: 700;
+  line-height: $line-height;
+  color: currentColor;
+}
+
+// .h1,
+// .h2,
+// .h3,
+h1,
+h2,
+h3 {
+  margin-top: $line-height;
+  margin-bottom: ($line-height / 2);
+}
+
+// .h4,
+// .h5,
+// .h6,
+h4,
+h5,
+h6 {
+  margin-top: ($line-height / 2);
+  margin-bottom: ($line-height / 2);
+}
+
+// .h1,
 h1 {
   font-size: $font-size--h1;
 }
@@ -75,44 +113,6 @@ h5 {
 // .h6,
 h6 {
   font-size: $font-size--h6;
-}
-
-// .h1,
-// .h2,
-// .h3,
-// .h4,
-// .h5,
-// .h6,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: $font-family--headings;
-  font-weight: 700;
-  line-height: 1.4;
-  color: currentColor;
-}
-
-// .h1,
-// .h2,
-// .h3,
-h1,
-h2,
-h3 {
-  margin-top: $line-height;
-  margin-bottom: ($line-height / 2);
-}
-
-// .h4,
-// .h5,
-// .h6,
-h4,
-h5,
-h6 {
-  margin-top: ($line-height / 2);
-  margin-bottom: ($line-height / 2);
 }
 
 // .p,
