@@ -189,6 +189,7 @@
       "message": "Псевдоклассы набирать буквами строчными надо"
     }],
     "selector-pseudo-class-no-unknown": [true, {
+      ignorePseudoClasses: ["::-webkit-scrollbar", "horizontal", "::-webkit-scrollbar-track-piece", "::-webkit-scrollbar-thum"],
       "message": "Псевдокласса такого существование сомнительно"
     }],
     "selector-pseudo-class-parentheses-space-inside": ["never", {
