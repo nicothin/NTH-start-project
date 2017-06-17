@@ -21,3 +21,4 @@ package-lock.json
 .publish
 ex_files
 Thumbs.db
+__MACOSX
