@@ -13,6 +13,7 @@ const atImport = require("postcss-import");
 const cleanss = require('gulp-cleancss');
 const inlineSVG = require('postcss-inline-svg');
 const objectFitImages = require('postcss-object-fit-images');
+const imageInliner = require('postcss-image-inliner');
 
 const plumber = require('gulp-plumber');
 const notify = require('gulp-notify');
@@ -48,7 +49,15 @@ let postCssPlugins = [
   }),
   atImport(),
   inlineSVG(),
-  objectFitImages()
+  objectFitImages(),
+  imageInliner({
+    // Осторожнее с именами файлов! Добавляйте имя блока как префикс к имени картинки.
+    assetPaths: [
+      'src/blocks/**/img_to_bg/',
+    ],
+    // Инлайнятся только картинки менее 10 Кб.
+    maxFileSize: 10240
+  })
 ];
 
 // Очистка папки сборки

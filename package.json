@@ -54,6 +54,7 @@
     "imagemin-pngquant": "^5.0.0",
     "lint-staged": "^3.4.0",
     "merge-stream": "^1.0.1",
+    "postcss-image-inliner": "^1.0.6",
     "postcss-import": "^10.0.0",
     "postcss-inline-svg": "^3.0.0",
     "postcss-object-fit-images": "^1.1.2",
