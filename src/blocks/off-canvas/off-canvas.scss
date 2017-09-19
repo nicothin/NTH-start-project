@@ -9,14 +9,11 @@ $transition-time:             0.3s !default;
 
 $toggler-part-height:         3px !default;
 
-// Переменная ширины этого блока
-//
-$off-canvas-width:            250px !default;
+$off-canvas-width:            250px !default; // ширина этого блока
 
 .off-canvas {
 
-  $block-name:                &;
-  // #{$block-name}__element
+  $block-name:                &; // #{$block-name}__element
 
   position: relative;
   overflow: hidden;

@@ -16,8 +16,7 @@ $field-padding-horizontal:    0.7em !default;
 
 .tabs {
 
-  $block-name:                &;
-  // #{$block-name}__element
+  $block-name:                &; // #{$block-name}__element
 
   margin-top: $line-height;
   margin-bottom: $line-height;

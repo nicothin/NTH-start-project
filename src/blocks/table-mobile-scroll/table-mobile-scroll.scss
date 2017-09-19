@@ -8,8 +8,7 @@ $border-color:                hsl(0, 0%, 60%) !default;
 
 .table-mobile-scroll {
 
-  $block-name:                &;
-  // #{$block-name}__element
+  $block-name:                &; // #{$block-name}__element
 
   display: block;
   width: 100%;

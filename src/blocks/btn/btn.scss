@@ -1,5 +1,5 @@
 // В этом файле должны быть стили для БЭМ-блока btn, его элементов,
-// модификаторов, псевдоселекторов, псевдоэлементов, $media-условий...
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
 $gray-lighter:                hsl(0, 0%, 80%) !default;
@@ -14,8 +14,7 @@ $border-radius:               3px !default;
 
 .btn {
 
-  $block-name:                &;
-  // #{$block-name}__element
+  $block-name:                &; // #{$block-name}__element
 
   box-sizing: border-box;
   display: inline-block;
@@ -52,8 +51,8 @@ $border-radius:               3px !default;
 
   &--disabled,
   &:disabled {
-    cursor: not-allowed;
     opacity: $opacity;
+    cursor: not-allowed;
     color: $text-color;
     background-color: $gray-lightest;
     border-color: $gray-lighter;
@@ -62,6 +61,11 @@ $border-radius:               3px !default;
       pointer-events: none;
     }
   }
+
+  // &__icon {
+  //   display: inline-block;
+  //   vertical-align: middle;
+  // }
 
 
 

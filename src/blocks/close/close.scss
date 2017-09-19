@@ -7,8 +7,7 @@ $toggler-part-bg-color:       #000 !default;
 
 .close {
 
-  $block-name:                &;
-  // #{$block-name}__element
+  $block-name:                &; // #{$block-name}__element
 
   position: relative;
   z-index: 1;

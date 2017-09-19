@@ -19,21 +19,18 @@ $transition-time:             0.3s !default;
 
 .main-nav {
 
-  $block-name:                &;
-  // #{$block-name}__element
+  $block-name:                &; // #{$block-name}__element
 
   position: relative;
   z-index: 10;
 
-
-
   // первый уровень
-
   &__list {
     margin: 0;
     padding: 0;
     list-style: none;
 
+    // мобильный вид списка
     @media (max-width: ($menu-desktop-width - 1)) {
 
       // открытие/закрытие меню только в случае работающего JS
@@ -50,6 +47,7 @@ $transition-time:             0.3s !default;
       }
     }
 
+    // настольный вид списка
     @media (min-width: $menu-desktop-width) {
       display: flex;
       flex-wrap: wrap;
@@ -59,7 +57,12 @@ $transition-time:             0.3s !default;
   &__item {
     position: relative;
 
-    &--active {}
+    &--active {
+
+      & > #{$block-name}__link {
+        color: #000;
+      }
+    }
   }
 
   &__link {
@@ -89,9 +92,9 @@ $transition-time:             0.3s !default;
     }
   }
 
-  &__lvl {
+  &__sublist-wrapper {
 
-    &--2 {
+    &--lvl-2 {
 
       @media (min-width: $menu-desktop-width) {
         position: absolute;
@@ -112,7 +115,7 @@ $transition-time:             0.3s !default;
       }
     }
 
-    &--3 {
+    &--lvl-3 {
 
       @media (min-width: $menu-desktop-width) {
         position: absolute;
@@ -139,6 +142,10 @@ $transition-time:             0.3s !default;
   // переключатель
 
   &__toggler {
+    display: inline-block;
+    padding: 0;
+    background: none;
+    border: none;
 
     .no-js & {
       display: none;

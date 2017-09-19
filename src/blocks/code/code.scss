@@ -11,8 +11,7 @@ $border-radius:               3px !default;
 
 .code {
 
-  $block-name:                &;
-  // #{$block-name}__element
+  $block-name:                &; // #{$block-name}__element
 
   display: block;
   width: 100%;

@@ -13,8 +13,7 @@ $transition-time:             0.3s !default;
 
 .progress {
 
-  $block-name:                &;
-  // #{$block-name}__element
+  $block-name:                &; // #{$block-name}__element
 
   margin-top: $line-height;
   margin-bottom: $line-height;

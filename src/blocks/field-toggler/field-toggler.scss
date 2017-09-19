@@ -1,5 +1,5 @@
-// В этом файле должны быть стили для БЭМ-блока field-select, его элементов,
-// модификаторов, псевдоселекторов, псевдоэлементов, $media-условий...
+// В этом файле должны быть стили для БЭМ-блока field-toggler, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
 $gray-lightest:               hsl(0, 0%, 90%);
@@ -9,8 +9,7 @@ $line-height:                 1.375em !default;
 
 .field-toggler {
 
-  $block-name:                &;
-  // #{$block-name}__element
+  $block-name:                &; // #{$block-name}__element
 
   display: block;
   margin-bottom: ($line-height / 2);

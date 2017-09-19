@@ -4,8 +4,7 @@
 
 .to-top {
 
-  $block-name:                &;
-  // #{$block-name}__element
+  $block-name:                &; // #{$block-name}__element
 
   position: fixed;
   right: 1rem;

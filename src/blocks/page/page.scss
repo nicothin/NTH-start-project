@@ -10,8 +10,7 @@
 
 .page { // html
 
-  $block-name:                &;
-  // #{$block-name}__element
+  $block-name:                &; // #{$block-name}__element
 
   box-sizing: border-box;
   font-size: 10px;

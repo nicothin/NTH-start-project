@@ -35,7 +35,7 @@ if (blockName) {
 
         // Если это SCSS
         if (extention === 'scss') {
-          fileContent = `// В этом файле должны быть стили для БЭМ-блока ${blockName}, его элементов, \n// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...\n// Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority\n\n.${blockName} {\n\n  $block-name:                &; // #{$block-name}__element {}\n\n}\n`;
+          fileContent = `// В этом файле должны быть стили для БЭМ-блока ${blockName}, его элементов, \n// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...\n// Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority\n\n.${blockName} {\n\n  $block-name:                &; // #{$block-name}__element\n\n}\n`;
           // fileCreateMsg = '';
 
           // Добавим созданный файл
@@ -56,7 +56,7 @@ if (blockName) {
 
         // Если это HTML
         else if (extention === 'html') {
-          fileContent = `<!--DEV\n\nДля использования этого файла как шаблона:\n\n@ @include('blocks/${blockName}/${blockName}.html')\n\n(Нужно убрать пробел между символами @)\nПодробнее: https://www.npmjs.com/package/gulp-file-include\n\n-->\n\n<div class="${blockName}">content</div>\n`;
+          fileContent = `<!--DEV\n\nДля использования этого файла как шаблона:\n\n@ @include('blocks/${blockName}/${blockName}.html')\n\n(Нужно убрать пробел между символами @)\nПодробнее: https://www.npmjs.com/package/gulp-file-include\n\n\n\n<div class="${blockName}">content</div>\n\n-->\n`;
           // fileCreateMsg = '';
         }
 

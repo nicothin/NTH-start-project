@@ -7,8 +7,7 @@ $toggler-part-bg-color:       #000 !default;
 
 .burger {
 
-  $block-name:                &;
-  // #{$block-name}__element
+  $block-name:                &; // #{$block-name}__element
 
   position: relative;
   z-index: 1;
@@ -25,7 +24,7 @@ $toggler-part-bg-color:       #000 !default;
     height: $toggler-part-height;
     background: $toggler-part-bg-color;
     position: relative;
-    transition: background 0.3s 0.3s;
+    transition: background $transition-time $transition-time;
 
     &:before,
     &:after {
@@ -36,7 +35,7 @@ $toggler-part-bg-color:       #000 !default;
       height: $toggler-part-height;
       background: $toggler-part-bg-color;
       transform-origin: 50% 50%;
-      transition: top 0.3s 0.3s, transform 0.3s;
+      transition: top $transition-time $transition-time, transform $transition-time;
     }
 
     &:before {
@@ -51,12 +50,12 @@ $toggler-part-bg-color:       #000 !default;
   &--close {
 
     > span {
-      transition: background 0.2s 0s;
+      transition: background $transition-time 0s;
       background: transparent;
 
       &:before,
       &:after {
-        transition: top 0.3s, transform 0.3s 0.3s;
+        transition: top $transition-time, transform $transition-time $transition-time;
         top: 0;
       }
 

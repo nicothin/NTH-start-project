@@ -1,4 +1,4 @@
-// В этом файле должны быть стили для БЭМ-блока menu, его элементов,
+// В этом файле должны быть стили для БЭМ-блока dropdown, его элементов,
 // модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
@@ -12,8 +12,7 @@ $transition-time:             0.3s !default;
 
 .dropdown {
 
-  $block-name:                &;
-  // #{$block-name}__element
+  $block-name:                &; // #{$block-name}__element
 
   position: relative;
   display: inline-block;
@@ -28,8 +27,6 @@ $transition-time:             0.3s !default;
     margin: 0;
     background-color: #fff;
     color: $text-color;
-    border: 1px solid $border-color;
-    border-radius: $border-radius;
     opacity: 0;
     visibility: hidden;
     overflow: hidden;
@@ -44,10 +41,6 @@ $transition-time:             0.3s !default;
       left: auto;
       right: 0;
     }
-  }
-
-  &__menu-inner {
-    padding: 1em;
   }
 
 

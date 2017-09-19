@@ -1,10 +1,19 @@
 <!--DEV
 
+Для использования этого файла как шаблона:
+
+@ @include('blocks/field-text/field-text.html')
+
+(Нужно убрать пробел между символами @)
+Подробнее: https://www.npmjs.com/package/gulp-file-include
+
+
+
 <label class="field-text">
-  <span class="field-text__name">Текстовое поле</span>
+  <span class="field-text__name">Текст</span>
   <span class="field-text__input-wrap">
-    <input class="field-text__input" type="text" placeholder="input[type=text]">
-    <span class="field-text__help-text">Обёртка — <code>label</code>. Можно сделать обёртку <code>div</code>, но тогда, возможно, захочется элемент <code>.field-text__name</code> делать <code>label</code> и связывать его с полем по <code>id</code> поля.</span>
+    <input class="field-text__input" type="text" placeholder="placeholder">
+    <span class="field-text__help-text">Пояснение</span>
   </span>
 </label>
 

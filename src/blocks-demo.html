@@ -353,13 +353,13 @@
       <p>По получению ссылками фокуса на их родителей с <code>.main-nav__item</code> добавляется модификатор <code>.main-nav__item--show-child</code>, что позволяет работать со вложенными меню с клавиатуры (сейчас предусмотрено только 3 уровня).</p>
 
       <nav id="main-nav" class="main-nav" role="navigation">
-        <div id="main-nav-toggler" class="main-nav__toggler  burger"><span></span></div>
+        <button id="main-nav-toggler" class="main-nav__toggler  burger"><span></span></button>
         <ul class="main-nav__list">
           <li class="main-nav__item  main-nav__item--active">
             <a href="" class="main-nav__link">
               Страницы
             </a>
-            <div class="main-nav__lvl  main-nav__lvl--2">
+            <div class="main-nav__sublist-wrapper  main-nav__sublist-wrapper--lvl-2">
               <ul class="main-nav__list  main-nav__list--lvl-2">
                 <li class="main-nav__item  main-nav__item--lvl-2">
                   <a href="" class="main-nav__link  main-nav__link--lvl-2">
@@ -370,7 +370,7 @@
                   <a href="" class="main-nav__link  main-nav__link--lvl-2">
                     Услуги
                   </a>
-                  <div class="main-nav__lvl  main-nav__lvl--3">
+                  <div class="main-nav__sublist-wrapper  main-nav__sublist-wrapper--lvl-3">
                     <ul class="main-nav__list  main-nav__list--lvl-3">
                       <li class="main-nav__item  main-nav__item--lvl-3">
                         <a href="" class="main-nav__link  main-nav__link--lvl-3">
@@ -400,39 +400,6 @@
           </li>
         </ul>
       </nav>
-
-      <div class="blocks-library__code-wrapper">
-        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
-        <div class="blocks-library__code">
-          <pre class="code">
-            <code>&lt;nav class="main-nav" role="navigation"></code>
-            <code>  &lt;div id="main-nav-toggler" class="main-nav__toggler  burger">&lt;span>&lt;/span>&lt;/div></code>
-            <code>  &lt;ul class="main-nav__list"></code>
-            <code>    &lt;li class="main-nav__item  main-nav__item--active"></code>
-            <code>      &lt;a href="" class="main-nav__link">Страницы&lt;/a></code>
-            <code>      &lt;div class="main-nav__lvl  main-nav__lvl--2"></code>
-            <code>        &lt;ul class="main-nav__list  main-nav__list--lvl-2"></code>
-            <code>          &lt;li class="main-nav__item  main-nav__item--lvl-2"></code>
-            <code>            &lt;a href="" class="main-nav__link  main-nav__link--lvl-2">Контакты&lt;/a></code>
-            <code>          &lt;/li></code>
-            <code>          &lt;li class="main-nav__item  main-nav__item--lvl-2"></code>
-            <code>            &lt;a href="" class="main-nav__link  main-nav__link--lvl-2">Услуги&lt;/a></code>
-            <code>            &lt;div class="main-nav__lvl  main-nav__lvl--3"></code>
-            <code>              &lt;ul class="main-nav__list  main-nav__list--lvl-3"></code>
-            <code>                &lt;li class="main-nav__item  main-nav__item--lvl-3"></code>
-            <code>                  &lt;a href="" class="main-nav__link  main-nav__link--lvl-3">Вёрстка HTML-CSS&lt;/a></code>
-            <code>                &lt;/li></code>
-            <code>              &lt;/ul></code>
-            <code>            &lt;/div></code>
-            <code>          &lt;/li></code>
-            <code>        &lt;/ul></code>
-            <code>      &lt;/div></code>
-            <code>    &lt;/li></code>
-            <code>  &lt;/ul></code>
-            <code>&lt;/nav></code>
-          </pre>
-        </div>
-      </div>
 
     </section>
 
@@ -1355,11 +1322,11 @@
           <pre class="code">
             <code>&lt;/div class="pagination"></code>
             <code>  &lt;/a href="" class="pagination__item">1&lt;//a></code>
-            <code>  &lt;/a href="" class="pagination__item">...&lt;//a></code>
+            <code>  &lt;/span class="pagination__item">...&lt;//span></code>
             <code>  &lt;/a href="" class="pagination__item">5&lt;//a></code>
             <code>  &lt;/a href="" class="pagination__item  pagination__item--active">6&lt;//a></code>
             <code>  &lt;/a href="" class="pagination__item">123&lt;//a></code>
-            <code>  &lt;/a href="" class="pagination__item">...&lt;//a></code>
+            <code>  &lt;/span class="pagination__item">...&lt;//span></code>
             <code>  &lt;/a href="" class="pagination__item">999&lt;//a></code>
             <code>&lt;//div></code>
           </pre>

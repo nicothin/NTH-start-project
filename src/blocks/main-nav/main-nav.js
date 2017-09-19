@@ -7,7 +7,7 @@
 
     function mainNavVisibleToggle(e) {
       e.preventDefault();
-      toggler.classList.toggle('burger--close');
+      toggler.classList.toggle('burger--close'); // модификатор иконки (должен быть .burger)
       document.getElementById('main-nav').classList.toggle('main-nav--open');
     }
   }
@@ -16,7 +16,7 @@
   var linkClassName = 'main-nav__link';
   var linkClassNameShowChild = 'main-nav__item--show-child';
   var findLinkClassName = new RegExp(linkClassName);
-  // Слежение за всплывшим событием focus
+  // Слежение за всплывшим событием focus (нужно добавить класс, показывающий потомков)
   document.addEventListener('focus', function(event) {
     // Если событие всплыло от одной из ссылок гл. меню
     if (findLinkClassName.test(event.target.className)) {
@@ -26,7 +26,7 @@
       });
     }
   }, true);
-  // Слежение за всплывшим событием blur
+  // Слежение за всплывшим событием blur (нужно убрать класс, показывающий потомков)
   document.addEventListener('blur', function(event) {
     // Если событие всплыло от одной из ссылок гл. меню
     if (findLinkClassName.test(event.target.className)) {

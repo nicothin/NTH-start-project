@@ -17,8 +17,7 @@ $field-padding-horizontal:    0.7em !default;
 
 .table {
 
-  $block-name:                &;
-  // #{$block-name}__element
+  $block-name:                &; // #{$block-name}__element
 
   border-collapse: collapse;
   width: 100%;
@@ -49,13 +48,9 @@ $field-padding-horizontal:    0.7em !default;
     text-align: left;
   }
 
-  &__header {
-    background-color: $gray-lightest;
-  }
+  &__header {}
 
   &__body {}
 
-  &__footer {
-    background-color: $gray-lightest;
-  }
+  &__footer {}
 }

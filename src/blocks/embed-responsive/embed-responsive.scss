@@ -12,7 +12,7 @@
   &::before {
     content: '';
     display: block;
-    padding-top: percentage(9 / 16);
+    padding-top: percentage(9 / 16); // по умолчанию ожидается вставка в формате 16/9
   }
 
   // embed,
@@ -30,7 +30,7 @@
 
 
 
-  &--4-3 {
+  &--4-3 { // модификатор на случай вставки 4/3
 
     &::before {
       padding-top: percentage(3 / 4);

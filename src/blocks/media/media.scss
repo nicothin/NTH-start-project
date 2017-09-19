@@ -4,8 +4,7 @@
 
 .media {
 
-  $block-name:                &;
-  // #{$block-name}__element
+  $block-name:                &; // #{$block-name}__element
 
   display: flex;
   margin-top: $line-height;

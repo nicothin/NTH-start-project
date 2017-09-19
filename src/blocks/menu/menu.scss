@@ -8,8 +8,7 @@ $border-color:                hsl(0, 0%, 60%) !default;
 
 .menu {
 
-  $block-name:                &;
-  // #{$block-name}__element
+  $block-name:                &; // #{$block-name}__element
 
   min-width: 10em;
   margin: 0;

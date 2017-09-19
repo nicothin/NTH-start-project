@@ -4,7 +4,7 @@ $( document ).ready(function() {
 
   $('#toTop').hide().on('click', function(event){
     event.preventDefault();
-    $('body').animate({scrollTop:0}, 300);
+    $('html, body').animate({scrollTop:0}, 300);
   });
 
   $(window).on('scroll', function(){
