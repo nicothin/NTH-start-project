@@ -173,7 +173,7 @@
     "selector-combinator-space-before": ["always", {
       "message": "Перед комбинатором в селекторе пробел нужен"
     }],
-    "selector-no-id": [true, {
+    "selector-attribute-operator-blacklist": [["id"], {
       "message": "По ID джедай стилизовать не должен"
     }],
     "selector-max-compound-selectors": [3, {
