@@ -59,7 +59,7 @@ $border-radius:               3px !default;
 
     &[type='search']::-webkit-search-cancel-button,
     &[type='search']::-webkit-search-decoration {
-      -webkit-appearance: none; /* stylelint-disable-line  property-no-vendor-prefix */
+      -webkit-appearance: none; // stylelint-disable-line  property-no-vendor-prefix
     }
 
     &[type='number']::-webkit-inner-spin-button,

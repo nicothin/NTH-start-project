@@ -19,7 +19,7 @@ $border-color:                hsl(0, 0%, 60%) !default;
 
   table {
     margin: 0;
-    border: 0 !important;
+    border: 0 !important; // stylelint-disable-line  declaration-no-important
     width: 100%;
   }
 
@@ -31,10 +31,12 @@ $border-color:                hsl(0, 0%, 60%) !default;
 
       tr:last-child {
 
+        // stylelint-disable  max-nesting-depth, selector-max-compound-selectors
         td,
         th {
           border-bottom: 0;
         }
+        // stylelint-enable
       }
     }
   }

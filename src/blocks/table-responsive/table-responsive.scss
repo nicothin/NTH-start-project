@@ -41,7 +41,7 @@ $screen-xxl:                  1800px !default;
         border: 1px solid $border-color;
         border-bottom: 0;
 
-        &:not(:last-child) {
+        &:not(:last-child) { // stylelint-disable-line  max-nesting-depth
           margin-bottom: $line-height;
         }
       }
@@ -49,10 +49,10 @@ $screen-xxl:                  1800px !default;
       td {
         display: block;
         width: 100%;
-        border-right: 0 !important;
-        border-left: 0 !important;
+        border-right: 0 !important; // stylelint-disable-line  declaration-no-important
+        border-left: 0 !important; // stylelint-disable-line  declaration-no-important
 
-        &:before {
+        &:before { // stylelint-disable-line  max-nesting-depth
           display: block;
           font-weight: 700;
           content: attr(data-label);

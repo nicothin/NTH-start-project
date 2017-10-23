@@ -41,7 +41,7 @@ $border-radius:               3px !default;
 
     &::-webkit-slider-runnable-track,
     &::-webkit-slider-thumb {
-      -webkit-appearance: none; /* stylelint-disable-line  property-no-vendor-prefix */
+      -webkit-appearance: none; // stylelint-disable-line  property-no-vendor-prefix
     }
 
     &:focus {
