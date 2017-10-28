@@ -7,6 +7,8 @@
  * @return {string} Результат преобразования $px в em на основе $font-size
  */
 
+$font-size:                   14px !default;
+
 @function px-to-em($px, $font-size: $font-size) {
   @return (($px * 100 / ($font-size / 1px)) / 100) * 1em;
 }
