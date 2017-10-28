@@ -1,6 +1,6 @@
 'use strict';
 
-// Подключим зависимости
+// Подключения зависимостей
 const fs = require('fs');
 const gulp = require('gulp');
 const gulpSequence = require('gulp-sequence');
@@ -24,24 +24,24 @@ const size = require('gulp-size');
 const del = require('del');
 const newer = require('gulp-newer');
 
-// Получим настройки проекта из projectConfig.json
+// Получение настроек проекта из projectConfig.json
 let projectConfig = require('./projectConfig.json');
 let dirs = projectConfig.dirs;
 let lists = getFilesList(projectConfig);
 // console.log(lists);
 
-// Запишем стилевой файл диспетчер подключений
+// Формирование и запись диспетчера подключений (style.scss), который компилируется в style.min.css
 let styleImports = '/*!*\n * ВНИМАНИЕ! Этот файл генерируется автоматически.\n * Не пишите сюда ничего вручную, все такие правки будут потеряны.\n * Читайте ./README.md для понимания.\n */\n\n';
 lists.css.forEach(function(blockPath) {
   styleImports += '@import \''+blockPath+'\';\n';
 });
 fs.writeFileSync(dirs.srcPath + 'scss/style.scss', styleImports);
 
-// Определим разработка это или финальная сборка
+// Определение: разработка это или финальная сборка
 // Запуск `NODE_ENV=production npm start [задача]` приведет к сборке без sourcemaps
 const isDev = !process.env.NODE_ENV || process.env.NODE_ENV == 'dev';
 
-// Плагины postCSS, которыми обрабатываются все стилевые файлы
+// Перечисление и настройки плагинов postCSS, которыми обрабатываются стилевые файлы
 let postCssPlugins = [
   autoprefixer({
     browsers: ['last 2 version']
@@ -53,7 +53,7 @@ let postCssPlugins = [
   inlineSVG(),
   objectFitImages(),
   imageInliner({
-    // Осторожнее с именами файлов! Добавляйте имя блока как префикс к имени картинки.
+    // Осторожнее с именами файлов картинок! Добавляйте имя блока как префикс к имени картинки.
     assetPaths: [
       'src/blocks/**/img_to_bg/',
     ],
@@ -71,7 +71,7 @@ gulp.task('clean', function () {
   ]);
 });
 
-// Компиляция стилей блоков проекта (и  добавочных)
+// Компиляция стилей блоков проекта (и добавочных)
 gulp.task('style', function () {
   const sass = require('gulp-sass');
   const sourcemaps = require('gulp-sourcemaps');
@@ -246,7 +246,7 @@ gulp.task('sprite:svg', function (callback) {
   }
 });
 
-// Сборка SVG-спрайта для блока sprite-png
+// Сборка растрового спрайта для блока sprite-png
 let spritePngPath = dirs.srcPath + dirs.blocksDirName + '/sprite-png/png/';
 gulp.task('sprite:png', function (callback) {
   if((projectConfig.blocks['sprite-png']) !== undefined) {
@@ -341,7 +341,8 @@ gulp.task('js', function (callback) {
   }
 });
 
-// Оптимизация изображений // folder=src/img npm start img:opt
+// Ручная оптимизация изображений
+// Использование: folder=src/img npm start img:opt
 const folder = process.env.folder;
 gulp.task('img:opt', function (callback) {
   const imagemin = require('gulp-imagemin');
