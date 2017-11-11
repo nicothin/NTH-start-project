@@ -1,4 +1,4 @@
-// Этот блок ответственен за типографику проекта.
+// Этот блок ответственен ТОЛЬКО за типографику проекта.
 // Не пишите тут какую-либо стороннюю стилизацию.
 
 $gray:                        hsl(0, 0%, 50%) !default;
@@ -41,6 +41,7 @@ $border-radius:               3px !default;
 
 
 body {
+  // ТОЛЬКО типографика!
   font-family: $font-family;
   font-size: $font-size;
   line-height: $line-height;
