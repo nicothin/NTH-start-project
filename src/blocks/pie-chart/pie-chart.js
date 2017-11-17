@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function(){
   $$('.pie-chart').forEach(function(pie) {
     var p = pie.textContent;
     pie.style.animationDelay = '-' + parseFloat(p) + 's';
+    pie.setAttribute('data-percent', p)
   });
 
 });

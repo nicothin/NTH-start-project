@@ -2,6 +2,9 @@
 // модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
+$text-color:                  hsl(0, 0%, 10%) !default;
+$font-size:                   14px !default;
+
 $gray-light:                  hsl(0, 0%, 60%) !default;
 $gray-lighter:                hsl(0, 0%, 80%) !default;
 
@@ -17,6 +20,7 @@ $gray-lighter:                hsl(0, 0%, 80%) !default;
   background: $gray-lighter;
   background-image: linear-gradient(to right, transparent 50%, $gray-light 0);
   color: transparent;
+  font-size: 0;
   text-align: center;
 
   &:before {
@@ -32,6 +36,24 @@ $gray-lighter:                hsl(0, 0%, 80%) !default;
     animation: pie-chart-spin 50s linear infinite, pie-chart-bg 100s step-end infinite;
     animation-play-state: paused;
     animation-delay: inherit;
+  }
+
+  &:after {
+    content: attr(data-percent);
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    width: 60%;
+    height: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background-color: #fff;
+    font-size: $font-size;
+    color: $text-color;
   }
 
   @keyframes pie-chart-spin {
