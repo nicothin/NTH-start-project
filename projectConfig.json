@@ -55,7 +55,8 @@
     "close": [],
     "tabs": [],
     "object-fit-polyfill": [],
-    "embed-responsive": []
+    "embed-responsive": [],
+    "pie-chart": []
   },
   "addCssBefore": [
     "./src/scss/variables.scss",
