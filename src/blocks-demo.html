@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="css/blocks-library.css">
   <style>
     .components-demo {
+      display: block;
       padding: 1em;
       margin: auto;
       max-width: 1200px;
@@ -2017,11 +2018,12 @@
 
       var demoBlocks = document.querySelectorAll('.blocks-library__item');
       var offCanvasMenu = '<li class="menu__item"><a class="menu__link" data-toggle-native="off-canvas" href="https://github.com/nicothin/NTH-start-project">Исходный репозиторий</a></li><li class="menu__item menu__item--separator"><a class="menu__link" data-toggle-native="off-canvas" href="http://nicothin.github.io/NTH-start-project/blocks-demo.html">Демка на github pages</a></li>';
-      demoBlocks.forEach(function(block) {
+      for (var i=0; i<demoBlocks.length; i++){
         var classes = 'menu__item';
+        var block = demoBlocks[i];
         if (block.classList.contains('blocks-library__item--menusep')) { classes += ' menu__item--separator'; }
         offCanvasMenu += '<li class="'+classes+'"><a class="menu__link" data-toggle-native="off-canvas" href="#'+block.getAttribute('id')+'">'+block.querySelector('.blocks-library__item-title').textContent+'</a></li>';
-      });
+      }
       var offCanvasMenuContent = document.getElementById('off-canvas-menu');
       offCanvasMenuContent.innerHTML = offCanvasMenu;
 
