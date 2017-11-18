@@ -43,6 +43,8 @@
 
 body {
   // Типографика проекта — в блоке typo
+  display: flex;           // Исправляем баг в IE для min-height and flexbox (flex-direction:column)
+  flex-direction: column;  // и прижимаем footer в IE 10-11
   background-color: #fff;
   margin: 0;
   min-height: 100%;
