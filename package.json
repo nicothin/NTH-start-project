@@ -3,6 +3,7 @@
   "version": "2.0.1",
   "description": "Start a library of blocks and technical solutions for HTML/CSS/js page layout.",
   "author": "Nikolay Gromov",
+  "license": "WTFPL",
   "repository": {
     "type": "git",
     "url": "https://github.com/nicothin/NTH-start-project.git"
@@ -54,6 +55,7 @@
     "imagemin-pngquant": "^5.0.0",
     "lint-staged": "^4.3.0",
     "merge-stream": "^1.0.1",
+    "mkdirp": "^0.5.1",
     "postcss-image-inliner": "^1.0.6",
     "postcss-import": "^11.0.0",
     "postcss-inline-svg": "^3.0.0",

@@ -11,7 +11,7 @@ const dirs = projectConfig.dirs;
 const mkdirp = require('mkdirp');
 
 const blockName = process.argv[2];          // получим имя блока
-const defaultExtensions = ['scss', 'html', 'img']; // расширения по умолчанию
+const defaultExtensions = ['scss', 'html', 'img', 'bg-img']; // расширения по умолчанию
 const extensions = uniqueArray(defaultExtensions.concat(process.argv.slice(3)));  // добавим введенные при вызове расширения (если есть)
 
 // Если есть имя блока
@@ -78,8 +78,21 @@ if (blockName) {
           }
         }
 
+        // Если нужна подпапка для необрабатываемых картинок
+        else if (extention === 'bg-img') {
+          const imgFolder = `${dirPath}bg-img/`;
+          if (fileExist(imgFolder) === false) {
+            mkdirp(imgFolder, (err) => {
+              if (err) console.error(err);
+              else console.log(`[NTH] Создание папки: ${imgFolder} (если отсутствует)`);
+            });
+          } else {
+            console.log(`[NTH] Папка ${imgFolder} НЕ создана (уже существует) `);
+          }
+        }
+
         // Создаем файл, если он еще не существует
-        if (fileExist(filePath) === false && extention !== 'img') {
+        if (fileExist(filePath) === false && extention !== 'img' && extention !== 'bg-img') {
           fs.writeFile(filePath, fileContent, (err) => {
             if (err) {
               return console.log(`[NTH] Файл НЕ создан: ${err}`);
