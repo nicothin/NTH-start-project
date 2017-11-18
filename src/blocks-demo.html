@@ -996,13 +996,65 @@
 
     </section>
 
+    <section class="blocks-library__item  blocks-library__item--menusep" id="fields-group" data-name=".fields-group">
+
+      <h2 class="blocks-library__item-title">Группа полей</h2>
+
+      <form action="https://httpbin.org/post" class="form" method="post">
+
+        <div class="fields-group">
+          <label class="field-text">
+            <span class="field-text__input-wrap">
+              <input class="field-text__input" type="text" placeholder="input[type=text]">
+            </span>
+          </label>
+          <div class="field-actions">
+            <button class="btn">Отправить</button>
+          </div>
+        </div>
+
+        <div class="fields-group">
+          <label class="field-text">
+            <span class="field-text__input-wrap">
+              <input class="field-text__input" type="text" placeholder="input[type=text]">
+              <span class="field-text__help-text">Помощь</span>
+            </span>
+          </label>
+          <label class="field-text">
+            <span class="field-text__input-wrap">
+              <input class="field-text__input" type="text" placeholder="input[type=text]">
+              <span class="field-text__help-text">Помощь</span>
+            </span>
+          </label>
+          <div class="field-actions">
+            <button class="btn">Отправить</button>
+          </div>
+        </div>
+
+      </form>
+
+      <div class="blocks-library__code-wrapper">
+        <span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+        <div class="blocks-library__code">
+          <pre class="code">
+            <!-- <code>&lt;form action="https://httpbin.org/post" class="form" method="post"></code>
+            <code>    &lt;legend>Название формы&lt;/legend></code>
+            <code>    &lt;label class="field-text">...&lt;/label></code>
+            <code>    &lt;div class="field-actions">...&lt;/div></code>
+            <code>&lt;/form></code> -->
+          </pre>
+        </div>
+      </div>
+
+    </section>
+
     <section class="blocks-library__item  blocks-library__item--menusep" id="form" data-name=".form">
 
       <h2 class="blocks-library__item-title">Форма</h2>
 
       <form action="https://httpbin.org/post" class="form" method="post">
-        <fieldset>
-          <legend>Название формы</legend>
+        <fieldset class="form__fieldset">
+          <legend class="form__legend">Легенда</legend>
           <label class="field-text">
             <span class="field-text__name">Текстовое поле</span>
             <span class="field-text__input-wrap">

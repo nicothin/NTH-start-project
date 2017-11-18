@@ -17,10 +17,7 @@ $border-radius:               3px !default;
   margin-bottom: ($line-height / 2);
 
   &__name {
-    font-weight: 700;
-    display: block;
-    margin-bottom: 0.4em;
-    line-height: $line-height;
+    @include field-name;
   }
 
   &__input-wrap {
