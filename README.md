@@ -21,6 +21,10 @@
       <td>Запустить задачу с названием ЗАДАЧА (список задач в <code>gulpfile.js</code>)</td>
     </tr>
     <tr>
+      <td><code>npm start check:favicons:update</code></td>
+      <td>Проверка актуальности данных <a href="https://realfavicongenerator.net/">генератора favicon</a> (при старте автоматизации генерирует favicon из <code>./src/img/favicon-lg.png</code> (должна быть 260×260 или больше) и доп. файлы, всё пишет в <code>./build/img</code>)</td>
+    </tr>
+    <tr>
       <td><code>npm run build</code></td>
       <td>Сборка проекта без карт кода (сжатый вид, как результат работы)</td>
     </tr>
