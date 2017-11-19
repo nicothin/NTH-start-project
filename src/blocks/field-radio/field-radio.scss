@@ -37,6 +37,7 @@ $line-height:                 1.375em !default;
   &__name-text {
 
     // своя радиокнопка с картинкой
+
     // &:before {
     //   content: '';
     //   position: absolute;
@@ -50,9 +51,11 @@ $line-height:                 1.375em !default;
     // @at-root input:checked ~ &:before {
     //   background-image: svg-load('../blocks/field-radio/img_to_bg/radiobutton--checked.svg');
     // }
+
     // / своя радиокнопка с картинкой
 
     // своя радиокнопка без картинки
+
     &:before {
       content: '';
       position: absolute;
@@ -62,6 +65,10 @@ $line-height:                 1.375em !default;
       height: 14px;
       border: 2px solid currentColor;
       border-radius: 50%;
+    }
+
+    @at-root input:focus ~ &:before {
+      @include field-focus;
     }
 
     &:after {
@@ -80,6 +87,7 @@ $line-height:                 1.375em !default;
         opacity: 1;
       }
     }
+
     // / своя радиокнопка без картинки
   }
 
@@ -97,10 +105,7 @@ $line-height:                 1.375em !default;
     }
 
     // сокрытие инпута в случае использования своей радиокнопки
-    width: 0;
-    height: 0;
-    overflow: hidden;
-    visibility: hidden;
+    opacity: 0;
   }
 
   &__help-text-wrap {

@@ -36,7 +36,8 @@ $line-height:                 1.375em !default;
 
   &__name-text {
 
-    // свой чекбокс
+    // свой чекбокс с картинкой
+
     // &:before {
     //   content: '';
     //   position: absolute;
@@ -50,6 +51,45 @@ $line-height:                 1.375em !default;
     // @at-root input:checked ~ &:before {
     //   background-image: svg-load('../blocks/field-checkbox/img_to_bg/checkbox--checked.svg');
     // }
+
+    // / свой чекбокс с картинкой
+
+    // свой чекбокс без картинок
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0.1em;
+      left: 0;
+      width: 14px;
+      height: 14px;
+      border: 2px solid currentColor;
+      border-radius: $border-radius;
+    }
+
+    @at-root input:focus ~ &:before {
+      @include field-focus;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: calc(0.1em + 1px);
+      left: 3px;
+      width: 14px;
+      height: 6px;
+      opacity: 0;
+      border-left: 2px solid currentColor;
+      border-bottom: 2px solid currentColor;
+      transform: rotate(-45deg);
+      transition: opacity $transition-time;
+
+      @at-root input:checked ~ & {
+        opacity: 1;
+      }
+    }
+
+    // / свой чекбокс без картинок
   }
 
   &__input {
@@ -66,12 +106,7 @@ $line-height:                 1.375em !default;
     }
 
     // сокрытие инпута в случае использования своего чекбокса
-    // top: 0;
-    // left: 0;
-    // width: 0;
-    // height: 0;
-    // overflow: hidden;
-    // visibility: hidden;
+    opacity: 0;
   }
 
   &__help-text-wrap {
