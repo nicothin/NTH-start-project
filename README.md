@@ -22,7 +22,7 @@
     </tr>
     <tr>
       <td><code>npm start check:favicons:update</code></td>
-      <td>Проверка актуальности данных <a href="https://realfavicongenerator.net/">генератора favicon</a> (при старте автоматизации генерирует favicon из <code>./src/img/favicon-lg.png</code> (должна быть 260×260 или больше) и доп. файлы, всё пишет в <code>./build/img</code>)</td>
+      <td>Проверка актуальности данных <a href="https://realfavicongenerator.net/">генератора favicon</a></td>
     </tr>
     <tr>
       <td><code>folder=src/img npm start img:opt</code></td>
