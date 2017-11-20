@@ -57,7 +57,8 @@
     "object-fit-polyfill": [],
     "embed-responsive": [],
     "pie-chart": [],
-    "fields-group": []
+    "fields-group": [],
+    "tooltip": []
   },
   "addCssBefore": [
     "./src/scss/variables.scss",

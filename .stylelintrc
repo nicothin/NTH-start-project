@@ -82,9 +82,6 @@
     "value-list-comma-space-before": ["never", {
       "message": "В значениях перед запятой пробел запрещен"
     }],
-    "shorthand-property-no-redundant-values": [true, {
-      "message": "Для мнемоник значения повторять не следует"
-    }],
     # "property-blacklist": [["text-rendering", "float"], {
     #   "message": "Свойство из чёрного списка"
     # }],

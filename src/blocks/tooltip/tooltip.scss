@@ -1,0 +1,33 @@
+// В этом файле должны быть стили для БЭМ-блока tooltip, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+// Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
+
+.tooltip {
+
+  $block-name:                &; // #{$block-name}__element
+
+  position: relative;
+  z-index: 1;
+
+  &__bubble {
+    position: absolute;
+    top: calc(100% + 15px);
+    left: 0;
+    min-width: 150px;
+    max-width: 250px;
+    padding: 10px;
+    background-color: #007bff;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: 5px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 5px 5px 5px;
+      border-color: transparent transparent #007bff transparent;
+    }
+  }
+}
