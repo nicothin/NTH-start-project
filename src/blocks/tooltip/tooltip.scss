@@ -29,8 +29,8 @@ $line-height:                 1.375em !default;
 
   &__bubble {
     position: absolute;
-    top: 100%;
-    left: -3px;
+    top: calc(100% + 8px);
+    left: 0;
     min-width: 150px;
     max-width: 250px;
     padding: 10px 15px;
