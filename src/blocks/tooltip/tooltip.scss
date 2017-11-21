@@ -15,6 +15,7 @@ $line-height:                 1.375em !default;
 
   &__btn {
     display: inline-block;
+    padding: 0;
     width: $line-height;
     height: $line-height;
     overflow: hidden;
