@@ -1,7 +1,22 @@
-<!DOCTYPE html>
-html(lang="en")
-  head
-    meta(charset="UTF-8")
-    title Document
-  body
-    p 1
+extends pug/layout.pug
+
+block meta
+  title Home
+  meta(name='description', content='')
+
+//- block append head
+//-   link(rel="stylesheet", href="css/SOME.css")
+//-   script(src='js/SOME.js')
+
+//- block header
+//-   -var page = 'blog';
+//-   p Шапка
+
+block content
+  p Контент
+
+//- block footer
+//-   p Подвал
+
+//- block append page-bottom
+//-   script(src='js/SOME.js')

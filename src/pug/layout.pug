@@ -1,0 +1,40 @@
+include mixins.pug
+
+doctype html
+html(class="no-js  page", lang="ru")
+
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    //- Edge и ряд мобильных браузеров автоматом преобразуют телефоны в ссылки. Отключим это.
+    meta(name="format-detection", content="telephone=no")
+
+    block meta
+      title Home
+
+    block head
+      link(rel="stylesheet", href="css/style.min.css")
+      script.
+        document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+
+  body
+
+    .off-canvas#off-canvas
+      aside.off-canvas__aside(role="complementary", aria-label="Меню") менюОффКанвас
+      main.off-canvas__page-content.components-demo.blocks-library(role="main")
+
+        //- Реальный контент страницы
+        div.page__inner
+          div.page__content
+            block header
+              div header
+            block content
+              div content
+          div.page__footer-wrapper
+            block footer
+              div подвал
+
+      div.off-canvas__overlay(data-toggle="off-canvas")
+
+    block page-bottom
+      script(src="js/script.min.js")
