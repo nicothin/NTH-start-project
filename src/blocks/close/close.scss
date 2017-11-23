@@ -11,15 +11,18 @@ $toggler-part-bg-color:       #000 !default;
 
   position: relative;
   z-index: 1;
-  display: flex;
-  align-items: center;
+  display: inline-block;
+  padding: 0;
   width: 30px;
-  height: 30px;
+  line-height: 30px;
+  background: transparent;
+  border: none;
   user-select: none;
   cursor: pointer;
 
   > span {
     display: inline-block;
+    vertical-align: middle;
     width: 100%;
     height: $toggler-part-height;
     background: transparent;
