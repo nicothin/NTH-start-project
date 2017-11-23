@@ -387,6 +387,21 @@ gulp.task('html', function() {
     .pipe(gulp.dest(dirs.buildPath));
 });
 
+// Сборка Pug (приоритет при совпадении имён файлов выше, чем у HTML)
+gulp.task('pug', function() {
+  const pug = require('gulp-pug');
+  const htmlbeautify = require('gulp-html-beautify');
+  console.log('---------- сборка Pug');
+  return gulp.src([
+      dirs.srcPath + '/*.pug',
+    ])
+    .pipe(plumber())
+    .pipe(pug())
+    .pipe(realFavicon.injectFaviconMarkups(JSON.parse(fs.readFileSync(faviconData)).favicon.html_code))
+    .pipe(htmlbeautify())
+    .pipe(gulp.dest(dirs.buildPath));
+});
+
 // Конкатенация и углификация Javascript
 gulp.task('js', function (callback) {
   const uglify = require('gulp-uglify');
@@ -448,6 +463,7 @@ gulp.task('build', function (callback) {
     ['sprite:svg', 'sprite:png', 'favicons'],
     ['style', 'style:single', 'js', 'copy:css', 'copy:img', 'copy:js', 'copy:fonts'],
     'html',
+    'pug',
     callback
   );
 });
@@ -500,6 +516,10 @@ gulp.task('serve', ['build'], function() {
     '_include/*.html',
     dirs.blocksDirName + '/**/*.html'
   ], {cwd: dirs.srcPath}, ['watch:html']);
+  // Слежение за pug
+  gulp.watch([
+    dirs.srcPath + '/**/*.pug',
+  ], ['watch:pug']);
   // Слежение за JS
   if(lists.js.length) {
     gulp.watch(lists.js, ['watch:js']);
@@ -519,6 +539,7 @@ gulp.task('watch:img', ['copy:img'], reload);
 gulp.task('watch:copied:js', ['copy:js'], reload);
 gulp.task('watch:fonts', ['copy:fonts'], reload);
 gulp.task('watch:html', ['html'], reload);
+gulp.task('watch:pug', ['pug'], reload);
 gulp.task('watch:js', ['js'], reload);
 gulp.task('watch:sprite:svg', ['sprite:svg'], reload);
 gulp.task('watch:sprite:png', ['sprite:png'], reload);
