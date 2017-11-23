@@ -1,0 +1,8 @@
+mixin burger(label, targetId, className)
+
+  //- label {string}          описание, значение атрибута aria-label
+  //- targetId {string}       атрибут id целевого элемента (без символа #), на котором по клику будет меняться класс
+  //- className {string}      класс, добавляемый/убираемый с целевого элемента
+
+  button.burger(aria-label=label, data-target-id=targetId, data-target-class-toggle=className)&attributes(attributes)
+    span
