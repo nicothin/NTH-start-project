@@ -552,7 +552,7 @@
       <label class="field-text">
         <span class="field-text__name">Текстовое поле</span>
         <span class="field-text__input-wrap">
-          <input class="field-text__input" type="text" placeholder="input[type=text]">
+          <input class="field-text__input" type="text" placeholder="input[type=text]" id="">
           <span class="field-text__help-text">Обёртка — <code>label</code>. Можно сделать обёртку <code>div</code>, но тогда, возможно, захочется элемент <code>.field-text__name</code> делать <code>label</code> и связывать его с полем по <code>id</code> поля.</span>
         </span>
       </label>
@@ -576,7 +576,7 @@
       <label class="field-text  field-text--error">
         <span class="field-text__name">Текстовое поле в ошибочном состоянии — модификатор <code>field-text--error</code></span>
         <span class="field-text__input-wrap">
-          <input class="field-text__input" type="text" placeholder="input[type=text]">
+          <input class="field-text__input" type="text" placeholder="input[type=text]" id="">
           <span class="field-text__help-text">Описание ошибки.</span>
         </span>
       </label>
@@ -589,28 +589,28 @@
           <label class="field-text">
             <span class="field-text__name">Число</span>
             <span class="field-text__input-wrap">
-              <input class="field-text__input" type="number" placeholder="input[type=number]">
+              <input class="field-text__input" type="number" placeholder="input[type=number]" id="">
               <span class="field-text__help-text"></span>
             </span>
           </label>
           <label class="field-text">
             <span class="field-text__name">Дата</span>
             <span class="field-text__input-wrap">
-              <input class="field-text__input" type="date">
+              <input class="field-text__input" type="date" id="">
               <span class="field-text__help-text"></span>
             </span>
           </label>
           <label class="field-text">
             <span class="field-text__name">Время</span>
             <span class="field-text__input-wrap">
-              <input class="field-text__input" type="time">
+              <input class="field-text__input" type="time" id="">
               <span class="field-text__help-text"></span>
             </span>
           </label>
           <label class="field-text">
             <span class="field-text__name">Поиск</span>
             <span class="field-text__input-wrap">
-              <input class="field-text__input" type="search" placeholder="input[type=search]">
+              <input class="field-text__input" type="search" placeholder="input[type=search]" id="">
               <span class="field-text__help-text"></span>
             </span>
           </label>
@@ -618,7 +618,7 @@
             <code>&lt;label class="field-text"></code>
             <code>  &lt;span class="field-text__name">...&lt;/span></code>
             <code>  &lt;span class="field-text__input-wrap"></code>
-            <code>    &lt;input class="field-text__input" type="text" placeholder=""></code>
+            <code>    &lt;input class="field-text__input" type="text" placeholder="" id=""></code>
             <code>    &lt;span class="field-text__help-text">...&lt;/span></code>
             <code>  &lt;/span></code>
             <code>&lt;/label></code>
@@ -626,7 +626,7 @@
             <code>&lt;div class="field-text"></code>
             <code>  &lt;label class="field-text__name" for="demo-field">...&lt;/label></code>
             <code>  &lt;span class="field-text__input-wrap"></code>
-            <code>    &lt;input class="field-text__input" type="text" id="demo-field" placeholder=""></code>
+            <code>    &lt;input class="field-text__input" type="text" id="demo-field" placeholder="" id=""></code>
             <code>    &lt;span class="field-text__help-text">...&lt;/span></code>
             <code>  &lt;/span></code>
             <code>&lt;/div></code>
@@ -634,7 +634,7 @@
             <code>&lt;label class="field-text"></code>
             <code>  &lt;span class="field-text__name">...&lt;/span></code>
             <code>  &lt;span class="field-text__input-wrap"></code>
-            <code>    &lt;textarea class="field-text__input" placeholder="">&lt;/textarea></code>
+            <code>    &lt;textarea class="field-text__input" placeholder="" id="">&lt;/textarea></code>
             <code>    &lt;span class="field-text__help-text">...&lt;/span></code>
             <code>  &lt;/span></code>
             <code>&lt;/label></code>
@@ -661,7 +661,7 @@
         <div class="field-checkbox__title">Необязательный общий заголовок</div>
         <div class="field-checkbox__input-wrap">
           <label class="field-checkbox__name">
-            <input class="field-checkbox__input" type="checkbox" checked>
+            <input class="field-checkbox__input" type="checkbox" id="" checked>
             <span class="field-checkbox__name-text">Текст у флажка</span>
           </label>
           <div class="field-checkbox__help-text-wrap">
@@ -670,7 +670,7 @@
         </div>
         <div class="field-checkbox__input-wrap  field-checkbox__input-wrap--error">
           <label class="field-checkbox__name">
-            <input class="field-checkbox__input" type="checkbox">
+            <input class="field-checkbox__input" type="checkbox" id="">
             <span class="field-checkbox__name-text">Ошибочный флажок</span>
           </label>
           <div class="field-checkbox__help-text-wrap">
@@ -679,7 +679,7 @@
         </div>
         <div class="field-checkbox__input-wrap">
           <label class="field-checkbox__name">
-            <input class="field-checkbox__input" type="checkbox">
+            <input class="field-checkbox__input" type="checkbox" id="">
             <span class="field-checkbox__name-text">Текст у флажка</span>
           </label>
         </div>
@@ -693,7 +693,7 @@
           <pre class="code">
             <code>&lt;div class="field-checkbox"></code>
             <code>  &lt;label class="field-checkbox__name"></code>
-            <code>    &lt;input class="field-checkbox__input" type="checkbox" checked></code>
+            <code>    &lt;input class="field-checkbox__input" type="checkbox" id="" checked></code>
             <code>    &lt;span class="field-checkbox__name-text">Одинокий чекбокс такой одинокий, но с длинным... текстом внутри label-а. Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Жизни, свое рыбного решила. Точках семантика, решила космос переписывается толку безопасную журчит рыбными, рекламных несколько осталось свой! Знаках, дороге грамматики.&lt;/span></code>
             <code>  &lt;/label></code>
             <code>&lt;/div></code>
@@ -702,7 +702,7 @@
             <code>  &lt;div class="field-checkbox__title">Необязательный общий заголовок&lt;/div></code>
             <code>  &lt;div class="field-checkbox__input-wrap"></code>
             <code>    &lt;label class="field-checkbox__name"></code>
-            <code>      &lt;input class="field-checkbox__input" type="checkbox" checked></code>
+            <code>      &lt;input class="field-checkbox__input" type="checkbox" id="" checked></code>
             <code>      &lt;span class="field-checkbox__name-text">Текст у флажка&lt;/span></code>
             <code>    &lt;/label></code>
             <code>    &lt;div class="field-checkbox__help-text-wrap"></code>
@@ -711,13 +711,13 @@
             <code>  &lt;/div></code>
             <code>  &lt;div class="field-checkbox__input-wrap  field-checkbox__input-wrap--error"></code>
             <code>    &lt;label class="field-checkbox__name"></code>
-            <code>      &lt;input class="field-checkbox__input" type="checkbox"></code>
+            <code>      &lt;input class="field-checkbox__input" type="checkbox" id=""></code>
             <code>      &lt;span class="field-checkbox__name-text">Ошибочный флажок&lt;/span></code>
             <code>    &lt;/label></code>
             <code>  &lt;/div></code>
             <code>  &lt;div class="field-checkbox__input-wrap"></code>
             <code>    &lt;label class="field-checkbox__name"></code>
-            <code>      &lt;input class="field-checkbox__input" type="checkbox"></code>
+            <code>      &lt;input class="field-checkbox__input" type="checkbox" id=""></code>
             <code>      &lt;span class="field-checkbox__name-text">Текст у флажка&lt;/span></code>
             <code>    &lt;/label></code>
             <code>  &lt;/div></code>
@@ -745,7 +745,7 @@
         <div class="field-radio__title">Необязательный общий заголовок</div>
         <div class="field-radio__input-wrap">
           <label class="field-radio__name">
-            <input class="field-radio__input" type="radio" name="demo-radio" checked>
+            <input class="field-radio__input" type="radio" id="" name="demo-radio" checked>
             <span class="field-radio__name-text">Текст у радиокнопки</span>
           </label>
           <div class="field-radio__help-text-wrap">
@@ -754,7 +754,7 @@
         </div>
         <div class="field-radio__input-wrap  field-radio__input-wrap--error">
           <label class="field-radio__name">
-            <input class="field-radio__input" type="radio" name="demo-radio">
+            <input class="field-radio__input" type="radio" id="" name="demo-radio">
             <span class="field-radio__name-text">Ошибочная радиокнопка</span>
           </label>
           <div class="field-radio__help-text-wrap">
@@ -763,7 +763,7 @@
         </div>
         <div class="field-radio__input-wrap">
           <label class="field-radio__name">
-            <input class="field-radio__input" type="radio" name="demo-radio">
+            <input class="field-radio__input" type="radio" id="" name="demo-radio">
             <span class="field-radio__name-text">Текст у радиокнопки</span>
           </label>
         </div>
@@ -777,7 +777,7 @@
           <pre class="code">
             <code>&lt;div class="field-radio"></code>
             <code>  &lt;label class="field-radio__name"></code>
-            <code>    &lt;input class="field-radio__input" type="radio" checked></code>
+            <code>    &lt;input class="field-radio__input" type="radio" id="" checked></code>
             <code>    &lt;span class="field-radio__name-text">Одинокая радиокнопка такой одинокий, но с длинным... текстом внутри label-а. Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Жизни, свое рыбного решила. Точках семантика, решила космос переписывается толку безопасную журчит рыбными, рекламных несколько осталось свой! Знаках, дороге грамматики.&lt;/span></code>
             <code>  &lt;/label></code>
             <code>&lt;/div></code>
@@ -786,7 +786,7 @@
             <code>  &lt;div class="field-radio__title">Необязательный общий заголовок&lt;/div></code>
             <code>  &lt;div class="field-radio__input-wrap"></code>
             <code>    &lt;label class="field-radio__name"></code>
-            <code>      &lt;input class="field-radio__input" type="radio" name="demo-radio" checked></code>
+            <code>      &lt;input class="field-radio__input" type="radio" id="" name="demo-radio" checked></code>
             <code>      &lt;span class="field-radio__name-text">Текст у радиокнопки&lt;/span></code>
             <code>    &lt;/label></code>
             <code>    &lt;div class="field-radio__help-text-wrap"></code>
@@ -795,13 +795,13 @@
             <code>  &lt;/div></code>
             <code>  &lt;div class="field-radio__input-wrap"></code>
             <code>    &lt;label class="field-radio__name"></code>
-            <code>      &lt;input class="field-radio__input" type="radio" name="demo-radio"></code>
+            <code>      &lt;input class="field-radio__input" type="radio" id="" name="demo-radio"></code>
             <code>      &lt;span class="field-radio__name-text">Текст у радиокнопки&lt;/span></code>
             <code>    &lt;/label></code>
             <code>  &lt;/div></code>
             <code>  &lt;div class="field-radio__input-wrap"></code>
             <code>    &lt;label class="field-radio__name"></code>
-            <code>      &lt;input class="field-radio__input" type="radio" name="demo-radio"></code>
+            <code>      &lt;input class="field-radio__input" type="radio" id="" name="demo-radio"></code>
             <code>      &lt;span class="field-radio__name-text">Текст у радиокнопки&lt;/span></code>
             <code>    &lt;/label></code>
             <code>  &lt;/div></code>
@@ -820,7 +820,7 @@
         <div class="field-toggler__title">Переключатели-флажки</div>
         <div class="field-toggler__input-wrap">
           <label class="field-toggler__name">
-            <input class="field-toggler__input" type="checkbox">
+            <input class="field-toggler__input" type="checkbox" id="">
             <span class="field-toggler__name-text">Использовать</span>
           </label>
           <div class="field-toggler__help-text">Графика не используется, всё нарисовано CSS-ом.</div>
@@ -835,7 +835,7 @@
             <code>  &lt;div class="field-toggler__title">Переключатели-флажки&lt;/div></code>
             <code>  &lt;div class="field-toggler__input-wrap"></code>
             <code>    &lt;label class="field-toggler__name"></code>
-            <code>      &lt;input class="field-toggler__input" type="checkbox"></code>
+            <code>      &lt;input class="field-toggler__input" type="checkbox" id=""></code>
             <code>      &lt;span class="field-toggler__name-text">Использовать&lt;/span></code>
             <code>    &lt;/label></code>
             <code>    &lt;div class="field-toggler__help-text">Графика не используется, всё нарисовано CSS-ом.&lt;/div></code>
@@ -854,7 +854,7 @@
       <div class="field-file">
         <div class="field-file__name">Выбор файлов</div>
         <label class="field-file__input-wrap">
-          <input class="field-file__input" type="file" data-multiple-caption="файлов выбрано: {count}" multiple>
+          <input class="field-file__input" type="file" data-multiple-caption="файлов выбрано: {count}" id="" multiple>
           <span class="field-file__name-text" data-button-text="Выбрать файл(ы)">Ничего не выбрано</span>
           <span class="field-file__help-text">Отображение выбранного файла/файлов требует js. Стилизация — не требует.</span>
         </label>
@@ -863,7 +863,7 @@
       <div class="field-file  field-file--error">
         <div class="field-file__name">Выбор файлов</div>
         <label class="field-file__input-wrap">
-          <input class="field-file__input" type="file" data-multiple-caption="файлов выбрано: {count}" multiple>
+          <input class="field-file__input" type="file" data-multiple-caption="файлов выбрано: {count}" id="" multiple>
           <span class="field-file__name-text" data-button-text="Выбрать файл(ы)">Ничего не выбрано</span>
           <span class="field-file__help-text">Дописан модификатор <code>field-file--error</code>.</span>
         </label>
@@ -878,7 +878,7 @@
             <code>&lt;div class="field-file"></code>
             <code>  &lt;div class="field-file__name">Выбор файлов&lt;/div></code>
             <code>  &lt;label class="field-file__input-wrap"></code>
-            <code>    &lt;input class="field-file__input" type="file" data-multiple-caption="файлов выбрано: {count}" multiple></code>
+            <code>    &lt;input class="field-file__input" type="file" data-multiple-caption="файлов выбрано: {count}" id="" multiple></code>
             <code>    &lt;span class="field-file__name-text" data-button-text="Выбрать файл(ы)">Ничего не выбрано&lt;/span></code>
             <code>    &lt;span class="field-file__help-text">Отображение выбранного файла/файлов требует js. Стилизация — не требует.&lt;/span></code>
             <code>  &lt;/label></code>
@@ -896,7 +896,7 @@
       <div class="field-range">
         <div class="field-range__name">Range</div>
         <div class="field-range__input-wrap">
-          <input class="field-range__input" type="range" min="1" max="100" step="1" value="70">
+          <input class="field-range__input" type="range" min="1" max="100" step="1" value="70" id="">
           <div class="field-range__help-text"><code>min="1" max="100" step="1" value="70"</code>, стилизован без js.</div>
         </div>
       </div>
@@ -908,7 +908,7 @@
             <code>&lt;div class="field-range"></code>
             <code>  &lt;div class="field-range__name">Range&lt;/div></code>
             <code>  &lt;div class="field-range__input-wrap"></code>
-            <code>    &lt;input class="field-range__input" type="range" min="1" max="100" step="1" value="70"></code>
+            <code>    &lt;input class="field-range__input" type="range" min="1" max="100" step="1" value="70" id=""></code>
             <code>    &lt;div class="field-range__help-text">&lt;code>min="1" max="100" step="1" value="70"&lt;/code>&lt;/div></code>
             <code>  &lt;/div></code>
             <code>&lt;/div></code>
@@ -925,7 +925,7 @@
       <label class="field-select">
         <span class="field-select__name">Селект</span>
         <span class="field-select__select-wrap">
-          <select class="field-select__select">
+          <select class="field-select__select" id="">
             <optgroup label="Группа">
               <option>Значение 1</option>
               <option>Значение 2</option>
@@ -956,7 +956,7 @@
             <code>&lt;label class="field-select"></code>
             <code>  &lt;span class="field-select__name">Селект&lt;/span></code>
             <code>  &lt;span class="field-select__select-wrap"></code>
-            <code>    &lt;select class="field-select__select"></code>
+            <code>    &lt;select class="field-select__select" id=""></code>
             <code>      &lt;optgroup label="Группа"></code>
             <code>        &lt;option>Значение 1&lt;/option></code>
             <code>        &lt;option>Значение 2&lt;/option></code>
@@ -1005,7 +1005,7 @@
         <div class="fields-group">
           <label class="field-text">
             <span class="field-text__input-wrap">
-              <input class="field-text__input" type="text" placeholder="input[type=text]">
+              <input class="field-text__input" type="text" placeholder="input[type=text]" id="">
             </span>
           </label>
           <div class="field-actions">
@@ -1016,13 +1016,13 @@
         <div class="fields-group">
           <label class="field-text">
             <span class="field-text__input-wrap">
-              <input class="field-text__input" type="text" placeholder="input[type=text]">
+              <input class="field-text__input" type="text" placeholder="input[type=text]" id="">
               <span class="field-text__help-text">Помощь</span>
             </span>
           </label>
           <label class="field-text">
             <span class="field-text__input-wrap">
-              <input class="field-text__input" type="text" placeholder="input[type=text]">
+              <input class="field-text__input" type="text" placeholder="input[type=text]" id="">
               <span class="field-text__help-text">Помощь</span>
             </span>
           </label>
@@ -1058,20 +1058,20 @@
           <label class="field-text">
             <span class="field-text__name">Текстовое поле</span>
             <span class="field-text__input-wrap">
-              <input class="field-text__input" type="text" placeholder="input[type=text]">
+              <input class="field-text__input" type="text" placeholder="input[type=text]" id="">
               <span class="field-text__help-text">Обёртка — <code>label</code>. Можно сделать обёртку <code>div</code>, но тогда, возможно, захочется элемент <code>.field-text__name</code> делать <code>label</code> и связывать его с полем по <code>id</code> поля.</span>
             </span>
           </label>
           <div class="field-checkbox">
             <label class="field-checkbox__name">
-              <input class="field-checkbox__input" type="checkbox" checked>
+              <input class="field-checkbox__input" type="checkbox" id="" checked>
               <span class="field-checkbox__name-text">Одинокий чекбокс</span>
             </label>
           </div>
           <label class="field-text">
             <span class="field-text__name">Текстовое поле</span>
             <span class="field-text__input-wrap">
-              <input class="field-text__input" type="text" placeholder="input[type=text]">
+              <input class="field-text__input" type="text" placeholder="input[type=text]" id="">
               <span class="field-text__help-text">Обёртка — <code>label</code>. Можно сделать обёртку <code>div</code>, но тогда, возможно, захочется элемент <code>.field-text__name</code> делать <code>label</code> и связывать его с полем по <code>id</code> поля.</span>
             </span>
           </label>
