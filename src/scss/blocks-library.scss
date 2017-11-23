@@ -16,7 +16,7 @@
     }
 
     &:before {
-      content: attr(data-name);
+      content: '.' attr(id);
       position: absolute;
       top: -1em;
       left: 0;

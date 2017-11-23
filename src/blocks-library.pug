@@ -1,19 +1,230 @@
 extends pug/layout.pug
 
 block meta
-  title Home
+  title Библиотека
   meta(name='description', content='')
 
-//- block append head
-//-   link(rel="stylesheet", href="css/SOME.css")
-//-   script(src='js/SOME.js')
+block append head
+  link(rel="stylesheet", href="css/blocks-library.css")
+  style.
+    .components-demo {
+      display: block;
+      padding: 1em;
+      margin: auto;
+      max-width: 1200px;
+      font-family: sans-serif;
+    }
+    .off-canvas__aside {
+      padding-top: 1em;
+      padding-bottom: 1em;
+    }
+  script.
+    document.addEventListener('DOMContentLoaded', function(){
 
-//- block header
-//-   -var page = 'blog';
-//-   p Шапка
+      // наполнение бокого меню
+      var demoBlocks = document.querySelectorAll('.blocks-library__item');
+      var offCanvasMenu = '<li class="menu__item"><a class="menu__link" data-toggle-native="off-canvas" href="https://github.com/nicothin/NTH-start-project">Исходный репозиторий</a></li><li class="menu__item menu__item--separator"><a class="menu__link" data-toggle-native="off-canvas" href="http://nicothin.github.io/NTH-start-project/blocks-demo.html">Демка на github pages</a></li>';
+      for (var i=0; i<demoBlocks.length; i++){
+        var classes = 'menu__item';
+        var block = demoBlocks[i];
+        if (block.classList.contains('blocks-library__item--menusep')) { classes += ' menu__item--separator'; }
+        offCanvasMenu += '<li class="'+classes+'"><a class="menu__link" data-toggle-native="off-canvas" href="#'+block.getAttribute('id')+'">'+block.querySelector('.blocks-library__item-title').textContent+'</a></li>';
+      }
+      var offCanvasMenuContent = document.getElementById('off-canvas-menu');
+      offCanvasMenuContent.innerHTML = offCanvasMenu;
+
+      // просмотр примера кода для блока
+      var codeShowTriggers = document.querySelectorAll('.blocks-library__code-show-trigger');
+      for (var i = 0; i < codeShowTriggers.length; i++) {
+        codeShowTriggers[i].addEventListener('click', function(){
+          this.closest('.blocks-library__code-wrapper').querySelector('.blocks-library__code').classList.toggle('blocks-library__code--shown');
+        });
+      }
+
+    });
+  //- script(src='js/SOME.js')
+
+block off-canvas
+  ul#off-canvas-menu.menu
+
+block header
+  //- -var page = 'blog';
+  //- p Шапка
+
+
 
 block content
-  p Контент
+
+  h1 Страница демонстрации блоков, доступных на #[a(href="index.html")] проекте
+
+  section#page.blocks-library__item
+    h2.blocks-library__item-title Страница
+    p Блок страницы (#[code html class="page"]), благодаря которому применяются некоторые глобальные стили:
+    ul
+      li Смена боксовой модели на всех узлах: #[code box-sizing: border-box;] наследуется от #[code html]
+      li Нормализация вьюпорта для windows-телефонов.
+      li Сброс отступов для #[code body]
+      li Стилевой обход 300 мс задержки #[code touch-action: manipulation;].
+      li Ограничение размера картинок до 100% ширины родителя.
+    p В стилизацию блока включена стилизация «прибитого подвала».
+    .blocks-library__code-wrapper
+      span.blocks-library__code-show-trigger(title="Показать код")
+        i.blocks-library__code-icon
+      .blocks-library__code
+        pre.code
+          code &lt;!DOCTYPE html>
+          code &lt;html class="no-js  page" lang="ru">
+          code &lt;head>...&lt;/head>
+          code &lt;body>
+          code   &lt;div class="page__inner">
+          code     &lt;div class="page__content">Основное содержимое&lt;/div>
+          code     &lt;div class="page__footer-wrapper">Прибитый «подвал»&lt;/div>
+          code   &lt;/div>
+          code &lt;/body>
+          code &lt;/html>
+
+  section#typo.blocks-library__item.blocks-library__item--menusep
+    h2#text-text.blocks-library__item-title Текст, теги
+    p Реализуется блоком #[code typo], все стили которого являются глобальными.
+    p Параграфы, расстояние между ними. #[a(href="qwert1234") Ссылка]. Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные ссылки. Грустный предупредила, дал приставка составитель решила подпоясал запятых сих ручеек которой власти до, над жизни возвращайся силуэт что не курсивных.
+    p Параграфы, расстояние между ними. #[a(href="/empty") Ссылка]. Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные ссылки. Грустный предупредила, дал приставка составитель решила подпоясал запятых сих ручеек которой власти до, над жизни возвращайся силуэт что не курсивных.
+    h1 Заголовок 1
+    p Параграфы, расстояние между ними. #[a(href="/empty") Ссылка]. Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные ссылки. Грустный предупредила, дал приставка составитель решила подпоясал запятых сих ручеек которой власти до, над жизни возвращайся силуэт что не курсивных.
+    h2 Заголовок 2
+    p Параграфы, расстояние между ними. #[a(href="/empty") Ссылка]. Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные ссылки. Грустный предупредила, дал приставка составитель решила подпоясал запятых сих ручеек которой власти до, над жизни возвращайся силуэт что не курсивных.
+    h3 Заголовок 3
+    p Параграфы, расстояние между ними. #[a(href="/empty") Ссылка]. Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные ссылки. Грустный предупредила, дал приставка составитель решила подпоясал запятых сих ручеек которой власти до, над жизни возвращайся силуэт что не курсивных.
+    h4 Заголовок 4
+    p Параграфы, расстояние между ними. #[a(href="/empty") Ссылка]. Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные ссылки. Грустный предупредила, дал приставка составитель решила подпоясал запятых сих ручеек которой власти до, над жизни возвращайся силуэт что не курсивных.
+    h5 Заголовок 5
+    p Параграфы, расстояние между ними. #[a(href="/empty") Ссылка]. Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные ссылки. Грустный предупредила, дал приставка составитель решила подпоясал запятых сих ручеек которой власти до, над жизни возвращайся силуэт что не курсивных.
+    h6 Заголовок 6
+    p Параграфы, расстояние между ними. #[a(href="/empty") Ссылка]. Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные ссылки. Грустный предупредила, дал приставка составитель решила подпоясал запятых сих ручеек которой власти до, над жизни возвращайся силуэт что не курсивных.
+    ul
+      li Пункт 1
+        ul
+          li Подпункт 1
+          li Подпункт 2
+      li Пункт 2
+      li Пункт 3
+    ol
+      li Пункт 1
+        ol
+          li Подпункт 1
+          li Подпункт 2
+      li Пункт 2
+      li Пункт 3
+    p Параграфы, расстояние между ними. #[a(href="/empty") Ссылка]. Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные ссылки. Грустный предупредила, дал приставка составитель решила подпоясал запятых сих ручеек которой власти до, над жизни возвращайся силуэт что не курсивных.
+    dl
+      dt Определяемая сущность 1
+      dd Некое, возможно, относительно длинное определение упомянутой сущности. Скорее всего, многострочное.
+      dt Определяемая сущность 2
+      dd Некое, возможно, относительно длинное определение. Скорее всего, длинное, весьма многострочное и многословное.
+      dd Некое, возможно, относительно длинное определение упомянутой сущности.
+    p Параграфы, расстояние между ними. #[a(href="/empty") Ссылка]. Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные ссылки. Грустный предупредила, дал приставка составитель решила подпоясал запятых сих ручеек которой власти до, над жизни возвращайся силуэт что не курсивных.
+    hr
+    p Параграфы, расстояние между ними. #[a(href="/empty") Ссылка]. Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные ссылки. Грустный предупредила, дал приставка составитель решила подпоясал запятых сих ручеек которой власти до, над жизни возвращайся силуэт что не курсивных.
+    table
+      tr
+        td
+          code &lt;a>
+        td
+          a(href="") ссылка
+      tr
+        td
+          code &lt;strong>
+        td
+          strong действительно значимый текст
+      tr
+        td
+          code &lt;b>
+        td
+          b просто выделенный текст, лид
+      tr
+        td
+          code &lt;i>
+        td
+          i иностранное слово или термин
+      tr
+        td
+          code &lt;em>
+        td
+          em эмфатическое ударение
+      tr
+        td
+          code &lt;s>
+        td
+          s информация, утратившая актуальность
+      tr
+        td
+          code &lt;del>
+        td
+          del изменение, внесённое в документ (удаление)
+      tr
+        td
+          code &lt;ins>
+        td
+          ins изменение, внесённое в документ (добавление)
+      tr
+        td
+          code &lt;mark>
+        td
+          mark акцент маркерным выделением
+      tr
+        td
+          code &lt;small>
+        td
+          small малозначимый текст
+      tr
+        td
+          code &lt;abbr>
+        td
+          abbr(title="Аббревиатура") АББРЕВИАТУРА
+      tr
+        td
+          code &lt;kbd>
+        td
+          kbd Ctrl + C
+      tr
+        td
+          code &lt;sup>
+        td
+          | 2
+          sup 3
+      tr
+        td
+          code &lt;sub>
+        td
+          | H
+          sub 2
+          | O
+      tr
+        td
+          code &lt;code>
+        td
+          code code
+    address
+      strong Имя Фамилия
+      br
+      | г. Лондон, ул. Виндзорский сад, д. 32 (спросить мистера Имя)
+      br
+      a(href="mailto:user@mail.com") user@mail.com
+    blockquote
+      p Цитата. Далеко-далеко за словесными горами в стране. Далеко-далеко за словесными горами в стране.
+      footer
+        cite Emmet
+    #text-pre.blocks-library__sub-item
+      h2.blocks-library__sub-item-title Форматированный текст
+      p Смотри так же #[a(href="#code") БЭМ-блок для кода].
+      pre.
+        // Блочный код с символом переноса строки
+        // Вторая строка
+
+
+  .burger.blocks-library__menu-toggler(data-toggle="off-canvas")
+    span(data-toggle="off-canvas")
+
+
 
 //- block footer
 //-   p Подвал
