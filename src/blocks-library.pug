@@ -271,29 +271,22 @@ block content
       use(xlink:href="img/sprite-svg.svg#temp-icon-left-arrow")
 
   +block-lib('sprite-png', 'PNG-спрайт с <a href="https://github.com/Ensighten/spritesmith">spritesmith</a>', true)
-    p Из файлов папки #[code sprite-png/png/] в папку #[code sprite-png/img/] будет сгенерирован файл спрайта #[code sprite-ЧИСЛОВОЙ_ИНДЕКС.svg], который далее будет скопирован в папку сборки.
-    p #[strong Стилевой файл блока генерируется автоматически] и содержит примеси для использования спрайтов. Отдельный файл элемента #[code sprite-png__demo.scss] содержит вызов примеси, генерирующей стили для всех составных частей спрайта. Пример использования части спрайта для конкретного селектора:
-    pre.code
-      code .selector {
-      code   // $temp-icon-left-arrow — $ИМЯ_ФАЙЛА_КАРТИНКИ ($ в начале)
-      code   @include sprite($temp-icon-left-arrow);
-      code }
-    p Демонстрационный контент блока (иконки стрелок):
-    .temp-icon-right-arrow(style="display: inline-block;")
-    .temp-icon-left-arrow(style="display: inline-block;")
+
+
+  +block-lib('sprite-png', 'PNG-спрайт с <a href="https://github.com/Ensighten/spritesmith">spritesmith</a>', true)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/sprite-png/readme.md
 
   +block-lib('close', 'Закрыть', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/close/close.md
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/close/readme.md
     div
       +close('Закрыть')
     +block-lib-code()
       include:show-code() blocks/close/close.pug
 
   +block-lib('burger', 'Бургер', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/burger/burger.md
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/burger/readme.md
     div
       +burger('Показать пример кода', 'burger-code', 'blocks-library__code--shown')
-      +burger('Показать ничто')(data-some="SOME")
     +block-lib-code('burger-code', true)
       include:show-code() blocks/burger/burger.pug
 
