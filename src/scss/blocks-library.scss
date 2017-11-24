@@ -43,6 +43,15 @@
     margin: 0.3em 0;
   }
 
+  &__item-title-link {
+    display: inline-block;
+    margin-right: 10px;
+
+    svg {
+      display: block;
+    }
+  }
+
   &__sub-item {}
 
   &__sub-item-title {}

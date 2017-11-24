@@ -31,6 +31,10 @@ let dirs = projectConfig.dirs;
 let lists = getFilesList(projectConfig);
 // console.log(lists);
 
+// Получение адреса репозитория
+let repoUrl = require('./package.json').repository.url.replace(/\.git$/g, '');
+// console.log(repoUrl);
+
 // файл с настройками фавиконок
 const faviconData = './faviconData.json';
 
@@ -396,7 +400,25 @@ gulp.task('pug', function() {
       dirs.srcPath + '/*.pug',
     ])
     .pipe(plumber())
-    .pipe(pug())
+    .pipe(pug({
+      data: {
+        repoUrl: repoUrl,
+      },
+      filters: {
+        // фильтр, выводящий содержимое pug-файла в виде форматированного текста
+        'show-code': function (text, options) {
+          var lines = text.split('\n');
+          var result = '<pre class="code">';
+          for (var i = 0; i < (lines.length - 1); i++) { // (lines.length - 1) для срезания последней строки (пустая)
+            result = result + '<code>' + lines[i] + '</code>';
+          }
+          result = result + '</pre>';
+          result = result.replace(/<code><\/code>/g, '<code>&nbsp;</code>');
+          return result;
+        }
+      },
+      // compileDebug: false,
+    }))
     .pipe(realFavicon.injectFaviconMarkups(JSON.parse(fs.readFileSync(faviconData)).favicon.html_code))
     .pipe(htmlbeautify())
     .pipe(gulp.dest(dirs.buildPath));

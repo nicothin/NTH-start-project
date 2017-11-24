@@ -1,16 +1,4 @@
-(function(){
-
-  // Добавление/удаление модификаторов при клике на переключение видимости
-  var toggler = document.getElementById('main-nav-toggler');
-  if(toggler){
-    toggler.addEventListener('click', mainNavVisibleToggle);
-
-    function mainNavVisibleToggle(e) {
-      e.preventDefault();
-      toggler.classList.toggle('burger--close'); // модификатор иконки (должен быть .burger)
-      document.getElementById('main-nav').classList.toggle('main-nav--open');
-    }
-  }
+document.addEventListener('DOMContentLoaded', function(){
 
   // Добавление/удаление модификаторов при фокусировке на ссылочном элементе
   var linkClassName = 'main-nav__link';
@@ -21,9 +9,13 @@
     // Если событие всплыло от одной из ссылок гл. меню
     if (findLinkClassName.test(event.target.className)) {
       // Добавим классы, показывающие списки вложенных уровней, на всех родителей
-      event.target.parents('.main-nav__item').forEach(function(item){
-        item.classList.add(linkClassNameShowChild);
-      });
+      var parents = event.target.parents('.main-nav__item');
+      for (var i = 0; i < parents.length; i++) {
+        parents[i].classList.add(linkClassNameShowChild);
+      }
+      // event.target.parents('.main-nav__item').forEach(function(item){
+      //   item.classList.add(linkClassNameShowChild);
+      // });
     }
   }, true);
   // Слежение за всплывшим событием blur (нужно убрать класс, показывающий потомков)
@@ -31,10 +23,13 @@
     // Если событие всплыло от одной из ссылок гл. меню
     if (findLinkClassName.test(event.target.className)) {
       // Уберем все классы, показывающие списки 2+ уровней
-      // event.target.closest('.main-nav').querySelectorAll('.'+linkClassNameShowChild).forEach(function(item){
-      document.querySelectorAll('.'+linkClassNameShowChild).forEach(function(item){
-        item.classList.remove(linkClassNameShowChild);
-      });
+      var parents = document.querySelectorAll('.'+linkClassNameShowChild)
+      for (var i = 0; i < parents.length; i++) {
+        parents[i].classList.remove(linkClassNameShowChild);
+      }
+      // document.querySelectorAll('.'+linkClassNameShowChild).forEach(function(item){
+      //   item.classList.remove(linkClassNameShowChild);
+      // });
     }
   }, true);
 
@@ -59,7 +54,7 @@
     return elements;
   };
 
-  // Добавление метода .closest() (полифил, собственно)
+  // Добавление метода .closest() (полифил)
   // (function(e){
   //  e.closest = e.closest || function(css){
   //    var node = this;
@@ -72,4 +67,4 @@
   //  }
   // })(Element.prototype);
 
-}());
+});

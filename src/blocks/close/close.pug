@@ -1,6 +1,9 @@
+//- Все примеси в этом файле должны начинаться c имени блока (close)
+//- Принимает:
+//-   label {string} - описание, значение атрибута aria-label
+//- Вызов:
+//-   +close('Закрыть')
+
 mixin close(label)
-
-  //- label {string}          описание, значение атрибута aria-label
-
   button.close(aria-label=label)&attributes(attributes)
     span

@@ -1,8 +1,18 @@
+//- Все примеси в этом файле должны начинаться c имени блока (burger)
+
 mixin burger(label, targetId, className)
 
-  //- label {string}          описание, значение атрибута aria-label
-  //- targetId {string}       атрибут id целевого элемента (без символа #), на котором по клику будет меняться класс
-  //- className {string}      класс, добавляемый/убираемый с целевого элемента
+  //- Принимает:
+  //-   label {string}     - описание, значение атрибута aria-label
+  //-   targetId {string}  - атрибут id целевого элемента (без символа #), на котором по клику будет меняться класс
+  //-   className {string} - класс, добавляемый/убираемый с целевого элемента
+  //- Вызов:
+  //-   +burger('Показать пример кода', 'burger-code', 'blocks-library__code--shown')
+  //-   +burger('Показать ничто')(data-some="SOME")
 
-  button.burger(aria-label=label, data-target-id=targetId, data-target-class-toggle=className)&attributes(attributes)
+  - label = label || 'Toggle block ' + targetId
+  - if (typeof(targetId) !== 'undefined' && targetId !== '') attributes['data-target-id'] = targetId
+  - if (typeof(className) !== 'undefined' && className !== '') attributes['data-target-class-toggle'] = className
+
+  button.burger(aria-label=label)&attributes(attributes)
     span

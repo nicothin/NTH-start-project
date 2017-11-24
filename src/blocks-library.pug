@@ -55,10 +55,20 @@ block header
 
 block content
 
+  //- Спрайт с картинкой папки (картинки перед заголовками с названием блоков)
+  svg(xmlns='http://www.w3.org/2000/svg', style='display:none')
+    symbol#folder(viewbox='0 0 60 60')
+      path(d='M56.98 11.5H28.02V6.52c0-1.665-1.355-3.02-3.02-3.02H3.02C1.353 3.5 0 4.854 0 6.52v46.96c0 1.665 1.354 3.02 3.02 3.02h53.96c1.665 0 3.02-1.354 3.02-3.02V14.52c0-1.666-1.354-3.02-3.02-3.02zM58 53.48c0 .563-.457 1.02-1.02 1.02H3.02c-.563 0-1.02-.457-1.02-1.02V22.5h56v30.98zM2 20.5V6.52c0-.563.457-1.02 1.02-1.02H25c.562 0 1.02.457 1.02 1.02v6.98h30.96c.563 0 1.02.457 1.02 1.02v5.98H2z')
+      path(d='M19 33.5h14c.552 0 1-.447 1-1s-.448-1-1-1H19c-.552 0-1 .447-1 1s.448 1 1 1zm0 6h22c.552 0 1-.447 1-1s-.448-1-1-1H19c-.552 0-1 .447-1 1s.448 1 1 1zm0 6h22c.552 0 1-.447 1-1s-.448-1-1-1H19c-.552 0-1 .447-1 1s.448 1 1 1z')
+
   //- Вывод блока библиотеки
   mixin block-lib(id, title, sep)
     section.blocks-library__item(id=id)(class= sep ? 'blocks-library__item--menusep' : '')
-      h2.blocks-library__item-title!= title
+      h2.blocks-library__item-title
+        a(href=repoUrl + '/tree/master/src/blocks/' + id, class="blocks-library__item-title-link", title="Папка блока в репозитории")
+          svg(width="20", height="20")
+            use(xlink:href="#folder")
+        != title
       block
 
   //- Вывод фрагмента кода в блоке библиотеки
@@ -68,18 +78,19 @@ block content
         - if (!hideBurger)
             i.blocks-library__code-icon
       .blocks-library__code(id=id)
-        pre.code
-          block
+        block
 
   //- Пример вызова примесей вывода блока:
-    +block-lib('class', 'Заголовок', false)
-      p Описание
+    +block-lib('close', 'Закрыть', false)
+      include:markdown-it(linkify) blocks/close/close.md
+      div
+        +close('Закрыть')
       +block-lib-code()
-        code &lt;div>
+        include:show-code() blocks/close/close.pug
 
 
 
-  h1 Страница демонстрации блоков, доступных на #[a(href="index.html")] проекте
+  h1 Страница демонстрации блоков, доступных на #[a(href="index.html") проекте]
 
   +block-lib('page', 'Страница', false)
     p Блок страницы (#[code html class="page"]), благодаря которому применяются некоторые глобальные стили:
@@ -245,11 +256,10 @@ block content
       code &lt;/svg>
     p Для вставки на страницу используйте конструкции #[code svg > use] со ссылками на #[code id] символа:
     pre.code
-      code //- Pug
       code svg(width="32", height="32")
       code   use(xlink:href="img/sprite-svg.svg#icon-boo")
       code &nbsp;
-      code &lt;!-- HTML -->
+      code //- HTML
       code &lt;svg width="32" height="32">
       code   &lt;use xlink:href="img/sprite-svg.svg#icon-boo">&lt;/use>
       code &lt;/svg>
@@ -264,7 +274,6 @@ block content
     p Из файлов папки #[code sprite-png/png/] в папку #[code sprite-png/img/] будет сгенерирован файл спрайта #[code sprite-ЧИСЛОВОЙ_ИНДЕКС.svg], который далее будет скопирован в папку сборки.
     p #[strong Стилевой файл блока генерируется автоматически] и содержит примеси для использования спрайтов. Отдельный файл элемента #[code sprite-png__demo.scss] содержит вызов примеси, генерирующей стили для всех составных частей спрайта. Пример использования части спрайта для конкретного селектора:
     pre.code
-      code // Sass
       code .selector {
       code   // $temp-icon-left-arrow — $ИМЯ_ФАЙЛА_КАРТИНКИ ($ в начале)
       code   @include sprite($temp-icon-left-arrow);
@@ -273,34 +282,26 @@ block content
     .temp-icon-right-arrow(style="display: inline-block;")
     .temp-icon-left-arrow(style="display: inline-block;")
 
-  +block-lib('class', 'Закрыть', false)
-    p Иконка закрытия.
-    +close('Закрыть')
+  +block-lib('close', 'Закрыть', false)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/close/close.md
+    div
+      +close('Закрыть')
     +block-lib-code()
-      code //- Pug
-      code //- Параметры примеси:
-      code //-   label {string}  описание, значение атрибута aria-label
-      code +close("Закрыть")
-      code &nbsp;
-      code &lt;!-- HTML -->
-      code &lt;button class="close">&lt;span>&lt;/span>&lt;/button>
+      include:show-code() blocks/close/close.pug
 
   +block-lib('burger', 'Бургер', false)
-    p Анимированное превращение в крестик по добавлению модификатора. #[br] JS блока берет переданный в data-атрибуте идентификатор и, по клику на бургере, добавляет переданный в data-атрибуте класс на элемент с этим модификатором.
-    +burger('Показать пример кода', 'burger-code', 'blocks-library__code--shown')
-      // На этом диве должен переключаться класс
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/burger/burger.md
+    div
+      +burger('Показать пример кода', 'burger-code', 'blocks-library__code--shown')
+      +burger('Показать ничто')(data-some="SOME")
     +block-lib-code('burger-code', true)
-      code //- Pug
-      code //- Параметры примеси:
-      code //-   label {string}      описание, значение атрибута aria-label
-      code //-   targetId {string}   атрибут id целевого элемента (без символа #), на котором по клику будет меняться класс
-      code //-   className {string}  класс, добавляемый/убираемый с целевого элемента
-      code +burger("Показать меню", "TARGET_ID", "CLASS_ACTIVE")
-      code &nbsp;
-      code &lt;!-- HTML -->
-      code &lt;button class="burger" aria-label="Показать меню" data-target-id="TARGET_ID" data-target-class-toggle="CLASS_ACTIVE">
-      code   &lt;span>&lt;/span>
-      code &lt;/button>
+      include:show-code() blocks/burger/burger.pug
+
+  +block-lib('main-nav', 'Главная навигация TODO', false)
+    p По получению ссылками фокуса на их родителей с #[code .main-nav__item] добавляется модификатор #[code .main-nav__item--show-child], что позволяет работать со вложенными меню с клавиатуры (предусмотрено 3 уровня).
+    p TODO: доделать
+    +block-lib-code()
+      code &lt;div>
 
 
 
