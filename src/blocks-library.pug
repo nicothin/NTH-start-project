@@ -121,20 +121,68 @@ block content
     div
       +close('Закрыть')
     +block-lib-code()
-      include:show-code() blocks/close/close.pug
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/close/close.pug
 
   +block-lib('burger', 'Бургер', false)
     include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/burger/readme.md
     div
       +burger('Показать пример кода', 'burger-code', 'blocks-library__code--shown')
     +block-lib-code('burger-code', true)
-      include:show-code() blocks/burger/burger.pug
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/burger/burger.pug
 
   +block-lib('main-nav', 'Главная навигация', false)
     include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/main-nav/readme.md
     +main-nav('1')
     +block-lib-code()
-      include:show-code() blocks/main-nav/main-nav.pug
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/main-nav/main-nav.pug
+
+  +block-lib('code', 'Код', false)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/code/readme.md
+    +code()
+      code &lt;div class="some">...&lt;/div>
+    +block-lib-code()
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/code/code.pug
+
+  +block-lib('thumb', 'Картинки-миниатюры', false)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/thumb/readme.md
+    +thumb('img/joker.jpg', 'Джокер', 300, 200)
+    +block-lib-code()
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/thumb/thumb.pug
+
+  +block-lib('alert', 'Сообщения', false)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/alert/readme.md
+    +alert('', 'success')
+      p Успех
+    +alert('Заголовok', 'danger')
+      p Проблема
+    +alert('Внимание!', 'warning, some-mod-name')
+      p Текст
+    +alert()
+      p Сообщение без модификаторов
+    +block-lib-code()
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/alert/alert.pug
+
+  +block-lib('menu', 'Меню', true)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/menu/readme.md
+    -
+      var myMenu = [
+        {
+          'text':'Пункт1',
+          'url':'/',
+        },
+        {
+          'text':'Пункт2',
+          'url':'/',
+          'mods': 'separator, active',
+        },
+        {
+          'text':'Пункт3',
+          'url':'/',
+        },
+      ];
+    +menu(myMenu)
+    +block-lib-code()
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/menu/menu.pug
 
 
 

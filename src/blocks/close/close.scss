@@ -21,12 +21,14 @@ $toggler-part-bg-color:       #000 !default;
   cursor: pointer;
 
   > span {
+    position: relative;
     display: inline-block;
     vertical-align: middle;
     width: 100%;
     height: $toggler-part-height;
+    font-size: 0;
+    color: transparent;
     background: transparent;
-    position: relative;
 
     &:before,
     &:after {

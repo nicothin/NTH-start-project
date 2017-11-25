@@ -10,9 +10,10 @@ mixin burger(label, targetId, className)
   //-   +burger('Показать пример кода', 'burger-code', 'blocks-library__code--shown')
   //-   +burger('Показать ничто')(data-some="SOME")
 
-  - label = label || 'Toggle block ' + targetId
-  - if (typeof(targetId) !== 'undefined' && targetId !== '') attributes['data-target-id'] = targetId
-  - if (typeof(className) !== 'undefined' && className !== '') attributes['data-target-class-toggle'] = className
+  -
+    label = label || 'Toggle block ' + targetId
+    if (typeof(targetId) !== 'undefined' && targetId !== '') attributes['data-target-id'] = targetId
+    if (typeof(className) !== 'undefined' && className !== '') attributes['data-target-class-toggle'] = className
 
   button.burger(aria-label=label)&attributes(attributes)
     span= label

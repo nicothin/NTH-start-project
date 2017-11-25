@@ -1,0 +1,32 @@
+//- Все примеси в этом файле должны начинаться c имени блока (alert)
+
+mixin alert(title, mods)
+
+  //- Принимает:
+  //-   title {string} - заголовок
+  //-   mods {string}  - стилевые модификаторы
+  //- Вызов:
+  //-   +alert('', 'success')
+  //-     p Успех
+  //-   +alert('Заголовok', 'danger')
+  //-     p Проблема
+  //-   +alert('Внимание!', 'warning, some-mod-name')
+  //-     p Текст
+  //-   +alert()
+  //-     p Сообщение без модификаторов
+
+  -
+    //- список модификаторов
+    var allMods = '';
+    if(typeof(mods) === 'string') {
+      var modsList = mods.split(',');
+
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' alert--' + modsList[i].trim();
+      }
+    }
+
+  div.alert(class=allMods)&attributes(attributes)
+    if (typeof(title) !== 'undefined' && title !== '')
+      h4.alert__header!= title
+    block

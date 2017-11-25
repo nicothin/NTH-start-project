@@ -398,6 +398,20 @@ gulp.task('pug', function() {
   const htmlbeautify = require('gulp-html-beautify');
   const mainMenu = require(dirs.srcPath + dirs.blocksDirName + '/main-nav/main-nav.json');
   console.log('---------- сборка Pug');
+
+  // Pug-фильтр, выводящий содержимое pug-файла в виде форматированного текста
+  const filterShowCode = function (text, options) {
+    var lines = text.split('\n');
+    var result = '<pre class="code">\n';
+    if (typeof(options['first-line']) !== 'undefined') result = result + '<code>' + options['first-line'] + '</code>\n';
+    for (var i = 0; i < (lines.length - 1); i++) { // (lines.length - 1) для срезания последней строки (пустая)
+      result = result + '<code>' + lines[i] + '</code>\n';
+    }
+    result = result + '</pre>\n';
+    result = result.replace(/<code><\/code>/g, '<code>&nbsp;</code>');
+    return result;
+  }
+
   return gulp.src([
       dirs.srcPath + '/*.pug',
     ])
@@ -405,20 +419,10 @@ gulp.task('pug', function() {
     .pipe(pug({
       data: {
         repoUrl: repoUrl,     // передаем pug-у адрес репозитория проекта
-        mainMenu: mainMenu,   // передаем pug-у объект с меню сайта
+        mainMenu: mainMenu,   // передаем pug-у объект с главным меню сайта
       },
       filters: {
-        // фильтр, выводящий содержимое pug-файла в виде форматированного текста
-        'show-code': function (text, options) {
-          var lines = text.split('\n');
-          var result = '<pre class="code">';
-          for (var i = 0; i < (lines.length - 1); i++) { // (lines.length - 1) для срезания последней строки (пустая)
-            result = result + '<code>' + lines[i] + '</code>';
-          }
-          result = result + '</pre>';
-          result = result.replace(/<code><\/code>/g, '<code>&nbsp;</code>');
-          return result;
-        }
+        'show-code': filterShowCode
       },
       // compileDebug: false,
     }))
