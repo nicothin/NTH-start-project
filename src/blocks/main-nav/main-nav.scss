@@ -51,6 +51,14 @@ $transition-time:             0.3s !default;
     @media (min-width: $menu-desktop-width) {
       display: flex;
       flex-wrap: wrap;
+
+      &--lvl-2 {
+        display: block;
+      }
+
+      &--lvl-3 {
+        display: block;
+      }
     }
   }
 

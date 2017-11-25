@@ -9,13 +9,10 @@ document.addEventListener('DOMContentLoaded', function(){
     // Если событие всплыло от одной из ссылок гл. меню
     if (findLinkClassName.test(event.target.className)) {
       // Добавим классы, показывающие списки вложенных уровней, на всех родителей
-      var parents = event.target.parents('.main-nav__item');
+      var parents = getParents(event.target, '.main-nav__item');
       for (var i = 0; i < parents.length; i++) {
         parents[i].classList.add(linkClassNameShowChild);
       }
-      // event.target.parents('.main-nav__item').forEach(function(item){
-      //   item.classList.add(linkClassNameShowChild);
-      // });
     }
   }, true);
   // Слежение за всплывшим событием blur (нужно убрать класс, показывающий потомков)
@@ -27,44 +24,55 @@ document.addEventListener('DOMContentLoaded', function(){
       for (var i = 0; i < parents.length; i++) {
         parents[i].classList.remove(linkClassNameShowChild);
       }
-      // document.querySelectorAll('.'+linkClassNameShowChild).forEach(function(item){
-      //   item.classList.remove(linkClassNameShowChild);
-      // });
     }
   }, true);
 
 
 
-  // Добавление метода .parents()
-  Element.prototype.parents = function(selector) {
-    var elements = [];
-    var elem = this;
-    var ishaveselector = selector !== undefined;
+  /*! getParents.js | (c) 2017 Chris Ferdinandi | MIT License | http://github.com/cferdinandi/getParents */
+  /**
+   * Get all of an element's parent elements up the DOM tree
+   * @param  {Node}   elem     The element
+   * @param  {String} selector Selector to match against [optional]
+   * @return {Array}           The parent elements
+   */
+  var getParents = function ( elem, selector ) {
 
-    while ((elem = elem.parentElement) !== null) {
-      if (elem.nodeType !== Node.ELEMENT_NODE) {
-        continue;
+      // Element.matches() polyfill
+      if (!Element.prototype.matches) {
+          Element.prototype.matches =
+              Element.prototype.matchesSelector ||
+              Element.prototype.mozMatchesSelector ||
+              Element.prototype.msMatchesSelector ||
+              Element.prototype.oMatchesSelector ||
+              Element.prototype.webkitMatchesSelector ||
+              function(s) {
+                  var matches = (this.document || this.ownerDocument).querySelectorAll(s),
+                      i = matches.length;
+                  while (--i >= 0 && matches.item(i) !== this) {}
+                  return i > -1;
+              };
       }
 
-      if (!ishaveselector || elem.matches(selector)) {
-        elements.push(elem);
-      }
-    }
+      // Setup parents array
+      var parents = [];
 
-    return elements;
+      // Get matching parent elements
+      for ( ; elem && elem !== document; elem = elem.parentNode ) {
+
+          // Add matching parents to array
+          if ( selector ) {
+              if ( elem.matches( selector ) ) {
+                  parents.push( elem );
+              }
+          } else {
+              parents.push( elem );
+          }
+
+      }
+
+      return parents;
+
   };
-
-  // Добавление метода .closest() (полифил)
-  // (function(e){
-  //  e.closest = e.closest || function(css){
-  //    var node = this;
-
-  //    while (node) {
-  //       if (node.matches(css)) return node;
-  //       else node = node.parentElement;
-  //    }
-  //    return null;
-  //  }
-  // })(Element.prototype);
 
 });
