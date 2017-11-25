@@ -29,6 +29,7 @@ const newer = require('gulp-newer');
 let projectConfig = require('./projectConfig.json');
 let dirs = projectConfig.dirs;
 let lists = getFilesList(projectConfig);
+let mainMenu = projectConfig.menu;
 // console.log(lists);
 
 // Получение адреса репозитория
@@ -395,6 +396,7 @@ gulp.task('html', function() {
 gulp.task('pug', function() {
   const pug = require('gulp-pug');
   const htmlbeautify = require('gulp-html-beautify');
+  const mainMenu = require(dirs.srcPath + dirs.blocksDirName + '/main-nav/main-nav.json');
   console.log('---------- сборка Pug');
   return gulp.src([
       dirs.srcPath + '/*.pug',
@@ -402,7 +404,8 @@ gulp.task('pug', function() {
     .pipe(plumber())
     .pipe(pug({
       data: {
-        repoUrl: repoUrl,
+        repoUrl: repoUrl,     // передаем pug-у адрес репозитория проекта
+        mainMenu: mainMenu,   // передаем pug-у объект с меню сайта
       },
       filters: {
         // фильтр, выводящий содержимое pug-файла в виде форматированного текста

@@ -15,4 +15,4 @@ mixin burger(label, targetId, className)
   - if (typeof(className) !== 'undefined' && className !== '') attributes['data-target-class-toggle'] = className
 
   button.burger(aria-label=label)&attributes(attributes)
-    span
+    span= label

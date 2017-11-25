@@ -130,11 +130,11 @@ block content
     +block-lib-code('burger-code', true)
       include:show-code() blocks/burger/burger.pug
 
-  +block-lib('main-nav', 'Главная навигация TODO', false)
-    p По получению ссылками фокуса на их родителей с #[code .main-nav__item] добавляется модификатор #[code .main-nav__item--show-child], что позволяет работать со вложенными меню с клавиатуры (предусмотрено 3 уровня).
-    p TODO: доделать
+  +block-lib('main-nav', 'Главная навигация', false)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/main-nav/readme.md
+    +main-nav('1')
     +block-lib-code()
-      code &lt;div>
+      include:show-code() blocks/main-nav/main-nav.pug
 
 
 
