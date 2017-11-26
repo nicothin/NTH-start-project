@@ -18,10 +18,10 @@ $border-radius:               3px !default;
 
   box-sizing: border-box;
   display: inline-block;
+  vertical-align: middle;
   margin: 0;
   padding: $field-padding-vertical  $field-padding-horizontal;
   white-space: nowrap;
-  vertical-align: middle;
   user-select: none;
   text-align: center;
   font-size: 1em;

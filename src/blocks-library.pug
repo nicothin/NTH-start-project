@@ -48,9 +48,6 @@ block off-canvas
   ul#off-canvas-menu.menu
 
 block header
-  //- -var page = 'blog';
-  //- p Шапка
-
 
 
 block content
@@ -151,14 +148,10 @@ block content
 
   +block-lib('alert', 'Сообщения', false)
     include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/alert/readme.md
-    +alert('', 'success')
-      p Успех
-    +alert('Заголовok', 'danger')
-      p Проблема
-    +alert('Внимание!', 'warning, some-mod-name')
-      p Текст
     +alert()
-      p Сообщение без модификаторов
+      p Обычное сообщение
+    +alert('Заголовок', 'warning, some-mod-name')
+      p Блок сообщения с модификаторами.
     +block-lib-code()
       include:show-code(first-line="//- Pug-файл этого блока:") blocks/alert/alert.pug
 
@@ -184,6 +177,46 @@ block content
     +block-lib-code()
       include:show-code(first-line="//- Pug-файл этого блока:") blocks/menu/menu.pug
 
+  +block-lib('btn', 'Кнопка', false)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/btn/readme.md
+    p.
+      #[+btn('Кнопка-ссылка')(href='/')]
+      #[+btn('Кнопка-input', '', true)(name='submit')]
+      #[+btn('Кнопка-button', 'main')]
+    p.
+      #[+btn('Кнопка-ссылка', 'disabled')(href='/')]
+      #[+btn('Кнопка-input', '', true)(name='submit', disabled='')]
+      #[+btn('Кнопка-button', 'main')(disabled='')]
+    +block-lib-code()
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/btn/btn.pug
+
+  +block-lib('field-text', 'Текстовое поле', false)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/field-text/readme.md
+    +field-text({
+      type: 'text',
+      title: 'Текстовое поле',
+      placeholder: 'Как заполнять',
+      helpText: 'Подсказка',
+    })
+    +field-text({
+      title: 'Многострочное текстовое поле',
+      textarea: true,
+      placeholder: 'Как заполнять',
+      helpText: 'Подсказка',
+    })
+    +field-text({
+      type: 'number',
+      title: 'Текстовое поле (number), ошибочный ввод',
+      placeholder: 'Как заполнять',
+      helpText: 'Подсказка',
+      props: 'Подсказка',
+      mods: 'error',
+      inputAttrs: {'id': '200', 'max': '200', 'min': '2'},
+    })
+    +field-text()
+    +block-lib-code()
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/field-text/field-text.pug
+
 
 
   .burger.blocks-library__menu-toggler(data-toggle="off-canvas")
@@ -192,7 +225,3 @@ block content
 
 
 block footer
-  //- p Подвал
-
-//- block append page-bottom
-//-   script(src='js/SOME.js')

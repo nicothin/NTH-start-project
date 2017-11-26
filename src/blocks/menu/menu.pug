@@ -16,10 +16,6 @@ mixin menu(menu)
   //-          'url':'/',
   //-          'mods': 'separator, active',
   //-        },
-  //-        {
-  //-          'text':'Пункт2',
-  //-          'url':'/',
-  //-        },
   //-      ];
   //-    +menu(myMenu)
 
@@ -36,13 +32,14 @@ mixin menu(menu)
           'mods': 'separator, active',
         },
         {
-          'text':'Пункт меню весьма длинный, такой, что прямо адски длинный, очень много, реально много слов! Пункт меню весьма длинный, такой, что прямо адски длинный, очень много, реально много слов!',
+          'text':'Пункт меню весьма длинный, такой, что прямо адски длинный, очень много, реально много слов. Пункт меню весьма длинный, такой, что прямо адски длинный, очень много, реально много слов.',
         },
       ]
     }
 
   ul.menu&attributes(attributes)
     each menuItem in menu
+
       -
         // список модификаторов
         var allMods = '';
@@ -52,8 +49,9 @@ mixin menu(menu)
             allMods = allMods + ' menu__item--' + modsList[i].trim();
           }
         }
+
       li.menu__item(class=allMods)
-        - if(typeof(menuItem.url) !== 'undefined')
+        if(typeof(menuItem.url) !== 'undefined')
           a.menu__link(href=menuItem.url)!= menuItem.text
-        - else
+        else
           span.menu__link!= menuItem.text
