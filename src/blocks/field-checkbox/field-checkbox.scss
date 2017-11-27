@@ -83,6 +83,7 @@ $line-height:                 1.375em !default;
       border-bottom: 2px solid currentColor;
       transform: rotate(-45deg);
       transition: opacity $transition-time;
+      box-shadow: 1px 2px 0 #fff, inset 0 -2px 0 #fff;
 
       @at-root input:checked ~ & {
         opacity: 1;

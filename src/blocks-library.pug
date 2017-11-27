@@ -193,29 +193,77 @@ block content
   +block-lib('field-text', 'Текстовое поле', false)
     include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/field-text/readme.md
     +field-text({
-      type: 'text',
       title: 'Текстовое поле',
-      placeholder: 'Как заполнять',
-      helpText: 'Подсказка',
+      helpText: 'Подсказка под полем',
+      isTextarea: true,
+      mods: '',
+      attrs: {
+        name: 'test',
+        placeholder: 'Подсказка',
+      }
     })
     +field-text({
-      title: 'Многострочное текстовое поле',
-      textarea: true,
-      placeholder: 'Как заполнять',
-      helpText: 'Подсказка',
-    })
-    +field-text({
-      type: 'number',
-      title: 'Текстовое поле (number), ошибочный ввод',
-      placeholder: 'Как заполнять',
-      helpText: 'Подсказка',
-      props: 'Подсказка',
+      title: 'Текстовое поле',
+      helpText: 'Описание ошибки',
       mods: 'error',
-      inputAttrs: {'id': '200', 'max': '200', 'min': '2'},
     })
     +field-text()
     +block-lib-code()
       include:show-code(first-line="//- Pug-файл этого блока:") blocks/field-text/field-text.pug
+
+  +block-lib('field-checkbox', 'Флажок/чекбокс', false)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/field-checkbox/readme.md
+    +field-checkbox([
+      {
+        title: 'Чекбокс без группы',
+        helpText: 'Отдельно расположенный чекбокс',
+        attrs: {
+          name: 'check0',
+        }
+      },
+    ])
+    +field-checkbox([
+      {
+        title: 'Чекбокс первый',
+        helpText: 'И, возможно, единственный',
+        mods: 'error',
+        attrs: {
+          name: 'check1',
+          checked: true,
+        }
+      },
+      {
+        title: 'Чекбокс второй',
+        helpText: 'А, нет. Не единственный...',
+        attrs: {
+          name: 'check2',
+        }
+      },
+    ], 'Общее необязательное название')
+    +block-lib-code()
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/field-checkbox/field-checkbox.pug
+
+  +block-lib('field-radio', 'Радиокнопки', false)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/field-radio/readme.md
+    +field-radio([
+      {
+        title: 'Первый',
+        helpText: 'И, возможно, единственный',
+        attrs: {
+          name: 'radio',
+          checked: true,
+        }
+      },
+      {
+        title: 'Второй',
+        helpText: 'А, нет. Не единственный...',
+        attrs: {
+          name: 'radio',
+        }
+      },
+    ], 'Общее необязательное название')
+    +block-lib-code()
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/field-radio/field-radio.pug
 
 
 

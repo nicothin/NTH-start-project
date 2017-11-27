@@ -5,19 +5,19 @@ mixin menu(menu)
   //- Принимает:
   //-   menu {array} - массив с пунктами меню
   //- Вызов:
-  //-    -
-  //-      var myMenu = [
-  //-        {
-  //-          'text':'Пункт1',
-  //-          'url':'/',
-  //-        },
-  //-        {
-  //-          'text':'Пункт2',
-  //-          'url':'/',
-  //-          'mods': 'separator, active',
-  //-        },
-  //-      ];
-  //-    +menu(myMenu)
+      -
+        var myMenu = [
+          {
+            'text':'Пункт1',
+            'url':'/',
+          },
+          {
+            'text':'Пункт2',
+            'url':'/',
+            'mods': 'separator, active',
+          },
+        ];
+      +menu(myMenu)
 
   -
     if (typeof(menu) === 'undefined') {

@@ -8,8 +8,8 @@ mixin thumb(url, alt, width, height)
   //-   width {string}  - соотв. атрибут тега картинки
   //-   height {string} - соотв. атрибут тега картинки
   //- Вызов:
-  //-   +thumb('img/joker.jpg', 'Джокер', 300, 200)
-  //-   +thumb('img/joker.jpg', 'Джокер', 300)
+        +thumb('img/joker.jpg', 'Джокер', 300, 200)
+        +thumb('img/joker.jpg', 'Джокер', 300)
 
   - if (typeof(url) !== 'undefined')
     img.thumb(src=url, alt=alt, width=width, height=height)&attributes(attributes)

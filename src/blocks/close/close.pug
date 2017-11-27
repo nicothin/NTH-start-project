@@ -5,7 +5,7 @@ mixin close(label)
   //- Принимает:
   //-   label {string} - описание, значение атрибута aria-label
   //- Вызов:
-  //-   +close('Закрыть')
+        +close('Закрыть')
 
   button.close(aria-label=label)&attributes(attributes)
     span= label

@@ -4,26 +4,26 @@ mixin field-text(props)
 
   //- Принимает:
   //-   props {
-  //-     title: ''       {string} - текст с названием (выводится над полем)
-  //-     type: ''        {string} - тип для input [text|email|number...]
-  //-     placeholder: '' {string} - подсказка в поле
-  //-     name: ''        {string} - атрибут name у input/textarea
-  //-     inputAttrs: {}  {object} - дополнительные атрибуты для input/textarea
-  //-     mods: ''        {string} - модификаторы блока
-  //-     textarea: false {bool}   - флаг input/textarea
-  //-     helpText: ''    {string} - пояснение под полем
+  //-     title: ''         {string} - текст с названием (выводится над полем)
+  //-     isTextarea: false {bool}   - флаг input/textarea
+  //-     helpText: ''      {string} - пояснение под полем
+  //-     mods: ''          {string} - модификаторы блока
+  //-     attrs: {          {object} - любые атрибуты для input/textarea
+  //-       type:           {string}
+  //-       placeholder:    {string}
+  //-       ...
+  //-     }
   //-   }
   //- Вызов:
-  //-   +field-text({
-  //-     title: 'Текст',
-  //-     type: 'text',
-  //-     placeholder: '',
-  //-     name: '',
-  //-     inputAttrs: {'id': 'some-input-id', 'max': '200', 'min': '2'},
-  //-     mods: '',
-  //-     textarea: false,
-  //-     helpText: '',
-  //-   })
+        +field-text({
+          title: 'Название',
+          isTextarea: true,
+          helpText: 'Подсказка',
+          mods: '',
+          attrs: {
+            name: 'comment',
+          }
+        })
 
   -
     if(typeof(props) === 'undefined') {
@@ -41,17 +41,13 @@ mixin field-text(props)
     if(typeof(props.title) !== 'undefined' && props.title)
       span.field-text__name!= props.title
     span.field-text__input-wrap
-      if(typeof(props.textarea) !== 'undefined' && props.textarea)
+      if(typeof(props.isTextarea) !== 'undefined' && props.isTextarea)
         textarea.field-text__input(
-          placeholder=props.placeholder ? props.placeholder : ''
-          name=props.name ? props.name : ''
-        )&attributes(props.inputAttrs)
+        )&attributes(props.attrs)
       else
         input.field-text__input(
-          type=props.type ? props.type : 'text'
-          placeholder=props.placeholder ? props.placeholder : ''
-          name=props.name ? props.name : ''
-        )&attributes(props.inputAttrs)
+          type=(typeof(props.attrs) !== 'undefined' && props.attrs.type) ? props.attrs.type : 'text'
+        )&attributes(props.attrs)
       if(typeof(props.helpText) !== 'undefined' && props.helpText)
         span.field-text__help-text!= props.helpText
       block

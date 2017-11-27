@@ -3,9 +3,9 @@
 mixin main-nav(selectedID)
 
   //- Принимает:
-  //-   selectedID {string} - id пункта меню, указанное в main-nav.json
+  //-   selectedID {string} - id пункта меню ( по умолчанию — из main-nav.json)
   //- Вызов:
-  //-   +main-nav('1')
+        +main-nav('1')
 
   nav.main-nav#nav&attributes(attributes)
     +burger('Показать главное меню', 'nav', 'main-nav--open')(class="main-nav__toggler")
