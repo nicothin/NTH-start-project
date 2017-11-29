@@ -265,6 +265,144 @@ block content
     +block-lib-code()
       include:show-code(first-line="//- Pug-файл этого блока:") blocks/field-radio/field-radio.pug
 
+  +block-lib('field-toggler', 'Переключатель', false)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/field-toggler/readme.md
+    +field-toggler([
+      {
+        title: 'Одиночный переключатель',
+        helpText: 'Это чекбокс, на самом деле',
+        attrs: {
+          name: 'check10',
+        }
+      },
+    ])
+    +field-toggler([
+      {
+        title: 'Переключатель 1',
+        helpText: 'Подсказка',
+        attrs: {
+          name: 'check11',
+          checked: true,
+        }
+      },
+      {
+        title: 'Переключатель 2',
+        helpText: 'Подсказка',
+        mods: 'some',
+        attrs: {
+          name: 'check11',
+        }
+      },
+    ], 'Две радиокнопки', true)
+    +block-lib-code()
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/field-toggler/field-toggler.pug
+
+  +block-lib('field-file', 'Файл', false)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/field-file/readme.md
+    +field-file({
+      title: 'Название',
+      helpText: 'Подсказка',
+      attrs: {
+        name: 'commentFile',
+        multiple: true,
+      },
+      text: {
+        selectText: 'Выберите файл(ы)',
+        nothingText: 'Ничего не выбрано',
+        flesSelectedText: 'Выбрано файлов:',
+      },
+    })
+    +field-file({
+      helpText: 'Ошибка',
+      mods: 'error',
+      attrs: {
+        name: 'commentFile3',
+      },
+    })
+    +block-lib-code()
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/field-file/field-file.pug
+
+  +block-lib('field-range', 'Ползунок', false)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/field-range/readme.md
+    +field-range({
+      title: 'Название',
+      helpText: 'Подсказка',
+      mods: '',
+      attrs: {
+        name: 'counter',
+        min: '1',
+        max: '100',
+        step: '1',
+        value: '40'
+      }
+    })
+    +block-lib-code()
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/field-range/field-range.pug
+
+  +block-lib('field-select', 'Селекты', false)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/field-select/readme.md
+    +field-select(
+      'Название селекта',
+      {
+        name: 'select0',
+        id: 'select-demo0'
+      },
+      [
+        {
+          title: 'Опция 1',
+          attrs: {
+            value: 'val06',
+          }
+        },
+        {
+          title: 'Опция 2',
+          attrs: {
+            value: 'val05',
+          }
+        },
+      ],
+      'Подсказка',
+      ''
+    )
+    +field-select(
+      'Название селекта',
+      {
+        name: 'select',
+        id: 'select-demo'
+      },
+      [
+        {
+          attrs: {
+            label: 'Группа',
+          },
+          child: [
+            {
+              title: 'Опция1',
+              attrs: {
+                value: 'val01',
+              }
+            },
+            {
+              title: 'Опция2',
+              attrs: {
+                value: 'val02',
+              }
+            },
+          ]
+        },
+        {
+          title: 'Опция вне группы',
+          attrs: {
+            value: 'val03',
+          }
+        }
+      ],
+      'Подсказка',
+      ''
+    )
+    +block-lib-code()
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/field-select/field-select.pug
+
 
 
   .burger.blocks-library__menu-toggler(data-toggle="off-canvas")

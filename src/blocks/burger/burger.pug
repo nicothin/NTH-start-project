@@ -3,8 +3,8 @@
 mixin burger(label, targetId, switchableClass)
 
   //- Принимает:
-  //-   label {string}           - описание, значение атрибута aria-label
-  //-   targetId {string}        - атрибут id целевого элемента (без символа #), на котором по клику будет меняться класс
+  //-   label           {string} - описание, значение атрибута aria-label
+  //-   targetId        {string} - атрибут id целевого элемента (без символа #), на котором по клику будет меняться класс
   //-   switchableClass {string} - класс, добавляемый/убираемый с целевого элемента
   //- Вызов:
         +burger('Показать пример кода', 'burger-code', 'blocks-library__code--shown')
