@@ -4,16 +4,13 @@ mixin field-radio(radiobuttons, title)
 
   //- Принимает:
   //-   radiobuttons {array}
-  //-     {
+  //-     {object}
   //-       title: ''         {string} - текст рядом с радиокнопкой
   //-       helpText: ''      {string} - пояснение под полем
   //-       mods: ''          {string} - модификаторы обертки радиокнопки
-  //-       attrs: {          {object} - любые атрибуты для input
+  //-       attrs:            {object} - любые атрибуты для input
   //-         name:           {string}
   //-         ...
-  //-       }
-  //-     },
-  //-     ...
   //- Вызов:
         +field-radio([
           {

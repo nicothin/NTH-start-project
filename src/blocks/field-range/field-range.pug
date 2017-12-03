@@ -3,15 +3,12 @@
 mixin field-range(props)
 
   //- Принимает:
-  //-   props {
+  //-   props {object}
   //-     title: ''         {string} - текст с названием (выводится над полем)
   //-     helpText: ''      {string} - пояснение под полем
   //-     mods: ''          {string} - модификаторы блока
-  //-     attrs: {          {object} - любые атрибуты для input
+  //-     attrs:            {object} - любые атрибуты для input
   //-       name:           {string}
-  //-       ...
-  //-     }
-  //-   }
   //- Вызов:
         +field-range({
           title: 'Название',
@@ -22,7 +19,7 @@ mixin field-range(props)
             min: '1',
             max: '100',
             step: '1',
-            value: '40'
+            value: '40',
           }
         })
 

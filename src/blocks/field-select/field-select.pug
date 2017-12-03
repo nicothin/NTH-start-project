@@ -3,28 +3,28 @@
 mixin field-select(title, attrs, options, helpText, mods)
 
   //- Принимает:
-  //-   title: '' {string}     - название селекта
-  //-   attrs:    {object}      - атрибуты селекта
-  //-     name: '' {string}
+  //-   title: ''         {string} - название селекта
+  //-   attrs:            {object} - атрибуты селекта
+  //-     name: ''        {string}
   //-   options {array}
   //-     {object}
-  //-       title: '' {string} - текст пункта
-  //-       attrs:    {object} - любые атрибуты пункта
-  //-         value:  {string}
+  //-       title: ''     {string} - текст пункта
+  //-       attrs:        {object} - любые атрибуты пункта
+  //-         value:      {string}
   //-     {object}
-  //-       attrs:    {object} - любые атрибуты пункта
-  //-         label:  {string}
-  //-       child:    {array} - потомки (если есть этот элемент, то его родитель — optgroup)
+  //-       attrs:        {object} - любые атрибуты пункта
+  //-         label:      {string}
+  //-       child:        {array}  - потомки (если есть этот элемент, то его родитель — optgroup)
   //-         {object}
   //-           title: '' {string}
   //-           attrs:    {object}
   //-             value:  {string}
   //-     {object}
-  //-       title: '' {string} - текст пункта
-  //-       attrs:    {object} - любые атрибуты пункта
-  //-         value:  {string}
-  //-   helpText: '' {string}  - текст подсказки
-  //-   mods: '' {string}      - модификаторы блока
+  //-       title: ''     {string} - текст пункта
+  //-       attrs:        {object} - любые атрибуты пункта
+  //-         value:      {string}
+  //-   helpText: ''      {string} - текст подсказки
+  //-   mods: ''          {string} - модификаторы блока
   //- Вызов:
         +field-select(
           'Название',
@@ -34,13 +34,13 @@ mixin field-select(title, attrs, options, helpText, mods)
           },
           [
             {
-              title: 'Опция',
+              title: 'Опция1',
               attrs: {
                 value: '',
               }
             },
             {
-              title: 'Опция',
+              title: 'Опция2',
               attrs: {
                 value: '',
               }
@@ -76,7 +76,7 @@ mixin field-select(title, attrs, options, helpText, mods)
               ]
             },
             {
-              title: 'Опция',
+              title: 'Опция3',
               attrs: {
                 value: 'val03',
               }

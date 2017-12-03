@@ -16,10 +16,6 @@ $line-height:                 1.375em !default;
   margin-top: $line-height;
   margin-bottom: ($line-height / 2);
 
-  .btn {
-    margin-bottom: ($line-height / 2);
-  }
-
   &__text {
     display: block;
     margin-top: ($line-height / 2);

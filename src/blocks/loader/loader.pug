@@ -1,0 +1,19 @@
+//- Все примеси в этом файле должны начинаться c имени блока (loader)
+
+mixin loader(mods)
+
+  //- Принимает:
+  //-   mods  {string} - список модификаторов
+  //- Вызов:
+        +loader()
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' loader--' + modsList[i].trim();
+      }
+    }
+
+  span.loader(class=allMods)&attributes(attributes)

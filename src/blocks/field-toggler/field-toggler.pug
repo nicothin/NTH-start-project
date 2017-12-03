@@ -4,17 +4,15 @@ mixin field-toggler(togglers, title, isRadio)
 
   //- Принимает:
   //-   togglers {array}
-  //-     {
+  //-     {object}
   //-       title: ''         {string} - текст рядом с переключателем
   //-       helpText: ''      {string} - пояснение под полем
   //-       mods: ''          {string} - модификаторы обёртки переключателя
-  //-       attrs: {          {object} - любые атрибуты для input
+  //-       attrs:            {object} - любые атрибуты для input
   //-         name:           {string}
-  //-         ...
-  //-       },
-  //-       isRadio: false      {bool}  - флаг «это радиокнопки, а не чекбоксы»
-  //-     },
   //-     ...
+  //-   title: ''             {string} - общее название группы переключателей
+  //-   isRadio: false        {bool}   - флаг «это радиокнопки, а не чекбоксы»
   //- Вызов:
         +field-toggler([
           {

@@ -15,17 +15,48 @@ $screen-xxl:                  1800px !default;
 
 .table-responsive {
 
-  $block-name:                &;
-  // #{$block-name}__element
+  $block-name:                &; // #{$block-name}__element
+
+  margin-top: $line-height;
+  margin-bottom: $line-height;
+  border-collapse: collapse;
+  border: 0;
+  border-top: 1px solid $border-color;
+  border-left: 1px solid $border-color;
+  width: 100%;
+
+  caption {
+    caption-side: top;
+    text-align: left;
+    padding: 0.4em $field-padding-horizontal;
+    border: 1px solid $border-color;
+    border-bottom: 0;
+    font-size: $font-size--small;
+    line-height: 1em;
+    color: $text-color--muted;
+  }
+
+  td,
+  th {
+    padding: $field-padding-vertical $field-padding-horizontal;
+    vertical-align: top;
+    border-bottom: 1px solid $border-color;
+
+    &:not(:first-child) {
+      border-left: 1px solid $border-color;
+    }
+  }
+
+  th {
+    text-align: left;
+  }
 
   @media (max-width: ($screen-md - 1)) {
     display: block;
     border: 0;
 
     caption {
-      display: block;
-      width: 100%;
-      text-align: left;
+      display: none;
     }
 
     thead {

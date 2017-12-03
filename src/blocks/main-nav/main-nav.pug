@@ -3,14 +3,16 @@
 mixin main-nav(selectedID)
 
   //- Принимает:
-  //-   selectedID {string} - id пункта меню ( по умолчанию — из main-nav.json)
+  //-   selectedID {string} - id пункта меню (по умолчанию — из main-nav.data.pug)
   //- Вызов:
         +main-nav('1')
+
+  include main-nav.data.pug
 
   nav.main-nav#nav&attributes(attributes)
     +burger('Показать главное меню', 'nav', 'main-nav--open')(class="main-nav__toggler")
     ul.main-nav__list
-      each menuItem in mainMenu.menu
+      each menuItem in mainMenu
         li(class= selectedID == menuItem.id ? 'main-nav__item  main-nav__item--active' : 'main-nav__item')
           a.main-nav__link(href=menuItem.url)= menuItem.name
           if (typeof(menuItem.childs) !== 'undefined' && menuItem.childs)

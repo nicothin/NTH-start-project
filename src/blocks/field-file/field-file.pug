@@ -3,20 +3,16 @@
 mixin field-file(props)
 
   //- Принимает:
-  //-   props {
+  //-   props {object}
   //-     title: ''           {string} - текст с названием (выводится над полем)
   //-     helpText: ''        {string} - пояснение под полем
   //-     mods: ''            {string} - модификаторы блока
-  //-     attrs: {            {object} - любые атрибуты для input
+  //-     attrs:              {object} - любые атрибуты для input
   //-       name:             {string}
-  //-       ...
-  //-     },
-  //-     text: {             {object} - тексты
+  //-     text:               {object} - тексты
   //-       selectText:       {string} - текст на кнопке «выберите файл(ы)»
   //-       nothingText:      {string} - текст, показываемый, пока ничего не выбрано
   //-       flesSelectedText: {string} - текст, показываемый, если выбрано более одного файла («файлов выбрано: 2»)
-  //-     },
-  //-   }
   //- Вызов:
         +field-file({
           title: 'Название',

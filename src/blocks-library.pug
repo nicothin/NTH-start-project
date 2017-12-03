@@ -197,6 +197,7 @@ block content
       helpText: 'Подсказка под полем',
       isTextarea: true,
       mods: '',
+      val: 'Текст внутри',
       attrs: {
         name: 'test',
         placeholder: 'Подсказка',
@@ -206,6 +207,9 @@ block content
       title: 'Текстовое поле',
       helpText: 'Описание ошибки',
       mods: 'error',
+      attrs: {
+        placeholder: 'Подсказка',
+      }
     })
     +field-text()
     +block-lib-code()
@@ -402,6 +406,138 @@ block content
     )
     +block-lib-code()
       include:show-code(first-line="//- Pug-файл этого блока:") blocks/field-select/field-select.pug
+
+  +block-lib('field-actions', 'Кнопки формы', false)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/field-actions/readme.md
+    +field-actions('* — обязательные поля')
+      +btn('Отправить')
+    +block-lib-code()
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/field-actions/field-actions.pug
+
+  +block-lib('fields-group', 'Группа полей', false)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/fields-group/readme.md
+    +fields-group()
+      +field-text({
+        helpText: 'Подсказка',
+        attrs: {
+          placeholder: 'Логин'
+        }
+      })
+      +field-text({
+        helpText: 'Подсказка',
+        attrs: {
+          type: 'password',
+          placeholder: 'Пароль',
+        },
+      })
+      +field-actions()
+        +btn('Отправить', 'primary')
+    +block-lib-code()
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/fields-group/fields-group.pug
+
+  +block-lib('form', 'Форма', true)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/form/readme.md
+    +form()
+      +fieldset('Название1')
+        +field-text({
+          helpText: 'Подсказка',
+          attrs: {
+            placeholder: 'Пример'
+          }
+        })
+        +field-text({
+          helpText: 'Подсказка',
+          attrs: {
+            placeholder: 'Пример'
+          }
+        })
+      +fieldset('Название2')
+        +field-text({
+          helpText: 'Подсказка',
+          attrs: {
+            placeholder: 'Пример'
+          }
+        })
+        +field-text({
+          helpText: 'Подсказка',
+          attrs: {
+            placeholder: 'Пример'
+          }
+        })
+      +field-actions()
+        +btn('Отправить', 'primary')
+    +block-lib-code()
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/form/form.pug
+
+  +block-lib('label', 'Лейбл', false)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/label/readme.md
+    +label('Текст1')
+    +label('Текст2', '', 'div')
+    +label('Текст3', '', 'a')(href="/")
+    +block-lib-code()
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/label/label.pug
+
+  +block-lib('loader', 'Загрузчик', false)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/loader/readme.md
+    +loader()
+    +block-lib-code()
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/loader/loader.pug
+
+  +block-lib('table', 'Таблица', false)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/table/readme.md
+    +table()
+      caption Таблица
+      tr
+        th Имя
+        th Фамилия
+        th Мыло
+        th Статус
+        th Политическая ориентация
+      tr
+        td Иннокентий
+        td Иванов
+        td Хозяйственное
+        td Администратор
+        td «ВСЕГДА!»
+      tr
+        td Васисуалий
+        td Римский-Корсаков
+        td Душистое
+        td Пользователь
+        td Нижняя
+    +block-lib-code()
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/table/table.pug
+
+  +block-lib('table-responsive', 'Адаптивная таблица', false)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/table-responsive/readme.md
+    +table-responsive()
+      caption Таблица
+      thead
+        tr
+          th Имя и фамилия
+          th Тип мироощущения
+      tbody
+        tr
+          td(data-label='Имя и фамилия') Анатоле Вассерман
+          td(data-label='Тип мироощущения') Девственность
+        tr
+          td(data-label='Имя и фамилия') Джакомо Казанова
+          td(data-label='Тип мироощущения') Небольшая распущенность с лёгкой примесью леденящих душу извращений, чудовищной лжи и имитатора известного органа, обитого телячьей кожей.
+    +block-lib-code()
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/table-responsive/table-responsive.pug
+
+  +block-lib('pagination', 'Пагинация', false)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/pagination/readme.md
+    +pagination()
+      +pagination-item('1', '/1')
+      +pagination-item('...')
+      +pagination-item('4', '/4')
+      +pagination-item('5', '/5', true)
+      +pagination-item('6', '/6')
+      +pagination-item('...')
+      +pagination-item('999', '/999')
+    +block-lib-code()
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/pagination/pagination.pug
 
 
 
