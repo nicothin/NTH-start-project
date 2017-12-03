@@ -8,11 +8,14 @@ document.addEventListener('DOMContentLoaded', function(){
 
   var charts = $$('.pie-chart');
 
+  var options =  {
+    size: 100,
+    border: 20,
+  }
+
   for (var i = 0; i < charts.length; i++) {
-    var size = charts[i].getAttribute('data-size');
-    if(!size) size = 100;
-    var border = charts[i].getAttribute('data-border');
-    if(!border) border = 20;
+    var size = charts[i].getAttribute('data-size') || options.size;
+    var border = charts[i].getAttribute('data-border') || options.border;
     var radius = (size / 2) - (border / 2);
     var fullStroke = 2 * 3.141592 * radius;
     var percentText = parseFloat(charts[i].textContent);

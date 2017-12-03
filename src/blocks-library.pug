@@ -539,6 +539,29 @@ block content
     +block-lib-code()
       include:show-code(first-line="//- Pug-файл этого блока:") blocks/pagination/pagination.pug
 
+  +block-lib('breadcrumbs', 'Хлебные крошки', false)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/breadcrumbs/readme.md
+    +breadcrumbs()
+      +breadcrumbs-item('Главная', '/home')
+      +breadcrumbs-item('Услуги', '/services')
+      +breadcrumbs-item('Стриптиз')
+    +block-lib-code()
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/breadcrumbs/breadcrumbs.pug
+
+  +block-lib('progress', 'Прогресс', false)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/progress/readme.md
+    +progress('30', '30% (без копеек)', 'success')(aria-valuemin='0', aria-valuemax='100')
+    +progress('10')(style="height:10px")
+    +block-lib-code()
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/progress/progress.pug
+
+  +block-lib('pie-chart', 'Круговые и секторные диаграммы', false)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/pie-chart/readme.md
+    +pie-chart('30')
+    +pie-chart('64')(data-size="120" data-border="59.9")
+    +block-lib-code()
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/pie-chart/pie-chart.pug
+
 
 
   .burger.blocks-library__menu-toggler(data-toggle="off-canvas")

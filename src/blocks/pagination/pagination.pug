@@ -28,20 +28,27 @@ mixin pagination(mods)
 
 
 
-mixin pagination-item(text, href, active)
+mixin pagination-item(text, href, active, mods)
 
   //- Принимает:
   //-   text   {string} - содержимое пункта
   //-   href   {string} - ссылка этого пункта (если пустая, то это не ссылка, а span)
   //-   active {bool}   - флаг «это активный пункт»
+  //-   mods   {string} - список модификаторов
   -
     // список модификаторов
-    var activeMod = '';
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' pagination--' + modsList[i].trim();
+      }
+    }
     if(typeof(active) !== 'undefined' && active) {
-      activeMod = ' pagination--active';
+      allMods = allMods + ' pagination--active';
     }
 
   if(typeof(href) !== 'undefined' && href)
-    a.pagination__item(class=activeMod, href=href)&attributes(attributes)!= text
+    a.pagination__item(class=allMods, href=href)&attributes(attributes)!= text
   else
-    span.pagination__item(class=activeMod)&attributes(attributes)!= text
+    span.pagination__item(class=allMods)&attributes(attributes)!= text

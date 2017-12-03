@@ -8,31 +8,36 @@ $font-size:                   14px !default;
 $gray-light:                  hsl(0, 0%, 60%) !default;
 $gray-lighter:                hsl(0, 0%, 80%) !default;
 
-.js .pie-chart {
+.pie-chart {
 
   $block-name:                &; // #{$block-name}__element
 
-  display: inline-block;
-  position: relative;
+  .js & {
 
-  &__svg {
-    display: block;
-    transform: rotate(-90deg);
-  }
+    display: inline-block;
+    position: relative;
+    min-width: 100px;  // соответствуют ширине по умолчанию (указана в pie-chart.js)
+    min-height: 100px; // соответствуют ширине по умолчанию (указана в pie-chart.js)
 
-  &__circle-back {
-    fill: $gray-lighter;
-  }
+    &__svg {
+      display: block;
+      transform: rotate(-90deg);
+    }
 
-  &__circle {
-    fill: $gray-lighter;
-    stroke: $gray-light;
-  }
+    &__circle-back {
+      fill: $gray-lighter;
+    }
 
-  &__descr {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    &__circle {
+      fill: $gray-lighter;
+      stroke: $gray-light;
+    }
+
+    &__descr {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
   }
 }

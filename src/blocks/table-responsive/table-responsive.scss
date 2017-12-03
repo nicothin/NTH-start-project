@@ -20,9 +20,7 @@ $screen-xxl:                  1800px !default;
   margin-top: $line-height;
   margin-bottom: $line-height;
   border-collapse: collapse;
-  border: 0;
-  border-top: 1px solid $border-color;
-  border-left: 1px solid $border-color;
+  border: 1px solid $border-color;
   width: 100%;
 
   caption {
