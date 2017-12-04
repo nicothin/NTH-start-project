@@ -564,12 +564,33 @@ block content
 
   +block-lib('comment', 'Комментарий', false)
     include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/comment/readme.md
-    +comment('Джокер', 'img/joker.jpg')
-      p Аватар — не ссылка
-    +comment('Джокер', 'img/joker.jpg', '/', 'admin')
-      p Аватар — ссылка
+    +comment({
+      username: 'Джокер',
+      avatarURL: 'img/joker.jpg',
+      authorURL: '/users/joker',
+      content: '<p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты.</p>',
+      mods: 'admin',
+    })
+      +comment({
+        username: 'Джокер',
+        content: '<p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты.</p>',
+      })
+        +comment({
+          username: 'Джокер',
+          content: '<p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты.</p>',
+        })
+    +comment({
+      username: 'Джокер',
+      content: '<p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты.</p>',
+    })
     +block-lib-code()
       include:show-code(first-line="//- Pug-файл этого блока:") blocks/comment/comment.pug
+
+  //- +block-lib('embed-responsive', 'Адаптирующийся медиаконтент', false)
+  //-   include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/embed-responsive/readme.md
+  //-   div 111
+  //-   +block-lib-code()
+  //-     include:show-code(first-line="//- Pug-файл этого блока:") blocks/embed-responsive/embed-responsive.pug
 
 
 

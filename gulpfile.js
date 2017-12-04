@@ -395,6 +395,7 @@ gulp.task('html', function() {
 gulp.task('pug', function() {
   const pug = require('gulp-pug');
   const htmlbeautify = require('gulp-html-beautify');
+  const replace = require('gulp-replace');
   console.log('---------- сборка Pug');
 
   // Pug-фильтр, выводящий содержимое pug-файла в виде форматированного текста
@@ -425,6 +426,14 @@ gulp.task('pug', function() {
     }))
     .pipe(realFavicon.injectFaviconMarkups(JSON.parse(fs.readFileSync(faviconData)).favicon.html_code))
     .pipe(htmlbeautify())
+    // и... привет бьютификатору!
+    .pipe(replace(/^(\s*)(<header.+?>)(.*)(<\/header>)/gm, '$1$2\n$1  $3\n$1$4'))
+    .pipe(replace(/^(\s*)(<footer.+?>)(.*)(<\/footer>)/gm, '$1$2\n$1  $3\n$1$4'))
+    .pipe(replace(/^\s*<section.+>/gm, '\n$&'))
+    .pipe(replace(/^\s*<\/section>/gm, '$&\n'))
+    .pipe(replace(/^\s*<article.+>/gm, '\n$&'))
+    .pipe(replace(/^\s*<\/article>/gm, '$&\n'))
+    .pipe(replace(/\n\n\n/gm, '\n\n'))
     .pipe(gulp.dest(dirs.buildPath));
 });
 

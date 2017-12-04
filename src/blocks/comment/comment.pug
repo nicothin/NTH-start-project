@@ -1,35 +1,44 @@
 //- Все примеси в этом файле должны начинаться c имени блока (comment)
 
-mixin comment(username, avatarURL, authorURL, mods)
+mixin comment(props)
 
   //- Принимает:
-  //-   username  {string} - имя пользователя
-  //-   avatarURL {string} - адрес изображения с аватаром
-  //-   authorURL {string} - адрес изображения с аватаром
-  //-   mods      {string} - список модификаторов
+  //-   props  {object}
+  //-     username  {string} - имя пользователя
+  //-     avatarURL {string} - адрес изображения с аватаром
+  //-     authorURL {string} - адрес изображения с аватаром
+  //-     content   {string} - html текста коммента
+  //-     mods      {string} - список модификаторов
   //- Вызов:
-        +comment('Джокер', 'img/joker.jpg')
-          p Текст
-        +comment('Джокер', 'img/joker.jpg', '/joker', 'admin')
-          p Текст
+        +comment({
+          username: 'Джокер',
+          avatarURL: 'img/joker.jpg',
+          authorURL: '/users/joker',
+          mods: 'admin',
+        })
 
   -
     // список модификаторов
     var allMods = '';
-    if(typeof(mods) !== 'undefined' && mods) {
-      var modsList = mods.split(',');
+    if(typeof(props.mods) !== 'undefined' && props.mods) {
+      var modsList = props.mods.split(',');
       for (var i = 0; i < modsList.length; i++) {
         allMods = allMods + ' comment--' + modsList[i].trim();
       }
     }
+    if(typeof(props.username) === 'undefined') props.username = 'anonymous';
+    if(typeof(props.avatarURL) === 'undefined') props.avatarURL = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60"%3E%3Ccircle r="50%25" cx="50%25" cy="50%25" fill="#ccc"/%3E%3C/svg%3E';
 
   article.comment(class=allMods)&attributes(attributes)
-    if(typeof(authorURL) !== 'undefined' && authorURL)
-      a.comment__avatar-wrap(href=authorURL)
-        img(src=avatarURL, alt=username)
-    else
-      span.comment__avatar-wrap
-        img(src=avatarURL, alt=username)
-    .comment__body
-      b.comment__author= username
-      block
+    .comment__inner
+      if(typeof(props.authorURL) !== 'undefined' && props.authorURL)
+        a.comment__avatar-wrap(href=props.authorURL)
+          img(src=props.avatarURL, alt=props.username)
+      else
+        span.comment__avatar-wrap
+          img(src=props.avatarURL, alt=props.username)
+      .comment__text
+        header.comment__header #[b.comment__author= props.username] #[time.comment__date(datetime='2017-04-25T05:45') 25.04.2017 в 05:45]
+        .comment__body!= props.content
+        footer.comment__footer #[a.comment__reply(href='') Reply] #[a.comment__reply(href='') Admin]
+    block
