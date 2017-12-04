@@ -1,0 +1,35 @@
+//- Все примеси в этом файле должны начинаться c имени блока (comment)
+
+mixin comment(username, avatarURL, authorURL, mods)
+
+  //- Принимает:
+  //-   username  {string} - имя пользователя
+  //-   avatarURL {string} - адрес изображения с аватаром
+  //-   authorURL {string} - адрес изображения с аватаром
+  //-   mods      {string} - список модификаторов
+  //- Вызов:
+        +comment('Джокер', 'img/joker.jpg')
+          p Текст
+        +comment('Джокер', 'img/joker.jpg', '/joker', 'admin')
+          p Текст
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' comment--' + modsList[i].trim();
+      }
+    }
+
+  article.comment(class=allMods)&attributes(attributes)
+    if(typeof(authorURL) !== 'undefined' && authorURL)
+      a.comment__avatar-wrap(href=authorURL)
+        img(src=avatarURL, alt=username)
+    else
+      span.comment__avatar-wrap
+        img(src=avatarURL, alt=username)
+    .comment__body
+      b.comment__author= username
+      block

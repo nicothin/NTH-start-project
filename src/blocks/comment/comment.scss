@@ -1,8 +1,8 @@
-// В этом файле должны быть стили для БЭМ-блока media, его элементов,
+// В этом файле должны быть стили для БЭМ-блока comment, его элементов,
 // модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
-.media {
+.comment {
 
   $block-name:                &; // #{$block-name}__element
 
@@ -10,9 +10,16 @@
   margin-top: $line-height;
   margin-bottom: $line-height;
 
-  &__picture {
+  &__avatar-wrap {
     flex-shrink: 0;
     margin-right: 1em;
+
+    img {
+      display: block;
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+    }
   }
 
   &__body {

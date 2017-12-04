@@ -562,6 +562,15 @@ block content
     +block-lib-code()
       include:show-code(first-line="//- Pug-файл этого блока:") blocks/pie-chart/pie-chart.pug
 
+  +block-lib('comment', 'Комментарий', false)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/comment/readme.md
+    +comment('Джокер', 'img/joker.jpg')
+      p Аватар — не ссылка
+    +comment('Джокер', 'img/joker.jpg', '/', 'admin')
+      p Аватар — ссылка
+    +block-lib-code()
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/comment/comment.pug
+
 
 
   .burger.blocks-library__menu-toggler(data-toggle="off-canvas")
