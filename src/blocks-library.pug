@@ -586,11 +586,41 @@ block content
     +block-lib-code()
       include:show-code(first-line="//- Pug-файл этого блока:") blocks/comment/comment.pug
 
-  //- +block-lib('embed-responsive', 'Адаптирующийся медиаконтент', false)
-  //-   include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/embed-responsive/readme.md
-  //-   div 111
-  //-   +block-lib-code()
-  //-     include:show-code(first-line="//- Pug-файл этого блока:") blocks/embed-responsive/embed-responsive.pug
+  +block-lib('embed-responsive', 'Адаптирующийся медиаконтент', false)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/embed-responsive/readme.md
+    style.
+      @media (min-width: 768px) {
+        .embed-responsive-demo {
+          display: flex;
+        }
+        .embed-responsive-demo__item {
+          flex-basis: 50%;
+        }
+        .embed-responsive-demo__item:first-child {
+          padding-right: 5px;
+        }
+        .embed-responsive-demo__item:last-child {
+          padding-left: 5px;
+        }
+      }
+    div.embed-responsive-demo
+      div.embed-responsive-demo__item
+        +embed-responsive('4-3')
+          iframe(src='https://www.youtube.com/embed/7pOr3dBFAeY', frameborder='0', allowfullscreen='')
+      div.embed-responsive-demo__item
+        +embed-responsive()
+          iframe(src='https://www.youtube.com/embed/B0Q1rKpDNE4', frameborder='0', allowfullscreen='')
+    +block-lib-code()
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/embed-responsive/embed-responsive.pug
+
+  +block-lib('tooltip', 'Подсказки', true)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/tooltip/readme.md
+    p Текст и подсказка: #[+tooltip('Текст подсказки может быть длинным. Хочется, чтобы <em>внутри</em> <small>можно было</small> <i>использовать</i> <b>разметку</b>.')]
+    +block-lib-code()
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/tooltip/tooltip.pug
+
+  +block-lib('is-mobile', 'Определение мобильного устройства', false)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/is-mobile/readme.md
 
 
 

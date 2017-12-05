@@ -9,12 +9,15 @@
   margin-top: $line-height;
   margin-bottom: $line-height;
 
-  & & {
-    padding-left: calc(60px + 1em);
-  }
+  @media (min-width: $screen-md) {
 
-  & & & & {
-    padding-left: 0;
+    & & {
+      padding-left: calc(60px + 1em);
+    }
+
+    & & & & {
+      padding-left: 0;
+    }
   }
 
   &__inner {
