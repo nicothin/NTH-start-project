@@ -22,8 +22,15 @@
   background-repeat: no-repeat;
   background-position: center;
   transform: rotate(180deg);
+  transition: opacity $transition-time;
 
   .js & {
-    display: none;
+    opacity: 0;
+    visibility: hidden;
+
+    &--visible {
+      opacity: 1;
+      visibility: visible;
+    }
   }
 }

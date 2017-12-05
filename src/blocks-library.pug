@@ -28,7 +28,7 @@ block append head
         var classes = 'menu__item';
         var block = demoBlocks[i];
         if (block.classList.contains('blocks-library__item--menusep')) { classes += ' menu__item--separator'; }
-        offCanvasMenu += '<li class="'+classes+'"><a class="menu__link" data-toggle-native="off-canvas" href="#'+block.getAttribute('id')+'">'+block.querySelector('.blocks-library__item-title').textContent+'</a></li>';
+        offCanvasMenu += '<li class="'+classes+'"><a class="menu__link" data-toggle-native="off-canvas" href="#'+block.getAttribute('id')+'" data-scroll-link>'+block.querySelector('.blocks-library__item-title').textContent+'</a></li>';
       }
       var offCanvasMenuContent = document.getElementById('off-canvas-menu');
       offCanvasMenuContent.innerHTML = offCanvasMenu;
@@ -59,10 +59,14 @@ block content
       path(d='M19 33.5h14c.552 0 1-.447 1-1s-.448-1-1-1H19c-.552 0-1 .447-1 1s.448 1 1 1zm0 6h22c.552 0 1-.447 1-1s-.448-1-1-1H19c-.552 0-1 .447-1 1s.448 1 1 1zm0 6h22c.552 0 1-.447 1-1s-.448-1-1-1H19c-.552 0-1 .447-1 1s.448 1 1 1z')
 
   //- Вывод блока библиотеки
-  mixin block-lib(id, title, sep)
-    section.blocks-library__item(id=id)(class= sep ? 'blocks-library__item--menusep' : '')
+  mixin block-lib(id, title, sep, realBlockId)
+    if(typeof(realBlockId) !== 'undefined' && realBlockId)
+      - var realId = realBlockId
+    else
+      - var realId = id
+    section.blocks-library__item(id=id, data-id=realId)(class= sep ? 'blocks-library__item--menusep' : '')
       h2.blocks-library__item-title
-        a(href=repoUrl + '/tree/master/src/blocks/' + id, class="blocks-library__item-title-link", title="Папка блока в репозитории")
+        a(href=repoUrl + '/tree/master/src/blocks/' + realId, class="blocks-library__item-title-link", title="Папка блока в репозитории")
           svg(width="20", height="20")
             use(xlink:href="#folder")
         != title
@@ -621,6 +625,18 @@ block content
 
   +block-lib('is-mobile', 'Определение мобильного устройства', false)
     include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/is-mobile/readme.md
+
+  +block-lib('scroll-link', 'Ссылки на якоря страницы', false)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/scroll-link/readme.md
+    +scroll-link('Описание блока <code>page</code>', '#page')
+    +block-lib-code()
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/scroll-link/scroll-link.pug
+
+  +block-lib('to-top-block', 'Ссылка «вверх»', false, 'to-top')
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/to-top/readme.md
+    +to-top()
+    +block-lib-code()
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/to-top/to-top.pug
 
 
 
