@@ -1,6 +1,6 @@
 {
   "name": "NTH-start-project",
-  "version": "2.0.1",
+  "version": "3.0.0",
   "description": "Start a library of blocks and technical solutions for HTML/CSS/js page layout.",
   "author": "Nikolay Gromov",
   "license": "WTFPL",
@@ -10,7 +10,6 @@
   },
   "scripts": {
     "test:style": "stylelint \"src/**/*.scss\" --syntax=scss",
-    "test:orpho": "yaspeller -e \".md,.html\" ./src/",
     "start": "gulp",
     "deploy": "cross-env NODE_ENV=production ./node_modules/.bin/gulp build && cross-env ./node_modules/.bin/gulp deploy",
     "build": "cross-env NODE_ENV=production npm start build",
@@ -33,7 +32,6 @@
     "gulp-cleancss": "^0.2.2",
     "gulp-concat": "^2.6.1",
     "gulp-debug": "^3.1.0",
-    "gulp-file-include": "^1.0.0",
     "gulp-gh-pages": "^0.5.4",
     "gulp-html-beautify": "^1.0.1",
     "gulp-if": "^2.0.2",
@@ -66,8 +64,7 @@
     "postcss-inline-svg": "^3.0.0",
     "postcss-object-fit-images": "^1.1.2",
     "stylelint": "^8.2.0",
-    "vinyl-buffer": "^1.0.0",
-    "yaspeller": "^4.0.0"
+    "vinyl-buffer": "^1.0.0"
   },
   "dependencies": {
     "ismobilejs": "^0.4.0",

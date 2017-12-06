@@ -1,4 +1,5 @@
 //- Все примеси в этом файле должны начинаться c имени блока (main-nav)
+//- Структура меню — в main-nav.data.pug
 
 mixin main-nav(selectedID)
 
@@ -7,6 +8,7 @@ mixin main-nav(selectedID)
   //- Вызов:
         +main-nav('1')
 
+  //- подключаем файл со структурой данных блока
   include main-nav.data.pug
 
   nav.main-nav#nav&attributes(attributes)

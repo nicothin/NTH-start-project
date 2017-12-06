@@ -45,6 +45,13 @@ lists.css.forEach(function(blockPath) {
 });
 fs.writeFileSync(dirs.srcPath + 'scss/style.scss', styleImports);
 
+// Формирование и запись списка примесей (mixins.pug) со списком инклудов всех pug-файлов блоков
+let pugMixins = '//- ВНИМАНИЕ! Этот файл генерируется автоматически. Не пишите сюда ничего вручную!\n//- Читайте ./README.md для понимания.\n\n';
+lists.pug.forEach(function(blockPath) {
+  pugMixins += 'include '+blockPath+'\n';
+});
+fs.writeFileSync(dirs.srcPath + 'pug/mixins.pug', pugMixins);
+
 // Определение: разработка это или финальная сборка
 // Запуск `NODE_ENV=production npm start [задача]` приведет к сборке без sourcemaps
 const isDev = !process.env.NODE_ENV || process.env.NODE_ENV == 'dev';
@@ -63,10 +70,10 @@ let postCssPlugins = [
   imageInliner({
     // Осторожнее с именами файлов картинок! Добавляйте имя блока как префикс к имени картинки.
     assetPaths: [
-      'src/blocks/**/img_to_bg/',
+      'src/blocks/**/bg-img/',
     ],
-    // Инлайнятся только картинки менее 10 Кб.
-    maxFileSize: 10240
+    // Инлайнятся только картинки менее 5 Кб.
+    maxFileSize: 5120
   })
 ];
 
@@ -366,32 +373,7 @@ gulp.task('sprite:png', function (callback) {
   }
 });
 
-// Сборка HTML
-gulp.task('html', function() {
-  const fileinclude = require('gulp-file-include');
-  const replace = require('gulp-replace');
-  console.log('---------- сборка HTML');
-  return gulp.src(dirs.srcPath + '/*.html')
-    .pipe(plumber({
-      errorHandler: function(err) {
-        notify.onError({
-          title: 'HTML compilation error',
-          message: err.message
-        })(err);
-        this.emit('end');
-      }
-    }))
-    .pipe(fileinclude({
-      prefix: '@@',
-      basepath: '@file',
-      indent: true,
-    }))
-    .pipe(realFavicon.injectFaviconMarkups(JSON.parse(fs.readFileSync(faviconData)).favicon.html_code))
-    .pipe(replace(/\n\s*<!--DEV[\s\S]+?-->/gm, ''))
-    .pipe(gulp.dest(dirs.buildPath));
-});
-
-// Сборка Pug (приоритет при совпадении имён файлов выше, чем у HTML)
+// Сборка Pug
 gulp.task('pug', function() {
   const pug = require('gulp-pug');
   const htmlbeautify = require('gulp-html-beautify');
@@ -497,7 +479,6 @@ gulp.task('build', function (callback) {
     ['clean'],
     ['sprite:svg', 'sprite:png', 'favicons'],
     ['style', 'style:single', 'js', 'copy:css', 'copy:img', 'copy:js', 'copy:fonts'],
-    'html',
     'pug',
     callback
   );
@@ -545,12 +526,6 @@ gulp.task('serve', ['build'], function() {
   }
   // Слежение за шрифтами
   gulp.watch('/fonts/*.{ttf,woff,woff2,eot,svg}', {cwd: dirs.srcPath}, ['watch:fonts']);
-  // Слежение за html
-  gulp.watch([
-    '*.html',
-    '_include/*.html',
-    dirs.blocksDirName + '/**/*.html'
-  ], {cwd: dirs.srcPath}, ['watch:html']);
   // Слежение за pug
   gulp.watch([
     dirs.srcPath + '/**/*.pug',
@@ -573,7 +548,6 @@ gulp.task('serve', ['build'], function() {
 gulp.task('watch:img', ['copy:img'], reload);
 gulp.task('watch:copied:js', ['copy:js'], reload);
 gulp.task('watch:fonts', ['copy:fonts'], reload);
-gulp.task('watch:html', ['html'], reload);
 gulp.task('watch:pug', ['pug'], reload);
 gulp.task('watch:js', ['js'], reload);
 gulp.task('watch:sprite:svg', ['sprite:svg'], reload);
@@ -592,6 +566,7 @@ function getFilesList(config){
     'css': [],
     'js': [],
     'img': [],
+    'pug': [],
   };
 
   // Style
@@ -623,6 +598,11 @@ function getFilesList(config){
     res.img.push(config.dirs.srcPath + config.dirs.blocksDirName + '/' + blockName + '/img/*.{jpg,jpeg,gif,png,svg}');
   }
   res.img = config.addImages.concat(res.img);
+
+  // Pug
+  for (let blockName in config.blocks) {
+    res.pug.push('../blocks/' + blockName + '/' + blockName + '.pug');
+  }
 
   return res;
 }

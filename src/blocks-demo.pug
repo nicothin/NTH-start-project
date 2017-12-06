@@ -1,4 +1,4 @@
-extends pug/layout.pug
+extends pug/layout-off-canvas.pug
 
 block meta
   title Библиотека
@@ -91,7 +91,7 @@ block content
 
 
 
-  h1 Страница демонстрации блоков, доступных на #[a(href="index.html") проекте]
+  h1 Блоки стартового репозитория #[a(href="index.html") проекта]
 
   +block-lib('page', 'Страница', false)
     include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/page/readme.md
@@ -117,6 +117,29 @@ block content
   +block-lib('sprite-png', 'PNG-спрайт с <a href="https://github.com/Ensighten/spritesmith">spritesmith</a>', true)
     include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/sprite-png/readme.md
 
+  +block-lib('page-header', '«Шапка» страницы', false)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/page-header/readme.md
+    +block-lib-code()
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/page-header/page-header.pug
+
+  +block-lib('page-footer', '«Подвал» страницы', false)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/page-footer/readme.md
+    +block-lib-code()
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/page-footer/page-footer.pug
+
+  +block-lib('logo', 'Логотип', false)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/logo/readme.md
+    +logo('/')
+      img(src='img/logo.svg', alt='Logo', width='64', height='15')
+    +block-lib-code()
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/logo/logo.pug
+
+  +block-lib('main-nav', 'Главная навигация', false)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/main-nav/readme.md
+    +main-nav('1')
+    +block-lib-code()
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/main-nav/main-nav.pug
+
   +block-lib('close', 'Закрыть', false)
     include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/close/readme.md
     div
@@ -130,12 +153,6 @@ block content
       +burger('Показать пример кода', 'burger-code', 'blocks-library__code--shown')
     +block-lib-code('burger-code', true)
       include:show-code(first-line="//- Pug-файл этого блока:") blocks/burger/burger.pug
-
-  +block-lib('main-nav', 'Главная навигация', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/main-nav/readme.md
-    +main-nav('1')
-    +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/main-nav/main-nav.pug
 
   +block-lib('code', 'Код', false)
     include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/code/readme.md
@@ -159,7 +176,7 @@ block content
     +block-lib-code()
       include:show-code(first-line="//- Pug-файл этого блока:") blocks/alert/alert.pug
 
-  +block-lib('menu', 'Меню', true)
+  +block-lib('menu', 'Меню', false)
     include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/menu/readme.md
     -
       var myMenu = [
@@ -180,6 +197,156 @@ block content
     +menu(myMenu)
     +block-lib-code()
       include:show-code(first-line="//- Pug-файл этого блока:") blocks/menu/menu.pug
+
+  +block-lib('label', 'Лейбл', false)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/label/readme.md
+    +label('Текст1')
+    +label('Текст2', '', 'div')
+    +label('Текст3', '', 'a')(href="/")
+    +block-lib-code()
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/label/label.pug
+
+  +block-lib('loader', 'Загрузчик', false)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/loader/readme.md
+    +loader()
+    +block-lib-code()
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/loader/loader.pug
+
+  +block-lib('table', 'Таблица', false)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/table/readme.md
+    +table()
+      caption Таблица
+      tr
+        th Имя
+        th Фамилия
+        th Мыло
+        th Статус
+        th Политическая ориентация
+      tr
+        td Иннокентий
+        td Иванов
+        td Хозяйственное
+        td Администратор
+        td «ВСЕГДА!»
+      tr
+        td Васисуалий
+        td Римский-Корсаков
+        td Душистое
+        td Пользователь
+        td Нижняя
+    +block-lib-code()
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/table/table.pug
+
+  +block-lib('table-responsive', 'Адаптивная таблица', false)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/table-responsive/readme.md
+    +table-responsive()
+      caption Таблица
+      thead
+        tr
+          th Имя и фамилия
+          th Тип мироощущения
+      tbody
+        tr
+          td(data-label='Имя и фамилия') Анатоле Вассерман
+          td(data-label='Тип мироощущения') Девственность
+        tr
+          td(data-label='Имя и фамилия') Джакомо Казанова
+          td(data-label='Тип мироощущения') Небольшая распущенность с лёгкой примесью леденящих душу извращений, чудовищной лжи и имитатора известного органа, обитого телячьей кожей.
+    +block-lib-code()
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/table-responsive/table-responsive.pug
+
+  +block-lib('pagination', 'Пагинация', false)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/pagination/readme.md
+    +pagination()
+      +pagination-item('1', '/1')
+      +pagination-item('...')
+      +pagination-item('4', '/4')
+      +pagination-item('5', '/5', true)
+      +pagination-item('6', '/6')
+      +pagination-item('...')
+      +pagination-item('999', '/999')
+    +block-lib-code()
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/pagination/pagination.pug
+
+  +block-lib('breadcrumbs', 'Хлебные крошки', false)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/breadcrumbs/readme.md
+    +breadcrumbs()
+      +breadcrumbs-item('Главная', '/home')
+      +breadcrumbs-item('Услуги', '/services')
+      +breadcrumbs-item('Стриптиз')
+    +block-lib-code()
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/breadcrumbs/breadcrumbs.pug
+
+  +block-lib('progress', 'Прогресс', false)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/progress/readme.md
+    +progress('30', '30% (без копеек)', 'success')(aria-valuemin='0', aria-valuemax='100')
+    +progress('10')(style="height:10px")
+    +block-lib-code()
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/progress/progress.pug
+
+  +block-lib('pie-chart', 'Круговые и секторные диаграммы', false)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/pie-chart/readme.md
+    +pie-chart('30')
+    +pie-chart('64')(data-size="120" data-border="59.9")
+    +block-lib-code()
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/pie-chart/pie-chart.pug
+
+  +block-lib('comment', 'Комментарий', false)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/comment/readme.md
+    +comment({
+      username: 'Джокер',
+      avatarURL: 'img/joker.jpg',
+      authorURL: '/users/joker',
+      content: '<p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты.</p>',
+      mods: 'admin',
+    })
+      +comment({
+        username: 'Джокер',
+        content: '<p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты.</p>',
+      })
+        +comment({
+          username: 'Джокер',
+          content: '<p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты.</p>',
+        })
+    +comment({
+      username: 'Джокер',
+      content: '<p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты.</p>',
+    })
+    +block-lib-code()
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/comment/comment.pug
+
+  +block-lib('embed-responsive', 'Адаптирующийся медиаконтент', false)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/embed-responsive/readme.md
+    style.
+      @media (min-width: 768px) {
+        .embed-responsive-demo {
+          display: flex;
+        }
+        .embed-responsive-demo__item {
+          flex-basis: 50%;
+        }
+        .embed-responsive-demo__item:first-child {
+          padding-right: 5px;
+        }
+        .embed-responsive-demo__item:last-child {
+          padding-left: 5px;
+        }
+      }
+    div.embed-responsive-demo
+      div.embed-responsive-demo__item
+        +embed-responsive('4-3')
+          iframe(src='https://www.youtube.com/embed/7pOr3dBFAeY', frameborder='0', allowfullscreen='')
+      div.embed-responsive-demo__item
+        +embed-responsive()
+          iframe(src='https://www.youtube.com/embed/B0Q1rKpDNE4', frameborder='0', allowfullscreen='')
+    +block-lib-code()
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/embed-responsive/embed-responsive.pug
+
+  +block-lib('tooltip', 'Подсказки', true)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/tooltip/readme.md
+    p Текст и подсказка: #[+tooltip('Текст подсказки может быть длинным. Хочется, чтобы <em>внутри</em> <small>можно было</small> <i>использовать</i> <b>разметку</b>.')]
+    +block-lib-code()
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/tooltip/tooltip.pug
 
   +block-lib('btn', 'Кнопка', false)
     include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/btn/readme.md
@@ -472,156 +639,6 @@ block content
         +btn('Отправить', 'primary')
     +block-lib-code()
       include:show-code(first-line="//- Pug-файл этого блока:") blocks/form/form.pug
-
-  +block-lib('label', 'Лейбл', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/label/readme.md
-    +label('Текст1')
-    +label('Текст2', '', 'div')
-    +label('Текст3', '', 'a')(href="/")
-    +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/label/label.pug
-
-  +block-lib('loader', 'Загрузчик', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/loader/readme.md
-    +loader()
-    +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/loader/loader.pug
-
-  +block-lib('table', 'Таблица', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/table/readme.md
-    +table()
-      caption Таблица
-      tr
-        th Имя
-        th Фамилия
-        th Мыло
-        th Статус
-        th Политическая ориентация
-      tr
-        td Иннокентий
-        td Иванов
-        td Хозяйственное
-        td Администратор
-        td «ВСЕГДА!»
-      tr
-        td Васисуалий
-        td Римский-Корсаков
-        td Душистое
-        td Пользователь
-        td Нижняя
-    +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/table/table.pug
-
-  +block-lib('table-responsive', 'Адаптивная таблица', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/table-responsive/readme.md
-    +table-responsive()
-      caption Таблица
-      thead
-        tr
-          th Имя и фамилия
-          th Тип мироощущения
-      tbody
-        tr
-          td(data-label='Имя и фамилия') Анатоле Вассерман
-          td(data-label='Тип мироощущения') Девственность
-        tr
-          td(data-label='Имя и фамилия') Джакомо Казанова
-          td(data-label='Тип мироощущения') Небольшая распущенность с лёгкой примесью леденящих душу извращений, чудовищной лжи и имитатора известного органа, обитого телячьей кожей.
-    +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/table-responsive/table-responsive.pug
-
-  +block-lib('pagination', 'Пагинация', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/pagination/readme.md
-    +pagination()
-      +pagination-item('1', '/1')
-      +pagination-item('...')
-      +pagination-item('4', '/4')
-      +pagination-item('5', '/5', true)
-      +pagination-item('6', '/6')
-      +pagination-item('...')
-      +pagination-item('999', '/999')
-    +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/pagination/pagination.pug
-
-  +block-lib('breadcrumbs', 'Хлебные крошки', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/breadcrumbs/readme.md
-    +breadcrumbs()
-      +breadcrumbs-item('Главная', '/home')
-      +breadcrumbs-item('Услуги', '/services')
-      +breadcrumbs-item('Стриптиз')
-    +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/breadcrumbs/breadcrumbs.pug
-
-  +block-lib('progress', 'Прогресс', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/progress/readme.md
-    +progress('30', '30% (без копеек)', 'success')(aria-valuemin='0', aria-valuemax='100')
-    +progress('10')(style="height:10px")
-    +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/progress/progress.pug
-
-  +block-lib('pie-chart', 'Круговые и секторные диаграммы', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/pie-chart/readme.md
-    +pie-chart('30')
-    +pie-chart('64')(data-size="120" data-border="59.9")
-    +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/pie-chart/pie-chart.pug
-
-  +block-lib('comment', 'Комментарий', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/comment/readme.md
-    +comment({
-      username: 'Джокер',
-      avatarURL: 'img/joker.jpg',
-      authorURL: '/users/joker',
-      content: '<p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты.</p>',
-      mods: 'admin',
-    })
-      +comment({
-        username: 'Джокер',
-        content: '<p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты.</p>',
-      })
-        +comment({
-          username: 'Джокер',
-          content: '<p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты.</p>',
-        })
-    +comment({
-      username: 'Джокер',
-      content: '<p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты.</p>',
-    })
-    +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/comment/comment.pug
-
-  +block-lib('embed-responsive', 'Адаптирующийся медиаконтент', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/embed-responsive/readme.md
-    style.
-      @media (min-width: 768px) {
-        .embed-responsive-demo {
-          display: flex;
-        }
-        .embed-responsive-demo__item {
-          flex-basis: 50%;
-        }
-        .embed-responsive-demo__item:first-child {
-          padding-right: 5px;
-        }
-        .embed-responsive-demo__item:last-child {
-          padding-left: 5px;
-        }
-      }
-    div.embed-responsive-demo
-      div.embed-responsive-demo__item
-        +embed-responsive('4-3')
-          iframe(src='https://www.youtube.com/embed/7pOr3dBFAeY', frameborder='0', allowfullscreen='')
-      div.embed-responsive-demo__item
-        +embed-responsive()
-          iframe(src='https://www.youtube.com/embed/B0Q1rKpDNE4', frameborder='0', allowfullscreen='')
-    +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/embed-responsive/embed-responsive.pug
-
-  +block-lib('tooltip', 'Подсказки', true)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/tooltip/readme.md
-    p Текст и подсказка: #[+tooltip('Текст подсказки может быть длинным. Хочется, чтобы <em>внутри</em> <small>можно было</small> <i>использовать</i> <b>разметку</b>.')]
-    +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/tooltip/tooltip.pug
 
   +block-lib('is-mobile', 'Определение мобильного устройства', false)
     include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/is-mobile/readme.md

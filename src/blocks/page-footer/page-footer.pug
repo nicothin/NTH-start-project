@@ -1,0 +1,22 @@
+//- Все примеси в этом файле должны начинаться c имени блока (page-footer)
+
+mixin page-footer(mods)
+
+  //- Принимает:
+  //-   mods  {string} - список модификаторов
+  //- Вызов:
+        +page-footer()
+          p «Подвал»
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' page-footer--' + modsList[i].trim();
+      }
+    }
+
+  footer.page-footer(class=allMods, role='contentinfo')&attributes(attributes)
+    .page-footer__inner
+      block
