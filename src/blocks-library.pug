@@ -638,11 +638,149 @@ block content
     +block-lib-code()
       include:show-code(first-line="//- Pug-файл этого блока:") blocks/to-top/to-top.pug
 
+  +block-lib('dropdown', 'Выпадающий элемент', false)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/dropdown/readme.md
+    pre.code
+      code // Факт открытия
+      code $('#drop-demo-01').closest('.dropdown').on('shown.nth.dropdown', function () {
+      code   console.log('shown.nth.dropdown');
+      code });
+      code
+      code // Факт закрытия
+      code $('#drop-demo-01').closest('.dropdown').on('hidden.nth.dropdown', function () {
+      code   console.log('hidden.nth.dropdown');
+      code });
+    +dropdown('Дроп (с выводом событий в консоль)', 'drop-demo-01')
+      p текст
+    |
+    |
+    +dropdown('Выпадающее меню', 'drop-demo-02', 'up, right')
+      .menu
+        span.menu__item
+          a.menu__link(href='') Пункт списка
+        span.menu__item
+          a.menu__link(href='') Пункт меню весьма длинный
+        span.menu__item
+          a.menu__link(href='') Второй пункт
+    +block-lib-code()
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/dropdown/dropdown.pug
+
+  +block-lib('owl-carousel', 'Карусель с <a href="http://owlcarousel2.github.io/OwlCarousel2/">owl-carousel</a>', false)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/owl-carousel/readme.md
+    +owl-carousel('promo')
+      div слайд1
+      div слайд2
+      div слайд3
+      div слайд4
+      div слайд5
+      div слайд6
+      div слайд7
+      div слайд8
+    +block-lib-code()
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/owl-carousel/owl-carousel.pug
+
+  +block-lib('swipe', 'Карусель с <a href="https://github.com/lyfeyaj/swipe">swipe</a>', false)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/swipe/readme.md
+    +swipe('swipe-demo')
+      div слайд1
+      div слайд2
+      div слайд3
+      div слайд4
+      div слайд5
+      div слайд6
+      div слайд7
+      div слайд8
+    +block-lib-code()
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/swipe/swipe.pug
+
+  +block-lib('nouislider', 'Выбор диапазона с <a href="https://refreshless.com/nouislider/">noUiSlider</a>', false)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/nouislider/readme.md
+    +nouislider('demo-nouislider')
+      p
+        input#demo-nouislider-start(type='number', value='10')
+        input#demo-nouislider-end(type='number', value='80')
+    +block-lib-code()
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/nouislider/nouislider.pug
+
+  +block-lib('off-canvas', 'Боковое меню страницы', false)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/off-canvas/readme.md
+    p #[button.btn(type='button', data-toggle='off-canvas') Показать/скрыть боковое меню]
+    +block-lib-code()
+      pre.code
+        code //- Разметка, необходимая для использования бокового меню
+        code #off-canvas.off-canvas
+        code   aside.off-canvas__aside(role='complementary', aria-label='Боковое меню') Меню
+        code   .off-canvas__page-content Контент
+        code   .off-canvas__overlay(data-toggle='off-canvas')
+        code
+        code button.btn(type='button', data-toggle='off-canvas') Показать/скрыть боковое меню
+        code a(href='#SOME_HASH', data-toggle-native='off-canvas') Показать/скрыть боковое меню и перейти на якорь
+
+  +block-lib('modal', 'Модальное окно', false)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/modal/readme.md
+    p Одно и то же модальное окно, в консоль выводятся события. #[button.btn(type='button', data-toggle='modal', data-target='#modal-demo-01') Показать модальное окно] #[a(href='#modal-demo-01', data-toggle='modal') Показать модальное окно] #[span(data-toggle='modal', data-target='#modal-demo-01') Показать модальное окно]
+    +modal('modal-demo-01', 'Заголовок', 'some')
+      .modal__body
+        p Текст
+      .modal__footer
+        button.btn(type='button', data-dismiss='modal') Закрыть
+    pre.code
+      code // методы
+      code $('#modal-demo-01').modal(options)
+      code $('#modal-demo-01').modal('show')
+      code $('#modal-demo-01').modal('hide')
+      code $('#modal-demo-01').modal('toggle')
+      code
+      code // события
+      code $('#modal-demo-01').on('show.nth.modal', function(){
+      code   console.log('show.nth.modal');
+      code });
+      code $('#modal-demo-01').on('shown.nth.modal', function(){
+      code   console.log('shown.nth.modal');
+      code });
+      code $('#modal-demo-01').on('hide.nth.modal', function(){
+      code   console.log('hide.nth.modal');
+      code });
+      code $('#modal-demo-01').on('hidden.nth.modal', function(){
+      code   console.log('hidden.nth.modal');
+      code });
+    +block-lib-code()
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/modal/modal.pug
+
+  +block-lib('tabs', 'Табы', false)
+    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/tabs/readme.md
+    +tabs([
+      {
+        'id': 'tab00',
+        'text': 'Вкладка ноль',
+        'isActive': true,
+      },
+      {
+        'id': 'tab01',
+        'text': 'Вкладка один',
+      },
+      {
+        'id': 'tab02',
+        'text': 'Вкладка два',
+      },
+      {
+        'id': 'tab03',
+        'text': 'Вкладка три',
+      },
+      ], 'some-mod')
+      +tabs-item('tab00', true, 'some-mod')
+        p Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты.0
+      +tabs-item('tab01')
+        p За словесными горами в стране, гласных и согласных живут рыбные тексты.1
+      +tabs-item('tab02')
+        p Словесными горами в стране, гласных и согласных живут рыбные тексты.2
+      +tabs-item('tab03')
+        p Горами в стране, гласных и согласных живут рыбные тексты.3
+    +block-lib-code()
+      include:show-code(first-line="//- Pug-файл этого блока:") blocks/tabs/tabs.pug
 
 
   .burger.blocks-library__menu-toggler(data-toggle="off-canvas")
     span(data-toggle="off-canvas")
-
-
 
 block footer

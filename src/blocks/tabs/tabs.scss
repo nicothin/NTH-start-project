@@ -28,26 +28,33 @@ $field-padding-horizontal:    0.7em !default;
     display: flex;
     flex-wrap: wrap;
     align-items: flex-end;
-    cursor: pointer;
 
     .no-js & {
       display: none;
     }
 
-    &:after {
-      content: '';
-      flex-grow: 1;
-      height: 1px;
-      background-color: $border-color;
+    @media (min-width: $screen-md) {
+
+      &:after {
+        content: '';
+        flex-grow: 1;
+        height: 1px;
+        background-color: $border-color;
+      }
     }
   }
 
   &__link-wrap {
     position: relative;
     border: 1px solid $border-color;
+    margin: 0 0.3em 0.3em 0;
 
-    &:not(:last-child) {
-      border-right: none;
+    @media (min-width: $screen-md) {
+      margin: 0;
+
+      &:not(:last-child) {
+        border-right: none;
+      }
     }
 
     &--active {
@@ -76,7 +83,10 @@ $field-padding-horizontal:    0.7em !default;
     display: block;
     padding: $field-padding-vertical $field-padding-horizontal;
     border: 1px solid $border-color;
-    border-top: none;
+
+    @media (min-width: $screen-md) {
+      border-top: none;
+    }
   }
 
   &__content-item {

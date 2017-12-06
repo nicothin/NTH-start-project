@@ -1,3 +1,12 @@
+// Факт открытия
+$('#drop-demo-01').closest('.dropdown').on('shown.nth.dropdown', function () {
+  console.log('Дроп с id="drop-demo-01": сработало событие shown.nth.dropdown');
+});
+// Факт закрытия
+$('#drop-demo-01').closest('.dropdown').on('hidden.nth.dropdown', function () {
+  console.log('Дроп с id="drop-demo-01": сработало событие hidden.nth.dropdown');
+});
+
 /* ========================================================================
  * Основано на: Bootstrap dropdown.js v3.3.6
  * Все изменения сопровождены закомментироваными оригиналами
@@ -60,7 +69,6 @@
   }
 
   Dropdown.prototype.toggle = function (e) {
-    console.log('закрыть');
     var $this = $(this)
 
     // if ($this.is('.disabled, :disabled')) return

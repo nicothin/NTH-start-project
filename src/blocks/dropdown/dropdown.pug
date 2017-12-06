@@ -1,0 +1,37 @@
+//- Все примеси в этом файле должны начинаться c имени блока (dropdown)
+
+mixin dropdown(text, id, mods)
+
+  //- Принимает:
+  //-   text    {string} - текст кнопки
+  //-   id*     {string} - идентификатор
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +dropdown('Дроп', 'drop-01')
+          p текст
+        +dropdown('выпадающее меню', 'drop-02', 'up, right')
+          .menu
+            span.menu__item
+              a.menu__link(href='') Пункт списка
+            span.menu__item
+              a.menu__link(href='') Пункт меню весьма длинный
+            span.menu__item
+              a.menu__link(href='') Второй пункт
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' dropdown--' + modsList[i].trim();
+      }
+    }
+
+  if(typeof(id) !== 'undefined' && id)
+    span.dropdown(class=allMods)&attributes(attributes)
+      button.btn.dropdown__toggler(id=id, type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')!= text
+      span.dropdown__menu(aria-labelledby=id)
+        block
+  else
+    span Укажите уникальный #[code id] этого выпадающего элемента

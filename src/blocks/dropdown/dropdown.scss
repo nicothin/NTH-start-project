@@ -31,27 +31,33 @@ $transition-time:             0.3s !default;
     visibility: hidden;
     overflow: hidden;
     transition: opacity $transition-time;
-
-    &--up {
-      top: auto;
-      bottom: 100%;
-    }
-
-    &--right {
-      left: auto;
-      right: 0;
-    }
   }
 
 
 
-  &--open & {
+  &--open {
 
-    &__menu {
+    #{$block-name}__menu {
       z-index: 1;
       visibility: visible;
       opacity: 1;
       width: auto;
+    }
+  }
+
+  &--up {
+
+    #{$block-name}__menu {
+      top: auto;
+      bottom: 100%;
+    }
+  }
+
+  &--right {
+
+    #{$block-name}__menu {
+      left: auto;
+      right: 0;
     }
   }
 }

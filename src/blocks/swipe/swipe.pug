@@ -1,0 +1,33 @@
+//- Все примеси в этом файле должны начинаться c имени блока (swipe)
+//- ВНИМАНИЕ! Примесь возвращает только разметку.
+//- Не забудьте включить и настроить карусель в swipe/swipe.js
+
+mixin swipe(id, mods)
+
+  //- Принимает:
+  //-   id      {string} - идентификатор
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +swipe('swipe-demo')
+          div слайд1
+          div слайд2
+          div слайд3
+          div слайд4
+          div слайд5
+          div слайд6
+          div слайд7
+          div слайд8
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' swipe--' + modsList[i].trim();
+      }
+    }
+
+  .swipe(id=id, class=allMods)&attributes(attributes)
+    .swipe-wrap
+      block
