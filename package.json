@@ -11,13 +11,15 @@
   "scripts": {
     "test:style": "stylelint \"src/**/*.scss\" --syntax=scss",
     "test:editorconfig": "editorconfig-cli src/**/*.{js,pug}",
+    "test:pug": "gulp test:pug",
     "start": "gulp",
     "deploy": "cross-env NODE_ENV=production ./node_modules/.bin/gulp build && cross-env ./node_modules/.bin/gulp deploy",
     "build": "cross-env NODE_ENV=production npm start build",
     "lint-staged": "lint-staged",
-    "precommit": "lint-staged && gulp test:pug"
+    "precommit": "lint-staged"
   },
   "lint-staged": {
+    "*.pug": "pug-lint",
     "*.js": "editorconfig-cli",
     "*.pug": "editorconfig-cli",
     "*.css": "stylelint",
@@ -68,6 +70,7 @@
     "postcss-import": "^11.0.0",
     "postcss-inline-svg": "^3.0.0",
     "postcss-object-fit-images": "^1.1.2",
+    "pug-lint": "^2.5.0",
     "stylelint": "^8.2.0",
     "vinyl-buffer": "^1.0.0"
   },
