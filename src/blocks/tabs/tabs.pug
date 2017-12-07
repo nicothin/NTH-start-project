@@ -36,7 +36,7 @@ mixin tabs(props, mods)
     }
 
   .tabs(class=allMods)&attributes(attributes)
-    ul.tabs__links(role="tablist")
+    ul.tabs__links(role='tablist')
       each tab in props
         -
           var isActive = (typeof(tab.isActive) !== 'undefined' && tab.isActive) ? '  tabs__link-wrap--active' : ''

@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function(){
+
   var links = document.querySelectorAll('[href^="#"][data-scroll-link]');
   for (var i = 0; i < links.length; i++) {
     links[i].addEventListener('click', function(e) {
@@ -6,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function(){
       if(hash && hash !== '#') {
         e.preventDefault();
         var scroll = window.pageYOffset;
-        var targetTop = getOffsetRect(document.querySelector(hash)).top;
+        var targetTop = getOffsetRect(document.querySelector(hash)).top - 10; // С поправкой в 10px
         var scrollDiff = (scroll - targetTop) * -1;
         animate({
           duration: 500,

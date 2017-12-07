@@ -26,7 +26,7 @@ mixin alert(title, mods)
       }
     }
 
-  div.alert(class=allMods)&attributes(attributes)
+  .alert(class=allMods)&attributes(attributes)
     if (typeof(title) !== 'undefined' && title !== '')
       h4.alert__header!= title
     block

@@ -45,7 +45,7 @@ block append head
   //- script(src='js/SOME.js')
 
 block off-canvas
-  ul#off-canvas-menu.menu
+  ul.menu#off-canvas-menu
 
 block header
 
@@ -66,9 +66,9 @@ block content
       - var realId = id
     section.blocks-library__item(id=id, data-id=realId)(class= sep ? 'blocks-library__item--menusep' : '')
       h2.blocks-library__item-title
-        a(href=repoUrl + '/tree/master/src/blocks/' + realId, class="blocks-library__item-title-link", title="Папка блока в репозитории")
-          svg(width="20", height="20")
-            use(xlink:href="#folder")
+        a(href=repoUrl + '/tree/master/src/blocks/' + realId, class='blocks-library__item-title-link', title='Папка блока в репозитории')
+          svg(width='20', height='20')
+            use(xlink:href='#folder')
         != title
       block
 
@@ -91,10 +91,10 @@ block content
 
 
 
-  h1 Блоки стартового репозитория #[a(href="index.html") проекта]
+  h1 Блоки стартового репозитория #[a(href='index.html') проекта]
 
   +block-lib('page', 'Страница', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/page/readme.md
+    include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/page/readme.md
     +block-lib-code()
       pre.code
         code &lt;!DOCTYPE html>
@@ -109,75 +109,75 @@ block content
         code &lt;/html>
 
   +block-lib('typo', 'Текст, теги', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/typo/readme.md
+    include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/typo/readme.md
 
   +block-lib('sprite-svg', 'SVG-спрайт c <a href="https://github.com/w0rm/gulp-svgstore">gulp-svgstore</a>', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/sprite-svg/readme.md
+    include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/sprite-svg/readme.md
 
   +block-lib('sprite-png', 'PNG-спрайт с <a href="https://github.com/Ensighten/spritesmith">spritesmith</a>', true)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/sprite-png/readme.md
+    include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/sprite-png/readme.md
 
   +block-lib('page-header', '«Шапка» страницы', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/page-header/readme.md
+    include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/page-header/readme.md
     +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/page-header/page-header.pug
+      include:show-code(first-line='//- Pug-файл этого блока:') blocks/page-header/page-header.pug
 
   +block-lib('page-footer', '«Подвал» страницы', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/page-footer/readme.md
+    include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/page-footer/readme.md
     +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/page-footer/page-footer.pug
+      include:show-code(first-line='//- Pug-файл этого блока:') blocks/page-footer/page-footer.pug
 
   +block-lib('logo', 'Логотип', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/logo/readme.md
+    include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/logo/readme.md
     +logo('/')
       img(src='img/logo.svg', alt='Logo', width='64', height='15')
     +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/logo/logo.pug
+      include:show-code(first-line='//- Pug-файл этого блока:') blocks/logo/logo.pug
 
   +block-lib('main-nav', 'Главная навигация', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/main-nav/readme.md
+    include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/main-nav/readme.md
     +main-nav('1')
     +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/main-nav/main-nav.pug
+      include:show-code(first-line='//- Pug-файл этого блока:') blocks/main-nav/main-nav.pug
 
   +block-lib('close', 'Закрыть', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/close/readme.md
+    include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/close/readme.md
     div
       +close('Закрыть')
     +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/close/close.pug
+      include:show-code(first-line='//- Pug-файл этого блока:') blocks/close/close.pug
 
   +block-lib('burger', 'Бургер', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/burger/readme.md
+    include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/burger/readme.md
     div
       +burger('Показать пример кода', 'burger-code', 'blocks-library__code--shown')
     +block-lib-code('burger-code', true)
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/burger/burger.pug
+      include:show-code(first-line='//- Pug-файл этого блока:') blocks/burger/burger.pug
 
   +block-lib('code', 'Код', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/code/readme.md
+    include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/code/readme.md
     +code()
       code &lt;div class="some">...&lt;/div>
     +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/code/code.pug
+      include:show-code(first-line='//- Pug-файл этого блока:') blocks/code/code.pug
 
   +block-lib('thumb', 'Картинки-миниатюры', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/thumb/readme.md
+    include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/thumb/readme.md
     +thumb('img/joker.jpg', 'Джокер', 300, 200)
     +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/thumb/thumb.pug
+      include:show-code(first-line='//- Pug-файл этого блока:') blocks/thumb/thumb.pug
 
   +block-lib('alert', 'Сообщения', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/alert/readme.md
+    include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/alert/readme.md
     +alert()
       p Обычное сообщение
     +alert('Заголовок', 'warning, some-mod-name')
       p Блок сообщения с модификаторами.
     +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/alert/alert.pug
+      include:show-code(first-line='//- Pug-файл этого блока:') blocks/alert/alert.pug
 
   +block-lib('menu', 'Меню', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/menu/readme.md
+    include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/menu/readme.md
     -
       var myMenu = [
         {
@@ -196,24 +196,24 @@ block content
       ];
     +menu(myMenu)
     +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/menu/menu.pug
+      include:show-code(first-line='//- Pug-файл этого блока:') blocks/menu/menu.pug
 
   +block-lib('label', 'Лейбл', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/label/readme.md
+    include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/label/readme.md
     +label('Текст1')
     +label('Текст2', '', 'div')
-    +label('Текст3', '', 'a')(href="/")
+    +label('Текст3', '', 'a')(href='/')
     +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/label/label.pug
+      include:show-code(first-line='//- Pug-файл этого блока:') blocks/label/label.pug
 
   +block-lib('loader', 'Загрузчик', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/loader/readme.md
+    include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/loader/readme.md
     +loader()
     +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/loader/loader.pug
+      include:show-code(first-line='//- Pug-файл этого блока:') blocks/loader/loader.pug
 
   +block-lib('table', 'Таблица', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/table/readme.md
+    include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/table/readme.md
     +table()
       caption Таблица
       tr
@@ -235,10 +235,10 @@ block content
         td Пользователь
         td Нижняя
     +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/table/table.pug
+      include:show-code(first-line='//- Pug-файл этого блока:') blocks/table/table.pug
 
   +block-lib('table-responsive', 'Адаптивная таблица', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/table-responsive/readme.md
+    include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/table-responsive/readme.md
     +table-responsive()
       caption Таблица
       thead
@@ -253,10 +253,10 @@ block content
           td(data-label='Имя и фамилия') Джакомо Казанова
           td(data-label='Тип мироощущения') Небольшая распущенность с лёгкой примесью леденящих душу извращений, чудовищной лжи и имитатора известного органа, обитого телячьей кожей.
     +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/table-responsive/table-responsive.pug
+      include:show-code(first-line='//- Pug-файл этого блока:') blocks/table-responsive/table-responsive.pug
 
   +block-lib('pagination', 'Пагинация', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/pagination/readme.md
+    include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/pagination/readme.md
     +pagination()
       +pagination-item('1', '/1')
       +pagination-item('...')
@@ -266,33 +266,33 @@ block content
       +pagination-item('...')
       +pagination-item('999', '/999')
     +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/pagination/pagination.pug
+      include:show-code(first-line='//- Pug-файл этого блока:') blocks/pagination/pagination.pug
 
   +block-lib('breadcrumbs', 'Хлебные крошки', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/breadcrumbs/readme.md
+    include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/breadcrumbs/readme.md
     +breadcrumbs()
       +breadcrumbs-item('Главная', '/home')
       +breadcrumbs-item('Услуги', '/services')
       +breadcrumbs-item('Стриптиз')
     +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/breadcrumbs/breadcrumbs.pug
+      include:show-code(first-line='//- Pug-файл этого блока:') blocks/breadcrumbs/breadcrumbs.pug
 
   +block-lib('progress', 'Прогресс', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/progress/readme.md
+    include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/progress/readme.md
     +progress('30', '30% (без копеек)', 'success')(aria-valuemin='0', aria-valuemax='100')
-    +progress('10')(style="height:10px")
+    +progress('10')(style='height:10px')
     +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/progress/progress.pug
+      include:show-code(first-line='//- Pug-файл этого блока:') blocks/progress/progress.pug
 
   +block-lib('pie-chart', 'Круговые и секторные диаграммы', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/pie-chart/readme.md
+    include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/pie-chart/readme.md
     +pie-chart('30')
-    +pie-chart('64')(data-size="120" data-border="59.9")
+    +pie-chart('64')(data-size='120', data-border='59.9')
     +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/pie-chart/pie-chart.pug
+      include:show-code(first-line='//- Pug-файл этого блока:') blocks/pie-chart/pie-chart.pug
 
   +block-lib('comment', 'Комментарий', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/comment/readme.md
+    include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/comment/readme.md
     +comment({
       username: 'Джокер',
       avatarURL: 'img/joker.jpg',
@@ -313,10 +313,10 @@ block content
       content: '<p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты.</p>',
     })
     +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/comment/comment.pug
+      include:show-code(first-line='//- Pug-файл этого блока:') blocks/comment/comment.pug
 
   +block-lib('embed-responsive', 'Адаптирующийся медиаконтент', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/embed-responsive/readme.md
+    include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/embed-responsive/readme.md
     style.
       @media (min-width: 768px) {
         .embed-responsive-demo {
@@ -332,24 +332,24 @@ block content
           padding-left: 5px;
         }
       }
-    div.embed-responsive-demo
-      div.embed-responsive-demo__item
+    .embed-responsive-demo
+      .embed-responsive-demo__item
         +embed-responsive('4-3')
           iframe(src='https://www.youtube.com/embed/7pOr3dBFAeY', frameborder='0', allowfullscreen='')
-      div.embed-responsive-demo__item
+      .embed-responsive-demo__item
         +embed-responsive()
           iframe(src='https://www.youtube.com/embed/B0Q1rKpDNE4', frameborder='0', allowfullscreen='')
     +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/embed-responsive/embed-responsive.pug
+      include:show-code(first-line='//- Pug-файл этого блока:') blocks/embed-responsive/embed-responsive.pug
 
   +block-lib('tooltip', 'Подсказки', true)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/tooltip/readme.md
+    include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/tooltip/readme.md
     p Текст и подсказка: #[+tooltip('Текст подсказки может быть длинным. Хочется, чтобы <em>внутри</em> <small>можно было</small> <i>использовать</i> <b>разметку</b>.')]
     +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/tooltip/tooltip.pug
+      include:show-code(first-line='//- Pug-файл этого блока:') blocks/tooltip/tooltip.pug
 
   +block-lib('btn', 'Кнопка', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/btn/readme.md
+    include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/btn/readme.md
     p.
       #[+btn('Кнопка-ссылка')(href='/')]
       #[+btn('Кнопка-input', '', true)(name='submit')]
@@ -359,10 +359,10 @@ block content
       #[+btn('Кнопка-input', '', true)(name='submit', disabled='')]
       #[+btn('Кнопка-button', 'main')(disabled='')]
     +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/btn/btn.pug
+      include:show-code(first-line='//- Pug-файл этого блока:') blocks/btn/btn.pug
 
   +block-lib('field-text', 'Текстовое поле', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/field-text/readme.md
+    include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/field-text/readme.md
     +field-text({
       title: 'Текстовое поле',
       helpText: 'Подсказка под полем',
@@ -384,10 +384,10 @@ block content
     })
     +field-text()
     +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/field-text/field-text.pug
+      include:show-code(first-line='//- Pug-файл этого блока:') blocks/field-text/field-text.pug
 
   +block-lib('field-checkbox', 'Флажок/чекбокс', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/field-checkbox/readme.md
+    include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/field-checkbox/readme.md
     +field-checkbox([
       {
         title: 'Чекбокс без группы',
@@ -416,10 +416,10 @@ block content
       },
     ], 'Общее необязательное название')
     +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/field-checkbox/field-checkbox.pug
+      include:show-code(first-line='//- Pug-файл этого блока:') blocks/field-checkbox/field-checkbox.pug
 
   +block-lib('field-radio', 'Радиокнопки', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/field-radio/readme.md
+    include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/field-radio/readme.md
     +field-radio([
       {
         title: 'Первый',
@@ -438,10 +438,10 @@ block content
       },
     ], 'Общее необязательное название')
     +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/field-radio/field-radio.pug
+      include:show-code(first-line='//- Pug-файл этого блока:') blocks/field-radio/field-radio.pug
 
   +block-lib('field-toggler', 'Переключатель', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/field-toggler/readme.md
+    include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/field-toggler/readme.md
     +field-toggler([
       {
         title: 'Одиночный переключатель',
@@ -470,10 +470,10 @@ block content
       },
     ], 'Две радиокнопки', true)
     +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/field-toggler/field-toggler.pug
+      include:show-code(first-line='//- Pug-файл этого блока:') blocks/field-toggler/field-toggler.pug
 
   +block-lib('field-file', 'Файл', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/field-file/readme.md
+    include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/field-file/readme.md
     +field-file({
       title: 'Название',
       helpText: 'Подсказка',
@@ -495,10 +495,10 @@ block content
       },
     })
     +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/field-file/field-file.pug
+      include:show-code(first-line='//- Pug-файл этого блока:') blocks/field-file/field-file.pug
 
   +block-lib('field-range', 'Ползунок', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/field-range/readme.md
+    include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/field-range/readme.md
     +field-range({
       title: 'Название',
       helpText: 'Подсказка',
@@ -512,10 +512,10 @@ block content
       }
     })
     +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/field-range/field-range.pug
+      include:show-code(first-line='//- Pug-файл этого блока:') blocks/field-range/field-range.pug
 
   +block-lib('field-select', 'Селекты', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/field-select/readme.md
+    include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/field-select/readme.md
     +field-select(
       'Название селекта',
       {
@@ -576,17 +576,17 @@ block content
       ''
     )
     +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/field-select/field-select.pug
+      include:show-code(first-line='//- Pug-файл этого блока:') blocks/field-select/field-select.pug
 
   +block-lib('field-actions', 'Кнопки формы', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/field-actions/readme.md
+    include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/field-actions/readme.md
     +field-actions('* — обязательные поля')
       +btn('Отправить')
     +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/field-actions/field-actions.pug
+      include:show-code(first-line='//- Pug-файл этого блока:') blocks/field-actions/field-actions.pug
 
   +block-lib('fields-group', 'Группа полей', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/fields-group/readme.md
+    include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/fields-group/readme.md
     +fields-group()
       +field-text({
         helpText: 'Подсказка',
@@ -604,10 +604,10 @@ block content
       +field-actions()
         +btn('Отправить', 'primary')
     +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/fields-group/fields-group.pug
+      include:show-code(first-line='//- Pug-файл этого блока:') blocks/fields-group/fields-group.pug
 
   +block-lib('form', 'Форма', true)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/form/readme.md
+    include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/form/readme.md
     +form()
       +fieldset('Название1')
         +field-text({
@@ -638,25 +638,25 @@ block content
       +field-actions()
         +btn('Отправить', 'primary')
     +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/form/form.pug
+      include:show-code(first-line='//- Pug-файл этого блока:') blocks/form/form.pug
 
   +block-lib('is-mobile', 'Определение мобильного устройства', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/is-mobile/readme.md
+    include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/is-mobile/readme.md
 
   +block-lib('scroll-link', 'Ссылки на якоря страницы', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/scroll-link/readme.md
+    include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/scroll-link/readme.md
     +scroll-link('Описание блока <code>page</code>', '#page')
     +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/scroll-link/scroll-link.pug
+      include:show-code(first-line='//- Pug-файл этого блока:') blocks/scroll-link/scroll-link.pug
 
   +block-lib('to-top-block', 'Ссылка «вверх»', false, 'to-top')
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/to-top/readme.md
+    include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/to-top/readme.md
     +to-top()
     +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/to-top/to-top.pug
+      include:show-code(first-line='//- Pug-файл этого блока:') blocks/to-top/to-top.pug
 
   +block-lib('dropdown', 'Выпадающий элемент', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/dropdown/readme.md
+    include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/dropdown/readme.md
     pre.code
       code // Факт открытия
       code $('#drop-demo-01').closest('.dropdown').on('shown.nth.dropdown', function () {
@@ -669,8 +669,7 @@ block content
       code });
     +dropdown('Дроп (с выводом событий в консоль)', 'drop-demo-01')
       p текст
-    |
-    |
+    span &nbsp;
     +dropdown('Выпадающее меню', 'drop-demo-02', 'up, right')
       .menu
         span.menu__item
@@ -680,10 +679,10 @@ block content
         span.menu__item
           a.menu__link(href='') Второй пункт
     +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/dropdown/dropdown.pug
+      include:show-code(first-line='//- Pug-файл этого блока:') blocks/dropdown/dropdown.pug
 
   +block-lib('owl-carousel', 'Карусель с <a href="http://owlcarousel2.github.io/OwlCarousel2/">owl-carousel</a>', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/owl-carousel/readme.md
+    include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/owl-carousel/readme.md
     +owl-carousel('promo')
       div слайд1
       div слайд2
@@ -694,10 +693,10 @@ block content
       div слайд7
       div слайд8
     +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/owl-carousel/owl-carousel.pug
+      include:show-code(first-line='//- Pug-файл этого блока:') blocks/owl-carousel/owl-carousel.pug
 
   +block-lib('swipe', 'Карусель с <a href="https://github.com/lyfeyaj/swipe">swipe</a>', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/swipe/readme.md
+    include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/swipe/readme.md
     +swipe('swipe-demo')
       div слайд1
       div слайд2
@@ -708,19 +707,19 @@ block content
       div слайд7
       div слайд8
     +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/swipe/swipe.pug
+      include:show-code(first-line='//- Pug-файл этого блока:') blocks/swipe/swipe.pug
 
   +block-lib('nouislider', 'Выбор диапазона с <a href="https://refreshless.com/nouislider/">noUiSlider</a>', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/nouislider/readme.md
+    include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/nouislider/readme.md
     +nouislider('demo-nouislider')
       p
         input#demo-nouislider-start(type='number', value='10')
         input#demo-nouislider-end(type='number', value='80')
     +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/nouislider/nouislider.pug
+      include:show-code(first-line='//- Pug-файл этого блока:') blocks/nouislider/nouislider.pug
 
   +block-lib('off-canvas', 'Боковое меню страницы', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/off-canvas/readme.md
+    include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/off-canvas/readme.md
     p #[button.btn(type='button', data-toggle='off-canvas') Показать/скрыть боковое меню]
     +block-lib-code()
       pre.code
@@ -734,7 +733,7 @@ block content
         code a(href='#SOME_HASH', data-toggle-native='off-canvas') Показать/скрыть боковое меню и перейти на якорь
 
   +block-lib('modal', 'Модальное окно', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/modal/readme.md
+    include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/modal/readme.md
     p Одно и то же модальное окно, в консоль выводятся события. #[button.btn(type='button', data-toggle='modal', data-target='#modal-demo-01') Показать модальное окно] #[a(href='#modal-demo-01', data-toggle='modal') Показать модальное окно] #[span(data-toggle='modal', data-target='#modal-demo-01') Показать модальное окно]
     +modal('modal-demo-01', 'Заголовок', 'some')
       .modal__body
@@ -762,10 +761,10 @@ block content
       code   console.log('hidden.nth.modal');
       code });
     +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/modal/modal.pug
+      include:show-code(first-line='//- Pug-файл этого блока:') blocks/modal/modal.pug
 
   +block-lib('tabs', 'Табы', false)
-    include:markdown-it(linkify html='true' typographer='true' quotes='«»') blocks/tabs/readme.md
+    include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/tabs/readme.md
     +tabs([
       {
         'id': 'tab00',
@@ -794,10 +793,10 @@ block content
       +tabs-item('tab03')
         p Горами в стране, гласных и согласных живут рыбные тексты.3
     +block-lib-code()
-      include:show-code(first-line="//- Pug-файл этого блока:") blocks/tabs/tabs.pug
+      include:show-code(first-line='//- Pug-файл этого блока:') blocks/tabs/tabs.pug
 
 
-  .burger.blocks-library__menu-toggler(data-toggle="off-canvas")
-    span(data-toggle="off-canvas")
+  .burger.blocks-library__menu-toggler(data-toggle='off-canvas')
+    span(data-toggle='off-canvas')
 
 block footer

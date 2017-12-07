@@ -10,17 +10,21 @@
   },
   "scripts": {
     "test:style": "stylelint \"src/**/*.scss\" --syntax=scss",
+    "test:editorconfig": "editorconfig-cli src/**/*.{js,pug}",
     "start": "gulp",
     "deploy": "cross-env NODE_ENV=production ./node_modules/.bin/gulp build && cross-env ./node_modules/.bin/gulp deploy",
     "build": "cross-env NODE_ENV=production npm start build",
     "lint-staged": "lint-staged",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged && gulp test:pug"
   },
   "lint-staged": {
+    "*.js": "editorconfig-cli",
+    "*.pug": "editorconfig-cli",
     "*.css": "stylelint",
     "*.scss": "stylelint --syntax=scss"
   },
   "devDependencies": {
+    "@htmlacademy/editorconfig-cli": "^1.0.0",
     "autoprefixer": "^7.1.1",
     "browser-sync": "^2.18.8",
     "const": "^1.0.0",
@@ -41,6 +45,7 @@
     "gulp-plumber": "^1.1.0",
     "gulp-postcss": "^7.0.0",
     "gulp-pug": "^3.3.0",
+    "gulp-pug-lint": "git+https://github.com/nicothin/gulp-pug-lint.git",
     "gulp-real-favicon": "^0.2.2",
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.6.1",

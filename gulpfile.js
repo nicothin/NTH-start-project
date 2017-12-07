@@ -419,6 +419,13 @@ gulp.task('pug', function() {
     .pipe(gulp.dest(dirs.buildPath));
 });
 
+gulp.task('test:pug', function () {
+  const pugLinter = require('gulp-pug-lint');
+  return gulp
+    .src('src/**/*.pug')
+    .pipe(pugLinter());
+});
+
 // Конкатенация и углификация Javascript
 gulp.task('js', function (callback) {
   const uglify = require('gulp-uglify');
