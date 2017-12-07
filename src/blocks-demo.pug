@@ -144,6 +144,7 @@ block content
     include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/close/readme.md
     div
       +close('Закрыть')
+      +close('Закрыть', 'sm')
     +block-lib-code()
       include:show-code(first-line='//- Pug-файл этого блока:') blocks/close/close.pug
 
@@ -171,8 +172,10 @@ block content
     include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/alert/readme.md
     +alert()
       p Обычное сообщение
+      +close('Закрыть', 'sm')(class='alert__close')
     +alert('Заголовок', 'warning, some-mod-name')
       p Блок сообщения с модификаторами.
+      +close('Закрыть', 'sm')(class='alert__close')
     +block-lib-code()
       include:show-code(first-line='//- Pug-файл этого блока:') blocks/alert/alert.pug
 

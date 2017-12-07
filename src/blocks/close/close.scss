@@ -50,4 +50,22 @@ $toggler-part-bg-color:       #000 !default;
       transform: rotate3d(0, 0, 1, -45deg);
     }
   }
+
+  &--sm {
+
+    $toggler-part-height:     1px;
+
+    width: 20px;
+    line-height: 20px;
+
+    > span {
+      width: 60%;
+
+      &:before,
+      &:after {
+        height: $toggler-part-height;
+        background: $toggler-part-bg-color;
+      }
+    }
+  }
 }

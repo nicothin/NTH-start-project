@@ -7,13 +7,16 @@ mixin alert(title, mods)
   //-   mods {string}  - стилевые модификаторы
   //- Вызов:
         +alert()
-          p Успех
-        +alert('Внимание!', 'warning, some-mod-name')
           p Текст
-        +alert()
-          p Сообщение без модификаторов
-        +alert('Заголовok', 'danger')
+        +alert('Внимание', 'warning, some-mod-name')
+          p Предупреждение
+          +close('Закрыть', 'sm')(class='alert__close')
+        +alert('Внимание', 'danger')
           p Проблема
+          +close('Закрыть', 'sm')(class='alert__close')
+        +alert('Внимание', 'success')
+          p Успех
+          +close('Закрыть', 'sm')(class='alert__close')
 
   -
     //- список модификаторов
