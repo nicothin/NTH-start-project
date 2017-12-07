@@ -1,63 +1,89 @@
 <!DOCTYPE html>
 <html class="no-js  page" lang="ru">
+
 <head>
   <meta charset="utf-8">
-  <title>NTH start project</title>
-  <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="format-detection" content="telephone=no">
-  <link href="css/style.min.css" rel="stylesheet" media="screen">
+  <title>Главная</title>
+  <meta name="description" content="">
+  <link rel="stylesheet" href="css/style.min.css">
   <script>
-    // Маркер работающего javascript
     document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
-    document.addEventListener('DOMContentLoaded', function(){
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
       if (window.isMobile !== undefined) {
         // console.log(isMobile);
-        if(isMobile.any) {
+        if (isMobile.any) {
           var rootClasses = ' is-mobile';
           for (key in isMobile) {
-            if(typeof isMobile[key] === 'boolean' && isMobile[key] && key !== 'any') rootClasses += ' is-mobile--'+key;
-            if(typeof isMobile[key] === 'object' && key !== 'other') {
+            if (typeof isMobile[key] === 'boolean' && isMobile[key] && key !== 'any') rootClasses += ' is-mobile--' + key;
+            if (typeof isMobile[key] === 'object' && key !== 'other') {
               for (type in isMobile[key]) {
-                if(isMobile[key][type]) rootClasses += ' is-mobile--'+key+'-'+type;
+                if (isMobile[key][type]) rootClasses += ' is-mobile--' + key + '-' + type;
               }
             }
           }
           document.documentElement.className += rootClasses;
         }
-      }
-      else {
+      } else {
         console.log('Классы для мобильных не добавлены: в сборке отсутствует isMobile.js');
       }
     });
   </script>
-<link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
-<link rel="manifest" href="/img/manifest.json">
-<link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="#ffffff">
-<link rel="shortcut icon" href="/img/favicon.ico">
-<meta name="msapplication-TileColor" content="#ffffff">
-<meta name="msapplication-TileImage" content="/img/mstile-144x144.png">
-<meta name="msapplication-config" content="/img/browserconfig.xml">
-<meta name="theme-color" content="#ffffff"></head>
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
+  <link rel="manifest" href="/img/manifest.json">
+  <link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="#ffffff">
+  <link rel="shortcut icon" href="/img/favicon.ico">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/img/mstile-144x144.png">
+  <meta name="msapplication-config" content="/img/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
 <body>
   <div class="page__inner">
     <div class="page__content">
       <header class="page-header" role="banner">
-        page-header
+        <div class="page-header__inner"><a class="logo" href="/"><span>Логотип</span></a>
+          <nav class="main-nav" id="nav"><button class="burger main-nav__toggler" aria-label="Показать главное меню" data-target-id="nav" data-target-class-toggle="main-nav--open"><span>Показать главное меню</span></button>
+            <ul class="main-nav__list">
+              <li class="main-nav__item  main-nav__item--active"><a class="main-nav__link" href="/">Главная страница</a></li>
+              <li class="main-nav__item"><a class="main-nav__link" href="">Страницы</a>
+                <div class="main-nav__sublist-wrapper main-nav__sublist-wrapper--lvl-2">
+                  <ul class="main-nav__list main-nav__list--lvl-2">
+                    <li class="main-nav__item main-nav__item--lvl-2"><a class="main-nav__link main-nav__link--lvl-2" href="/about">О компании</a></li>
+                    <li class="main-nav__item main-nav__item--lvl-2"><a class="main-nav__link main-nav__link--lvl-2" href="/services">Услуги</a>
+                      <div class="main-nav__sublist-wrapper main-nav__sublist-wrapper--lvl-3">
+                        <ul class="main-nav__list main-nav__list--lvl-3">
+                          <li class="main-nav__item main-nav__item--lvl-3"><a class="main-nav__link main-nav__link--lvl-3" href="/serve">Вёрстка</a></li>
+                          <li class="main-nav__item main-nav__item--lvl-3"><a class="main-nav__link main-nav__link--lvl-3" href="/strip">Стриптиз</a></li>
+                        </ul>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="main-nav__item"><a class="main-nav__link" href="https://github.com/nicothin/NTH-start-project">Репозиторий</a></li>
+              <li class="main-nav__item"><a class="main-nav__link" href="http://nicothin.pro/">Контакты автора</a></li>
+            </ul>
+          </nav>
+        </div>
       </header>
-      <main role="main">
-        <h1>NTH start project</h1>
-        <p><a href="blocks-demo.html">Страница с демкой компонентов</a></p>
-      </main>
+      <p>Содержимое. <a href="blocks-demo.html">Библиотека блоков</a>.</p>
     </div>
     <div class="page__footer-wrapper">
       <footer class="page-footer" role="contentinfo">
-        page-footer
+        <div class="page-footer__inner">
+          <p>«Подвал»</p>
+        </div>
       </footer>
     </div>
   </div>
   <script src="js/script.min.js"></script>
 </body>
+
 </html>
