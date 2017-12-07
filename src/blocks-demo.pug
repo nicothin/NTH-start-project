@@ -64,7 +64,7 @@ block content
       - var realId = realBlockId
     else
       - var realId = id
-    section.blocks-library__item(id=id, data-id=realId)(class= sep ? 'blocks-library__item--menusep' : '')
+    section.blocks-library__item(class= sep ? 'blocks-library__item--menusep' : '', id=id, data-id=realId)
       h2.blocks-library__item-title
         a(href=repoUrl + '/tree/master/src/blocks/' + realId, class='blocks-library__item-title-link', title='Папка блока в репозитории')
           svg(width='20', height='20')
