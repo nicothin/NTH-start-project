@@ -1,4 +1,4 @@
-# Проект с gulp [![devDependencies Status](https://david-dm.org/nicothin/NTH-start-project/dev-status.svg)](https://david-dm.org/nicothin/NTH-start-project?type=dev) [![dependencies Status](https://david-dm.org/nicothin/NTH-start-project/status.svg)](https://david-dm.org/nicothin/NTH-start-project)
+# Стартовый проект с gulp [![devDependencies Status](https://david-dm.org/nicothin/NTH-start-project/dev-status.svg)](https://david-dm.org/nicothin/NTH-start-project?type=dev) [![dependencies Status](https://david-dm.org/nicothin/NTH-start-project/status.svg)](https://david-dm.org/nicothin/NTH-start-project)
 
 <table>
   <thead>
@@ -18,7 +18,7 @@
     </tr>
     <tr>
       <td><code>npm start ЗАДАЧА</code></td>
-      <td>Запустить задачу с названием ЗАДАЧА (список задач в <code>gulpfile.js</code>)</td>
+      <td>Запустить задачу с названием ЗАДАЧА (список задач в <code>./gulpfile.js</code>)</td>
     </tr>
     <tr>
       <td><code>npm start check:favicons:update</code></td>
@@ -70,7 +70,7 @@
 
 Используется [pug](https://pugjs.org/api/getting-started.html). HTML никак не обрабатывается.
 
-По умолчанию используются [наследование шаблонов](https://pugjs.org/language/inheritance.html) — все страницы (см. `src/index.pug`) являются расширениями шаблонов, в страницах описывается только содержимое «шапки», «подвала» и контентной области посредством [блоков](https://pugjs.org/language/inheritance.html#block-append-prepend).
+По умолчанию используются [наследование шаблонов](https://pugjs.org/language/inheritance.html) — все страницы (см. `./src/index.pug`) являются расширениями шаблонов, в страницах описывается только содержимое «шапки», «подвала» и контентной области посредством [блоков](https://pugjs.org/language/inheritance.html#block-append-prepend).
 
 К.О. подсказывает, что если какие-то области («подвал»?) одинаковы на всех страницах, то их стоит писать в файле шаблона, а не в файлах страниц.
 
@@ -78,7 +78,7 @@
 
 ## Стили
 
-Файл-диспетчер подключений (`.src/scss/style.scss`) формируется автоматически на основании указанных в `./projectConfig.json` блоков и доп. файлов. Писать в `.src/scss/style.scss` что-либо руками бессмысленно: при старте автоматизации файл будет перезаписан.
+Файл-диспетчер подключений (`./src/scss/style.scss`) формируется автоматически на основании указанных в `./projectConfig.json` блоков и доп. файлов. Писать в `./src/scss/style.scss` что-либо руками бессмысленно: при старте автоматизации файл будет перезаписан.
 
 Используемый постпроцессинг:
 
