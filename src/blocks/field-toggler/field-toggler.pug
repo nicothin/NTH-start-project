@@ -1,0 +1,69 @@
+//- Все примеси в этом файле должны начинаться c имени блока (field-toggler)
+
+mixin field-toggler(togglers, title, isRadio)
+
+  //- Принимает:
+  //-   togglers {array}
+  //-     {object}
+  //-       title: ''         {string} - текст рядом с переключателем
+  //-       helpText: ''      {string} - пояснение под полем
+  //-       mods: ''          {string} - модификаторы обёртки переключателя
+  //-       attrs:            {object} - любые атрибуты для input
+  //-         name:           {string}
+  //-     ...
+  //-   title: ''             {string} - общее название группы переключателей
+  //-   isRadio: false        {bool}   - флаг «это радиокнопки, а не чекбоксы»
+  //- Вызов:
+        +field-toggler([
+          {
+            title: 'Переключатель0',
+            helpText: 'Подсказка',
+            attrs: {
+              name: 'check0',
+            }
+          },
+        ])
+        +field-toggler([
+          {
+            title: 'Переключатель1',
+            helpText: 'Подсказка',
+            attrs: {
+              name: 'check1',
+              checked: true,
+            }
+          },
+          {
+            title: 'Переключатель2',
+            helpText: 'Подсказка',
+            mods: 'some',
+            attrs: {
+              name: 'check2',
+            }
+          },
+        ], 'ОбщееНазваниеБлока', true)
+
+  -
+    if(typeof(isRadio) !== 'undefined' && isRadio)
+      var type = 'radio';
+    else
+      var type = 'checkbox';
+
+  .field-toggler&attributes(attributes)
+    if(typeof(title) !== 'undefined' && title)
+      .field-toggler__title!= title
+    each toggler in togglers
+      -
+        var allMods = '';
+        if(typeof(toggler.mods) !== 'undefined' && toggler.mods) {
+          var modsList = toggler.mods.split(',');
+          for (var i = 0; i < modsList.length; i++) {
+            allMods = allMods + ' field-toggler__input-wrap--' + modsList[i].trim();
+          }
+        }
+      .field-toggler__input-wrap(class=allMods)
+        label.field-toggler__name
+          input.field-toggler__input(type=type)&attributes(toggler.attrs)
+          span.field-toggler__name-text!= toggler.title
+        if(typeof(toggler.helpText) !== 'undefined' && toggler.helpText)
+          .field-toggler__help-text-wrap
+            .field-toggler__help-text!= toggler.helpText

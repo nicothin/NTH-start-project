@@ -1,0 +1,20 @@
+//- Все примеси в этом файле должны начинаться c имени блока (to-top)
+
+mixin to-top(mods)
+
+  //- Принимает:
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +to-top()
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' to-top--' + modsList[i].trim();
+      }
+    }
+
+  a.to-top#to-top(class=allMods, href='#')&attributes(attributes) ↑

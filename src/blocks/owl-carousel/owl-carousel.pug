@@ -1,0 +1,32 @@
+//- Все примеси в этом файле должны начинаться c имени блока (owl-carousel)
+//- ВНИМАНИЕ! Примесь возвращает только разметку.
+//- Не забудьте включить и настроить карусель в owl-carousel/owl-carousel.js
+
+mixin owl-carousel(id, mods)
+
+  //- Принимает:
+  //-   id      {string} - идентификатор
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +owl-carousel('promo')
+          div слайд1
+          div слайд2
+          div слайд3
+          div слайд4
+          div слайд5
+          div слайд6
+          div слайд7
+          div слайд8
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' owl-carousel--' + modsList[i].trim();
+      }
+    }
+
+  .owl-carousel(id=id, class=allMods)&attributes(attributes)
+    block

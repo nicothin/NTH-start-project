@@ -1,0 +1,106 @@
+// В этом файле должны быть стили для БЭМ-блока fields-group, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+// Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
+
+.fields-group {
+
+  $block-name:                &; // #{$block-name}__element
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin-bottom: ($line-height / 2);
+
+  .btn,
+  select,                     // обычно, не участвует в группировке
+  input {
+    position: relative;
+    margin: 0;
+
+    // &:hover,
+    &:focus {
+      position: relative;
+      z-index: 1;             // фокус должен быть красивым
+    }
+  }
+
+  .field-actions,
+  // .field-file,                // обычно, не участвует в группировке
+  // .field-select,              // обычно, не участвует в группировке
+  .field-text {
+    margin: 0;
+  }
+
+  .field-actions {
+
+    &:not(:last-child) .btn {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    &:not(:first-child) .btn {
+      border-left: 0;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    .btn {
+
+      // &:hover,
+      &:focus {
+        z-index: 1;           // фокус должен быть красивым
+      }
+    }
+  }
+
+  .field-text {
+
+    &:not(:last-child) .field-text__input {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    &:not(:first-child) .field-text__input {
+      border-left: 0;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+
+  // .field-file {               // обычно, не участвует в группировке
+
+  //   input {
+  //     position: absolute;
+  //   }
+
+  //   &:not(:last-child) .field-file__name-text {
+  //     border-top-right-radius: 0;
+  //     border-bottom-right-radius: 0;
+  //   }
+
+  //   &:not(:first-child) .field-file__name-text {
+  //     border-left: 0;
+  //     border-top-left-radius: 0;
+  //     border-bottom-left-radius: 0;
+
+  //     &:before {
+  //       border-top-left-radius: 0;
+  //       border-bottom-left-radius: 0;
+  //     }
+  //   }
+  // }
+
+  // .field-select {             // обычно, не участвует в группировке
+
+  //   &:not(:last-child) .field-select__select {
+  //     border-top-right-radius: 0;
+  //     border-bottom-right-radius: 0;
+  //   }
+
+  //   &:not(:first-child) .field-select__select {
+  //     border-left: 0;
+  //     border-top-left-radius: 0;
+  //     border-bottom-left-radius: 0;
+  //   }
+  // }
+}

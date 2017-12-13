@@ -1,0 +1,36 @@
+//- Все примеси в этом файле должны начинаться c имени блока (btn)
+
+mixin btn(text, mods, isInput)
+
+  //- Принимает:
+  //-   text    {string} - текст кнопки
+  //-   mods    {string} - список модификаторов
+  //-   isInput {bool}   - флаг «это тег input»
+  //- Вызов:
+        +btn('Кнопка-ссылка')(href='/')  - есть href, это точно ссылка
+        +btn('Кнопка-input', '', true)   - есть флаг isInput, это input
+        +btn('Кнопка-button', 'success') - нет href, нет isInput — это button
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' btn--' + modsList[i].trim();
+      }
+    }
+
+  //- передан href — это ссылка
+  if (attributes.href)
+    a.btn(class=allMods)&attributes(attributes)!= text
+      block
+
+  //- иначе, если передан isInput и он true, это input
+  else if (typeof(isInput) !== 'undefined' && isInput)
+    input.btn(class=allMods, value=text, type='button')&attributes(attributes)
+
+  //- иначе это button
+  else
+    button.btn(class=allMods)&attributes(attributes)!= text
+      block

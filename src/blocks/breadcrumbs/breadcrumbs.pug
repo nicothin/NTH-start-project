@@ -1,0 +1,47 @@
+//- Все примеси в этом файле должны начинаться c имени блока (breadcrumbs)
+
+mixin breadcrumbs(mods)
+
+  //- Принимает:
+  //-   mods  {string} - список модификаторов
+  //- Вызов:
+        +breadcrumbs()
+          +breadcrumbs-item('Главная', '/home')
+          +breadcrumbs-item('Услуги', '/services')
+          +breadcrumbs-item('Стриптиз')
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' breadcrumbs--' + modsList[i].trim();
+      }
+    }
+
+  ul.breadcrumbs(class=allMods, aria-label='Breadcrumb', role='navigation')&attributes(attributes)
+    block
+
+
+
+mixin breadcrumbs-item(text, href, mods)
+
+  //- Принимает:
+  //-   text   {string} - содержимое пункта
+  //-   href   {string} - ссылка этого пункта (если пустая, то это не ссылка, а span)
+  //-   mods   {string} - список модификаторов
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' breadcrumbs--' + modsList[i].trim();
+      }
+    }
+
+  li.breadcrumbs__item(class=allMods)&attributes(attributes)
+    if(typeof(href) !== 'undefined' && href)
+      a(href=href)!= text
+    else
+      span!= text

@@ -51,6 +51,14 @@ $transition-time:             0.3s !default;
     @media (min-width: $menu-desktop-width) {
       display: flex;
       flex-wrap: wrap;
+
+      &--lvl-2 {
+        display: block;
+      }
+
+      &--lvl-3 {
+        display: block;
+      }
     }
   }
 
@@ -106,12 +114,14 @@ $transition-time:             0.3s !default;
         overflow: hidden;
         transition: opacity $transition-time;
 
+        // stylelint-disable  max-nesting-depth
         #{$block-name}__item--show-child > &,
         #{$block-name}__item:hover & {
           opacity: 1;
           height: auto;
           overflow: visible;
         }
+        // stylelint-enable
       }
     }
 
@@ -127,12 +137,14 @@ $transition-time:             0.3s !default;
         overflow: hidden;
         transition: opacity $transition-time;
 
+        // stylelint-disable  max-nesting-depth
         #{$block-name}__item--show-child > &,
         #{$block-name}__item--lvl-2:hover & {
           opacity: 1;
           height: auto;
           overflow: visible;
         }
+        // stylelint-enable
       }
     }
   }

@@ -1,0 +1,24 @@
+extends pug/layout.pug
+
+block meta
+  title Главная
+  meta(name='description', content='')
+
+//- block append head
+//-   link(rel='stylesheet', href='css/some.css')
+
+block header
+  +page-header()
+    +logo('/')
+      span Логотип
+    +main-nav('1')
+
+block content
+  p Содержимое. #[a(href='blocks-demo.html') Библиотека блоков].
+
+block footer
+  +page-footer()
+    p «Подвал»
+
+//- block page-bottom
+//-   script(src="js/some.js")

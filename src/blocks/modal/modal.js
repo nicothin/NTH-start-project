@@ -1,3 +1,19 @@
+// Демо событий модальных окон
+$(document).ready(function(){
+  $('#modal-demo-01').on('show.nth.modal', function(){
+    console.log('Модальное окно #modal-demo-01: сработало событие show.nth.modal');
+  });
+  $('#modal-demo-01').on('shown.nth.modal', function(){
+    console.log('Модальное окно #modal-demo-01: сработало событие shown.nth.modal');
+  });
+  $('#modal-demo-01').on('hide.nth.modal', function(){
+    console.log('Модальное окно #modal-demo-01: сработало событие hide.nth.modal');
+  });
+  $('#modal-demo-01').on('hidden.nth.modal', function(){
+    console.log('Модальное окно #modal-demo-01: сработало событие hidden.nth.modal');
+  });
+});
+
 /* ========================================================================
  * Основано на Bootstrap: modal.js v3.3.7
  * Изменения минимальны: имена классов, событий, методов...
@@ -303,6 +319,7 @@
   Modal.prototype.measureScrollbar = function () { // thx walsh
     var scrollDiv = document.createElement('div')
     scrollDiv.className = 'modal-scrollbar-measure'
+    scrollDiv.style.overflow="scroll"; // nicothin: Отчего-то результатом подсчета всегда был 0 :(
     this.$body.append(scrollDiv)
     var scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth
     this.$body[0].removeChild(scrollDiv)

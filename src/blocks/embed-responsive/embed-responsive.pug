@@ -1,0 +1,24 @@
+//- Все примеси в этом файле должны начинаться c имени блока (embed-responsive)
+
+mixin embed-responsive(mods)
+
+  //- Принимает:
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +embed-responsive()
+          iframe(src='https://www.youtube.com/embed/B0Q1rKpDNE4', frameborder='0', allowfullscreen='')
+        +embed-responsive('4-3')
+          iframe(src='https://www.youtube.com/embed/7pOr3dBFAeY', frameborder='0', allowfullscreen='')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' embed-responsive--' + modsList[i].trim();
+      }
+    }
+
+  .embed-responsive(class=allMods)&attributes(attributes)
+    block

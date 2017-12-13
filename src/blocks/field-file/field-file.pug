@@ -1,0 +1,62 @@
+//- Все примеси в этом файле должны начинаться c имени блока (field-file)
+
+mixin field-file(props)
+
+  //- Принимает:
+  //-   props {object}
+  //-     title: ''           {string} - текст с названием (выводится над полем)
+  //-     helpText: ''        {string} - пояснение под полем
+  //-     mods: ''            {string} - модификаторы блока
+  //-     attrs:              {object} - любые атрибуты для input
+  //-       name:             {string}
+  //-     text:               {object} - тексты
+  //-       selectText:       {string} - текст на кнопке «выберите файл(ы)»
+  //-       nothingText:      {string} - текст, показываемый, пока ничего не выбрано
+  //-       flesSelectedText: {string} - текст, показываемый, если выбрано более одного файла («файлов выбрано: 2»)
+  //- Вызов:
+        +field-file({
+          title: 'Название',
+          helpText: 'Подсказка',
+          mods: '',
+          attrs: {
+            name: 'commentFile',
+            multiple: true,
+          },
+          text: {
+            selectText: 'Выберите файл(ы)',
+            nothingText: 'Ничего не выбрано',
+            flesSelectedText: 'Выбрано файлов:',
+          },
+        })
+
+  -
+    if(typeof(props) === 'undefined') {
+      var props = {};
+    }
+    var allMods = '';
+    if(typeof(props.mods) !== 'undefined' && props.mods) {
+      var modsList = props.mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' field-file--' + modsList[i].trim();
+      }
+    }
+
+    var selectText = 'Выберите файл(ы)'; // Select file(s)
+    var nothingText = ''; // Nothing selected
+    var flesSelectedText = 'Выбрано файлов: {count}'; // Selected files: {count}
+
+    if (typeof(props.text) !== 'undefined' && props.text !== '') {
+      if (typeof(props.text.selectText) !== 'undefined') selectText = props.text.selectText;
+      if (typeof(props.text.nothingText) !== 'undefined') nothingText = props.text.nothingText;
+      if (typeof(props.text.flesSelectedText) !== 'undefined') flesSelectedText = props.text.flesSelectedText + ' {count}';
+    }
+
+  .field-file(class=allMods)&attributes(attributes)
+    if(typeof(props.title) !== 'undefined' && props.title)
+      .field-file__name!= props.title
+    label.field-file__input-wrap
+      input.field-file__input(type='file', data-multiple-caption=flesSelectedText)&attributes(props.attrs)
+      .field-file__name-text(data-button-text=selectText)= nothingText
+      if(typeof(props.helpText) !== 'undefined' && props.helpText)
+        .field-file__help-text!= props.helpText
+      block

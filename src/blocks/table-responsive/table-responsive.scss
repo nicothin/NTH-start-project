@@ -15,17 +15,46 @@ $screen-xxl:                  1800px !default;
 
 .table-responsive {
 
-  $block-name:                &;
-  // #{$block-name}__element
+  $block-name:                &; // #{$block-name}__element
+
+  margin-top: $line-height;
+  margin-bottom: $line-height;
+  border-collapse: collapse;
+  border: 1px solid $border-color;
+  width: 100%;
+
+  caption {
+    caption-side: top;
+    text-align: left;
+    padding: 0.4em $field-padding-horizontal;
+    border: 1px solid $border-color;
+    border-bottom: 0;
+    font-size: $font-size--small;
+    line-height: 1em;
+    color: $text-color--muted;
+  }
+
+  td,
+  th {
+    padding: $field-padding-vertical $field-padding-horizontal;
+    vertical-align: top;
+    border-bottom: 1px solid $border-color;
+
+    &:not(:first-child) {
+      border-left: 1px solid $border-color;
+    }
+  }
+
+  th {
+    text-align: left;
+  }
 
   @media (max-width: ($screen-md - 1)) {
     display: block;
     border: 0;
 
     caption {
-      display: block;
-      width: 100%;
-      text-align: left;
+      display: none;
     }
 
     thead {
@@ -41,7 +70,7 @@ $screen-xxl:                  1800px !default;
         border: 1px solid $border-color;
         border-bottom: 0;
 
-        &:not(:last-child) {
+        &:not(:last-child) { // stylelint-disable-line  max-nesting-depth
           margin-bottom: $line-height;
         }
       }
@@ -49,10 +78,10 @@ $screen-xxl:                  1800px !default;
       td {
         display: block;
         width: 100%;
-        border-right: 0 !important;
-        border-left: 0 !important;
+        border-right: 0 !important; // stylelint-disable-line  declaration-no-important
+        border-left: 0 !important; // stylelint-disable-line  declaration-no-important
 
-        &:before {
+        &:before { // stylelint-disable-line  max-nesting-depth
           display: block;
           font-weight: 700;
           content: attr(data-label);

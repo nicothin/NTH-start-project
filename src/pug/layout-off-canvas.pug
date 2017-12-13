@@ -1,0 +1,45 @@
+//- Шаблон страницы с боковым меню (off-canvas)
+
+include mixins.pug
+
+doctype html
+html(class='no-js  page', lang='ru')
+
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    //- Edge и ряд мобильных браузеров автоматом преобразуют телефоны в ссылки. Отключим это.
+    meta(name='format-detection', content='telephone=no')
+
+    block meta
+      title Home
+
+    block head
+      link(rel='stylesheet', href='css/style.min.css')
+      script.
+        document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+      script
+        include ../blocks/is-mobile/is-mobile--to-head.js
+
+  body
+
+    .off-canvas#off-canvas
+      aside.off-canvas__aside(role='complementary', aria-label='Меню')
+        block off-canvas
+      main.off-canvas__page-content.components-demo.blocks-library(role='main')
+
+        //- Реальный контент страницы
+        .page__inner
+          .page__content
+            block header
+              p «шапка»
+            block content
+              p содержимое страницы
+          .page__footer-wrapper
+            block footer
+              p «подвал»
+
+      .off-canvas__overlay(data-toggle='off-canvas')
+
+    block page-bottom
+      script(src='js/script.min.js')

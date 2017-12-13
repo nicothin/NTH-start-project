@@ -1,0 +1,22 @@
+//- Все примеси в этом файле должны начинаться c имени блока (page-header)
+
+mixin page-header(mods)
+
+  //- Принимает:
+  //-   mods  {string} - список модификаторов
+  //- Вызов:
+        +page-header()
+          p «Шапка»
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' page-header--' + modsList[i].trim();
+      }
+    }
+
+  header.page-header(class=allMods, role='banner')&attributes(attributes)
+    .page-header__inner
+      block

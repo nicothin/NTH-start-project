@@ -1,0 +1,31 @@
+//- Все примеси в этом файле должны начинаться c имени блока (main-nav)
+//- Структура меню — в main-nav.data.pug
+
+mixin main-nav(selectedID)
+
+  //- Принимает:
+  //-   selectedID {string} - id пункта меню (по умолчанию — из main-nav.data.pug)
+  //- Вызов:
+        +main-nav('1')
+
+  //- подключаем файл со структурой данных блока
+  include main-nav.data.pug
+
+  nav.main-nav#nav&attributes(attributes)
+    +burger('Показать главное меню', 'nav', 'main-nav--open')(class='main-nav__toggler')
+    ul.main-nav__list
+      each menuItem in mainMenu
+        li(class= selectedID == menuItem.id ? 'main-nav__item  main-nav__item--active' : 'main-nav__item')
+          a.main-nav__link(href=menuItem.url)= menuItem.name
+          if (typeof(menuItem.childs) !== 'undefined' && menuItem.childs)
+            .main-nav__sublist-wrapper.main-nav__sublist-wrapper--lvl-2
+              ul.main-nav__list.main-nav__list--lvl-2
+                each menuItem2 in menuItem.childs
+                  li.main-nav__item.main-nav__item--lvl-2
+                    a.main-nav__link.main-nav__link--lvl-2(href=menuItem2.url)= menuItem2.name
+                    if (typeof(menuItem2.childs) !== 'undefined' && menuItem2.childs)
+                      .main-nav__sublist-wrapper.main-nav__sublist-wrapper--lvl-3
+                        ul.main-nav__list.main-nav__list--lvl-3
+                          each menuItem3 in menuItem2.childs
+                            li.main-nav__item.main-nav__item--lvl-3
+                              a.main-nav__link.main-nav__link--lvl-3(href=menuItem3.url)= menuItem3.name

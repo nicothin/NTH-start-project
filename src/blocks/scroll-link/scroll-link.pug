@@ -1,0 +1,23 @@
+//- Все примеси в этом файле должны начинаться c имени блока (scroll-link)
+
+mixin scroll-link(text, href, mods)
+
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   href    {string} - значение href
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +scroll-link('Страница', '#page', 'some-mod')
+        +scroll-link('Страница', '#page')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' scroll-link--' + modsList[i].trim();
+      }
+    }
+
+  a.scroll-link(class=allMods, href=href, data-scroll-link='')&attributes(attributes)!= text

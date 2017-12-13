@@ -1,0 +1,46 @@
+//- Все примеси в этом файле должны начинаться c имени блока (form)
+//- ВНИМАНИЕ: в файле две примеси
+
+mixin form(mods)
+
+  //- Принимает:
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +form('mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' form--' + modsList[i].trim();
+      }
+    }
+
+  form.form(class=allMods)&attributes(attributes)
+    block
+
+
+
+mixin fieldset(legend, mods)
+
+  //- Принимает:
+  //-   legend  {string} - название группы полей
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +form('mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' form--' + modsList[i].trim();
+      }
+    }
+
+  fieldset.form__fieldset(class=allMods)&attributes(attributes)
+    legend.form__legend!= legend
+    block

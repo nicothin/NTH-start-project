@@ -1,0 +1,62 @@
+//- Все примеси в этом файле должны начинаться c имени блока (field-checkbox)
+
+mixin field-checkbox(checkboxes, title)
+
+  //- Принимает:
+  //-   checkboxes {array}
+  //-     {object}
+  //-       title: ''         {string} - текст рядом с чекбоксом
+  //-       helpText: ''      {string} - пояснение под полем
+  //-       mods: ''          {string} - модификаторы обертки чекбокса
+  //-       attrs:            {object} - любые атрибуты для input
+  //-         name:           {string}
+  //-     ...
+  //- Вызов:
+        +field-checkbox([
+          {
+            title: 'Чекбокс0',
+            helpText: 'Подсказка',
+            attrs: {
+              name: 'check0',
+            }
+          },
+        ])
+        +field-checkbox([
+          {
+            title: 'Чекбокс1',
+            helpText: 'Подсказка',
+            mods: 'error',
+            attrs: {
+              name: 'check1',
+              checked: true,
+            }
+          },
+          {
+            title: 'Чекбокс2',
+            helpText: 'Подсказка',
+            mods: 'error',
+            attrs: {
+              name: 'check2',
+            }
+          },
+        ], 'ОбщееНазваниеБлока')
+
+  .field-checkbox&attributes(attributes)
+    if(typeof(title) !== 'undefined' && title)
+      .field-checkbox__title!= title
+    each checkbox in checkboxes
+      -
+        var allMods = '';
+        if(typeof(checkbox.mods) !== 'undefined' && checkbox.mods) {
+          var modsList = checkbox.mods.split(',');
+          for (var i = 0; i < modsList.length; i++) {
+            allMods = allMods + ' field-checkbox__input-wrap--' + modsList[i].trim();
+          }
+        }
+      .field-checkbox__input-wrap(class=allMods)
+        label.field-checkbox__name
+          input.field-checkbox__input(type='checkbox')&attributes(checkbox.attrs)
+          span.field-checkbox__name-text!= checkbox.title
+        if(typeof(checkbox.helpText) !== 'undefined' && checkbox.helpText)
+          .field-checkbox__help-text-wrap
+            .field-checkbox__help-text!= checkbox.helpText

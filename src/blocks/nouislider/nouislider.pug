@@ -1,0 +1,26 @@
+//- Все примеси в этом файле должны начинаться c имени блока (nouislider)
+//- ВНИМАНИЕ! Примесь возвращает только разметку.
+//- Не забудьте включить и настроить слайдер в nouislider/nouislider.js
+
+mixin nouislider(id, mods)
+
+  //- Принимает:
+  //-   id      {string} - идентификатор
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +nouislider('demo-nouislider')
+          input#demo-nouislider-start(type='number', value='10')
+          input#demo-nouislider-end(type='number', value='90')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' nouislider--' + modsList[i].trim();
+      }
+    }
+
+  .nouislider(id=id, class=allMods)&attributes(attributes)
+  block

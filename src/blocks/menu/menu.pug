@@ -1,0 +1,57 @@
+//- Все примеси в этом файле должны начинаться c имени блока (menu)
+
+mixin menu(menu)
+
+  //- Принимает:
+  //-   menu {array} - массив с пунктами меню
+  //- Вызов:
+      -
+        var myMenu = [
+          {
+            'text':'Пункт1',
+            'url':'/',
+          },
+          {
+            'text':'Пункт2',
+            'url':'/',
+            'mods': 'separator, active',
+          },
+        ];
+      +menu(myMenu)
+
+  -
+    if (typeof(menu) === 'undefined') {
+      menu = [
+        {
+          'text':'Меню по умолчанию, прописанное в примеси menu()',
+          'url':'/',
+        },
+        {
+          'text':'Пункт списка, после которого следует разделитель',
+          'url':'/',
+          'mods': 'separator, active',
+        },
+        {
+          'text':'Пункт меню весьма длинный, такой, что прямо адски длинный, очень много, реально много слов. Пункт меню весьма длинный, такой, что прямо адски длинный, очень много, реально много слов.',
+        },
+      ]
+    }
+
+  ul.menu&attributes(attributes)
+    each menuItem in menu
+
+      -
+        // список модификаторов
+        var allMods = '';
+        if(typeof(menuItem.mods) !== 'undefined') {
+          var modsList = menuItem.mods.split(',');
+          for (var i = 0; i < modsList.length; i++) {
+            allMods = allMods + ' menu__item--' + modsList[i].trim();
+          }
+        }
+
+      li.menu__item(class=allMods)
+        if(typeof(menuItem.url) !== 'undefined')
+          a.menu__link(href=menuItem.url)!= menuItem.text
+        else
+          span.menu__link!= menuItem.text

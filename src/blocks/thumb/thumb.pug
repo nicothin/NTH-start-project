@@ -1,0 +1,17 @@
+//- Все примеси в этом файле должны начинаться c имени блока (thumb)
+
+mixin thumb(url, alt, width, height)
+
+  //- Принимает:
+  //-   url* {string}   - источник картинки
+  //-   alt {string}    - альтернативный текст
+  //-   width {string}  - соотв. атрибут тега картинки
+  //-   height {string} - соотв. атрибут тега картинки
+  //- Вызов:
+        +thumb('img/joker.jpg', 'Джокер', 300, 200)
+        +thumb('img/joker.jpg', 'Джокер', 300)
+
+  - if (typeof(url) !== 'undefined')
+    img.thumb(src=url, alt=alt, width=width, height=height)&attributes(attributes)
+  - else
+    // Не передан источник изображения

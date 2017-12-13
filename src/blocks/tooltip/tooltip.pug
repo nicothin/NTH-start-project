@@ -1,0 +1,23 @@
+//- Все примеси в этом файле должны начинаться c имени блока (tooltip)
+
+mixin tooltip(text, mods)
+
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +tooltip('Текст подсказки')
+        p Текст и подсказка: #[+tooltip('<em>внутри</em> <small>можно было</small> <i>использовать</i> <b>разметку</b>')]
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' tooltip--' + modsList[i].trim();
+      }
+    }
+
+  span.tooltip(class=allMods)&attributes(attributes)
+    button.tooltip__btn(type='button', aria-label='more info', data-tooltip-content!=text) Подсказка

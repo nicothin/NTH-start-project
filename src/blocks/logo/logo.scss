@@ -6,6 +6,10 @@
 
   $block-name:                &; // #{$block-name}__element
 
-  display: block;
+  display: inline-block;
   white-space: nowrap;
+
+  img {
+    display: block;
+  }
 }

@@ -80,7 +80,7 @@ $z-index-modal:               100 !default;
   }
 
   &__close {
-    position: absolute !important;
+    position: absolute !important; // stylelint-disable-line  declaration-no-important
     top: 5px;
     right: 5px;
   }

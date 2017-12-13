@@ -1,4 +1,4 @@
-# Проект с gulp [![devDependencies Status](https://david-dm.org/nicothin/NTH-start-project/dev-status.svg)](https://david-dm.org/nicothin/NTH-start-project?type=dev) [![dependencies Status](https://david-dm.org/nicothin/NTH-start-project/status.svg)](https://david-dm.org/nicothin/NTH-start-project)
+# Стартовый проект с gulp [![devDependencies Status](https://david-dm.org/nicothin/NTH-start-project/dev-status.svg)](https://david-dm.org/nicothin/NTH-start-project?type=dev) [![dependencies Status](https://david-dm.org/nicothin/NTH-start-project/status.svg)](https://david-dm.org/nicothin/NTH-start-project)
 
 <table>
   <thead>
@@ -18,7 +18,15 @@
     </tr>
     <tr>
       <td><code>npm start ЗАДАЧА</code></td>
-      <td>Запустить задачу с названием ЗАДАЧА (список задач в <code>gulpfile.js</code>)</td>
+      <td>Запустить задачу с названием ЗАДАЧА (список задач в <code>./gulpfile.js</code>)</td>
+    </tr>
+    <tr>
+      <td><code>npm start check:favicons:update</code></td>
+      <td>Проверка актуальности данных <a href="https://realfavicongenerator.net/">генератора favicon</a></td>
+    </tr>
+    <tr>
+      <td><code>folder=src/img npm start img:opt</code></td>
+      <td>Оптимизация изображений из папки <code>./src/img</code> (или любой другой)</td>
     </tr>
     <tr>
       <td><code>npm run build</code></td>
@@ -33,8 +41,8 @@
       <td>Проверка стилевой составляющей проекта <a href="https://stylelint.io/">stylelint</a></td>
     </tr>
     <tr>
-      <td><code>npm run test:orpho</code></td>
-      <td>Поиск ошибок и опечаток в <code>.html</code> и <code>.md</code> файлах в <code>./src</code> с помощью <a href="https://github.com/hcodes/yaspeller">yaspeller</a></td>
+      <td><code>npm start test:pug</code></td>
+      <td>Проверка pug-файлов проекта <a href="https://github.com/nicothin/gulp-pug-lint">форкнутым gulp-pug-lint</a></td>
     </tr>
   </tbody>
 </table>
@@ -47,28 +55,30 @@
 
 ## Парадигма
 
-- Используется именование классов, файлов и переменных по БЭМ.
-- Список использованных в проекте БЭМ-блоков и доп. файлов указан в `./projectConfig.json`.
-- Каждый БЭМ-блок в своей папке внутри `./src/blocks/` (стили, js, картинки, разметка; обязателен только стилевой файл).
-- Есть глобальные файлы: стилевые, js, шрифты, картинки.
-- Диспетчер подключения стилей `./src/scss/style.scss` генерируется автоматически при старте любой gulp-задачи.
-- Для разметки можно использовать [микрошаблонизацию](https://www.npmjs.com/package/gulp-file-include). А можно и не использовать.
-- Перед созданием коммита запускается проверка стилевых файлов, входящих в коммит.
+- Именование классов по БЭМ, разметка в [pug](https://pugjs.org/) и стилизация [Sass](http://sass-lang.com/). См. [Как работать с CSS-препроцессорами и БЭМ](http://nicothin.github.io/idiomatic-pre-CSS/)
+- Каждый БЭМ-блок в своей папке внутри `./src/blocks/` (.scss, и .pug файлы обязательны).
+- Список использованных в проекте БЭМ-блоков и доп. файлов указан в `./projectConfig.json`. Это главный конфигурационный файл проекта.
+- Есть глобальные файлы: стилевые (стили печати), js (по умолчанию пуст), шрифты, картинки.
+- Диспетчер подключения стилей `./src/scss/style.scss` генерируется автоматически при старте любой gulp-задачи (на основе данных из `./projectConfig.json`).
+- Список pug-примесей `./src/pug/mixins.pug` генерируется автоматически при старте любой gulp-задачи (на основе данных из `./projectConfig.json`).
+- Перед созданием коммита запускается проверка стилевых файлов, входящих в коммит и всех pug-файлов. При наличии ошибок коммит не происходит (ошибки будут выведены в терминал).
+- Есть механизм быстрого создания нового блока: `node createBlock.js new-block` (создаёт файлы, папки, прописывает блок в `./projectConfig.json`).
 
 
 
-## ЧАВО
+## Разметка
 
-- [Как правильно организовать сборку целой страницы](https://github.com/nicothin/NTH-start-project/issues/12)
-- [Как добавлять плагины jQuery](https://github.com/nicothin/NTH-start-project/issues/22)
+Используется [pug](https://pugjs.org/api/getting-started.html). HTML никак не обрабатывается.
 
-Есть вопрос — задайте его в [issues](https://github.com/nicothin/NTH-start-project/issues).
+По умолчанию используются [наследование шаблонов](https://pugjs.org/language/inheritance.html) — все страницы (см. `./src/index.pug`) являются расширениями шаблонов, в страницах описывается только содержимое «шапки», «подвала» и контентной области посредством [блоков](https://pugjs.org/language/inheritance.html#block-append-prepend).
+
+К.О. подсказывает, что если какие-то области («подвал»?) одинаковы на всех страницах, то их стоит писать в файле шаблона, а не в файлах страниц.
 
 
 
 ## Стили
 
-Файл-диспетчер подключений (`.src/scss/style.scss`) формируется автоматически на основании указанных в `./projectConfig.json` блоков и доп. файлов. Писать в `.src/scss/style.scss` что-либо руками бессмысленно: при старте автоматизации файл будет перезаписан.
+Файл-диспетчер подключений (`./src/scss/style.scss`) формируется автоматически на основании указанных в `./projectConfig.json` блоков и доп. файлов. Писать в `./src/scss/style.scss` что-либо руками бессмысленно: при старте автоматизации файл будет перезаписан.
 
 Используемый постпроцессинг:
 
@@ -80,39 +90,41 @@
 6. [postcss-object-fit-images](https://github.com/ronik-design/postcss-object-fit-images) (в паре с [полифилом](https://github.com/bfred-it/object-fit-images))
 7. [postcss-image-inliner](https://www.npmjs.com/package/postcss-image-inliner)
 
-Для [postcss-image-inliner](https://www.npmjs.com/package/postcss-image-inliner) указано ограничение на размер файла в 10 Кб, файлы ищутся в `src/blocks/**/img_to_bg/`. Чтобы избежать конфликтов имен, добавляйте к именам изображений префикс (имя блока), например: `src/blocks/mega-block/img_to_bg/mega-block__avatar.png`
+Для [postcss-image-inliner](https://www.npmjs.com/package/postcss-image-inliner) указано ограничение на размер файла в 5 Кб, файлы ищутся в `src/blocks/**/bg-img/`. Чтобы избежать конфликтов имен, добавляйте к именам изображений префикс (имя блока), например: `src/blocks/mega-block/bg-img/mega-block__avatar.png`
 
 
 
 ## Блоки
 
-Каждый блок лежит в `./src/blocks/` в своей папке. Каждый блок — как минимум, папка и одноимённый scss-файл.
+Каждый блок лежит в `./src/blocks/` в своей папке. Каждый блок — как минимум, папка и одноимённые scss- и pug-файл.
 
 Возможное содержимое блока:
 
 ```bash
 demo-block/               # Папка блока
   img/                    # Изображения, используемые блоком и обрабатываемые автоматикой сборки
-  some-folder/            # Какая-то сторонняя папка, не обрабатываемая автоматикой
-  demo-block.scss         # Стилевой файл блока
-  demo-block--mod.scss    # Отдельный стилевой файл БЭМ-модификатора блока
+  bg-img/                 # Изображения для использования в стилях (не обрабатываются автоматикой сборки)
+  demo-block.pug          # **Обязательный**. Разметка (pug-примесь, отдающая разметку блока, описание API примеси)
+  demo-block.scss         # **Обязательный**. Стилевой файл блока
   demo-block.js           # js-файл блока
+  demo-block--mod.scss    # Отдельный стилевой файл БЭМ-модификатора блока
   demo-block--mod.js      # js-файл для отдельного БЭМ-модификатора блока
-  demo-block.html         # Варианты разметки (как документация блока или как вставляемый микрошаблонизатором фрагмент)
-  readme.md               # Какое-то пояснение
+  readme.md               # Описание для документации, подсказки
 ```
 
 
 
 ## Подключение блоков
 
-Список используемых блоков и дополнительных подключаемых файлов указан в `./projectConfig.json`. Список файлов и папок, взятых в обработку можно увидеть в терминале, если раскомментировать строку `console.log(lists);` в `gulpfile.js`.
+Список используемых блоков и доп. файлов указан в `./projectConfig.json`. Список файлов и папок, взятых в обработку можно увидеть в терминале, если раскомментировать строку `console.log(lists);` в `gulpfile.js`.
+
+**ВНИМАНИЕ!** `./projectConfig.json` — это JSON. Это строгий синтаксис, у последнего элемента в любом контексте не должно быть запятой в конце строки.
 
 ### `blocks`
 
 Объект с блоками, используемыми на проекте. Каждый блок — отдельная папка с файлами, по умолчанию лежат в `./src/blocks/`.
 
-Каждое подключение блока — массив, который можно оставить пустым или указать файлы элементов или модификаторов, если они написаны в виде отдельных файлов. В обоих случаях в обработку будут взяты одноименные стилевые файлы, js-файлы и картинки из папки `img/` блока.
+Каждое подключение блока — массив, который можно оставить пустым или указать файлы элементов или модификаторов, если они написаны в виде отдельных файлов. В обоих случаях в обработку будут взяты одноименные стилевые файлы, pug-файл, js-файлы и картинки из папки `img/` блока.
 
 Пример, подключающий 3 блока:
 
@@ -205,9 +217,7 @@ demo-block/               # Папка блока
 
 Массив js-файлов, которые копируются в папку сборки, подпапку `js/`
 
-**ВНИМАНИЕ!** Это JSON. Это строгий синтаксис, у последнего элемента в любом контексте не должно быть запятой в конце строки.
-
-### Пример секции в `./projectConfig.json`
+### Пример `./projectConfig.json`
 
 ```json
 {
@@ -267,18 +277,20 @@ img:
  [ './src/img/*.{jpg,jpeg,gif,png,svg}',
    './src/blocks/page-header/img/*.{jpg,jpeg,gif,png,svg}',
    './src/blocks/page-footer/img/*.{jpg,jpeg,gif,png,svg}' ]
+pug:
+ [ './src/blocks/page-header/page-header.pug',
+   './src/blocks/page-footer/page-footer.pug' ]
 ```
 
 
 
 ## Удобное создание нового блока
 
-Предусмотрена команда для быстрого создания файловой структуры нового блока.
+Предусмотрена команда для быстрого создания файловой структуры нового блока. По умолчанию создаются: scss- и pug-файл, `readme.md` блока и его подпапки `img` и `bg-img`
 
 ```bash
 # формат: node createBlock.js ИМЯБЛОКА [доп. расширения через пробел]
-node createBlock.js block-1 # создаст папку блока, block-1.html, block-1.scss и подпапку img/ для этого блока
-node createBlock.js block-2 js pug # создаст папку блока, block-2.html, block-2.scss, block-2.js, block-2.pug и подпапку img/ для этого блока
+node createBlock.js block-test # создаст папку блока, block-test.pug, block-test.scss, подпапки img/ и bg-img/ для этого блока
 ```
 
 Если блок уже существует, файлы не будут затёрты, но создадутся те файлы, которые ещё не существуют.
@@ -290,19 +302,13 @@ node createBlock.js block-2 js pug # создаст папку блока, block
 ```bash
 build/          # Папка сборки, здесь работает сервер автообновлений.
 src/            # Исходные файлы
-  _include/     # - фрагменты html для вставки на страницы
   blocks/       # - блоки проекта
   css/          # - можно положить добавочные css-файлы (нужно подключить в copiedCss, иначе игнорируются)
   fonts/        # - можно положить шрифты проекта (будут автоматически скопированы в папку сборки)
   img/          # - можно положить добавочные картинки (нужно подключить в addImages, иначе игнорируются)
   js/           # - можно положить добавочные js-файлы (нужно подключить в addJsBefore, addJsAfter или copiedJs, иначе игнорируются)
-  scss/         # - стили (style.scss скомпилируется, прочие нужно подключить в addCssBefore, addCssAfter или singleCompiled, иначе они будут проигнорированы)
-  index.html    # - главная страница проекта
-  blocks-demo.html # - библиотека блоков
+  pug/          # - примеси, шаблоны pug
+  scss/         # - стили (файл style.scss скомпилируется, прочие нужно подключить в addCssBefore, addCssAfter или singleCompiled, иначе они будут проигнорированы)
+  index.pug     # - главная страница проекта
+  blocks-demo.pug # - библиотека блоков
 ```
-
-
-
-## Комментирование для разработчиков
-
-Для html-файлов можно использовать комментарии вида `<!--DEV Комментарий -->` — такие комментарии не попадут в собранный html.

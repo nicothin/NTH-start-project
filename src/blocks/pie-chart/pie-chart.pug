@@ -1,0 +1,28 @@
+//- Все примеси в этом файле должны начинаться c имени блока (pie-chart)
+
+mixin pie-chart(percent, mods)
+
+  //- Принимает:
+  //-   percent  {string} - процент заполнения
+  //-   mods     {string} - список модификаторов
+  //- Вызов:
+        +pie-chart('30', 'success')
+        +pie-chart('30')(data-size='200' data-border='10')
+        +pie-chart('99', 'radial')(data-size='120' data-border='59.9')
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' pie-chart--' + modsList[i].trim();
+      }
+    }
+    if(typeof(attributes['aria-valuemin']) === 'undefined') {
+      attributes['aria-valuemin'] = 0;
+    }
+    if(typeof(attributes['aria-valuemax']) === 'undefined') {
+      attributes['aria-valuemax'] = 100;
+    }
+
+  span.pie-chart(role='progressbar', class=allMods, aria-valuenow=percent)&attributes(attributes)= percent + '%'

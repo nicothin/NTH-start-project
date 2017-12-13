@@ -4,12 +4,11 @@
 
 .swipe {
 
-  $block-name:                &;
-  // #{$block-name}__element
+  $block-name:                &; // #{$block-name}__element
 
   overflow: hidden;
-  visibility: hidden;
   position: relative;
+  visibility: hidden;
 }
 
 .swipe-wrap {

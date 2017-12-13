@@ -1,0 +1,58 @@
+// В этом файле должны быть стили для БЭМ-блока tooltip, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+// Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
+
+$gray:                        hsl(0, 0%, 50%) !default;
+
+$line-height:                 1.375em !default;
+
+.tooltip {
+
+  $block-name:                &; // #{$block-name}__element
+
+  position: relative;
+  z-index: 1;
+
+  &__btn {
+    display: inline-block;
+    padding: 0;
+    width: $line-height;
+    height: $line-height;
+    overflow: hidden;
+    border: none;
+    color: transparent;
+    background: transparent;
+    background-image: svg-load('../blocks/tooltip/bg-img/info.svg', fill='#{$gray}');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 1em;
+  }
+
+  &__bubble {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    min-width: 150px;
+    max-width: 250px;
+    padding: 10px 15px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+    @supports ( filter: drop-shadow(0 0 0) ) {
+      box-shadow: none;
+      filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: 5px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 5px 5px 5px;
+      border-color: transparent transparent #fff transparent;
+    }
+  }
+}

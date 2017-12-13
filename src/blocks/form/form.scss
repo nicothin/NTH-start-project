@@ -12,11 +12,7 @@ $line-height:                 1.375em !default;
 
   $block-name:                &; // #{$block-name}__element
 
-  &:not(:last-child) {
-    margin-bottom: $line-height;
-  }
-
-  fieldset {
+  &__fieldset {
     min-width: 0;
     padding: 0;
     margin: 0;
@@ -27,7 +23,7 @@ $line-height:                 1.375em !default;
     }
   }
 
-  legend {
+  &__legend {
     display: block;
     width: 100%;
     margin-top: $line-height;

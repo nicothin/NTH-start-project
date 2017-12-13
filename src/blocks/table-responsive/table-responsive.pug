@@ -1,0 +1,31 @@
+//- Все примеси в этом файле должны начинаться c имени блока (table-responsive)
+
+mixin table-responsive(mods)
+
+  //- Принимает:
+  //-   mods  {string} - список модификаторов
+  //- Вызов:
+        +table-responsive()
+          thead
+            tr
+              th Имя и фамилия
+              th Тип мироощущения
+          tbody
+            tr
+              td(data-label='Имя и фамилия') Анатоле Вассерман
+              td(data-label='Тип мироощущения') Девственность
+            tr
+              td(data-label='Имя и фамилия') Джакомо Казанова
+              td(data-label='Тип мироощущения') Небольшая распущенность с лёгкой примесью леденящих душу извращений, чудовищной лжи и имитатора известного органа, обитого телячьей кожей.
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' table-responsive--' + modsList[i].trim();
+      }
+    }
+
+  table.table-responsive(class=allMods)&attributes(attributes)
+    block

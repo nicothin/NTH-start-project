@@ -1,8 +1,6 @@
 // В этом файле должны быть стили для БЭМ-блока table, его элементов,
-// модификаторов, псевдоселекторов, псевдоэлементов, $media-условий...
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
-
-$gray-lightest:               hsl(0, 0%, 90%) !default;
 
 $text-color--muted:           hsl(0, 0%, 50%) !default;
 
@@ -19,18 +17,18 @@ $field-padding-horizontal:    0.7em !default;
 
   $block-name:                &; // #{$block-name}__element
 
-  border-collapse: collapse;
+  display: block;
   width: 100%;
+  overflow-x: auto;
+  margin-top: $line-height;
+  margin-bottom: $line-height;
   border: 1px solid $border-color;
-  margin: $line-height 0;
 
-  caption {
-    padding-top: 0.4em;
-    text-align: right;
-    caption-side: bottom;
-    font-size: $font-size--small;
-    line-height: 1em;
-    color: $text-color--muted;
+  table {
+    margin: 0;
+    border: 0;
+    border-collapse: collapse;
+    width: 100%;
   }
 
   td,
@@ -48,9 +46,31 @@ $field-padding-horizontal:    0.7em !default;
     text-align: left;
   }
 
-  &__header {}
+  tbody,
+  thead,
+  tfoot {
 
-  &__body {}
+    &:last-child {
 
-  &__footer {}
+      tr:last-child {
+
+        // stylelint-disable  max-nesting-depth, selector-max-compound-selectors
+        td,
+        th {
+          border-bottom: 0;
+        }
+        // stylelint-enable
+      }
+    }
+  }
+
+  caption {
+    caption-side: top;
+    text-align: left;
+    padding: 0.4em $field-padding-horizontal;
+    border-bottom: 1px solid $border-color;
+    font-size: $font-size--small;
+    line-height: 1em;
+    color: $text-color--muted;
+  }
 }

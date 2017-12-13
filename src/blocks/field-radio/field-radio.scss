@@ -36,7 +36,8 @@ $line-height:                 1.375em !default;
 
   &__name-text {
 
-    // свой чекбокс
+    // своя радиокнопка с картинкой
+
     // &:before {
     //   content: '';
     //   position: absolute;
@@ -44,12 +45,50 @@ $line-height:                 1.375em !default;
     //   left: 0;
     //   width: 14px;
     //   height: 14px;
-    //   background-image: svg-load('../blocks/field-radio/img_to_bg/radiobutton.svg');
+    //   background-image: svg-load('../blocks/field-radio/bg-img/radiobutton.svg');
     //   background-size: 100%;
     // }
     // @at-root input:checked ~ &:before {
-    //   background-image: svg-load('../blocks/field-radio/img_to_bg/radiobutton--checked.svg');
+    //   background-image: svg-load('../blocks/field-radio/bg-img/radiobutton--checked.svg');
     // }
+
+    // / своя радиокнопка с картинкой
+
+    // своя радиокнопка без картинки
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0.1em;
+      left: 0;
+      width: 14px;
+      height: 14px;
+      border: 2px solid currentColor;
+      border-radius: 50%;
+    }
+
+    @at-root input:focus ~ &:before {
+      @include field-focus;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: calc(0.1em + 4px);
+      left: 4px;
+      width: 6px;
+      height: 6px;
+      opacity: 0;
+      border-radius: 50%;
+      background-color: currentColor;
+      transition: opacity $transition-time;
+
+      @at-root input:checked ~ & {
+        opacity: 1;
+      }
+    }
+
+    // / своя радиокнопка без картинки
   }
 
   &__input {
@@ -65,13 +104,8 @@ $line-height:                 1.375em !default;
       @include field-focus;
     }
 
-    // сокрытие инпута в случае использования своего чекбокса
-    // top: 0;
-    // left: 0;
-    // width: 0;
-    // height: 0;
-    // overflow: hidden;
-    // visibility: hidden;
+    // сокрытие инпута в случае использования своей радиокнопки
+    opacity: 0;
   }
 
   &__help-text-wrap {

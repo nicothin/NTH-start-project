@@ -24,8 +24,13 @@ $transition-time:             0.3s !default;
   &__bar {
     background-color: $gray-lightest;
     border-radius: $border-radius;
-    padding: 0.5em;
     max-width: 100%;
+    min-height: 1px;
     transition: width $transition-time;
+  }
+
+  &__bartext {
+    display: inline-block;
+    padding: 0.5em;
   }
 }

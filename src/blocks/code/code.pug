@@ -1,0 +1,11 @@
+//- Все примеси в этом файле должны начинаться c имени блока (code)
+
+mixin code()
+
+  //- Вызов:
+        +code()
+          code &lt;div class="some">...&lt;/div>
+          code &lt;div class="some">...&lt;/div>
+
+  pre.code&attributes(attributes)
+    block

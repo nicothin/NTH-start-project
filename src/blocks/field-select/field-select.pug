@@ -1,0 +1,111 @@
+//- Все примеси в этом файле должны начинаться c имени блока (field-select)
+
+mixin field-select(title, attrs, options, helpText, mods)
+
+  //- Принимает:
+  //-   title: ''         {string} - название селекта
+  //-   attrs:            {object} - атрибуты селекта
+  //-     name: ''        {string}
+  //-   options {array}
+  //-     {object}
+  //-       title: ''     {string} - текст пункта
+  //-       attrs:        {object} - любые атрибуты пункта
+  //-         value:      {string}
+  //-     {object}
+  //-       attrs:        {object} - любые атрибуты пункта
+  //-         label:      {string}
+  //-       child:        {array}  - потомки (если есть этот элемент, то его родитель — optgroup)
+  //-         {object}
+  //-           title: '' {string}
+  //-           attrs:    {object}
+  //-             value:  {string}
+  //-     {object}
+  //-       title: ''     {string} - текст пункта
+  //-       attrs:        {object} - любые атрибуты пункта
+  //-         value:      {string}
+  //-   helpText: ''      {string} - текст подсказки
+  //-   mods: ''          {string} - модификаторы блока
+  //- Вызов:
+        +field-select(
+          'Название',
+          {
+            name: 'select',
+            id: 'select'
+          },
+          [
+            {
+              title: 'Опция1',
+              attrs: {
+                value: '',
+              }
+            },
+            {
+              title: 'Опция2',
+              attrs: {
+                value: '',
+              }
+            },
+          ],
+          'Подсказка',
+          ''
+        )
+        +field-select(
+          'Название',
+          {
+            name: '',
+            id: ''
+          },
+          [
+            {
+              attrs: {
+                label: 'Группа',
+              },
+              child: [
+                {
+                  title: 'Опция1',
+                  attrs: {
+                    value: 'val01',
+                  }
+                },
+                {
+                  title: 'Опция2',
+                  attrs: {
+                    value: 'val02',
+                  }
+                },
+              ]
+            },
+            {
+              title: 'Опция3',
+              attrs: {
+                value: 'val03',
+              }
+            }
+          ],
+          'Подсказка',
+          ''
+        )
+
+  -
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' field-select--' + modsList[i].trim();
+      }
+    }
+
+  .field-select(class=allMods)&attributes(attributes)
+    if(typeof(title) !== 'undefined' && title)
+      .field-select__name!= title
+    select.field-select__select&attributes(attrs)
+      each option in options
+        //- option= option
+        if(typeof(option.child) !== 'undefined' && option.child)
+          optgroup(label=option.attrs.label)
+            each subOption in option.child
+              option&attributes(subOption.attrs)= subOption.title
+        else if(typeof(option.title) !== 'undefined' && option.title)
+          option&attributes(option.attrs)= option.title
+    if(typeof(helpText) !== 'undefined' && helpText)
+      span.field-select__help-text!= helpText

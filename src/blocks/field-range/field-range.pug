@@ -1,0 +1,45 @@
+//- Все примеси в этом файле должны начинаться c имени блока (field-range)
+
+mixin field-range(props)
+
+  //- Принимает:
+  //-   props {object}
+  //-     title: ''         {string} - текст с названием (выводится над полем)
+  //-     helpText: ''      {string} - пояснение под полем
+  //-     mods: ''          {string} - модификаторы блока
+  //-     attrs:            {object} - любые атрибуты для input
+  //-       name:           {string}
+  //- Вызов:
+        +field-range({
+          title: 'Название',
+          helpText: 'Подсказка',
+          mods: '',
+          attrs: {
+            name: 'counter',
+            min: '1',
+            max: '100',
+            step: '1',
+            value: '40',
+          }
+        })
+
+  -
+    if(typeof(props) === 'undefined') {
+      var props = {};
+    }
+    var allMods = '';
+    if(typeof(props.mods) !== 'undefined' && props.mods) {
+      var modsList = props.mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' field-range--' + modsList[i].trim();
+      }
+    }
+
+  label.field-range(class=allMods)&attributes(attributes)
+    if(typeof(props.title) !== 'undefined' && props.title)
+      span.field-range__name!= props.title
+    span.field-range__input-wrap
+      input.field-range__input(type='range')&attributes(props.attrs)
+      if(typeof(props.helpText) !== 'undefined' && props.helpText)
+        span.field-range__help-text!= props.helpText
+      block

@@ -11,19 +11,24 @@ $toggler-part-bg-color:       #000 !default;
 
   position: relative;
   z-index: 1;
-  display: flex;
-  align-items: center;
+  display: inline-block;
+  padding: 0;
   width: 30px;
-  height: 30px;
+  line-height: 30px;
+  background: transparent;
+  border: none;
   user-select: none;
   cursor: pointer;
 
   > span {
+    position: relative;
     display: inline-block;
+    vertical-align: middle;
     width: 100%;
     height: $toggler-part-height;
+    font-size: 0;
+    color: transparent;
     background: transparent;
-    position: relative;
 
     &:before,
     &:after {
@@ -43,6 +48,24 @@ $toggler-part-bg-color:       #000 !default;
 
     &:after {
       transform: rotate3d(0, 0, 1, -45deg);
+    }
+  }
+
+  &--sm {
+
+    $toggler-part-height:     1px;
+
+    width: 20px;
+    line-height: 20px;
+
+    > span {
+      width: 60%;
+
+      &:before,
+      &:after {
+        height: $toggler-part-height;
+        background: $toggler-part-bg-color;
+      }
     }
   }
 }

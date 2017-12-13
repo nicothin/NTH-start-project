@@ -3,7 +3,6 @@
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
 $gray-lighter:                hsl(0, 0%, 80%) !default;
-$gray-lightest:               hsl(0, 0%, 90%) !default;
 $color-success:               hsl(120, 39%, 54%) !default;
 $color-danger:                hsl(2, 64%, 58%) !default;
 $color-warning:               hsl(35, 84%, 62%) !default;
@@ -16,13 +15,13 @@ $border-radius:               3px !default;
   $block-name:                &; // #{$block-name}__element
 
   position: relative;
-  padding: 0.7em 1em;
+  padding: 0.7em 1.5em 0.7em 1em;
   margin-top: 1em;
   margin-bottom: 1em;
   border: 1px solid $gray-lighter;
   border-radius: $border-radius;
   color: $text-color;
-  background-color: $gray-lightest;
+  background-color: #fff;
 
   > * {
 
@@ -45,41 +44,49 @@ $border-radius:               3px !default;
     color: inherit;
   }
 
-  &--danger {
-    background-color: $color-danger;
-    border: 1px solid darken($color-danger, 10%);
-    color: #fff;
-
-    a {
-      color: inherit;
-      text-decoration: underline;
-
-      &:hover,
-      &:focus {
-        text-decoration: none;
-      }
-    }
+  &__close {
+    position: absolute;
+    top: 0;
+    right: 0;
   }
 
-  &--success {
-    background-color: $color-success;
-    border: 1px solid darken($color-success, 10%);
-    color: #fff;
 
-    a {
-      color: inherit;
-      text-decoration: underline;
-
-      &:hover,
-      &:focus {
-        text-decoration: none;
-      }
-    }
-  }
 
   &--warning {
     background-color: lighten($color-warning, 30%);
     border: 1px solid lighten($color-warning, 20%);
     color: $text-color;
   }
+
+  // &--danger {
+  //   background-color: $color-danger;
+  //   border: 1px solid darken($color-danger, 10%);
+  //   color: #fff;
+
+  //   a {
+  //     color: inherit;
+  //     text-decoration: underline;
+
+  //     &:hover,
+  //     &:focus {
+  //       text-decoration: none;
+  //     }
+  //   }
+  // }
+
+  // &--success {
+  //   background-color: $color-success;
+  //   border: 1px solid darken($color-success, 10%);
+  //   color: #fff;
+
+  //   a {
+  //     color: inherit;
+  //     text-decoration: underline;
+
+  //     &:hover,
+  //     &:focus {
+  //       text-decoration: none;
+  //     }
+  //   }
+  // }
 }
