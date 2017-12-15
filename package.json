@@ -11,6 +11,7 @@
   "scripts": {
     "test:style": "stylelint \"src/**/*.scss\" --syntax=scss",
     "test:editorconfig": "editorconfig-cli src/**/*.{js,pug}",
+    "test": "npm run test:style && npm run test:editorconfig && npm run build",
     "start": "gulp",
     "deploy": "cross-env NODE_ENV=production ./node_modules/.bin/gulp build && cross-env ./node_modules/.bin/gulp deploy",
     "build": "cross-env NODE_ENV=production npm start build",
