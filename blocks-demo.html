@@ -254,6 +254,28 @@
 </pre>
           </section>
 
+          <section class="blocks-library__item" id="grid-mixins" data-id="grid">
+            <h2 class="blocks-library__item-title">
+              <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/grid" title="Папка блока в репозитории">
+                <svg width="20" height="20">
+                  <use xlink:href="#folder" />
+                </svg>
+              </a>Примеси-генераторы модульной сетки</h2>
+            <p>По умолчанию в сборку берётся файл с примесями для создания модульной сетки: <code>./src/scss/mixins/grid-mixins.scss</code>. Отдельного БЭМ-блока для сеток нет, используйте семантические классы и применяйте к ним примеси. <br>
+              <a href="https://codepen.io/nicothin/pen/aJEOwE?editors=1100">Пример использования на codepen.io</a>.</p>
+            <p>Необходимая структура:</p>
+            <ul>
+              <li>Контейнер — общая обёртка, обеспечивающая ширину, боковые внутренние отступы (<code>padding</code>) и центровку (<code>margin: auto</code>). Может содержать любой контент.</li>
+              <li>Прямой родитель сетки — обёртка ячеек, обеспечивающая отрицательные боковые отступы (<code>margin</code>).</li>
+              <li>Ячейки любой ширины (по умолчанию 12 колонок, для изменения — переопредить переменную).</li>
+            </ul>
+            <div class="blocks-library__code-wrapper"><span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+              <div class="blocks-library__code">
+                <pre class="code"><code>&lt;section class="promo"></code><code>  &lt;div class="promo__inner"></code><code>    &lt;h2>Заголовок промо&lt;/h2></code><code>    &lt;p>Произвольный контент до модульной сетки&lt;/p></code><code>    &lt;div class="promo__grid"></code><code>      &lt;div class="promo__img">&lt;/div></code><code>      &lt;div class="promo__text">&lt;/div></code><code>    &lt;/div></code><code>  &lt;/div></code><code>&lt;/section></code><code>&nbsp;</code><code>.promo {</code><code></code><code>  &__inner {</code><code>    @include container();</code><code>  }</code><code></code><code>  &__grid {</code><code>    @include row();</code><code>  }</code><code></code><code>  &__img {</code><code>    @include col();</code><code>    @include col(md, 5);</code><code>  }</code><code></code><code>  &__text {</code><code>    @include col();</code><code>    @include col(md, 7);</code><code>  }</code><code>}</code></pre>
+              </div>
+            </div>
+          </section>
+
           <section class="blocks-library__item" id="sprite-svg" data-id="sprite-svg">
             <h2 class="blocks-library__item-title">
               <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/sprite-svg" title="Папка блока в репозитории">
