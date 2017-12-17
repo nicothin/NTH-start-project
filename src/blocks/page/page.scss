@@ -1,5 +1,5 @@
 
-// Make viewport great again (responsive)
+// Сделаем viewport великим снова! (привет, IE10)
 // http://timkadlec.com/2012/10/ie10-snap-mode-and-responsive-design/
 @at-root {
 
@@ -54,17 +54,17 @@ body {
   outline: none !important; // stylelint-disable-line  declaration-no-important
 }
 
-// iOS 'clickable elements' fix for role='button'
+// Коррекция для кликабельных элементов с указанной ролью в iOS
 [role='button'] {
   cursor: pointer;
 }
 
-// We love Safari
+// Мы любим Сафари (на самом деле, нет).
 input[type='search'] {
   -webkit-appearance: textfield; // stylelint-disable-line  property-no-vendor-prefix
 }
 
-// Avoid 300ms click delay on touch devices that support the `touch-action` CSS property.
+// Стилевая коррекция 300ms задержки (для поддерживающих браузеров)
 a,
 // area,
 button,
@@ -77,7 +77,7 @@ textarea {
   touch-action: manipulation;
 }
 
-// We love EDGE! This is a browser!
+// Мы любим EDGE! Это браузер! (Спорное замечание.)
 svg {
 
   a &,
@@ -89,4 +89,19 @@ svg {
 img {
   max-width: 100%;
   height: auto;
+}
+
+a {
+  color: $link-color;
+  text-decoration-skip: ink;
+  transition: color 0.3s;
+
+  &:hover,
+  &:focus {
+    color: $link-color--hover;
+  }
+
+  &:visited {
+    color: $link-color--hover;
+  }
 }

@@ -111,6 +111,51 @@ block content
   +block-lib('typo', 'Текст, теги', false)
     include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/typo/readme.md
 
+  +block-lib('grid-mixins', 'Примеси-генераторы модульной сетки', false, 'grid')
+    :markdown-it(linkify, html='true', typographer='true', quotes='«»')
+      По умолчанию в сборку берётся файл с примесями для создания модульной сетки: `./src/scss/mixins/grid-mixins.scss`. Отдельного БЭМ-блока для сеток нет, используйте семантические классы и применяйте к ним примеси. <br>
+      [Пример использования на codepen.io](https://codepen.io/nicothin/pen/aJEOwE?editors=1100).
+
+      Необходимая структура:
+
+      - Контейнер — общая обёртка, обеспечивающая ширину, боковые внутренние отступы (`padding`) и центровку (`margin: auto`). Может содержать любой контент.
+      - Прямой родитель сетки — обёртка ячеек, обеспечивающая отрицательные боковые отступы (`margin`).
+      - Ячейки любой ширины (по умолчанию 12 колонок, для изменения — переопредить переменную).
+
+    +block-lib-code()
+      pre.code
+        code &lt;section class="promo">
+        code   &lt;div class="promo__inner">
+        code     &lt;h2>Заголовок промо&lt;/h2>
+        code     &lt;p>Произвольный контент до модульной сетки&lt;/p>
+        code     &lt;div class="promo__grid">
+        code       &lt;div class="promo__img">&lt;/div>
+        code       &lt;div class="promo__text">&lt;/div>
+        code     &lt;/div>
+        code   &lt;/div>
+        code &lt;/section>
+        code &nbsp;
+        code .promo {
+        code
+        code   &__inner {
+        code     @include container();
+        code   }
+        code
+        code   &__grid {
+        code     @include row();
+        code   }
+        code
+        code   &__img {
+        code     @include col();
+        code     @include col(md, 5);
+        code   }
+        code
+        code   &__text {
+        code     @include col();
+        code     @include col(md, 7);
+        code   }
+        code }
+
   +block-lib('sprite-svg', 'SVG-спрайт c <a href="https://github.com/w0rm/gulp-svgstore">gulp-svgstore</a>', false)
     include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/sprite-svg/readme.md
 
