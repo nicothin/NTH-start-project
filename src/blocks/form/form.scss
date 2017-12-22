@@ -26,12 +26,14 @@ $line-height:                 1.375em !default;
   &__legend {
     display: block;
     width: 100%;
+    max-width: 100%; // Привет IE
     margin-top: $line-height;
     margin-bottom: ($line-height / 2);
     font-size: $font-size--h3;
     font-family: $font-family--headings;
     font-weight: 700;
     line-height: $line-height;
+    white-space: normal; // Привет IE
     color: currentColor;
   }
 }
