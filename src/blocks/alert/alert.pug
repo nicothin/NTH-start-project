@@ -10,13 +10,13 @@ mixin alert(title, mods)
           p Текст
         +alert('Внимание', 'warning, some-mod-name')
           p Предупреждение
-          +close('Закрыть', 'sm')(class='alert__close')
+          +close('Закрыть', 'sm')(class='alert__close', aria-label='Закрыть')
         +alert('Внимание', 'danger')
           p Проблема
-          +close('Закрыть', 'sm')(class='alert__close')
+          +close('Закрыть', 'sm')(class='alert__close', aria-label='Закрыть')
         +alert('Внимание', 'success')
           p Успех
-          +close('Закрыть', 'sm')(class='alert__close')
+          +close('Закрыть', 'sm')(class='alert__close', aria-label='Закрыть')
 
   -
     //- список модификаторов
@@ -29,7 +29,7 @@ mixin alert(title, mods)
       }
     }
 
-  .alert(class=allMods)&attributes(attributes)
+  .alert(class=allMods, role='alert')&attributes(attributes)
     if (typeof(title) !== 'undefined' && title !== '')
       h4.alert__header!= title
     block

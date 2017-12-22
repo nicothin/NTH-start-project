@@ -121,11 +121,12 @@ p,
 ul,
 ol,
 dl,
+table,
 blockquote,
 pre,
 address,
 figure {
-  margin-top: ($line-height / 2);
+  margin-top: 0;
   margin-bottom: ($line-height / 2);
 }
 

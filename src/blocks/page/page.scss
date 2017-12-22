@@ -77,12 +77,16 @@ textarea {
   touch-action: manipulation;
 }
 
-// Мы любим EDGE! Это браузер! (Спорное замечание.)
+
 svg {
 
   a &,
   button & {
-    pointer-events: none;
+    pointer-events: none; // Мы любим EDGE! Это браузер! (нет)
+  }
+
+  &:not(:root) {
+    overflow: hidden; // Скрыть выступающее за границы в IE
   }
 }
 
@@ -93,7 +97,9 @@ img {
 
 a {
   color: $link-color;
+  background-color: transparent;
   text-decoration-skip: ink;
+  -webkit-text-decoration-skip: objects; // stylelint-disable-line  property-no-vendor-prefix
   transition: color 0.3s;
 
   &:hover,
@@ -104,4 +110,9 @@ a {
   &:visited {
     color: $link-color--hover;
   }
+}
+
+hr {
+  box-sizing: content-box; // Проблема Firefox
+  overflow: visible;       // Проблема Edge и IE
 }

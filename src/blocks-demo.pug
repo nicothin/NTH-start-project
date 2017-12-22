@@ -217,10 +217,10 @@ block content
     include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/alert/readme.md
     +alert()
       p Обычное сообщение
-      +close('Закрыть', 'sm')(class='alert__close')
+      +close('Закрыть', 'sm')(class='alert__close', aria-label='Закрыть')
     +alert('Заголовок', 'warning, some-mod-name')
       p Блок сообщения с модификаторами.
-      +close('Закрыть', 'sm')(class='alert__close')
+      +close('Закрыть', 'sm')(class='alert__close', aria-label='Закрыть')
     +block-lib-code()
       include:show-code(first-line='//- Pug-файл этого блока:') blocks/alert/alert.pug
 
