@@ -18,16 +18,16 @@
     &:before {
       content: '.' attr(data-id);
       position: absolute;
-      top: -1em;
+      top: -1.2em;
       left: 0;
       font-weight: 700;
       text-transform: lowercase;
-      font-size: 1.7rem;
-      line-height: 2rem;
-      height: 2rem;
+      font-size: 1em;
+      line-height: 1;
+      height: 1em;
       text-align: right;
       white-space: nowrap;
-      color: $gray-light;
+      color: $gray-lighter;
 
       @media (min-width: $screen-md) {
         left: 2.5rem;

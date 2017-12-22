@@ -5,20 +5,25 @@ $gray:                        hsl(0, 0%, 50%) !default;
 $gray-lighter:                hsl(0, 0%, 80%) !default;
 $gray-lightest:               hsl(0, 0%, 90%) !default;
 
-$font-family:                 -apple-system, BlinkMacSystemFont, 'Roboto', 'Ubuntu', 'Droid Sans', 'Helvetica Neue', 'Arial', sans-serif !default;
-$font-family--headings:       $font-family !default;
-$font-family--monospace:      'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace !default;
+$font-size--root:             16px !default;
 
-$font-size:                   14px !default;
-$font-size--h1:               2.25em !default;
-$font-size--h2:               1.875em !default;
-$font-size--h3:               1.5em !default;
-$font-size--h4:               1.25em !default;
-$font-size--h5:               1em !default;
-$font-size--h6:               1em !default;
-$font-size--small:            0.75em !default;
+$font-size:                   1rem !default; // rem(16px)
 
-$line-height:                 1.375em !default;
+$font-size--h1:               rem(40px) !default;
+$font-size--h2:               rem(32px) !default;
+$font-size--h3:               rem(24px) !default;
+$font-size--h4:               rem(18px) !default;
+$font-size--h5:               rem(16px) !default;
+$font-size--h6:               rem(16px) !default;
+
+$font-size--small:            80% !default;
+
+$line-height:                 1.5;
+
+$font-family:                 -apple-system, BlinkMacSystemFont, 'Roboto', 'Ubuntu', 'Droid Sans', 'Helvetica Neue', 'Arial', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+$font-family--serif:          'Georgia', 'Times New Roman', 'Times', serif;
+$font-family--monospace:      SFMono-Regular, 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
+$font-family--headings:       $font-family;
 
 $text-color:                  hsl(0, 0%, 10%) !default;
 $border-color:                hsl(0, 0%, 60%) !default;
@@ -39,6 +44,15 @@ $border-radius:               3px !default;
 // }
 
 
+
+html {
+  font-size: $font-size--root;
+
+  // Для адаптивной типографики, менять font-size на html
+  // @media (min-width: $screen-md) {
+  //   font-size: ($font-size--root + 2);
+  // }
+}
 
 body {
   // ТОЛЬКО типографика!
@@ -62,7 +76,7 @@ h5,
 h6 {
   font-family: $font-family--headings;
   font-weight: 700;
-  line-height: $line-height;
+  line-height: 1.2;
   color: currentColor;
 }
 
@@ -72,8 +86,8 @@ h6 {
 h1,
 h2,
 h3 {
-  margin-top: $line-height;
-  margin-bottom: ($line-height / 2);
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
 }
 
 // .h4,
@@ -82,37 +96,43 @@ h3 {
 h4,
 h5,
 h6 {
-  margin-top: ($line-height / 2);
-  margin-bottom: ($line-height / 2);
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 // .h1,
 h1 {
+  /* font-size: #{(($font-size--h1 / ($font-size--h1 * 0 + 1)) * $font-size--root)}; */
   font-size: $font-size--h1;
 }
 
 // .h2,
 h2 {
+  /* font-size: #{(($font-size--h2 / ($font-size--h2 * 0 + 1)) * $font-size--root)}; */
   font-size: $font-size--h2;
 }
 
 // .h3,
 h3 {
+  /* font-size: #{(($font-size--h3 / ($font-size--h3 * 0 + 1)) * $font-size--root)}; */
   font-size: $font-size--h3;
 }
 
 // .h4,
 h4 {
+  /* font-size: #{(($font-size--h4 / ($font-size--h4 * 0 + 1)) * $font-size--root)}; */
   font-size: $font-size--h4;
 }
 
 // .h5,
 h5 {
+  /* font-size: #{(($font-size--h5 / ($font-size--h5 * 0 + 1)) * $font-size--root)}; */
   font-size: $font-size--h5;
 }
 
 // .h6,
 h6 {
+  /* font-size: #{(($font-size--h6 / ($font-size--h6 * 0 + 1)) * $font-size--root)}; */
   font-size: $font-size--h6;
 }
 
@@ -127,7 +147,7 @@ pre,
 address,
 figure {
   margin-top: 0;
-  margin-bottom: ($line-height / 2);
+  margin-bottom: 1rem;
 }
 
 address {
@@ -181,12 +201,12 @@ small {
 
 sub,
 sup {
-  font-size: 70%;
+  font-size: $font-size--small;
 }
 
 // .mark,
 mark {
-  background: #fcf8e3;
+  background: rgba($color-warning, 0.3);
   padding: 0.1em 0.3em;
 }
 
