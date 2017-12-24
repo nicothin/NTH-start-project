@@ -5,9 +5,9 @@
 $font-family:                 -apple-system, BlinkMacSystemFont, 'Roboto', 'Ubuntu', 'Droid Sans', 'Helvetica Neue', 'Arial', sans-serif !default;
 $font-family--headings:       $font-family !default;
 
-$font-size--h4:               1.25em !default;
+$font-size--h4:               rem(18px) !default;
 
-$line-height:                 1.375em !default;
+$line-height:                 1.5 !default;
 
 $screen-lg:                   992px !default;
 
@@ -66,13 +66,13 @@ $z-index-modal:               100 !default;
   }
 
   &__header {
-    padding: 5px 40px 0 10px;
+    padding: 0 rem(40px) 0 rem(15px);
     flex-shrink: 0;
   }
 
   &__title {
-    margin-top: ($line-height / 2);
-    margin-bottom: ($line-height / 2);
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
     font-size: $font-size--h4;
     line-height: 1.4;
     font-weight: 700;
@@ -86,12 +86,12 @@ $z-index-modal:               100 !default;
   }
 
   &__body {
-    padding: 0 10px;
+    padding: 0 rem(15px);
     flex-grow: 1;
   }
 
   &__footer {
-    padding: 10px;
+    padding: rem(15px);
     flex-shrink: 0;
   }
 

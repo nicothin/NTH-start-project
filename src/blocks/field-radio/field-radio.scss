@@ -2,14 +2,14 @@
 // модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
-$line-height:                 1.375em !default;
+$line-height:                 1.5 !default;
 
 .field-radio {
 
   $block-name:                &; // #{$block-name}__element
 
   display: block;
-  margin-bottom: ($line-height / 2);
+  margin-bottom: 1rem;
 
   &__title {
     display: block;
@@ -21,7 +21,7 @@ $line-height:                 1.375em !default;
   &__input-wrap {
 
     & + & {
-      margin-top: ($line-height / 2);
+      margin-top: 1rem;
     }
   }
 
@@ -35,16 +35,17 @@ $line-height:                 1.375em !default;
   }
 
   &__name-text {
+    display: inline-block;
 
     // своя радиокнопка с картинкой
 
     // &:before {
     //   content: '';
     //   position: absolute;
-    //   top: 0.1em;
+    //   top: rem(5px);
     //   left: 0;
-    //   width: 14px;
-    //   height: 14px;
+    //   width: rem(14px);
+    //   height: rem(14px);
     //   background-image: svg-load('../blocks/field-radio/bg-img/radiobutton.svg');
     //   background-size: 100%;
     // }
@@ -59,10 +60,10 @@ $line-height:                 1.375em !default;
     &:before {
       content: '';
       position: absolute;
-      top: 0.1em;
+      top: rem(5px);
       left: 0;
-      width: 14px;
-      height: 14px;
+      width: rem(14px);
+      height: rem(14px);
       border: 2px solid currentColor;
       border-radius: 50%;
     }
@@ -74,10 +75,10 @@ $line-height:                 1.375em !default;
     &:after {
       content: '';
       position: absolute;
-      top: calc(0.1em + 4px);
-      left: 4px;
-      width: 6px;
-      height: 6px;
+      top: rem(9px);
+      left: rem(4px);
+      width: rem(6px);
+      height: rem(6px);
       opacity: 0;
       border-radius: 50%;
       background-color: currentColor;

@@ -86,7 +86,7 @@ h6 {
 h1,
 h2,
 h3 {
-  margin-top: 2rem;
+  margin-top: 3rem;
   margin-bottom: 0.5rem;
 }
 
@@ -96,7 +96,7 @@ h3 {
 h4,
 h5,
 h6 {
-  margin-top: 0.5rem;
+  margin-top: 1rem;
   margin-bottom: 0.5rem;
 }
 
@@ -156,7 +156,7 @@ address {
 
 ul,
 ol {
-  padding-left: 1.2em;
+  padding-left: 1.5rem;
 }
 
 ol ol,
@@ -179,7 +179,7 @@ dd {
   margin-left: 0;
 
   @media (min-width: $screen-sm) {
-    margin-left: 1.8em;
+    margin-left: 1.5rem;
   }
 
   & + dt {
@@ -188,8 +188,8 @@ dd {
 }
 
 hr {
-  margin-top: $line-height;
-  margin-bottom: $line-height;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
   border: 0;
   border-top: 1px solid $border-color;
 }

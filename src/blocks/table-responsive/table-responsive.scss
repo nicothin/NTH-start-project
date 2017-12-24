@@ -4,8 +4,6 @@
 
 $border-color:                hsl(0, 0%, 60%) !default;
 
-$line-height:                 1.375em !default;
-
 $screen-xs:                   0 !default;
 $screen-sm:                   480px !default;
 $screen-md:                   768px !default;
@@ -17,8 +15,7 @@ $screen-xxl:                  1800px !default;
 
   $block-name:                &; // #{$block-name}__element
 
-  margin-top: $line-height;
-  margin-bottom: $line-height;
+  margin-bottom: 1rem;
   border-collapse: collapse;
   border: 1px solid $border-color;
   width: 100%;

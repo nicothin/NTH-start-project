@@ -91,7 +91,7 @@ block content
 
 
 
-  h1 Блоки стартового репозитория #[a(href='index.html') проекта]
+  h1.blocks-library__title Блоки стартового репозитория #[a(href='index.html') проекта]
 
   +block-lib('page', 'Страница', false)
     include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/page/readme.md
@@ -378,6 +378,9 @@ block content
         }
         .embed-responsive-demo__item:last-child {
           padding-left: 5px;
+        }
+        .embed-responsive-demo .embed-responsive {
+          margin: 0;
         }
       }
     .embed-responsive-demo
@@ -760,7 +763,7 @@ block content
   +block-lib('nouislider', 'Выбор диапазона с <a href="https://refreshless.com/nouislider/">noUiSlider</a>', false)
     include:markdown-it(linkify, html='true', typographer='true', quotes='«»') blocks/nouislider/readme.md
     +nouislider('demo-nouislider')
-      p
+      p(style='margin-top: 1rem;')
         input#demo-nouislider-start(type='number', value='10')
         input#demo-nouislider-end(type='number', value='80')
     +block-lib-code()

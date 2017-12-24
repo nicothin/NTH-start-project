@@ -4,22 +4,22 @@
 
 $text-color--muted:           hsl(0, 0%, 50%) !default;
 
-$font-size--small:            0.75em !default;
+$font-size--small:            80% !default;
 
-$line-height:                 1.375em !default;
+$line-height:                 1.5 !default;
 
 .field-actions {
 
   $block-name:                &; // #{$block-name}__element
 
   display: block;
-  margin-top: $line-height;
-  margin-bottom: ($line-height / 2);
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 
   &__text {
     display: block;
-    margin-top: ($line-height / 2);
-    margin-bottom: ($line-height / 2);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     font-size: $font-size--small;
     color: $text-color--muted;
     line-height: 1.2em;

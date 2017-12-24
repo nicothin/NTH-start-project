@@ -2,11 +2,11 @@
 // модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
-$font-family--headings:       -apple-system, BlinkMacSystemFont, 'Roboto', 'Ubuntu', 'Droid Sans', 'Helvetica Neue', 'Arial', sans-serif !default;
+$font-family--headings:       -apple-system, BlinkMacSystemFont, 'Roboto', 'Ubuntu', 'Droid Sans', 'Helvetica Neue', 'Arial', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol' !default;
 
-$font-size--h3:               1.5em !default;
+$font-size--h3:               rem(24px) !default;
 
-$line-height:                 1.375em !default;
+$line-height:                 1.5 !default;
 
 .form {
 
@@ -19,7 +19,7 @@ $line-height:                 1.375em !default;
     border: 0;
 
     &:not(:last-child) {
-      margin-bottom: $line-height;
+      margin-bottom: 1rem;
     }
   }
 
@@ -27,8 +27,8 @@ $line-height:                 1.375em !default;
     display: block;
     width: 100%;
     max-width: 100%; // Привет IE
-    margin-top: $line-height;
-    margin-bottom: ($line-height / 2);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     font-size: $font-size--h3;
     font-family: $font-family--headings;
     font-weight: 700;

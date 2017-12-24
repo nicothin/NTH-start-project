@@ -14,8 +14,8 @@ $gray-lightest:               hsl(0, 0%, 90%) !default;
   &:before {
     content: '';
     display: block;
-    width: 3em;
-    height: 3em;
+    width: 3rem;
+    height: 3rem;
     border: 3px solid $gray-lightest;
     border-top: 3px solid $gray-lighter;
     border-radius: 50%;

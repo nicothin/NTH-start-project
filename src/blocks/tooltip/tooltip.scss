@@ -4,7 +4,7 @@
 
 $gray:                        hsl(0, 0%, 50%) !default;
 
-$line-height:                 1.375em !default;
+$line-height:                 1.5 !default;
 
 .tooltip {
 
@@ -16,8 +16,8 @@ $line-height:                 1.375em !default;
   &__btn {
     display: inline-block;
     padding: 0;
-    width: $line-height;
-    height: $line-height;
+    width: ($line-height * 1em);
+    height: ($line-height * 1em);
     overflow: hidden;
     border: none;
     color: transparent;
@@ -32,9 +32,9 @@ $line-height:                 1.375em !default;
     position: absolute;
     top: calc(100% + 8px);
     left: 0;
-    min-width: 150px;
-    max-width: 250px;
-    padding: 10px 15px;
+    min-width: rem(150px);
+    max-width: rem(250px);
+    padding: 0.8rem 1rem;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 

@@ -2,17 +2,19 @@
 // модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
+$screen-md:                   768px !default;
+
 .comment {
 
   $block-name:                &; // #{$block-name}__element
 
-  margin-top: $line-height;
-  margin-bottom: $line-height;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 
   @media (min-width: $screen-md) {
 
     & & {
-      padding-left: calc(60px + 1em);
+      padding-left: calc(60px + 1rem);
     }
 
     & & & & {
@@ -26,7 +28,7 @@
 
   &__avatar-wrap {
     flex-shrink: 0;
-    margin-right: 1em;
+    margin-right: 1rem;
 
     img {
       display: block;

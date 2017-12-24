@@ -9,7 +9,7 @@ $text-color--muted:           hsl(0, 0%, 50%) !default;
 
 $border-color:                hsl(0, 0%, 60%) !default;
 
-$line-height:                 1.375em !default;
+$line-height:                 1.5 !default;
 
 $field-padding-vertical:      0.3em !default;
 $field-padding-horizontal:    0.7em !default;
@@ -18,8 +18,8 @@ $field-padding-horizontal:    0.7em !default;
 
   $block-name:                &; // #{$block-name}__element
 
-  margin-top: $line-height;
-  margin-bottom: $line-height;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 
   &__links {
     margin: 0;
@@ -59,8 +59,12 @@ $field-padding-horizontal:    0.7em !default;
 
     &--active {
 
+      @media (min-width: $screen-md) {
+        border-bottom: 1px solid transparent;
+      }
+
       #{$block-name}__link {
-        color: $text-color;
+        color: $text-color !important;
         background-color: #fff;
       }
     }
@@ -75,6 +79,10 @@ $field-padding-horizontal:    0.7em !default;
 
     &:hover,
     &:focus {
+      color: $text-color--muted;
+    }
+
+    &:visited {
       color: $text-color--muted;
     }
   }
@@ -93,6 +101,10 @@ $field-padding-horizontal:    0.7em !default;
 
     .js & {
       display: none;
+    }
+
+    & > *:last-child {
+      margin-bottom: 0;
     }
 
     &--active {

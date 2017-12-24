@@ -5,9 +5,7 @@
 $gray-lightest:               hsl(0, 0%, 90%) !default;
 $border-color:                hsl(0, 0%, 60%) !default;
 
-$line-height:                 1.375em !default;
-
-$border-radius:               3px !default;
+$border-radius:               rem(3px) !default;
 
 $transition-time:             0.3s !default;
 
@@ -15,8 +13,8 @@ $transition-time:             0.3s !default;
 
   $block-name:                &; // #{$block-name}__element
 
-  margin-top: $line-height;
-  margin-bottom: $line-height;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   border: 1px solid $border-color;
   border-radius: $border-radius;
   text-align: center;

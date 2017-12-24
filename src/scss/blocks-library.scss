@@ -3,22 +3,24 @@
 
 .blocks-library {
 
+  &__title {
+    font-weight: 400;
+  }
+
   &__item {
     position: relative;
     padding: 1rem;
     border: 2px dashed $gray-lighter;
-    margin: 2.5em 0;
+    margin: 2.5rem 0;
 
     @media (min-width: $screen-md) {
-      padding: 1.5rem 2rem 1.5rem 5rem;
-      // min-height: 18rem;
-      margin: 5rem 0;
+      padding: 1.5rem 2rem 0.5rem 3rem;
     }
 
     &:before {
       content: '.' attr(data-id);
       position: absolute;
-      top: -1.2em;
+      top: -1.2rem;
       left: 0;
       font-weight: 700;
       text-transform: lowercase;
@@ -30,8 +32,8 @@
       color: $gray-lighter;
 
       @media (min-width: $screen-md) {
-        left: 2.5rem;
-        top: 20rem;
+        left: 1.4rem;
+        top: 20.5rem;
         width: 21rem;
         transform: rotate(-90deg);
         transform-origin: 0 100%;
@@ -40,21 +42,18 @@
   }
 
   &__item-title {
-    margin: 0.3em 0;
+    margin: 0 0 0.5rem;
   }
 
   &__item-title-link {
     display: inline-block;
-    margin-right: 10px;
+    margin-right: 0.8rem;
 
     svg {
       display: block;
+      fill: $gray;
     }
   }
-
-  &__sub-item {}
-
-  &__sub-item-title {}
 
   &__code-wrapper {
     position: relative;
@@ -62,40 +61,40 @@
 
   &__code-show-trigger {
     display: block;
-    width: 3rem;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     cursor: pointer;
     margin-bottom: 0.3em;
 
     @media (min-width: $screen-md) {
       position: absolute;
-      top: -1.8rem;
-      left: -4rem;
+      top: -1.65rem;
+      left: -2.5rem;
     }
   }
 
   &__code-icon {
     display: block;
-    width: 3rem;
-    height: 2px;
-    background-color: $gray-light;
+    width: 30px;
+    height: 3px;
+    background-color: $gray-lighter;
 
     &:before,
     &:after {
       position: absolute;
-      background-color: $gray-light;
-      width: 3rem;
-      height: 2px;
+      background-color: $gray-lighter;
+      width: 30px;
+      height: 3px;
       left: 0;
       content: '';
     }
 
     &:before {
-      top: 8px;
+      top: 10px;
     }
 
     &:after {
-      top: 16px;
+      top: 20px;
     }
   }
 
@@ -115,7 +114,6 @@
     }
 
     pre {
-      // margin: 0;
       max-height: 500px;
     }
   }

@@ -2,8 +2,6 @@
 // модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
-$line-height:                 1.375em !default;
-
 $text-color:                  hsl(0, 0%, 10%) !default;
 
 $border-color:                hsl(0, 0%, 60%) !default;
@@ -14,13 +12,13 @@ $border-color:                hsl(0, 0%, 60%) !default;
 
   display: flex;
   flex-wrap: wrap;
-  margin-top: $line-height;
-  margin-bottom: $line-height;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 
   &__item {
     display: block;
-    padding: 0.5em;
-    min-width: 2.5em;
+    padding: 0.5rem;
+    min-width: 2.5rem;
     border: 1px solid $border-color;
     text-decoration: none;
     text-align: center;

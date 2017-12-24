@@ -6,7 +6,20 @@ mixin form(mods)
   //- Принимает:
   //-   mods    {string} - список модификаторов
   //- Вызов:
-        +form('mod')
+        +form()
+          +fieldset('Название1')
+            +field-text({
+              helpText: 'Подсказка',
+              attrs: {
+                placeholder: 'Пример'
+              }
+            })
+            +field-text({
+              helpText: 'Подсказка',
+              attrs: {
+                placeholder: 'Пример'
+              }
+            })
 
   -
     // список модификаторов
@@ -29,7 +42,13 @@ mixin fieldset(legend, mods)
   //-   legend  {string} - название группы полей
   //-   mods    {string} - список модификаторов
   //- Вызов:
-        +form('mod')
+        +fieldset('Название1')
+          +field-text({
+            helpText: 'Подсказка',
+            attrs: {
+              placeholder: 'Пример'
+            }
+          })
 
   -
     // список модификаторов

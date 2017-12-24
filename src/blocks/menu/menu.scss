@@ -12,7 +12,7 @@ $border-color:                hsl(0, 0%, 60%) !default;
 
   min-width: 10em;
   margin: 0;
-  padding: 0.3em 0;
+  padding: 0;
   list-style: none;
 
   &__item {
@@ -20,8 +20,8 @@ $border-color:                hsl(0, 0%, 60%) !default;
     &--separator {
 
       &:not(:last-child) {
-        padding-bottom: 0.3em;
-        margin-bottom: 0.3em;
+        padding-bottom: 0.3rem;
+        margin-bottom: 0.3rem;
         border-bottom: 1px solid $border-color;
       }
     }
@@ -33,11 +33,14 @@ $border-color:                hsl(0, 0%, 60%) !default;
     width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
-    padding: 0.3em 1em;
+    padding: 0.5rem 1rem;
     color: $text-color;
     text-decoration: none;
 
     &:hover,
-    &:focus {}
+    &:focus {
+      text-decoration: none;
+      background-color: $gray-lightest;
+    }
   }
 }

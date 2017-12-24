@@ -2,8 +2,6 @@
 // модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
-$line-height:                 1.375em !default;
-
 $text-color:                  hsl(0, 0%, 10%) !default;
 
 .breadcrumbs {
@@ -13,7 +11,8 @@ $text-color:                  hsl(0, 0%, 10%) !default;
 
   padding: 0;
   list-style: none;
-  margin: $line-height 0;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   color: $text-color;
 
   a {
@@ -35,7 +34,7 @@ $text-color:                  hsl(0, 0%, 10%) !default;
     &:not(:last-child):after {
       content: '>';
       display: inline-block;
-      margin-left: 0.8em;
+      margin-left: 0.8rem;
       color: $gray;
     }
   }

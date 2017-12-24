@@ -9,7 +9,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  margin-bottom: ($line-height / 2);
+  margin-bottom: 1rem;
 
   .btn,
   select,                     // обычно, не участвует в группировке
