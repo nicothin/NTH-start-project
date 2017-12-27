@@ -98,7 +98,7 @@
               <path d="M19 33.5h14c.552 0 1-.447 1-1s-.448-1-1-1H19c-.552 0-1 .447-1 1s.448 1 1 1zm0 6h22c.552 0 1-.447 1-1s-.448-1-1-1H19c-.552 0-1 .447-1 1s.448 1 1 1zm0 6h22c.552 0 1-.447 1-1s-.448-1-1-1H19c-.552 0-1 .447-1 1s.448 1 1 1z" />
             </symbol>
           </svg>
-          <h1>Блоки стартового репозитория <a href="index.html">проекта</a></h1>
+          <h1 class="blocks-library__title">Блоки стартового репозитория <a href="index.html">проекта</a></h1>
 
           <section class="blocks-library__item" id="page" data-id="page">
             <h2 class="blocks-library__item-title">
@@ -184,19 +184,19 @@
                 </tr>
                 <tr>
                   <td><code>&lt;strong></code></td>
-                  <td>**действительно значимый текст**</td>
+                  <td><strong>действительно значимый текст</strong></td>
                 </tr>
                 <tr>
                   <td><code>&lt;b></code></td>
-                  <td>**просто выделенный текст, лид**</td>
+                  <td><b>просто выделенный текст, лид</b></td>
                 </tr>
                 <tr>
                   <td><code>&lt;i></code></td>
-                  <td>_иностранное слово или термин_</td>
+                  <td><i>иностранное слово или термин</i></td>
                 </tr>
                 <tr>
                   <td><code>&lt;em></code></td>
-                  <td>_эмфатическое ударение_</td>
+                  <td><em>эмфатическое ударение</em></td>
                 </tr>
                 <tr>
                   <td><code>&lt;s></code></td>
@@ -595,6 +595,53 @@
             </div>
           </section>
 
+          <section class="blocks-library__item" id="or" data-id="or">
+            <h2 class="blocks-library__item-title">
+              <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/or" title="Папка блока в репозитории">
+                <svg width="20" height="20">
+                  <use xlink:href="#folder" />
+                </svg>
+              </a>Разеделитель «или»</h2>
+            <p>Разделитель «или» с горизонтальными линиями.</p>
+            <div class="or">
+              <div class="or__inner">или</div>
+            </div>
+            <div class="or  or--some-mod">
+              <div class="or__inner">Текст взамен «или»</div>
+            </div>
+            <div class="blocks-library__code-wrapper"><span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+              <div class="blocks-library__code">
+                <pre class="code">
+<code>//- Pug-файл этого блока:</code>
+<code>//- Все примеси в этом файле должны начинаться c имени блока (or)</code>
+<code>&nbsp;</code>
+<code>mixin or(text, mods)</code>
+<code>&nbsp;</code>
+<code>  //- Принимает:</code>
+<code>  //-   text    {string} - текст</code>
+<code>  //-   mods    {string} - список модификаторов</code>
+<code>  //- Вызов:</code>
+<code>        +or('Текст', 'some-mod')</code>
+<code>&nbsp;</code>
+<code>  -</code>
+<code>    // список модификаторов</code>
+<code>    var allMods = '';</code>
+<code>    if(typeof(mods) !== 'undefined' && mods) {</code>
+<code>      var modsList = mods.split(',');</code>
+<code>      for (var i = 0; i < modsList.length; i++) {</code>
+<code>        allMods = allMods + ' or--' + modsList[i].trim();</code>
+<code>      }</code>
+<code>    }</code>
+<code>    if(typeof(text) === 'undefined')</code>
+<code>      text = 'или'</code>
+<code>&nbsp;</code>
+<code>  .or(class=allMods)&attributes(attributes)</code>
+<code>    .or__inner!= text</code>
+</pre>
+              </div>
+            </div>
+          </section>
+
           <section class="blocks-library__item" id="code" data-id="code">
             <h2 class="blocks-library__item-title">
               <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/code" title="Папка блока в репозитории">
@@ -664,9 +711,9 @@
                   <use xlink:href="#folder" />
                 </svg>
               </a>Сообщения</h2>
-            <div class="alert">
+            <div class="alert" role="alert">
               <p>Обычное сообщение</p><button class="close  close--sm alert__close" aria-label="Закрыть"><span>Закрыть</span></button></div>
-            <div class="alert  alert--warning alert--some-mod-name">
+            <div class="alert  alert--warning alert--some-mod-name" role="alert">
               <h4 class="alert__header">Заголовок</h4>
               <p>Блок сообщения с модификаторами.</p><button class="close  close--sm alert__close" aria-label="Закрыть"><span>Закрыть</span></button></div>
             <div class="blocks-library__code-wrapper"><span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
@@ -685,13 +732,13 @@
 <code>          p Текст</code>
 <code>        +alert('Внимание', 'warning, some-mod-name')</code>
 <code>          p Предупреждение</code>
-<code>          +close('Закрыть', 'sm')(class='alert__close')</code>
+<code>          +close('Закрыть', 'sm')(class='alert__close', aria-label='Закрыть')</code>
 <code>        +alert('Внимание', 'danger')</code>
 <code>          p Проблема</code>
-<code>          +close('Закрыть', 'sm')(class='alert__close')</code>
+<code>          +close('Закрыть', 'sm')(class='alert__close', aria-label='Закрыть')</code>
 <code>        +alert('Внимание', 'success')</code>
 <code>          p Успех</code>
-<code>          +close('Закрыть', 'sm')(class='alert__close')</code>
+<code>          +close('Закрыть', 'sm')(class='alert__close', aria-label='Закрыть')</code>
 <code>&nbsp;</code>
 <code>  -</code>
 <code>    //- список модификаторов</code>
@@ -704,7 +751,7 @@
 <code>      }</code>
 <code>    }</code>
 <code>&nbsp;</code>
-<code>  .alert(class=allMods)&attributes(attributes)</code>
+<code>  .alert(class=allMods, role='alert')&attributes(attributes)</code>
 <code>    if (typeof(title) !== 'undefined' && title !== '')</code>
 <code>      h4.alert__header!= title</code>
 <code>    block</code>
@@ -1399,6 +1446,9 @@
                 }
                 .embed-responsive-demo__item:last-child {
                   padding-left: 5px;
+                }
+                .embed-responsive-demo .embed-responsive {
+                  margin: 0;
                 }
               }
 
@@ -2291,7 +2341,20 @@
 <code>  //- Принимает:</code>
 <code>  //-   mods    {string} - список модификаторов</code>
 <code>  //- Вызов:</code>
-<code>        +form('mod')</code>
+<code>        +form()</code>
+<code>          +fieldset('Название1')</code>
+<code>            +field-text({</code>
+<code>              helpText: 'Подсказка',</code>
+<code>              attrs: {</code>
+<code>                placeholder: 'Пример'</code>
+<code>              }</code>
+<code>            })</code>
+<code>            +field-text({</code>
+<code>              helpText: 'Подсказка',</code>
+<code>              attrs: {</code>
+<code>                placeholder: 'Пример'</code>
+<code>              }</code>
+<code>            })</code>
 <code>&nbsp;</code>
 <code>  -</code>
 <code>    // список модификаторов</code>
@@ -2314,7 +2377,13 @@
 <code>  //-   legend  {string} - название группы полей</code>
 <code>  //-   mods    {string} - список модификаторов</code>
 <code>  //- Вызов:</code>
-<code>        +form('mod')</code>
+<code>        +fieldset('Название1')</code>
+<code>          +field-text({</code>
+<code>            helpText: 'Подсказка',</code>
+<code>            attrs: {</code>
+<code>              placeholder: 'Пример'</code>
+<code>            }</code>
+<code>          })</code>
 <code>&nbsp;</code>
 <code>  -</code>
 <code>    // список модификаторов</code>
@@ -2613,7 +2682,7 @@
             </a>Выбор диапазона с <a href="https://refreshless.com/nouislider/">noUiSlider</a></h2>
           <p>ВНИМАНИЕ: примесь возвращает только разметку. Нужно включить и настроить слайдер в <code>nouislider/nouislider.js</code></p>
           <div class="nouislider" id="demo-nouislider"></div>
-          <p><input id="demo-nouislider-start" type="number" value="10"><input id="demo-nouislider-end" type="number" value="80"></p>
+          <p style="margin-top: 1rem;"><input id="demo-nouislider-start" type="number" value="10"><input id="demo-nouislider-end" type="number" value="80"></p>
           <div class="blocks-library__code-wrapper"><span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
             <div class="blocks-library__code">
               <pre class="code">
