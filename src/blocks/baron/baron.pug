@@ -1,0 +1,31 @@
+//- Блок для кастомного скролла baron: https://github.com/Diokuz/baron
+//- Нуждается в соотв. зависимости: https://www.npmjs.com/package/baron
+//- (должна быть указана в ./projectConfig.json)
+
+mixin baron(mods)
+
+  //- Принимает:
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +baron('some-mod')(style='width:100px; height: 100px')
+          p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt dicta aliquid nemo, sit possimus, eveniet tempore minus, doloremque incidunt, nihil quos aperiam ab iure quia. Ipsa sit porro incidunt, sed!
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' baron--' + modsList[i].trim();
+      }
+    }
+
+  // ._ubuntu12
+  .baron.baron__clipper(class=allMods)&attributes(attributes)
+    .baron__scroller
+      block
+    .baron__track
+      //- .baron__control.baron__up ▲ // В оставленной теме оформления не используется
+      .baron__free
+        .baron__bar
+      //- .baron__control.baron__down ▼ // В оставленной теме оформления не используется

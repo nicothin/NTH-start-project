@@ -58,7 +58,9 @@
     "off-canvas": [],
     "modal": [],
     "tabs": [],
-    "object-fit-polyfill": []
+    "object-fit-polyfill": [],
+    "or": [],
+    "baron": []
   },
   "addCssBefore": [
     "./src/scss/functions.scss",
@@ -81,7 +83,8 @@
     "./node_modules/owl.carousel/dist/owl.carousel.js",
     "./node_modules/swipejs/build/swipe.min.js",
     "./node_modules/nouislider/distribute/nouislider.js",
-    "./node_modules/object-fit-images/dist/ofi.js"
+    "./node_modules/object-fit-images/dist/ofi.js",
+    "./node_modules/baron/baron.min.js"
   ],
   "addJsAfter": [
     "./src/js/global-script.js"

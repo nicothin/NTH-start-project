@@ -1,0 +1,24 @@
+//- Все примеси в этом файле должны начинаться c имени блока (or)
+
+mixin or(text, mods)
+
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +or('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' or--' + modsList[i].trim();
+      }
+    }
+    if(typeof(text) === 'undefined')
+      text = 'или'
+
+  .or(class=allMods)&attributes(attributes)
+    .or__inner!= text

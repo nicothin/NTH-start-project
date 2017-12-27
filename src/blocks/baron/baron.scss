@@ -1,0 +1,80 @@
+// В этом файле должны быть стили для БЭМ-блока baron, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+// Оригинальные темы оформления: https://github.com/Diokuz/baron/blob/master/skins/styles.css
+// Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
+
+.baron {
+
+  $block-name:                &; // #{$block-name}__element
+
+  $scrollbar-width:           14px;
+
+  &__clipper {
+    position: relative;
+    overflow: hidden;
+  }
+
+  &__scroller {
+    overflow-y: scroll;
+    box-sizing: border-box;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    padding-right: $scrollbar-width;
+    width: 100%;
+    height: 100%;
+    -webkit-overflow-scrolling: touch; // remove line to customize scrollbar in iOs
+
+    &::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+    }
+  }
+
+  &__track {
+    opacity: 0;
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: $scrollbar-width;
+    background-color: $gray-lightest;
+
+    #{$block-name}._scrollbar & {
+      opacity: 1;
+    }
+  }
+
+  &__free {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+  }
+
+  &__bar {
+    display: none;
+    position: absolute;
+    left: ($scrollbar-width * -1 + 1);
+    z-index: 1;
+    width: ($scrollbar-width - 2);
+    box-sizing: border-box;
+    opacity: 1;
+    pointer-events: auto;
+    background: $gray-lighten;
+
+    #{$block-name}._scrollbar & {
+      display: block;
+    }
+
+    #{$block-name}--dragging &,
+    &:hover {
+      background-color: $gray-light;
+    }
+  }
+
+  &__control {
+    display: none;
+  }
+}

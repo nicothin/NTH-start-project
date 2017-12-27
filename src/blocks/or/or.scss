@@ -1,0 +1,26 @@
+// В этом файле должны быть стили для БЭМ-блока or, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+// Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
+
+.or {
+
+  $block-name:                &; // #{$block-name}__element
+
+  display: flex;
+  align-items: center;
+
+  &:before,
+  &:after {
+    content: '';
+    flex-grow: 1;
+    height: 1px;
+    background-color: $gray-light;
+  }
+
+  &__inner {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    font-size: $font-size--small;
+    color: $gray-light;
+  }
+}
