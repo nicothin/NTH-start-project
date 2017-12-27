@@ -18,6 +18,10 @@
     "lint-staged": "lint-staged",
     "precommit": "lint-staged && gulp test:pug"
   },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ],
   "lint-staged": {
     "*.js": "editorconfig-cli",
     "*.pug": "editorconfig-cli",
