@@ -1,14 +1,19 @@
 //- Блок для кастомного скролла baron: https://github.com/Diokuz/baron
 //- Нуждается в соотв. зависимости: https://www.npmjs.com/package/baron
-//- (должна быть указана в ./projectConfig.json)
+//- (должна быть указана в ./projectConfig.json, есть по умолчанию)
+//- ВНИМАНИЕ! Помимо вызова примеси, нужно включить baron на блоке! см. blocks/baron/baron.js
 
-mixin baron(mods)
+mixin baron(mods, tag)
 
   //- Принимает:
   //-   mods    {string} - список модификаторов
+  //-   tag     {string} - тег
   //- Вызов:
         +baron('some-mod')(style='width:100px; height: 100px')
           p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt dicta aliquid nemo, sit possimus, eveniet tempore minus, doloremque incidunt, nihil quos aperiam ab iure quia. Ipsa sit porro incidunt, sed!
+        .some-block
+          +baron('', 'section')(class='some-block__demo')
+            p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt dicta aliquid nemo, sit possimus, eveniet tempore minus, doloremque incidunt, nihil quos aperiam ab iure quia. Ipsa sit porro incidunt, sed!
 
   -
     // список модификаторов
@@ -19,13 +24,16 @@ mixin baron(mods)
         allMods = allMods + ' baron--' + modsList[i].trim();
       }
     }
+    var parentTag = 'div';
+    if(typeof(tag) !== 'undefined' && tag) {
+      parentTag = tag;
+    }
 
-  // ._ubuntu12
-  .baron.baron__clipper(class=allMods)&attributes(attributes)
+  #{parentTag}.baron(class=allMods)&attributes(attributes)
     .baron__scroller
       block
     .baron__track
-      //- .baron__control.baron__up ▲ // В оставленной теме оформления не используется
+      //- .baron__control.baron__up ▲
       .baron__free
         .baron__bar
-      //- .baron__control.baron__down ▼ // В оставленной теме оформления не используется
+      //- .baron__control.baron__down ▼

@@ -9,10 +9,8 @@
 
   $scrollbar-width:           14px;
 
-  &__clipper {
-    position: relative;
-    overflow: hidden;
-  }
+  position: relative;
+  overflow: hidden;
 
   &__scroller {
     overflow-y: scroll;
@@ -41,7 +39,7 @@
     width: $scrollbar-width;
     background-color: $gray-lightest;
 
-    #{$block-name}._scrollbar & {
+    #{$block-name}--scrollbar & {
       opacity: 1;
     }
   }
@@ -64,7 +62,7 @@
     pointer-events: auto;
     background: $gray-lighten;
 
-    #{$block-name}._scrollbar & {
+    #{$block-name}--scrollbar & {
       display: block;
     }
 
