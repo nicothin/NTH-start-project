@@ -47,9 +47,19 @@
   </tbody>
 </table>
 
-Если при вызове `npm start` ничего не происходит, смотрите `./projectConfig.json`, он содержит синтаксическую ошибку. Проверить можно [линтером](http://jsonlint.com/).
-
 Предполагается, что все команды вы выполняете в bash (для OSX и Linux это самый обычный встроенный терминал, для Windows это, к примеру, Git Bash). В Windows установку пакетов (`npm i`) нужно выполять в терминале, запущенном от имени администратора.
+
+
+
+## Как начать новый проект c этим репозиторием
+
+1. Клонировать этот репозиторий в новую папку (`git clone https://github.com/nicothin/NTH-start-project.git new-project`, см. [шпаргалку](https://github.com/nicothin/web-development/tree/master/git#%D0%9A%D0%BB%D0%BE%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D1%80%D0%B5%D0%BF%D0%BE%D0%B7%D0%B8%D1%82%D0%BE%D1%80%D0%B8%D1%8F)) и зайти в неё (`cd new-project`).
+2. Стереть историю разработки этого репозитория (`rm -rf .git`), инициировать новый (`git init`), создать удалённый репозиторий и привязать его (`git remote add origin git@github.com:nicothin/test.git`, см. [шпаргалку](https://github.com/nicothin/web-development/tree/master/git#%D0%A3%D0%B4%D0%B0%D0%BB%D1%91%D0%BD%D0%BD%D1%8B%D0%B5-%D1%80%D0%B5%D0%BF%D0%BE%D0%B7%D0%B8%D1%82%D0%BE%D1%80%D0%B8%D0%B8)).
+3. Отредактировать `README.md`, `package.json` (название проекта, автор, сторонние пакеты и пр.) и `projectConfig.json` (нужные на проекте блоки, сторонние пакеты). Удалив пакет из `package.json`, не забудьте убрать его из сборки в `projectConfig.json`.
+4. Установить зависимости (`npm i`).
+5. Запустить сервер разработки (`npm start`).
+
+Если при вызове `npm start` ничего не происходит, смотрите `./projectConfig.json` (вероятно, он содержит синтаксическую ошибку, проверить можно [линтером](http://jsonlint.com/)).
 
 
 
