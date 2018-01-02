@@ -35,14 +35,18 @@ let lists = getFilesList(projectConfig);
 let repoUrl = require('./package.json').repository.url.replace(/\.git$/g, '');
 // console.log(repoUrl);
 
-// файл с настройками фавиконок
+// Файл с настройками фавиконок
 const faviconData = './faviconData.json';
 
+// Сообщение, записываемое в стилевой файл
+let styleFileMsg = '/*!*\n * ВНИМАНИЕ! Этот файл генерируется автоматически.\n * Не пишите сюда ничего вручную, все такие правки будут потеряны при следующей компиляции.\n * Правки без возможности компиляции ДОЛЬШЕ И ДОРОЖЕ в 2-3 раза.\n * Нужны дополнительные стили? Создайте новый css-файл и подключите его к странице.\n * Читайте ./README.md для понимания.\n */\n\n';
+
 // Формирование и запись диспетчера подключений (style.scss), который компилируется в style.min.css
-let styleImports = '/*!*\n * ВНИМАНИЕ! Этот файл генерируется автоматически.\n * Не пишите сюда ничего вручную, все такие правки будут потеряны.\n * Читайте ./README.md для понимания.\n */\n\n';
+let styleImports = styleFileMsg;
 lists.css.forEach(function(blockPath) {
   styleImports += '@import \''+blockPath+'\';\n';
 });
+styleImports = styleImports += styleFileMsg;
 fs.writeFileSync(dirs.srcPath + 'scss/style.scss', styleImports);
 
 // Формирование и запись списка примесей (mixins.pug) со списком инклудов всех pug-файлов блоков
@@ -89,6 +93,7 @@ gulp.task('style', function () {
   const sass = require('gulp-sass');
   const sourcemaps = require('gulp-sourcemaps');
   const wait = require('gulp-wait');
+  const insert = require('gulp-insert');
   console.log('---------- Компиляция стилей');
   return gulp.src(dirs.srcPath + 'scss/style.scss')
     .pipe(plumber({
@@ -105,6 +110,7 @@ gulp.task('style', function () {
     .pipe(debug({title: "Style:"}))
     .pipe(sass())
     .pipe(postcss(postCssPlugins))
+    .pipe(insert.append(styleFileMsg))
     .pipe(gulpIf(!isDev, cleanss()))
     .pipe(rename('style.min.css'))
     .pipe(gulpIf(isDev, sourcemaps.write('/')))
@@ -123,6 +129,7 @@ gulp.task('style:single', function () {
     const sass = require('gulp-sass');
     const sourcemaps = require('gulp-sourcemaps');
     const wait = require('gulp-wait');
+    const insert = require('gulp-insert');
     console.log('---------- Компиляция добавочных стилей');
     return gulp.src(projectConfig.singleCompiled)
       .pipe(plumber({
@@ -139,6 +146,7 @@ gulp.task('style:single', function () {
       .pipe(debug({title: "Single style:"}))
       .pipe(sass())
       .pipe(postcss(postCssPlugins))
+      .pipe(insert.append(styleFileMsg))
       .pipe(gulpIf(!isDev, cleanss()))
       .pipe(gulpIf(isDev, sourcemaps.write('/')))
       .pipe(size({
