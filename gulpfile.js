@@ -518,7 +518,7 @@ gulp.task('serve', ['build'], function() {
   });
   // Слежение за стилями
   gulp.watch([
-    dirs.srcPath + 'scss/style.scss',
+    dirs.srcPath + 'scss/**/*.scss',
     dirs.srcPath + dirs.blocksDirName + '/**/*.scss',
     projectConfig.addCssBefore,
     projectConfig.addCssAfter,
