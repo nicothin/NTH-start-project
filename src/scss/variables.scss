@@ -23,7 +23,7 @@ $color-warning:               hsl(35, 84%, 62%);
 
 $text-color:                  $gray-darkest;
 $text-color--muted:           $gray;
-$body-bg:                     #fff;
+$body-bg:                     $white;
 
 $link-color:                  $color-main;
 $link-color--hover:           darken($color-main, 15%);
