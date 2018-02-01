@@ -69,14 +69,6 @@ let postCssPlugins = [
   atImport(),
   inlineSVG(),
   objectFitImages(),
-  imageInliner({
-    // Осторожнее с именами файлов картинок! Добавляйте имя блока как префикс к имени картинки.
-    assetPaths: [
-      'src/blocks/**/bg-img/',
-    ],
-    // Инлайнятся только картинки менее 5 Кб.
-    maxFileSize: 5120
-  })
 ];
 
 // Очистка папки сборки

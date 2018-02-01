@@ -1,7 +1,5 @@
 # Стартовый проект с gulp  ![Test Status](https://travis-ci.org/nicothin/NTH-start-project.svg?branch=master) [![devDependencies Status](https://david-dm.org/nicothin/NTH-start-project/dev-status.svg)](https://david-dm.org/nicothin/NTH-start-project?type=dev) [![dependencies Status](https://david-dm.org/nicothin/NTH-start-project/status.svg)](https://david-dm.org/nicothin/NTH-start-project)
 
-**Внимание! Сейчас в сборке есть неисправленный (и не найденный пока) баг со скоростью сборки (без к-л изменений в коде сборка стилей занимаете теперь не 2 секунды, а 20). Пока это не исправлено, начинайте работу с каким-либо другим стартовым репозиторием.** [Ишью по теме](https://github.com/nicothin/NTH-start-project/issues/53)
-
 <table>
   <thead>
     <tr>
