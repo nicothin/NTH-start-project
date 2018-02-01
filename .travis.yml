@@ -4,4 +4,4 @@ node_js:
   - "8.2"
 
 notifications:
-  email: false
+  email: true
