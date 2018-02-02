@@ -3,7 +3,6 @@
 // Подключения зависимостей
 const fs = require('fs');
 const gulp = require('gulp');
-const gulpSequence = require('gulp-sequence');
 const browserSync = require('browser-sync').create();
 const realFavicon = require ('gulp-real-favicon');
 
@@ -488,6 +487,13 @@ gulp.task('build', function (callback) {
   );
 });
 
+gulp.task('build', gulp.series(
+  'clean',
+  gulp.parallel('sprite:svg', 'sprite:png', 'favicons'),
+  gulp.parallel('style', 'style:single', 'js', 'copy:css', 'copy:img', 'copy:js', 'copy:fonts'),
+  'pug'
+));
+
 // Отправка в GH pages (ветку gh-pages репозитория)
 gulp.task('deploy', function() {
   const ghPages = require('gulp-gh-pages');
@@ -496,66 +502,61 @@ gulp.task('deploy', function() {
     .pipe(ghPages());
 });
 
-// Задача по умолчанию
-gulp.task('default', ['serve']);
-
 // Локальный сервер, слежение
-gulp.task('serve', ['build'], function() {
+gulp.task('serve', gulp.series('build', function() {
+
   browserSync.init({
     server: dirs.buildPath,
+    port: port,
     startPath: 'index.html',
     open: false,
-    port: 8080,
   });
-  // Слежение за стилями
+
   gulp.watch([
     dirs.srcPath + 'scss/**/*.scss',
     dirs.srcPath + dirs.blocksDirName + '/**/*.scss',
     projectConfig.addCssBefore,
     projectConfig.addCssAfter,
-  ], ['style']);
-  // Слежение за отдельными стилями
-  gulp.watch(projectConfig.singleCompiled, ['style:single',]);
-  // Слежение за добавочными стилями
-  if(projectConfig.copiedCss.length) {
-    gulp.watch(projectConfig.copiedCss, ['copy:css']);
-  }
-  // Слежение за изображениями
-  if(lists.img.length) {
-    gulp.watch(lists.img, ['watch:img']);
-  }
-  // Слежение за добавочными JS
-  if(projectConfig.copiedJs.length) {
-    gulp.watch(projectConfig.copiedJs, ['watch:copied:js']);
-  }
-  // Слежение за шрифтами
-  gulp.watch('/fonts/*.{ttf,woff,woff2,eot,svg}', {cwd: dirs.srcPath}, ['watch:fonts']);
-  // Слежение за pug
-  gulp.watch([
-    dirs.srcPath + '/**/*.pug',
-  ], ['watch:pug']);
-  // Слежение за JS
-  if(lists.js.length) {
-    gulp.watch(lists.js, ['watch:js']);
-  }
-  // Слежение за SVG (спрайты)
-  if((projectConfig.blocks['sprite-svg']) !== undefined) {
-    gulp.watch('*.svg', {cwd: spriteSvgPath}, ['watch:sprite:svg']); // следит за новыми и удаляемыми файлами
-  }
-  // Слежение за PNG (спрайты)
-  if((projectConfig.blocks['sprite-png']) !== undefined) {
-    gulp.watch('*.png', {cwd: spritePngPath}, ['watch:sprite:png']); // следит за новыми и удаляемыми файлами
-  }
-});
+  ], gulp.series('style'));
 
-// Браузерсинк с 3-м галпом — такой браузерсинк...
-gulp.task('watch:img', ['copy:img'], reload);
-gulp.task('watch:copied:js', ['copy:js'], reload);
-gulp.task('watch:fonts', ['copy:fonts'], reload);
-gulp.task('watch:pug', ['pug'], reload);
-gulp.task('watch:js', ['js'], reload);
-gulp.task('watch:sprite:svg', ['sprite:svg'], reload);
-gulp.task('watch:sprite:png', ['sprite:png'], reload);
+  if(projectConfig.singleCompiled.length) {
+    gulp.watch(projectConfig.singleCompiled, gulp.series('style:single'));
+  }
+
+  if(projectConfig.copiedCss.length) {
+    gulp.watch(projectConfig.copiedCss, gulp.series('copy:css', reload));
+  }
+
+  if(lists.img.length) {
+    gulp.watch(lists.img, gulp.series('copy:img', reload));
+  }
+
+  if(projectConfig.copiedJs.length) {
+    gulp.watch(projectConfig.copiedJs, gulp.series('copy:js', reload));
+  }
+
+  gulp.watch(dirs.srcPath + '/fonts/*.{ttf,woff,woff2,eot,svg}', gulp.series('copy:fonts', reload));
+
+  gulp.watch(dirs.srcPath + '/**/*.pug', gulp.series('pug', reload));
+
+  if(lists.js.length) {
+    gulp.watch(lists.js, gulp.series('js', reload));
+  }
+
+  if((projectConfig.blocks['sprite-svg']) !== undefined) {
+    gulp.watch('*.svg', {cwd: spriteSvgPath}, gulp.series('sprite:svg', reload));
+  }
+
+  if((projectConfig.blocks['sprite-png']) !== undefined) {
+    gulp.watch('*.png', {cwd: spritePngPath}, gulp.series('sprite:png', reload));
+  }
+
+}));
+
+// Задача по умолчанию
+gulp.task('default',
+  gulp.series('serve')
+);
 
 
 
@@ -573,40 +574,59 @@ function getFilesList(config){
     'pug': [],
   };
 
-  // Style
+  // Обходим массив с блоками проекта
   for (let blockName in config.blocks) {
-    res.css.push(config.dirs.srcPath + config.dirs.blocksDirName + '/' + blockName + '/' + blockName + '.scss');
-    if(config.blocks[blockName].length) {
-      config.blocks[blockName].forEach(function(elementName) {
-        res.css.push(config.dirs.srcPath + config.dirs.blocksDirName + '/' + blockName + '/' + blockName + elementName + '.scss');
-      });
+    var blockPath = config.dirs.srcPath + config.dirs.blocksDirName + '/' + blockName + '/';
+
+    // Разметка (Pug)
+    if(fileExist(blockPath + blockName + '.pug')){
+      res.pug.push(blockPath + blockName + '.pug');
     }
+    else {
+      console.log('---------- Блок ' + blockName + ' указан как используемый, но не имеет pug-файла.');
+    }
+
+    // Стили
+    if(fileExist(blockPath + blockName + '.scss')){
+      res.css.push(blockPath + blockName + '.scss');
+      if(config.blocks[blockName].length) {
+        config.blocks[blockName].forEach(function(elementName) {
+          if(fileExist(blockPath + blockName + elementName + '.scss')){
+            res.css.push(blockPath + blockName + elementName + '.scss');
+          }
+        });
+      }
+    }
+    else {
+      console.log('---------- Блок ' + blockName + ' указан как используемый, но не имеет scss-файла.');
+    }
+
+    // Скрипты
+    if(fileExist(blockPath + blockName + '.js')){
+      res.js.push(blockPath + blockName + '.js');
+      if(config.blocks[blockName].length) {
+        config.blocks[blockName].forEach(function(elementName) {
+          if(fileExist(blockPath + blockName + elementName + '.js')){
+            res.js.push(blockPath + blockName + elementName + '.js');
+          }
+        });
+      }
+    }
+    else {
+      // console.log('---------- Блок ' + blockName + ' указан как используемый, но не имеет JS-файла.');
+    }
+
+    // Картинки (тупо от всех блоков, без проверки)
+    res.img.push(config.dirs.srcPath + config.dirs.blocksDirName + '/' + blockName + '/img/*.{jpg,jpeg,gif,png,svg}');
+
   }
+
+  // Добавления
   res.css = res.css.concat(config.addCssAfter);
   res.css = config.addCssBefore.concat(res.css);
-
-  // JS
-  for (let blockName in config.blocks) {
-    res.js.push(config.dirs.srcPath + config.dirs.blocksDirName + '/' + blockName + '/' + blockName + '.js');
-    if(config.blocks[blockName].length) {
-      config.blocks[blockName].forEach(function(elementName) {
-        res.js.push(config.dirs.srcPath + config.dirs.blocksDirName + '/' + blockName + '/' + blockName + elementName + '.js');
-      });
-    }
-  }
   res.js = res.js.concat(config.addJsAfter);
   res.js = config.addJsBefore.concat(res.js);
-
-  // Images
-  for (let blockName in config.blocks) {
-    res.img.push(config.dirs.srcPath + config.dirs.blocksDirName + '/' + blockName + '/img/*.{jpg,jpeg,gif,png,svg}');
-  }
   res.img = config.addImages.concat(res.img);
-
-  // Pug
-  for (let blockName in config.blocks) {
-    res.pug.push('../blocks/' + blockName + '/' + blockName + '.pug');
-  }
 
   return res;
 }
@@ -616,13 +636,14 @@ function getFilesList(config){
  * @param  {string} path      Путь до файла или папки]
  * @return {boolean}
  */
-function fileExist(path) {
-  const fs = require('fs');
-  try {
-    fs.statSync(path);
-  } catch(err) {
-    return !(err && err.code === 'ENOENT');
+function fileExist(filepath){
+  let flag = true;
+  try{
+    fs.accessSync(filepath, fs.F_OK);
+  }catch(e){
+    flag = false;
   }
+  return flag;
 }
 
 // Перезагрузка браузера
