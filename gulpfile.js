@@ -110,7 +110,7 @@ gulp.task('style', function () {
       showTotal: false,
     }))
     .pipe(gulp.dest(dirs.buildPath + '/css'))
-    .pipe(browserSync.stream({match: '**/*.css'}));
+    .pipe(browserSync.stream());
 });
 
 // Компиляция отдельных файлов
@@ -145,7 +145,7 @@ gulp.task('style:single', function () {
         showTotal: false,
       }))
       .pipe(gulp.dest(dirs.buildPath + '/css'))
-      .pipe(browserSync.stream({match: '**/*.css'}));
+      .pipe(browserSync.stream());
   }
 });
 
@@ -535,9 +535,11 @@ gulp.task('serve', gulp.series('build', function() {
     gulp.watch(projectConfig.copiedJs, gulp.series('copy:js', reload));
   }
 
-  gulp.watch(dirs.srcPath + '/fonts/*.{ttf,woff,woff2,eot,svg}', gulp.series('copy:fonts', reload));
+  gulp.watch(dirs.srcPath + 'fonts/*.{ttf,woff,woff2,eot,svg}', gulp.series('copy:fonts', reload));
 
-  gulp.watch(dirs.srcPath + '/**/*.pug', gulp.series('pug', reload));
+  if(lists.pug.length) {
+    gulp.watch(dirs.srcPath + '**/*.pug', gulp.series('pug', reload));
+  }
 
   if(lists.js.length) {
     gulp.watch(lists.js, gulp.series('js', reload));
