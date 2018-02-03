@@ -18,12 +18,12 @@ $font-size--h6:               rem(16px) !default;
 
 $font-size--small:            80% !default;
 
-$line-height:                 1.5;
+$line-height:                 1.5 !default;
 
-$font-family:                 -apple-system, BlinkMacSystemFont, 'Roboto', 'Ubuntu', 'Droid Sans', 'Helvetica Neue', 'Arial', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-$font-family--serif:          'Georgia', 'Times New Roman', 'Times', serif;
-$font-family--monospace:      SFMono-Regular, 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
-$font-family--headings:       $font-family;
+$font-family:                 -apple-system, BlinkMacSystemFont, 'Roboto', 'Ubuntu', 'Droid Sans', 'Helvetica Neue', 'Arial', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol' !default;
+$font-family--serif:          'Georgia', 'Times New Roman', 'Times', serif !default;
+$font-family--monospace:      SFMono-Regular, 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace !default;
+$font-family--headings:       $font-family !default;
 
 $text-color:                  hsl(0, 0%, 10%) !default;
 $border-color:                hsl(0, 0%, 60%) !default;
