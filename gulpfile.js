@@ -4,7 +4,6 @@
 const fs = require('fs');
 const gulp = require('gulp');
 const browserSync = require('browser-sync').create();
-const realFavicon = require ('gulp-real-favicon');
 
 const postcss = require('gulp-postcss');
 const autoprefixer = require("autoprefixer");
@@ -32,9 +31,6 @@ let lists = getFilesList(projectConfig);
 // Получение адреса репозитория
 let repoUrl = require('./package.json').repository.url.replace(/\.git$/g, '');
 // console.log(repoUrl);
-
-// Файл с настройками фавиконок
-const faviconData = './faviconData.json';
 
 // Сообщение, записываемое в стилевой файл
 let styleFileMsg = '/*!*\n * ВНИМАНИЕ! Этот файл генерируется автоматически.\n * Не пишите сюда ничего вручную, все такие правки будут потеряны при следующей компиляции.\n * Правки без возможности компиляции ДОЛЬШЕ И ДОРОЖЕ в 2-3 раза.\n * Нужны дополнительные стили? Создайте новый css-файл и подключите его к странице.\n * Читайте ./README.md для понимания.\n */\n\n';
@@ -210,78 +206,6 @@ gulp.task('copy:fonts', function () {
     .pipe(gulp.dest(dirs.buildPath + '/fonts'));
 });
 
-// Генератор фавиконок
-gulp.task('favicons', function(done) {
-  realFavicon.generateFavicon({
-    masterPicture: dirs.srcPath + '/img/favicon-lg.png',
-    dest: dirs.buildPath + '/img',
-    iconsPath: '/img',
-    design: {
-      ios: {
-        pictureAspect: 'backgroundAndMargin',
-        backgroundColor: '#ffffff',
-        margin: '14%',
-        assets: {
-          ios6AndPriorIcons: false,
-          ios7AndLaterIcons: false,
-          precomposedIcons: false,
-          declareOnlyDefaultIcon: true
-        }
-      },
-      desktopBrowser: {},
-      windows: {
-        pictureAspect: 'noChange',
-        backgroundColor: '#ffffff',
-        onConflict: 'override',
-        assets: {
-          windows80Ie10Tile: false,
-          windows10Ie11EdgeTiles: {
-            small: false,
-            medium: true,
-            big: false,
-            rectangle: false
-          }
-        }
-      },
-      androidChrome: {
-        pictureAspect: 'noChange',
-        themeColor: '#ffffff',
-        manifest: {
-          display: 'standalone',
-          orientation: 'notSet',
-          onConflict: 'override',
-          declared: true
-        },
-        assets: {
-          legacyIcon: false,
-          lowResolutionIcons: false
-        }
-      },
-      safariPinnedTab: {
-        pictureAspect: 'silhouette',
-        themeColor: '#ffffff'
-      }
-    },
-    settings: {
-      scalingAlgorithm: 'Mitchell',
-      errorOnImageTooSmall: false
-    },
-    markupFile: faviconData
-  }, function() {
-    done();
-  });
-});
-
-// Ручная проверка актуальности данных для favicon. Запускать перед стартом нового проекта.
-gulp.task('check:favicons:update', function(done) {
-  var currentVersion = JSON.parse(fs.readFileSync(faviconData)).version;
-  realFavicon.checkForUpdates(currentVersion, function(err) {
-    if (err) {
-      throw err;
-    }
-  });
-});
-
 // Сборка SVG-спрайта для блока sprite-svg
 let spriteSvgPath = dirs.srcPath + dirs.blocksDirName + '/sprite-svg/svg/';
 gulp.task('sprite:svg', function (callback) {
@@ -402,7 +326,6 @@ gulp.task('pug', function() {
       },
       // compileDebug: false,
     }))
-    .pipe(realFavicon.injectFaviconMarkups(JSON.parse(fs.readFileSync(faviconData)).favicon.html_code))
     .pipe(htmlbeautify())
     // и... привет бьютификатору!
     .pipe(replace(/^(\s*)(<header.+?>)(.*)(<\/header>)/gm, '$1$2\n$1  $3\n$1$4'))
@@ -480,7 +403,7 @@ gulp.task('img:opt', function (callback) {
 gulp.task('build', function (callback) {
   gulpSequence(
     ['clean'],
-    ['sprite:svg', 'sprite:png', 'favicons'],
+    ['sprite:svg', 'sprite:png'],
     ['style', 'style:single', 'js', 'copy:css', 'copy:img', 'copy:js', 'copy:fonts'],
     'pug',
     callback
@@ -489,7 +412,7 @@ gulp.task('build', function (callback) {
 
 gulp.task('build', gulp.series(
   'clean',
-  gulp.parallel('sprite:svg', 'sprite:png', 'favicons'),
+  gulp.parallel('sprite:svg', 'sprite:png'),
   gulp.parallel('style', 'style:single', 'js', 'copy:css', 'copy:img', 'copy:js', 'copy:fonts'),
   'pug'
 ));

@@ -52,7 +52,6 @@
     "gulp-postcss": "^7.0.0",
     "gulp-pug": "^3.3.0",
     "gulp-pug-lint": "git+https://github.com/nicothin/gulp-pug-lint.git",
-    "gulp-real-favicon": "^0.2.2",
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.6.1",
     "gulp-sass": "^3.1.0",
