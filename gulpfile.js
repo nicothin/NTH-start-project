@@ -507,7 +507,7 @@ gulp.task('serve', gulp.series('build', function() {
 
   browserSync.init({
     server: dirs.buildPath,
-    port: port,
+    port: 8080,
     startPath: 'index.html',
     open: false,
   });
@@ -580,7 +580,7 @@ function getFilesList(config){
 
     // Разметка (Pug)
     if(fileExist(blockPath + blockName + '.pug')){
-      res.pug.push(blockPath + blockName + '.pug');
+      res.pug.push('../' + config.dirs.blocksDirName + '/' + blockName + '/' + blockName + '.pug');
     }
     else {
       console.log('---------- Блок ' + blockName + ' указан как используемый, но не имеет pug-файла.');
