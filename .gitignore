@@ -2,6 +2,7 @@ build/*
 !build/readme.md
 design/
 src/scss/style.scss
+src/pug/mixins.pug
 src/blocks/sprite-svg/img/sprite-svg.svg
 src/blocks/sprite-png/sprite-png.scss
 src/blocks/sprite-png/img/sprite-*.png
