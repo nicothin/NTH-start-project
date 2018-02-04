@@ -26,7 +26,7 @@ const newer = require('gulp-newer');
 let projectConfig = require('./projectConfig.json');
 let dirs = projectConfig.dirs;
 let lists = getFilesList(projectConfig);
-// console.log(lists);
+console.log(lists);
 
 // Получение адреса репозитория
 let repoUrl = require('./package.json').repository.url.replace(/\.git$/g, '');
@@ -298,7 +298,7 @@ gulp.task('pug', function() {
   const pug = require('gulp-pug');
   const htmlbeautify = require('gulp-html-beautify');
   const replace = require('gulp-replace');
-  console.log('---------- сборка Pug');
+  console.log('---------- Сборка Pug');
 
   // Pug-фильтр, выводящий содержимое pug-файла в виде форматированного текста
   const filterShowCode = function (text, options) {
@@ -314,7 +314,7 @@ gulp.task('pug', function() {
   }
 
   return gulp.src([
-      dirs.srcPath + '/*.pug',
+      dirs.srcPath + '*.pug',
     ])
     .pipe(plumber())
     .pipe(pug({
@@ -487,52 +487,64 @@ function getFilesList(config){
     'js': [],
     'img': [],
     'pug': [],
+    // 'blocksDirs': [],
   };
 
   // Обходим массив с блоками проекта
   for (let blockName in config.blocks) {
     var blockPath = config.dirs.srcPath + config.dirs.blocksDirName + '/' + blockName + '/';
 
-    // Разметка (Pug)
-    if(fileExist(blockPath + blockName + '.pug')){
-      res.pug.push('../' + config.dirs.blocksDirName + '/' + blockName + '/' + blockName + '.pug');
-    }
-    else {
-      console.log('---------- Блок ' + blockName + ' указан как используемый, но не имеет pug-файла.');
-    }
+    if(fileExist(blockPath)) {
 
-    // Стили
-    if(fileExist(blockPath + blockName + '.scss')){
-      res.css.push(blockPath + blockName + '.scss');
-      if(config.blocks[blockName].length) {
-        config.blocks[blockName].forEach(function(elementName) {
-          if(fileExist(blockPath + blockName + elementName + '.scss')){
-            res.css.push(blockPath + blockName + elementName + '.scss');
-          }
-        });
+      // Разметка (Pug)
+      if(fileExist(blockPath + blockName + '.pug')){
+        res.pug.push('../' + config.dirs.blocksDirName + '/' + blockName + '/' + blockName + '.pug');
+        // TODO переделать так, чтобы можно было использовать в вотчере
       }
-    }
-    else {
-      console.log('---------- Блок ' + blockName + ' указан как используемый, но не имеет scss-файла.');
-    }
-
-    // Скрипты
-    if(fileExist(blockPath + blockName + '.js')){
-      res.js.push(blockPath + blockName + '.js');
-      if(config.blocks[blockName].length) {
-        config.blocks[blockName].forEach(function(elementName) {
-          if(fileExist(blockPath + blockName + elementName + '.js')){
-            res.js.push(blockPath + blockName + elementName + '.js');
-          }
-        });
+      else {
+        console.log('---------- Блок ' + blockName + ' указан как используемый, но не имеет pug-файла.');
       }
+
+      // Стили
+      if(fileExist(blockPath + blockName + '.scss')){
+        res.css.push(blockPath + blockName + '.scss');
+        if(config.blocks[blockName].length) {
+          config.blocks[blockName].forEach(function(elementName) {
+            if(fileExist(blockPath + blockName + elementName + '.scss')){
+              res.css.push(blockPath + blockName + elementName + '.scss');
+            }
+          });
+        }
+      }
+      else {
+        console.log('---------- Блок ' + blockName + ' указан как используемый, но не имеет scss-файла.');
+      }
+
+      // Скрипты
+      if(fileExist(blockPath + blockName + '.js')){
+        res.js.push(blockPath + blockName + '.js');
+        if(config.blocks[blockName].length) {
+          config.blocks[blockName].forEach(function(elementName) {
+            if(fileExist(blockPath + blockName + elementName + '.js')){
+              res.js.push(blockPath + blockName + elementName + '.js');
+            }
+          });
+        }
+      }
+      else {
+        // console.log('---------- Блок ' + blockName + ' указан как используемый, но не имеет JS-файла.');
+      }
+
+      // Картинки (тупо от всех блоков, без проверки)
+      res.img.push(config.dirs.srcPath + config.dirs.blocksDirName + '/' + blockName + '/img/*.{jpg,jpeg,gif,png,svg}');
+
+      // Список директорий
+      // res.blocksDirs.push(config.dirs.blocksDirName + '/' + blockName + '/');
+
     }
     else {
-      // console.log('---------- Блок ' + blockName + ' указан как используемый, но не имеет JS-файла.');
+      console.log('ERR ------ Блок ' + blockPath + ' указан как используемый, но такой папки нет!');
     }
-
-    // Картинки (тупо от всех блоков, без проверки)
-    res.img.push(config.dirs.srcPath + config.dirs.blocksDirName + '/' + blockName + '/img/*.{jpg,jpeg,gif,png,svg}');
 
   }
 
