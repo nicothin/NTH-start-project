@@ -400,16 +400,6 @@ gulp.task('img:opt', function (callback) {
 });
 
 // Сборка всего
-gulp.task('build', function (callback) {
-  gulpSequence(
-    ['clean'],
-    ['sprite:svg', 'sprite:png'],
-    ['style', 'style:single', 'js', 'copy:css', 'copy:img', 'copy:js', 'copy:fonts'],
-    'pug',
-    callback
-  );
-});
-
 gulp.task('build', gulp.series(
   'clean',
   gulp.parallel('sprite:svg', 'sprite:png'),
