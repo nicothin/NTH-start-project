@@ -437,36 +437,45 @@ gulp.task('serve', gulp.series('build', function() {
   // console.log(stylePaths);
   gulp.watch(stylePaths, gulp.series('style'));
 
+  // Стили, которые нужно компилировать отдельно
   if(projectConfig.singleCompiled.length) {
     gulp.watch(projectConfig.singleCompiled, gulp.series('style:single'));
   }
 
+  // CSS-файлы, которые нужно просто копировать
   if(projectConfig.copiedCss.length) {
     gulp.watch(projectConfig.copiedCss, gulp.series('copy:css', reload));
   }
 
+  // Изображения
   if(lists.img.length) {
     gulp.watch(lists.img, gulp.series('copy:img', reload));
   }
 
+  // JS-файлы, которые нужно просто копировать
   if(projectConfig.copiedJs.length) {
     gulp.watch(projectConfig.copiedJs, gulp.series('copy:js', reload));
   }
 
+  // Шрфты
   gulp.watch(dirs.srcPath + 'fonts/*.{ttf,woff,woff2,eot,svg}', gulp.series('copy:fonts', reload));
 
+  // Pug-файлы
   if(lists.pug.length) {
     gulp.watch(dirs.srcPath + '**/*.pug', gulp.series('pug', reload));
   }
 
+  // JS-файлы блоков
   if(lists.js.length) {
     gulp.watch(lists.js, gulp.series('js', reload));
   }
 
+  // SVG-изображения, попадающие в спрайт
   if((projectConfig.blocks['sprite-svg']) !== undefined) {
     gulp.watch('*.svg', {cwd: spriteSvgPath}, gulp.series('sprite:svg', reload));
   }
 
+  // PNG-изображения, попадающие в спрайт
   if((projectConfig.blocks['sprite-png']) !== undefined) {
     gulp.watch('*.png', {cwd: spritePngPath}, gulp.series('sprite:png', reload));
   }
