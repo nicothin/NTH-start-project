@@ -26,7 +26,7 @@ const newer = require('gulp-newer');
 let projectConfig = require('./projectConfig.json');
 let dirs = projectConfig.dirs;
 let lists = getFilesList(projectConfig);
-console.log(lists);
+// console.log(lists);
 
 // Получение адреса репозитория
 let repoUrl = require('./package.json').repository.url.replace(/\.git$/g, '');
@@ -94,7 +94,7 @@ gulp.task('style', function () {
     .pipe(wait(100))
     .pipe(gulpIf(isDev, sourcemaps.init()))
     .pipe(debug({title: "Style:"}))
-    .pipe(sass())
+    .pipe(sass({includePaths: [__dirname+'/']}))
     .pipe(postcss(postCssPlugins))
     .pipe(insert.append(styleFileMsg))
     .pipe(gulpIf(!isDev, cleanss()))
@@ -425,12 +425,17 @@ gulp.task('serve', gulp.series('build', function() {
     open: false,
   });
 
-  gulp.watch([
-    dirs.srcPath + 'scss/**/*.scss',
-    dirs.srcPath + dirs.blocksDirName + '/**/*.scss',
-    projectConfig.addCssBefore,
-    projectConfig.addCssAfter,
-  ], gulp.series('style'));
+  // Стили
+  let stylePaths = [
+    dirs.srcPath + 'scss/style.scss',
+    dirs.srcPath + 'scss/mixins/*.scss',
+  ];
+  for (let i = 0, len = lists.blocksDirs.length; i < len; ++i) {
+    stylePaths.push(dirs.srcPath + lists.blocksDirs[i] + '*.scss');
+  }
+  stylePaths.concat(projectConfig.addCssBefore, projectConfig.addCssAfter);
+  // console.log(stylePaths);
+  gulp.watch(stylePaths, gulp.series('style'));
 
   if(projectConfig.singleCompiled.length) {
     gulp.watch(projectConfig.singleCompiled, gulp.series('style:single'));
@@ -487,7 +492,7 @@ function getFilesList(config){
     'js': [],
     'img': [],
     'pug': [],
-    // 'blocksDirs': [],
+    'blocksDirs': [],
   };
 
   // Обходим массив с блоками проекта
@@ -539,7 +544,7 @@ function getFilesList(config){
       res.img.push(config.dirs.srcPath + config.dirs.blocksDirName + '/' + blockName + '/img/*.{jpg,jpeg,gif,png,svg}');
 
       // Список директорий
-      // res.blocksDirs.push(config.dirs.blocksDirName + '/' + blockName + '/');
+      res.blocksDirs.push(config.dirs.blocksDirName + '/' + blockName + '/');
 
     }
     else {
