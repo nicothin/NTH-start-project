@@ -1,47 +1,52 @@
 -
   var mainMenu = [
     {
-      "id": "1",
+      "id": "0",
       "name": "Главная страница",
       "url": "/"
     },
     {
-      "id": "2",
+      "id": "10",
       "name": "Страницы",
-      "url": "",
+      "url": "/pages",
       "childs": [
         {
-          "id": "21",
+          "id": "10-0",
           "name": "О компании",
-          "url": "/about"
+          "url": "pages/about"
         },
         {
-          "id": "22",
+          "id": "10-10",
           "name": "Услуги",
-          "url": "/services",
+          "url": "pages/services",
           "childs": [
             {
-              "id": "221",
+              "id": "10-10-0",
               "name": "Вёрстка",
-              "url": "/serve"
+              "url": "pages/services/serve"
             },
             {
-              "id": "221",
+              "id": "10-10-10",
               "name": "Стриптиз",
-              "url": "/strip"
+              "url": "pages/services/strip"
             }
           ]
-        }
+        },
+        {
+          "id": "10-20",
+          "name": "Ещё одна страница",
+          "url": "pages/some"
+        },
       ]
     },
     {
-      "id": "3",
+      "id": "20",
       "name": "Репозиторий",
       "url": "https://github.com/nicothin/NTH-start-project"
     },
     {
-      "id": "4",
+      "id": "30",
       "name": "Контакты автора",
       "url": "http://nicothin.pro/"
-    }
+    },
   ];

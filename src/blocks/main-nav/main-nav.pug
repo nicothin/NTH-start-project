@@ -15,17 +15,39 @@ mixin main-nav(selectedID)
     +burger('Показать главное меню', 'nav', 'main-nav--open')(class='main-nav__toggler')
     ul.main-nav__list
       each menuItem in mainMenu
-        li(class= selectedID == menuItem.id ? 'main-nav__item  main-nav__item--active' : 'main-nav__item')
-          a.main-nav__link(href=menuItem.url)= menuItem.name
+        +main-nav-item(selectedID, menuItem, 1)
           if (typeof(menuItem.childs) !== 'undefined' && menuItem.childs)
-            .main-nav__sublist-wrapper.main-nav__sublist-wrapper--lvl-2
-              ul.main-nav__list.main-nav__list--lvl-2
-                each menuItem2 in menuItem.childs
-                  li.main-nav__item.main-nav__item--lvl-2
-                    a.main-nav__link.main-nav__link--lvl-2(href=menuItem2.url)= menuItem2.name
-                    if (typeof(menuItem2.childs) !== 'undefined' && menuItem2.childs)
-                      .main-nav__sublist-wrapper.main-nav__sublist-wrapper--lvl-3
-                        ul.main-nav__list.main-nav__list--lvl-3
-                          each menuItem3 in menuItem2.childs
-                            li.main-nav__item.main-nav__item--lvl-3
-                              a.main-nav__link.main-nav__link--lvl-3(href=menuItem3.url)= menuItem3.name
+            +main-nav-sublist-wrapper(2)
+              each menuItem2 in menuItem.childs
+                +main-nav-item(selectedID, menuItem2, 2)
+                  if (typeof(menuItem2.childs) !== 'undefined' && menuItem2.childs)
+                    +main-nav-sublist-wrapper(3)
+                      each menuItem3 in menuItem2.childs
+                        +main-nav-item(selectedID, menuItem3, 3)
+
+mixin main-nav-item(selectedID, item, level)
+  -
+    var thisItemClass = 'main-nav__item';
+    var thisLinkClass = 'main-nav__link';
+    if(selectedID == item.id) {
+      thisItemClass += '  main-nav__item--active';
+    }
+    if(item.childs) {
+      thisItemClass += '  main-nav__item--has-child';
+    }
+    if(level > 1) {
+      thisItemClass += '  main-nav__item--lvl-' + level;
+      thisLinkClass += '  main-nav__link--lvl-' + level;
+    }
+
+  li(class= thisItemClass)
+    a(class= thisLinkClass, href=item.url)= item.name
+    block
+
+mixin main-nav-sublist-wrapper(level)
+  -
+    var divClass = 'main-nav__sublist-wrapper  main-nav__sublist-wrapper--lvl-' + level;
+    var listClass = 'main-nav__list  main-nav__list--lvl-' + level;
+  div(class= divClass)
+    ul(class= listClass)
+      block
