@@ -461,8 +461,15 @@ gulp.task('serve', gulp.series('build', function() {
   gulp.watch(dirs.srcPath + 'fonts/*.{ttf,woff,woff2,eot,svg}', gulp.series('copy:fonts', reload));
 
   // Pug-файлы
+  let pugPaths = [
+    dirs.srcPath + 'pug/*.scss',
+  ];
+  for (let i = 0, len = lists.blocksDirs.length; i < len; ++i) {
+    pugPaths.push(dirs.srcPath + lists.blocksDirs[i] + '*.pug');
+  }
+  // console.log(pugPaths);
   if(lists.pug.length) {
-    gulp.watch(dirs.srcPath + '**/*.pug', gulp.series('pug', reload));
+    gulp.watch(pugPaths, gulp.series('pug', reload));
   }
 
   // JS-файлы блоков
