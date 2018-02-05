@@ -462,7 +462,8 @@ gulp.task('serve', gulp.series('build', function() {
 
   // Pug-файлы
   let pugPaths = [
-    dirs.srcPath + 'pug/*.scss',
+    dirs.srcPath + '*.pug',
+    dirs.srcPath + 'pug/*.pug',
   ];
   for (let i = 0, len = lists.blocksDirs.length; i < len; ++i) {
     pugPaths.push(dirs.srcPath + lists.blocksDirs[i] + '*.pug');
