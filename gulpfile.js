@@ -206,6 +206,17 @@ gulp.task('copy:fonts', function () {
     .pipe(gulp.dest(dirs.buildPath + '/fonts'));
 });
 
+// Фавиконки
+gulp.task('copy:favicon', function () {
+  console.log('---------- Копирование фавиконок');
+  return gulp.src(dirs.srcPath + '/favicon/*.{png,ico,svg}')
+    .pipe(gulp.dest(dirs.buildPath + '/img/favicon'));
+});
+gulp.task('copy:favicon:data', function () {
+  return gulp.src(dirs.srcPath + '/favicon/*.{xml,webmanifest}')
+    .pipe(gulp.dest(dirs.buildPath + '/'));
+});
+
 // Сборка SVG-спрайта для блока sprite-svg
 let spriteSvgPath = dirs.srcPath + dirs.blocksDirName + '/sprite-svg/svg/';
 gulp.task('sprite:svg', function (callback) {
@@ -402,7 +413,7 @@ gulp.task('img:opt', function (callback) {
 // Сборка всего
 gulp.task('build', gulp.series(
   'clean',
-  gulp.parallel('sprite:svg', 'sprite:png'),
+  gulp.parallel('sprite:svg', 'sprite:png', 'copy:favicon', 'copy:favicon:data'),
   gulp.parallel('style', 'style:single', 'js', 'copy:css', 'copy:img', 'copy:js', 'copy:fonts'),
   'pug'
 ));
