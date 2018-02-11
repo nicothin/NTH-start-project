@@ -3,9 +3,10 @@
 //- (должна быть указана в ./projectConfig.json, есть по умолчанию)
 //- ВНИМАНИЕ! Помимо вызова примеси, нужно включить baron на блоке! см. blocks/baron/baron.js
 
-mixin baron(mods, tag)
+mixin baron(id, mods, tag)
 
   //- Принимает:
+  //-   id     {string} - ID этого конкретного блока с кастомным скроллом
   //-   mods    {string} - список модификаторов
   //-   tag     {string} - тег
   //- Вызов:
@@ -29,7 +30,7 @@ mixin baron(mods, tag)
       parentTag = tag;
     }
 
-  #{parentTag}.baron(class=allMods)&attributes(attributes)
+  #{parentTag}.baron(id=id, class=allMods)&attributes(attributes)
     .baron__scroller
       block
     .baron__track
