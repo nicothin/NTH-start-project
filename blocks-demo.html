@@ -5,6 +5,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="format-detection" content="telephone=no">
+  <meta name="format-detection" content="date=no">
+  <meta name="format-detection" content="address=no">
+  <meta name="format-detection" content="email=no">
+  <meta content="notranslate" name="google">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
   <title>Библиотека</title>
   <meta name="description" content="">
   <link rel="stylesheet" href="css/style.min.css">
@@ -50,6 +61,7 @@
   </style>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+
       // наполнение бокого меню
       var demoBlocks = document.querySelectorAll('.blocks-library__item');
       var offCanvasMenu = '<li class="menu__item"><a class="menu__link" data-toggle-native="off-canvas" href="/">Главная страница</a></li><li class="menu__item"><a class="menu__link" data-toggle-native="off-canvas" href="https://github.com/nicothin/NTH-start-project">Исходный репозиторий</a></li><li class="menu__item menu__item--separator"><a class="menu__link" data-toggle-native="off-canvas" href="http://nicothin.github.io/NTH-start-project/blocks-demo.html">Демка на github pages</a></li>';
@@ -63,6 +75,7 @@
       }
       var offCanvasMenuContent = document.getElementById('off-canvas-menu');
       offCanvasMenuContent.innerHTML = offCanvasMenu;
+
       // просмотр примера кода для блока
       var codeShowTriggers = document.querySelectorAll('.blocks-library__code-show-trigger');
       for (var i = 0; i < codeShowTriggers.length; i++) {
@@ -70,21 +83,12 @@
           this.closest('.blocks-library__code-wrapper').querySelector('.blocks-library__code').classList.toggle('blocks-library__code--shown');
         });
       }
+
     });
   </script>
-  <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
-  <link rel="manifest" href="/img/manifest.json">
-  <link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="#ffffff">
-  <link rel="shortcut icon" href="/img/favicon.ico">
-  <meta name="msapplication-TileColor" content="#ffffff">
-  <meta name="msapplication-TileImage" content="/img/mstile-144x144.png">
-  <meta name="msapplication-config" content="/img/browserconfig.xml">
-  <meta name="theme-color" content="#ffffff">
 </head>
 
-<body>
+<body><noscript>У вас отключен JavaScript. Это пугает.</noscript>
   <div class="off-canvas" id="off-canvas">
     <aside class="off-canvas__aside" role="complementary" aria-label="Меню">
       <ul class="menu" id="off-canvas-menu"></ul>
@@ -94,8 +98,8 @@
         <div class="page__content">
           <svg xmlns="http://www.w3.org/2000/svg" style="display:none;">
             <symbol id="folder" viewbox="0 0 60 60">
-              <path d="M56.98 11.5H28.02V6.52c0-1.665-1.355-3.02-3.02-3.02H3.02C1.353 3.5 0 4.854 0 6.52v46.96c0 1.665 1.354 3.02 3.02 3.02h53.96c1.665 0 3.02-1.354 3.02-3.02V14.52c0-1.666-1.354-3.02-3.02-3.02zM58 53.48c0 .563-.457 1.02-1.02 1.02H3.02c-.563 0-1.02-.457-1.02-1.02V22.5h56v30.98zM2 20.5V6.52c0-.563.457-1.02 1.02-1.02H25c.562 0 1.02.457 1.02 1.02v6.98h30.96c.563 0 1.02.457 1.02 1.02v5.98H2z" />
-              <path d="M19 33.5h14c.552 0 1-.447 1-1s-.448-1-1-1H19c-.552 0-1 .447-1 1s.448 1 1 1zm0 6h22c.552 0 1-.447 1-1s-.448-1-1-1H19c-.552 0-1 .447-1 1s.448 1 1 1zm0 6h22c.552 0 1-.447 1-1s-.448-1-1-1H19c-.552 0-1 .447-1 1s.448 1 1 1z" />
+              <path d="M56.98 11.5H28.02V6.52c0-1.665-1.355-3.02-3.02-3.02H3.02C1.353 3.5 0 4.854 0 6.52v46.96c0 1.665 1.354 3.02 3.02 3.02h53.96c1.665 0 3.02-1.354 3.02-3.02V14.52c0-1.666-1.354-3.02-3.02-3.02zM58 53.48c0 .563-.457 1.02-1.02 1.02H3.02c-.563 0-1.02-.457-1.02-1.02V22.5h56v30.98zM2 20.5V6.52c0-.563.457-1.02 1.02-1.02H25c.562 0 1.02.457 1.02 1.02v6.98h30.96c.563 0 1.02.457 1.02 1.02v5.98H2z"></path>
+              <path d="M19 33.5h14c.552 0 1-.447 1-1s-.448-1-1-1H19c-.552 0-1 .447-1 1s.448 1 1 1zm0 6h22c.552 0 1-.447 1-1s-.448-1-1-1H19c-.552 0-1 .447-1 1s.448 1 1 1zm0 6h22c.552 0 1-.447 1-1s-.448-1-1-1H19c-.552 0-1 .447-1 1s.448 1 1 1z"></path>
             </symbol>
           </svg>
           <h1 class="blocks-library__title">Блоки стартового репозитория <a href="index.html">проекта</a></h1>
@@ -104,7 +108,7 @@
             <h2 class="blocks-library__item-title">
               <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/page" title="Папка блока в репозитории">
                 <svg width="20" height="20">
-                  <use xlink:href="#folder" />
+                  <use xlink:href="#folder"></use>
                 </svg>
               </a>Страница</h2>
             <p>Блок страницы <code>html class=&quot;page&quot;</code>, благодаря которому применяются некоторые глобальные стили:</p>
@@ -127,7 +131,7 @@
             <h2 class="blocks-library__item-title">
               <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/typo" title="Папка блока в репозитории">
                 <svg width="20" height="20">
-                  <use xlink:href="#folder" />
+                  <use xlink:href="#folder"></use>
                 </svg>
               </a>Текст, теги</h2>
             <p>Реализуется блоком <code>typo</code>, все стили которого являются глобальными.</p>
@@ -258,7 +262,7 @@
             <h2 class="blocks-library__item-title">
               <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/grid" title="Папка блока в репозитории">
                 <svg width="20" height="20">
-                  <use xlink:href="#folder" />
+                  <use xlink:href="#folder"></use>
                 </svg>
               </a>Примеси-генераторы модульной сетки</h2>
             <p>По умолчанию в сборку берётся файл с примесями для создания модульной сетки: <code>./src/scss/mixins/grid-mixins.scss</code>. Отдельного БЭМ-блока для сеток нет, используйте семантические классы и применяйте к ним примеси. <br>
@@ -280,7 +284,7 @@
             <h2 class="blocks-library__item-title">
               <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/sprite-svg" title="Папка блока в репозитории">
                 <svg width="20" height="20">
-                  <use xlink:href="#folder" />
+                  <use xlink:href="#folder"></use>
                 </svg>
               </a>SVG-спрайт c <a href="https://github.com/w0rm/gulp-svgstore">gulp-svgstore</a></h2>
             <p>Из файлов папки <code>sprite-svg/svg/</code> в папку <code>sprite-svg/img/</code> будет сгенерирован файл спрайта <code>sprite-svg.svg</code>, который далее будет скопирован в папку сборки. Стилевой файл блока не используется. SVG-файлы будут оптимизированы перед сборкой в спрайт. Сам спрайт имеет вид:</p>
@@ -299,10 +303,10 @@
             <p class="alert alert--warning">Чтобы использовать ссылки на внешние svg-файлы со спрайтами, используйте <a href="https://www.npmjs.com/package/svg4everybody">svg4everybody</a> (включен в сборку по умолчанию).</p>
             <p>Демонстрационный контент блока (иконки стрелок):</p>
             <svg width="32" height="32">
-              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite-svg.svg#temp-icon-right-arrow" />
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite-svg.svg#temp-icon-right-arrow"></use>
             </svg>
             <svg width="32" height="32">
-              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite-svg.svg#temp-icon-left-arrow" />
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite-svg.svg#temp-icon-left-arrow"></use>
             </svg>
           </section>
 
@@ -310,7 +314,7 @@
             <h2 class="blocks-library__item-title">
               <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/sprite-png" title="Папка блока в репозитории">
                 <svg width="20" height="20">
-                  <use xlink:href="#folder" />
+                  <use xlink:href="#folder"></use>
                 </svg>
               </a>PNG-спрайт с <a href="https://github.com/Ensighten/spritesmith">spritesmith</a></h2>
             <p>Из файлов папки <code>sprite-png/png/</code> в папку <code>sprite-png/img/</code> будет сгенерирован файл спрайта <code>sprite-ЧИСЛОВОЙ_ИНДЕКС.svg</code>, который далее будет скопирован в папку сборки.</p>
@@ -330,7 +334,7 @@
             <h2 class="blocks-library__item-title">
               <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/page-header" title="Папка блока в репозитории">
                 <svg width="20" height="20">
-                  <use xlink:href="#folder" />
+                  <use xlink:href="#folder"></use>
                 </svg>
               </a>«Шапка» страницы</h2>
             <p>«Шапка» страницы.</p>
@@ -370,7 +374,7 @@
             <h2 class="blocks-library__item-title">
               <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/page-footer" title="Папка блока в репозитории">
                 <svg width="20" height="20">
-                  <use xlink:href="#folder" />
+                  <use xlink:href="#folder"></use>
                 </svg>
               </a>«Подвал» страницы</h2>
             <p>«Подвал» страницы.</p>
@@ -410,7 +414,7 @@
             <h2 class="blocks-library__item-title">
               <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/logo" title="Папка блока в репозитории">
                 <svg width="20" height="20">
-                  <use xlink:href="#folder" />
+                  <use xlink:href="#folder"></use>
                 </svg>
               </a>Логотип</h2><a class="logo" href="/"><img src="img/logo.svg" alt="Logo" width="64" height="15"></a>
             <div class="blocks-library__code-wrapper"><span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
@@ -450,7 +454,7 @@
             <h2 class="blocks-library__item-title">
               <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/main-nav" title="Папка блока в репозитории">
                 <svg width="20" height="20">
-                  <use xlink:href="#folder" />
+                  <use xlink:href="#folder"></use>
                 </svg>
               </a>Главная навигация</h2>
             <p>По умолчанию данные меню берутся из <code>main-nav/main-nav.json</code> и передаются в компилятор pug (см. <code>gulpfile.js</code>).</p>
@@ -458,19 +462,20 @@
             <p>На малых ширинах преобразуется в мобильный вид, скрывается/показывается по клику на бургер, если JS включен (на <code>html</code> есть класс <code>js</code>).</p>
             <nav class="main-nav" id="nav"><button class="burger main-nav__toggler" aria-label="Показать главное меню" data-target-id="nav" data-target-class-toggle="main-nav--open"><span>Показать главное меню</span></button>
               <ul class="main-nav__list">
-                <li class="main-nav__item  main-nav__item--active"><a class="main-nav__link" href="/">Главная страница</a></li>
-                <li class="main-nav__item"><a class="main-nav__link" href="">Страницы</a>
-                  <div class="main-nav__sublist-wrapper main-nav__sublist-wrapper--lvl-2">
-                    <ul class="main-nav__list main-nav__list--lvl-2">
-                      <li class="main-nav__item main-nav__item--lvl-2"><a class="main-nav__link main-nav__link--lvl-2" href="/about">О компании</a></li>
-                      <li class="main-nav__item main-nav__item--lvl-2"><a class="main-nav__link main-nav__link--lvl-2" href="/services">Услуги</a>
-                        <div class="main-nav__sublist-wrapper main-nav__sublist-wrapper--lvl-3">
-                          <ul class="main-nav__list main-nav__list--lvl-3">
-                            <li class="main-nav__item main-nav__item--lvl-3"><a class="main-nav__link main-nav__link--lvl-3" href="/serve">Вёрстка</a></li>
-                            <li class="main-nav__item main-nav__item--lvl-3"><a class="main-nav__link main-nav__link--lvl-3" href="/strip">Стриптиз</a></li>
+                <li class="main-nav__item"><a class="main-nav__link" href="/">Главная страница</a></li>
+                <li class="main-nav__item  main-nav__item--has-child"><a class="main-nav__link" href="/pages">Страницы</a>
+                  <div class="main-nav__sublist-wrapper  main-nav__sublist-wrapper--lvl-2">
+                    <ul class="main-nav__list  main-nav__list--lvl-2">
+                      <li class="main-nav__item  main-nav__item--lvl-2"><a class="main-nav__link  main-nav__link--lvl-2" href="pages/about">О компании</a></li>
+                      <li class="main-nav__item  main-nav__item--has-child  main-nav__item--lvl-2"><a class="main-nav__link  main-nav__link--lvl-2" href="pages/services">Услуги</a>
+                        <div class="main-nav__sublist-wrapper  main-nav__sublist-wrapper--lvl-3">
+                          <ul class="main-nav__list  main-nav__list--lvl-3">
+                            <li class="main-nav__item  main-nav__item--lvl-3"><a class="main-nav__link  main-nav__link--lvl-3" href="pages/services/serve">Вёрстка</a></li>
+                            <li class="main-nav__item  main-nav__item--lvl-3"><a class="main-nav__link  main-nav__link--lvl-3" href="pages/services/strip">Стриптиз</a></li>
                           </ul>
                         </div>
                       </li>
+                      <li class="main-nav__item  main-nav__item--lvl-2"><a class="main-nav__link  main-nav__link--lvl-2" href="pages/some">Ещё одна страница</a></li>
                     </ul>
                   </div>
                 </li>
@@ -499,20 +504,42 @@
 <code>    +burger('Показать главное меню', 'nav', 'main-nav--open')(class='main-nav__toggler')</code>
 <code>    ul.main-nav__list</code>
 <code>      each menuItem in mainMenu</code>
-<code>        li(class= selectedID == menuItem.id ? 'main-nav__item  main-nav__item--active' : 'main-nav__item')</code>
-<code>          a.main-nav__link(href=menuItem.url)= menuItem.name</code>
+<code>        +main-nav-item(selectedID, menuItem, 1)</code>
 <code>          if (typeof(menuItem.childs) !== 'undefined' && menuItem.childs)</code>
-<code>            .main-nav__sublist-wrapper.main-nav__sublist-wrapper--lvl-2</code>
-<code>              ul.main-nav__list.main-nav__list--lvl-2</code>
-<code>                each menuItem2 in menuItem.childs</code>
-<code>                  li.main-nav__item.main-nav__item--lvl-2</code>
-<code>                    a.main-nav__link.main-nav__link--lvl-2(href=menuItem2.url)= menuItem2.name</code>
-<code>                    if (typeof(menuItem2.childs) !== 'undefined' && menuItem2.childs)</code>
-<code>                      .main-nav__sublist-wrapper.main-nav__sublist-wrapper--lvl-3</code>
-<code>                        ul.main-nav__list.main-nav__list--lvl-3</code>
-<code>                          each menuItem3 in menuItem2.childs</code>
-<code>                            li.main-nav__item.main-nav__item--lvl-3</code>
-<code>                              a.main-nav__link.main-nav__link--lvl-3(href=menuItem3.url)= menuItem3.name</code>
+<code>            +main-nav-sublist-wrapper(2)</code>
+<code>              each menuItem2 in menuItem.childs</code>
+<code>                +main-nav-item(selectedID, menuItem2, 2)</code>
+<code>                  if (typeof(menuItem2.childs) !== 'undefined' && menuItem2.childs)</code>
+<code>                    +main-nav-sublist-wrapper(3)</code>
+<code>                      each menuItem3 in menuItem2.childs</code>
+<code>                        +main-nav-item(selectedID, menuItem3, 3)</code>
+<code>&nbsp;</code>
+<code>mixin main-nav-item(selectedID, item, level)</code>
+<code>  -</code>
+<code>    var thisItemClass = 'main-nav__item';</code>
+<code>    var thisLinkClass = 'main-nav__link';</code>
+<code>    if(selectedID == item.id) {</code>
+<code>      thisItemClass += '  main-nav__item--active';</code>
+<code>    }</code>
+<code>    if(item.childs) {</code>
+<code>      thisItemClass += '  main-nav__item--has-child';</code>
+<code>    }</code>
+<code>    if(level > 1) {</code>
+<code>      thisItemClass += '  main-nav__item--lvl-' + level;</code>
+<code>      thisLinkClass += '  main-nav__link--lvl-' + level;</code>
+<code>    }</code>
+<code>&nbsp;</code>
+<code>  li(class= thisItemClass)</code>
+<code>    a(class= thisLinkClass, href=item.url)= item.name</code>
+<code>    block</code>
+<code>&nbsp;</code>
+<code>mixin main-nav-sublist-wrapper(level)</code>
+<code>  -</code>
+<code>    var divClass = 'main-nav__sublist-wrapper  main-nav__sublist-wrapper--lvl-' + level;</code>
+<code>    var listClass = 'main-nav__list  main-nav__list--lvl-' + level;</code>
+<code>  div(class= divClass)</code>
+<code>    ul(class= listClass)</code>
+<code>      block</code>
 </pre>
               </div>
             </div>
@@ -522,7 +549,7 @@
             <h2 class="blocks-library__item-title">
               <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/close" title="Папка блока в репозитории">
                 <svg width="20" height="20">
-                  <use xlink:href="#folder" />
+                  <use xlink:href="#folder"></use>
                 </svg>
               </a>Закрыть</h2>
             <p>Иконка закрытия.</p>
@@ -537,6 +564,7 @@
 <code>&nbsp;</code>
 <code>  //- Принимает:</code>
 <code>  //-   label {string} - описание, значение атрибута aria-label</code>
+<code>  //-   mods {string}  - стилевые модификаторы</code>
 <code>  //- Вызов:</code>
 <code>        +close('Закрыть')</code>
 <code>        +close('Закрыть', 'sm')</code>
@@ -562,10 +590,10 @@
             <h2 class="blocks-library__item-title">
               <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/burger" title="Папка блока в репозитории">
                 <svg width="20" height="20">
-                  <use xlink:href="#folder" />
+                  <use xlink:href="#folder"></use>
                 </svg>
               </a>Бургер</h2>
-            <p>Анимированное превращение в крестик по добавлению модификатора. <br> JS блока берет переданный в data-атрибуте идентификатор и, по клику на бургере, добавляет переданный в data-атрибуте класс на элемент с этим модификатором.</p>
+            <p>Анимированное превращение в крестик по добавлению модификатора. <br /> JS блока берет переданный в data-атрибуте идентификатор и, по клику на бургере, добавляет переданный в data-атрибуте класс на элемент с этим модификатором.</p>
             <div><button class="burger" aria-label="Показать пример кода" data-target-id="burger-code" data-target-class-toggle="blocks-library__code--shown"><span>Показать пример кода</span></button></div>
             <div class="blocks-library__code-wrapper"><span class="blocks-library__code-show-trigger" title="Показать код"></span>
               <div class="blocks-library__code" id="burger-code">
@@ -599,7 +627,7 @@
             <h2 class="blocks-library__item-title">
               <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/or" title="Папка блока в репозитории">
                 <svg width="20" height="20">
-                  <use xlink:href="#folder" />
+                  <use xlink:href="#folder"></use>
                 </svg>
               </a>Разеделитель «или»</h2>
             <p>Разделитель «или» с горизонтальными линиями.</p>
@@ -646,7 +674,7 @@
             <h2 class="blocks-library__item-title">
               <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/code" title="Папка блока в репозитории">
                 <svg width="20" height="20">
-                  <use xlink:href="#folder" />
+                  <use xlink:href="#folder"></use>
                 </svg>
               </a>Код</h2>
             <p>Оформление блочных вставок кода.</p>
@@ -675,9 +703,9 @@
             <h2 class="blocks-library__item-title">
               <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/thumb" title="Папка блока в репозитории">
                 <svg width="20" height="20">
-                  <use xlink:href="#folder" />
+                  <use xlink:href="#folder"></use>
                 </svg>
-              </a>Картинки-миниатюры</h2><img class="thumb" src="img/joker.jpg" alt="Джокер" width="300" height="200">
+              </a>Картинки-миниатюры</h2><img class="thumb" src="img/joker.jpg" alt="Джокер" width="300" height="200" />
             <div class="blocks-library__code-wrapper"><span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
               <div class="blocks-library__code">
                 <pre class="code">
@@ -708,7 +736,7 @@
             <h2 class="blocks-library__item-title">
               <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/alert" title="Папка блока в репозитории">
                 <svg width="20" height="20">
-                  <use xlink:href="#folder" />
+                  <use xlink:href="#folder"></use>
                 </svg>
               </a>Сообщения</h2>
             <div class="alert" role="alert">
@@ -764,7 +792,7 @@
             <h2 class="blocks-library__item-title">
               <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/menu" title="Папка блока в репозитории">
                 <svg width="20" height="20">
-                  <use xlink:href="#folder" />
+                  <use xlink:href="#folder"></use>
                 </svg>
               </a>Меню</h2>
             <ul class="menu">
@@ -842,7 +870,7 @@
             <h2 class="blocks-library__item-title">
               <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/label" title="Папка блока в репозитории">
                 <svg width="20" height="20">
-                  <use xlink:href="#folder" />
+                  <use xlink:href="#folder"></use>
                 </svg>
               </a>Лейбл</h2><span class="label">Текст1</span>
             <div class="label">Текст2</div><a class="label" href="/">Текст3</a>
@@ -885,7 +913,7 @@
             <h2 class="blocks-library__item-title">
               <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/loader" title="Папка блока в репозитории">
                 <svg width="20" height="20">
-                  <use xlink:href="#folder" />
+                  <use xlink:href="#folder"></use>
                 </svg>
               </a>Загрузчик</h2><span class="loader"></span>
             <div class="blocks-library__code-wrapper"><span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
@@ -920,7 +948,7 @@
             <h2 class="blocks-library__item-title">
               <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/table" title="Папка блока в репозитории">
                 <svg width="20" height="20">
-                  <use xlink:href="#folder" />
+                  <use xlink:href="#folder"></use>
                 </svg>
               </a>Таблица</h2>
             <p>На малых ширинах таблица сжимается, а когда перестаёт помещаться по ширине, появляется горизонтальный скролл.</p>
@@ -996,7 +1024,7 @@
             <h2 class="blocks-library__item-title">
               <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/table-responsive" title="Папка блока в репозитории">
                 <svg width="20" height="20">
-                  <use xlink:href="#folder" />
+                  <use xlink:href="#folder"></use>
                 </svg>
               </a>Адаптивная таблица</h2>
             <p class="alert  alert--warning">Требует добавления атрибутов <code>data-label</code> для каждой ячейки, написания <code>thead</code> и <code>tbody</code>, хорошо работает только при горизонтальном расположении заголовочных ячеек.</p>
@@ -1063,7 +1091,7 @@
             <h2 class="blocks-library__item-title">
               <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/pagination" title="Папка блока в репозитории">
                 <svg width="20" height="20">
-                  <use xlink:href="#folder" />
+                  <use xlink:href="#folder"></use>
                 </svg>
               </a>Пагинация</h2>
             <div class="pagination" aria-label="Page navigation"><a class="pagination__item" href="/1">1</a><span class="pagination__item">...</span><a class="pagination__item" href="/4">4</a><a class="pagination__item  pagination--active" href="/5">5</a><a class="pagination__item" href="/6">6</a><span class="pagination__item">...</span><a class="pagination__item" href="/999">999</a></div>
@@ -1134,7 +1162,7 @@
             <h2 class="blocks-library__item-title">
               <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/breadcrumbs" title="Папка блока в репозитории">
                 <svg width="20" height="20">
-                  <use xlink:href="#folder" />
+                  <use xlink:href="#folder"></use>
                 </svg>
               </a>Хлебные крошки</h2>
             <ul class="breadcrumbs" aria-label="Breadcrumb" role="navigation">
@@ -1202,7 +1230,7 @@
             <h2 class="blocks-library__item-title">
               <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/progress" title="Папка блока в репозитории">
                 <svg width="20" height="20">
-                  <use xlink:href="#folder" />
+                  <use xlink:href="#folder"></use>
                 </svg>
               </a>Прогресс</h2>
             <div class="progress  progress--success">
@@ -1249,7 +1277,7 @@
             <h2 class="blocks-library__item-title">
               <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/pie-chart" title="Папка блока в репозитории">
                 <svg width="20" height="20">
-                  <use xlink:href="#folder" />
+                  <use xlink:href="#folder"></use>
                 </svg>
               </a>Круговые и секторные диаграммы</h2>
             <p>Внутренняя разметка блока (SVG) создаётся JS-ом на основании <code>data</code>-атрибутов (значения по умолчанию прописаны в <code>pie-chart.js</code>).</p>
@@ -1296,12 +1324,12 @@
             <h2 class="blocks-library__item-title">
               <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/comment" title="Папка блока в репозитории">
                 <svg width="20" height="20">
-                  <use xlink:href="#folder" />
+                  <use xlink:href="#folder"></use>
                 </svg>
               </a>Комментарий</h2>
 
             <article class="comment  comment--admin">
-              <div class="comment__inner"><a class="comment__avatar-wrap" href="/users/joker"><img src="img/joker.jpg" alt="Джокер"></a>
+              <div class="comment__inner"><a class="comment__avatar-wrap" href="/users/joker"><img src="img/joker.jpg" alt="Джокер"/></a>
                 <div class="comment__text">
                   <header class="comment__header">
                     <b class="comment__author">Джокер</b> <time class="comment__date" datetime="2017-04-25T05:45">25.04.2017 в 05:45</time>
@@ -1316,7 +1344,7 @@
               </div>
 
               <article class="comment">
-                <div class="comment__inner"><span class="comment__avatar-wrap"><img src="data:image/svg+xml,%3Csvg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 60 60&quot;%3E%3Ccircle r=&quot;50%25&quot; cx=&quot;50%25&quot; cy=&quot;50%25&quot; fill=&quot;#ccc&quot;/%3E%3C/svg%3E" alt="Джокер"></span>
+                <div class="comment__inner"><span class="comment__avatar-wrap"><img src="data:image/svg+xml,%3Csvg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 60 60&quot;%3E%3Ccircle r=&quot;50%25&quot; cx=&quot;50%25&quot; cy=&quot;50%25&quot; fill=&quot;#ccc&quot;/%3E%3C/svg%3E" alt="Джокер"/></span>
                   <div class="comment__text">
                     <header class="comment__header">
                       <b class="comment__author">Джокер</b> <time class="comment__date" datetime="2017-04-25T05:45">25.04.2017 в 05:45</time>
@@ -1331,7 +1359,7 @@
                 </div>
 
                 <article class="comment">
-                  <div class="comment__inner"><span class="comment__avatar-wrap"><img src="data:image/svg+xml,%3Csvg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 60 60&quot;%3E%3Ccircle r=&quot;50%25&quot; cx=&quot;50%25&quot; cy=&quot;50%25&quot; fill=&quot;#ccc&quot;/%3E%3C/svg%3E" alt="Джокер"></span>
+                  <div class="comment__inner"><span class="comment__avatar-wrap"><img src="data:image/svg+xml,%3Csvg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 60 60&quot;%3E%3Ccircle r=&quot;50%25&quot; cx=&quot;50%25&quot; cy=&quot;50%25&quot; fill=&quot;#ccc&quot;/%3E%3C/svg%3E" alt="Джокер"/></span>
                     <div class="comment__text">
                       <header class="comment__header">
                         <b class="comment__author">Джокер</b> <time class="comment__date" datetime="2017-04-25T05:45">25.04.2017 в 05:45</time>
@@ -1351,7 +1379,7 @@
             </article>
 
             <article class="comment">
-              <div class="comment__inner"><span class="comment__avatar-wrap"><img src="data:image/svg+xml,%3Csvg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 60 60&quot;%3E%3Ccircle r=&quot;50%25&quot; cx=&quot;50%25&quot; cy=&quot;50%25&quot; fill=&quot;#ccc&quot;/%3E%3C/svg%3E" alt="Джокер"></span>
+              <div class="comment__inner"><span class="comment__avatar-wrap"><img src="data:image/svg+xml,%3Csvg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 60 60&quot;%3E%3Ccircle r=&quot;50%25&quot; cx=&quot;50%25&quot; cy=&quot;50%25&quot; fill=&quot;#ccc&quot;/%3E%3C/svg%3E" alt="Джокер"/></span>
                 <div class="comment__text">
                   <header class="comment__header">
                     <b class="comment__author">Джокер</b> <time class="comment__date" datetime="2017-04-25T05:45">25.04.2017 в 05:45</time>
@@ -1429,7 +1457,7 @@
             <h2 class="blocks-library__item-title">
               <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/embed-responsive" title="Папка блока в репозитории">
                 <svg width="20" height="20">
-                  <use xlink:href="#folder" />
+                  <use xlink:href="#folder"></use>
                 </svg>
               </a>Адаптирующийся медиаконтент</h2>
             <p>По умолчанию предназначен для встраивания роликов 16:9. C модификатором позволяет встраивать ролики 4:3.</p>
@@ -1455,10 +1483,10 @@
             </style>
             <div class="embed-responsive-demo">
               <div class="embed-responsive-demo__item">
-                <div class="embed-responsive  embed-responsive--4-3"><iframe src="https://www.youtube.com/embed/7pOr3dBFAeY" frameborder="0" allowfullscreen></iframe></div>
+                <div class="embed-responsive  embed-responsive--4-3"><iframe src="https://www.youtube.com/embed/7pOr3dBFAeY" frameborder="0" allowfullscreen=""></iframe></div>
               </div>
               <div class="embed-responsive-demo__item">
-                <div class="embed-responsive"><iframe src="https://www.youtube.com/embed/B0Q1rKpDNE4" frameborder="0" allowfullscreen></iframe></div>
+                <div class="embed-responsive"><iframe src="https://www.youtube.com/embed/B0Q1rKpDNE4" frameborder="0" allowfullscreen=""></iframe></div>
               </div>
             </div>
             <div class="blocks-library__code-wrapper"><span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
@@ -1498,7 +1526,7 @@
             <h2 class="blocks-library__item-title">
               <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/tooltip" title="Папка блока в репозитории">
                 <svg width="20" height="20">
-                  <use xlink:href="#folder" />
+                  <use xlink:href="#folder"></use>
                 </svg>
               </a>Подсказки</h2>
             <p>Текст и подсказка: <span class="tooltip"><button class="tooltip__btn" type="button" aria-label="more info" data-tooltip-content="Текст подсказки может быть длинным. Хочется, чтобы <em>внутри</em> <small>можно было</small> <i>использовать</i> <b>разметку</b>.">Подсказка</button></span></p>
@@ -1538,15 +1566,15 @@
             <h2 class="blocks-library__item-title">
               <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/btn" title="Папка блока в репозитории">
                 <svg width="20" height="20">
-                  <use xlink:href="#folder" />
+                  <use xlink:href="#folder"></use>
                 </svg>
               </a>Кнопка</h2>
             <p><a class="btn" href="/">Кнопка-ссылка</a>
-              <input class="btn" value="Кнопка-input" type="button" name="submit">
+              <input class="btn" value="Кнопка-input" type="button" name="submit" />
               <button class="btn  btn--main">Кнопка-button</button></p>
             <p><a class="btn  btn--disabled" href="/">Кнопка-ссылка</a>
-              <input class="btn" value="Кнопка-input" type="button" name="submit" disabled>
-              <button class="btn  btn--main" disabled>Кнопка-button</button></p>
+              <input class="btn" value="Кнопка-input" type="button" name="submit" disabled="" />
+              <button class="btn  btn--main" disabled="">Кнопка-button</button></p>
             <div class="blocks-library__code-wrapper"><span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
               <div class="blocks-library__code">
                 <pre class="code">
@@ -1596,11 +1624,11 @@
             <h2 class="blocks-library__item-title">
               <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/field-text" title="Папка блока в репозитории">
                 <svg width="20" height="20">
-                  <use xlink:href="#folder" />
+                  <use xlink:href="#folder"></use>
                 </svg>
               </a>Текстовое поле</h2>
             <p>Текстовые поля любого типа. В том числе, с использованием не <code>input</code>, а <code>textarea</code>. Стилизация ошибочного состояния вынесена в отдельный файл.</p>
-            <label class="field-text"><span class="field-text__name">Текстовое поле</span><span class="field-text__input-wrap"><textarea class="field-text__input" name="test" placeholder="Подсказка">Текст внутри</textarea><span class="field-text__help-text">Подсказка под полем</span></span></label><label class="field-text  field-text--error"><span class="field-text__name">Текстовое поле</span><span class="field-text__input-wrap"><input class="field-text__input" type="text" placeholder="Подсказка"><span class="field-text__help-text">Описание ошибки</span></span></label><label class="field-text"><span class="field-text__input-wrap"><input class="field-text__input" type="text"></span></label>
+            <label class="field-text"><span class="field-text__name">Текстовое поле</span><span class="field-text__input-wrap"><textarea class="field-text__input" name="test" placeholder="Подсказка">Текст внутри</textarea><span class="field-text__help-text">Подсказка под полем</span></span></label><label class="field-text  field-text--error"><span class="field-text__name">Текстовое поле</span><span class="field-text__input-wrap"><input class="field-text__input" type="text" placeholder="Подсказка"/><span class="field-text__help-text">Описание ошибки</span></span></label><label class="field-text"><span class="field-text__input-wrap"><input class="field-text__input" type="text"/></span></label>
             <div class="blocks-library__code-wrapper"><span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
               <div class="blocks-library__code">
                 <pre class="code">
@@ -1663,12 +1691,12 @@
             <h2 class="blocks-library__item-title">
               <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/field-checkbox" title="Папка блока в репозитории">
                 <svg width="20" height="20">
-                  <use xlink:href="#folder" />
+                  <use xlink:href="#folder"></use>
                 </svg>
               </a>Флажок/чекбокс</h2>
             <p>В стилевом файле есть закомментированные фрагменты для замены нативного элемента своим (svg).</p>
             <div class="field-checkbox">
-              <div class="field-checkbox__input-wrap"><label class="field-checkbox__name"><input class="field-checkbox__input" type="checkbox" name="check0"><span class="field-checkbox__name-text">Чекбокс без группы</span></label>
+              <div class="field-checkbox__input-wrap"><label class="field-checkbox__name"><input class="field-checkbox__input" type="checkbox" name="check0"/><span class="field-checkbox__name-text">Чекбокс без группы</span></label>
                 <div class="field-checkbox__help-text-wrap">
                   <div class="field-checkbox__help-text">Отдельно расположенный чекбокс</div>
                 </div>
@@ -1676,12 +1704,12 @@
             </div>
             <div class="field-checkbox">
               <div class="field-checkbox__title">Общее необязательное название</div>
-              <div class="field-checkbox__input-wrap  field-checkbox__input-wrap--error"><label class="field-checkbox__name"><input class="field-checkbox__input" type="checkbox" name="check1" checked="checked"><span class="field-checkbox__name-text">Чекбокс первый</span></label>
+              <div class="field-checkbox__input-wrap  field-checkbox__input-wrap--error"><label class="field-checkbox__name"><input class="field-checkbox__input" type="checkbox" name="check1" checked="checked"/><span class="field-checkbox__name-text">Чекбокс первый</span></label>
                 <div class="field-checkbox__help-text-wrap">
                   <div class="field-checkbox__help-text">И, возможно, единственный</div>
                 </div>
               </div>
-              <div class="field-checkbox__input-wrap"><label class="field-checkbox__name"><input class="field-checkbox__input" type="checkbox" name="check2"><span class="field-checkbox__name-text">Чекбокс второй</span></label>
+              <div class="field-checkbox__input-wrap"><label class="field-checkbox__name"><input class="field-checkbox__input" type="checkbox" name="check2"/><span class="field-checkbox__name-text">Чекбокс второй</span></label>
                 <div class="field-checkbox__help-text-wrap">
                   <div class="field-checkbox__help-text">А, нет. Не единственный...</div>
                 </div>
@@ -1762,18 +1790,18 @@
             <h2 class="blocks-library__item-title">
               <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/field-radio" title="Папка блока в репозитории">
                 <svg width="20" height="20">
-                  <use xlink:href="#folder" />
+                  <use xlink:href="#folder"></use>
                 </svg>
               </a>Радиокнопки</h2>
             <p>В стилевом файле есть закомментированные фрагменты для замены нативного элемента своим (svg).</p>
             <div class="field-radio">
               <div class="field-radio__title">Общее необязательное название</div>
-              <div class="field-radio__input-wrap"><label class="field-radio__name"><input class="field-radio__input" type="radio" name="radio" checked="checked"><span class="field-radio__name-text">Первый</span></label>
+              <div class="field-radio__input-wrap"><label class="field-radio__name"><input class="field-radio__input" type="radio" name="radio" checked="checked"/><span class="field-radio__name-text">Первый</span></label>
                 <div class="field-radio__help-text-wrap">
                   <div class="field-radio__help-text">И, возможно, единственный</div>
                 </div>
               </div>
-              <div class="field-radio__input-wrap"><label class="field-radio__name"><input class="field-radio__input" type="radio" name="radio"><span class="field-radio__name-text">Второй</span></label>
+              <div class="field-radio__input-wrap"><label class="field-radio__name"><input class="field-radio__input" type="radio" name="radio"/><span class="field-radio__name-text">Второй</span></label>
                 <div class="field-radio__help-text-wrap">
                   <div class="field-radio__help-text">А, нет. Не единственный...</div>
                 </div>
@@ -1845,11 +1873,11 @@
             <h2 class="blocks-library__item-title">
               <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/field-toggler" title="Папка блока в репозитории">
                 <svg width="20" height="20">
-                  <use xlink:href="#folder" />
+                  <use xlink:href="#folder"></use>
                 </svg>
               </a>Переключатель</h2>
             <div class="field-toggler">
-              <div class="field-toggler__input-wrap"><label class="field-toggler__name"><input class="field-toggler__input" type="checkbox" name="check10"><span class="field-toggler__name-text">Одиночный переключатель</span></label>
+              <div class="field-toggler__input-wrap"><label class="field-toggler__name"><input class="field-toggler__input" type="checkbox" name="check10"/><span class="field-toggler__name-text">Одиночный переключатель</span></label>
                 <div class="field-toggler__help-text-wrap">
                   <div class="field-toggler__help-text">Это чекбокс, на самом деле</div>
                 </div>
@@ -1857,12 +1885,12 @@
             </div>
             <div class="field-toggler">
               <div class="field-toggler__title">Две радиокнопки</div>
-              <div class="field-toggler__input-wrap"><label class="field-toggler__name"><input class="field-toggler__input" type="radio" name="check11" checked="checked"><span class="field-toggler__name-text">Переключатель 1</span></label>
+              <div class="field-toggler__input-wrap"><label class="field-toggler__name"><input class="field-toggler__input" type="radio" name="check11" checked="checked"/><span class="field-toggler__name-text">Переключатель 1</span></label>
                 <div class="field-toggler__help-text-wrap">
                   <div class="field-toggler__help-text">Подсказка</div>
                 </div>
               </div>
-              <div class="field-toggler__input-wrap  field-toggler__input-wrap--some"><label class="field-toggler__name"><input class="field-toggler__input" type="radio" name="check11"><span class="field-toggler__name-text">Переключатель 2</span></label>
+              <div class="field-toggler__input-wrap  field-toggler__input-wrap--some"><label class="field-toggler__name"><input class="field-toggler__input" type="radio" name="check11"/><span class="field-toggler__name-text">Переключатель 2</span></label>
                 <div class="field-toggler__help-text-wrap">
                   <div class="field-toggler__help-text">Подсказка</div>
                 </div>
@@ -1950,12 +1978,12 @@
             <h2 class="blocks-library__item-title">
               <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/field-file" title="Папка блока в репозитории">
                 <svg width="20" height="20">
-                  <use xlink:href="#folder" />
+                  <use xlink:href="#folder"></use>
                 </svg>
               </a>Файл</h2>
             <div class="field-file">
-              <div class="field-file__name">Название</div><label class="field-file__input-wrap"><input class="field-file__input" type="file" data-multiple-caption="Выбрано файлов: {count}" name="commentFile" multiple="multiple"><div class="field-file__name-text" data-button-text="Выберите файл(ы)">Ничего не выбрано</div><div class="field-file__help-text">Подсказка</div></label></div>
-            <div class="field-file  field-file--error"><label class="field-file__input-wrap"><input class="field-file__input" type="file" data-multiple-caption="Выбрано файлов: {count}" name="commentFile3"><div class="field-file__name-text" data-button-text="Выберите файл(ы)"></div><div class="field-file__help-text">Ошибка</div></label></div>
+              <div class="field-file__name">Название</div><label class="field-file__input-wrap"><input class="field-file__input" type="file" data-multiple-caption="Выбрано файлов: {count}" name="commentFile" multiple="multiple"/><div class="field-file__name-text" data-button-text="Выберите файл(ы)">Ничего не выбрано</div><div class="field-file__help-text">Подсказка</div></label></div>
+            <div class="field-file  field-file--error"><label class="field-file__input-wrap"><input class="field-file__input" type="file" data-multiple-caption="Выбрано файлов: {count}" name="commentFile3"/><div class="field-file__name-text" data-button-text="Выберите файл(ы)"></div><div class="field-file__help-text">Ошибка</div></label></div>
             <div class="blocks-library__code-wrapper"><span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
               <div class="blocks-library__code">
                 <pre class="code">
@@ -2031,9 +2059,9 @@
             <h2 class="blocks-library__item-title">
               <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/field-range" title="Папка блока в репозитории">
                 <svg width="20" height="20">
-                  <use xlink:href="#folder" />
+                  <use xlink:href="#folder"></use>
                 </svg>
-              </a>Ползунок</h2><label class="field-range"><span class="field-range__name">Название</span><span class="field-range__input-wrap"><input class="field-range__input" type="range" name="counter" min="1" max="100" step="1" value="40"><span class="field-range__help-text">Подсказка</span></span></label>
+              </a>Ползунок</h2><label class="field-range"><span class="field-range__name">Название</span><span class="field-range__input-wrap"><input class="field-range__input" type="range" name="counter" min="1" max="100" step="1" value="40"/><span class="field-range__help-text">Подсказка</span></span></label>
             <div class="blocks-library__code-wrapper"><span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
               <div class="blocks-library__code">
                 <pre class="code">
@@ -2092,7 +2120,7 @@
             <h2 class="blocks-library__item-title">
               <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/field-select" title="Папка блока в репозитории">
                 <svg width="20" height="20">
-                  <use xlink:href="#folder" />
+                  <use xlink:href="#folder"></use>
                 </svg>
               </a>Селекты</h2>
             <div class="field-select">
@@ -2223,7 +2251,7 @@
             <h2 class="blocks-library__item-title">
               <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/field-actions" title="Папка блока в репозитории">
                 <svg width="20" height="20">
-                  <use xlink:href="#folder" />
+                  <use xlink:href="#folder"></use>
                 </svg>
               </a>Кнопки формы</h2>
             <div class="field-actions">
@@ -2265,10 +2293,10 @@
             <h2 class="blocks-library__item-title">
               <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/fields-group" title="Папка блока в репозитории">
                 <svg width="20" height="20">
-                  <use xlink:href="#folder" />
+                  <use xlink:href="#folder"></use>
                 </svg>
               </a>Группа полей</h2>
-            <div class="fields-group"><label class="field-text"><span class="field-text__input-wrap"><input class="field-text__input" type="text" placeholder="Логин"><span class="field-text__help-text">Подсказка</span></span></label><label class="field-text"><span class="field-text__input-wrap"><input class="field-text__input" type="password" placeholder="Пароль"><span class="field-text__help-text">Подсказка</span></span></label>
+            <div class="fields-group"><label class="field-text"><span class="field-text__input-wrap"><input class="field-text__input" type="text" placeholder="Логин"/><span class="field-text__help-text">Подсказка</span></span></label><label class="field-text"><span class="field-text__input-wrap"><input class="field-text__input" type="password" placeholder="Пароль"/><span class="field-text__help-text">Подсказка</span></span></label>
               <div class="field-actions"><button class="btn  btn--primary">Отправить</button></div>
             </div>
             <div class="blocks-library__code-wrapper"><span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
@@ -2319,14 +2347,14 @@
             <h2 class="blocks-library__item-title">
               <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/form" title="Папка блока в репозитории">
                 <svg width="20" height="20">
-                  <use xlink:href="#folder" />
+                  <use xlink:href="#folder"></use>
                 </svg>
               </a>Форма</h2>
             <form class="form">
               <fieldset class="form__fieldset">
-                <legend class="form__legend">Название1</legend><label class="field-text"><span class="field-text__input-wrap"><input class="field-text__input" type="text" placeholder="Пример"><span class="field-text__help-text">Подсказка</span></span></label><label class="field-text"><span class="field-text__input-wrap"><input class="field-text__input" type="text" placeholder="Пример"><span class="field-text__help-text">Подсказка</span></span></label></fieldset>
+                <legend class="form__legend">Название1</legend><label class="field-text"><span class="field-text__input-wrap"><input class="field-text__input" type="text" placeholder="Пример"/><span class="field-text__help-text">Подсказка</span></span></label><label class="field-text"><span class="field-text__input-wrap"><input class="field-text__input" type="text" placeholder="Пример"/><span class="field-text__help-text">Подсказка</span></span></label></fieldset>
               <fieldset class="form__fieldset">
-                <legend class="form__legend">Название2</legend><label class="field-text"><span class="field-text__input-wrap"><input class="field-text__input" type="text" placeholder="Пример"><span class="field-text__help-text">Подсказка</span></span></label><label class="field-text"><span class="field-text__input-wrap"><input class="field-text__input" type="text" placeholder="Пример"><span class="field-text__help-text">Подсказка</span></span></label></fieldset>
+                <legend class="form__legend">Название2</legend><label class="field-text"><span class="field-text__input-wrap"><input class="field-text__input" type="text" placeholder="Пример"/><span class="field-text__help-text">Подсказка</span></span></label><label class="field-text"><span class="field-text__input-wrap"><input class="field-text__input" type="text" placeholder="Пример"/><span class="field-text__help-text">Подсказка</span></span></label></fieldset>
               <div class="field-actions"><button class="btn  btn--primary">Отправить</button></div>
             </form>
             <div class="blocks-library__code-wrapper"><span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
@@ -2407,7 +2435,7 @@
             <h2 class="blocks-library__item-title">
               <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/is-mobile" title="Папка блока в репозитории">
                 <svg width="20" height="20">
-                  <use xlink:href="#folder" />
+                  <use xlink:href="#folder"></use>
                 </svg>
               </a>Определение мобильного устройства</h2>
             <p>JavaScript, добавляющий на <code>&lt;html&gt;</code> классы <code>is-mobile</code>, если страница открыта с мобильного устройства (см. в devtools с эмуляцией). Должен быть вставлен в <code>&lt;head&gt;</code>.</p>
@@ -2418,7 +2446,7 @@
             <h2 class="blocks-library__item-title">
               <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/scroll-link" title="Папка блока в репозитории">
                 <svg width="20" height="20">
-                  <use xlink:href="#folder" />
+                  <use xlink:href="#folder"></use>
                 </svg>
               </a>Ссылки на якоря страницы</h2>
             <p>Блок не содержит стилизации, только Javascript. По странице ищутся все ссылки-якоря c атрибутом <code>data-scroll-link</code>, навешивается слежение за кликом, по клику — плавный скролл (500 мс, ускорение) к тегу с целевым <code>id</code>.</p>
@@ -2459,7 +2487,7 @@
             <h2 class="blocks-library__item-title">
               <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/to-top" title="Папка блока в репозитории">
                 <svg width="20" height="20">
-                  <use xlink:href="#folder" />
+                  <use xlink:href="#folder"></use>
                 </svg>
               </a>Ссылка «вверх»</h2>
             <p>Ссылка «вверх» в нижнем правом углу страницы. Видима только если скролл больше указанного в Javascript-файле блока значения.</p>
@@ -2497,7 +2525,7 @@
             <h2 class="blocks-library__item-title">
               <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/dropdown" title="Папка блока в репозитории">
                 <svg width="20" height="20">
-                  <use xlink:href="#folder" />
+                  <use xlink:href="#folder"></use>
                 </svg>
               </a>Выпадающий элемент</h2>
             <p>Основан на dropdown.js из Bootstrap. Изменения минимальны.</p>
@@ -2555,7 +2583,7 @@
           <h2 class="blocks-library__item-title">
             <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/owl-carousel" title="Папка блока в репозитории">
               <svg width="20" height="20">
-                <use xlink:href="#folder" />
+                <use xlink:href="#folder"></use>
               </svg>
             </a>Карусель с <a href="http://owlcarousel2.github.io/OwlCarousel2/">owl-carousel</a></h2>
           <p>ВНИМАНИЕ: примесь возвращает только разметку. Нужно включить и настроить карусель в <code>owl-carousel/owl-carousel.js</code></p>
@@ -2615,7 +2643,7 @@
           <h2 class="blocks-library__item-title">
             <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/swipe" title="Папка блока в репозитории">
               <svg width="20" height="20">
-                <use xlink:href="#folder" />
+                <use xlink:href="#folder"></use>
               </svg>
             </a>Карусель с <a href="https://github.com/lyfeyaj/swipe">swipe</a></h2>
           <p>ВНИМАНИЕ: примесь возвращает только разметку. Нужно включить и настроить карусель в <code>swipe/swipe.js</code></p>
@@ -2677,7 +2705,7 @@
           <h2 class="blocks-library__item-title">
             <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/nouislider" title="Папка блока в репозитории">
               <svg width="20" height="20">
-                <use xlink:href="#folder" />
+                <use xlink:href="#folder"></use>
               </svg>
             </a>Выбор диапазона с <a href="https://refreshless.com/nouislider/">noUiSlider</a></h2>
           <p>ВНИМАНИЕ: примесь возвращает только разметку. Нужно включить и настроить слайдер в <code>nouislider/nouislider.js</code></p>
@@ -2722,7 +2750,7 @@
           <h2 class="blocks-library__item-title">
             <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/off-canvas" title="Папка блока в репозитории">
               <svg width="20" height="20">
-                <use xlink:href="#folder" />
+                <use xlink:href="#folder"></use>
               </svg>
             </a>Боковое меню страницы</h2>
           <p>Меню показывается по клику на любой элемент с <code>data-toggle=&quot;off-canvas&quot;</code> или <code>data-toggle-native=&quot;off-canvas&quot;</code> (в последнем случае произойдет и действие браузера по умолчанию).</p>
@@ -2738,7 +2766,7 @@
           <h2 class="blocks-library__item-title">
             <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/modal" title="Папка блока в репозитории">
               <svg width="20" height="20">
-                <use xlink:href="#folder" />
+                <use xlink:href="#folder"></use>
               </svg>
             </a>Модальное окно</h2>
           <p>Основан на modal.js из Bootstrap. Изменения минимальны (имена классов, пространство имен событий, некоторые упрощения).</p>
@@ -2803,7 +2831,7 @@
           <h2 class="blocks-library__item-title">
             <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/tabs" title="Папка блока в репозитории">
               <svg width="20" height="20">
-                <use xlink:href="#folder" />
+                <use xlink:href="#folder"></use>
               </svg>
             </a>Табы</h2>
           <div class="tabs  tabs--some-mod">
@@ -2917,12 +2945,13 @@
           <h2 class="blocks-library__item-title">
             <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/baron" title="Папка блока в репозитории">
               <svg width="20" height="20">
-                <use xlink:href="#folder" />
+                <use xlink:href="#folder"></use>
               </svg>
             </a>Кастомный скролл с <a href="https://www.npmjs.com/package/baron">baron</a></h2>
           <p>Кастомный скролл c <a href="https://www.npmjs.com/package/baron">baron</a> (зависимость берётся в сборку по умолчанию). <a href="http://diokuz.github.io/baron/">Демо кастомного скролла</a>…</p>
-          <p>Кастомный скролл включён для всех тегов с классом <code>.baron</code> в <code>blocks/baron/baron.js</code>. Стили берутся из <code>blocks/baron/baron.scss</code>, оставлена одна тема оформления (используется по умолчанию). См. <a href="https://github.com/Diokuz/baron/blob/master/skins/styles.css">стилизацию оригинальных тем</a>.</p>
-          <div class="baron  baron--block-demo" style="height: 100px; border: 1px solid #E6E6E6; margin-bottom: 1rem;">
+          <p>Для каждого блока нужно включать baron в <code>blocks/baron/baron.js</code>.</p>
+          <p>Оставлена одна тема оформления (используется по умолчанию). Стили берутся из <code>blocks/baron/baron.scss</code>. См. <a href="https://github.com/Diokuz/baron/blob/master/skins/styles.css">стилизацию оригинальных тем</a>.</p>
+          <div class="baron  baron--mods" id="baron-demo" style="height: 100px; border: 1px solid #E6E6E6; margin-bottom: 1rem;">
             <div class="baron__scroller">
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt dicta aliquid nemo, sit possimus, eveniet tempore minus, doloremque incidunt, nihil quos aperiam ab iure quia. Ipsa sit porro incidunt, sed!</p>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt dicta aliquid nemo, sit possimus, eveniet tempore minus, doloremque incidunt, nihil quos aperiam ab iure quia. Ipsa sit porro incidunt, sed!</p>
@@ -2945,9 +2974,10 @@
 <code>//- (должна быть указана в ./projectConfig.json, есть по умолчанию)</code>
 <code>//- ВНИМАНИЕ! Помимо вызова примеси, нужно включить baron на блоке! см. blocks/baron/baron.js</code>
 <code>&nbsp;</code>
-<code>mixin baron(mods, tag)</code>
+<code>mixin baron(id, mods, tag)</code>
 <code>&nbsp;</code>
 <code>  //- Принимает:</code>
+<code>  //-   id     {string} - ID этого конкретного блока с кастомным скроллом</code>
 <code>  //-   mods    {string} - список модификаторов</code>
 <code>  //-   tag     {string} - тег</code>
 <code>  //- Вызов:</code>
@@ -2971,7 +3001,7 @@
 <code>      parentTag = tag;</code>
 <code>    }</code>
 <code>&nbsp;</code>
-<code>  #{parentTag}.baron(class=allMods)&attributes(attributes)</code>
+<code>  #{parentTag}.baron(id=id, class=allMods)&attributes(attributes)</code>
 <code>    .baron__scroller</code>
 <code>      block</code>
 <code>    .baron__track</code>
