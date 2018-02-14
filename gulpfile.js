@@ -110,7 +110,7 @@ gulp.task('style', function () {
 });
 
 // Компиляция отдельных файлов
-gulp.task('style:single', function () {
+gulp.task('style:single', function (callback) {
   if(projectConfig.singleCompiled.length) {
     const sass = require('gulp-sass');
     const sourcemaps = require('gulp-sourcemaps');
@@ -142,6 +142,9 @@ gulp.task('style:single', function () {
       }))
       .pipe(gulp.dest(dirs.buildPath + '/css'))
       .pipe(browserSync.stream());
+  }
+  else {
+    callback();
   }
 });
 
