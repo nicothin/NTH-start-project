@@ -376,7 +376,7 @@ gulp.task('js', function (callback) {
         }
       }))
       .pipe(concat('script.min.js'))
-      .pipe(gulpIf(!isDev, uglify()))
+      .pipe(gulpIf(!isDev, uglify().on('error', function(e){console.log(e);})))
       .pipe(size({
         title: 'Размер',
         showFiles: true,
