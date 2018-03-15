@@ -94,7 +94,6 @@
 4. [postcss-inline-svg](https://github.com/TrySound/postcss-inline-svg)
 5. [gulp-cleancss](https://github.com/mgcrea/gulp-cleancss) (только в режиме сборки без карт кода)
 6. [postcss-object-fit-images](https://github.com/ronik-design/postcss-object-fit-images) (в паре с [полифилом](https://github.com/bfred-it/object-fit-images))
-7. [postcss-image-inliner](https://www.npmjs.com/package/postcss-image-inliner)
 
 Для [postcss-image-inliner](https://www.npmjs.com/package/postcss-image-inliner) указано ограничение на размер файла в 5 Кб, файлы ищутся в `src/blocks/**/bg-img/`. Чтобы избежать конфликтов имен, добавляйте к именам изображений префикс (имя блока), например: `src/blocks/mega-block/bg-img/mega-block__avatar.png`
 
