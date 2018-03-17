@@ -286,7 +286,7 @@ gulp.task('sprite:png', function (callback) {
           padding: 4,
           imgPath: '../img/' + fileName
         }));
-      let imgStream = spriteData.img
+        let imgStream = spriteData.img
         .pipe(buffer())
         .pipe(imagemin({
           use: [pngquant()]
@@ -425,8 +425,17 @@ gulp.task('build', gulp.series(
 gulp.task('deploy', function() {
   const ghPages = require('gulp-gh-pages');
   console.log('---------- Публикация содержимого ./build/ на GH pages');
+  var ghPagesUrl;
+  if (repoUrl) {
+    var urlParts = repoUrl.split('/');
+    if (urlParts[2] == 'github.com') {
+      ghPagesUrl = 'http://' + urlParts[3] + '.github.io/' + urlParts[4] + '/';
+    }
+    console.log(ghPagesUrl);
+  }
   return gulp.src(dirs.buildPath + '**/*')
-    .pipe(ghPages());
+    .pipe(ghPages())
+    .pipe(gulpIf(ghPagesUrl, console.log('---------- ' + ghPagesUrl)));
 });
 
 // Локальный сервер, слежение
