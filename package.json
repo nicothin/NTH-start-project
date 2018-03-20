@@ -63,7 +63,6 @@
     "gulp-wait": "0.0.2",
     "gulp.spritesmith": "^6.3.0",
     "husky": "^0.14.3",
-    "imagemin-pngquant": "^5.0.0",
     "jstransformer-markdown-it": "^2.0.0",
     "lint-staged": "^7.0.0",
     "merge-stream": "^1.0.1",

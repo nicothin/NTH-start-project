@@ -275,7 +275,6 @@ gulp.task('sprite:png', function (callback) {
     const buffer = require('vinyl-buffer');
     const merge = require('merge-stream');
     const imagemin = require('gulp-imagemin');
-    const pngquant = require('imagemin-pngquant');
     if(fileExist(spritePngPath) !== false) {
       del(dirs.srcPath + dirs.blocksDirName + '/sprite-png/img/*.png');
       let fileName = 'sprite-' + Math.random().toString().replace(/[^0-9]/g, '') + '.png';
@@ -288,9 +287,9 @@ gulp.task('sprite:png', function (callback) {
         }));
         let imgStream = spriteData.img
         .pipe(buffer())
-        .pipe(imagemin({
-          use: [pngquant()]
-        }))
+        .pipe(imagemin([
+          imagemin.optipng({ optimizationLevel: 5 }),
+        ]))
         .pipe(gulp.dest(dirs.srcPath + dirs.blocksDirName + '/sprite-png/img/'));
       let cssStream = spriteData.css
         .pipe(gulp.dest(dirs.srcPath + dirs.blocksDirName + '/sprite-png/'));
@@ -395,15 +394,21 @@ gulp.task('js', function (callback) {
 const folder = process.env.folder;
 gulp.task('img:opt', function (callback) {
   const imagemin = require('gulp-imagemin');
-  const pngquant = require('imagemin-pngquant');
+  // const pngquant = require('imagemin-pngquant');
   if(folder){
     console.log('---------- Оптимизация картинок');
     return gulp.src(folder + '/*.{jpg,jpeg,gif,png,svg}')
-      .pipe(imagemin({
-        progressive: true,
-        svgoPlugins: [{removeViewBox: false}],
-        use: [pngquant()]
-      }))
+      .pipe(imagemin([
+        imagemin.gifsicle({ interlaced: true }),
+        imagemin.jpegtran({ progressive: true }),
+        imagemin.optipng({ optimizationLevel: 5 }),
+        imagemin.svgo({
+          plugins: [
+            { removeViewBox: false },
+            { cleanupIDs: false }
+          ]
+        })
+      ]))
       .pipe(gulp.dest(folder));
   }
   else {
