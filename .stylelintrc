@@ -299,7 +299,7 @@
       "severity": "warning"
     }],
     "no-duplicate-selectors": [true, {
-      "message": "Селкторы дублировать не хочешь ты"
+      "message": "Селекторы дублировать не хочешь ты"
     }],
     "no-eol-whitespace": [true, {
       "message": "Пустые символы в конце строки. Используй https://goo.gl/Co2tZ8"
