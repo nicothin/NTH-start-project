@@ -41,7 +41,7 @@
     "gulp-cleancss": "^0.2.2",
     "gulp-concat": "^2.6.1",
     "gulp-debug": "^3.1.0",
-    "gulp-gh-pages": "^0.5.4",
+    "gulp-gh-pages": "git+https://github.com/nicothin/gulp-gh-pages.git",
     "gulp-html-beautify": "^1.0.1",
     "gulp-if": "^2.0.2",
     "gulp-imagemin": "^4.0.0",
