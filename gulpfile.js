@@ -436,11 +436,11 @@ gulp.task('deploy', function() {
     if (urlParts[2] == 'github.com') {
       ghPagesUrl = 'http://' + urlParts[3] + '.github.io/' + urlParts[4] + '/';
     }
-    console.log(ghPagesUrl);
+    console.log('---------- ' + ghPagesUrl);
+
   }
   return gulp.src(dirs.buildPath + '**/*')
-    .pipe(ghPages())
-    .pipe(gulpIf(ghPagesUrl, console.log('---------- ' + ghPagesUrl)));
+    .pipe(ghPages());
 });
 
 // Локальный сервер, слежение
