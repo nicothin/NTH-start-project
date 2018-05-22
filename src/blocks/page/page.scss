@@ -40,6 +40,10 @@
   box-sizing: inherit;
 }
 
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
 body {
   // Типографика проекта — в блоке typo
   display: flex;           // Исправляем баг в IE для min-height and flexbox (flex-direction:column)
