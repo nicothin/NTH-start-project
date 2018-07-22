@@ -135,8 +135,6 @@ img {
 a {
   color: $link-color;
   background-color: transparent;
-  text-decoration-skip: ink;
-  -webkit-text-decoration-skip: objects;
   transition: color 0.3s;
 
   &:hover,
