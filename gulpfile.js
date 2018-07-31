@@ -456,6 +456,7 @@ gulp.task('serve', gulp.series('build', function() {
   // Стили
   let stylePaths = [
     dirs.srcPath + 'scss/style.scss',
+    dirs.srcPath + 'scss/variables.scss',
     dirs.srcPath + 'scss/mixins/*.scss',
   ];
   for (let i = 0, len = lists.blocksDirs.length; i < len; ++i) {
