@@ -424,7 +424,9 @@ gulp.task('browserify', function () {
   var b = browserify({
     entries: dirs.srcPath + '/js/global-script.js',
     debug: true
-  }).transform('babelify', {presets: ['@babel/preset-env']});
+  })
+    // .add([dirs.srcPath + '/js/scri.js']) // добавить все необходимые файлы
+    .transform('babelify', {presets: ['@babel/preset-env']});
    return b.bundle()
     .pipe(source('script.js'))
     .pipe(gulp.dest(dirs.buildPath + '/js'))
