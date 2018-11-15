@@ -1,3 +1,12 @@
+// Стилизация БЭМ-блока page и общие стили тегов
+
+$body-bg:                     #fff !default;
+$link-color:                  hsl(208, 98%, 43%) !default;
+$link-color--hover:           darken(hsl(208, 98%, 43%), 15%) !default;
+
+$screen-xl:                   1200px !default;
+
+
 
 // Сделаем viewport великим снова! (привет, IE10)
 // http://timkadlec.com/2012/10/ie10-snap-mode-and-responsive-design/
@@ -144,6 +153,17 @@ a {
 
   &:visited {
     color: $link-color--hover;
+  }
+
+  &[href^="tel:"] {
+
+    // На больших экранах телефоны-ссылки делаем обычным текстом
+    @media (min-width: $screen-xl) {
+      white-space: nowrap;
+      pointer-events: none;
+      text-decoration: inherit;
+      color: inherit;
+    }
   }
 }
 
