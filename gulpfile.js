@@ -427,8 +427,9 @@ gulp.task('build', gulp.series(
 ));
 
 // Отправка в GH pages (ветку gh-pages репозитория)
-gulp.task('deploy', function() {
-  const ghPages = require('gulp-gh-pages');
+gulp.task('deploy', function(cb) {
+  const ghpages = require('gh-pages');
+  const path = require('path');
   console.log('---------- Публикация содержимого ./build/ на GH pages');
   var ghPagesUrl;
   if (repoUrl) {
@@ -439,8 +440,9 @@ gulp.task('deploy', function() {
     console.log('---------- ' + ghPagesUrl);
 
   }
-  return gulp.src(dirs.buildPath + '**/*')
-    .pipe(ghPages());
+  ghpages.publish(path.join(process.cwd(), dirs.buildPath), cb);
+  // return gulp.src(dirs.buildPath + '**/*')
+  //   .pipe(ghPages());
 });
 
 // Локальный сервер, слежение
