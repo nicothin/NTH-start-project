@@ -414,7 +414,7 @@ gulp.task('js', function (callback) {
   }
 });
 
-gulp.task('bf', function () {
+gulp.task('browserify', function () {
   var browserify = require('browserify');
   var source = require('vinyl-source-stream');
   var buffer = require('vinyl-buffer');
@@ -424,12 +424,14 @@ gulp.task('bf', function () {
   var b = browserify({
     entries: dirs.srcPath + '/js/global-script.js',
     debug: true
-  });
+  }).transform('babelify', {presets: ['@babel/preset-env']});
    return b.bundle()
-    .pipe(source('script.min.js'))
+    .pipe(source('script.js'))
+    .pipe(gulp.dest(dirs.buildPath + '/js'))
+    .pipe(rename('script.min.js'))
     .pipe(buffer())
     .pipe(sourcemaps.init({loadMaps: true}))
-    // .pipe(uglify())
+    .pipe(uglify())
     .on('error', function(){ console.log('error'); })
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest(dirs.buildPath + '/js'));

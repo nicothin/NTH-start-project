@@ -21,8 +21,5 @@
 //   // code
 // });
 
-let foo = 0;
-console.log(foo);
-
-require('./script-a.js');
-require('./script-b.js');
+// Взять целевой файл
+// require('./some-file.js');
