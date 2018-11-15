@@ -307,8 +307,12 @@ gulp.task('sprite:png', function (callback) {
 });
 
 // Сборка Pug
+let classes = [];
 gulp.task('pug', function() {
   const pug = require('gulp-pug');
+  const through2 = require('through2');
+  const chalk = require('chalk');
+  const getClassesFromHtml = require('get-classes-from-html');
   const htmlbeautify = require('gulp-html-beautify');
   const replace = require('gulp-replace');
   console.log('---------- Сборка Pug');
@@ -339,6 +343,27 @@ gulp.task('pug', function() {
       },
       // compileDebug: false,
     }))
+    .pipe(through2.obj(function (file, enc, cb) {
+      if (file.isNull()) {
+        cb(null, file);
+        return;
+      }
+      if(file.relative != 'blocks-demo.html'){
+        const data = file.contents.toString();
+        let thisClasses = getClassesFromHtml(data);
+        thisClasses.forEach(function(item, i, arr) {
+          if (item.indexOf('__') + 1 === 0 && item.indexOf('--') + 1 === 0) {
+            classes.push(item)
+          }
+        });
+        file.contents = new Buffer(data);
+      }
+      this.push(file);
+      cb();
+     }))
+    .on('end', function(){
+      console.log(classes);
+    })
     .pipe(htmlbeautify())
     // и... привет бьютификатору!
     .pipe(replace(/^(\s*)(<header.+?>)(.*)(<\/header>)/gm, '$1$2\n$1  $3\n$1$4'))
