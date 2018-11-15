@@ -184,7 +184,7 @@
   z-index: 1;
   height: 100%;
   width: 100%; }
-/*! nouislider - 11.1.0 - 2018-04-02 11:18:13 */
+/*! nouislider - 12.1.0 - 10/25/2018 */
 /* Functional styling;
  * These styles are required for noUiSlider to function.
  * You don't need to change these rules to apply your design.
@@ -699,12 +699,12 @@ pre {
     -o-tab-size: 2;
        tab-size: 2; }
 .temp-icon-left-arrow {
-  background-image: url(../img/sprite-0005978672859350276.png);
+  background-image: url(../img/sprite-07224825110151252.png);
   background-position: 0px 0px;
   width: 32px;
   height: 32px; }
 .temp-icon-right-arrow {
-  background-image: url(../img/sprite-0005978672859350276.png);
+  background-image: url(../img/sprite-07224825110151252.png);
   background-position: -36px 0px;
   width: 32px;
   height: 32px; }

@@ -1628,7 +1628,11 @@
                 </svg>
               </a>Текстовое поле</h2>
             <p>Текстовые поля любого типа. В том числе, с использованием не <code>input</code>, а <code>textarea</code>. Стилизация ошибочного состояния вынесена в отдельный файл.</p>
-            <label class="field-text"><span class="field-text__name">Текстовое поле</span><span class="field-text__input-wrap"><textarea class="field-text__input" name="test" placeholder="Подсказка">Текст внутри</textarea><span class="field-text__help-text">Подсказка под полем</span></span></label><label class="field-text  field-text--error"><span class="field-text__name">Текстовое поле</span><span class="field-text__input-wrap"><input class="field-text__input" type="text" placeholder="Подсказка"/><span class="field-text__help-text">Описание ошибки</span></span></label><label class="field-text"><span class="field-text__input-wrap"><input class="field-text__input" type="text"/></span></label>
+            <label class="field-text"><span class="field-text__name">Текстовое поле</span><span class="field-text__input-wrap"><textarea class="field-text__input" name="test" placeholder="Подсказка">Текст внутри</textarea><span class="field-text__help-text">Подсказка под полем</span></span>
+            </label>
+            <label class="field-text  field-text--error"><span class="field-text__name">Текстовое поле</span><span class="field-text__input-wrap"><input class="field-text__input" type="text" placeholder="Подсказка"/><span class="field-text__help-text">Описание ошибки</span></span>
+            </label>
+            <label class="field-text"><span class="field-text__input-wrap"><input class="field-text__input" type="text"/></span></label>
             <div class="blocks-library__code-wrapper"><span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
               <div class="blocks-library__code">
                 <pre class="code">
@@ -1696,7 +1700,8 @@
               </a>Флажок/чекбокс</h2>
             <p>В стилевом файле есть закомментированные фрагменты для замены нативного элемента своим (svg).</p>
             <div class="field-checkbox">
-              <div class="field-checkbox__input-wrap"><label class="field-checkbox__name"><input class="field-checkbox__input" type="checkbox" name="check0"/><span class="field-checkbox__name-text">Чекбокс без группы</span></label>
+              <div class="field-checkbox__input-wrap">
+                <label class="field-checkbox__name"><input class="field-checkbox__input" type="checkbox" name="check0" /><span class="field-checkbox__name-text">Чекбокс без группы</span></label>
                 <div class="field-checkbox__help-text-wrap">
                   <div class="field-checkbox__help-text">Отдельно расположенный чекбокс</div>
                 </div>
@@ -1704,12 +1709,14 @@
             </div>
             <div class="field-checkbox">
               <div class="field-checkbox__title">Общее необязательное название</div>
-              <div class="field-checkbox__input-wrap  field-checkbox__input-wrap--error"><label class="field-checkbox__name"><input class="field-checkbox__input" type="checkbox" name="check1" checked="checked"/><span class="field-checkbox__name-text">Чекбокс первый</span></label>
+              <div class="field-checkbox__input-wrap  field-checkbox__input-wrap--error">
+                <label class="field-checkbox__name"><input class="field-checkbox__input" type="checkbox" name="check1" checked="checked" /><span class="field-checkbox__name-text">Чекбокс первый</span></label>
                 <div class="field-checkbox__help-text-wrap">
                   <div class="field-checkbox__help-text">И, возможно, единственный</div>
                 </div>
               </div>
-              <div class="field-checkbox__input-wrap"><label class="field-checkbox__name"><input class="field-checkbox__input" type="checkbox" name="check2"/><span class="field-checkbox__name-text">Чекбокс второй</span></label>
+              <div class="field-checkbox__input-wrap">
+                <label class="field-checkbox__name"><input class="field-checkbox__input" type="checkbox" name="check2" /><span class="field-checkbox__name-text">Чекбокс второй</span></label>
                 <div class="field-checkbox__help-text-wrap">
                   <div class="field-checkbox__help-text">А, нет. Не единственный...</div>
                 </div>
@@ -1796,12 +1803,14 @@
             <p>В стилевом файле есть закомментированные фрагменты для замены нативного элемента своим (svg).</p>
             <div class="field-radio">
               <div class="field-radio__title">Общее необязательное название</div>
-              <div class="field-radio__input-wrap"><label class="field-radio__name"><input class="field-radio__input" type="radio" name="radio" checked="checked"/><span class="field-radio__name-text">Первый</span></label>
+              <div class="field-radio__input-wrap">
+                <label class="field-radio__name"><input class="field-radio__input" type="radio" name="radio" checked="checked" /><span class="field-radio__name-text">Первый</span></label>
                 <div class="field-radio__help-text-wrap">
                   <div class="field-radio__help-text">И, возможно, единственный</div>
                 </div>
               </div>
-              <div class="field-radio__input-wrap"><label class="field-radio__name"><input class="field-radio__input" type="radio" name="radio"/><span class="field-radio__name-text">Второй</span></label>
+              <div class="field-radio__input-wrap">
+                <label class="field-radio__name"><input class="field-radio__input" type="radio" name="radio" /><span class="field-radio__name-text">Второй</span></label>
                 <div class="field-radio__help-text-wrap">
                   <div class="field-radio__help-text">А, нет. Не единственный...</div>
                 </div>
@@ -1877,7 +1886,8 @@
                 </svg>
               </a>Переключатель</h2>
             <div class="field-toggler">
-              <div class="field-toggler__input-wrap"><label class="field-toggler__name"><input class="field-toggler__input" type="checkbox" name="check10"/><span class="field-toggler__name-text">Одиночный переключатель</span></label>
+              <div class="field-toggler__input-wrap">
+                <label class="field-toggler__name"><input class="field-toggler__input" type="checkbox" name="check10" /><span class="field-toggler__name-text">Одиночный переключатель</span></label>
                 <div class="field-toggler__help-text-wrap">
                   <div class="field-toggler__help-text">Это чекбокс, на самом деле</div>
                 </div>
@@ -1885,12 +1895,14 @@
             </div>
             <div class="field-toggler">
               <div class="field-toggler__title">Две радиокнопки</div>
-              <div class="field-toggler__input-wrap"><label class="field-toggler__name"><input class="field-toggler__input" type="radio" name="check11" checked="checked"/><span class="field-toggler__name-text">Переключатель 1</span></label>
+              <div class="field-toggler__input-wrap">
+                <label class="field-toggler__name"><input class="field-toggler__input" type="radio" name="check11" checked="checked" /><span class="field-toggler__name-text">Переключатель 1</span></label>
                 <div class="field-toggler__help-text-wrap">
                   <div class="field-toggler__help-text">Подсказка</div>
                 </div>
               </div>
-              <div class="field-toggler__input-wrap  field-toggler__input-wrap--some"><label class="field-toggler__name"><input class="field-toggler__input" type="radio" name="check11"/><span class="field-toggler__name-text">Переключатель 2</span></label>
+              <div class="field-toggler__input-wrap  field-toggler__input-wrap--some">
+                <label class="field-toggler__name"><input class="field-toggler__input" type="radio" name="check11" /><span class="field-toggler__name-text">Переключатель 2</span></label>
                 <div class="field-toggler__help-text-wrap">
                   <div class="field-toggler__help-text">Подсказка</div>
                 </div>
@@ -1982,8 +1994,18 @@
                 </svg>
               </a>Файл</h2>
             <div class="field-file">
-              <div class="field-file__name">Название</div><label class="field-file__input-wrap"><input class="field-file__input" type="file" data-multiple-caption="Выбрано файлов: {count}" name="commentFile" multiple="multiple"/><div class="field-file__name-text" data-button-text="Выберите файл(ы)">Ничего не выбрано</div><div class="field-file__help-text">Подсказка</div></label></div>
-            <div class="field-file  field-file--error"><label class="field-file__input-wrap"><input class="field-file__input" type="file" data-multiple-caption="Выбрано файлов: {count}" name="commentFile3"/><div class="field-file__name-text" data-button-text="Выберите файл(ы)"></div><div class="field-file__help-text">Ошибка</div></label></div>
+              <div class="field-file__name">Название</div>
+              <label class="field-file__input-wrap"><input class="field-file__input" type="file" data-multiple-caption="Выбрано файлов: {count}" name="commentFile" multiple="multiple" />
+                <div class="field-file__name-text" data-button-text="Выберите файл(ы)">Ничего не выбрано</div>
+                <div class="field-file__help-text">Подсказка</div>
+              </label>
+            </div>
+            <div class="field-file  field-file--error">
+              <label class="field-file__input-wrap"><input class="field-file__input" type="file" data-multiple-caption="Выбрано файлов: {count}" name="commentFile3" />
+                <div class="field-file__name-text" data-button-text="Выберите файл(ы)"></div>
+                <div class="field-file__help-text">Ошибка</div>
+              </label>
+            </div>
             <div class="blocks-library__code-wrapper"><span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
               <div class="blocks-library__code">
                 <pre class="code">
@@ -2061,7 +2083,9 @@
                 <svg width="20" height="20">
                   <use xlink:href="#folder"></use>
                 </svg>
-              </a>Ползунок</h2><label class="field-range"><span class="field-range__name">Название</span><span class="field-range__input-wrap"><input class="field-range__input" type="range" name="counter" min="1" max="100" step="1" value="40"/><span class="field-range__help-text">Подсказка</span></span></label>
+              </a>Ползунок</h2>
+            <label class="field-range"><span class="field-range__name">Название</span><span class="field-range__input-wrap"><input class="field-range__input" type="range" name="counter" min="1" max="100" step="1" value="40"/><span class="field-range__help-text">Подсказка</span></span>
+            </label>
             <div class="blocks-library__code-wrapper"><span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
               <div class="blocks-library__code">
                 <pre class="code">
@@ -2296,7 +2320,11 @@
                   <use xlink:href="#folder"></use>
                 </svg>
               </a>Группа полей</h2>
-            <div class="fields-group"><label class="field-text"><span class="field-text__input-wrap"><input class="field-text__input" type="text" placeholder="Логин"/><span class="field-text__help-text">Подсказка</span></span></label><label class="field-text"><span class="field-text__input-wrap"><input class="field-text__input" type="password" placeholder="Пароль"/><span class="field-text__help-text">Подсказка</span></span></label>
+            <div class="fields-group">
+              <label class="field-text"><span class="field-text__input-wrap"><input class="field-text__input" type="text" placeholder="Логин"/><span class="field-text__help-text">Подсказка</span></span>
+              </label>
+              <label class="field-text"><span class="field-text__input-wrap"><input class="field-text__input" type="password" placeholder="Пароль"/><span class="field-text__help-text">Подсказка</span></span>
+              </label>
               <div class="field-actions"><button class="btn  btn--primary">Отправить</button></div>
             </div>
             <div class="blocks-library__code-wrapper"><span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
@@ -2352,9 +2380,19 @@
               </a>Форма</h2>
             <form class="form">
               <fieldset class="form__fieldset">
-                <legend class="form__legend">Название1</legend><label class="field-text"><span class="field-text__input-wrap"><input class="field-text__input" type="text" placeholder="Пример"/><span class="field-text__help-text">Подсказка</span></span></label><label class="field-text"><span class="field-text__input-wrap"><input class="field-text__input" type="text" placeholder="Пример"/><span class="field-text__help-text">Подсказка</span></span></label></fieldset>
+                <legend class="form__legend">Название1</legend>
+                <label class="field-text"><span class="field-text__input-wrap"><input class="field-text__input" type="text" placeholder="Пример"/><span class="field-text__help-text">Подсказка</span></span>
+                </label>
+                <label class="field-text"><span class="field-text__input-wrap"><input class="field-text__input" type="text" placeholder="Пример"/><span class="field-text__help-text">Подсказка</span></span>
+                </label>
+              </fieldset>
               <fieldset class="form__fieldset">
-                <legend class="form__legend">Название2</legend><label class="field-text"><span class="field-text__input-wrap"><input class="field-text__input" type="text" placeholder="Пример"/><span class="field-text__help-text">Подсказка</span></span></label><label class="field-text"><span class="field-text__input-wrap"><input class="field-text__input" type="text" placeholder="Пример"/><span class="field-text__help-text">Подсказка</span></span></label></fieldset>
+                <legend class="form__legend">Название2</legend>
+                <label class="field-text"><span class="field-text__input-wrap"><input class="field-text__input" type="text" placeholder="Пример"/><span class="field-text__help-text">Подсказка</span></span>
+                </label>
+                <label class="field-text"><span class="field-text__input-wrap"><input class="field-text__input" type="text" placeholder="Пример"/><span class="field-text__help-text">Подсказка</span></span>
+                </label>
+              </fieldset>
               <div class="field-actions"><button class="btn  btn--primary">Отправить</button></div>
             </form>
             <div class="blocks-library__code-wrapper"><span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
