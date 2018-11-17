@@ -1,81 +1,46 @@
 let config =
 {
+  // Файлы, классы которых не анализируются при поиске БЭМ-блоков
   "notGetBlocks": [
     "blocks-demo.html",
   ],
+  // Классы, которые не нужно считать БЭМ-блоками
   "ignoredBlocks": [
     "no-js",
   ],
-  "blocks": {
-    "page": {
-      "style": [
-        "src/blocks/page/page.scss",
-      ],
-      "js": [],
-      "img": [],
-      "assets": [],
-    },
-    "page-header": {
-      "style": [
-        "src/blocks/page-header/page-header.scss",
-      ],
-      "js": [],
-      "img": [],
-      "assets": [],
-    },
-    "logo": {
-      "style": [
-        "src/blocks/logo/logo.scss",
-      ],
-      "js": [],
-      "img": [],
-      "assets": [],
-    },
-    "main-nav": {
-      "style": [
-        "src/blocks/main-nav/main-nav.scss",
-      ],
-      "js": [
-        "src/blocks/main-nav/main-nav.js"
-      ],
-      "img": [],
-      "assets": [],
-    },
-    "burger": {
-      "style": [
-        "src/blocks/burger/burger.scss",
-      ],
-      "js": [
-        "src/blocks/burger/burger.js"
-      ],
-      "img": [],
-      "assets": [],
-    },
-    "page-footer": {
-      "style": [
-        "src/blocks/page-footer/page-footer.scss",
-      ],
-      "js": [],
-      "img": [],
-      "assets": [],
-    }
-  },
+  // БЭМ-блоки, используемые в проекте
+  "blocks": [
+    "page",
+    "page-header",
+    "logo",
+    "main-nav",
+    "OLD-block-SHOULD-BE-REMOVED",
+  ],
+  // SCSS-файлы, которые будут взяты в сборку стилей перед файлами БЭМ-блоков
   "addStyleBefore": [
-    "./src/scss/functions.scss",,
-    "./src/scss/variables.scss",,
+    "./src/scss/functions.scss",
+    "./src/scss/variables.scss",
     "./src/scss/mixins.scss",
   ],
+  // SCSS-файлы, которые будут взяты в сборку стилей после файлов БЭМ-блоков
   "addStyleAfter": [
     "./src/scss/print.scss",
   ],
+  // JS-файлы, которые будут взяты в сборку JS перед файлами БЭМ-блоков
   "addJsBefore": [],
+  // JS-файлы, которые будут взяты в сборку JS после файлов БЭМ-блоков
   "addJsAfter": [
     "./src/js/global-script.js",
   ],
+  // Изображения, копируемые в папку сборки до копирования изображений блоков
   "addImages": [],
+  // Добавочные файлы, копируемые в папку сборки до копирования доп. файлов блоков
   "addAssets": [],
+  // CSS-файлы, копируемые в папку сборки без обработки перед сборкой стилей
   "copiedCss": [],
+  // JS-файлы, копируемые в папку сборки без обработки перед сборкой JS
   "copiedJs": [],
+  // Директории проекта
   "dir": {
     "src": "./src/",
     "build": "./build/",
