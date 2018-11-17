@@ -40,6 +40,7 @@
     "cross-env": "^5.0.0",
     "css-mqpacker": "^7.0.0",
     "del": "^3.0.0",
+    "get-classes-from-html": "^1.0.1",
     "gh-pages": "^2.0.1",
     "gulp": "^4.0.0",
     "gulp-cheerio": "^0.6.2",
@@ -67,6 +68,7 @@
     "gulp-wait": "0.0.2",
     "gulp.spritesmith": "^6.3.0",
     "husky": "^1.1.4",
+    "json-format": "^1.0.1",
     "jstransformer-markdown-it": "^2.0.0",
     "lint-staged": "^8.0.4",
     "merge-stream": "^1.0.1",
@@ -81,7 +83,6 @@
   },
   "dependencies": {
     "baron": "^3.0.3",
-    "get-classes-from-html": "^1.0.1",
     "ismobilejs": "^0.5.1",
     "jquery": "^3.1.1",
     "jquery-migrate": "^3.0.0",

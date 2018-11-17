@@ -20,6 +20,8 @@ const pug = require('gulp-pug');
 const through2 = require('through2');
 const replace = require('gulp-replace');
 const getClassesFromHtml = require('get-classes-from-html');
+const jsonFormat = require('json-format');
+const browserSync = require('browser-sync').create();
 
 
 function compilePug() {
@@ -58,10 +60,13 @@ function compilePug() {
         config.blocks = config.blocks.filter(item => blocksList.indexOf(item) >= 0);
         // Добавить в конец списка блоков те элементы, которые использованы в HTML, но отсутствуют в списке
         Array.prototype.push.apply(config.blocks, getArraysDiff(blocksList, config.blocks));
-        console.log(config.blocks); // Имеем список использованных сейчас на проекте блоков
-        // Если есть изменения списка блоков, нужно записать конфиг на диск
+        // console.log(config.blocks); // Имеем список использованных сейчас на проекте блоков
+        // Если есть изменения списка блоков
         if(oldBlocksListString != JSON.stringify(config.blocks)) {
-          console.log('Есть изменения списка используемых блоков');
+          // Записать новый конфиг
+          writeConfig(config);
+          // Подновить старый список блоков
+          oldBlocksListString = JSON.stringify(config.blocks);
         }
       }
       else {
@@ -73,11 +78,11 @@ function compilePug() {
 exports.compilePug = compilePug;
 
 
-function writeMainStyleFile(cb) {
-  console.log('111');
-  cb();
-}
-exports.writeMainStyleFile = writeMainStyleFile;
+// function writeMainStyleFile(cb) {
+//   console.log('111');
+//   cb();
+// }
+// exports.writeMainStyleFile = writeMainStyleFile;
 
 
 function clearBuildDir() {
@@ -88,32 +93,38 @@ function clearBuildDir() {
 }
 exports.clearBuildDir = clearBuildDir;
 
+function reload(done) {
+  browserSync.reload();
+  done();
+}
+
+function serve() {
+  browserSync.init({
+    server: dir.build,
+    port: 8080,
+    startPath: 'index.html',
+    open: false,
+  });
+  watch([
+    dir.src + '*.pug',
+    dir.blocks + '**/*.pug',
+  ], series(compilePug, reload));
+}
+
+exports.default = series(compilePug, serve);;
+
 
 
 // Функции, не являющиеся задачами Gulp ----------------------------------------
 
-/**
- * Получение дефолтных файлов блока (стили, JS, картинки, доп. файлы)
- * @param  {string} block     Искомый блок
- * @param  {string} blocksDir Директория, в которой лежат все блоки
- * @return {object}           Объект с соотв. путями, если они существуют { "style": [], "js": [], "img": [], "assets": [] }
- */
-// function getBlockDefaultFiles(block, blocksDir = dir.blocks) {
-//   let res = {};
-//   // Существует дефолтный стилевой файл?
-//   let defaultStyleFilePath = blocksDir + block + '/' + block + '.scss';
-//   fileExist(defaultStyleFilePath) ? res.style = [defaultStyleFilePath] : res.style = [];
-//   // Существует дефолтный JS-файл?
-//   let defaultJsFilePath = blocksDir + block + '/' + block + '.js';
-//   fileExist(defaultJsFilePath) ? res.js = [defaultJsFilePath] : res.js = [];
-//   // Существует дефолтная папка с картинками?
-//   let defaultImgFolderPath = blocksDir + block + '/img/';
-//   fileExist(defaultImgFolderPath) ? res.img = [defaultImgFolderPath] : res.img = [];
-//   // Существует дефолтная папка с доп. файлами?
-//   let defaultAssetsFolderPath = blocksDir + block + '/assets/';
-//   fileExist(defaultAssetsFolderPath) ? res.assets = [defaultAssetsFolderPath] : res.assets = [];
-//   return res;
-// }
+function writeConfig(config) {
+  var settings = { type: 'space', size: 2 }
+  let configText = '// Файл перезаписывается программно при работе автоматизации\nlet config =\n' + jsonFormat(config, settings) + ';\n\nmodule.exports = config;\n';
+  fs.writeFile('./config.js', configText, function(err){
+    if (err) throw err;
+    console.log('---------- Записан новый config.js');
+  });
+}
 
 /**
  * Проверка существования файла или папки
@@ -141,6 +152,29 @@ function getArraysDiff(a1, a2) {
 }
 
 /**
+ * Получение дефолтных файлов блока (стили, JS, картинки, доп. файлы)
+ * @param  {string} block     Искомый блок
+ * @param  {string} blocksDir Директория, в которой лежат все блоки
+ * @return {object}           Объект с соотв. путями, если они существуют { "style": [], "js": [], "img": [], "assets": [] }
+ */
+// function getBlockDefaultFiles(block, blocksDir = dir.blocks) {
+//   let res = {};
+//   // Существует дефолтный стилевой файл?
+//   let defaultStyleFilePath = blocksDir + block + '/' + block + '.scss';
+//   fileExist(defaultStyleFilePath) ? res.style = [defaultStyleFilePath] : res.style = [];
+//   // Существует дефолтный JS-файл?
+//   let defaultJsFilePath = blocksDir + block + '/' + block + '.js';
+//   fileExist(defaultJsFilePath) ? res.js = [defaultJsFilePath] : res.js = [];
+//   // Существует дефолтная папка с картинками?
+//   let defaultImgFolderPath = blocksDir + block + '/img/';
+//   fileExist(defaultImgFolderPath) ? res.img = [defaultImgFolderPath] : res.img = [];
+//   // Существует дефолтная папка с доп. файлами?
+//   let defaultAssetsFolderPath = blocksDir + block + '/assets/';
+//   fileExist(defaultAssetsFolderPath) ? res.assets = [defaultAssetsFolderPath] : res.assets = [];
+//   return res;
+// }
+
+/**
  * СЛУЖЕБНАЯ: Добавляет список классов из принятого HTML в переменную blocksList, используется в потоке обработки Pug.
  * @param  {object}   file Обрабатываемый файл
  * @param  {string}   enc  Кодировка
@@ -152,6 +186,7 @@ function getClassesToBlocksList(file, enc, cb) {
     cb(null, file);
     return;
   }
+  blocksList = [];
   // Проверяем, не является ли обрабатываемый файл исключением
   let processThisFile = true;
   config.notGetBlocks.forEach(function(item) {
