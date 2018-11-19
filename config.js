@@ -1,3 +1,4 @@
+// Файл перезаписывается программно при работе автоматизации
 let config =
 {
   "notGetBlocks": [
@@ -12,7 +13,8 @@ let config =
     "logo",
     "main-nav",
     "burger",
-    "page-footer"
+    "page-footer",
+    "catalog"
   ],
   "addStyleBefore": [
     "./src/scss/functions.scss",

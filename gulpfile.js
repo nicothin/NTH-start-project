@@ -10,6 +10,9 @@ let blocksList = [];
 let oldBlocksListString = JSON.stringify(config.blocks);
 // Адрес репозитория
 let repoUrl = require('./package.json').repository.url.replace(/\.git$/g, '');
+// Определение: разработка это или финальная сборка
+// NODE_ENV=production npm start [задача]` приведет к сборке без sourcemaps
+const isDev = !process.env.NODE_ENV || process.env.NODE_ENV == 'dev';
 
 // Пакеты, использующиеся при обработке
 const { series, parallel, src, dest, watch } = require('gulp');
@@ -22,25 +25,12 @@ const replace = require('gulp-replace');
 const getClassesFromHtml = require('get-classes-from-html');
 const jsonFormat = require('json-format');
 const browserSync = require('browser-sync').create();
+const htmlbeautify = require('gulp-html-beautify');
 
 
 function compilePug() {
-
-  // Pug-фильтр, выводящий содержимое pug-файла в виде форматированного текста
-  const filterShowCode = function (text, options) {
-    var lines = text.split('\n');
-    var result = '<pre class="code">\n';
-    if (typeof(options['first-line']) !== 'undefined') result = result + '<code>' + options['first-line'] + '</code>\n';
-    for (var i = 0; i < (lines.length - 1); i++) { // (lines.length - 1) для срезания последней строки (пустая)
-      result = result + '<code>' + lines[i] + '</code>\n';
-    }
-    result = result + '</pre>\n';
-    result = result.replace(/<code><\/code>/g, '<code>&nbsp;</code>');
-    return result;
-  }
-
   return src([
-      dir.src + '*.pug',
+      dir.src + 'pages/**/*.pug',
     ])
     .pipe(plumber())
     .pipe(pug({
@@ -60,7 +50,8 @@ function compilePug() {
         config.blocks = config.blocks.filter(item => blocksList.indexOf(item) >= 0);
         // Добавить в конец списка блоков те элементы, которые использованы в HTML, но отсутствуют в списке
         Array.prototype.push.apply(config.blocks, getArraysDiff(blocksList, config.blocks));
-        // console.log(config.blocks); // Имеем список использованных сейчас на проекте блоков
+        // ИМЕЕМ СПИСОК ИСПОЛЬЗОВАННЫХ СЕЙЧАС НА ПРОЕКТЕ БЛОКОВ
+        // console.log(config.blocks);
         // Если есть изменения списка блоков
         if(oldBlocksListString != JSON.stringify(config.blocks)) {
           // Записать новый конфиг
@@ -73,9 +64,31 @@ function compilePug() {
         console.log('---------- В проекте нет блоков. Сурово. По-челябински.');
       }
     })
+    .pipe(htmlbeautify())
+    // и... привет бьютификатору!
+    .pipe(replace(/^(\s*)(<header.+?>)(.*)(<\/header>)/gm, '$1$2\n$1  $3\n$1$4'))
+    .pipe(replace(/^(\s*)(<footer.+?>)(.*)(<\/footer>)/gm, '$1$2\n$1  $3\n$1$4'))
+    .pipe(replace(/^\s*<section.+>/gm, '\n$&'))
+    .pipe(replace(/^\s*<\/section>/gm, '$&\n'))
+    .pipe(replace(/^\s*<article.+>/gm, '\n$&'))
+    .pipe(replace(/^\s*<\/article>/gm, '$&\n'))
+    .pipe(replace(/\n\n\n/gm, '\n\n'))
     .pipe(dest(dir.build));
 }
 exports.compilePug = compilePug;
+
+
+function writePugMixinsFile(cb) {
+  const regExp = dir.blocks.replace('./','');
+  let allBlocksWithPugFiles = getDirectories(dir.blocks, 'pug');
+  // console.log(allBlocksWithPugFiles);
+  let pugMixins = '//- ВНИМАНИЕ! Этот файл генерируется автоматически. Не пишите сюда ничего вручную!\n//- Читайте ./README.md для понимания.\n\n';
+  allBlocksWithPugFiles.forEach(function(blockName) {
+    pugMixins += 'include ' + dir.blocks.replace(dir.src,'../') + blockName + '/' + blockName + '.pug\n';
+  });
+  fs.writeFileSync(dir.src + 'pug/mixins.pug', pugMixins);
+  cb();
+}
 
 
 // function writeMainStyleFile(cb) {
@@ -93,10 +106,12 @@ function clearBuildDir() {
 }
 exports.clearBuildDir = clearBuildDir;
 
+
 function reload(done) {
   browserSync.reload();
   done();
 }
+
 
 function serve() {
   browserSync.init({
@@ -111,12 +126,21 @@ function serve() {
   ], series(compilePug, reload));
 }
 
-exports.default = series(compilePug, serve);;
+
+exports.default = series(
+  parallel(clearBuildDir, writePugMixinsFile),
+  compilePug,
+);
+// exports.default = series(compilePug, serve);
 
 
 
 // Функции, не являющиеся задачами Gulp ----------------------------------------
 
+/**
+ * Запись конфигурационного файла
+ * @param  {object} config Конфиг
+ */
 function writeConfig(config) {
   var settings = { type: 'space', size: 2 }
   let configText = '// Файл перезаписывается программно при работе автоматизации\nlet config =\n' + jsonFormat(config, settings) + ';\n\nmodule.exports = config;\n';
@@ -124,6 +148,22 @@ function writeConfig(config) {
     if (err) throw err;
     console.log('---------- Записан новый config.js');
   });
+}
+
+//
+/**
+ * Pug-фильтр, выводящий содержимое pug-файла в виде форматированного текста
+ */
+function filterShowCode(text, options) {
+  var lines = text.split('\n');
+  var result = '<pre class="code">\n';
+  if (typeof(options['first-line']) !== 'undefined') result = result + '<code>' + options['first-line'] + '</code>\n';
+  for (var i = 0; i < (lines.length - 1); i++) { // (lines.length - 1) для срезания последней строки (пустая)
+    result = result + '<code>' + lines[i] + '</code>\n';
+  }
+  result = result + '</pre>\n';
+  result = result.replace(/<code><\/code>/g, '<code>&nbsp;</code>');
+  return result;
 }
 
 /**
@@ -139,6 +179,19 @@ function fileExist(filepath){
     flag = false;
   }
   return flag;
+}
+
+/**
+ * Получение всех названий поддиректорий, содержащих файл указанного расширения, совпадающий по имени с поддиректорией
+ * @param  {string} source Путь к папке всех блоков.
+ * @param  {string} ext    Расширение файлов, которое проверяется
+ * @return {array}         Массив из имён блоков
+ */
+function getDirectories(source, ext) {
+  let res = fs.readdirSync(source)
+    .filter(item => fs.lstatSync(source + item).isDirectory())
+    .filter(item => fileExist(source + item + '/' + item + '.' + ext));
+  return res;
 }
 
 /**

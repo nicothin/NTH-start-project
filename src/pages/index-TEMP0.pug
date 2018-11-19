@@ -1,4 +1,4 @@
-extends pug/layout.pug
+extends ../pug/layout.pug
 
 block meta
   title Главная
@@ -12,6 +12,10 @@ block header
     +logo('/')
       span Логотип
     +main-nav('10')
+    .some-new-class Class
+      .some-new-class__eee EEE!
+    .some-new-class.some-new-class--error Class
+      .some-new-class__eee EEE!
 
 block content
   p Содержимое. #[a(href='blocks-demo.html') Библиотека блоков].
