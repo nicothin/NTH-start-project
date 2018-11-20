@@ -10,8 +10,11 @@ let blocksList = [];
 let oldBlocksListString = JSON.stringify(config.blocks);
 // Адрес репозитория
 let repoUrl = require('./package.json').repository.url.replace(/\.git$/g, '');
-// Установка режима компиляции pug (1 — только изменившийся файл, 0 — все)
-process.env.PUG_COMP_WITH_LASTRUN = 1;
+// Настройки pug-компилятора
+let pugOption = {
+  data: { repoUrl: repoUrl, },
+  filters: { 'show-code': filterShowCode, },
+};
 
 // Определение: разработка это или финальная сборка
 // NODE_ENV=production npm start [задача]` приведет к сборке без sourcemaps
@@ -33,66 +36,28 @@ const debug = require('gulp-debug');
 
 
 function compilePug() {
-  return src([
-      `${dir.src}pages/**/*.pug`,
-    ], { since: process.env.PUG_COMP_WITH_LASTRUN === '1' ? lastRun(compilePug) : null })
+  return src([ `${dir.src}pages/**/*.pug` ])
     .pipe(plumber())
     .pipe(debug({title: 'Compiles '}))
-    .pipe(pug({
-      data: {
-        repoUrl: repoUrl,
-      },
-      filters: {
-        'show-code': filterShowCode, // Фильтр используется на странице библиотеки блоков
-      },
-    }))
+    .pipe(pug(pugOption))
     .pipe(through2.obj(getClassesToBlocksList))
-    .on('end', function(){
-      if(blocksList.length) {
-        // Убрать из списка блоков те элементы, которых нет в списке блоков, полученном из HTML
-        if (process.env.PUG_COMP_WITH_LASTRUN === '0') { // только если в потоке ВСЕ файлы
-          config.blocks = config.blocks.filter(item => blocksList.indexOf(item) >= 0);
-        }
-        // Добавить в конец списка блоков те элементы, которые использованы в HTML, но отсутствуют в списке
-        Array.prototype.push.apply(config.blocks, getArraysDiff(blocksList, config.blocks));
-        // ИМЕЕМ СПИСОК ИСПОЛЬЗОВАННЫХ СЕЙЧАС НА ПРОЕКТЕ БЛОКОВ
-        console.log(config.blocks);
-        // Если есть изменения списка блоков
-        if(oldBlocksListString != JSON.stringify(config.blocks)) {
-          // Записать новый конфиг
-          writeConfig(config);
-          // Подновить старый список блоков
-          oldBlocksListString = JSON.stringify(config.blocks);
-        }
-      }
-      else {
-        console.log('---------- В проекте нет блоков. Сурово. По-челябински.');
-      }
-    })
-    .pipe(htmlbeautify())
-    // и... привет бьютификатору!
-    .pipe(replace(/^(\s*)(<header.+?>)(.*)(<\/header>)/gm, '$1$2\n$1  $3\n$1$4'))
-    .pipe(replace(/^(\s*)(<footer.+?>)(.*)(<\/footer>)/gm, '$1$2\n$1  $3\n$1$4'))
-    .pipe(replace(/^\s*<section.+>/gm, '\n$&'))
-    .pipe(replace(/^\s*<\/section>/gm, '$&\n'))
-    .pipe(replace(/^\s*<article.+>/gm, '\n$&'))
-    .pipe(replace(/^\s*<\/article>/gm, '$&\n'))
-    .pipe(replace(/\n\n\n/gm, '\n\n'))
+    .on('end', function checkBlockListWithClear(){checkBlockList(true)}) // компилируются все; можно убирать блоки, которых больше нет
     .pipe(dest(dir.build));
 }
 exports.compilePug = compilePug;
+
 // Компиляция только изменившегося (с последнего запуска задачи) pug-файла
-function compilePugLastrun(cb) {
-  process.env.PUG_COMP_WITH_LASTRUN = 1;
-  return series(compilePug)(cb);
+function compilePugFast() {
+  return src([ `${dir.src}pages/**/*.pug` ], { since: lastRun(compilePugFast) })
+    .pipe(plumber())
+    .pipe(debug({title: 'Compiles '}))
+    .pipe(pug(pugOption))
+    .pipe(through2.obj(getClassesToBlocksList))
+    .on('end', checkBlockList)
+    .pipe(dest(dir.build));
 }
-exports.compilePugLastrun = compilePugLastrun;
-// Компиляция всех pug-файлов
-function compilePugDefault(cb) {
-  process.env.PUG_COMP_WITH_LASTRUN = 0;
-  return series(compilePug)(cb);
-}
-exports.compilePugDefault = compilePugDefault;
+exports.compilePugFast = compilePugFast;
+
 
 
 function writePugMixinsFile(cb) {
@@ -107,18 +72,6 @@ function writePugMixinsFile(cb) {
   cb();
 }
 exports.writePugMixinsFile = writePugMixinsFile;
-
-
-function ttsk(cb) {
-  compilePug();
-  // console.log('test task');
-  // process.env.PUG = 'test';
-  // console.log(process.env.PUG);
-  // process.env.PUG = 'test2';
-  // console.log(process.env.PUG);
-  cb();
-}
-exports.ttsk = ttsk;
 
 
 function clearBuildDir() {
@@ -144,30 +97,35 @@ function serve() {
     open: false,
   });
   // Файлы разметки страниц (изменение, добавление)
-  watch([dir.src + 'pages/**/*.pug'], { events: ['change', 'add'] }, series(compilePugLastrun, reload));
+  watch([`${dir.src}pages/**/*.pug`], { events: ['change', 'add'], delay: 100 }, series(compilePugFast, reload));
   // Файлы разметки страниц (удаление)
-  watch([dir.src + 'pages/**/*.pug'])
+  watch([`${dir.src}pages/**/*.pug`], { delay: 100 })
     .on('unlink', function(path, stats) {
       let filePathInBuildDir = path.replace(dir.src.replace('./','') + 'pages/', dir.build).replace('.pug', '.html');
       fs.unlink(filePathInBuildDir, (err) => {
         if (err) throw err;
-        console.log('---------- ' + filePathInBuildDir + ' удалён');
+        console.log(`---------- ${filePathInBuildDir} удалён`);
       });
     });
   // Файлы разметки БЭМ-блоков (изменение, добавление)
-  watch([dir.blocks + '**/*.pug'], { events: ['change', 'add'] }, series(compilePugDefault, reload));
+  watch([`${dir.blocks}**/*.pug`], { events: ['change', 'add'], delay: 100 }, series(compilePug, reload));
   // Файлы разметки БЭМ-блоков (удаление)
-  watch([dir.blocks + '**/*.pug'], { events: ['unlink'] }, series(writePugMixinsFile));
+  watch([`${dir.blocks}**/*.pug`], { events: ['unlink'], delay: 100 }, series(writePugMixinsFile));
   // Прочие pug-файлы, кроме файла примесей (все события)
-  watch([dir.src + 'pug/**/*.pug', '!' + dir.src + 'pug/mixins.pug'], series(compilePugDefault, reload));
+  watch([`${dir.src}pug/**/*.pug`, `!${dir.src}pug/mixins.pug`], { delay: 100 }, series(compilePug, reload));
 }
+// exports.serve = serve;
 
 
 exports.default = series(
   parallel(clearBuildDir, writePugMixinsFile),
-  compilePugDefault,
+  compilePugFast,
   serve,
 );
+
+
+
+
 
 
 
@@ -275,7 +233,6 @@ function getClassesToBlocksList(file, enc, cb) {
     cb(null, file);
     return;
   }
-  blocksList = [];
   // Проверяем, не является ли обрабатываемый файл исключением
   let processThisFile = true;
   config.notGetBlocks.forEach(function(item) {
@@ -298,4 +255,31 @@ function getClassesToBlocksList(file, enc, cb) {
   }
   this.push(file);
   cb();
+}
+
+/**
+ * СЛУЖЕБНАЯ: Обновляет глобальную переменную с актуальным список блоков
+ * @param  {Boolean} removeBlocks Удалять ли не найденные блоки
+ */
+function checkBlockList(removeBlocks = false) {
+  if(blocksList.length) {
+    if (removeBlocks) {
+      // Убрать из списка блоков те элементы, которых нет в списке блоков, полученном из HTML
+      config.blocks = config.blocks.filter(item => blocksList.indexOf(item) >= 0);
+    }
+    // Добавить в конец списка блоков те элементы, которые использованы в HTML, но отсутствуют в списке
+    Array.prototype.push.apply(config.blocks, getArraysDiff(blocksList, config.blocks));
+    // ИМЕЕМ СПИСОК ИСПОЛЬЗОВАННЫХ СЕЙЧАС НА ПРОЕКТЕ БЛОКОВ
+    // console.log(config.blocks);
+    // Если есть изменения списка блоков
+    if(oldBlocksListString != JSON.stringify(config.blocks)) {
+      // Записать новый конфиг
+      writeConfig(config);
+      // Подновить старый список блоков
+      oldBlocksListString = JSON.stringify(config.blocks);
+    }
+  }
+  else {
+    console.log('---------- В проекте нет блоков. Сурово. По-челябински.');
+  }
 }

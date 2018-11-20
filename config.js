@@ -14,9 +14,7 @@ let config =
     "main-nav",
     "burger",
     "page-footer",
-    "catalog",
-    "catalog",
-    "catalog",
+    "some-new-class",
     "catalog"
   ],
   "addStyleBefore": [
