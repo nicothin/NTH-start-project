@@ -84,15 +84,13 @@ exports.compilePug = compilePug;
 // Компиляция только изменившегося (с последнего запуска задачи) pug-файла
 function compilePugLastrun(cb) {
   process.env.PUG_COMP_WITH_LASTRUN = 1;
-  compilePug();
-  cb();
+  return series(compilePug)(cb);
 }
 exports.compilePugLastrun = compilePugLastrun;
 // Компиляция всех pug-файлов
 function compilePugDefault(cb) {
-  process.env.PUG_COMP_WITH_LASTRUN = 1;
-  compilePug();
-  cb();
+  process.env.PUG_COMP_WITH_LASTRUN = 0;
+  return series(compilePug)(cb);
 }
 exports.compilePugDefault = compilePugDefault;
 

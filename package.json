@@ -46,7 +46,6 @@
     "through2": "^3.0.0",
     "json-format": "^1.0.1",
     "husky": "^1.1.4",
-
     "autoprefixer": "^9.3.1",
     "css-mqpacker": "^7.0.0",
     "@htmlacademy/editorconfig-cli": "^1.0.0",

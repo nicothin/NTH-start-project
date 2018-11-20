@@ -14,6 +14,9 @@ let config =
     "main-nav",
     "burger",
     "page-footer",
+    "catalog",
+    "catalog",
+    "catalog",
     "catalog"
   ],
   "addStyleBefore": [
