@@ -10,12 +10,15 @@ let blocksList = [];
 let oldBlocksListString = JSON.stringify(config.blocks);
 // Адрес репозитория
 let repoUrl = require('./package.json').repository.url.replace(/\.git$/g, '');
+// Установка режима компиляции pug (1 — только изменившийся файл, 0 — все)
+process.env.PUG_COMP_WITH_LASTRUN = 1;
+
 // Определение: разработка это или финальная сборка
 // NODE_ENV=production npm start [задача]` приведет к сборке без sourcemaps
-const isDev = !process.env.NODE_ENV || process.env.NODE_ENV == 'dev';
+// const isDev = !process.env.NODE_ENV || process.env.NODE_ENV == 'dev';
 
 // Пакеты, использующиеся при обработке
-const { series, parallel, src, dest, watch } = require('gulp');
+const { series, parallel, src, dest, watch, lastRun } = require('gulp');
 const fs = require('fs');
 const plumber = require('gulp-plumber');
 const del = require('del');
@@ -26,32 +29,34 @@ const getClassesFromHtml = require('get-classes-from-html');
 const jsonFormat = require('json-format');
 const browserSync = require('browser-sync').create();
 const htmlbeautify = require('gulp-html-beautify');
+const debug = require('gulp-debug');
 
 
 function compilePug() {
   return src([
-      dir.src + 'pages/**/*.pug',
-    ])
+      `${dir.src}pages/**/*.pug`,
+    ], { since: process.env.PUG_COMP_WITH_LASTRUN === '1' ? lastRun(compilePug) : null })
     .pipe(plumber())
+    .pipe(debug({title: 'Compiles '}))
     .pipe(pug({
       data: {
-        // Передаем pug-у адрес репозитория проекта
         repoUrl: repoUrl,
       },
       filters: {
-        // Фильтр используется на странице библиотеки блоков
-        'show-code': filterShowCode
+        'show-code': filterShowCode, // Фильтр используется на странице библиотеки блоков
       },
     }))
     .pipe(through2.obj(getClassesToBlocksList))
     .on('end', function(){
       if(blocksList.length) {
         // Убрать из списка блоков те элементы, которых нет в списке блоков, полученном из HTML
-        config.blocks = config.blocks.filter(item => blocksList.indexOf(item) >= 0);
+        if (process.env.PUG_COMP_WITH_LASTRUN === '0') { // только если в потоке ВСЕ файлы
+          config.blocks = config.blocks.filter(item => blocksList.indexOf(item) >= 0);
+        }
         // Добавить в конец списка блоков те элементы, которые использованы в HTML, но отсутствуют в списке
         Array.prototype.push.apply(config.blocks, getArraysDiff(blocksList, config.blocks));
         // ИМЕЕМ СПИСОК ИСПОЛЬЗОВАННЫХ СЕЙЧАС НА ПРОЕКТЕ БЛОКОВ
-        // console.log(config.blocks);
+        console.log(config.blocks);
         // Если есть изменения списка блоков
         if(oldBlocksListString != JSON.stringify(config.blocks)) {
           // Записать новый конфиг
@@ -76,32 +81,52 @@ function compilePug() {
     .pipe(dest(dir.build));
 }
 exports.compilePug = compilePug;
+// Компиляция только изменившегося (с последнего запуска задачи) pug-файла
+function compilePugLastrun(cb) {
+  process.env.PUG_COMP_WITH_LASTRUN = 1;
+  compilePug();
+  cb();
+}
+exports.compilePugLastrun = compilePugLastrun;
+// Компиляция всех pug-файлов
+function compilePugDefault(cb) {
+  process.env.PUG_COMP_WITH_LASTRUN = 1;
+  compilePug();
+  cb();
+}
+exports.compilePugDefault = compilePugDefault;
 
 
 function writePugMixinsFile(cb) {
   const regExp = dir.blocks.replace('./','');
   let allBlocksWithPugFiles = getDirectories(dir.blocks, 'pug');
   // console.log(allBlocksWithPugFiles);
-  let pugMixins = '//- ВНИМАНИЕ! Этот файл генерируется автоматически. Не пишите сюда ничего вручную!\n//- Читайте ./README.md для понимания.\n\n';
+  let pugMixins = `//- ВНИМАНИЕ! Этот файл генерируется автоматически. Не пишите сюда ничего вручную!\n//- Читайте ./README.md для понимания.\n\n`;
   allBlocksWithPugFiles.forEach(function(blockName) {
-    pugMixins += 'include ' + dir.blocks.replace(dir.src,'../') + blockName + '/' + blockName + '.pug\n';
+    pugMixins += `include ${dir.blocks.replace(dir.src,'../')}${blockName}/${blockName}.pug\n`;
   });
-  fs.writeFileSync(dir.src + 'pug/mixins.pug', pugMixins);
+  fs.writeFileSync(`${dir.src}pug/mixins.pug`, pugMixins);
   cb();
 }
+exports.writePugMixinsFile = writePugMixinsFile;
 
 
-// function writeMainStyleFile(cb) {
-//   console.log('111');
-//   cb();
-// }
-// exports.writeMainStyleFile = writeMainStyleFile;
+function ttsk(cb) {
+  compilePug();
+  // console.log('test task');
+  // process.env.PUG = 'test';
+  // console.log(process.env.PUG);
+  // process.env.PUG = 'test2';
+  // console.log(process.env.PUG);
+  cb();
+}
+exports.ttsk = ttsk;
 
 
 function clearBuildDir() {
   return del([
-    dir.build + '/**/*',
-    '!' + dir.build + '/readme.md'
+    `${dir.build}**/*`,
+    `!${dir.build}readme.md`,
   ]);
 }
 exports.clearBuildDir = clearBuildDir;
@@ -120,18 +145,31 @@ function serve() {
     startPath: 'index.html',
     open: false,
   });
-  watch([
-    dir.src + '*.pug',
-    dir.blocks + '**/*.pug',
-  ], series(compilePug, reload));
+  // Файлы разметки страниц (изменение, добавление)
+  watch([dir.src + 'pages/**/*.pug'], { events: ['change', 'add'] }, series(compilePugLastrun, reload));
+  // Файлы разметки страниц (удаление)
+  watch([dir.src + 'pages/**/*.pug'])
+    .on('unlink', function(path, stats) {
+      let filePathInBuildDir = path.replace(dir.src.replace('./','') + 'pages/', dir.build).replace('.pug', '.html');
+      fs.unlink(filePathInBuildDir, (err) => {
+        if (err) throw err;
+        console.log('---------- ' + filePathInBuildDir + ' удалён');
+      });
+    });
+  // Файлы разметки БЭМ-блоков (изменение, добавление)
+  watch([dir.blocks + '**/*.pug'], { events: ['change', 'add'] }, series(compilePugDefault, reload));
+  // Файлы разметки БЭМ-блоков (удаление)
+  watch([dir.blocks + '**/*.pug'], { events: ['unlink'] }, series(writePugMixinsFile));
+  // Прочие pug-файлы, кроме файла примесей (все события)
+  watch([dir.src + 'pug/**/*.pug', '!' + dir.src + 'pug/mixins.pug'], series(compilePugDefault, reload));
 }
 
 
 exports.default = series(
   parallel(clearBuildDir, writePugMixinsFile),
-  compilePug,
+  compilePugDefault,
+  serve,
 );
-// exports.default = series(compilePug, serve);
 
 
 
