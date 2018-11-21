@@ -14,8 +14,7 @@ let config =
     "main-nav",
     "burger",
     "page-footer",
-    "some-new-class",
-    "catalog"
+    "some-new-class"
   ],
   "addStyleBefore": [
     "./src/scss/functions.scss",

@@ -1,25 +1,5 @@
 'use strict';
 
-// Настройки из файла
-let config = require('./config.js');
-// Директории из настроек (dir.src = "./src/", dir.build = "./build/", dir.blocks = "./src/blocks/")
-let dir = config.dir;
-// Список блоков, который будет получен из классов HTML после компиляции pug
-let blocksList = [];
-// Старый список блоков в виде строки
-let oldBlocksListString = JSON.stringify(config.blocks);
-// Адрес репозитория
-let repoUrl = require('./package.json').repository.url.replace(/\.git$/g, '');
-// Настройки pug-компилятора
-let pugOption = {
-  data: { repoUrl: repoUrl, },
-  filters: { 'show-code': filterShowCode, },
-};
-
-// Определение: разработка это или финальная сборка
-// NODE_ENV=production npm start [задача]` приведет к сборке без sourcemaps
-// const isDev = !process.env.NODE_ENV || process.env.NODE_ENV == 'dev';
-
 // Пакеты, использующиеся при обработке
 const { series, parallel, src, dest, watch, lastRun } = require('gulp');
 const fs = require('fs');
@@ -33,6 +13,46 @@ const jsonFormat = require('json-format');
 const browserSync = require('browser-sync').create();
 const htmlbeautify = require('gulp-html-beautify');
 const debug = require('gulp-debug');
+const sass = require('gulp-sass');
+const notify = require('gulp-notify');
+const gulpIf = require('gulp-if');
+const postcss = require('gulp-postcss');
+const autoprefixer = require("autoprefixer");
+const mqpacker = require("css-mqpacker");
+const atImport = require("postcss-import");
+const cleanss = require('gulp-cleancss');
+const inlineSVG = require('postcss-inline-svg');
+const objectFitImages = require('postcss-object-fit-images');
+
+// Настройки из файла
+let config = require('./config.js');
+// Директории из настроек (dir.src = "./src/", dir.build = "./build/", dir.blocks = "./src/blocks/")
+let dir = config.dir;
+// Список блоков, который будет получен из классов HTML после компиляции pug
+let blocksList = [];
+// Старый список блоков в виде строки
+let oldBlocksListString = JSON.stringify(config.blocks);
+// Адрес репозитория
+let repoUrl = require('./package.json').repository.url.replace(/\.git$/g, '');
+// Определение: разработка это или финальная сборка
+const isDev = !process.env.NODE_ENV || process.env.NODE_ENV == 'dev';
+// Сообщение для компилируемых файлов
+let doNotEditMsg = '\n ВНИМАНИЕ! Этот файл генерируется автоматически.\n Любые изменения этого файла будут потеряны при следующей компиляции.\n Любое изменение проекта без возможности компиляции ДОЛЬШЕ И ДОРОЖЕ в 2-3 раза.\n\n';
+// Настройки pug-компилятора
+let pugOption = {
+  data: { repoUrl: repoUrl, },
+  filters: { 'show-code': filterShowCode, },
+};
+// Список и настройки плагинов postCSS
+let postCssPlugins = [
+  autoprefixer(), // настройки вынесены в package.json, дабы получать их для любой задачи
+  mqpacker({
+    sort: true
+  }),
+  atImport(),
+  inlineSVG(),
+  objectFitImages(),
+];
 
 
 function compilePug() {
@@ -41,12 +61,12 @@ function compilePug() {
     .pipe(debug({title: 'Compiles '}))
     .pipe(pug(pugOption))
     .pipe(through2.obj(getClassesToBlocksList))
-    .on('end', function checkBlockListWithClear(){checkBlockList(true)}) // компилируются все; можно убирать блоки, которых больше нет
+    .on('end', function(){checkBlockList(true)}) // компилируются все; можно убирать блоки, которых больше нет
     .pipe(dest(dir.build));
 }
 exports.compilePug = compilePug;
 
-// Компиляция только изменившегося (с последнего запуска задачи) pug-файла
+
 function compilePugFast() {
   return src([ `${dir.src}pages/**/*.pug` ], { since: lastRun(compilePugFast) })
     .pipe(plumber())
@@ -59,12 +79,11 @@ function compilePugFast() {
 exports.compilePugFast = compilePugFast;
 
 
-
 function writePugMixinsFile(cb) {
   const regExp = dir.blocks.replace('./','');
   let allBlocksWithPugFiles = getDirectories(dir.blocks, 'pug');
   // console.log(allBlocksWithPugFiles);
-  let pugMixins = `//- ВНИМАНИЕ! Этот файл генерируется автоматически. Не пишите сюда ничего вручную!\n//- Читайте ./README.md для понимания.\n\n`;
+  let pugMixins = doNotEditMsg.replace(/\n /gm,'\n//- ');
   allBlocksWithPugFiles.forEach(function(blockName) {
     pugMixins += `include ${dir.blocks.replace(dir.src,'../')}${blockName}/${blockName}.pug\n`;
   });
@@ -72,6 +91,40 @@ function writePugMixinsFile(cb) {
   cb();
 }
 exports.writePugMixinsFile = writePugMixinsFile;
+
+
+function compileSass() {
+  return src(`${dir.src}scss/style.scss`, { sourcemaps: true })
+    .pipe(plumber())
+    .pipe(debug({title: 'Compiles:'}))
+    .pipe(sass({includePaths: [__dirname+'/']}))
+    .pipe(postcss(postCssPlugins))
+    .pipe(gulpIf(!isDev, cleanss()))
+    .pipe(dest(`${dir.build}/css`, { sourcemaps: '.' }))
+    .pipe(browserSync.stream());
+}
+exports.compileSass = compileSass;
+
+
+function writeSassImportsFile(cb) {
+  // console.log( config.blocks );
+  let msg = `\n/*!*${doNotEditMsg.replace(/\n /gm,'\n * ').replace(/\n\n$/,'\n */\n\n')}`;
+  let styleImports = msg;
+  config.addStyleBefore.forEach(function(src) {
+    styleImports += `@import "${src}";\n`;
+  });
+  config.blocks.forEach(function(block) {
+    let src = `${dir.blocks}${block}/${block}.scss`;
+    if(fileExist(src)) styleImports += `@import "${src}";\n`;
+  });
+  config.addStyleAfter.forEach(function(src) {
+    styleImports += `@import "${src}";\n`;
+  });
+  styleImports += msg;
+  fs.writeFileSync(`${dir.src}scss/style.scss`, styleImports);
+  cb();
+}
+exports.writeSassImportsFile = writeSassImportsFile;
 
 
 function clearBuildDir() {
@@ -97,7 +150,7 @@ function serve() {
     open: false,
   });
   // Файлы разметки страниц (изменение, добавление)
-  watch([`${dir.src}pages/**/*.pug`], { events: ['change', 'add'], delay: 100 }, series(compilePugFast, reload));
+  watch([`${dir.src}pages/**/*.pug`], { events: ['change', 'add'], delay: 100 }, series(compilePugFast, writeSassImportsFile, compileSass, reload));
   // Файлы разметки страниц (удаление)
   watch([`${dir.src}pages/**/*.pug`], { delay: 100 })
     .on('unlink', function(path, stats) {
@@ -108,11 +161,15 @@ function serve() {
       });
     });
   // Файлы разметки БЭМ-блоков (изменение, добавление)
-  watch([`${dir.blocks}**/*.pug`], { events: ['change', 'add'], delay: 100 }, series(compilePug, reload));
+  watch([`${dir.blocks}**/*.pug`], { events: ['change', 'add'], delay: 100 }, series(compilePug, writeSassImportsFile, compileSass, reload));
   // Файлы разметки БЭМ-блоков (удаление)
   watch([`${dir.blocks}**/*.pug`], { events: ['unlink'], delay: 100 }, series(writePugMixinsFile));
-  // Прочие pug-файлы, кроме файла примесей (все события)
-  watch([`${dir.src}pug/**/*.pug`, `!${dir.src}pug/mixins.pug`], { delay: 100 }, series(compilePug, reload));
+  // Глобальные pug-файлы, кроме файла примесей (все события)
+  watch([`${dir.src}pug/**/*.pug`, `!${dir.src}pug/mixins.pug`], { delay: 100 }, series(compilePug, writeSassImportsFile, compileSass, reload));
+  // Стилевые файлы БЭМ-блоков (любые события)
+  watch([`${dir.blocks}**/*.scss`], { events: ['all'], delay: 100 }, series(writeSassImportsFile, compileSass));
+  // Глобальные стилевые файлы, кроме файла с импортами (любые события)
+  watch([`${dir.src}scss/**/*.scss`, `!${dir.src}scss/style.scss`], { events: ['all'], delay: 100 }, series(compileSass));
 }
 // exports.serve = serve;
 
@@ -120,6 +177,8 @@ function serve() {
 exports.default = series(
   parallel(clearBuildDir, writePugMixinsFile),
   compilePugFast,
+  writeSassImportsFile,
+  compileSass,
   serve,
 );
 
@@ -198,28 +257,14 @@ function getArraysDiff(a1, a2) {
   return a1.filter(i=>!a2.includes(i)).concat(a2.filter(i=>!a1.includes(i)))
 }
 
-/**
- * Получение дефолтных файлов блока (стили, JS, картинки, доп. файлы)
- * @param  {string} block     Искомый блок
- * @param  {string} blocksDir Директория, в которой лежат все блоки
- * @return {object}           Объект с соотв. путями, если они существуют { "style": [], "js": [], "img": [], "assets": [] }
- */
-// function getBlockDefaultFiles(block, blocksDir = dir.blocks) {
-//   let res = {};
-//   // Существует дефолтный стилевой файл?
-//   let defaultStyleFilePath = blocksDir + block + '/' + block + '.scss';
-//   fileExist(defaultStyleFilePath) ? res.style = [defaultStyleFilePath] : res.style = [];
-//   // Существует дефолтный JS-файл?
-//   let defaultJsFilePath = blocksDir + block + '/' + block + '.js';
-//   fileExist(defaultJsFilePath) ? res.js = [defaultJsFilePath] : res.js = [];
-//   // Существует дефолтная папка с картинками?
-//   let defaultImgFolderPath = blocksDir + block + '/img/';
-//   fileExist(defaultImgFolderPath) ? res.img = [defaultImgFolderPath] : res.img = [];
-//   // Существует дефолтная папка с доп. файлами?
-//   let defaultAssetsFolderPath = blocksDir + block + '/assets/';
-//   fileExist(defaultAssetsFolderPath) ? res.assets = [defaultAssetsFolderPath] : res.assets = [];
-//   return res;
-// }
+function uniqueArray(arr) {
+  var obj = {};
+  for (var i = 0; i < arr.length; i++) {
+    var str = arr[i];
+    obj[str] = true;
+  }
+  return Object.keys(obj);
+}
 
 /**
  * СЛУЖЕБНАЯ: Добавляет список классов из принятого HTML в переменную blocksList, используется в потоке обработки Pug.
@@ -271,6 +316,7 @@ function checkBlockList(removeBlocks = false) {
     Array.prototype.push.apply(config.blocks, getArraysDiff(blocksList, config.blocks));
     // ИМЕЕМ СПИСОК ИСПОЛЬЗОВАННЫХ СЕЙЧАС НА ПРОЕКТЕ БЛОКОВ
     // console.log(config.blocks);
+    config.blocks = uniqueArray(config.blocks);
     // Если есть изменения списка блоков
     if(oldBlocksListString != JSON.stringify(config.blocks)) {
       // Записать новый конфиг
