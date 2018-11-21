@@ -313,21 +313,21 @@ li {
   line-height: inherit;
 }
 
-dt {
-  font-weight: 700;
-}
+// dt {
+//   font-weight: 700;
+// }
 
-dd {
-  margin-left: 0;
+// dd {
+//   margin-left: 0;
 
-  @media (min-width: $screen-sm) {
-    margin-left: 1.5rem;
-  }
+//   @media (min-width: $screen-sm) {
+//     margin-left: 1.5rem;
+//   }
 
-  & + dt {
-    margin-top: ($line-height / 2);
-  }
-}
+//   & + dt {
+//     margin-top: ($line-height / 2);
+//   }
+// }
 
 // .small,
 small {
