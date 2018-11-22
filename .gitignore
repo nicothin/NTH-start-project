@@ -2,8 +2,9 @@ design/
 build/*
 !build/readme.md
 src/pug/mixins.pug
-
+src/js/entry.js
 src/scss/style.scss
+
 src/blocks/sprite-svg/img/sprite-svg.svg
 src/blocks/sprite-png/sprite-png.scss
 src/blocks/sprite-png/img/sprite-*.png

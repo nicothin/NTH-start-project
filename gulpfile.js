@@ -16,6 +16,10 @@ const debug = require('gulp-debug');
 const sass = require('gulp-sass');
 const notify = require('gulp-notify');
 const gulpIf = require('gulp-if');
+const browserify = require('browserify');
+const source = require('vinyl-source-stream');
+const buffer = require('vinyl-buffer');
+const uglify = require('gulp-uglify');
 const postcss = require('gulp-postcss');
 const autoprefixer = require("autoprefixer");
 const mqpacker = require("css-mqpacker");
@@ -23,11 +27,13 @@ const atImport = require("postcss-import");
 const cleanss = require('gulp-cleancss');
 const inlineSVG = require('postcss-inline-svg');
 const objectFitImages = require('postcss-object-fit-images');
+const cpy = require('cpy');
 
 // Настройки из файла
 let config = require('./config.js');
-// Директории из настроек (dir.src = "./src/", dir.build = "./build/", dir.blocks = "./src/blocks/")
+// Директории из настроек (dir.src = "./src/", dir.build = "./build/")
 let dir = config.dir;
+dir.blocks = `${dir.src}blocks/`;
 // Список блоков, который будет получен из классов HTML после компиляции pug
 let blocksList = [];
 // Старый список блоков в виде строки
@@ -37,7 +43,7 @@ let repoUrl = require('./package.json').repository.url.replace(/\.git$/g, '');
 // Определение: разработка это или финальная сборка
 const isDev = !process.env.NODE_ENV || process.env.NODE_ENV == 'dev';
 // Сообщение для компилируемых файлов
-let doNotEditMsg = '\n ВНИМАНИЕ! Этот файл генерируется автоматически.\n Любые изменения этого файла будут потеряны при следующей компиляции.\n Любое изменение проекта без возможности компиляции ДОЛЬШЕ И ДОРОЖЕ в 2-3 раза.\n\n';
+let doNotEditMsg = '\n ВНИМАНИЕ! Этот файл генерируется автоматически.\n Любые изменения этого файла будут потеряны при следующей компиляции.\n Любое изменение проекта без возможности компиляции ДОЛЬШЕ И ДОРОЖЕ в 2-5 раза.\n\n';
 // Настройки pug-компилятора
 let pugOption = {
   data: { repoUrl: repoUrl, },
@@ -127,6 +133,72 @@ function writeSassImportsFile(cb) {
 exports.writeSassImportsFile = writeSassImportsFile;
 
 
+function buildJs() {
+  // var sourcemaps = require('gulp-sourcemaps');
+  return browserify({
+      entries: dir.src + '/js/entry.js',
+      debug: true
+    })
+    .transform('babelify', {presets: ['@babel/preset-env',]})
+    .bundle()
+    .pipe(source('bundle.js'))
+    .pipe(buffer())
+    // .pipe(sourcemaps.init({loadMaps: true}))
+    .pipe(gulpIf(!isDev, uglify()))
+    // .pipe(sourcemaps.write('./'))
+    .pipe(dest(dir.build + '/js'));
+}
+exports.buildJs = buildJs;
+
+
+function writeJsRequiresFile(cb) {
+  // console.log( config.blocks );
+  let msg = `\n/*!*${doNotEditMsg.replace(/\n /gm,'\n * ').replace(/\n\n$/,'\n */\n\n')}`;
+  let jsRequires = msg;
+  config.addJsBefore.forEach(function(src) {
+    jsRequires += `require('${src}');\n`;
+  });
+  config.blocks.forEach(function(block) {
+    if(fileExist(`${dir.blocks}${block}/${block}.js`)) jsRequires += `require('../blocks/${block}/${block}.js');\n`;
+  });
+  config.addJsAfter.forEach(function(src) {
+    jsRequires += `require('${src}');\n`;
+  });
+  jsRequires += msg;
+  fs.writeFileSync(`${dir.src}js/entry.js`, jsRequires);
+  cb();
+}
+exports.writeJsRequiresFile = writeJsRequiresFile;
+
+
+function copyAssets(cb) {
+  for (let item in config.addAssets) {
+    let dest = `${dir.build}${config.addAssets[item]}`;
+    (async () => {
+      await cpy(item, dest);
+      console.log(`---------- Скопировано: ${item} -> ${dest}`);
+    })();
+  }
+  cb();
+}
+exports.copyAssets = copyAssets;
+
+
+function copyImg(cb) {
+  let copiedImages = [];
+  config.blocks.forEach(function(block) {
+    let src = `${dir.blocks}${block}/img`;
+    if(fileExist(src)) copiedImages.push(src);
+  });
+  (async () => {
+    await cpy(copiedImages, `${dir.build}img`);
+    console.log(`---------- Скопированы изображения БЭМ-блоков`);
+  })();
+  cb();
+}
+exports.copyImg = copyImg;
+
+
 function clearBuildDir() {
   return del([
     `${dir.build}**/*`,
@@ -148,9 +220,15 @@ function serve() {
     port: 8080,
     startPath: 'index.html',
     open: false,
+    notify: false,
   });
   // Файлы разметки страниц (изменение, добавление)
-  watch([`${dir.src}pages/**/*.pug`], { events: ['change', 'add'], delay: 100 }, series(compilePugFast, writeSassImportsFile, compileSass, reload));
+  watch([`${dir.src}pages/**/*.pug`], { events: ['change', 'add'], delay: 100 }, series(
+    compilePugFast,
+    parallel(writeSassImportsFile, writeJsRequiresFile),
+    parallel(compileSass, buildJs),
+    reload
+  ));
   // Файлы разметки страниц (удаление)
   watch([`${dir.src}pages/**/*.pug`], { delay: 100 })
     .on('unlink', function(path, stats) {
@@ -161,24 +239,37 @@ function serve() {
       });
     });
   // Файлы разметки БЭМ-блоков (изменение, добавление)
-  watch([`${dir.blocks}**/*.pug`], { events: ['change', 'add'], delay: 100 }, series(compilePug, writeSassImportsFile, compileSass, reload));
+  watch([`${dir.blocks}**/*.pug`], { events: ['change', 'add'], delay: 100 }, series(
+    compilePug,
+    writeSassImportsFile,
+    compileSass,
+    reload
+  ));
   // Файлы разметки БЭМ-блоков (удаление)
   watch([`${dir.blocks}**/*.pug`], { events: ['unlink'], delay: 100 }, series(writePugMixinsFile));
   // Глобальные pug-файлы, кроме файла примесей (все события)
-  watch([`${dir.src}pug/**/*.pug`, `!${dir.src}pug/mixins.pug`], { delay: 100 }, series(compilePug, writeSassImportsFile, compileSass, reload));
+  watch([`${dir.src}pug/**/*.pug`, `!${dir.src}pug/mixins.pug`], { delay: 100 }, series(
+    compilePugFast,
+    parallel(writeSassImportsFile, writeJsRequiresFile),
+    parallel(compileSass, buildJs),
+    reload,
+  ));
   // Стилевые файлы БЭМ-блоков (любые события)
   watch([`${dir.blocks}**/*.scss`], { events: ['all'], delay: 100 }, series(writeSassImportsFile, compileSass));
   // Глобальные стилевые файлы, кроме файла с импортами (любые события)
   watch([`${dir.src}scss/**/*.scss`, `!${dir.src}scss/style.scss`], { events: ['all'], delay: 100 }, series(compileSass));
+  // Глобальные Js-файлы и js-файлы блоков
+  watch([`${dir.src}js/**/*.js`, `!${dir.src}js/entry.js`, `${dir.blocks}**/*.js`], { events: ['all'], delay: 100 }, series(writeJsRequiresFile, buildJs, reload));
+  // Изображения БЭМ-блоков
+  watch([`${dir.blocks}**/img/*.{jpg,jpeg,png,gif,svg,webp}`], { events: ['all'], delay: 100 }, series(copyImg, reload));
 }
-// exports.serve = serve;
 
 
 exports.default = series(
   parallel(clearBuildDir, writePugMixinsFile),
-  compilePugFast,
-  writeSassImportsFile,
-  compileSass,
+  parallel(compilePugFast, copyAssets, copyImg),
+  parallel(writeSassImportsFile, writeJsRequiresFile),
+  parallel(compileSass, buildJs),
   serve,
 );
 

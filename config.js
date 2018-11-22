@@ -14,7 +14,9 @@ let config =
     "main-nav",
     "burger",
     "page-footer",
-    "some-new-class"
+    "some-new-class",
+    "haters",
+    "haters2"
   ],
   "addStyleBefore": [
     "./src/scss/functions.scss",
@@ -26,16 +28,17 @@ let config =
   ],
   "addJsBefore": [],
   "addJsAfter": [
-    "./src/js/global-script.js"
+    "./script.js"
   ],
-  "addImages": [],
-  "addAssets": [],
-  "copiedCss": [],
-  "copiedJs": [],
+  "addAssets": {
+    "./src/img/avatar-*": "img/",
+    "./src/img/DSC_*": "img/",
+    "./src/fonts/demo-empty-open-sans.woff2": "fonts/",
+    "./src/favicon/*.{png,ico,svg,xml,webmanifest}": "img/favicon"
+  },
   "dir": {
     "src": "./src/",
-    "build": "./build/",
-    "blocks": "./src/blocks/"
+    "build": "./build/"
   }
 };
 

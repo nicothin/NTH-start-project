@@ -1,4 +1,5 @@
 // Если на проекте jQuery
+// var $ = require('jquery');
 // $( document ).ready(function() {
 //   // code
 // });
