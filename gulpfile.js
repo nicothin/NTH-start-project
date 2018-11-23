@@ -12,7 +12,6 @@ const replace = require('gulp-replace');
 const getClassesFromHtml = require('get-classes-from-html');
 const jsonFormat = require('json-format');
 const browserSync = require('browser-sync').create();
-const htmlbeautify = require('gulp-html-beautify');
 const debug = require('gulp-debug');
 const sass = require('gulp-sass');
 const notify = require('gulp-notify');
@@ -34,6 +33,7 @@ const svgmin = require('gulp-svgmin');
 const spritesmith = require('gulp.spritesmith');
 const merge = require('merge-stream');
 const imagemin = require('gulp-imagemin');
+const prettyHtml = require('gulp-pretty-html');
 
 // Настройки из файла
 let config = require('./config.js');
@@ -55,6 +55,13 @@ let pugOption = {
   data: { repoUrl: repoUrl, },
   filters: { 'show-code': filterShowCode, },
 };
+// Настройки бьютификатора
+let prettyOption = {
+  indent_size: 2,
+  indent_char: ' ',
+  unformatted: ['code', 'em', 'strong', 'span', 'i', 'b', 'br'],
+  content_unformatted: [],
+};
 // Список и настройки плагинов postCSS
 let postCssPlugins = [
   autoprefixer(), // настройки вынесены в package.json, дабы получать их для любой задачи
@@ -72,6 +79,7 @@ function compilePug() {
     .pipe(plumber())
     .pipe(debug({title: 'Compiles '}))
     .pipe(pug(pugOption))
+    .pipe(prettyHtml(prettyOption))
     .pipe(through2.obj(getClassesToBlocksList))
     .on('end', function(){checkBlockList(true)}) // компилируются все; можно убирать блоки, которых больше нет
     .pipe(dest(dir.build));
@@ -84,6 +92,7 @@ function compilePugFast() {
     .pipe(plumber())
     .pipe(debug({title: 'Compiles '}))
     .pipe(pug(pugOption))
+    .pipe(prettyHtml(prettyOption))
     .pipe(through2.obj(getClassesToBlocksList))
     .on('end', checkBlockList)
     .pipe(dest(dir.build));
@@ -306,7 +315,7 @@ function serve() {
   watch([`${dir.src}scss/**/*.scss`, `!${dir.src}scss/style.scss`], { events: ['all'], delay: 100 }, series(compileSass));
   watch([`${dir.src}js/**/*.js`, `!${dir.src}js/entry.js`, `${dir.blocks}**/*.js`], { events: ['all'], delay: 100 }, series(writeJsRequiresFile, buildJs, reload));
   watch([`${dir.blocks}**/img/*.{jpg,jpeg,png,gif,svg,webp}`], { events: ['all'], delay: 100 }, series(copyImg, reload));
-  watch([`${dir.blocks}sprite-svg/svg/*.svg`], { events: ['all'], delay: 100 }, series(generateSvgSprite, copyImg, reload));
+  watch([`${dir.blocks}sprite-svg/svg/*.svg`], { events: ['all'], delay: 100 }, series(generateSvgSprite, copyImg));
   watch([`${dir.blocks}sprite-png/png/*.png`], { events: ['all'], delay: 100 }, series(generatePngSprite, copyImg, compileSass));
 }
 

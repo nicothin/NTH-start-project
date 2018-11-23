@@ -18,7 +18,6 @@ let config =
     "main-nav",
     "burger",
     "page-footer",
-    "some-new-class",
     "sprite-svg",
     "sprite-png"
   ],
