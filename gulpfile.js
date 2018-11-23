@@ -7,6 +7,7 @@ const plumber = require('gulp-plumber');
 const del = require('del');
 const pug = require('gulp-pug');
 const through2 = require('through2');
+const rename = require('gulp-rename');
 const replace = require('gulp-replace');
 const getClassesFromHtml = require('get-classes-from-html');
 const jsonFormat = require('json-format');
@@ -28,6 +29,11 @@ const cleanss = require('gulp-cleancss');
 const inlineSVG = require('postcss-inline-svg');
 const objectFitImages = require('postcss-object-fit-images');
 const cpy = require('cpy');
+const svgstore = require('gulp-svgstore');
+const svgmin = require('gulp-svgmin');
+const spritesmith = require('gulp.spritesmith');
+const merge = require('merge-stream');
+const imagemin = require('gulp-imagemin');
 
 // Настройки из файла
 let config = require('./config.js');
@@ -174,10 +180,11 @@ exports.writeJsRequiresFile = writeJsRequiresFile;
 function copyAssets(cb) {
   for (let item in config.addAssets) {
     let dest = `${dir.build}${config.addAssets[item]}`;
-    (async () => {
-      await cpy(item, dest);
+    // (async () => {
+      // await cpy(item, dest);
+      cpy(item, dest);
       console.log(`---------- Скопировано: ${item} -> ${dest}`);
-    })();
+    // })();
   }
   cb();
 }
@@ -193,10 +200,56 @@ function copyImg(cb) {
   (async () => {
     await cpy(copiedImages, `${dir.build}img`);
     console.log(`---------- Скопированы изображения БЭМ-блоков`);
+    cb();
   })();
-  cb();
 }
 exports.copyImg = copyImg;
+
+
+function generateSvgSprite(cb) {
+  let spriteSvgPath = `${dir.blocks}sprite-svg/svg/`;
+  if(config.blocks.indexOf('sprite-svg') + 1 && fileExist(spriteSvgPath)) {
+    return src(spriteSvgPath + '*.svg')
+      .pipe(svgmin(function (file) {
+        return { plugins: [{ cleanupIDs: { minify: true } }] }
+      }))
+      .pipe(svgstore({ inlineSvg: true }))
+      .pipe(rename('sprite.svg'))
+      .pipe(dest(`${dir.blocks}sprite-svg/img/`));
+  }
+  else {
+    console.log('неа');
+    cb();
+  }
+}
+exports.generateSvgSprite = generateSvgSprite;
+
+
+function generatePngSprite(cb) {
+  let spritePngPath = `${dir.blocks}sprite-png/png/`;
+  if(config.blocks.indexOf('sprite-png') + 1 && fileExist(spritePngPath)) {
+    del(`${dir.blocks}sprite-png/img/*.png`);
+    let fileName = 'sprite-' + Math.random().toString().replace(/[^0-9]/g, '') + '.png';
+    let spriteData = src(spritePngPath + '*.png')
+      .pipe(spritesmith({
+        imgName: fileName,
+        cssName: 'sprite-png.scss',
+        padding: 4,
+        imgPath: '../img/' + fileName
+      }));
+    let imgStream = spriteData.img
+      .pipe(buffer())
+      .pipe(imagemin([ imagemin.optipng({ optimizationLevel: 5 }) ]))
+      .pipe(dest(`${dir.blocks}sprite-png/img/`));
+    let cssStream = spriteData.css
+      .pipe(dest(`${dir.blocks}sprite-png/`));
+    return merge(imgStream, cssStream);
+  }
+  else {
+    cb();
+  }
+}
+exports.generatePngSprite = generatePngSprite;
 
 
 function clearBuildDir() {
@@ -222,14 +275,12 @@ function serve() {
     open: false,
     notify: false,
   });
-  // Файлы разметки страниц (изменение, добавление)
   watch([`${dir.src}pages/**/*.pug`], { events: ['change', 'add'], delay: 100 }, series(
     compilePugFast,
     parallel(writeSassImportsFile, writeJsRequiresFile),
     parallel(compileSass, buildJs),
     reload
   ));
-  // Файлы разметки страниц (удаление)
   watch([`${dir.src}pages/**/*.pug`], { delay: 100 })
     .on('unlink', function(path, stats) {
       let filePathInBuildDir = path.replace(dir.src.replace('./','') + 'pages/', dir.build).replace('.pug', '.html');
@@ -238,36 +289,33 @@ function serve() {
         console.log(`---------- ${filePathInBuildDir} удалён`);
       });
     });
-  // Файлы разметки БЭМ-блоков (изменение, добавление)
   watch([`${dir.blocks}**/*.pug`], { events: ['change', 'add'], delay: 100 }, series(
     compilePug,
     writeSassImportsFile,
     compileSass,
     reload
   ));
-  // Файлы разметки БЭМ-блоков (удаление)
   watch([`${dir.blocks}**/*.pug`], { events: ['unlink'], delay: 100 }, series(writePugMixinsFile));
-  // Глобальные pug-файлы, кроме файла примесей (все события)
   watch([`${dir.src}pug/**/*.pug`, `!${dir.src}pug/mixins.pug`], { delay: 100 }, series(
     compilePugFast,
     parallel(writeSassImportsFile, writeJsRequiresFile),
     parallel(compileSass, buildJs),
     reload,
   ));
-  // Стилевые файлы БЭМ-блоков (любые события)
   watch([`${dir.blocks}**/*.scss`], { events: ['all'], delay: 100 }, series(writeSassImportsFile, compileSass));
-  // Глобальные стилевые файлы, кроме файла с импортами (любые события)
   watch([`${dir.src}scss/**/*.scss`, `!${dir.src}scss/style.scss`], { events: ['all'], delay: 100 }, series(compileSass));
-  // Глобальные Js-файлы и js-файлы блоков
   watch([`${dir.src}js/**/*.js`, `!${dir.src}js/entry.js`, `${dir.blocks}**/*.js`], { events: ['all'], delay: 100 }, series(writeJsRequiresFile, buildJs, reload));
-  // Изображения БЭМ-блоков
   watch([`${dir.blocks}**/img/*.{jpg,jpeg,png,gif,svg,webp}`], { events: ['all'], delay: 100 }, series(copyImg, reload));
+  watch([`${dir.blocks}sprite-svg/svg/*.svg`], { events: ['all'], delay: 100 }, series(generateSvgSprite, copyImg, reload));
+  watch([`${dir.blocks}sprite-png/png/*.png`], { events: ['all'], delay: 100 }, series(generatePngSprite, copyImg, compileSass));
 }
 
 
 exports.default = series(
   parallel(clearBuildDir, writePugMixinsFile),
-  parallel(compilePugFast, copyAssets, copyImg),
+  parallel(compilePugFast, copyAssets),
+  parallel(generateSvgSprite, generatePngSprite),
+  parallel(copyImg),
   parallel(writeSassImportsFile, writeJsRequiresFile),
   parallel(compileSass, buildJs),
   serve,
@@ -348,6 +396,11 @@ function getArraysDiff(a1, a2) {
   return a1.filter(i=>!a2.includes(i)).concat(a2.filter(i=>!a1.includes(i)))
 }
 
+/**
+ * Уникализация массива
+ * @param  {array} arr Массив, в котором могут быть неуникальные элементы
+ * @return {array}     Массив без повторов
+ */
 function uniqueArray(arr) {
   var obj = {};
   for (var i = 0; i < arr.length; i++) {
@@ -387,6 +440,10 @@ function getClassesToBlocksList(file, enc, cb) {
       // Добавляем
       blocksList.push(item);
     }
+    // Добавим все обязательные блоки из настроек
+    config.alwaysAddBlocks.forEach(function(item) {
+      blocksList.push(item);
+    });
     file.contents = new Buffer(fileContent);
   }
   this.push(file);

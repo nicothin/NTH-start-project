@@ -7,6 +7,10 @@ let config =
   "ignoredBlocks": [
     "no-js"
   ],
+  "alwaysAddBlocks": [
+    "sprite-svg",
+    "sprite-png"
+  ],
   "blocks": [
     "page",
     "page-header",
@@ -15,8 +19,8 @@ let config =
     "burger",
     "page-footer",
     "some-new-class",
-    "haters",
-    "haters2"
+    "sprite-svg",
+    "sprite-png"
   ],
   "addStyleBefore": [
     "./src/scss/functions.scss",
@@ -38,7 +42,8 @@ let config =
   },
   "dir": {
     "src": "./src/",
-    "build": "./build/"
+    "build": "./build/",
+    "blocks": "./src/blocks/"
   }
 };
 

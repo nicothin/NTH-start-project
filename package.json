@@ -44,7 +44,6 @@
     "get-classes-from-html": "^1.0.1",
     "gh-pages": "^2.0.1",
     "gulp": "^4.0.0",
-    "gulp-cheerio": "^0.6.2",
     "gulp-cleancss": "^0.2.2",
     "gulp-concat": "^2.6.1",
     "gulp-debug": "^4.0.0",
