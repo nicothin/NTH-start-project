@@ -39,7 +39,8 @@ $off-canvas-width:            250px !default; // ширина этого бло�
       color: #fff;
 
       &:hover,
-      &:focus {
+      &:focus,
+      &:visited {
         color: #fff;
         background-color: transparent;
       }

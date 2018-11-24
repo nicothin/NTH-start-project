@@ -29,5 +29,11 @@ $border-radius:               rem(3px) !default;
     white-space: pre;
     background-color: transparent;
     min-height: 1em;
+
+    p,
+    div {
+      display: inline-block;
+      margin: 0;
+    }
   }
 }

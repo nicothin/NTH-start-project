@@ -1,8 +1,8 @@
-Из файлов папки `sprite-png/png/` в папку `sprite-png/img/` будет сгенерирован файл спрайта `sprite-ЧИСЛОВОЙ_ИНДЕКС.svg`, который далее будет скопирован в папку сборки.
+Из файлов `sprite-png/png/` будет сгенерирован файл спрайта `sprite-png/img/sprite-ЧИСЛОВОЙ_ИНДЕКС.svg`, который будет скопирован в папку сборки.
 
 **Стилевой файл блока генерируется автоматически** и содержит примеси для использования спрайтов.
 
-Пример использования части спрайта для конкретного селектора:
+Пример использования для конкретного селектора:
 
 <pre class="code">
   <code>.selector {</code>
@@ -10,8 +10,3 @@
   <code>  @include sprite($temp-icon-left-arrow);</code>
   <code>}</code>
 </pre>
-
-Демонстрационный контент блока (иконки стрелок):
-
-<div class="temp-icon-right-arrow" style="display: inline-block;"></div>
-<div class="temp-icon-left-arrow" style="display: inline-block;"></div>

@@ -1,3 +1,5 @@
+var $ = require('jquery');
+
 // Демо событий модальных окон
 $(document).ready(function(){
   $('#modal-demo-01').on('show.nth.modal', function(){
@@ -383,4 +385,4 @@ $(document).ready(function(){
     Plugin.call($target, option, this)
   })
 
-}(jQuery);
+}($);

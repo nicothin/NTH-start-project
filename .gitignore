@@ -3,12 +3,12 @@ build/*
 !build/readme.md
 src/pug/mixins.pug
 src/js/entry.js
+src/js/blocks-lib.js
 src/scss/style.scss
+src/scss/blocks-lib.scss
 src/blocks/sprite-svg/img/sprite.svg
 src/blocks/sprite-png/sprite-png.scss
 src/blocks/sprite-png/img/sprite-*.png
-
-faviconData.json
 
 __MACOSX
 .Saved/

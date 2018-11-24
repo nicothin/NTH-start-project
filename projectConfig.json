@@ -60,7 +60,8 @@
     "tabs": [],
     "object-fit-polyfill": [],
     "or": [],
-    "baron": []
+    "baron": [],
+    "blocks-library": []
   },
   "addCssBefore": [
     "./src/scss/functions.scss",

@@ -34,7 +34,7 @@ let config =
     "./script.js"
   ],
   "addAssets": {
-    "./src/img/avatar-*": "img/",
+    "./src/img/demo-avatar-*": "img/",
     "./src/img/DSC_*": "img/",
     "./src/fonts/demo-empty-open-sans.woff2": "fonts/",
     "./src/favicon/*.{png,ico,svg,xml,webmanifest}": "img/favicon"

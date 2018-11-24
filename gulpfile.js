@@ -261,6 +261,70 @@ function generatePngSprite(cb) {
 exports.generatePngSprite = generatePngSprite;
 
 
+function writeBlocksLibSass(cb) {
+  let allBlocksWithStyleFiles = getDirectories(dir.blocks, 'scss');
+  let styleImports = '';
+  config.addStyleBefore.forEach(function(src) {
+    styleImports += `@import "${src}";\n`;
+  });
+  allBlocksWithStyleFiles.forEach(function(block) {
+    let src = `${dir.blocks}${block}/${block}.scss`;
+    styleImports += `@import "${src}";\n`;
+  });
+  config.addStyleAfter.forEach(function(src) {
+    styleImports += `@import "${src}";\n`;
+  });
+  fs.writeFileSync(`${dir.src}scss/blocks-lib.scss`, styleImports);
+  cb();
+}
+exports.writeBlocksLibSass = writeBlocksLibSass;
+
+
+function writeBlocksLibJs(cb) {
+  let allBlocksWithJsFiles = getDirectories(dir.blocks, 'js');
+  let jsRequires = '';
+  config.addJsBefore.forEach(function(src) {
+    jsRequires += `require('${src}');\n`;
+  });
+  allBlocksWithJsFiles.forEach(function(block) {
+    jsRequires += `require('../blocks/${block}/${block}.js');\n`;
+  });
+  config.addJsAfter.forEach(function(src) {
+    jsRequires += `require('${src}');\n`;
+  });
+  fs.writeFileSync(`${dir.src}js/blocks-lib.js`, jsRequires);
+  cb();
+}
+exports.writeBlocksLibJs = writeBlocksLibJs;
+
+
+function compileBlocksLibSass() {
+  return src(`${dir.src}scss/blocks-lib.scss`, { sourcemaps: true })
+    .pipe(plumber())
+    .pipe(debug({title: 'Compiles:'}))
+    .pipe(sass({includePaths: [__dirname+'/']}))
+    .pipe(postcss(postCssPlugins))
+    .pipe(dest(`${dir.build}/css`, { sourcemaps: '.' }))
+    .pipe(browserSync.stream());
+}
+exports.compileBlocksLibSass = compileBlocksLibSass;
+
+
+function buildBlocksLibJs() {
+  return browserify({
+      entries: dir.src + '/js/blocks-lib.js',
+      debug: true
+    })
+    .transform('babelify', {presets: ['@babel/preset-env',]})
+    .bundle()
+    .pipe(source('blocks-lib.js'))
+    .pipe(buffer())
+    .pipe(gulpIf(!isDev, uglify()))
+    .pipe(dest(dir.build + '/js'));
+}
+exports.buildBlocksLibJs = buildBlocksLibJs;
+
+
 function clearBuildDir() {
   return del([
     `${dir.build}**/*`,
@@ -306,14 +370,14 @@ function serve() {
   ));
   watch([`${dir.blocks}**/*.pug`], { events: ['unlink'], delay: 100 }, series(writePugMixinsFile));
   watch([`${dir.src}pug/**/*.pug`, `!${dir.src}pug/mixins.pug`], { delay: 100 }, series(
-    compilePugFast,
+    compilePug,
     parallel(writeSassImportsFile, writeJsRequiresFile),
     parallel(compileSass, buildJs),
     reload,
   ));
-  watch([`${dir.blocks}**/*.scss`], { events: ['all'], delay: 100 }, series(writeSassImportsFile, compileSass));
-  watch([`${dir.src}scss/**/*.scss`, `!${dir.src}scss/style.scss`], { events: ['all'], delay: 100 }, series(compileSass));
-  watch([`${dir.src}js/**/*.js`, `!${dir.src}js/entry.js`, `${dir.blocks}**/*.js`], { events: ['all'], delay: 100 }, series(writeJsRequiresFile, buildJs, reload));
+  watch([`${dir.blocks}**/*.scss`], { events: ['all'], delay: 100 }, series(writeSassImportsFile, writeBlocksLibSass, compileSass, compileBlocksLibSass));
+  watch([`${dir.src}scss/**/*.scss`, `!${dir.src}scss/style.scss`, `!${dir.src}scss/blocks-lib.scss`], { events: ['all'], delay: 100 }, series(compileSass, compileBlocksLibSass));
+  watch([`${dir.src}js/**/*.js`, `!${dir.src}js/entry.js`, `!${dir.src}js/blocks-lib.js`, `${dir.blocks}**/*.js`], { events: ['all'], delay: 100 }, series(writeJsRequiresFile, writeBlocksLibJs, buildJs, buildBlocksLibJs, reload));
   watch([`${dir.blocks}**/img/*.{jpg,jpeg,png,gif,svg,webp}`], { events: ['all'], delay: 100 }, series(copyImg, reload));
   watch([`${dir.blocks}sprite-svg/svg/*.svg`], { events: ['all'], delay: 100 }, series(generateSvgSprite, copyImg));
   watch([`${dir.blocks}sprite-png/png/*.png`], { events: ['all'], delay: 100 }, series(generatePngSprite, copyImg, compileSass));
@@ -325,8 +389,8 @@ exports.default = series(
   parallel(compilePugFast, copyAssets),
   parallel(generateSvgSprite, generatePngSprite),
   parallel(copyImg),
-  parallel(writeSassImportsFile, writeJsRequiresFile),
-  parallel(compileSass, buildJs),
+  parallel(writeSassImportsFile, writeJsRequiresFile, writeBlocksLibSass, writeBlocksLibJs),
+  parallel(compileSass, compileBlocksLibSass, buildJs, buildBlocksLibJs),
   serve,
 );
 

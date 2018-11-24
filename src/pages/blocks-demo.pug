@@ -1,11 +1,11 @@
-extends ../pug/layout-off-canvas.pug
+extends ../pug/layout-block-lib.pug
 
 block meta
   title Библиотека
   meta(name='description', content='')
 
 block append head
-  link(rel='stylesheet', href='css/blocks-library.css')
+  link(rel='stylesheet', href='css/blocks-lib.css')
   style.
     .components-demo {
       display: block;
@@ -108,12 +108,10 @@ block content
         code &lt;/body>
         code &lt;/html>
 
-  //- +block-lib('typo', 'Текст, теги', false)
-  //-   include:markdown-it(html='true') ../blocks/typo/readme.md
-
   +block-lib('grid-mixins', 'Примеси-генераторы модульной сетки', false, 'grid')
     :markdown-it()
-      По умолчанию в сборку берётся файл с примесями для создания модульной сетки: `./src/scss/mixins/grid-mixins.scss`. Отдельного БЭМ-блока для сеток нет, используйте семантические классы и применяйте к ним примеси. <br>
+      В сборку берётся `./src/scss/mixins/grid-mixins.scss` с примесями-генераторами. Отдельного БЭМ-блока для сеток нет, используйте семантические классы и применяйте к ним примеси.
+
       [Пример использования на codepen.io](https://codepen.io/nicothin/pen/aJEOwE?editors=1100).
 
       Необходимая структура:
@@ -216,7 +214,7 @@ block content
 
   +block-lib('thumb', 'Картинки-миниатюры', false)
     include:markdown-it(html='true') ../blocks/thumb/readme.md
-    +thumb('img/joker.jpg', 'Джокер', 300, 200)
+    +thumb('img/demo-avatar-m.png', 'User', 150, 150)
     +block-lib-code()
       include:show-code(first-line='//- Pug-файл этого блока:') ../blocks/thumb/thumb.pug
 
@@ -339,32 +337,28 @@ block content
     +block-lib-code()
       include:show-code(first-line='//- Pug-файл этого блока:') ../blocks/progress/progress.pug
 
-  +block-lib('pie-chart', 'Круговые и секторные диаграммы', false)
-    include:markdown-it(html='true') ../blocks/pie-chart/readme.md
-    +pie-chart('30')
-    +pie-chart('64')(data-size='120', data-border='59.9')
-    +block-lib-code()
-      include:show-code(first-line='//- Pug-файл этого блока:') ../blocks/pie-chart/pie-chart.pug
-
   +block-lib('comment', 'Комментарий', false)
     include:markdown-it(html='true') ../blocks/comment/readme.md
     +comment({
       username: 'Джокер',
-      avatarURL: 'img/joker.jpg',
+      avatarURL: 'img/demo-avatar-m.png',
       authorURL: '/users/joker',
       content: '<p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты.</p>',
       mods: 'admin',
     })
       +comment({
-        username: 'Джокер',
+        username: 'Джокересса',
+        avatarURL: 'img/demo-avatar-f.png',
         content: '<p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты.</p>',
       })
         +comment({
-          username: 'Джокер',
+          username: 'Джокер 2',
+          avatarURL: 'img/demo-avatar-m.png',
           content: '<p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты.</p>',
         })
     +comment({
       username: 'Джокер',
+      avatarURL: 'img/demo-avatar-m.png',
       content: '<p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты.</p>',
     })
     +block-lib-code()
@@ -698,9 +692,6 @@ block content
     +block-lib-code()
       include:show-code(first-line='//- Pug-файл этого блока:') ../blocks/form/form.pug
 
-  +block-lib('is-mobile', 'Определение мобильного устройства', false)
-    include:markdown-it(html='true') ../blocks/is-mobile/readme.md
-
   +block-lib('scroll-link', 'Ссылки на якоря страницы', false)
     include:markdown-it(html='true') ../blocks/scroll-link/readme.md
     +scroll-link('Описание блока <code>page</code>', '#page')
@@ -712,69 +703,6 @@ block content
     +to-top()
     +block-lib-code()
       include:show-code(first-line='//- Pug-файл этого блока:') ../blocks/to-top/to-top.pug
-
-  +block-lib('dropdown', 'Выпадающий элемент', false)
-    include:markdown-it(html='true') ../blocks/dropdown/readme.md
-    pre.code
-      code // Факт открытия
-      code $('#drop-demo-01').closest('.dropdown').on('shown.nth.dropdown', function () {
-      code   console.log('shown.nth.dropdown');
-      code });
-      code
-      code // Факт закрытия
-      code $('#drop-demo-01').closest('.dropdown').on('hidden.nth.dropdown', function () {
-      code   console.log('hidden.nth.dropdown');
-      code });
-    +dropdown('Дроп (с выводом событий в консоль)', 'drop-demo-01')
-      p текст
-    span &nbsp;
-    +dropdown('Выпадающее меню', 'drop-demo-02', 'up, right')
-      .menu
-        span.menu__item
-          a.menu__link(href='') Пункт списка
-        span.menu__item
-          a.menu__link(href='') Пункт меню весьма длинный
-        span.menu__item
-          a.menu__link(href='') Второй пункт
-    +block-lib-code()
-      include:show-code(first-line='//- Pug-файл этого блока:') ../blocks/dropdown/dropdown.pug
-
-  +block-lib('owl-carousel', 'Карусель с <a href="http://owlcarousel2.github.io/OwlCarousel2/">owl-carousel</a>', false)
-    include:markdown-it(html='true') ../blocks/owl-carousel/readme.md
-    +owl-carousel('promo')
-      div слайд1
-      div слайд2
-      div слайд3
-      div слайд4
-      div слайд5
-      div слайд6
-      div слайд7
-      div слайд8
-    +block-lib-code()
-      include:show-code(first-line='//- Pug-файл этого блока:') ../blocks/owl-carousel/owl-carousel.pug
-
-  +block-lib('swipe', 'Карусель с <a href="https://github.com/lyfeyaj/swipe">swipe</a>', false)
-    include:markdown-it(html='true') ../blocks/swipe/readme.md
-    +swipe('swipe-demo')
-      div слайд1
-      div слайд2
-      div слайд3
-      div слайд4
-      div слайд5
-      div слайд6
-      div слайд7
-      div слайд8
-    +block-lib-code()
-      include:show-code(first-line='//- Pug-файл этого блока:') ../blocks/swipe/swipe.pug
-
-  +block-lib('nouislider', 'Выбор диапазона с <a href="https://refreshless.com/nouislider/">noUiSlider</a>', false)
-    include:markdown-it(html='true') ../blocks/nouislider/readme.md
-    +nouislider('demo-nouislider')
-      p(style='margin-top: 1rem;')
-        input#demo-nouislider-start(type='number', value='10')
-        input#demo-nouislider-end(type='number', value='80')
-    +block-lib-code()
-      include:show-code(first-line='//- Pug-файл этого блока:') ../blocks/nouislider/nouislider.pug
 
   +block-lib('off-canvas', 'Боковое меню страницы', false)
     include:markdown-it(html='true') ../blocks/off-canvas/readme.md

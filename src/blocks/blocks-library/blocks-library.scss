@@ -1,7 +1,10 @@
-@import './src/scss/variables.scss';
-@import './src/scss/mixins.scss';
+// В этом файле должны быть стили для БЭМ-блока blocks-library, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+// Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
 .blocks-library {
+
+  $block-name:                &; // #{$block-name}__element
 
   &__title {
     font-weight: 400;
@@ -119,14 +122,14 @@
   }
 
   &__menu-toggler {
-    position: fixed;
+    position: fixed !important;
     backface-visibility: hidden;
     bottom: 0;
     left: 0;
-    background-color: #000;
-    width: 40px;
+    background-color: #000 !important;
+    width: 40px !important;
     height: 40px;
-    padding: 5px;
+    padding: 5px !important;
 
     .off-canvas--open & {
       display: none;
@@ -135,8 +138,7 @@
     & > span,
     & > span:before,
     & > span:after {
-      background-color: #fff;
+      background-color: #fff !important;
     }
   }
 }
-

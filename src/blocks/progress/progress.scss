@@ -24,6 +24,7 @@ $transition-time:             0.3s !default;
     border-radius: $border-radius;
     max-width: 100%;
     min-height: 1px;
+    white-space: nowrap;
     transition: width $transition-time;
   }
 
