@@ -37,24 +37,32 @@ const prettyHtml = require('gulp-pretty-html');
 
 // Настройки из файла
 let config = require('./config.js');
+
 // Директории из настроек (dir.src = "./src/", dir.build = "./build/")
 let dir = config.dir;
-dir.blocks = `${dir.src}blocks/`;
-// Список блоков, который будет получен из классов HTML после компиляции pug
+// dir.blocks = `${dir.src}blocks/`;
+
+// Будущий список блоков (будет получен из классов HTML после компиляции pug)
 let blocksList = [];
+
 // Старый список блоков в виде строки
 let oldBlocksListString = JSON.stringify(config.blocks);
+
 // Адрес репозитория
-let repoUrl = require('./package.json').repository.url.replace(/\.git$/g, '');
+let repoUrl = 'https://github.com/nicothin/NTH-start-project';
+
 // Определение: разработка это или финальная сборка
 const isDev = !process.env.NODE_ENV || process.env.NODE_ENV == 'dev';
+
 // Сообщение для компилируемых файлов
-let doNotEditMsg = '\n ВНИМАНИЕ! Этот файл генерируется автоматически.\n Любые изменения этого файла будут потеряны при следующей компиляции.\n Любое изменение проекта без возможности компиляции ДОЛЬШЕ И ДОРОЖЕ в 2-5 раза.\n\n';
+let doNotEditMsg = '\n ВНИМАНИЕ! Этот файл генерируется автоматически.\n Любые изменения этого файла будут потеряны при следующей компиляции.\n Любое изменение проекта без возможности компиляции ДОЛЬШЕ И ДОРОЖЕ в 2-5 раз.\n\n';
+
 // Настройки pug-компилятора
 let pugOption = {
   data: { repoUrl: repoUrl, },
   filters: { 'show-code': filterShowCode, },
 };
+
 // Настройки бьютификатора
 let prettyOption = {
   indent_size: 2,
@@ -62,9 +70,10 @@ let prettyOption = {
   unformatted: ['code', 'em', 'strong', 'span', 'i', 'b', 'br'],
   content_unformatted: [],
 };
+
 // Список и настройки плагинов postCSS
 let postCssPlugins = [
-  autoprefixer(), // настройки вынесены в package.json, дабы получать их для любой задачи
+  autoprefixer(),
   mqpacker({
     sort: true
   }),
@@ -81,7 +90,7 @@ function compilePug() {
     .pipe(pug(pugOption))
     .pipe(prettyHtml(prettyOption))
     .pipe(through2.obj(getClassesToBlocksList))
-    .on('end', function(){checkBlockList(true)}) // компилируются все; можно убирать блоки, которых больше нет
+    .on('end', function(){checkBlockList(true)})
     .pipe(dest(dir.build));
 }
 exports.compilePug = compilePug;
@@ -149,6 +158,7 @@ exports.writeSassImportsFile = writeSassImportsFile;
 
 
 function buildJs() {
+  // TODO впилить сюда вебпацкЪ
   // var sourcemaps = require('gulp-sourcemaps');
   return browserify({
       entries: dir.src + '/js/entry.js',
@@ -189,11 +199,7 @@ exports.writeJsRequiresFile = writeJsRequiresFile;
 function copyAssets(cb) {
   for (let item in config.addAssets) {
     let dest = `${dir.build}${config.addAssets[item]}`;
-    // (async () => {
-      // await cpy(item, dest);
-      cpy(item, dest);
-      console.log(`---------- Скопировано: ${item} -> ${dest}`);
-    // })();
+    cpy(item, dest);
   }
   cb();
 }
@@ -208,7 +214,6 @@ function copyImg(cb) {
   });
   (async () => {
     await cpy(copiedImages, `${dir.build}img`);
-    console.log(`---------- Скопированы изображения БЭМ-блоков`);
     cb();
   })();
 }
@@ -227,7 +232,6 @@ function generateSvgSprite(cb) {
       .pipe(dest(`${dir.blocks}sprite-svg/img/`));
   }
   else {
-    console.log('неа');
     cb();
   }
 }
@@ -341,6 +345,7 @@ function reload(done) {
 
 
 function serve() {
+
   browserSync.init({
     server: dir.build,
     port: 8080,
@@ -348,12 +353,16 @@ function serve() {
     open: false,
     notify: false,
   });
+
+  // Страницы: изменение, добавление
   watch([`${dir.src}pages/**/*.pug`], { events: ['change', 'add'], delay: 100 }, series(
     compilePugFast,
     parallel(writeSassImportsFile, writeJsRequiresFile),
     parallel(compileSass, buildJs),
     reload
   ));
+
+  // Страницы: удаление
   watch([`${dir.src}pages/**/*.pug`], { delay: 100 })
     .on('unlink', function(path, stats) {
       let filePathInBuildDir = path.replace(dir.src.replace('./','') + 'pages/', dir.build).replace('.pug', '.html');
@@ -362,24 +371,42 @@ function serve() {
         console.log(`---------- ${filePathInBuildDir} удалён`);
       });
     });
+
+  // Разметка Блоков: изменение, добавление
   watch([`${dir.blocks}**/*.pug`], { events: ['change', 'add'], delay: 100 }, series(
     compilePug,
     writeSassImportsFile,
     compileSass,
     reload
   ));
+
+  // Разметка Блоков: удаление
   watch([`${dir.blocks}**/*.pug`], { events: ['unlink'], delay: 100 }, series(writePugMixinsFile));
+
+  // Шаблоны pug: все события
   watch([`${dir.src}pug/**/*.pug`, `!${dir.src}pug/mixins.pug`], { delay: 100 }, series(
     compilePug,
     parallel(writeSassImportsFile, writeJsRequiresFile),
     parallel(compileSass, buildJs),
     reload,
   ));
+
+  // Стили Блоков: все события
   watch([`${dir.blocks}**/*.scss`], { events: ['all'], delay: 100 }, series(writeSassImportsFile, writeBlocksLibSass, compileSass, compileBlocksLibSass));
+
+  // Стилевые глобальные файлы: все события
   watch([`${dir.src}scss/**/*.scss`, `!${dir.src}scss/style.scss`, `!${dir.src}scss/blocks-lib.scss`], { events: ['all'], delay: 100 }, series(compileSass, compileBlocksLibSass));
+
+  // Скриптовые глобальные файлы: все события
   watch([`${dir.src}js/**/*.js`, `!${dir.src}js/entry.js`, `!${dir.src}js/blocks-lib.js`, `${dir.blocks}**/*.js`], { events: ['all'], delay: 100 }, series(writeJsRequiresFile, writeBlocksLibJs, buildJs, buildBlocksLibJs, reload));
+
+  // Картинки: все события
   watch([`${dir.blocks}**/img/*.{jpg,jpeg,png,gif,svg,webp}`], { events: ['all'], delay: 100 }, series(copyImg, reload));
+
+  // Спрайт SVG
   watch([`${dir.blocks}sprite-svg/svg/*.svg`], { events: ['all'], delay: 100 }, series(generateSvgSprite, copyImg));
+
+  // Спрайт PNG
   watch([`${dir.blocks}sprite-png/png/*.png`], { events: ['all'], delay: 100 }, series(generatePngSprite, copyImg, compileSass));
 }
 
@@ -484,7 +511,7 @@ function uniqueArray(arr) {
 }
 
 /**
- * СЛУЖЕБНАЯ: Добавляет список классов из принятого HTML в переменную blocksList, используется в потоке обработки Pug.
+ * Добавление списка классов из принятого HTML в глоб. переменную blocksList, используется в потоке обработки Pug.
  * @param  {object}   file Обрабатываемый файл
  * @param  {string}   enc  Кодировка
  * @param  {Function} cb   Коллбэк
@@ -524,7 +551,7 @@ function getClassesToBlocksList(file, enc, cb) {
 }
 
 /**
- * СЛУЖЕБНАЯ: Обновляет глобальную переменную с актуальным список блоков
+ * Обновление глоб. переменной с актуальным списком блоков
  * @param  {Boolean} removeBlocks Удалять ли не найденные блоки
  */
 function checkBlockList(removeBlocks = false) {
