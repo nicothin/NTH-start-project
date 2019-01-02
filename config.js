@@ -11,38 +11,28 @@ let config =
     "sprite-svg",
     "sprite-png"
   ],
-  "blocks": [
-    "page",
-    "page-header",
-    "logo",
-    "main-nav",
-    "burger",
-    "page-footer",
-    "sprite-svg",
-    "sprite-png"
-  ],
   "addStyleBefore": [
-    "./src/scss/functions.scss",
-    "./src/scss/variables.scss",
-    "./src/scss/mixins.scss"
+    "src/scss/functions.scss",
+    "src/scss/variables.scss",
+    "src/scss/mixins.scss"
   ],
   "addStyleAfter": [
-    "./src/scss/print.scss"
+    "src/scss/print.scss"
   ],
   "addJsBefore": [],
   "addJsAfter": [
-    "./script.js"
+    "script.js"
   ],
   "addAssets": {
-    "./src/img/demo-avatar-*": "img/",
-    "./src/img/DSC_*": "img/",
-    "./src/fonts/demo-empty-open-sans.woff2": "fonts/",
-    "./src/favicon/*.{png,ico,svg,xml,webmanifest}": "img/favicon"
+    "src/img/demo-avatar-*": "img/",
+    "src/img/DSC_*": "img/",
+    "src/fonts/demo-empty-open-sans.woff2": "fonts/",
+    "src/favicon/*.{png,ico,svg,xml,webmanifest}": "img/favicon"
   },
   "dir": {
-    "src": "./src/",
-    "build": "./build/",
-    "blocks": "./src/blocks/"
+    "src": "src/",
+    "build": "build/",
+    "blocks": "src/blocks/"
   }
 };
 
