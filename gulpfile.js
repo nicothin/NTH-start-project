@@ -14,7 +14,6 @@ const jsonFormat = require('json-format');
 const browserSync = require('browser-sync').create();
 const debug = require('gulp-debug');
 const sass = require('gulp-sass');
-const gulpIf = require('gulp-if');
 const webpackStream = require('webpack-stream');
 const buffer = require('vinyl-buffer');
 const uglify = require('gulp-uglify');
@@ -211,7 +210,10 @@ exports.writeSassImportsFile = writeSassImportsFile;
 
 
 function compileSass() {
-  return src(`${dir.src}scss/style.scss`, { sourcemaps: true })
+  return src([
+    `${dir.src}scss/style.scss`,
+    `${dir.blocks}blocks-library/blocks-library.scss`,
+    ], { sourcemaps: true })
     .pipe(plumber())
     .pipe(debug({title: 'Compiles:'}))
     .pipe(sass({includePaths: [__dirname+'/']}))
@@ -249,8 +251,12 @@ function buildJs() {
     .pipe(plumber())
     .pipe(webpackStream({
       mode: 'development',
+      entry: {
+        'bundle': `./${dir.src}js/entry.js`,
+        'blocks-library': `./${dir.blocks}blocks-library/blocks-library.js`,
+      },
       output: {
-        filename: 'bundle.js',
+        filename: '[name].js',
       },
       module: {
         rules: [
@@ -268,47 +274,10 @@ function buildJs() {
       //   jquery: 'jQuery'
       // }
     }))
-    .pipe(gulpIf(!isDev, uglify()))
+    .pipe(uglify())
     .pipe(dest(`${dir.build}js`));
 }
 exports.buildJs = buildJs;
-
-
-// function writeBlocksLibSass(cb) {
-//   let allBlocksWithStyleFiles = getDirectories('scss');
-//   let styleImports = '';
-//   config.addStyleBefore.forEach(function(src) {
-//     styleImports += `@import "${src}";\n`;
-//   });
-//   allBlocksWithStyleFiles.forEach(function(block) {
-//     let src = `${dir.blocks}${block}/${block}.scss`;
-//     styleImports += `@import "${src}";\n`;
-//   });
-//   config.addStyleAfter.forEach(function(src) {
-//     styleImports += `@import "${src}";\n`;
-//   });
-//   fs.writeFileSync(`${dir.src}scss/blocks-lib.scss`, styleImports);
-//   cb();
-// }
-// exports.writeBlocksLibSass = writeBlocksLibSass;
-
-
-// function writeBlocksLibJs(cb) {
-//   let allBlocksWithJsFiles = getDirectories('js');
-//   let jsRequires = '';
-//   config.addJsBefore.forEach(function(src) {
-//     jsRequires += `require('${src}');\n`;
-//   });
-//   allBlocksWithJsFiles.forEach(function(block) {
-//     jsRequires += `require('../blocks/${block}/${block}.js');\n`;
-//   });
-//   config.addJsAfter.forEach(function(src) {
-//     jsRequires += `require('${src}');\n`;
-//   });
-//   fs.writeFileSync(`${dir.src}js/blocks-lib.js`, jsRequires);
-//   cb();
-// }
-// exports.writeBlocksLibJs = writeBlocksLibJs;
 
 
 function clearBuildDir() {
@@ -346,6 +315,7 @@ function serve() {
     compilePugFast,
     parallel(writeSassImportsFile, writeJsRequiresFile),
     parallel(compileSass, buildJs),
+    // buildJsLibrary,
     reload
   ));
 

@@ -1,0 +1,9 @@
+require('../main-nav/main-nav.js');
+require('../burger/burger.js');
+require('../scroll-link/scroll-link.js');
+require('../to-top/to-top.js');
+require('../off-canvas/off-canvas.js');
+require('../modal/modal.js');
+require('../tabs/tabs.js');
+require('../baron/baron.js');
+require('../../js/script.js');

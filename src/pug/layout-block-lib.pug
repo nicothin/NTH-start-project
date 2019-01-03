@@ -18,7 +18,7 @@ html(class='no-js  page', lang='ru')
     link(rel='apple-touch-icon', sizes='180x180', href='/img/favicon/apple-touch-icon.png')
     link(rel='icon', type='image/png', sizes='32x32', href='/img/favicon/favicon-32x32.png')
     link(rel='icon', type='image/png', sizes='16x16', href='/img/favicon/favicon-16x16.png')
-    link(rel='manifest', href='/site.webmanifest')
+    link(rel='manifest', href='/img/favicon/site.webmanifest')
     link(rel='mask-icon', href='/img/favicon/safari-pinned-tab.svg', color='#5bbad5')
     meta(name='msapplication-TileColor', content='#5bbad5')
     meta(name='theme-color', content='#000')
@@ -30,6 +30,7 @@ html(class='no-js  page', lang='ru')
 
     block head
       link(rel='stylesheet', href='css/style.css')
+      link(rel='stylesheet', href='css/blocks-library.css')
       script.
         document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
 
@@ -55,4 +56,4 @@ html(class='no-js  page', lang='ru')
       .off-canvas__overlay(data-toggle='off-canvas')
 
     block page-bottom
-      script(src='js/blocks-lib.js')
+      script(src='js/blocks-library.js')
