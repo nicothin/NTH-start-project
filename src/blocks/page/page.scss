@@ -3,46 +3,8 @@
 // Подключение шрифтов.
 // Типографика.
 
-$gray:                        hsl(0, 0%, 50%) !default;
-$gray-lighter:                hsl(0, 0%, 80%) !default;
-$gray-lightest:               hsl(0, 0%, 90%) !default;
 
-$font-size--root:             16px !default;
-
-$font-size:                   1rem !default; // rem(16px)
-
-$font-size--h1:               rem(40px) !default;
-$font-size--h2:               rem(32px) !default;
-$font-size--h3:               rem(24px) !default;
-$font-size--h4:               rem(18px) !default;
-$font-size--h5:               rem(16px) !default;
-$font-size--h6:               rem(16px) !default;
-
-$font-size--small:            80% !default;
-
-$line-height:                 1.5 !default;
-
-$font-family:                 -apple-system, BlinkMacSystemFont, 'Roboto', 'Ubuntu', 'Droid Sans', 'Helvetica Neue', 'Arial', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol' !default;
-$font-family--serif:          'Georgia', 'Times New Roman', 'Times', serif !default;
-$font-family--monospace:      SFMono-Regular, 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace !default;
-$font-family--headings:       $font-family !default;
-
-$text-color:                  hsl(0, 0%, 10%) !default;
-$border-color:                hsl(0, 0%, 60%) !default;
-
-$border-radius:               3px !default;
-
-$body-bg:                     #fff !default;
-$link-color:                  hsl(208, 98%, 43%) !default;
-$link-color--hover:           darken(hsl(208, 98%, 43%), 15%) !default;
-
-$screen-sm:                   480px !default;
-$screen-xl:                   1200px !default;
-
-
-
-// Сделаем viewport великим снова! (привет, IE10)
-// http://timkadlec.com/2012/10/ie10-snap-mode-and-responsive-design/
+// Сделаем viewport великим снова! (привет, IE10) http://timkadlec.com/2012/10/ie10-snap-mode-and-responsive-design/
 @at-root {
 
   @-ms-viewport {
@@ -50,6 +12,8 @@ $screen-xl:                   1200px !default;
   }
 }
 
+
+/* stylelint-disable */
 // @font-face {
 //   font-family: 'FONTNAME';
 //   src: url('../fonts/FONTNAME.woff2') format('woff2'),
@@ -58,6 +22,8 @@ $screen-xl:                   1200px !default;
 //   font-style: normal;
 //   font-display: swap;
 // }
+/* stylelint-enable */
+
 
 .page { // html
 
@@ -99,7 +65,7 @@ $screen-xl:                   1200px !default;
 body {
   display: flex;           // Исправляем баг в IE для min-height and flexbox (flex-direction:column)
   flex-direction: column;  // и прижимаем footer в IE 10-11
-  background-color: #fff;
+  background-color: $body-bg;
   margin: 0;
   min-height: 100%;
   word-break: break-word;
@@ -197,9 +163,9 @@ a {
     color: $link-color--hover;
   }
 
-  &:visited {
-    color: $link-color--hover;
-  }
+  // &:visited {
+  //   color: $link-color--hover;
+  // }
 
   &[href^="tel:"] {
 
@@ -340,10 +306,10 @@ sup {
 }
 
 // .mark,
-mark {
-  background: rgba($color-warning, 0.3);
-  padding: 0.1em 0.3em;
-}
+// mark {
+//   background: rgba($color-warning, 0.3);
+//   padding: 0.1em 0.3em;
+// }
 
 b,
 strong {
@@ -360,10 +326,10 @@ blockquote {
   margin-right: 0;
 }
 
+// samp,
 code,
 kbd,
-pre,
-samp {
+pre {
   font-family: $font-family--monospace;
 }
 
