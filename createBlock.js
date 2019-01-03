@@ -5,19 +5,19 @@
 // Использование: node createBlock.js [имя блока] [доп. расширения через пробел]
 
 const fs = require('fs');
-const projectConfig = require('./projectConfig.json');
+const projectConfig = require('./config.js');
 
-const dirs = projectConfig.dirs;
+const dir = projectConfig.dir;
 const mkdirp = require('mkdirp');
 
-const blockName = process.argv[2];                   // получим имя блока
-const defaultExtensions = ['scss', 'md', 'pug', 'img', 'bg-img']; // расширения по умолчанию
-const extensions = uniqueArray(defaultExtensions.concat(process.argv.slice(3)));  // добавим введенные при вызове расширения (если есть)
+const blockName = process.argv[2];
+const defaultExtensions = ['scss', 'img', 'bg-img']; // расширения по умолчанию
+const extensions = uniqueArray(defaultExtensions.concat(process.argv.slice(3)));
 
 // Если есть имя блока
 if (blockName) {
-  const dirPath = `${dirs.srcPath + dirs.blocksDirName}/${blockName}/`; // полный путь к создаваемой папке блока
-  mkdirp(dirPath, (err) => {                                           // создаем
+  const dirPath = `${dir.blocks}${blockName}/`; // полный путь к создаваемой папке блока
+  mkdirp(dirPath, (err) => {                    // создаем
     // Если какая-то ошибка — покажем
     if (err) {
       console.error(`[NTH] Отмена операции: ${err}`);
@@ -25,45 +25,31 @@ if (blockName) {
 
     // Нет ошибки, поехали!
     else {
-      console.log(`[NTH] Создание папки ${dirPath} (если отсутствует)`);
+      console.log(`[NTH] Создание папки: ${dirPath} (если отсутствует)`);
 
       // Обходим массив расширений и создаем файлы, если они еще не созданы
       extensions.forEach((extension) => {
         const filePath = `${dirPath + blockName}.${extension}`; // полный путь к создаваемому файлу
-        let fileContent = '';                                 // будущий контент файла
-        let fileCreateMsg = '';                               // будущее сообщение в консоли при создании файла
+        let fileContent = '';                                   // будущий контент файла
+        let fileCreateMsg = '';                                 // будущее сообщение в консоли при создании файла
 
-        // Если это SCSS
         if (extension === 'scss') {
           fileContent = `// В этом файле должны быть стили для БЭМ-блока ${blockName}, его элементов,\n// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...\n// Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority\n\n.${blockName} {\n\n  $block-name:                &; // #{$block-name}__element\n}\n`;
           // fileCreateMsg = '';
-          // Добавление импорта файла в диспетчер подключений, если он есть и в нем есть импорты
-          // TODO
         }
 
-        // Если это HTML
-        else if (extension === 'html') {
-          fileContent = `<div class="${blockName}">content</div>\n`;
-        }
-
-        // Если это JS
         else if (extension === 'js') {
           fileContent = `// document.addEventListener(\'DOMContentLoaded\', function(){});\n// (function(){\n// код\n// }());\n`;
         }
 
-        // Если это md
-        else if (extension === 'js') {
+        else if (extension === 'md') {
           fileContent = '';
         }
 
-        // Если это pug
         else if (extension === 'pug') {
-          fileContent = `//- Все примеси в этом файле должны начинаться c имени блока (${blockName})\n\nmixin ${blockName}(text, mods)\n\n  //- Принимает:\n  //-   text    {string} - текст\n  //-   mods    {string} - список модификаторов\n  //- Вызов:\n        +${blockName}('Текст', 'some-mod')\n\n  -\n    // список модификаторов\n    var allMods = '';\n    if(typeof(mods) !== 'undefined' && mods) {\n      var modsList = mods.split(',');\n      for (var i = 0; i < modsList.length; i++) {\n        allMods = allMods + ' ${blockName}--' + modsList[i].trim();\n      }\n    }\n\n  .${blockName}(class=allMods)&attributes(attributes)\n    .${blockName}__inner!= text\n`;
-          // Добавление примеси файл примесей, если он есть и в нем есть подключение примесей
-          // TODO
+          fileContent = `//- Все примеси в этом файле должны начинаться c имени блока (${blockName})\n\nmixin ${blockName}(text, mods)\n\n  //- Принимает:\n  //-   text    {string} - текст\n  //-   mods    {string} - список модификаторов\n  //- Вызов:\n        +${blockName}('Текст', 'some-mod')\n\n  -\n    // список модификаторов\n    var allMods = '';\n    if(typeof(mods) !== 'undefined' && mods) {\n      var modsList = mods.split(',');\n      for (var i = 0; i < modsList.length; i++) {\n        allMods = allMods + ' ${blockName}--' + modsList[i].trim();\n      }\n    }\n\n  .${blockName}(class=allMods)&attributes(attributes)\n    .${blockName}__inner!= text\n      block\n`;
         }
 
-        // Если нужна подпапка для картинок
         else if (extension === 'img') {
           const imgFolder = `${dirPath}img/`;
           if (fileExist(imgFolder) === false) {
@@ -76,7 +62,6 @@ if (blockName) {
           }
         }
 
-        // Если нужна подпапка для необрабатываемых картинок
         else if (extension === 'bg-img') {
           const imgFolder = `${dirPath}bg-img/`;
           if (fileExist(imgFolder) === false) {
@@ -89,7 +74,6 @@ if (blockName) {
           }
         }
 
-        // Создаем файл, если он еще не существует
         if (fileExist(filePath) === false && extension !== 'img' && extension !== 'bg-img' && extension !== 'md') {
           fs.writeFile(filePath, fileContent, (err) => {
             if (err) {
@@ -117,38 +101,23 @@ if (blockName) {
         }
       });
 
-      // Добавим созданный блок в projectConfig.json
-      let hasThisBlock = false;
-      for (const block in projectConfig.blocks) {
-        if (block === blockName) {
-          hasThisBlock = true;
-          break;
-        }
-      }
-      if (!hasThisBlock) {
-        projectConfig.blocks[blockName] = [];
-        const newPackageJson = JSON.stringify(projectConfig, '', 2);
-        fs.writeFileSync('./projectConfig.json', newPackageJson);
-        console.log('[NTH] Подключение блока добавлено в projectConfig.json');
-      }
-
     }
   });
 } else {
   console.log('[NTH] Отмена операции: не указан блок');
 }
 
-// Оставить в массиве только уникальные значения (убрать повторы)
+
+
 function uniqueArray(arr) {
   const objectTemp = {};
   for (let i = 0; i < arr.length; i++) {
     const str = arr[i];
-    objectTemp[str] = true; // запомнить строку в виде свойства объекта
+    objectTemp[str] = true;
   }
   return Object.keys(objectTemp);
 }
 
-// Проверка существования файла
 function fileExist(path) {
   const fs = require('fs');
   try {

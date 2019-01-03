@@ -21,7 +21,7 @@ let config =
   ],
   "addJsBefore": [],
   "addJsAfter": [
-    "script.js"
+    "./script.js"
   ],
   "addAssets": {
     "src/img/demo-avatar-*": "img/",

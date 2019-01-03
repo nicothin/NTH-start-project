@@ -14,17 +14,15 @@ const jsonFormat = require('json-format');
 const browserSync = require('browser-sync').create();
 const debug = require('gulp-debug');
 const sass = require('gulp-sass');
-const notify = require('gulp-notify');
 const gulpIf = require('gulp-if');
-const browserify = require('browserify');
-const source = require('vinyl-source-stream');
+const webpackStream = require('webpack-stream');
 const buffer = require('vinyl-buffer');
 const uglify = require('gulp-uglify');
 const postcss = require('gulp-postcss');
 const autoprefixer = require("autoprefixer");
 const mqpacker = require("css-mqpacker");
 const atImport = require("postcss-import");
-const cleanss = require('gulp-cleancss');
+const csso = require('gulp-csso');
 const inlineSVG = require('postcss-inline-svg');
 const objectFitImages = require('postcss-object-fit-images');
 const cpy = require('cpy');
@@ -34,6 +32,8 @@ const spritesmith = require('gulp.spritesmith');
 const merge = require('merge-stream');
 const imagemin = require('gulp-imagemin');
 const prettyHtml = require('gulp-pretty-html');
+const ghpages = require('gh-pages');
+const path = require('path');
 
 // Глобальные настройки этого запуска
 const isDev = !process.env.NODE_ENV || process.env.NODE_ENV == 'dev';
@@ -62,7 +62,7 @@ let prettyOption = {
 
 // Список и настройки плагинов postCSS
 let postCssPlugins = [
-  autoprefixer(),
+  autoprefixer({grid: true}),
   mqpacker({
     sort: true
   }),
@@ -216,43 +216,25 @@ function compileSass() {
     .pipe(debug({title: 'Compiles:'}))
     .pipe(sass({includePaths: [__dirname+'/']}))
     .pipe(postcss(postCssPlugins))
-    .pipe(gulpIf(!isDev, cleanss()))
+    .pipe(csso({
+      restructure: false,
+    }))
     .pipe(dest(`${dir.build}/css`, { sourcemaps: '.' }))
     .pipe(browserSync.stream());
 }
 exports.compileSass = compileSass;
 
 
-function buildJs() {
-  // TODO впилить сюда вебпацкЪ
-  // var sourcemaps = require('gulp-sourcemaps');
-  return browserify({
-      entries: dir.src + '/js/entry.js',
-      debug: true
-    })
-    .transform('babelify', {presets: ['@babel/preset-env',]})
-    .bundle()
-    .pipe(source('bundle.js'))
-    .pipe(buffer())
-    // .pipe(sourcemaps.init({loadMaps: true}))
-    .pipe(gulpIf(!isDev, uglify()))
-    // .pipe(sourcemaps.write('./'))
-    .pipe(dest(dir.build + '/js'));
-}
-exports.buildJs = buildJs;
-
-
 function writeJsRequiresFile(cb) {
-  // console.log( config.blocks );
   let msg = `\n/*!*${doNotEditMsg.replace(/\n /gm,'\n * ').replace(/\n\n$/,'\n */\n\n')}`;
   let jsRequires = msg;
-  config.addJsBefore.forEach(function(src) {
+  nth.config.addJsBefore.forEach(function(src) {
     jsRequires += `require('${src}');\n`;
   });
-  config.blocks.forEach(function(block) {
+  nth.blocksFromHtml.forEach(function(block) {
     if(fileExist(`${dir.blocks}${block}/${block}.js`)) jsRequires += `require('../blocks/${block}/${block}.js');\n`;
   });
-  config.addJsAfter.forEach(function(src) {
+  nth.config.addJsAfter.forEach(function(src) {
     jsRequires += `require('${src}');\n`;
   });
   jsRequires += msg;
@@ -262,68 +244,71 @@ function writeJsRequiresFile(cb) {
 exports.writeJsRequiresFile = writeJsRequiresFile;
 
 
-function writeBlocksLibSass(cb) {
-  let allBlocksWithStyleFiles = getDirectories('scss');
-  let styleImports = '';
-  config.addStyleBefore.forEach(function(src) {
-    styleImports += `@import "${src}";\n`;
-  });
-  allBlocksWithStyleFiles.forEach(function(block) {
-    let src = `${dir.blocks}${block}/${block}.scss`;
-    styleImports += `@import "${src}";\n`;
-  });
-  config.addStyleAfter.forEach(function(src) {
-    styleImports += `@import "${src}";\n`;
-  });
-  fs.writeFileSync(`${dir.src}scss/blocks-lib.scss`, styleImports);
-  cb();
-}
-exports.writeBlocksLibSass = writeBlocksLibSass;
-
-
-function writeBlocksLibJs(cb) {
-  let allBlocksWithJsFiles = getDirectories('js');
-  let jsRequires = '';
-  config.addJsBefore.forEach(function(src) {
-    jsRequires += `require('${src}');\n`;
-  });
-  allBlocksWithJsFiles.forEach(function(block) {
-    jsRequires += `require('../blocks/${block}/${block}.js');\n`;
-  });
-  config.addJsAfter.forEach(function(src) {
-    jsRequires += `require('${src}');\n`;
-  });
-  fs.writeFileSync(`${dir.src}js/blocks-lib.js`, jsRequires);
-  cb();
-}
-exports.writeBlocksLibJs = writeBlocksLibJs;
-
-
-function compileBlocksLibSass() {
-  return src(`${dir.src}scss/blocks-lib.scss`, { sourcemaps: true })
+function buildJs() {
+  return src(`${dir.src}js/entry.js`)
     .pipe(plumber())
-    .pipe(debug({title: 'Compiles:'}))
-    .pipe(sass({includePaths: [__dirname+'/']}))
-    .pipe(postcss(postCssPlugins))
-    .pipe(dest(`${dir.build}/css`, { sourcemaps: '.' }))
-    .pipe(browserSync.stream());
-}
-exports.compileBlocksLibSass = compileBlocksLibSass;
-
-
-function buildBlocksLibJs() {
-  return browserify({
-      entries: dir.src + '/js/blocks-lib.js',
-      debug: true
-    })
-    .transform('babelify', {presets: ['@babel/preset-env',]})
-    .bundle()
-    .pipe(source('blocks-lib.js'))
-    .pipe(buffer())
+    .pipe(webpackStream({
+      mode: 'development',
+      output: {
+        filename: 'bundle.js',
+      },
+      module: {
+        rules: [
+          {
+            test: /\.(js)$/,
+            exclude: /(node_modules)/,
+            loader: 'babel-loader',
+            query: {
+              presets: ['@babel/preset-env']
+            }
+          }
+        ]
+      },
+      // externals: {
+      //   jquery: 'jQuery'
+      // }
+    }))
     .pipe(gulpIf(!isDev, uglify()))
-    .pipe(dest(dir.build + '/js'));
+    .pipe(dest(`${dir.build}js`));
 }
-exports.buildBlocksLibJs = buildBlocksLibJs;
+exports.buildJs = buildJs;
+
+
+// function writeBlocksLibSass(cb) {
+//   let allBlocksWithStyleFiles = getDirectories('scss');
+//   let styleImports = '';
+//   config.addStyleBefore.forEach(function(src) {
+//     styleImports += `@import "${src}";\n`;
+//   });
+//   allBlocksWithStyleFiles.forEach(function(block) {
+//     let src = `${dir.blocks}${block}/${block}.scss`;
+//     styleImports += `@import "${src}";\n`;
+//   });
+//   config.addStyleAfter.forEach(function(src) {
+//     styleImports += `@import "${src}";\n`;
+//   });
+//   fs.writeFileSync(`${dir.src}scss/blocks-lib.scss`, styleImports);
+//   cb();
+// }
+// exports.writeBlocksLibSass = writeBlocksLibSass;
+
+
+// function writeBlocksLibJs(cb) {
+//   let allBlocksWithJsFiles = getDirectories('js');
+//   let jsRequires = '';
+//   config.addJsBefore.forEach(function(src) {
+//     jsRequires += `require('${src}');\n`;
+//   });
+//   allBlocksWithJsFiles.forEach(function(block) {
+//     jsRequires += `require('../blocks/${block}/${block}.js');\n`;
+//   });
+//   config.addJsAfter.forEach(function(src) {
+//     jsRequires += `require('${src}');\n`;
+//   });
+//   fs.writeFileSync(`${dir.src}js/blocks-lib.js`, jsRequires);
+//   cb();
+// }
+// exports.writeBlocksLibJs = writeBlocksLibJs;
 
 
 function clearBuildDir() {
@@ -340,6 +325,11 @@ function reload(done) {
   done();
 }
 
+function deploy(cb) {
+  ghpages.publish(path.join(process.cwd(), dir.build), cb);
+}
+exports.deploy = deploy;
+
 
 function serve() {
 
@@ -354,9 +344,8 @@ function serve() {
   // Страницы: изменение, добавление
   watch([`${dir.src}pages/**/*.pug`], { events: ['change', 'add'], delay: 100 }, series(
     compilePugFast,
-    parallel(writeSassImportsFile, ),
-    // parallel(writeSassImportsFile, writeJsRequiresFile),
-    // parallel(compileSass, buildJs),
+    parallel(writeSassImportsFile, writeJsRequiresFile),
+    parallel(compileSass, buildJs),
     reload
   ));
 
@@ -375,7 +364,7 @@ function serve() {
   watch([`${dir.blocks}**/*.pug`], { events: ['change', 'add'], delay: 100 }, series(
     compilePug,
     writeSassImportsFile,
-    // compileSass,
+    compileSass,
     reload
   ));
 
@@ -385,20 +374,28 @@ function serve() {
   // Шаблоны pug: все события
   watch([`${dir.src}pug/**/*.pug`, `!${dir.src}pug/mixins.pug`], { delay: 100 }, series(
     compilePug,
-    parallel(writeSassImportsFile, ),
-    // parallel(writeSassImportsFile, writeJsRequiresFile),
-    // parallel(compileSass, buildJs),
+    parallel(writeSassImportsFile, writeJsRequiresFile),
+    parallel(compileSass, buildJs),
     reload,
   ));
 
-  // // Стили Блоков: все события
-  // watch([`${dir.blocks}**/*.scss`], { events: ['all'], delay: 100 }, series(writeSassImportsFile, writeBlocksLibSass, compileSass, compileBlocksLibSass));
+  // Стили Блоков: все события
+  watch([`${dir.blocks}**/*.scss`], { events: ['all'], delay: 100 }, series(
+    writeSassImportsFile,
+    compileSass,
+  ));
 
-  // // Стилевые глобальные файлы: все события
-  // watch([`${dir.src}scss/**/*.scss`, `!${dir.src}scss/style.scss`, `!${dir.src}scss/blocks-lib.scss`], { events: ['all'], delay: 100 }, series(compileSass, compileBlocksLibSass));
+  // Стилевые глобальные файлы: все события
+  watch([`${dir.src}scss/**/*.scss`, `!${dir.src}scss/style.scss`, `!${dir.src}scss/blocks-lib.scss`], { events: ['all'], delay: 100 }, series(
+    compileSass,
+  ));
 
-  // // Скриптовые глобальные файлы: все события
-  // watch([`${dir.src}js/**/*.js`, `!${dir.src}js/entry.js`, `!${dir.src}js/blocks-lib.js`, `${dir.blocks}**/*.js`], { events: ['all'], delay: 100 }, series(writeJsRequiresFile, writeBlocksLibJs, buildJs, buildBlocksLibJs, reload));
+  // Скриптовые глобальные файлы: все события
+  watch([`${dir.src}js/**/*.js`, `!${dir.src}js/entry.js`, `!${dir.src}js/blocks-lib.js`, `${dir.blocks}**/*.js`], { events: ['all'], delay: 100 }, series(
+    writeJsRequiresFile,
+    buildJs,
+    reload
+  ));
 
   // Картинки: все события
   watch([`${dir.blocks}**/img/*.{jpg,jpeg,png,gif,svg,webp}`], { events: ['all'], delay: 100 }, series(copyImg, reload));
@@ -414,31 +411,27 @@ function serve() {
   watch([`${dir.blocks}sprite-png/png/*.png`], { events: ['all'], delay: 100 }, series(
     generatePngSprite,
     copyImg,
-    // compileSass,
+    compileSass,
     reload,
   ));
 }
 
 
+exports.build = series(
+  parallel(clearBuildDir, writePugMixinsFile),
+  parallel(compilePugFast, copyAssets, generateSvgSprite, generatePngSprite),
+  parallel(copyImg, writeSassImportsFile, writeJsRequiresFile),
+  parallel(compileSass, buildJs),
+);
+
+
 exports.default = series(
   parallel(clearBuildDir, writePugMixinsFile),
   parallel(compilePugFast, copyAssets, generateSvgSprite, generatePngSprite),
-  parallel(copyImg, writeSassImportsFile),
-  // parallel(writeSassImportsFile, writeJsRequiresFile, writeBlocksLibSass, writeBlocksLibJs),
+  parallel(copyImg, writeSassImportsFile, writeJsRequiresFile),
+  parallel(compileSass, buildJs),
   serve,
 );
-
-// exports.default = series(
-//   parallel(clearBuildDir, writePugMixinsFile),
-//   parallel(compilePugFast, copyAssets),
-//   parallel(generateSvgSprite, generatePngSprite),
-//   parallel(copyImg),
-//   parallel(writeSassImportsFile, writeJsRequiresFile, writeBlocksLibSass, writeBlocksLibJs),
-//   parallel(compileSass, compileBlocksLibSass, buildJs, buildBlocksLibJs),
-//   serve,
-// );
-
-
 
 
 
@@ -485,19 +478,6 @@ function getClassesToBlocksList(file, enc, cb) {
   this.push(file);
   cb();
 }
-
-/**
- * Запись конфигурационного файла
- * @param  {object} config Конфиг
- */
-// function writeConfig(config) {
-//   var settings = { type: 'space', size: 2 }
-//   let configText = '// Файл перезаписывается программно при работе автоматизации\nlet config =\n' + jsonFormat(config, settings) + ';\n\nmodule.exports = config;\n';
-//   fs.writeFile('./config.js', configText, function(err){
-//     if (err) throw err;
-//     console.log('---------- Записан новый config.js');
-//   });
-// }
 
 //
 /**
