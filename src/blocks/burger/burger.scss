@@ -2,15 +2,7 @@
 // модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
-$toggler-part-height:         3px !default;
-$toggler-part-bg-color:       #000 !default;
-
-$transition-time:             0.3s !default;
-
 .burger {
-
-  $block-name:                &; // #{$block-name}__element
-
   position: relative;
   z-index: 1;
   display: inline-block;

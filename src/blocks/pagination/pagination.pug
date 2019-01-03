@@ -41,11 +41,11 @@ mixin pagination-item(text, href, active, mods)
     if(typeof(mods) !== 'undefined' && mods) {
       var modsList = mods.split(',');
       for (var i = 0; i < modsList.length; i++) {
-        allMods = allMods + ' pagination--' + modsList[i].trim();
+        allMods = allMods + ' pagination__item--' + modsList[i].trim();
       }
     }
     if(typeof(active) !== 'undefined' && active) {
-      allMods = allMods + ' pagination--active';
+      allMods = allMods + ' pagination__item--active';
     }
 
   if(typeof(href) !== 'undefined' && href)

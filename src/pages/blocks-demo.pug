@@ -101,15 +101,15 @@ block content
         code &lt;head>...&lt;/head>
         code &lt;body>
         code   &lt;div class="page__inner">
-        code     &lt;div class="page__content">Основное содержимое&lt;/div>
-        code     &lt;div class="page__footer-wrapper">Прибитый «подвал»&lt;/div>
+        code     &lt;div class="page__content">Обёртка основного содержимого&lt;/div>
+        code     &lt;div class="page__footer-wrapper">Обёртка прибитого подвала&lt;/div>
         code   &lt;/div>
         code &lt;/body>
         code &lt;/html>
 
   +block-lib('grid-mixins', 'Примеси-генераторы модульной сетки', false, 'grid')
     :markdown-it()
-      В сборку берётся `./src/scss/mixins/grid-mixins.scss` с примесями-генераторами. Отдельного БЭМ-блока для сеток нет, используйте семантические классы и применяйте к ним примеси.
+      В сборку берётся `./src/scss/mixins/grid-mixins.scss` с примесями-генераторами. Используйте семантические классы и применяйте к ним примеси.
 
       [Пример использования на codepen.io](https://codepen.io/nicothin/pen/aJEOwE?editors=1100).
 
@@ -172,7 +172,7 @@ block content
   +block-lib('logo', 'Логотип', false)
     include:markdown-it(html='true') ../blocks/logo/readme.md
     +logo('/')
-      img(src='img/logo.svg', alt='Logo', width='64', height='15')
+      img(src='img/temp-logo.svg', alt='Logo', width='64', height='15')
     +block-lib-code()
       include:show-code(first-line='//- Pug-файл этого блока:') ../blocks/logo/logo.pug
 
@@ -211,12 +211,6 @@ block content
     +block-lib-code()
       include:show-code(first-line='//- Pug-файл этого блока:') ../blocks/code/code.pug
 
-  +block-lib('thumb', 'Картинки-миниатюры', false)
-    include:markdown-it(html='true') ../blocks/thumb/readme.md
-    +thumb('img/demo-avatar-m.png', 'User', 150, 150)
-    +block-lib-code()
-      include:show-code(first-line='//- Pug-файл этого блока:') ../blocks/thumb/thumb.pug
-
   +block-lib('alert', 'Сообщения', false)
     include:markdown-it(html='true') ../blocks/alert/readme.md
     +alert()
@@ -227,28 +221,6 @@ block content
       +close('Закрыть', 'sm')(class='alert__close', aria-label='Закрыть')
     +block-lib-code()
       include:show-code(first-line='//- Pug-файл этого блока:') ../blocks/alert/alert.pug
-
-  +block-lib('menu', 'Меню', false)
-    include:markdown-it(html='true') ../blocks/menu/readme.md
-    -
-      var myMenu = [
-        {
-          'text':'Пункт1',
-          'url':'/',
-        },
-        {
-          'text':'Пункт2',
-          'url':'/',
-          'mods': 'separator, active',
-        },
-        {
-          'text':'Пункт3',
-          'url':'/',
-        },
-      ];
-    +menu(myMenu)
-    +block-lib-code()
-      include:show-code(first-line='//- Pug-файл этого блока:') ../blocks/menu/menu.pug
 
   +block-lib('label', 'Лейбл', false)
     include:markdown-it(html='true') ../blocks/label/readme.md
@@ -267,7 +239,6 @@ block content
   +block-lib('table', 'Таблица', false)
     include:markdown-it(html='true') ../blocks/table/readme.md
     +table()
-      caption Таблица
       tr
         th Имя
         th Фамилия
@@ -392,12 +363,6 @@ block content
           iframe(src='https://www.youtube.com/embed/B0Q1rKpDNE4', frameborder='0', allowfullscreen='')
     +block-lib-code()
       include:show-code(first-line='//- Pug-файл этого блока:') ../blocks/embed-responsive/embed-responsive.pug
-
-  +block-lib('tooltip', 'Подсказки', true)
-    include:markdown-it(html='true') ../blocks/tooltip/readme.md
-    p Текст и подсказка: #[+tooltip('Текст подсказки может быть длинным. Хочется, чтобы <em>внутри</em> <small>можно было</small> <i>использовать</i> <b>разметку</b>.')]
-    +block-lib-code()
-      include:show-code(first-line='//- Pug-файл этого блока:') ../blocks/tooltip/tooltip.pug
 
   +block-lib('btn', 'Кнопка', false)
     include:markdown-it(html='true') ../blocks/btn/readme.md
@@ -629,33 +594,12 @@ block content
     +block-lib-code()
       include:show-code(first-line='//- Pug-файл этого блока:') ../blocks/field-select/field-select.pug
 
-  +block-lib('field-actions', 'Кнопки формы', false)
+  +block-lib('field-actions', 'Действия формы', false)
     include:markdown-it(html='true') ../blocks/field-actions/readme.md
     +field-actions('* — обязательные поля')
       +btn('Отправить')
     +block-lib-code()
       include:show-code(first-line='//- Pug-файл этого блока:') ../blocks/field-actions/field-actions.pug
-
-  +block-lib('fields-group', 'Группа полей', false)
-    include:markdown-it(html='true') ../blocks/fields-group/readme.md
-    +fields-group()
-      +field-text({
-        helpText: 'Подсказка',
-        attrs: {
-          placeholder: 'Логин'
-        }
-      })
-      +field-text({
-        helpText: 'Подсказка',
-        attrs: {
-          type: 'password',
-          placeholder: 'Пароль',
-        },
-      })
-      +field-actions()
-        +btn('Отправить', 'primary')
-    +block-lib-code()
-      include:show-code(first-line='//- Pug-файл этого блока:') ../blocks/fields-group/fields-group.pug
 
   +block-lib('form', 'Форма', true)
     include:markdown-it(html='true') ../blocks/form/readme.md

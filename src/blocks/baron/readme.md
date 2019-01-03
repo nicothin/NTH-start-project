@@ -1,4 +1,4 @@
-Кастомный скролл c [baron](https://www.npmjs.com/package/baron) (зависимость берётся в сборку по умолчанию). [Демо кастомного скролла](http://diokuz.github.io/baron/)..
+Кастомный скролл c [baron](https://www.npmjs.com/package/baron). [Демо кастомного скролла](http://diokuz.github.io/baron/).
 
 Для каждого блока нужно включать baron в `blocks/baron/baron.js`.
 

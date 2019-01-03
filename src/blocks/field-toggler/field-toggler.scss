@@ -2,17 +2,9 @@
 // модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
-$gray-lightest:               hsl(0, 0%, 90%);
-$border-color:                hsl(0, 0%, 60%) !default;
-
-$line-height:                 1.5 !default;
-
 .field-toggler {
-
-  $block-name:                &; // #{$block-name}__element
-
   display: block;
-  margin-bottom: 1rem;
+  margin-bottom: 1em;
 
   &__title {
     @include field-name;
@@ -28,8 +20,8 @@ $line-height:                 1.5 !default;
   &__name {
     position: relative;
     display: inline-block;
-    padding-left: 3.2rem;
-    margin-right: 0.6rem;
+    padding-left: 3.2em;
+    margin-right: 0.6em;
     font-weight: 400;
     line-height: $line-height;
   }

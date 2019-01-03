@@ -2,20 +2,6 @@
 // модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
-$font-family:                 -apple-system, BlinkMacSystemFont, 'Roboto', 'Ubuntu', 'Droid Sans', 'Helvetica Neue', 'Arial', sans-serif !default;
-$font-family--headings:       $font-family !default;
-
-$font-size--h4:               rem(18px) !default;
-
-$line-height:                 1.5 !default;
-
-$screen-lg:                   992px !default;
-
-$opacity:                     0.7 !default;
-$transition-time:             0.3s !default;
-
-$z-index-modal:               100 !default;
-
 .js-modal-open {
   overflow: hidden;
 }

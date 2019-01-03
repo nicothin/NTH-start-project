@@ -2,20 +2,8 @@
 // модификаторов, псевдоселекторов, псевдоэлементов, $media-условий...
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
-$border-color:                hsl(0, 0%, 60%) !default;
-
-$screen-xs:                   0 !default;
-$screen-sm:                   480px !default;
-$screen-md:                   768px !default;
-$screen-lg:                   992px !default;
-$screen-xl:                   1200px !default;
-$screen-xxl:                  1800px !default;
-
 .table-responsive {
-
-  $block-name:                &; // #{$block-name}__element
-
-  margin-bottom: 1rem;
+  margin-bottom: 1em;
   border-collapse: collapse;
   border: 1px solid $border-color;
   width: 100%;
@@ -43,16 +31,12 @@ $screen-xxl:                  1800px !default;
   }
 
   th {
-    text-align: left;
+    text-align: inherit;
   }
 
   @media (max-width: ($screen-md - 1)) {
     display: block;
     border: 0;
-
-    caption {
-      display: none;
-    }
 
     thead {
       display: none;

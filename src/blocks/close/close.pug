@@ -19,5 +19,5 @@ mixin close(label, mods)
       }
     }
 
-  button.close(class=allMods, aria-label=label)&attributes(attributes)
+  button.close(class=allMods, aria-label=label, title=label)&attributes(attributes)
     span= label

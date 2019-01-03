@@ -2,14 +2,12 @@
 // модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
-$line-height:                 1.5 !default;
-
 .field-radio {
 
   $block-name:                &; // #{$block-name}__element
 
   display: block;
-  margin-bottom: 1rem;
+  margin-bottom: 1em;
 
   &__title {
     display: block;
@@ -21,7 +19,15 @@ $line-height:                 1.5 !default;
   &__input-wrap {
 
     & + & {
-      margin-top: 1rem;
+      margin-top: 1em;
+    }
+
+    &--error {
+
+      #{$block-name}__name-text,
+      #{$block-name}__help-text {
+        color: $color-danger;
+      }
     }
   }
 

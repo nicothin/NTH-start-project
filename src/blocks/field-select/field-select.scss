@@ -2,19 +2,12 @@
 // модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
-$gray-lightest:               hsl(0, 0%, 90%) !default;
-$border-color:                hsl(0, 0%, 60%) !default;
-
-$line-height:                 1.5 !default;
-
-$border-radius:               rem(3px) !default;
-
 .field-select {
 
   $block-name:                &; // #{$block-name}__element
 
   display: block;
-  margin-bottom: 1rem;
+  margin-bottom: 1em;
 
   &__name {
     @include field-name;
@@ -34,10 +27,6 @@ $border-radius:               rem(3px) !default;
     border-radius: $border-radius;
     appearance: none;
     background-color: #fff;
-    background-image: svg-load('../blocks/field-select/bg-img/select-down.svg');
-    background-repeat: no-repeat;
-    background-position: right 0.3em center;
-    background-size: 1.063em 0.688em;
 
     &[multiple] {
       background-image: none;
@@ -62,5 +51,21 @@ $border-radius:               rem(3px) !default;
 
   &__help-text {
     @include field-help-text;
+  }
+
+
+
+  &--error {
+
+    #{$block-name}__name,
+    #{$block-name}__select,
+    #{$block-name}__help-text {
+      color: $color-danger;
+    }
+
+    #{$block-name}__select {
+      border-color: $color-danger;
+      background-color: lighten($color-danger, 35%);
+    }
   }
 }

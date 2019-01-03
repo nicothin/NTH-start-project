@@ -2,23 +2,10 @@
 // модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
-$text-color--muted:           hsl(0, 0%, 50%) !default;
-
-$border-color:                hsl(0, 0%, 60%) !default;
-
-$font-size--small:            80% !default;
-
-$field-padding-vertical:      0.3em !default;
-$field-padding-horizontal:    0.7em !default;
-
 .table {
-
-  $block-name:                &; // #{$block-name}__element
-
   display: block;
   width: 100%;
-  margin-bottom: 1rem;
-  overflow-x: auto;
+  margin-bottom: 1em;
   border: 1px solid $border-color;
 
   table {
@@ -40,7 +27,7 @@ $field-padding-horizontal:    0.7em !default;
   }
 
   th {
-    text-align: left;
+    text-align: inherit;
   }
 
   tbody,
@@ -61,13 +48,13 @@ $field-padding-horizontal:    0.7em !default;
     }
   }
 
-  caption {
-    caption-side: top;
-    text-align: left;
-    padding: 0.4rem $field-padding-horizontal;
-    border-bottom: 1px solid $border-color;
-    font-size: $font-size--small;
-    line-height: 1em;
-    color: $text-color--muted;
-  }
+  // caption {
+  //   caption-side: top;
+  //   text-align: left;
+  //   padding: 0.4rem $field-padding-horizontal;
+  //   border-bottom: 1px solid $border-color;
+  //   font-size: $font-size--small;
+  //   line-height: 1em;
+  //   color: $text-color--muted;
+  // }
 }

@@ -2,13 +2,7 @@
 // модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
-$gray-lighter:                hsl(0, 0%, 80%) !default;
-$gray-lightest:               hsl(0, 0%, 90%) !default;
-
 .loader {
-
-  $block-name:                &; // #{$block-name}__element
-
   display: inline-block;
 
   &:before {

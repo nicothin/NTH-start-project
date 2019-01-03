@@ -1,4 +1,4 @@
-Из файлов `sprite-png/png/` будет сгенерирован файл спрайта `sprite-png/img/sprite-ЧИСЛОВОЙ_ИНДЕКС.svg`, который будет скопирован в папку сборки.
+Из файлов `sprite-png/png/` генерируется файл спрайта `sprite-png/img/sprite-ЧИСЛОВОЙ_ИНДЕКС.svg`.
 
 **Стилевой файл блока генерируется автоматически** и содержит примеси для использования спрайтов.
 
@@ -6,7 +6,6 @@
 
 <pre class="code">
   <code>.selector {</code>
-  <code>  // $temp-icon-left-arrow — $ИМЯ_ФАЙЛА_КАРТИНКИ ($ в начале)</code>
-  <code>  @include sprite($temp-icon-left-arrow);</code>
+  <code>  @include sprite($icon-left); // $icon-left — $ИМЯ-ФАЙЛА-КАРТИНКИ</code>
   <code>}</code>
 </pre>

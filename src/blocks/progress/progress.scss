@@ -2,19 +2,9 @@
 // модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
-$gray-lightest:               hsl(0, 0%, 90%) !default;
-$border-color:                hsl(0, 0%, 60%) !default;
-
-$border-radius:               rem(3px) !default;
-
-$transition-time:             0.3s !default;
-
 .progress {
-
-  $block-name:                &; // #{$block-name}__element
-
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-top: 1em;
+  margin-bottom: 1em;
   border: 1px solid $border-color;
   border-radius: $border-radius;
   text-align: center;

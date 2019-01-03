@@ -2,13 +2,7 @@
 // модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
-$toggler-part-height:         3px !default;
-$toggler-part-bg-color:       #000 !default;
-
 .close {
-
-  $block-name:                &; // #{$block-name}__element
-
   position: relative;
   z-index: 1;
   display: inline-block;
@@ -55,8 +49,8 @@ $toggler-part-bg-color:       #000 !default;
 
     $toggler-part-height:     1px;
 
-    width: 20px;
-    line-height: 20px;
+    width: 30px;
+    line-height: 30px;
 
     > span {
       width: 60%;

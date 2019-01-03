@@ -2,19 +2,10 @@
 // модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
-$text-color--muted:           hsl(0, 0%, 50%) !default;
-
-$font-size--small:            80% !default;
-
-$line-height:                 1.5 !default;
-
 .field-actions {
-
-  $block-name:                &; // #{$block-name}__element
-
   display: block;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-top: 1em;
+  margin-bottom: 1em;
 
   &__text {
     display: block;

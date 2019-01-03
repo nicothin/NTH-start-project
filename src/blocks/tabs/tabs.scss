@@ -2,24 +2,12 @@
 // модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
-$gray-lightest:               hsl(0, 0%, 90%) !default;
-
-$text-color:                  hsl(0, 0%, 10%) !default;
-$text-color--muted:           hsl(0, 0%, 50%) !default;
-
-$border-color:                hsl(0, 0%, 60%) !default;
-
-$line-height:                 1.5 !default;
-
-$field-padding-vertical:      0.3em !default;
-$field-padding-horizontal:    0.7em !default;
-
 .tabs {
 
   $block-name:                &; // #{$block-name}__element
 
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-top: 1em;
+  margin-bottom: 1em;
 
   &__links {
     margin: 0;

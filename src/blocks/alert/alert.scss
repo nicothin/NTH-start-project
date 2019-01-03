@@ -2,28 +2,14 @@
 // модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
-$gray-lighter:                hsl(0, 0%, 80%) !default;
-$color-success:               hsl(120, 39%, 54%) !default;
-$color-danger:                hsl(2, 64%, 58%) !default;
-$color-warning:               hsl(35, 84%, 62%) !default;
-$text-color:                  hsl(0, 0%, 10%) !default;
-
-$font-size--h3:               rem(24px) !default;
-
-$border-radius:               rem(3px) !default;
-
 .alert {
-
-  $block-name:                &; // #{$block-name}__element
-
   position: relative;
   padding: 0.7em 1.5em 0.7em 1.4em;
   margin-top: 1em;
   margin-bottom: 1em;
-  border: 1px solid $gray-lighter;
   border-radius: $border-radius;
   color: $text-color;
-  background-color: #fff;
+  background-color: $gray-lightest;
 
   & > * {
     margin-top: 0;
@@ -31,7 +17,7 @@ $border-radius:               rem(3px) !default;
   }
 
   & > * + * {
-    margin-top: 1rem;
+    margin-top: 1em;
   }
 
   &__header {
@@ -57,15 +43,13 @@ $border-radius:               rem(3px) !default;
 
 
 
-  &--warning {
-    background-color: lighten($color-warning, 30%);
-    border: 1px solid lighten($color-warning, 20%);
-    color: $text-color;
-  }
+  // &--warning {
+  //   background-color: lighten($color-warning, 30%);
+  //   color: $text-color;
+  // }
 
   // &--danger {
   //   background-color: $color-danger;
-  //   border: 1px solid darken($color-danger, 10%);
   //   color: #fff;
 
   //   a {
@@ -81,7 +65,6 @@ $border-radius:               rem(3px) !default;
 
   // &--success {
   //   background-color: $color-success;
-  //   border: 1px solid darken($color-success, 10%);
   //   color: #fff;
 
   //   a {

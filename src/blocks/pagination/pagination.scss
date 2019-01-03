@@ -2,23 +2,16 @@
 // модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
-$text-color:                  hsl(0, 0%, 10%) !default;
-
-$border-color:                hsl(0, 0%, 60%) !default;
-
 .pagination {
-
-  $block-name:                &; // #{$block-name}__element
-
   display: flex;
   flex-wrap: wrap;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-top: 1em;
+  margin-bottom: 1em;
 
   &__item {
     display: block;
-    padding: 0.5rem;
-    min-width: 2.5rem;
+    padding: 0.5em;
+    min-width: 2.5em;
     border: 1px solid $border-color;
     text-decoration: none;
     text-align: center;

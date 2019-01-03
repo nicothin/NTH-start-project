@@ -2,26 +2,16 @@
 // модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
-$gray-lighter:                hsl(0, 0%, 80%) !default;
-$gray-lightest:               hsl(0, 0%, 90%) !default;
-$text-color:                  hsl(0, 0%, 10%) !default;
-$line-height:                 1.5 !default;
-
-$field-padding-vertical:      0.3em !default;
-$field-padding-horizontal:    0.7em !default;
-
-$border-radius:               rem(3px) !default;
-
 .btn {
-
-  $block-name:                &; // #{$block-name}__element
-
   box-sizing: border-box;
   display: inline-block;
+  max-width: 100%;
   vertical-align: middle;
   margin: 0;
   padding: $field-padding-vertical  $field-padding-horizontal;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   user-select: none;
   text-align: center;
   font-size: 1em;
@@ -44,9 +34,9 @@ $border-radius:               rem(3px) !default;
     border-color: darken($gray-lighter, 12%);
   }
 
-  &:visited {
-    color: $text-color;
-  }
+  // &:visited {
+  //   color: $text-color;
+  // }
 
   &:active,
   &:focus {

@@ -2,21 +2,6 @@
 // модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
-$gray-lightest:               hsl(0, 0%, 90%) !default;
-
-$screen-xs:                   0 !default;
-$screen-sm:                   480px !default;
-$screen-md:                   768px !default;
-$screen-lg:                   992px !default;
-$screen-xl:                   1200px !default;
-$screen-xxl:                  1800px !default;
-
-$menu-desktop-width:          $screen-lg !default;
-$toggler-part-height:         3px !default;
-$toggler-part-bg-color:       #000 !default;
-
-$transition-time:             0.3s !default;
-
 .main-nav {
 
   $block-name:                &; // #{$block-name}__element
@@ -86,6 +71,7 @@ $transition-time:             0.3s !default;
     }
 
     &--lvl-2 {
+      min-width: 200px;
 
       @media (max-width: ($menu-desktop-width - 1)) {
         padding-left: 1.2em;
@@ -93,6 +79,7 @@ $transition-time:             0.3s !default;
     }
 
     &--lvl-3 {
+      min-width: 200px;
 
       @media (max-width: ($menu-desktop-width - 1)) {
         padding-left: 2.4em;

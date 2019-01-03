@@ -1,12 +1,4 @@
-Из файлов `sprite-svg/svg/` будет сгенерирован файл спрайта `sprite-svg/img/sprite.svg`, который будет скопирован в папку сборки. Стилевой файл блока не используется. SVG-файлы будут оптимизированы перед сборкой в спрайт. Сам спрайт имеет вид:
-
-<pre class="code">
-  <code>&lt;svg xmlns="http://www.w3.org/2000/svg"&gt;</code>
-  <code>  &lt;symbol id="icon-boo" viewBox="0 0 30 30"&gt;&lt;path d="..."/&gt;&lt;/symbol&gt;</code>
-  <code>  &lt;symbol id="icon-bs" viewBox="0 0 28 28"&gt;&lt;path d="..."/&gt;&lt;/symbol&gt;</code>
-  <code> ...</code>
-  <code>&lt;/svg&gt;</code>
-</pre>
+Из файлов `sprite-svg/svg/` генерируется файл спрайта `sprite-svg/img/sprite.svg`.
 
 Для вставки на страницу используйте <code>svg &gt; use</code> со ссылками на <code>id</code> символа:
 

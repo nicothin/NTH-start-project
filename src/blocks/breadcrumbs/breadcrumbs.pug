@@ -36,7 +36,7 @@ mixin breadcrumbs-item(text, href, mods)
     if(typeof(mods) !== 'undefined' && mods) {
       var modsList = mods.split(',');
       for (var i = 0; i < modsList.length; i++) {
-        allMods = allMods + ' breadcrumbs--' + modsList[i].trim();
+        allMods = allMods + ' breadcrumbs__item--' + modsList[i].trim();
       }
     }
 

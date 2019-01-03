@@ -356,7 +356,7 @@ function serve() {
   ));
 
   // Стилевые глобальные файлы: все события
-  watch([`${dir.src}scss/**/*.scss`, `!${dir.src}scss/style.scss`, `!${dir.src}scss/blocks-lib.scss`], { events: ['all'], delay: 100 }, series(
+  watch([`${dir.src}scss/**/*.scss`, `!${dir.src}scss/style.scss`], { events: ['all'], delay: 100 }, series(
     compileSass,
   ));
 

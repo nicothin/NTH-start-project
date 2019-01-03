@@ -25,17 +25,12 @@
 /* stylelint-enable */
 
 
-.page { // html
-
-  $block-name:                &; // #{$block-name}__element
-
+.page {
   box-sizing: border-box;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  -ms-overflow-style: scrollbar;
-  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
   min-width: 320px;
   min-height: 100%;
-  font-size: $font-size--root;
 
   &__inner {
     min-height: 100vh;
@@ -65,14 +60,15 @@
 body {
   display: flex;           // Исправляем баг в IE для min-height and flexbox (flex-direction:column)
   flex-direction: column;  // и прижимаем footer в IE 10-11
-  background-color: $body-bg;
   margin: 0;
   min-height: 100%;
   word-break: break-word;
   font-family: $font-family;
   font-size: $font-size;
   line-height: $line-height;
+  text-align: left;
   color: $text-color;
+  background-color: $body-bg;
 }
 
 [tabindex='-1']:focus {
@@ -85,8 +81,8 @@ body {
 }
 
 // Мы любим Сафари (на самом деле, нет).
-input[type='search'] {
-  -webkit-appearance: textfield;
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
 }
 
 // area,
@@ -181,6 +177,7 @@ a {
 
 hr {
   box-sizing: content-box; // Проблема Firefox
+  height: 0;               // Проблема Firefox
   overflow: visible;       // Проблема Edge и IE
   margin-top: 2rem;
   margin-bottom: 2rem;
@@ -188,63 +185,27 @@ hr {
   border-top: 1px solid $border-color;
 }
 
-// .h1,
-// .h2,
-// .h3,
-// .h4,
-// .h5,
-// .h6,
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  font-family: $font-family--headings;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  font-family: $font-family;
   font-weight: 700;
   line-height: 1.2;
   color: currentColor;
 }
 
-// .h1,
-// .h2,
-// .h3,
-h1,
-h2,
-h3 {
-  margin-top: 3rem;
-  margin-bottom: 0.5rem;
-}
-
-// .h4,
-// .h5,
-// .h6,
-h4,
-h5,
-h6 {
-  margin-top: 1rem;
-  margin-bottom: 0.5rem;
-}
-
-// .h1,
 h1 { font-size: $font-size--h1; }
-
-// .h2,
 h2 { font-size: $font-size--h2; }
-
-// .h3,
 h3 { font-size: $font-size--h3; }
-
-// .h4,
 h4 { font-size: $font-size--h4; }
-
-// .h5,
 h5 { font-size: $font-size--h5; }
-
-// .h6,
 h6 { font-size: $font-size--h6; }
 
-// .p,
 p,
 ul,
 ol,
@@ -255,7 +216,7 @@ pre,
 address,
 figure {
   margin-top: 0;
-  margin-bottom: 1rem;
+  margin-bottom: 1em;
 }
 
 address {
@@ -264,15 +225,13 @@ address {
 
 ul,
 ol {
-  padding-left: 1.5rem;
-}
+  padding-left: 1.5em;
 
-ol ol,
-ul ul,
-ol ul,
-ul ol {
-  margin-top: 0;
-  margin-bottom: 0;
+  ul,
+  ol {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 }
 
 li {
@@ -316,9 +275,9 @@ strong {
   font-weight: bolder;
 }
 
-abbr[title] {
-  text-decoration: underline dotted;
-}
+// abbr[title] {
+//   text-decoration: underline dotted;
+// }
 
 blockquote {
   padding: 0;

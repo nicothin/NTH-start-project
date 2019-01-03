@@ -2,7 +2,4 @@
 // модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
-.page-header {
-
-  $block-name:                &; // #{$block-name}__element
-}
+.page-header {}
