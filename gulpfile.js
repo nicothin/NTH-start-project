@@ -310,12 +310,18 @@ function serve() {
     notify: false,
   });
 
+  // Конфигурационный файл
+  watch([`config.js`], { events: ['change'], delay: 100 }, series(
+    parallel(writeSassImportsFile, writeJsRequiresFile),
+    parallel(compileSass, buildJs),
+    reload
+  ));
+
   // Страницы: изменение, добавление
   watch([`${dir.src}pages/**/*.pug`], { events: ['change', 'add'], delay: 100 }, series(
     compilePugFast,
     parallel(writeSassImportsFile, writeJsRequiresFile),
     parallel(compileSass, buildJs),
-    // buildJsLibrary,
     reload
   ));
 
@@ -323,18 +329,23 @@ function serve() {
   watch([`${dir.src}pages/**/*.pug`], { delay: 100 })
   // TODO попробовать с events: ['unlink']
     .on('unlink', function(path, stats) {
-      let filePathInBuildDir = path.replace(dir.src + 'pages/', dir.build).replace('.pug', '.html');
+      let filePathInBuildDir = path.replace(`${dir.src}pages/`, dir.build).replace('.pug', '.html');
       fs.unlink(filePathInBuildDir, (err) => {
         if (err) throw err;
         console.log(`---------- Delete:  ${filePathInBuildDir}`);
       });
     });
 
-  // Разметка Блоков: изменение, добавление
-  watch([`${dir.blocks}**/*.pug`], { events: ['change', 'add'], delay: 100 }, series(
+  // Разметка Блоков: изменение
+  watch([`${dir.blocks}**/*.pug`], { events: ['change'], delay: 100 }, series(
     compilePug,
-    writeSassImportsFile,
-    compileSass,
+    reload
+  ));
+
+  // Разметка Блоков: добавление
+  watch([`${dir.blocks}**/*.pug`], { events: ['add'], delay: 100 }, series(
+    writePugMixinsFile,
+    compilePug,
     reload
   ));
 
@@ -442,7 +453,7 @@ function getClassesToBlocksList(file, enc, cb) {
       // Добавляем класс в список
       nth.blocksFromHtml.push(item);
     }
-    console.log('---------- Used blocks:   ' + nth.blocksFromHtml.join(', '));
+    console.log('---------- Used blocks: ' + nth.blocksFromHtml.join(', '));
     file.contents = new Buffer(fileContent);
   }
   this.push(file);
