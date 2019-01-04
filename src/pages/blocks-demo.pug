@@ -197,20 +197,6 @@ block content
     +block-lib-code('burger-code', true)
       include:show-code(first-line='//- Pug-файл этого блока:') ../blocks/burger/burger.pug
 
-  +block-lib('or', 'Разеделитель «или»', false)
-    include:markdown-it(html='true') ../blocks/or/readme.md
-    +or()
-    +or('Текст взамен «или»', 'some-mod')
-    +block-lib-code()
-      include:show-code(first-line='//- Pug-файл этого блока:') ../blocks/or/or.pug
-
-  +block-lib('code', 'Код', false)
-    include:markdown-it(html='true') ../blocks/code/readme.md
-    +code()
-      code &lt;div class="some">...&lt;/div>
-    +block-lib-code()
-      include:show-code(first-line='//- Pug-файл этого блока:') ../blocks/code/code.pug
-
   +block-lib('alert', 'Сообщения', false)
     include:markdown-it(html='true') ../blocks/alert/readme.md
     +alert()
@@ -235,48 +221,6 @@ block content
     +loader()
     +block-lib-code()
       include:show-code(first-line='//- Pug-файл этого блока:') ../blocks/loader/loader.pug
-
-  +block-lib('table', 'Таблица', false)
-    include:markdown-it(html='true') ../blocks/table/readme.md
-    +table()
-      tr
-        th Имя
-        th Фамилия
-        th Мыло
-        th Статус
-        th Политическая ориентация
-      tr
-        td Иннокентий
-        td Иванов
-        td Хозяйственное
-        td Администратор
-        td «ВСЕГДА!»
-      tr
-        td Васисуалий
-        td Римский-Корсаков
-        td Душистое
-        td Пользователь
-        td Нижняя
-    +block-lib-code()
-      include:show-code(first-line='//- Pug-файл этого блока:') ../blocks/table/table.pug
-
-  +block-lib('table-responsive', 'Адаптивная таблица', false)
-    include:markdown-it(html='true') ../blocks/table-responsive/readme.md
-    +table-responsive()
-      caption Таблица
-      thead
-        tr
-          th Имя и фамилия
-          th Тип мироощущения
-      tbody
-        tr
-          td(data-label='Имя и фамилия') Анатоле Вассерман
-          td(data-label='Тип мироощущения') Девственность
-        tr
-          td(data-label='Имя и фамилия') Джакомо Казанова
-          td(data-label='Тип мироощущения') Небольшая распущенность с лёгкой примесью леденящих душу извращений, чудовищной лжи и имитатора известного органа, обитого телячьей кожей.
-    +block-lib-code()
-      include:show-code(first-line='//- Pug-файл этого блока:') ../blocks/table-responsive/table-responsive.pug
 
   +block-lib('pagination', 'Пагинация', false)
     include:markdown-it(html='true') ../blocks/pagination/readme.md
@@ -353,7 +297,14 @@ block content
     +block-lib-code()
       include:show-code(first-line='//- Pug-файл этого блока:') ../blocks/social/social.pug
 
-  +block-lib('embed-responsive', 'Адаптирующийся медиаконтент', true)
+  +block-lib('or', 'Разделитель «или»', false)
+    include:markdown-it(html='true') ../blocks/or/readme.md
+    +or()
+    +or('Текст взамен «или»', 'some-mod')
+    +block-lib-code()
+      include:show-code(first-line='//- Pug-файл этого блока:') ../blocks/or/or.pug
+
+  +block-lib('embed-responsive', 'Адаптирующийся медиаконтент', false)
     include:markdown-it(html='true') ../blocks/embed-responsive/readme.md
     style.
       @media (min-width: 768px) {
@@ -382,6 +333,55 @@ block content
           iframe(src='https://www.youtube.com/embed/B0Q1rKpDNE4', frameborder='0', allowfullscreen='')
     +block-lib-code()
       include:show-code(first-line='//- Pug-файл этого блока:') ../blocks/embed-responsive/embed-responsive.pug
+
+  +block-lib('table', 'Таблица', false)
+    include:markdown-it(html='true') ../blocks/table/readme.md
+    +table()
+      tr
+        th Имя
+        th Фамилия
+        th Мыло
+        th Статус
+        th Политическая ориентация
+      tr
+        td Иннокентий
+        td Иванов
+        td Хозяйственное
+        td Администратор
+        td «ВСЕГДА!»
+      tr
+        td Васисуалий
+        td Римский-Корсаков
+        td Душистое
+        td Пользователь
+        td Нижняя
+    +block-lib-code()
+      include:show-code(first-line='//- Pug-файл этого блока:') ../blocks/table/table.pug
+
+  +block-lib('table-responsive', 'Адаптивная таблица', false)
+    include:markdown-it(html='true') ../blocks/table-responsive/readme.md
+    +table-responsive()
+      caption Таблица
+      thead
+        tr
+          th Имя и фамилия
+          th Тип мироощущения
+      tbody
+        tr
+          td(data-label='Имя и фамилия') Анатоле Вассерман
+          td(data-label='Тип мироощущения') Девственность
+        tr
+          td(data-label='Имя и фамилия') Джакомо Казанова
+          td(data-label='Тип мироощущения') Небольшая распущенность с лёгкой примесью леденящих душу извращений, чудовищной лжи и имитатора известного органа, обитого телячьей кожей.
+    +block-lib-code()
+      include:show-code(first-line='//- Pug-файл этого блока:') ../blocks/table-responsive/table-responsive.pug
+
+  +block-lib('code', 'Код', true)
+    include:markdown-it(html='true') ../blocks/code/readme.md
+    +code()
+      code &lt;div class="some">...&lt;/div>
+    +block-lib-code()
+      include:show-code(first-line='//- Pug-файл этого блока:') ../blocks/code/code.pug
 
   +block-lib('btn', 'Кнопка', false)
     include:markdown-it(html='true') ../blocks/btn/readme.md
