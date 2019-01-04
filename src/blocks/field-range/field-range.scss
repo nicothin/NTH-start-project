@@ -2,17 +2,7 @@
 // модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
-$gray-lightest:               hsl(0, 0%, 90%) !default;
-$border-color:                hsl(0, 0%, 60%) !default;
-
-$line-height:                 1.5 !default;
-
-$border-radius:               rem(3px) !default;
-
 .field-range {
-
-  $block-name:                &; // #{$block-name}__element
-
   display: block;
   margin-bottom: 1rem;
 
@@ -29,8 +19,8 @@ $border-radius:               rem(3px) !default;
     align-self: center;
     padding: 0;
     width: 100%;
-    height: 2rem;
-    border-radius: 0.25rem;
+    height: 2em;
+    border-radius: 0.25em;
     border: 0;
     background: none;
     font-size: inherit;
