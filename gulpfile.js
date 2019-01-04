@@ -185,9 +185,10 @@ function writeSassImportsFile(cb) {
   nth.config.addStyleBefore.forEach(function(src) {
     newScssImportsList.push(src);
   });
-  nth.blocksFromHtml.forEach(function(block) {
-    let src = `${dir.blocks}${block}/${block}.scss`;
-    if(fileExist(src)) newScssImportsList.push(src);
+  let allBlocksWithScssFiles = getDirectories('scss');
+  allBlocksWithScssFiles.forEach(function(blockWithScssFile){
+    if (nth.blocksFromHtml.indexOf(blockWithScssFile) == -1) return;
+    newScssImportsList.push(`${dir.blocks}${blockWithScssFile}/${blockWithScssFile}.scss`);
   });
   nth.config.addStyleAfter.forEach(function(src) {
     newScssImportsList.push(src);
@@ -233,8 +234,10 @@ function writeJsRequiresFile(cb) {
   nth.config.addJsBefore.forEach(function(src) {
     jsRequires += `require('${src}');\n`;
   });
-  nth.blocksFromHtml.forEach(function(block) {
-    if(fileExist(`${dir.blocks}${block}/${block}.js`)) jsRequires += `require('../blocks/${block}/${block}.js');\n`;
+  let allBlocksWithJsFiles = getDirectories('js');
+  allBlocksWithJsFiles.forEach(function(blockWithJsFile){
+    if (nth.blocksFromHtml.indexOf(blockWithJsFile) == -1) return;
+    jsRequires += `require('../blocks/${blockWithJsFile}/${blockWithJsFile}.js');\n`;
   });
   nth.config.addJsAfter.forEach(function(src) {
     jsRequires += `require('${src}');\n`;
@@ -360,8 +363,13 @@ function serve() {
     reload,
   ));
 
-  // Стили Блоков: все события
-  watch([`${dir.blocks}**/*.scss`], { events: ['all'], delay: 100 }, series(
+  // Стили Блоков: изменение
+  watch([`${dir.blocks}**/*.scss`], { events: ['change'], delay: 100 }, series(
+    compileSass,
+  ));
+
+  // Стили Блоков: добавление
+  watch([`${dir.blocks}**/*.scss`], { events: ['add'], delay: 100 }, series(
     writeSassImportsFile,
     compileSass,
   ));
@@ -449,7 +457,7 @@ function getClassesToBlocksList(file, enc, cb) {
       // Класс совпадает с классом-исключением из настроек?
       if (nth.config.ignoredBlocks.indexOf(item) + 1) continue;
       // У этого блока отсутствует папка?
-      if (!fileExist(dir.blocks + item)) continue;
+      // if (!fileExist(dir.blocks + item)) continue;
       // Добавляем класс в список
       nth.blocksFromHtml.push(item);
     }
