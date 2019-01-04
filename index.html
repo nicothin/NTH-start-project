@@ -12,7 +12,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
+  <link rel="manifest" href="/img/favicon/site.webmanifest">
   <link rel="mask-icon" href="/img/favicon/safari-pinned-tab.svg" color="#5bbad5">
   <meta name="msapplication-TileColor" content="#5bbad5">
   <meta name="theme-color" content="#000">
@@ -20,74 +20,77 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="#000">
   <title>Главная</title>
   <meta name="description" content="">
-  <link rel="stylesheet" href="css/style.min.css">
+  <link rel="stylesheet" href="css/style.css">
   <script>
     document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
   </script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      if (window.isMobile !== undefined) {
-        // console.log(isMobile);
-        if (isMobile.any) {
-          var rootClasses = ' is-mobile';
-          for (key in isMobile) {
-            if (typeof isMobile[key] === 'boolean' && isMobile[key] && key !== 'any') rootClasses += ' is-mobile--' + key;
-            if (typeof isMobile[key] === 'object' && key !== 'other') {
-              for (type in isMobile[key]) {
-                if (isMobile[key][type]) rootClasses += ' is-mobile--' + key + '-' + type;
-              }
-            }
-          }
-          document.documentElement.className += rootClasses;
-        }
-      } else {
-        console.log('Классы для мобильных не добавлены: в сборке отсутствует isMobile.js');
-      }
-    });
-  </script>
 </head>
 
-<body><noscript>У вас отключен JavaScript. Это пугает.</noscript>
+<body>
+  <noscript>У вас отключен JavaScript. Это пугает.</noscript>
   <div class="page__inner">
     <div class="page__content">
       <header class="page-header" role="banner">
-        <div class="page-header__inner"><a class="logo" href="/"><span>Логотип</span></a>
-          <nav class="main-nav" id="nav"><button class="burger main-nav__toggler" aria-label="Показать главное меню" data-target-id="nav" data-target-class-toggle="main-nav--open"><span>Показать главное меню</span></button>
+        <div class="page-header__inner">
+          <a class="logo" href="/"><span>Логотип</span></a>
+          <nav class="main-nav" id="nav">
+            <button class="burger main-nav__toggler" aria-label="Показать главное меню" data-target-id="nav" data-target-class-toggle="main-nav--open"><span>Показать главное меню</span></button>
             <ul class="main-nav__list">
-              <li class="main-nav__item"><a class="main-nav__link" href="/">Главная страница</a></li>
-              <li class="main-nav__item  main-nav__item--active  main-nav__item--has-child"><a class="main-nav__link" href="/pages">Страницы</a>
+              <li class="main-nav__item">
+                <a class="main-nav__link" href="/">Главная страница</a>
+              </li>
+              <li class="main-nav__item  main-nav__item--active  main-nav__item--has-child">
+                <a class="main-nav__link" href="/pages">Страницы</a>
                 <div class="main-nav__sublist-wrapper  main-nav__sublist-wrapper--lvl-2">
                   <ul class="main-nav__list  main-nav__list--lvl-2">
-                    <li class="main-nav__item  main-nav__item--lvl-2"><a class="main-nav__link  main-nav__link--lvl-2" href="pages/about">О компании</a></li>
-                    <li class="main-nav__item  main-nav__item--has-child  main-nav__item--lvl-2"><a class="main-nav__link  main-nav__link--lvl-2" href="pages/services">Услуги</a>
+                    <li class="main-nav__item  main-nav__item--lvl-2">
+                      <a class="main-nav__link  main-nav__link--lvl-2" href="pages/about">О компании</a>
+                    </li>
+                    <li class="main-nav__item  main-nav__item--has-child  main-nav__item--lvl-2">
+                      <a class="main-nav__link  main-nav__link--lvl-2" href="pages/services">Услуги</a>
                       <div class="main-nav__sublist-wrapper  main-nav__sublist-wrapper--lvl-3">
                         <ul class="main-nav__list  main-nav__list--lvl-3">
-                          <li class="main-nav__item  main-nav__item--lvl-3"><a class="main-nav__link  main-nav__link--lvl-3" href="pages/services/serve">Вёрстка</a></li>
-                          <li class="main-nav__item  main-nav__item--lvl-3"><a class="main-nav__link  main-nav__link--lvl-3" href="pages/services/strip">Стриптиз</a></li>
+                          <li class="main-nav__item  main-nav__item--lvl-3">
+                            <a class="main-nav__link  main-nav__link--lvl-3" href="pages/services/serve">Вёрстка</a>
+                          </li>
+                          <li class="main-nav__item  main-nav__item--lvl-3">
+                            <a class="main-nav__link  main-nav__link--lvl-3" href="pages/services/strip">Стриптиз</a>
+                          </li>
                         </ul>
                       </div>
                     </li>
-                    <li class="main-nav__item  main-nav__item--lvl-2"><a class="main-nav__link  main-nav__link--lvl-2" href="pages/some">Ещё одна страница</a></li>
+                    <li class="main-nav__item  main-nav__item--lvl-2">
+                      <a class="main-nav__link  main-nav__link--lvl-2" href="pages/some">Ещё одна страница</a>
+                    </li>
                   </ul>
                 </div>
               </li>
-              <li class="main-nav__item"><a class="main-nav__link" href="https://github.com/nicothin/NTH-start-project">Репозиторий</a></li>
-              <li class="main-nav__item"><a class="main-nav__link" href="http://nicothin.pro/">Контакты автора</a></li>
+              <li class="main-nav__item">
+                <a class="main-nav__link" href="https://github.com/nicothin/NTH-start-project">Репозиторий</a>
+              </li>
+              <li class="main-nav__item">
+                <a class="main-nav__link" href="https://nicothin.pro/contact">Контакты автора</a>
+              </li>
             </ul>
           </nav>
         </div>
       </header>
-      <p>Содержимое. <a href="blocks-demo.html">Библиотека блоков</a>.</p>
+      <h1>Заголовок с каким-то эффектом</h1>
+      <p>Содержимое.
+        <a href="blocks-demo.html">Библиотека блоков</a>.</p>
     </div>
     <div class="page__footer-wrapper">
       <footer class="page-footer" role="contentinfo">
         <div class="page-footer__inner">
           <p>«Подвал»</p>
+          <p>Контактный телефон:
+            <a href="tel:+70000000000">+7 000 000 00 00</a>
+          </p>
         </div>
       </footer>
     </div>
   </div>
-  <script src="js/script.min.js"></script>
+  <script src="js/bundle.js"></script>
 </body>
 
 </html>
