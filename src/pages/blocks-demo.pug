@@ -410,14 +410,21 @@ block content
       }
     })
     +field-text({
-      title: 'Текстовое поле',
+      title: 'Текстовое поле ошибочное',
       helpText: 'Описание ошибки',
       mods: 'error',
       attrs: {
         placeholder: 'Подсказка',
       }
     })
-    +field-text()
+    +field-text({
+      title: 'Текстовое поле блокированное',
+      helpText: 'Описание ошибки',
+      attrs: {
+        placeholder: 'Подсказка',
+        disabled: true,
+      }
+    })
     +block-lib-code()
       include:show-code(first-line='//- Pug-файл этого блока:') ../blocks/field-text/field-text.pug
 
@@ -434,7 +441,7 @@ block content
     ])
     +field-checkbox([
       {
-        title: 'Чекбокс первый',
+        title: 'Чекбокс ошибочный',
         helpText: 'И, возможно, единственный',
         mods: 'error',
         attrs: {
@@ -443,10 +450,11 @@ block content
         }
       },
       {
-        title: 'Чекбокс второй',
+        title: 'Чекбокс блокирован',
         helpText: 'А, нет. Не единственный...',
         attrs: {
           name: 'check2',
+          disabled: true,
         }
       },
     ], 'Общее необязательное название')
@@ -457,7 +465,7 @@ block content
     include:markdown-it(html='true') ../blocks/field-radio/readme.md
     +field-radio([
       {
-        title: 'Первый',
+        title: 'Радиокнопка',
         helpText: 'И, возможно, единственный',
         attrs: {
           name: 'radio',
@@ -465,10 +473,18 @@ block content
         }
       },
       {
-        title: 'Второй',
+        title: 'Радиокнопка ошибочная',
         helpText: 'А, нет. Не единственный...',
+        mods: 'error',
         attrs: {
           name: 'radio',
+        }
+      },
+      {
+        title: 'Радиокнопка блокированная',
+        attrs: {
+          name: 'radio',
+          disabled: true,
         }
       },
     ], 'Общее необязательное название')
@@ -488,22 +504,24 @@ block content
     ])
     +field-toggler([
       {
-        title: 'Переключатель 1',
-        helpText: 'Подсказка',
+        title: 'Одиночный переключатель ошибочный',
+        helpText: 'Это чекбокс, на самом деле',
+        mods: 'error',
         attrs: {
-          name: 'check11',
-          checked: true,
+          name: 'check101',
         }
       },
+    ])
+    +field-toggler([
       {
-        title: 'Переключатель 2',
-        helpText: 'Подсказка',
-        mods: 'some',
+        title: 'Одиночный переключатель блокированный',
+        helpText: 'Это чекбокс, на самом деле',
         attrs: {
-          name: 'check11',
+          name: 'check102',
+          disabled: true,
         }
       },
-    ], 'Две радиокнопки', true)
+    ])
     +block-lib-code()
       include:show-code(first-line='//- Pug-файл этого блока:') ../blocks/field-toggler/field-toggler.pug
 
@@ -529,6 +547,13 @@ block content
         name: 'commentFile3',
       },
     })
+    +field-file({
+      helpText: 'Блокировано',
+      attrs: {
+        name: 'commentFile4',
+        disabled: true,
+      },
+    })
     +block-lib-code()
       include:show-code(first-line='//- Pug-файл этого блока:') ../blocks/field-file/field-file.pug
 
@@ -549,7 +574,7 @@ block content
     +block-lib-code()
       include:show-code(first-line='//- Pug-файл этого блока:') ../blocks/field-range/field-range.pug
 
-  +block-lib('field-select', 'Селекты', false)
+  +block-lib('field-select', 'Кастомный селект с <a href="https://joshuajohnson.co.uk/Choices/">Choices</a>', false)
     include:markdown-it(html='true') ../blocks/field-select/readme.md
     +field-select(
       'Название селекта',
@@ -665,7 +690,6 @@ block content
           helpText: 'Подсказка',
           attrs: {
             placeholder: 'Пример',
-            disabled: true,
           }
         })
         +field-text({

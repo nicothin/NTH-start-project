@@ -8,7 +8,7 @@ const closest = require('closest');
 
 ;( function ()
 {
-  var inputs = document.querySelectorAll( '.field-file__input' );
+  var inputs = document.querySelectorAll( '.field-file__input:not([disabled])' );
   Array.prototype.forEach.call( inputs, function( input )
   {
     var label  = closest(input, '.field-file').querySelector( '.field-file__name-text' ),

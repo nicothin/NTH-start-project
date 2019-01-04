@@ -63,6 +63,10 @@
 
     // свой чекбокс без картинок
 
+    @at-root input:disabled ~ & {
+      cursor: not-allowed;
+    }
+
     &:before {
       content: '';
       position: absolute;
@@ -76,6 +80,11 @@
 
     @at-root input:focus ~ &:before {
       @include field-focus;
+    }
+
+    @at-root input:disabled ~ &:before {
+      border-color: $gray-light;
+      background: $gray-lighter;
     }
 
     &:after {
@@ -94,6 +103,10 @@
 
       @at-root input:checked ~ & {
         opacity: 1;
+      }
+
+      @at-root input:checked:disabled ~ & {
+        border-color: $gray-light;
       }
     }
 
