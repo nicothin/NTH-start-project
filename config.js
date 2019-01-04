@@ -13,7 +13,6 @@ let config =
     "object-fit-polyfill",
   ],
   "addStyleBefore": [
-    "src/scss/functions.scss",
     "src/scss/variables.scss",
     "src/scss/mixins.scss"
   ],

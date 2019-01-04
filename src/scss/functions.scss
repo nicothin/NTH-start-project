@@ -1,5 +1,0 @@
-$font-size--root:             16px !default;
-
-@function rem($px, $font-size: $font-size--root) {
-  @return ((($px / ($px * 0 + 1)) * 100 / ($font-size / 1px)) / 100) * 1rem;
-}
