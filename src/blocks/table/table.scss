@@ -3,17 +3,11 @@
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
 .table {
-  display: block;
+  display: table;
   width: 100%;
   margin-bottom: 1em;
   border: 1px solid $border-color;
-
-  table {
-    margin: 0;
-    border: 0;
-    border-collapse: collapse;
-    width: 100%;
-  }
+  border-collapse: collapse;
 
   td,
   th {
@@ -28,24 +22,6 @@
 
   th {
     text-align: inherit;
-  }
-
-  tbody,
-  thead,
-  tfoot {
-
-    &:last-child {
-
-      tr:last-child {
-
-        // stylelint-disable  max-nesting-depth, selector-max-compound-selectors
-        td,
-        th {
-          border-bottom: 0;
-        }
-        // stylelint-enable
-      }
-    }
   }
 
   // caption {
