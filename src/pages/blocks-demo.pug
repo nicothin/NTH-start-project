@@ -559,7 +559,7 @@ block content
       },
       [
         {
-          title: 'Опция 1',
+          title: 'Опция 1 Опция 1 Опция 1 Опция 1 Опция 1 Опция 1 Опция 1 Опция 1 Опция 1 Опция 1 Опция 1 Опция 1 Опция 1 Опция 1 Опция 1 Опция 1 Опция 1 Опция 1 Опция 1 Опция 1 Опция 1 Опция 1 Опция 1 Опция 1 Опция 1 Опция 1 Опция 1 ',
           attrs: {
             value: 'val06',
           }
@@ -578,7 +578,8 @@ block content
       'Название селекта',
       {
         name: 'select',
-        id: 'select-demo'
+        id: 'select-demo',
+        disabled: true,
       },
       [
         {
@@ -610,6 +611,42 @@ block content
       'Подсказка',
       ''
     )
+    +field-select(
+      'Название селекта',
+      {
+        name: 'select1',
+        id: 'select-demo1',
+      },
+      [
+        {
+          attrs: {
+            label: 'Группа',
+          },
+          child: [
+            {
+              title: 'Опция1',
+              attrs: {
+                value: 'val01',
+              }
+            },
+            {
+              title: 'Опция2',
+              attrs: {
+                value: 'val02',
+              }
+            },
+          ]
+        },
+        {
+          title: 'Опция вне группы',
+          attrs: {
+            value: 'val03',
+          }
+        }
+      ],
+      'Подсказка',
+      'error'
+    )
     +block-lib-code()
       include:show-code(first-line='//- Pug-файл этого блока:') ../blocks/field-select/field-select.pug
 
@@ -627,7 +664,8 @@ block content
         +field-text({
           helpText: 'Подсказка',
           attrs: {
-            placeholder: 'Пример'
+            placeholder: 'Пример',
+            disabled: true,
           }
         })
         +field-text({

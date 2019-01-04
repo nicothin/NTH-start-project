@@ -98,14 +98,15 @@ mixin field-select(title, attrs, options, helpText, mods)
   .field-select(class=allMods)&attributes(attributes)
     if(typeof(title) !== 'undefined' && title)
       .field-select__name!= title
-    select.field-select__select&attributes(attrs)
-      each option in options
-        //- option= option
-        if(typeof(option.child) !== 'undefined' && option.child)
-          optgroup(label=option.attrs.label)
-            each subOption in option.child
-              option&attributes(subOption.attrs)= subOption.title
-        else if(typeof(option.title) !== 'undefined' && option.title)
-          option&attributes(option.attrs)= option.title
-    if(typeof(helpText) !== 'undefined' && helpText)
-      span.field-select__help-text!= helpText
+    .field-select__select-wrap
+      select.field-select__select&attributes(attrs)
+        each option in options
+          //- option= option
+          if(typeof(option.child) !== 'undefined' && option.child)
+            optgroup(label=option.attrs.label)
+              each subOption in option.child
+                option&attributes(subOption.attrs)= subOption.title
+          else if(typeof(option.title) !== 'undefined' && option.title)
+            option&attributes(option.attrs)= option.title
+      if(typeof(helpText) !== 'undefined' && helpText)
+        span.field-select__help-text!= helpText

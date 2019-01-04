@@ -69,6 +69,9 @@ body {
   text-align: left;
   color: $text-color;
   background-color: $body-bg;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale
 }
 
 [tabindex='-1']:focus {
