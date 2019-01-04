@@ -22,12 +22,12 @@ block append head
 
       // наполнение бокого меню
       var demoBlocks = document.querySelectorAll('.blocks-library__item');
-      var offCanvasMenu = '<li class="menu__item"><a class="menu__link" data-toggle-native="off-canvas" href="/">Главная страница</a></li><li class="menu__item"><a class="menu__link" data-toggle-native="off-canvas" href="https://github.com/nicothin/NTH-start-project">Исходный репозиторий</a></li><li class="menu__item menu__item--separator"><a class="menu__link" data-toggle-native="off-canvas" href="http://nicothin.github.io/NTH-start-project/blocks-demo.html">Демка на github pages</a></li>';
+      var offCanvasMenu = '<li class="off-canvas__menu-item"><a class="off-canvas__menu-link" data-toggle-native="off-canvas" href="/">Главная страница</a></li><li class="off-canvas__menu-item"><a class="off-canvas__menu-link" data-toggle-native="off-canvas" href="https://github.com/nicothin/NTH-start-project">Исходный репозиторий</a></li><li class="off-canvas__menu-item off-canvas__menu-item--separator"><a class="off-canvas__menu-link" data-toggle-native="off-canvas" href="http://nicothin.github.io/NTH-start-project/blocks-demo.html">Демка на github pages</a></li>';
       for (var i=0; i<demoBlocks.length; i++){
-        var classes = 'menu__item';
+        var classes = 'off-canvas__menu-item';
         var block = demoBlocks[i];
-        if (block.classList.contains('blocks-library__item--menusep')) { classes += ' menu__item--separator'; }
-        offCanvasMenu += '<li class="'+classes+'"><a class="menu__link" data-toggle-native="off-canvas" href="#'+block.getAttribute('id')+'" data-scroll-link>'+block.querySelector('.blocks-library__item-title').textContent+'</a></li>';
+        if (block.classList.contains('blocks-library__item--menusep')) { classes += ' off-canvas__menu-item--separator'; }
+        offCanvasMenu += '<li class="'+classes+'"><a class="off-canvas__menu-link" data-toggle-native="off-canvas" href="#'+block.getAttribute('id')+'" data-scroll-link>'+block.querySelector('.blocks-library__item-title').textContent+'</a></li>';
       }
       var offCanvasMenuContent = document.getElementById('off-canvas-menu');
       offCanvasMenuContent.innerHTML = offCanvasMenu;
@@ -44,7 +44,7 @@ block append head
   //- script(src='js/SOME.js')
 
 block off-canvas
-  ul.menu#off-canvas-menu
+  ul.off-canvas__menu#off-canvas-menu
 
 block header
 
