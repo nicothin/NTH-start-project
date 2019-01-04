@@ -3,6 +3,22 @@
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
 .social {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 1em;
+  padding: 0;
+  list-style: none;
 
-  $block-name:                &; // #{$block-name}__element
+  &__link-wrap {
+    margin-right: 10px;
+  }
+
+  &__link {
+    display: block;
+
+    svg {
+      display: block;
+    }
+  }
 }
