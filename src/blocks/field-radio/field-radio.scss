@@ -48,10 +48,10 @@
     // &:before {
     //   content: '';
     //   position: absolute;
-    //   top: rem(5px);
+    //   top: 5px;
     //   left: 0;
-    //   width: rem(14px);
-    //   height: rem(14px);
+    //   width: 14px;
+    //   height: 14px;
     //   background-image: svg-load('../blocks/field-radio/bg-img/radiobutton.svg');
     //   background-size: 100%;
     // }
@@ -66,10 +66,10 @@
     &:before {
       content: '';
       position: absolute;
-      top: rem(5px);
+      top: 5px;
       left: 0;
-      width: rem(14px);
-      height: rem(14px);
+      width: 14px;
+      height: 14px;
       border: 2px solid currentColor;
       border-radius: 50%;
     }
@@ -81,10 +81,10 @@
     &:after {
       content: '';
       position: absolute;
-      top: rem(9px);
-      left: rem(4px);
-      width: rem(6px);
-      height: rem(6px);
+      top: 9px;
+      left: 4px;
+      width: 6px;
+      height: 6px;
       opacity: 0;
       border-radius: 50%;
       background-color: currentColor;
