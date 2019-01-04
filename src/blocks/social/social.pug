@@ -1,0 +1,49 @@
+//- Все примеси в этом файле должны начинаться c имени блока (social)
+
+mixin social(mods)
+
+  //- Принимает:
+  //-   mods: ''          {string} - модификаторы блока
+  //- Вызов:
+        +social()
+          +social-link('https://vk.com/n.gromov', 'some-mod')
+            span ВКонтакте
+          +social-link('https://github.com/nicothin')
+            svg(width="32", height="32")
+              use(xlink:href="img/sprite.svg#icon-github")
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' social--' + modsList[i].trim();
+      }
+    }
+
+  ul.social(class=allMods)&attributes(attributes)
+    block
+
+mixin social-link(link, mods)
+
+  //- Принимает:
+  //-   link     {string} - ссылка
+  //-   mods     {string} - список модификаторов
+  //- Вызов:
+        +social-link('https://vk.com/n.gromov', 'some-mod')
+          span ВКонтакте
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' social__link-wrap--' + modsList[i].trim();
+      }
+    }
+
+  li.social__link-wrap(class=allMods)&attributes(attributes)
+    a.social__link
+      block
