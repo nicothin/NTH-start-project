@@ -32,6 +32,7 @@
     "autoprefixer": "^9.3.1",
     "babel-loader": "^8.0.4",
     "browser-sync": "^2.18.8",
+    "closest": "0.0.1",
     "cpy": "^7.0.1",
     "cross-env": "^5.0.0",
     "css-mqpacker": "^7.0.0",
