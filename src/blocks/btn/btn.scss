@@ -21,7 +21,8 @@
   text-transform: none;
   color: $text-color;
   border-radius: $border-radius;
-  border: 1px solid $gray-lighter;
+  // border: 1px solid $gray-lighter;
+  border: 0;
   background-color: $gray-lightest;
   background-image: none;
   cursor: pointer;
@@ -31,7 +32,7 @@
     text-decoration: none;
     color: $text-color;
     background-color: darken($gray-lightest, 10%);
-    border-color: darken($gray-lighter, 12%);
+    // border-color: darken($gray-lighter, 12%);
   }
 
   // &:visited {
@@ -49,7 +50,7 @@
     cursor: not-allowed;
     color: $text-color;
     background-color: $gray-lightest;
-    border-color: $gray-lighter;
+    // border-color: $gray-lighter;
 
     @at-root a.btn--disabled {
       pointer-events: none;
@@ -66,20 +67,20 @@
   // &--main {
   //   color: #fff;
   //   background-color: $color-main;
-  //   border: 1px solid $color-main;
+  //   // border: 1px solid $color-main;
 
   //   &:hover,
   //   &:focus {
   //     color: #fff;
   //     background-color: darken($color-main, 10%);
-  //     border-color: darken($color-main, 12%);
+  //     // border-color: darken($color-main, 12%);
   //   }
 
   //   &--disabled,
   //   &:disabled {
   //     color: #fff;
   //     background-color: $color-main;
-  //     border-color: $color-main;
+  //     // border-color: $color-main;
   //   }
   // }
 }
