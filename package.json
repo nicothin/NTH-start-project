@@ -22,7 +22,6 @@
   "lint-staged": {
     "*.js": "editorconfig-cli",
     "*.pug": "editorconfig-cli",
-    "*.css": "stylelint",
     "*.scss": "stylelint --syntax=scss"
   },
   "devDependencies": {
