@@ -20,8 +20,8 @@
     "last 2 versions"
   ],
   "lint-staged": {
-    "*.js": "editorconfig-cli",
-    "*.pug": "editorconfig-cli",
+    "*.{js,pug,md}": "editorconfig-cli",
+    "*.pug": "pug-lint",
     "*.scss": "stylelint --syntax=scss"
   },
   "devDependencies": {
@@ -64,6 +64,7 @@
     "postcss-import": "^12.0.1",
     "postcss-inline-svg": "^3.0.0",
     "postcss-object-fit-images": "^1.1.2",
+    "pug-lint": "^2.5.0",
     "stylelint": "^9.1.1",
     "through2": "^3.0.0",
     "vinyl-buffer": "^1.0.1",

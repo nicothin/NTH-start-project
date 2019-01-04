@@ -6,7 +6,6 @@
   "requireSpecificAttributes": [ { "img": [ "src", "alt" ] } ],
   "requireSpaceAfterCodeOperator": true,
   "requireLowerCaseTags": true,
-  "requireLowerCaseAttributes": true,
   "requireClassLiteralsBeforeIdLiterals": true,
   "requireClassLiteralsBeforeAttributes": true,
   "disallowTrailingSpaces": true,
