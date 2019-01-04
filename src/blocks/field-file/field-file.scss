@@ -43,6 +43,11 @@
     text-overflow: ellipsis;
     cursor: pointer;
 
+    @at-root input:disabled ~ & {
+      background: $gray-lighter;
+      cursor: not-allowed;
+    }
+
     &:before {
       content: attr(data-button-text);
       display: block;
