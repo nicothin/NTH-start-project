@@ -111,7 +111,7 @@ $(document).ready(function(){
         .css('display', 'flex')
         .scrollTop(0)
 
-      that.adjustDialog()
+      // that.adjustDialog()
 
       // if (transition) {
         that.$element[0].offsetWidth // force reflow
@@ -278,18 +278,18 @@ $(document).ready(function(){
 
   // these following methods are used to handle overflowing modals
 
-  Modal.prototype.handleUpdate = function () {
-    this.adjustDialog()
-  }
+  // Modal.prototype.handleUpdate = function () {
+  //   this.adjustDialog()
+  // }
 
-  Modal.prototype.adjustDialog = function () {
-    var modalIsOverflowing = this.$element[0].scrollHeight > document.documentElement.clientHeight
+  // Modal.prototype.adjustDialog = function () {
+  //   var modalIsOverflowing = this.$element[0].scrollHeight > document.documentElement.clientHeight
 
-    this.$element.css({
-      paddingLeft:  !this.bodyIsOverflowing && modalIsOverflowing ? this.scrollbarWidth : '',
-      paddingRight: this.bodyIsOverflowing && !modalIsOverflowing ? this.scrollbarWidth : ''
-    })
-  }
+  //   this.$element.css({
+  //     paddingLeft:  !this.bodyIsOverflowing && modalIsOverflowing ? this.scrollbarWidth : '',
+  //     paddingRight: this.bodyIsOverflowing && !modalIsOverflowing ? this.scrollbarWidth : ''
+  //   })
+  // }
 
   Modal.prototype.resetAdjustments = function () {
     this.$element.css({
