@@ -55,7 +55,6 @@
     "gulp-uglify": "^3.0.0",
     "gulp.spritesmith": "^6.3.0",
     "husky": "^1.1.4",
-    "json-format": "^1.0.1",
     "jstransformer-markdown-it": "^2.0.0",
     "lint-staged": "^8.0.4",
     "merge-stream": "^1.0.1",

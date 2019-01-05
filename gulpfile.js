@@ -10,7 +10,6 @@ const through2 = require('through2');
 const rename = require('gulp-rename');
 const replace = require('gulp-replace');
 const getClassesFromHtml = require('get-classes-from-html');
-const jsonFormat = require('json-format');
 const browserSync = require('browser-sync').create();
 const debug = require('gulp-debug');
 const sass = require('gulp-sass');
