@@ -84,7 +84,11 @@ exports.writePugMixinsFile = writePugMixinsFile;
 
 
 function compilePug() {
-  return src([ `${dir.src}pages/**/*.pug` ])
+  const fileList = [
+    `${dir.src}pages/**/*.pug`
+  ];
+  if(!buildLibrary) fileList.push(`!${dir.src}pages/blocks-demo.pug`);
+  return src(fileList)
     .pipe(plumber())
     .pipe(debug({title: 'Compiles '}))
     .pipe(pug(pugOption))
@@ -96,7 +100,11 @@ exports.compilePug = compilePug;
 
 
 function compilePugFast() {
-  return src([ `${dir.src}pages/**/*.pug` ], { since: lastRun(compilePugFast) })
+  const fileList = [
+    `${dir.src}pages/**/*.pug`
+  ];
+  if(!buildLibrary) fileList.push(`!${dir.src}pages/blocks-demo.pug`);
+  return src(fileList, { since: lastRun(compilePugFast) })
     .pipe(plumber())
     .pipe(debug({title: 'Compiles '}))
     .pipe(pug(pugOption))

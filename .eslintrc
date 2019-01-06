@@ -1,0 +1,10 @@
+{
+  "parser": "babel-eslint",
+  "extends": "eslint:recommended",
+  "globals": {
+    "require": true,
+  },
+  "rules": {
+    "strict": 0
+  }
+}

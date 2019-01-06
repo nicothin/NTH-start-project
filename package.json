@@ -14,7 +14,7 @@
     "start": "gulp",
     "wlib": "cross-env BUILD_LIBRARY=yes gulp",
     "deploy": "cross-env ./node_modules/.bin/gulp build && cross-env ./node_modules/.bin/gulp deploy",
-    "build": "cross-env npm start build",
+    "build": "gulp build",
     "lint-staged": "lint-staged"
   },
   "browserslist": [
