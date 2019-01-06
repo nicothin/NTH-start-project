@@ -1,3 +1,4 @@
+/* eslint-disable */
 'use strict';
 
 // Генератор файлов блока
@@ -39,7 +40,7 @@ if (blockName) {
         }
 
         else if (extension === 'js') {
-          fileContent = `// document.addEventListener(\'DOMContentLoaded\', function(){});\n// (function(){\n// код\n// }());\n`;
+          fileContent = `/* global document */\n\n// const ready = require('../../js/documentReady.js');\n\n// ready(function(){\n//   \n// });\n`;
         }
 
         else if (extension === 'md') {

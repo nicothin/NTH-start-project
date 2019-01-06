@@ -1,8 +1,7 @@
-/* global document */
+const ready = require('../../js/documentReady.js');
+const baron = require('baron');
 
-var baron = require('baron');
-
-document.addEventListener('DOMContentLoaded', function(){
+ready(function(){
 
   baron({
     root: '#baron-demo',

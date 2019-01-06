@@ -1,5 +1,10 @@
 /* global document */
 
 const autosize = require('autosize');
+const ready = require('../../js/documentReady.js');
 
-autosize(document.querySelectorAll('textarea'));
+ready(function(){
+
+  autosize(document.querySelectorAll('textarea'));
+
+});

@@ -1,6 +1,8 @@
 /* global document window performance requestAnimationFrame */
 
-document.addEventListener('DOMContentLoaded', function(){
+const ready = require('../../js/documentReady.js');
+
+ready(function(){
 
   if(document.getElementById('to-top')) {
 

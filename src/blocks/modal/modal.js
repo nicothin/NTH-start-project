@@ -1,6 +1,6 @@
 /* global document window console */
 
-var $ = require('jquery');
+const $ = require('jquery');
 
 // Демо событий модальных окон
 $(document).ready(function(){

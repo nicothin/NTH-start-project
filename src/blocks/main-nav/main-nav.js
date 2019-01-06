@@ -1,6 +1,8 @@
 /* global document Element */
 
-document.addEventListener('DOMContentLoaded', function(){
+const ready = require('../../js/documentReady.js');
+
+ready(function(){
 
   // Добавление/удаление модификаторов при фокусировке на ссылочном элементе
   var linkClassName = 'main-nav__link';

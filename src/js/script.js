@@ -1,8 +1,8 @@
-// var ready = require('./documentReady.js');
+// const ready = require('./documentReady.js');
 
 // ready(function(){
 //   console.log('DOM героически построен!');
 // });
 
-// var $ = require('jquery');
+// const $ = require('jquery');
 // $( document ).ready(function() {});

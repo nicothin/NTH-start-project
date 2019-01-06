@@ -1,6 +1,8 @@
 /* global document */
 
-document.addEventListener('DOMContentLoaded', function(){
+const ready = require('../../js/documentReady.js');
+
+ready(function(){
 
   function $$(selector, context) {
     context = context || document;

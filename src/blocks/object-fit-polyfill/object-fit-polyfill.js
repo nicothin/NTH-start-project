@@ -1,7 +1,6 @@
-/* global document */
+const objectFitImages = require('object-fit-images');
+const ready = require('../../js/documentReady.js');
 
-var objectFitImages = require('object-fit-images');
-
-document.addEventListener('DOMContentLoaded', function(){
+ready(function(){
   objectFitImages();
 });
