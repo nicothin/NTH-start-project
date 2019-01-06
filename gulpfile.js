@@ -214,7 +214,12 @@ function compileSass() {
     `${dir.src}scss/style.scss`,
     `${dir.blocks}blocks-library/blocks-library.scss`,
     ], { sourcemaps: true })
-    .pipe(plumber())
+    .pipe(plumber({
+      errorHandler: function (err) {
+        console.log(err.message);
+        this.emit('end');
+      }
+    }))
     .pipe(debug({title: 'Compiles:'}))
     .pipe(sass({includePaths: [__dirname+'/']}))
     .pipe(postcss(postCssPlugins))
