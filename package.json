@@ -9,6 +9,7 @@
     "url": "https://github.com/nicothin/NTH-start-project.git"
   },
   "scripts": {
+    "test": "stylelint \"src/**/*.scss\" --syntax=scss && eslint src/blocks/**/*.js src/js/**/*.js",
     "test:style": "stylelint \"src/**/*.scss\" --syntax=scss",
     "test:js": "eslint src/blocks/**/*.js src/js/**/*.js",
     "start": "gulp",
