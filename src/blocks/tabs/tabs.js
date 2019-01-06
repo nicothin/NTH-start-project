@@ -1,3 +1,5 @@
+/* global document window history location Element */
+
 document.addEventListener('DOMContentLoaded', function(){
 
   if(location.hash) {

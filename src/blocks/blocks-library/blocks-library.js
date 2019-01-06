@@ -1,3 +1,5 @@
+/* global require */
+
 require('../main-nav/main-nav.js');
 require('../burger/burger.js');
 require('../field-text/field-text.js');

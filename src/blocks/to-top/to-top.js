@@ -1,3 +1,5 @@
+/* global document window performance requestAnimationFrame */
+
 document.addEventListener('DOMContentLoaded', function(){
 
   if(document.getElementById('to-top')) {
@@ -22,31 +24,31 @@ document.addEventListener('DOMContentLoaded', function(){
     window.addEventListener('scroll', visibilityToggle);
     visibilityToggle();
 
-    function visibilityToggle() {
-      if(window.pageYOffset >= 500) {
-        document.getElementById('to-top').classList.add('to-top--visible');
-      }
-      else {
-        document.getElementById('to-top').classList.remove('to-top--visible');
-      }
-    }
+  }
 
-    function animate(_ref) {
-      var timing = _ref.timing,
-          draw = _ref.draw,
-          duration = _ref.duration;
-      var start = performance.now();
-      requestAnimationFrame(function animate(time) {
-        var timeFraction = (time - start) / duration;
-        if (timeFraction > 1) timeFraction = 1;
-        var progress = timing(timeFraction);
-        draw(progress);
-        if (timeFraction < 1) {
-          requestAnimationFrame(animate);
-        }
-      });
+  function visibilityToggle() {
+    if(window.pageYOffset >= 500) {
+      document.getElementById('to-top').classList.add('to-top--visible');
     }
+    else {
+      document.getElementById('to-top').classList.remove('to-top--visible');
+    }
+  }
 
+  function animate(_ref) {
+    var timing = _ref.timing,
+        draw = _ref.draw,
+        duration = _ref.duration;
+    var start = performance.now();
+    requestAnimationFrame(function animate(time) {
+      var timeFraction = (time - start) / duration;
+      if (timeFraction > 1) timeFraction = 1;
+      var progress = timing(timeFraction);
+      draw(progress);
+      if (timeFraction < 1) {
+        requestAnimationFrame(animate);
+      }
+    });
   }
 
 });

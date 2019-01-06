@@ -1,3 +1,5 @@
+/* global document */
+
 var baron = require('baron');
 
 document.addEventListener('DOMContentLoaded', function(){

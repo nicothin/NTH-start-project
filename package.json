@@ -10,10 +10,11 @@
   },
   "scripts": {
     "test:style": "stylelint \"src/**/*.scss\" --syntax=scss",
+    "test:js": "eslint src/blocks/**/*.js src/js/**/*.js",
     "start": "gulp",
     "wlib": "cross-env BUILD_LIBRARY=yes gulp",
-    "deploy": "cross-env NODE_ENV=production ./node_modules/.bin/gulp build && cross-env ./node_modules/.bin/gulp deploy",
-    "build": "cross-env NODE_ENV=production npm start build",
+    "deploy": "cross-env ./node_modules/.bin/gulp build && cross-env ./node_modules/.bin/gulp deploy",
+    "build": "cross-env npm start build",
     "lint-staged": "lint-staged"
   },
   "browserslist": [
@@ -23,19 +24,22 @@
   "lint-staged": {
     "*.{js,pug,md}": "editorconfig-cli",
     "*.pug": "pug-lint",
-    "*.scss": "stylelint --syntax=scss"
+    "*.scss": "stylelint --syntax=scss",
+    "*.js": "eslint"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.2.3",
     "@htmlacademy/editorconfig-cli": "^1.0.0",
     "autoprefixer": "^9.3.1",
+    "babel-eslint": "^8.2.6",
     "babel-loader": "^8.0.4",
     "browser-sync": "^2.18.8",
     "cpy": "^7.0.1",
     "cross-env": "^5.0.0",
     "css-mqpacker": "^7.0.0",
     "del": "^3.0.0",
+    "eslint": "^4.19.1",
     "get-classes-from-html": "^1.0.1",
     "gh-pages": "^2.0.1",
     "gulp": "^4.0.0",
@@ -48,7 +52,6 @@
     "gulp-pretty-html": "^2.0.9",
     "gulp-pug": "^4.0.1",
     "gulp-rename": "^1.2.2",
-    "gulp-replace": "^1.0.0",
     "gulp-sass": "^4.0.1",
     "gulp-sourcemaps": "^2.4.1",
     "gulp-svgmin": "^2.1.0",

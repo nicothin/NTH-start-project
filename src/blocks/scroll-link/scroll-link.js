@@ -1,3 +1,5 @@
+/* global document window performance requestAnimationFrame */
+
 document.addEventListener('DOMContentLoaded', function(){
 
   var links = document.querySelectorAll('[href^="#"][data-scroll-link]');

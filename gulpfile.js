@@ -1,3 +1,5 @@
+/* global exports process console __dirname Buffer */
+/* eslint-disable no-console */
 'use strict';
 
 // Пакеты, использующиеся при обработке
@@ -8,7 +10,6 @@ const del = require('del');
 const pug = require('gulp-pug');
 const through2 = require('through2');
 const rename = require('gulp-rename');
-const replace = require('gulp-replace');
 const getClassesFromHtml = require('get-classes-from-html');
 const browserSync = require('browser-sync').create();
 const debug = require('gulp-debug');
@@ -34,7 +35,6 @@ const ghpages = require('gh-pages');
 const path = require('path');
 
 // Глобальные настройки этого запуска
-const isDev = !process.env.NODE_ENV || process.env.NODE_ENV == 'dev';
 const buildLibrary = process.env.BUILD_LIBRARY == 'yes' ? true : false;
 const nth = {};
 nth.config = require('./config.js');
@@ -139,7 +139,7 @@ function generateSvgSprite(cb) {
   let spriteSvgPath = `${dir.blocks}sprite-svg/svg/`;
   if(nth.config.alwaysAddBlocks.indexOf('sprite-svg') > -1 && fileExist(spriteSvgPath)) {
     return src(spriteSvgPath + '*.svg')
-      .pipe(svgmin(function (file) {
+      .pipe(svgmin(function () {
         return { plugins: [{ cleanupIDs: { minify: true } }] }
       }))
       .pipe(svgstore({ inlineSvg: true }))
@@ -236,7 +236,7 @@ exports.compileSass = compileSass;
 
 function writeJsRequiresFile(cb) {
   let msg = `\n/*!*${doNotEditMsg.replace(/\n /gm,'\n * ').replace(/\n\n$/,'\n */\n\n')}`;
-  let jsRequires = msg;
+  let jsRequires = msg + '/* global require */\n\n';
   nth.config.addJsBefore.forEach(function(src) {
     jsRequires += `require('${src}');\n`;
   });
@@ -338,7 +338,7 @@ function serve() {
   // Страницы: удаление
   watch([`${dir.src}pages/**/*.pug`], { delay: 100 })
   // TODO попробовать с events: ['unlink']
-    .on('unlink', function(path, stats) {
+    .on('unlink', function(path) {
       let filePathInBuildDir = path.replace(`${dir.src}pages/`, dir.build).replace('.pug', '.html');
       fs.unlink(filePathInBuildDir, (err) => {
         if (err) throw err;
@@ -527,18 +527,4 @@ function getDirectories(ext) {
  */
 function getArraysDiff(a1, a2) {
   return a1.filter(i=>!a2.includes(i)).concat(a2.filter(i=>!a1.includes(i)))
-}
-
-/**
- * Уникализация массива
- * @param  {array} arr Массив, в котором могут быть неуникальные элементы
- * @return {array}     Массив без повторов
- */
-function uniqueArray(arr) {
-  var obj = {};
-  for (var i = 0; i < arr.length; i++) {
-    var str = arr[i];
-    obj[str] = true;
-  }
-  return Object.keys(obj);
 }

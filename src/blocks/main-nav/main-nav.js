@@ -1,3 +1,5 @@
+/* global document Element */
+
 document.addEventListener('DOMContentLoaded', function(){
 
   // Добавление/удаление модификаторов при фокусировке на ссылочном элементе
@@ -29,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
 
+  // eslint-disable
   /*! getParents.js | (c) 2017 Chris Ferdinandi | MIT License | http://github.com/cferdinandi/getParents */
   /**
    * Get all of an element's parent elements up the DOM tree
@@ -49,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function(){
               function(s) {
                   var matches = (this.document || this.ownerDocument).querySelectorAll(s),
                       i = matches.length;
-                  while (--i >= 0 && matches.item(i) !== this) {}
+                  while (--i >= 0 && matches.item(i) !== this) {} // eslint-disable-line
                   return i > -1;
               };
       }
