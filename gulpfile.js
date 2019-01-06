@@ -35,6 +35,7 @@ const path = require('path');
 
 // Глобальные настройки этого запуска
 const isDev = !process.env.NODE_ENV || process.env.NODE_ENV == 'dev';
+const buildLibrary = process.env.BUILD_LIBRARY == 'yes' ? true : false;
 const nth = {};
 nth.config = require('./config.js');
 nth.blocksFromHtml = []; // блоки из HTML (только если имеют свою папку блока!)
@@ -210,10 +211,11 @@ exports.writeSassImportsFile = writeSassImportsFile;
 
 
 function compileSass() {
-  return src([
+  const fileList = [
     `${dir.src}scss/style.scss`,
-    `${dir.blocks}blocks-library/blocks-library.scss`,
-    ], { sourcemaps: true })
+  ];
+  if(buildLibrary) fileList.push(`${dir.blocks}blocks-library/blocks-library.scss`);
+  return src(fileList, { sourcemaps: true })
     .pipe(plumber({
       errorHandler: function (err) {
         console.log(err.message);
@@ -254,14 +256,15 @@ exports.writeJsRequiresFile = writeJsRequiresFile;
 
 
 function buildJs() {
+  const entryList = {
+    'bundle': `./${dir.src}js/entry.js`,
+  };
+  if(buildLibrary) entryList['blocks-library'] = `./${dir.blocks}blocks-library/blocks-library.js`;
   return src(`${dir.src}js/entry.js`)
     .pipe(plumber())
     .pipe(webpackStream({
       mode: 'development',
-      entry: {
-        'bundle': `./${dir.src}js/entry.js`,
-        'blocks-library': `./${dir.blocks}blocks-library/blocks-library.js`,
-      },
+      entry: entryList,
       output: {
         filename: '[name].js',
       },

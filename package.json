@@ -11,6 +11,7 @@
   "scripts": {
     "test:style": "stylelint \"src/**/*.scss\" --syntax=scss",
     "start": "gulp",
+    "wlib": "cross-env BUILD_LIBRARY=yes gulp",
     "deploy": "cross-env NODE_ENV=production ./node_modules/.bin/gulp build && cross-env ./node_modules/.bin/gulp deploy",
     "build": "cross-env NODE_ENV=production npm start build",
     "lint-staged": "lint-staged"
