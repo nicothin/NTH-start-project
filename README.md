@@ -1,11 +1,33 @@
 # Стартовый проект с gulp  ![Test Status](https://travis-ci.org/nicothin/NTH-start-project.svg?branch=master) [![devDependencies Status](https://david-dm.org/nicothin/NTH-start-project/dev-status.svg)](https://david-dm.org/nicothin/NTH-start-project?type=dev) [![dependencies Status](https://david-dm.org/nicothin/NTH-start-project/status.svg)](https://david-dm.org/nicothin/NTH-start-project)
 
 
-## Структура проекта
+## Парадигма
+
+- Именование классов по БЭМ, разметка в [pug](https://pugjs.org/) и стилизация [Sass](http://sass-lang.com/). См. [Как работать с CSS-препроцессорами и БЭМ](http://nicothin.github.io/idiomatic-pre-CSS/)
+- Каждый БЭМ-блок в своей папке внутри `src/blocks/`.
+- Список использованных в проекте доп. файлов указан в `config.js`.
+- Есть глобальные файлы: стилевые (стили печати), js (по умолчанию пуст), шрифты, картинки.
+- Список pug-примесей `src/pug/mixins.pug` генерируется автоматически, содержит `include` всех существующих pug-файлов блоков.
+- Диспетчер подключения стилей `src/scss/style.scss` генерируется автоматически.
+- Входная точка обработки js (`src/js/entry.js`) генерируется автоматически.
+- Перед созданием коммита запускается проверка файлов, входящих в коммит. При наличии ошибок коммит не происходит, ошибки выводятся в терминал.
+- Есть механизм быстрого создания нового блока: `node createBlock.js new-block` (создаёт папки и scss-файл). После имени нового блока можно дописать нужные расширения.
+
+
+## Команды
+
+`npm start` — сборка проекта **без библиотеки блоков**, слежение.
+
+`npm run wlib` — сборка проекта с библиотекой блоков, слежение.
+
+`npm run deploy` — Сборка проекта и отправка содержимого папки сборки на gh-pages (не сработает, если проект не имеет репозитория на github.com).
+
+
+## Структура
 
 ```bash
 build/               # Папка сборки
-src/
+src/                 # Исходники
   blocks/            # Блоки
   favicon/           # Фавиконки
   fonts/             # Шрифты
@@ -37,15 +59,6 @@ src/
 5. Запускается локальный сервер и слежение за файлами для пересборки.
 
 
-## Команды
-
-`npm start` — сборка проекта **без библиотеки блоков**, слежение.
-
-`npm run wlib` — сборка проекта с библиотекой блоков, слежение.
-
-`npm run deploy` — Сборка проекта и отправка содержимого папки сборки на gh-pages
-
-
 ## Как начать новый проект c этим репозиторием
 
 1. Клонировать этот репозиторий в новую папку (`git clone https://github.com/nicothin/NTH-start-project.git new-project`, см. [шпаргалку](https://github.com/nicothin/web-development/tree/master/git#%D0%9A%D0%BB%D0%BE%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D1%80%D0%B5%D0%BF%D0%BE%D0%B7%D0%B8%D1%82%D0%BE%D1%80%D0%B8%D1%8F)) и зайти в неё (`cd new-project`).
@@ -53,20 +66,6 @@ src/
 3. Отредактировать `LICENSE`, `README.md`, `package.json` (название проекта, автор, лицензия, необходимые пакеты и пр.) и `config.js` (нужные на проекте блоки, сторонние пакеты). Удалив пакет из `package.json`, не забудьте убрать его из `config.js`.
 4. Установить зависимости (`npm i`).
 5. Запустить сервер разработки (`npm start`).
-6. Возможно, удалить страницу библиотеки блоков (`src/pages/blocks-demo.pug`).
-
-
-## Парадигма
-
-- Именование классов по БЭМ, разметка в [pug](https://pugjs.org/) и стилизация [Sass](http://sass-lang.com/). См. [Как работать с CSS-препроцессорами и БЭМ](http://nicothin.github.io/idiomatic-pre-CSS/)
-- Каждый БЭМ-блок в своей папке внутри `src/blocks/`.
-- Список использованных в проекте доп. файлов указан в `config.js`.
-- Есть глобальные файлы: стилевые (стили печати), js (по умолчанию пуст), шрифты, картинки.
-- Список pug-примесей `src/pug/mixins.pug` генерируется автоматически, содержит `include` всех существующих pug-файлов блоков.
-- Диспетчер подключения стилей `src/scss/style.scss` генерируется автоматически.
-- Входная точка обработки js (`src/js/entry.js`) генерируется автоматически.
-- Перед созданием коммита запускается проверка файлов, входящих в коммит. При наличии ошибок коммит не происходит, ошибки будут выведены в терминал.
-- Есть механизм быстрого создания нового блока: `node createBlock.js new-block` (создаёт файлы, папки).
 
 
 ## Разметка
@@ -89,6 +88,15 @@ src/
 3. [postcss-import](https://github.com/postcss/postcss-import)
 4. [postcss-inline-svg](https://github.com/TrySound/postcss-inline-svg)
 6. [postcss-object-fit-images](https://github.com/ronik-design/postcss-object-fit-images) (в паре с [полифилом](https://github.com/bfred-it/object-fit-images))
+
+
+## Скрипты
+
+Точка входа (`src/js/entry.js`) формируется автоматически, писать в него что-либо руками бессмысленно: при старте автоматизации файл будет перезаписан. Точка входа обрабатывается webpack-ом (с babel-loader).
+
+Для глобальных действий предусмотрен `src/js/script.js` (см. `config.js#addJsAfter` и `config.js#addJsBefore`).
+
+Каждый блок может содержать одноимённый js-файл. При условии использования блока в разметке (или упоминания в `config.js#alwaysAddBlocks`) такой js-файл будет взят в сборку.
 
 
 ### Модульная сетка (flexbox)
