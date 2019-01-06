@@ -3,9 +3,6 @@
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
 .or {
-
-  $block-name:                &; // #{$block-name}__element
-
   display: flex;
   align-items: center;
 

@@ -3,7 +3,8 @@
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
 .table-responsive {
-  margin-bottom: 1em;
+  margin-top: $typo-margin-vertical;
+  margin-bottom: $typo-margin-vertical;
   border-collapse: collapse;
   border: 1px solid $border-color;
   width: 100%;

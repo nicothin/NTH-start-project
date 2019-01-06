@@ -7,7 +7,7 @@
   $block-name:                &; // #{$block-name}__element
 
   display: block;
-  margin-bottom: 1em;
+  margin-bottom: $typo-margin-vertical;
 
   &__name {
     @include field-name;

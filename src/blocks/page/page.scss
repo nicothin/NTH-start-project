@@ -182,8 +182,8 @@ hr {
   box-sizing: content-box; // Проблема Firefox
   height: 0;               // Проблема Firefox
   overflow: visible;       // Проблема Edge и IE
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-top: $typo-margin-vertical * 2;
+  margin-bottom: $typo-margin-vertical * 2;
   border: 0;
   border-top: 1px solid $border-color;
 }
@@ -219,7 +219,7 @@ pre,
 address,
 figure {
   margin-top: 0;
-  margin-bottom: 1em;
+  margin-bottom: $typo-margin-vertical;
 }
 
 address {
@@ -228,6 +228,7 @@ address {
 
 ul,
 ol {
+  margin-bottom: $typo-margin-vertical;
   padding-left: 1.5em;
 
   ul,
@@ -316,6 +317,7 @@ kbd {
 pre {
   display: block;
   width: 100%;
+  margin-bottom: $typo-margin-vertical;
   overflow-x: auto;
   tab-size: 2;
   background-color: rgba(#000, 0.08);

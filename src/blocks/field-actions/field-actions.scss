@@ -4,13 +4,13 @@
 
 .field-actions {
   display: block;
-  margin-top: 1em;
-  margin-bottom: 1em;
+  margin-top: $typo-margin-vertical;
+  margin-bottom: $typo-margin-vertical;
 
   &__text {
     display: block;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin-top: $typo-margin-vertical;
+    margin-bottom: $typo-margin-vertical;
     font-size: $font-size--small;
     color: $text-color--muted;
     line-height: 1.2em;

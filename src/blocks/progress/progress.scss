@@ -3,8 +3,8 @@
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
 .progress {
-  margin-top: 1em;
-  margin-bottom: 1em;
+  margin-top: $typo-margin-vertical;
+  margin-bottom: $typo-margin-vertical;
   border: 1px solid $border-color;
   border-radius: $border-radius;
   text-align: center;

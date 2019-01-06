@@ -5,7 +5,8 @@
 .table {
   display: table;
   width: 100%;
-  margin-bottom: 1em;
+  margin-top: $typo-margin-vertical;
+  margin-bottom: $typo-margin-vertical;
   border: 1px solid $border-color;
   border-collapse: collapse;
 

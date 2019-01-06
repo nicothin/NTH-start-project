@@ -6,8 +6,8 @@
 
   $block-name:                &; // #{$block-name}__element
 
-  margin-top: 1em;
-  margin-bottom: 1em;
+  margin-top: $typo-margin-vertical;
+  margin-bottom: $typo-margin-vertical;
 
   &__links {
     margin: 0;

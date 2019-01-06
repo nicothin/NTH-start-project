@@ -5,8 +5,8 @@
 .breadcrumbs {
   padding: 0;
   list-style: none;
-  margin-top: 1em;
-  margin-bottom: 1em;
+  margin-top: $typo-margin-vertical;
+  margin-bottom: $typo-margin-vertical;
   color: $text-color;
 
   a {
