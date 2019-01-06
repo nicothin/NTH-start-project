@@ -14,7 +14,7 @@
     "test:js": "eslint src/blocks/**/*.js src/js/**/*.js",
     "start": "gulp",
     "wlib": "cross-env BUILD_LIBRARY=yes gulp",
-    "deploy": "cross-env ./node_modules/.bin/gulp build && cross-env ./node_modules/.bin/gulp deploy",
+    "deploy": "cross-env BUILD_LIBRARY=yes gulp build && gulp deploy",
     "build": "gulp build",
     "lint-staged": "lint-staged"
   },
