@@ -395,7 +395,7 @@ function serve() {
   ));
 
   // Скриптовые глобальные файлы: все события
-  watch([`${dir.src}js/**/*.js`, `!${dir.src}js/entry.js`, `!${dir.src}js/blocks-lib.js`, `${dir.blocks}**/*.js`], { events: ['all'], delay: 100 }, series(
+  watch([`${dir.src}js/**/*.js`, `!${dir.src}js/entry.js`, `${dir.blocks}**/*.js`], { events: ['all'], delay: 100 }, series(
     writeJsRequiresFile,
     buildJs,
     reload
