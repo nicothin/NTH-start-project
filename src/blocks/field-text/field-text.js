@@ -1,7 +1,7 @@
 /* global document */
 
 const autosize = require('autosize');
-const ready = require('../../js/documentReady.js');
+const ready = require('../../js/utils/documentReady.js');
 
 ready(function(){
 

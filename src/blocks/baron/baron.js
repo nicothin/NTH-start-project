@@ -1,4 +1,4 @@
-const ready = require('../../js/documentReady.js');
+const ready = require('../../js/utils/documentReady.js');
 const baron = require('baron');
 
 ready(function(){
