@@ -257,9 +257,10 @@ function writeJsRequiresFile(cb) {
   nth.config.addJsBefore.forEach(function(src) {
     jsRequires += `require('${src}');\n`;
   });
-  let allBlocksWithJsFiles = getDirectories('js');
+  const allBlocksWithJsFiles = getDirectories('js');
+  const allUsedBlocks = nth.blocksFromHtml.concat(nth.config.alwaysAddBlocks);
   allBlocksWithJsFiles.forEach(function(blockWithJsFile){
-    if (nth.blocksFromHtml.indexOf(blockWithJsFile) == -1) return;
+    if (allUsedBlocks.indexOf(blockWithJsFile) == -1) return;
     jsRequires += `require('../blocks/${blockWithJsFile}/${blockWithJsFile}.js');\n`;
   });
   nth.config.addJsAfter.forEach(function(src) {
@@ -267,6 +268,7 @@ function writeJsRequiresFile(cb) {
   });
   jsRequires += msg;
   fs.writeFileSync(`${dir.src}js/entry.js`, jsRequires);
+  console.log('---------- Write new entry.js');
   cb();
 }
 exports.writeJsRequiresFile = writeJsRequiresFile;
@@ -335,13 +337,6 @@ function serve() {
     open: false,
     notify: false,
   });
-
-  // Конфигурационный файл
-  watch([`config.js`], { events: ['change'], delay: 100 }, series(
-    parallel(writeSassImportsFile, writeJsRequiresFile),
-    parallel(compileSass, buildJs),
-    reload
-  ));
 
   // Страницы: изменение, добавление
   watch([`${dir.src}pages/**/*.pug`], { events: ['change', 'add'], delay: 100 }, series(
@@ -484,7 +479,7 @@ function getClassesToBlocksList(file, enc, cb) {
       // Добавляем класс в список
       nth.blocksFromHtml.push(item);
     }
-    console.log('---------- Used blocks: ' + nth.blocksFromHtml.join(', '));
+    console.log('---------- Used HTML blocks: ' + nth.blocksFromHtml.join(', '));
     file.contents = new Buffer(fileContent);
   }
   this.push(file);
