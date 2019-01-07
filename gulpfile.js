@@ -89,7 +89,12 @@ function compilePug() {
   ];
   if(!buildLibrary) fileList.push(`!${dir.src}pages/blocks-demo.pug`);
   return src(fileList)
-    .pipe(plumber())
+    .pipe(plumber({
+      errorHandler: function (err) {
+        console.log(err.message);
+        this.emit('end');
+      }
+    }))
     .pipe(debug({title: 'Compiles '}))
     .pipe(pug(pugOption))
     .pipe(prettyHtml(prettyOption))
@@ -105,7 +110,12 @@ function compilePugFast() {
   ];
   if(!buildLibrary) fileList.push(`!${dir.src}pages/blocks-demo.pug`);
   return src(fileList, { since: lastRun(compilePugFast) })
-    .pipe(plumber())
+    .pipe(plumber({
+      errorHandler: function (err) {
+        console.log(err.message);
+        this.emit('end');
+      }
+    }))
     .pipe(debug({title: 'Compiles '}))
     .pipe(pug(pugOption))
     .pipe(prettyHtml(prettyOption))
