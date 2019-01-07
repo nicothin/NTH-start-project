@@ -16,7 +16,6 @@ const debug = require('gulp-debug');
 const sass = require('gulp-sass');
 const webpackStream = require('webpack-stream');
 const buffer = require('vinyl-buffer');
-const uglify = require('gulp-uglify');
 const postcss = require('gulp-postcss');
 const autoprefixer = require("autoprefixer");
 const mqpacker = require("css-mqpacker");
@@ -302,7 +301,6 @@ function buildJs() {
       //   jquery: 'jQuery'
       // }
     }))
-    .pipe(uglify())
     .pipe(dest(`${dir.build}js`));
 }
 exports.buildJs = buildJs;

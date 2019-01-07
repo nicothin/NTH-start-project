@@ -57,7 +57,6 @@
     "gulp-sourcemaps": "^2.4.1",
     "gulp-svgmin": "^2.1.0",
     "gulp-svgstore": "^7.0.0",
-    "gulp-uglify": "^3.0.0",
     "gulp.spritesmith": "^6.3.0",
     "husky": "^1.1.4",
     "jstransformer-markdown-it": "^2.0.0",
