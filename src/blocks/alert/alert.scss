@@ -9,7 +9,7 @@
   margin-bottom: $typo-margin-vertical;
   border-radius: $border-radius;
   color: $text-color;
-  background-color: $gray-lightest;
+  background-color: lighten($color-warning, 30%);
 
   & > * {
     margin-top: 0;
