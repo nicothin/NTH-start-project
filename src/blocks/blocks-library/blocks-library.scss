@@ -23,7 +23,6 @@
 @import "../logo/logo.scss";
 @import "../main-nav/main-nav.scss";
 @import "../modal/modal.scss";
-@import "../object-fit-polyfill/object-fit-polyfill.scss";
 @import "../off-canvas/off-canvas.scss";
 @import "../or/or.scss";
 @import "../page/page.scss";
@@ -37,6 +36,7 @@
 @import "../tabs/tabs.scss";
 @import "../social/social.scss";
 @import "../to-top/to-top.scss";
+@import "../object-fit-polyfill/object-fit-polyfill.scss";
 @import "../../scss/print.scss";
 
 
@@ -179,5 +179,19 @@
     & > span:after {
       background-color: #fff !important;
     }
+  }
+
+  &__row {
+    @include row();
+  }
+
+  &__col-1-2 {
+    @include col();
+    @include col(md, 6);
+  }
+
+  &__col-2-2 {
+    @include col();
+    @include col(md, 12);
   }
 }

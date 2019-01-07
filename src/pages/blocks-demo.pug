@@ -716,6 +716,99 @@ block content
     +block-lib-code()
       include:show-code(first-line='//- Pug-файл этого блока:') ../blocks/form/form.pug
 
+  +block-lib('form-validation', 'Валидатор форм', true)
+    include:markdown-it(html='true') ../blocks/form-validation/readme.md
+    +form()(class='blocks-library__row', data-check-form='true')
+      .blocks-library__col-1-2
+        +field-text({
+          title: 'Имя',
+          helpText: 'Имя юзера. Не менее 3-х символов. Обязательно.',
+          attrs: {
+            require: true,
+            'data-check-pattern': '^[a-zа-яё]+.{2,}'
+          }
+        })
+      .blocks-library__col-1-2
+        +field-text({
+          title: 'Фамилия',
+          helpText: 'Фамилия. Не менее 2-х символов. Не обязательно.',
+          attrs: {
+            'data-check-pattern': '^[a-zа-яё]+.+'
+          }
+        })
+      .blocks-library__col-1-2
+        +field-text({
+          title: 'Телефон',
+          helpText: 'Обязательно.',
+          attrs: {
+            type: 'tel',
+            require: true,
+            placeholder: '+7 (000) 000-00-00',
+            'data-check-pattern': '[\\+]?\\d?[\\s|-]?[(]?\\d{0,3}[)]?[\\s|-]?\\d{3}[\\s|-]?\\d{2}[\\s|-]?\\d{2}'
+          }
+        })
+      .blocks-library__col-1-2
+        +field-text({
+          title: 'Электромыло',
+          helpText: 'Обязательно.',
+          attrs: {
+            type: 'email',
+            require: true,
+            'data-check-pattern': '[a-z0-9!#$%&\'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&\'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?'
+          }
+        })
+      .blocks-library__col-2-2
+        +field-checkbox([
+          {
+            title: 'Принимаю условия, передаю квартиру во владение Николаю.',
+            helpText: 'Это шутка, чекбокс можно спокойно отмечать. Или же нет.',
+            attrs: {
+              name: 'checkCheck',
+              'data-check-state': 'on',
+            }
+          },
+          {
+            title: 'Должен. Быть. Неотмеченным.',
+            helpText: 'Иначе всё — тлен!',
+            attrs: {
+              name: 'checkOff',
+              'data-check-state': 'off',
+              checked: true,
+            }
+          },
+        ])
+      .blocks-library__col-2-2
+        +field-actions()
+          +btn('Отправить', 'primary')
+    +block-lib-code()
+      pre.code
+        code +field-text({
+        code   title: 'Фамилия',
+        code   helpText: 'Фамилия. Не менее 2-х символов. Не обязательно.',
+        code   attrs: {
+        code     'data-check-pattern': '^[a-zа-яё]+.+'
+        code   }
+        code })
+        code +field-text({
+        code   title: 'Телефон',
+        code   helpText: 'Обязательно.',
+        code   attrs: {
+        code     type: 'tel',
+        code     require: true,
+        code     placeholder: '+7 (000) 000-00-00',
+        code     'data-check-pattern': '[\\+]?\\d?[\\s|-]?[(]?\\d{0,3}[)]?[\\s|-]?\\d{3}[\\s|-]?\\d{2}[\\s|-]?\\d{2}'
+        code   }
+        code })
+        code +field-text({
+        code   title: 'Электромыло',
+        code   helpText: 'Обязательно.',
+        code   attrs: {
+        code     type: 'email',
+        code     require: true,
+        code     'data-check-pattern': '[a-z0-9!#$%&\'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&\'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?'
+        code   }
+        code })
+
   +block-lib('scroll-link', 'Якорные ссылки', false)
     include:markdown-it(html='true') ../blocks/scroll-link/readme.md
     +scroll-link('Описание блока <code>page</code>', '#page')
@@ -828,6 +921,20 @@ block content
       p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt dicta aliquid nemo, sit possimus, eveniet tempore minus, doloremque incidunt, nihil quos aperiam ab iure quia. Ipsa sit porro incidunt, sed!
     +block-lib-code()
       include:show-code(first-line='//- Pug-файл этого блока:') ../blocks/baron/baron.pug
+
+  +block-lib('object-fit-polyfill', 'Поддержка object-fit для IE', false)
+    include:markdown-it(html='true') ../blocks/object-fit-polyfill/readme.md
+    img.ofp-demo(src='img/demo-avatar-m.png', alt='Аватар', style='width: 128px; height: 64px;')
+    img.ofp-demo(src='img/demo-avatar-f.png', alt='Аватар', style='width: 64px; height: 64px;')
+    +block-lib-code()
+      div
+        pre.code
+          code &lt;img src="img/demo-avatar-m.png" class="semantic-class" style="width: 128px; height: 64px;" alt="Аватар" />
+          code &lt;img src="img/demo-avatar-f.png" class="semantic-class" style="width: 64px; height: 64px;" alt="Аватар" />
+        pre.code
+          code .semantic-class {
+          code   object-fit: cover;
+          code }
 
 
   .burger.blocks-library__menu-toggler(data-toggle='off-canvas')
