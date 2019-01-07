@@ -133,6 +133,7 @@
               <a href="https://github.com/w0rm/gulp-svgstore">gulp-svgstore</a>
             </h2>
             <p>Из файлов <code>sprite-svg/svg/</code> генерируется файл спрайта <code>sprite-svg/img/sprite.svg</code>.</p>
+            <p class="alert  alert--warning">Блок не имеет классов, упоминаемых в разметке. Чтобы взять его в сборку, упомяните <code>sprite-svg</code> в <code>config.js#alwaysAddBlocks</code>.</p>
             <p>Для вставки на страницу используйте <code>svg &gt; use</code> со ссылками на <code>id</code> символа:</p>
             <pre class="code">
               <code>svg(width="32", height="32")</code>
@@ -151,6 +152,7 @@
               <a href="https://github.com/Ensighten/spritesmith">spritesmith</a>
             </h2>
             <p>Из файлов <code>sprite-png/png/</code> генерируется файл спрайта <code>sprite-png/img/sprite-ЧИСЛОВОЙ_ИНДЕКС.svg</code>.</p>
+            <p class="alert  alert--warning">Блок не имеет классов, упоминаемых в разметке. Чтобы взять его в сборку, упомяните <code>sprite-png</code> в <code>config.js#alwaysAddBlocks</code>.</p>
             <p><strong>Стилевой файл блока генерируется автоматически</strong> и содержит примеси для использования спрайтов.</p>
             <p>Пример использования для конкретного селектора:</p>
             <pre class="code">
@@ -2206,6 +2208,65 @@
               </div>
             </div>
           </section>
+          <section class="blocks-library__item blocks-library__item--menusep" id="form-validation" data-id="form-validation">
+            <h2 class="blocks-library__item-title">
+              <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/form-validation" title="Папка блока в репозитории">
+                <svg width="20" height="20">
+                  <use xlink:href="#folder"></use>
+                </svg>
+              </a>Валидатор форм</h2>
+            <p>Включается при указании на теге <code>form</code> атрибута <code>data-check-form</code>.</p>
+            <p>Для текстовых полей: по событию <code>blur</code> содержимое поля анализируется на соответствие регулярному выражению из атрибута <code>data-check-pattern</code>.</p>
+            <p>Для чекбоксов: по событию <code>change</code> проверяется соответствия состояния и <code>data-check-state=&quot;on&quot;</code> (<code>off</code>).</p>
+            <p class="alert  alert--warning">Блок не имеет классов, упоминаемых в разметке. Чтобы взять его в сборку, упомяните <code>form-validation</code> в <code>config.js#alwaysAddBlocks</code>.</p>
+            <p class="alert  alert--warning">Pug «умно» обрабатывает строки, убирая обратный слеш (<code>\</code>), этот символ в pug нужно экранировать: не <code>\d</code>, а <code>\\d</code>. <br>См. пример кода ниже.</p>
+            <form class="form blocks-library__row" data-check-form="true">
+              <div class="blocks-library__col-1-2">
+                <label class="field-text"><span class="field-text__name">Имя</span><span class="field-text__input-wrap"><input class="field-text__input" type="text" require="require" data-check-pattern="^[a-zа-яё]+.{2,}"/><span class="field-text__help-text">Имя юзера. Не менее 3-х символов. Обязательно.</span></span>
+                </label>
+              </div>
+              <div class="blocks-library__col-1-2">
+                <label class="field-text"><span class="field-text__name">Фамилия</span><span class="field-text__input-wrap"><input class="field-text__input" type="text" data-check-pattern="^[a-zа-яё]+.+"/><span class="field-text__help-text">Фамилия. Не менее 2-х символов. Не обязательно.</span></span>
+                </label>
+              </div>
+              <div class="blocks-library__col-1-2">
+                <label class="field-text"><span class="field-text__name">Телефон</span><span class="field-text__input-wrap"><input class="field-text__input" type="tel" require="require" placeholder="+7 (000) 000-00-00" data-check-pattern="[\+]?\d?[\s|-]?[(]?\d{0,3}[)]?[\s|-]?\d{3}[\s|-]?\d{2}[\s|-]?\d{2}"/><span class="field-text__help-text">Обязательно.</span></span>
+                </label>
+              </div>
+              <div class="blocks-library__col-1-2">
+                <label class="field-text"><span class="field-text__name">Электромыло</span><span class="field-text__input-wrap"><input class="field-text__input" type="email" require="require" data-check-pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"/><span class="field-text__help-text">Обязательно.</span></span>
+                </label>
+              </div>
+              <div class="blocks-library__col-2-2">
+                <div class="field-checkbox">
+                  <div class="field-checkbox__input-wrap">
+                    <label class="field-checkbox__name">
+                      <input class="field-checkbox__input" type="checkbox" name="checkCheck" data-check-state="on" /><span class="field-checkbox__name-text">Принимаю условия, передаю квартиру во владение Николаю.</span></label>
+                    <div class="field-checkbox__help-text-wrap">
+                      <div class="field-checkbox__help-text">Это шутка, чекбокс можно спокойно отмечать. Или же нет.</div>
+                    </div>
+                  </div>
+                  <div class="field-checkbox__input-wrap">
+                    <label class="field-checkbox__name">
+                      <input class="field-checkbox__input" type="checkbox" name="checkOff" data-check-state="off" checked="checked" /><span class="field-checkbox__name-text">Должен. Быть. Неотмеченным.</span></label>
+                    <div class="field-checkbox__help-text-wrap">
+                      <div class="field-checkbox__help-text">Иначе всё — тлен!</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="blocks-library__col-2-2">
+                <div class="field-actions">
+                  <button class="btn  btn--primary">Отправить</button>
+                </div>
+              </div>
+            </form>
+            <div class="blocks-library__code-wrapper"><span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+              <div class="blocks-library__code">
+                <pre class="code"><code>+field-text({</code><code>  title: 'Фамилия',</code><code>  helpText: 'Фамилия. Не менее 2-х символов. Не обязательно.',</code><code>  attrs: {</code><code>    'data-check-pattern': '^[a-zа-яё]+.+'</code><code>  }</code><code>})</code><code>+field-text({</code><code>  title: 'Телефон',</code><code>  helpText: 'Обязательно.',</code><code>  attrs: {</code><code>    type: 'tel',</code><code>    require: true,</code><code>    placeholder: '+7 (000) 000-00-00',</code><code>    'data-check-pattern': '[\\+]?\\d?[\\s|-]?[(]?\\d{0,3}[)]?[\\s|-]?\\d{3}[\\s|-]?\\d{2}[\\s|-]?\\d{2}'</code><code>  }</code><code>})</code><code>+field-text({</code><code>  title: 'Электромыло',</code><code>  helpText: 'Обязательно.',</code><code>  attrs: {</code><code>    type: 'email',</code><code>    require: true,</code><code>    'data-check-pattern': '[a-z0-9!#$%&\'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&\'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?'</code><code>  }</code><code>})</code></pre>
+              </div>
+            </div>
+          </section>
           <section class="blocks-library__item" id="scroll-link" data-id="scroll-link">
             <h2 class="blocks-library__item-title">
               <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/scroll-link" title="Папка блока в репозитории">
@@ -2578,6 +2639,30 @@
                 <code>        .baron__bar</code>
                 <code>      //- .baron__control.baron__down ▼</code>
               </pre>
+            </div>
+          </div>
+        </section>
+        <section class="blocks-library__item" id="object-fit-polyfill" data-id="object-fit-polyfill">
+          <h2 class="blocks-library__item-title">
+            <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/object-fit-polyfill" title="Папка блока в репозитории">
+              <svg width="20" height="20">
+                <use xlink:href="#folder"></use>
+              </svg>
+            </a>Поддержка object-fit для IE</h2>
+          <p>Дополнительные стили для картинок с указанным <code>object-fit: ...;</code> добавится с помощью PostCSS-плагина на этапе постобработки css.</p>
+          <p class="alert  alert--warning">Блок не имеет классов, упоминаемых в разметке. Чтобы взять его в сборку, упомяните <code>object-fit-polyfill</code> в <code>config.js#alwaysAddBlocks</code>.</p>
+          <p>Инструменты:
+            <a href="https://github.com/bfred-it/object-fit-images">полифил</a>,
+            <a href="https://github.com/ronik-design/postcss-object-fit-images">PostCSS-плагин, реализующий автоматическое применение полифила</a>.</p>
+          <img class="ofp-demo" src="img/demo-avatar-m.png" alt="Аватар" style="width: 128px; height: 64px;">
+          <img class="ofp-demo" src="img/demo-avatar-f.png" alt="Аватар" style="width: 64px; height: 64px;">
+          <div class="blocks-library__code-wrapper"><span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+            <div class="blocks-library__code">
+              <div>
+                <pre class="code"><code>&lt;img src="img/demo-avatar-m.png" class="semantic-class" style="width: 128px; height: 64px;" alt="Аватар" /></code><code>&lt;img src="img/demo-avatar-f.png" class="semantic-class" style="width: 64px; height: 64px;" alt="Аватар" /></code></pre>
+                <pre
+                  class="code"><code>.semantic-class {</code><code>  object-fit: cover;</code><code>}</code></pre>
+              </div>
             </div>
           </div>
         </section>
