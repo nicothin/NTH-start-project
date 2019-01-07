@@ -1,4 +1,5 @@
-// Файл перезаписывается программно при работе автоматизации
+/* global module */
+
 let config =
 {
   "notGetBlocks": [
@@ -9,8 +10,6 @@ let config =
   ],
   "alwaysAddBlocks": [
     "sprite-svg",
-    "sprite-png",
-    "object-fit-polyfill",
   ],
   "addStyleBefore": [
     "src/scss/variables.scss",
