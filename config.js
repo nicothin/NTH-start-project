@@ -10,6 +10,7 @@ let config =
   ],
   "alwaysAddBlocks": [
     "sprite-svg",
+    "object-fit-polyfill",
   ],
   "addStyleBefore": [
     "src/scss/variables.scss",
