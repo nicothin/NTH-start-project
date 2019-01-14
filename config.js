@@ -1,7 +1,6 @@
 /* global module */
 
-let config =
-{
+let config = {
   "notGetBlocks": [
     "blocks-demo.html"
   ],
@@ -9,25 +8,26 @@ let config =
     "no-js"
   ],
   "alwaysAddBlocks": [
-    "sprite-svg",
-    "object-fit-polyfill",
+    // "sprite-svg",
+    // "sprite-png",
+    // "object-fit-polyfill",
   ],
   "addStyleBefore": [
     "src/scss/variables.scss",
     "src/scss/mixins.scss"
   ],
   "addStyleAfter": [
-    "src/scss/print.scss"
+    // "src/scss/print.scss"
   ],
   "addJsBefore": [],
   "addJsAfter": [
     "./script.js"
   ],
   "addAssets": {
-    "src/img/demo-avatar-*": "img/",
-    "src/img/DSC_*": "img/",
     "src/fonts/demo-empty-open-sans.woff2": "fonts/",
-    "src/favicon/*.{png,ico,svg,xml,webmanifest}": "img/favicon"
+    // "src/img/demo-avatar-*": "img/",
+    // "src/img/DSC_*": "img/",
+    // "src/favicon/*.{png,ico,svg,xml,webmanifest}": "img/favicon",
   },
   "dir": {
     "src": "src/",
