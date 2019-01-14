@@ -9,7 +9,8 @@
     "url": "https://github.com/nicothin/NTH-start-project.git"
   },
   "scripts": {
-    "test": "stylelint \"src/**/*.scss\" --syntax=scss && eslint src/blocks/**/*.js src/js/**/*.js",
+    "test": "npm run test:pug && npm run test:style && npm run test:js",
+    "test:pug": "glob-exec \"src/**/*.pug\" -- \"pug-lint {{files.join(' ')}}\"",
     "test:style": "stylelint \"src/**/*.scss\" --syntax=scss",
     "test:js": "eslint src/blocks/**/*.js src/js/**/*.js",
     "start": "gulp",
@@ -43,6 +44,7 @@
     "eslint": "^5.12.0",
     "get-classes-from-html": "^1.0.1",
     "gh-pages": "^2.0.1",
+    "glob-exec": "^0.1.1",
     "gulp": "^4.0.0",
     "gulp-concat": "^2.6.1",
     "gulp-csso": "^3.0.1",
