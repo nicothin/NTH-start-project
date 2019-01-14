@@ -42,23 +42,6 @@ src/                 # Исходники
 ```
 
 
-## Как начать новый проект c этим репозиторием
-
-```bash
-# Клонировать в новую папку
-git clone https://github.com/nicothin/NTH-start-project.git new-project
-# Зайти в папку
-cd new-project
-# Убрать историю разработки
-rm -rf .git
-# Отредактировать config.js, LICENSE, README.md, package.json
-# Установить зависимость
-npm i
-# Запустить сервер разработки
-npm start
-```
-
-
 ## Как это работает
 
 При `npm start` запускается дефолтная задача gulp:
