@@ -36,6 +36,7 @@
     position: relative;
     border: 1px solid $border-color;
     margin: 0 0.3em 0.3em 0;
+    color: $text-color--muted;
 
     @media (min-width: $screen-md) {
       margin: 0;
@@ -46,13 +47,13 @@
     }
 
     &--active {
+      color: $text-color;
 
       @media (min-width: $screen-md) {
         border-bottom: 1px solid transparent;
       }
 
       #{$block-name}__link {
-        color: $text-color !important;
         background-color: #fff;
       }
     }
@@ -61,17 +62,13 @@
   &__link {
     display: block;
     padding: $field-padding-vertical $field-padding-horizontal;
-    color: $text-color--muted;
+    color: currentColor;
     text-decoration: none;
     background-color: $gray-lightest;
 
     &:hover,
     &:focus {
-      color: $text-color--muted;
-    }
-
-    &:visited {
-      color: $text-color--muted;
+      color: currentColor;
     }
   }
 
