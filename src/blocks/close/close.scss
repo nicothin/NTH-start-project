@@ -14,7 +14,7 @@
   user-select: none;
   cursor: pointer;
 
-  > span {
+  span {
     position: relative;
     display: inline-block;
     vertical-align: middle;
@@ -52,7 +52,7 @@
     width: 30px;
     line-height: 30px;
 
-    > span {
+    span {
       width: 60%;
 
       &:before,

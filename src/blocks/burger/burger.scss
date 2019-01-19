@@ -14,7 +14,7 @@
   user-select: none;
   cursor: pointer;
 
-  > span {
+  > span { // stylelint-disable-line  selector-combinator-blacklist
     position: relative;
     display: inline-block;
     vertical-align: middle;
@@ -48,7 +48,7 @@
 
   &--close {
 
-    > span {
+    > span { // stylelint-disable-line  selector-combinator-blacklist
       transition: background $transition-time 0s;
       background: transparent;
 

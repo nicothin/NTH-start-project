@@ -12,7 +12,7 @@
       padding-left: calc(60px + 1em);
     }
 
-    & & & & {
+    & & & & { // stylelint-disable-line  selector-max-compound-selectors, selector-max-class, selector-max-combinators
       padding-left: 0;
     }
   }
@@ -45,7 +45,7 @@
 
   &__body {
 
-    & > *:last-child {
+    & > *:last-child { // stylelint-disable-line  selector-combinator-blacklist
       margin-bottom: 0;
     }
   }

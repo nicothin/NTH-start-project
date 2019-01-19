@@ -52,7 +52,7 @@
 
     &--active {
 
-      & > #{$block-name}__link {
+      & > #{$block-name}__link { // stylelint-disable-line  selector-combinator-blacklist
         color: #000;
       }
     }
@@ -101,12 +101,12 @@
         overflow: hidden;
         transition: opacity $transition-time;
 
-        // stylelint-disable  max-nesting-depth
+        // stylelint-disable
         #{$block-name}__item--show-child > &,
         #{$block-name}__item:hover & {
-          opacity: 1;
           height: auto;
           overflow: visible;
+          opacity: 1;
         }
         // stylelint-enable
       }
@@ -124,12 +124,12 @@
         overflow: hidden;
         transition: opacity $transition-time;
 
-        // stylelint-disable  max-nesting-depth
+        // stylelint-disable
         #{$block-name}__item--show-child > &,
         #{$block-name}__item--lvl-2:hover & {
-          opacity: 1;
           height: auto;
           overflow: visible;
+          opacity: 1;
         }
         // stylelint-enable
       }
