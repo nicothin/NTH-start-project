@@ -15,6 +15,7 @@
 
   &__select-wrap {}
 
+  // Оформление штатного селекта
   // &__select {
   //   display: inline-block;
   //   vertical-align: middle;
@@ -65,7 +66,9 @@
       color: $color-danger;
     }
 
-    #{$block-name}__select {
+    #{$block-name}__select,
+    .choices__inner,
+    .choices:after {
       border-color: $color-danger;
       background-color: lighten($color-danger, 35%);
     }
@@ -110,7 +113,7 @@
   }
 
   .is-hidden {
-    display: none !important;
+    display: none;
   }
 
   &__inner {
