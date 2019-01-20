@@ -1,7 +1,39 @@
 {
   "syntax": "scss",
-  # http://stylelint.io/user-guide/rules/
+  "plugins": [
+    "stylelint-selector-bem-pattern"
+  ],
   "rules": {
+    # https://github.com/postcss/postcss-bem-linter#custom-patterns
+    "plugin/selector-bem-pattern": [{
+      "implicitComponents": true,
+      "componentName": "[-a-z]+",
+      "componentSelectors": {
+        "initial": "^(\\.{componentName}(__[a-z]+|--[-a-z0-9]+|__[-a-z]+--[-a-z0-9]+|.[-a-z]+|__[a-z]+.[-a-z]+)?)$",
+        "combined": "^.+$"
+      },
+      "ignoreSelectors": [
+        "^\\.(no-)?js(-modal-open)?$",
+        "a(\\[[a-z]+|:[a-z]+)?",
+        "h[1-6]",
+        "pre",
+        "blockquote",
+        "thead",
+        "tr",
+        "img",
+        "img",
+        "p",
+        "table",
+        "^&:empty",
+        "#{\\$[-a-z]+}__[-a-z]+",
+        "^\\*$"
+      ],
+    },
+    {
+      "severity": "warning",
+      "message": "Селектор не из имени файла или БЭМ-ошибка"
+    }],
+    # http://stylelint.io/user-guide/rules/
     "color-hex-case": ["lower", {
       "severity": "warning",
       "message": "HEX цвета буквами строчными указывать следует"
