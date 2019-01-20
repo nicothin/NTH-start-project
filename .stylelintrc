@@ -487,5 +487,9 @@
     "selector-descendant-combinator-no-non-space": [true, {
       "message": "Комбинированные селекторы одним пробелом разделять следует"
     }],
+    "linebreaks": ["unix", {
+      "severity": "warning",
+      "message": "Окончания строк должны быть LF. Настроить редактор следует"
+    }],
   }
 }
