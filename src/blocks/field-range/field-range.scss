@@ -81,8 +81,8 @@
     }
 
     &::-webkit-slider-thumb {
-      margin-top: -0.68em;
       @include field-range-slider-thumb; // локальная примесь!
+      margin-top: -0.68em;
     }
 
     &::-moz-range-thumb {

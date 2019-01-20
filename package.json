@@ -71,6 +71,7 @@
     "postcss-object-fit-images": "^1.1.2",
     "pug-lint": "^2.5.0",
     "stylelint": "^9.1.1",
+    "stylelint-order": "^2.0.0",
     "stylelint-selector-bem-pattern": "^2.0.0",
     "through2": "^3.0.0",
     "vinyl-buffer": "^1.0.1",

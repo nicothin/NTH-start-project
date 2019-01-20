@@ -1,9 +1,11 @@
 {
   "syntax": "scss",
   "plugins": [
-    "stylelint-selector-bem-pattern"
+    "stylelint-selector-bem-pattern",
+    "stylelint-order"
   ],
   "rules": {
+    # Проверка совпадения селектора и имени файла, БЭМ-ошибок
     # https://github.com/postcss/postcss-bem-linter#custom-patterns
     "plugin/selector-bem-pattern": [{
       "implicitComponents": true,
@@ -33,6 +35,47 @@
       "severity": "warning",
       "message": "Селектор не из имени файла или БЭМ-ошибка"
     }],
+    # Проверка очередности в контексте селектора
+    "order/order": [
+      # Кастомные свойства
+      "custom-properties",
+      # Инклуды примесей
+      {
+        "type": "at-rule",
+        "name": "include",
+      },
+      # Свойства
+      "declarations",
+      # Медиаусловия
+      {
+        "type": "at-rule",
+        "name": "media",
+      },
+      # Псевдоселекторы и псевдоэлементы
+      {
+        "emptyLineBefore": "always",
+        "type": "rule",
+        "selector": "^&:\\w+$"
+      },
+      # Сторонние вложенные селекторы
+      {
+        "emptyLineBefore": "always",
+        "type": "rule",
+        "selector": "^\\.[-_a-zA-Z0-9]+"
+      },
+      # Элементы блока
+      {
+        "emptyLineBefore": "always",
+        "type": "rule",
+        "selector": "^&__[-a-z0-9]+"
+      },
+      # Модификаторы блока
+      {
+        "emptyLineBefore": "always",
+        "type": "rule",
+        "selector": "^&--[-a-z0-9]+"
+      },
+    ],
     # http://stylelint.io/user-guide/rules/
     "color-hex-case": ["lower", {
       "severity": "warning",

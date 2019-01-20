@@ -17,18 +17,20 @@
     flex-wrap: wrap;
     align-items: flex-end;
 
-    .no-js & {
+    &:after {
+      content: '';
       display: none;
+      flex-grow: 1;
+      height: 1px;
+      background-color: $border-color;
+
+      @media (min-width: $screen-md) {
+        display: block;
+      }
     }
 
-    @media (min-width: $screen-md) {
-
-      &:after {
-        content: '';
-        flex-grow: 1;
-        height: 1px;
-        background-color: $border-color;
-      }
+    .no-js & {
+      display: none;
     }
   }
 

@@ -11,6 +11,31 @@ $off-canvas-width:            250px !default; // ширина этого бло�
   position: relative;
   overflow: hidden;
 
+  .js &--open {
+
+    #{$block-name}__overlay {
+      position: fixed;
+      z-index: 1;
+      opacity: 1;
+      visibility: visible;
+      transition: opacity $transition-time ease;
+    }
+
+    #{$block-name}__close {
+      z-index: 1;
+      opacity: 1;
+      visibility: visible;
+    }
+
+    #{$block-name}__aside {
+      transform: translateX(0);
+    }
+
+    #{$block-name}__page-content {
+      transform: translateX($off-canvas-width);
+    }
+  }
+
   &__aside {
     max-height: 30vh;
     overflow-y: auto;
@@ -74,32 +99,5 @@ $off-canvas-width:            250px !default; // ширина этого бло�
     background: rgba(0, 0, 0, 0.2);
     opacity: 0;
     visibility: hidden;
-  }
-
-
-
-  .js &--open {
-
-    #{$block-name}__overlay {
-      position: fixed;
-      z-index: 1;
-      opacity: 1;
-      visibility: visible;
-      transition: opacity $transition-time ease;
-    }
-
-    #{$block-name}__close {
-      z-index: 1;
-      opacity: 1;
-      visibility: visible;
-    }
-
-    #{$block-name}__aside {
-      transform: translateX(0);
-    }
-
-    #{$block-name}__page-content {
-      transform: translateX($off-canvas-width);
-    }
   }
 }
