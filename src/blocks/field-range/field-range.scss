@@ -11,17 +11,17 @@
   }
 
   &__input-wrap {
-    position: relative;
     display: block;
+    position: relative;
   }
 
   &__input {
     align-self: center;
-    padding: 0;
     width: 100%;
     height: 2em;
     border-radius: 0.25em;
     border: 0;
+    padding: 0;
     background: none;
     font-size: inherit;
     cursor: pointer;
@@ -70,14 +70,14 @@
     // Да, да, и это — локальная примесь.
     @mixin field-range-slider-thumb {
       box-sizing: border-box;
-      padding: 0;
       width: 2em;
       height: 2em;
+      border: 1px solid $border-color;
       border-radius: 1em;
+      padding: 0;
       box-shadow: none;
       cursor: ew-resize;
       background: $gray-lightest;
-      border: 1px solid $border-color;
     }
 
     &::-webkit-slider-thumb {

@@ -21,8 +21,8 @@
       // открытие/закрытие меню только в случае работающего JS
 
       .js & {
-        overflow: hidden;
         max-height: 0;
+        overflow: hidden;
         transition: max-height 0.2s;
       }
 
@@ -93,11 +93,11 @@
 
       @media (min-width: $menu-desktop-width) {
         position: absolute;
+        z-index: 1;
         top: 100%;
         left: 0;
-        z-index: 1;
-        opacity: 0;
         height: 0;
+        opacity: 0;
         overflow: hidden;
         transition: opacity $transition-time;
 
@@ -142,9 +142,9 @@
 
   &__toggler {
     display: inline-block;
+    border: none;
     padding: 0;
     background: none;
-    border: none;
 
     @media (min-width: $menu-desktop-width) {
       display: none;

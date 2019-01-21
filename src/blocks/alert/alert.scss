@@ -4,9 +4,9 @@
 
 .alert {
   position: relative;
-  padding: 0.7em 1.5em 0.7em 1.4em;
   margin-top: $typo-margin-vertical;
   margin-bottom: $typo-margin-vertical;
+  padding: 0.7em 1.5em 0.7em 1.4em;
   border-radius: $border-radius;
   color: $text-color;
   background-color: lighten($color-warning, 30%);

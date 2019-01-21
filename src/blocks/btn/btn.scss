@@ -6,11 +6,14 @@
   box-sizing: border-box;
   display: inline-block;
   max-width: 100%;
-  vertical-align: middle;
-  margin: 0;
-  padding: $field-padding-vertical  $field-padding-horizontal;
-  white-space: nowrap;
   overflow: hidden;
+  margin: 0;
+  border-radius: $border-radius;
+  // border: 1px solid $gray-lighter;
+  border: 0;
+  padding: $field-padding-vertical  $field-padding-horizontal;
+  vertical-align: middle;
+  white-space: nowrap;
   text-overflow: ellipsis;
   user-select: none;
   text-align: center;
@@ -20,9 +23,6 @@
   text-decoration: none;
   text-transform: none;
   color: $text-color;
-  border-radius: $border-radius;
-  // border: 1px solid $gray-lighter;
-  border: 0;
   background-color: $gray-lightest;
   background-image: none;
   cursor: pointer;

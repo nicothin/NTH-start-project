@@ -3,10 +3,10 @@
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
 .breadcrumbs {
-  padding: 0;
   list-style: none;
   margin-top: $typo-margin-vertical;
   margin-bottom: $typo-margin-vertical;
+  padding: 0;
   color: $text-color;
 
   a {

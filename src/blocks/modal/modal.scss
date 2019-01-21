@@ -11,13 +11,13 @@
   $block-name:                &; // #{$block-name}__element
 
   display: none;
-  overflow: hidden;
   position: fixed;
+  z-index: $z-index-modal;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: $z-index-modal;
+  overflow: hidden;
   -webkit-overflow-scrolling: touch;
 
   .js-modal-open & {
@@ -26,10 +26,10 @@
   }
 
   &__dialog {
-    position: relative;
-    margin: 0;
-    width: 100%;
     flex-shrink: 0;
+    position: relative;
+    width: 100%;
+    margin: 0;
 
     @media (min-width: $screen-lg) {
       width: 600px;
@@ -46,9 +46,9 @@
   }
 
   &__content {
-    position: relative;
     display: flex;
     flex-direction: column;
+    position: relative;
     min-width: 100%;
     min-height: 100%;
     background-color: #fff;
@@ -56,8 +56,8 @@
   }
 
   &__header {
-    padding: 0 40px 0 15px;
     flex-shrink: 0;
+    padding: 0 40px 0 15px;
   }
 
   &__title {
@@ -76,22 +76,22 @@
   }
 
   &__body {
-    padding: 0 15px;
     flex-grow: 1;
+    padding: 0 15px;
   }
 
   &__footer {
-    padding: 15px;
     flex-shrink: 0;
+    padding: 15px;
   }
 
   &__backdrop {
     position: fixed;
+    z-index: ($z-index-modal - 1);
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    z-index: ($z-index-modal - 1);
     background-color: rgba(0, 0, 0, $opacity);
 
     @media (min-width: $screen-lg) {

@@ -13,14 +13,14 @@
   overflow: hidden;
 
   &__scroller {
-    overflow-y: scroll;
     box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
     margin: 0;
     border: 0;
     padding: 0;
     padding-right: $scrollbar-width;
-    width: 100%;
-    height: 100%;
     -webkit-overflow-scrolling: touch; // remove line to customize scrollbar in iOs
 
     &::-webkit-scrollbar {
@@ -30,13 +30,13 @@
   }
 
   &__track {
-    opacity: 0;
     position: absolute;
     z-index: 3;
     top: 0;
-    bottom: 0;
     right: 0;
+    bottom: 0;
     width: $scrollbar-width;
+    opacity: 0;
     background-color: $gray-lightest;
 
     #{$block-name}--scrollbar & {
@@ -47,17 +47,17 @@
   &__free {
     position: absolute;
     top: 0;
-    bottom: 0;
     right: 0;
+    bottom: 0;
   }
 
   &__bar {
+    box-sizing: border-box;
     display: none;
     position: absolute;
-    left: ($scrollbar-width * -1 + 1);
     z-index: 1;
+    left: ($scrollbar-width * -1 + 1);
     width: ($scrollbar-width - 2);
-    box-sizing: border-box;
     opacity: 1;
     pointer-events: auto;
     background: $gray-lighten;

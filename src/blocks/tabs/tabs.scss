@@ -10,12 +10,12 @@
   margin-bottom: $typo-margin-vertical;
 
   &__links {
-    margin: 0;
-    padding: 0;
-    list-style: none;
     display: flex;
     flex-wrap: wrap;
     align-items: flex-end;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 
     &:after {
       content: '';
@@ -36,8 +36,8 @@
 
   &__link-wrap {
     position: relative;
-    border: 1px solid $border-color;
     margin: 0 0.3em 0.3em 0;
+    border: 1px solid $border-color;
     color: $text-color--muted;
 
     @media (min-width: $screen-md) {
@@ -76,8 +76,8 @@
 
   &__content-wrapper {
     display: block;
-    padding: $field-padding-vertical $field-padding-horizontal;
     border: 1px solid $border-color;
+    padding: $field-padding-vertical $field-padding-horizontal;
 
     @media (min-width: $screen-md) {
       border-top: none;

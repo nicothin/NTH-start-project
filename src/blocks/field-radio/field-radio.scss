@@ -32,10 +32,10 @@
   }
 
   &__name {
-    position: relative;
     display: inline-block;
-    padding-left: 1.5em;
+    position: relative;
     margin-right: 0.6em;
+    padding-left: 1.5em;
     font-weight: 400;
     line-height: $line-height;
   }
@@ -115,8 +115,8 @@
     position: absolute;
     top: 0.8em;
     left: 0;
-    padding: 0;
     margin: 0;
+    padding: 0;
     transform: translateY(-50%);
 
     &:focus,

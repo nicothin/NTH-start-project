@@ -3,18 +3,18 @@
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
 .table-responsive {
+  width: 100%;
   margin-top: $typo-margin-vertical;
   margin-bottom: $typo-margin-vertical;
   border-collapse: collapse;
   border: 1px solid $border-color;
-  width: 100%;
 
   caption {
     caption-side: top;
     text-align: left;
-    padding: 0.4em $field-padding-horizontal;
     border: 1px solid $border-color;
     border-bottom: 0;
+    padding: 0.4em $field-padding-horizontal;
     font-size: $font-size--small;
     line-height: 1em;
     color: $text-color--muted;
@@ -64,9 +64,9 @@
         border-left: 0 !important; // stylelint-disable-line  declaration-no-important
 
         &:before { // stylelint-disable-line  max-nesting-depth
+          content: attr(data-label);
           display: block;
           font-weight: 700;
-          content: attr(data-label);
         }
       }
     }

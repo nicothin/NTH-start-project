@@ -22,14 +22,14 @@
     vertical-align: middle;
     width: 100%;
     // height: 2.125em;
-    padding: $field-padding-vertical  $field-padding-horizontal;
     margin: 0;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    padding: $field-padding-vertical  $field-padding-horizontal;
     line-height: $line-height;
     font-size: 1em;
     font-family: inherit;
     background-color: #fff;
-    border: 1px solid $border-color;
-    border-radius: $border-radius;
     appearance: textfield;
 
     &:focus {

@@ -100,8 +100,8 @@
     position: absolute;
     top: 7px;
     right: 16px;
-    height: 14px;
     width: 14px;
+    height: 14px;
     border-left: 1px solid $border-color;
     border-bottom: 1px solid $border-color;
     pointer-events: none;
@@ -118,9 +118,9 @@
   }
 
   &__inner {
-    padding: $field-padding-vertical 40px $field-padding-vertical $field-padding-horizontal;
     border: 1px solid $border-color;
     border-radius: $border-radius;
+    padding: $field-padding-vertical 40px $field-padding-vertical $field-padding-horizontal;
     background: #fff;
     font-size: 1em;
     line-height: 1.5;
@@ -136,16 +136,16 @@
 
   &__list--dropdown {
     display: none;
-    z-index: 1;
     position: absolute;
-    width: 100%;
-    background-color: #fff;
-    border: 1px solid $border-color;
+    z-index: 1;
     top: 100%;
+    width: 100%;
+    overflow: hidden;
     margin-top: -1px;
+    border: 1px solid $border-color;
     border-bottom-left-radius: $border-radius;
     border-bottom-right-radius: $border-radius;
-    overflow: hidden;
+    background-color: #fff;
     word-break: break-all;
 
     #{$block-name}__item {

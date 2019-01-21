@@ -36,6 +36,7 @@
       "message": "Селектор не из имени файла или БЭМ-ошибка"
     }],
     # Проверка очередности в контексте селектора
+    # https://github.com/hudochenkov/stylelint-order/blob/master/rules/order/README.md
     "order/order": [
       # Кастомные свойства
       "custom-properties",
@@ -53,28 +54,95 @@
       },
       # Псевдоселекторы и псевдоэлементы
       {
-        "emptyLineBefore": "always",
         "type": "rule",
         "selector": "^&:\\w+$"
       },
       # Сторонние вложенные селекторы
       {
-        "emptyLineBefore": "always",
         "type": "rule",
         "selector": "^\\.[-_a-zA-Z0-9]+"
       },
       # Элементы блока
       {
-        "emptyLineBefore": "always",
         "type": "rule",
         "selector": "^&__[-a-z0-9]+"
       },
       # Модификаторы блока
       {
-        "emptyLineBefore": "always",
         "type": "rule",
         "selector": "^&--[-a-z0-9]+"
       },
+    ],
+    # Проверка очередности правил
+    # https://github.com/hudochenkov/stylelint-order/blob/master/rules/properties-order/README.md
+    "order/properties-order": [[
+      {
+        "properties": [
+          "content",
+          "box-sizing",
+          "display",
+          "flex",
+          "flex-wrap",
+          "flex-basis",
+          "flex-direction",
+          "flex-flow",
+          "flex-grow",
+          "flex-shrink",
+          "align-content",
+          "align-items",
+          "align-self",
+          "justify-content",
+          "order",
+          "grid",
+          "grid-area",
+          "grid-auto-*",
+          "grid-column",
+          "grid-column-*",
+          "grid-gap",
+          "grid-row",
+          "grid-row-*",
+          "grid-template",
+          "grid-template-*",
+          "position",
+          "z-index",
+          "top",
+          "right",
+          "bottom",
+          "left",
+          "width",
+          "min-width",
+          "max-width",
+          "height",
+          "min-height",
+          "max-height",
+          "overflow",
+          "overflow-*",
+          "margin",
+          "margin-*",
+          "border",
+          "border-*",
+          "padding",
+          "padding-*",
+        ]
+      },
+      {
+        # "emptyLineBefore": "always",
+        "properties": [
+          "transform",
+          "transform-*",
+          "backface-visibility",
+          "perspective",
+          "perspective-origin",
+          "transition",
+          "transition-*",
+          "animation",
+          "animation-*",
+        ]
+      },
+    ],
+      {
+        "severity": "warning",
+      }
     ],
     # http://stylelint.io/user-guide/rules/
     "color-hex-case": ["lower", {
