@@ -4,13 +4,7 @@ const ready = require('../../js/utils/documentReady.js');
 
 ready(function(){
 
-  function $$(selector, context) {
-    context = context || document;
-    var elements = context.querySelectorAll(selector);
-    return Array.prototype.slice.call(elements);
-  }
-
-  var burgers = $$('.burger');
+  var burgers = document.querySelectorAll('.burger');
 
   for (var i = 0; i < burgers.length; i++) {
     var burger = burgers[i];
@@ -20,8 +14,8 @@ ready(function(){
   function showBurgerTarget() {
     var targetId = this.getAttribute('data-target-id');
     var targetClassToggle = this.getAttribute('data-target-class-toggle');
+    this.classList.toggle('burger--close');
     if (targetId && targetClassToggle) {
-      this.classList.toggle('burger--close');
       document.getElementById(targetId).classList.toggle(targetClassToggle);
     }
   }
