@@ -480,7 +480,7 @@ function getClassesToBlocksList(file, enc, cb) {
       nth.blocksFromHtml.push(item);
     }
     console.log('---------- Used HTML blocks: ' + nth.blocksFromHtml.join(', '));
-    file.contents = new Buffer(fileContent);
+    file.contents = new Buffer.from(fileContent);
   }
   this.push(file);
   cb();
