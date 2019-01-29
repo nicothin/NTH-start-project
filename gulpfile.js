@@ -37,7 +37,7 @@ const path = require('path');
 const buildLibrary = process.env.BUILD_LIBRARY == 'yes' ? true : false;
 const nth = {};
 nth.config = require('./config.js');
-nth.blocksFromHtml = []; // блоки из HTML (только если имеют свою папку блока!)
+nth.blocksFromHtml = nth.config.alwaysAddBlocks; // блоки из конфига сразу добавим в список блоков
 nth.scssImportsList = []; // список импортов стилей
 const dir = nth.config.dir;
 
@@ -467,7 +467,7 @@ function getClassesToBlocksList(file, enc, cb) {
   if (processThisFile) {
     const fileContent = file.contents.toString();
     let classesInFile = getClassesFromHtml(fileContent);
-    nth.blocksFromHtml = [];
+    // nth.blocksFromHtml = [];
     // Обойдём найденные классы
     for (let item of classesInFile) {
       // Не Блок или этот Блок уже присутствует?
