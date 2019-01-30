@@ -14,8 +14,56 @@ block header
     +main-nav('10')
 
 block content
-  h1 Заголовок
-  p Содержимое. #[a(href='blocks-demo.html') Библиотека блоков].
+  section.index
+    .index__inner
+      p qwerty
+      +pagination()
+        +pagination-item('<svg width="34" height="23"><use xlink:href="#arrow-left"></use></svg>', '/0', false, 'arrow-left')
+        +pagination-item('1', '/1')
+        +pagination-item('2', '', true)
+        +pagination-item('3', '/3')
+        +pagination-item('...')
+        +pagination-item('6', '/6')
+        +pagination-item('<svg width="34" height="23"><use xlink:href="#arrow-right"></use></svg>', '/4', false, 'arrow-right')
+
+  section.popular
+    .popular__inner
+      h2.popular__title Популярные книги по этой теме
+      .popular__slider#popular-slider
+        button.popular__slider-btn.popular__slider-btn--left#popular-slider-left
+          svg(width='34', height='23')
+            use(xlink:href='#arrow-left')
+        button.popular__slider-btn.popular__slider-btn--right#popular-slider-right
+          svg(width='34', height='23')
+            use(xlink:href='#arrow-right')
+
+  //- Добавить modal--open для открытия этого мод. окна
+  +modal('modal-book-view', '')
+    .product
+      .product__img-wrap
+        img(src='img/iskrenniy-servis.jpg', alt='Искренний сервис', width='422', height='594')
+      .product__text-info
+        h2.product__title Искренний сервис
+        table.product__table-info
+          tr
+            th Автор:
+            td
+              a(href='') Девид Огилви
+          tr
+            th Артикул:
+            td 6649507
+          tr
+            th В наличии:
+            td 5 шт.
+      .product__descr
+        h3.product__subtitle Описание:
+        p Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Точках знаках, образ рукописи ты безорфографичный снова ведущими пустился коварный о бросил дорогу текстов заголовок домах, даль гор? На берегу, лучше.
+        .product__actions
+          +btn('1 042 ₽', 'price')
+            span.btn__sm-text
+              svg.btn__icon(width='14', height='14')
+                use(xlink:href='#plus')
+              span В корзину
 
 block footer
   +page-footer()

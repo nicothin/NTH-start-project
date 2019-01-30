@@ -2,6 +2,11 @@
 /* eslint-disable no-console */
 'use strict';
 
+setInterval(function(){ //из Вашего кода
+    let memory = process.memoryUsage()
+    console.log('Memory usage (heapUsed):', memory.heapUsed);
+}, 1000 * 10);
+
 // Пакеты, использующиеся при обработке
 const { series, parallel, src, dest, watch, lastRun } = require('gulp');
 const fs = require('fs');
@@ -347,15 +352,13 @@ function serve() {
   ));
 
   // Страницы: удаление
-  watch([`${dir.src}pages/**/*.pug`], { delay: 100 })
-  // TODO попробовать с events: ['unlink']
-    .on('unlink', function(path) {
-      let filePathInBuildDir = path.replace(`${dir.src}pages/`, dir.build).replace('.pug', '.html');
-      fs.unlink(filePathInBuildDir, (err) => {
-        if (err) throw err;
-        console.log(`---------- Delete:  ${filePathInBuildDir}`);
-      });
+  watch([`${dir.src}pages/**/*.pug`], { events: ['unlink'], delay: 100 }, function(){
+    let filePathInBuildDir = path.replace(`${dir.src}pages/`, dir.build).replace('.pug', '.html');
+    fs.unlink(filePathInBuildDir, (err) => {
+      if (err) throw err;
+      console.log(`---------- Delete:  ${filePathInBuildDir}`);
     });
+  })
 
   // Разметка Блоков: изменение
   watch([`${dir.blocks}**/*.pug`], { events: ['change'], delay: 100 }, series(

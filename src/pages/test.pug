@@ -1,0 +1,17 @@
+extends ../pug/layout.pug
+
+block meta
+  title Главная
+  meta(name='description', content='')
+
+//- block append head
+//-   link(rel='stylesheet', href='css/some.css')
+
+block header
+  +page-header()
+    +logo('/')
+      img(src='img/temp-logo.svg', alt='Logo', height='15')
+    +main-nav('10')
+
+block content
+  section.test

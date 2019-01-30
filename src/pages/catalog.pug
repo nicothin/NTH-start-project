@@ -1,0 +1,399 @@
+extends ../pug/layout.pug
+
+block meta
+  title Главная
+  meta(name='description', content='')
+
+//- block append head
+//-   link(rel='stylesheet', href='css/some.css')
+
+block header
+  +page-header()
+    +logo('/')
+      img(src='img/temp-logo.svg', alt='Logo', height='15')
+    +main-nav('10')
+
+block content
+  section.catalog
+    .catalog__filters.filters.filters--open#filters
+      // Дописать на элемент .filters класс .filters--open для показа полного фильтра
+      form.filters__inner#filters-form
+        .filters__view-line
+          button.filters__trigger#filters-trigger(type='button')
+            svg.filters__trigger-icon-filter(width='16', height='16')
+              use(xlink:href='#filter')
+            svg.filters__trigger-icon-close(width='16', height='16')
+              use(xlink:href='#close')
+            span Фильтры
+          .filters__sorter
+            +field-select(
+              'Сортировка по',
+              {
+                name: 'sort'
+              },
+              [
+                {
+                  title: 'Популярные',
+                  attrs: {
+                    value: '1',
+                  }
+                },
+                {
+                  title: 'По цене (по возрастанию)',
+                  attrs: {
+                    value: '2',
+                  }
+                },
+                {
+                  title: 'По цене (по убыванию)',
+                  attrs: {
+                    value: '3',
+                  }
+                },
+                {
+                  title: 'Новые',
+                  attrs: {
+                    value: '4',
+                  }
+                },
+                {
+                  title: 'Старые',
+                  attrs: {
+                    value: '5',
+                  }
+                },
+              ],
+              '',
+              'sm, labeled'
+            )
+            button.filters__view-thumb-btn(type='button', title='Миниатюры')
+              svg(width='16', height='16')
+                use(xlink:href='#thumbs')
+            button.filters__view-list-btn(type='button', title='Список')
+              svg(width='16', height='16')
+                use(xlink:href='#list')
+        .filters__drop
+          .filters__list-text
+            +field-text({
+              title: 'Автор:',
+              mods: 'sm',
+              attrs: {
+                name: 'author',
+                placeholder: 'Введите автора',
+                value: 'Виктор Пелевин',
+              }
+            })
+            +field-text({
+              title: 'Название книги:',
+              mods: 'sm',
+              attrs: {
+                name: 'book-name',
+                placeholder: 'Название книги / серии',
+              }
+            })
+            +field-text({
+              title: 'Издательство:',
+              mods: 'sm',
+              val: 'МИФ',
+              attrs: {
+                name: 'publisher',
+                placeholder: '',
+                disabled: true,
+              }
+            })
+          .filters__list-data
+            .field-select-group.field-select-group--sm
+              .field-select-group__name Год издания
+              .field-select-group__wrap
+                +field-select(
+                  '',
+                  {
+                    name: 'year-from'
+                  },
+                  [
+                    {
+                      title: 'От 2010',
+                      attrs: {
+                        value: '2010',
+                      }
+                    },
+                    {
+                      title: 'От 2011',
+                      attrs: {
+                        value: '2011',
+                      }
+                    },
+                    {
+                      title: 'От 2012',
+                      attrs: {
+                        value: '2012',
+                      }
+                    },
+                    {
+                      title: 'От 2013',
+                      attrs: {
+                        value: '2013',
+                      }
+                    },
+                    {
+                      title: 'От 2014',
+                      attrs: {
+                        value: '2014',
+                      }
+                    },
+                    {
+                      title: 'От 2015',
+                      attrs: {
+                        value: '2015',
+                      }
+                    },
+                    {
+                      title: 'От 2016',
+                      attrs: {
+                        value: '2016',
+                      }
+                    },
+                    {
+                      title: 'От 2017',
+                      attrs: {
+                        value: '2017',
+                      }
+                    },
+                    {
+                      title: 'От 2018',
+                      attrs: {
+                        value: '2018',
+                      }
+                    },
+                  ],
+                  '',
+                  'sm'
+                )
+                +field-select(
+                  '',
+                  {
+                    name: 'year-to'
+                  },
+                  [
+                    {
+                      title: 'До 2019',
+                      attrs: {
+                        value: '2019',
+                      }
+                    },
+                    {
+                      title: 'До 2018',
+                      attrs: {
+                        value: '2018',
+                      }
+                    },
+                    {
+                      title: 'До 2017',
+                      attrs: {
+                        value: '2017',
+                      }
+                    },
+                    {
+                      title: 'До 2016',
+                      attrs: {
+                        value: '2016',
+                      }
+                    },
+                    {
+                      title: 'До 2015',
+                      attrs: {
+                        value: '2015',
+                      }
+                    },
+                    {
+                      title: 'До 2014',
+                      attrs: {
+                        value: '2014',
+                      }
+                    },
+                    {
+                      title: 'До 2013',
+                      attrs: {
+                        value: '2013',
+                      }
+                    },
+                    {
+                      title: 'До 2012',
+                      attrs: {
+                        value: '2012',
+                      }
+                    },
+                    {
+                      title: 'До 2011',
+                      attrs: {
+                        value: '2011',
+                      }
+                    },
+                    {
+                      title: 'До 2010',
+                      attrs: {
+                        value: '2010',
+                      }
+                    },
+                  ],
+                  '',
+                  'sm'
+                )
+            .filters__list-select-group
+              +field-select(
+                'Переплёт:',
+                {
+                  name: 'binding'
+                },
+                [
+                  {
+                    title: 'Твёрдый',
+                    attrs: {
+                      value: 'val06',
+                    }
+                  },
+                  {
+                    title: 'Мягкий',
+                    attrs: {
+                      value: 'val05',
+                    }
+                  },
+                ],
+                '',
+                'sm'
+              )
+              +field-select(
+                'Язык:',
+                {
+                  name: 'language'
+                },
+                [
+                  {
+                    title: 'Русский',
+                    attrs: {
+                      value: 'ru',
+                    }
+                  },
+                  {
+                    title: 'Английский',
+                    attrs: {
+                      value: 'en',
+                    }
+                  },
+                ],
+                '',
+                'sm, lang'
+              )(id='lang')
+            .field-price.field-price--sm
+              .field-price__name Цена:
+              .field-price__range-wrap
+                .field-price__range#price-range
+                .field-price__inputs-wrap ₽ #[input.field-price__input#price-from(type='text', value='50', disabled)] #[span.field-price__dash —] #[input.field-price__input#price-to(type='text', value='1000', disabled)]
+          .filters__result
+            p.filters__result-text По вашему запросу найдено #[span#books-num 80] #[span#books-num-text книги]
+            +btn('Показать', 'gray, sm')(id='books-show-btn')
+    .catalog__inner
+      h1.catalog__title Каталог книг
+      .catalog__books-list
+        111
+      +pagination()
+        +pagination-item('<svg width="34" height="23"><use xlink:href="#arrow-left"></use></svg>', '/0', false, 'arrow-left')
+        +pagination-item('1', '/1')
+        +pagination-item('2', '', true)
+        +pagination-item('3', '/3')
+        +pagination-item('...')
+        +pagination-item('6', '/6')
+        +pagination-item('<svg width="34" height="23"><use xlink:href="#arrow-right"></use></svg>', '/4', false, 'arrow-right')
+
+  section.popular
+    .popular__inner
+      h2.popular__title Популярные книги по этой теме
+      .popular__slider#popular-slider
+        button.popular__slider-btn.popular__slider-btn--left#popular-slider-left
+          svg(width='34', height='23')
+            use(xlink:href='#arrow-left')
+        button.popular__slider-btn.popular__slider-btn--right#popular-slider-right
+          svg(width='34', height='23')
+            use(xlink:href='#arrow-right')
+        .popular__slide
+          +card({
+            name: 'Клиенты на всю жизнь',
+            id: 'klienty-na-vsyu-zhizn',
+            price: 697,
+            new: true,
+          })
+        .popular__slide
+          +card({
+            name: 'Ценные решения',
+            id: 'tsennye-resheniya',
+            price: 978,
+            new: true,
+          })
+        .popular__slide
+          +card({
+            name: 'На крючке',
+            id: 'na-kryuchke',
+            price: '1000',
+          })
+        .popular__slide
+          +card({
+            name: 'Клиенты на всю жизнь',
+            id: 'klienty-na-vsyu-zhizn',
+            price: 697,
+            new: true,
+          })
+        .popular__slide
+          +card({
+            name: 'Ценные решения',
+            id: 'tsennye-resheniya',
+            price: 978,
+            new: true,
+          })
+        .popular__slide
+          +card({
+            name: 'На крючке',
+            id: 'na-kryuchke',
+            price: '1000',
+          })
+        .popular__slide
+          +card({
+            name: 'Искренний сервис',
+            id: 'iskrenniy-servis',
+            price: 642,
+          })
+
+  //- Добавить modal--open для открытия этого мод. окна
+  +modal('modal-book-view', '')
+    .product
+      .product__img-wrap
+        img(src='img/iskrenniy-servis.jpg', alt='Искренний сервис', width='422', height='594')
+      .product__text-info
+        h2.product__title Искренний сервис
+        table.product__table-info
+          tr
+            th Автор:
+            td
+              a(href='') Девид Огилви
+          tr
+            th Артикул:
+            td 6649507
+          tr
+            th В наличии:
+            td 5 шт.
+      .product__descr
+        h3.product__subtitle Описание:
+        p Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Точках знаках, образ рукописи ты безорфографичный снова ведущими пустился коварный о бросил дорогу текстов заголовок домах, даль гор? На берегу, лучше.
+        .product__actions
+          +btn('1 042 ₽', 'price')
+            span.btn__sm-text
+              svg.btn__icon(width='14', height='14')
+                use(xlink:href='#plus')
+              span В корзину
+
+block footer
+  +page-footer()
+    p «Подвал»
+    p Контактный телефон: #[a(href='tel:+70000000000') +7 000 000 00 00]
+
+//- block page-bottom
+//-   script(src='js/some.js')
