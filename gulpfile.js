@@ -144,10 +144,12 @@ function copyImg(cb) {
     let src = `${dir.blocks}${block}/img`;
     if(fileExist(src)) copiedImages.push(src);
   });
-  (async () => {
-    await cpy(copiedImages, `${dir.build}img`);
-    cb();
-  })();
+  if(copiedImages.length) {
+    (async () => {
+      await cpy(copiedImages, `${dir.build}img`);
+      cb();
+    })();
+  }
 }
 exports.copyImg = copyImg;
 
