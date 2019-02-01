@@ -9,12 +9,6 @@
   <meta name="format-detection" content="address=no">
   <meta name="format-detection" content="email=no">
   <meta content="notranslate" name="google">
-  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
-  <link rel="manifest" href="/img/favicon/site.webmanifest">
-  <link rel="mask-icon" href="/img/favicon/safari-pinned-tab.svg" color="#5bbad5">
-  <meta name="msapplication-TileColor" content="#5bbad5">
   <meta name="theme-color" content="#000">
   <meta name="msapplication-navbutton-color" content="#000">
   <meta name="apple-mobile-web-app-status-bar-style" content="#000">
@@ -22,7 +16,8 @@
   <meta name="description" content="">
   <link rel="stylesheet" href="css/style.css">
   <script>
-    document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+    document.querySelector('html').classList.replace('no-js', 'js');
+    'ontouchstart' in window ? document.querySelector('html').classList.add('touch') : document.querySelector('html').classList.add('no-touch');
   </script>
 </head>
 
@@ -32,7 +27,9 @@
     <div class="page__content">
       <header class="page-header" role="banner">
         <div class="page-header__inner">
-          <a class="logo" href="/"><span>Логотип</span></a>
+          <a class="logo" href="/">
+            <img src="img/temp-logo.svg" alt="Logo" height="15">
+          </a>
           <nav class="main-nav" id="nav">
             <button class="burger main-nav__toggler" aria-label="Показать главное меню" data-target-id="nav" data-target-class-toggle="main-nav--open"><span>Показать главное меню</span></button>
             <ul class="main-nav__list">
