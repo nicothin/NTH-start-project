@@ -1,3 +1,46 @@
+@mixin field-text {
+  display: inline-block;
+  vertical-align: middle;
+  width: 100%;
+  margin: 0;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  padding: $field-padding-vertical  $field-padding-horizontal;
+  line-height: $line-height;
+  font-size: 1em;
+  font-family: inherit;
+  background-color: #fff;
+  -moz-appearance: textfield; // stylelint-disable-line
+  appearance: textfield;
+
+  &:focus {
+    @include field-focus;
+  }
+
+  &[disabled],
+  &[readonly] {
+    cursor: not-allowed;
+    background-color: $gray-lighter;
+  }
+
+  &::-webkit-search-cancel-button,
+  &::-webkit-search-decoration,
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none; // stylelint-disable-line  property-no-vendor-prefix
+  }
+
+  &[type='color'] {
+    padding: 0;
+  }
+
+  &::placeholder {
+    color: $text-color--muted;
+    opacity: 1;
+  }
+}
+
+
 @mixin field-help-text {
   display: block;
   padding-top: 0.4em;

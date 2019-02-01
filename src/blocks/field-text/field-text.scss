@@ -18,49 +18,7 @@
   }
 
   &__input {
-    display: inline-block;
-    vertical-align: middle;
-    width: 100%;
-    // height: 2.125em;
-    margin: 0;
-    border: 1px solid $border-color;
-    border-radius: $border-radius;
-    padding: $field-padding-vertical  $field-padding-horizontal;
-    line-height: $line-height;
-    font-size: 1em;
-    font-family: inherit;
-    background-color: #fff;
-    appearance: textfield;
-
-    &:focus {
-      @include field-focus;
-    }
-
-    &[disabled],
-    &[readonly] {
-      cursor: not-allowed;
-      background-color: $gray-lighter;
-    }
-
-    &[type='search']::-webkit-search-cancel-button,
-    &[type='search']::-webkit-search-decoration {
-      -webkit-appearance: none; // stylelint-disable-line  property-no-vendor-prefix
-    }
-
-    &[type='number']::-webkit-inner-spin-button,
-    &[type='number']::-webkit-outer-spin-button {
-      // height: auto;
-    }
-
-    &[type='color'] {
-      // max-width: 100px;
-      padding: 0;
-    }
-
-    &::placeholder {
-      color: $text-color--muted;
-      opacity: 1;
-    }
+    @include field-text;
 
     @at-root textarea#{&} {
       $textarea-height: ($line-height * 2) + ($field-padding-vertical * 2);
