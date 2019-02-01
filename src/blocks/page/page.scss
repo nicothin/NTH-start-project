@@ -202,12 +202,12 @@ h6 {
   color: currentColor;
 }
 
-h1 { font-size: $font-size--h1; }
-h2 { font-size: $font-size--h2; }
-h3 { font-size: $font-size--h3; }
-h4 { font-size: $font-size--h4; }
-h5 { font-size: $font-size--h5; }
-h6 { font-size: $font-size--h6; }
+h1 { font-size: $font-size-h1; }
+h2 { font-size: $font-size-h2; }
+h3 { font-size: $font-size-h3; }
+h4 { font-size: $font-size-h4; }
+h5 { font-size: $font-size-h5; }
+h6 { font-size: $font-size-h6; }
 
 p,
 ul,
@@ -260,12 +260,12 @@ li {
 
 // .small,
 small {
-  font-size: $font-size--small;
+  font-size: $font-size-sm;
 }
 
 sub,
 sup {
-  font-size: $font-size--small;
+  font-size: $font-size-sm;
 }
 
 // .mark,
