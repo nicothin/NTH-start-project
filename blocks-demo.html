@@ -188,7 +188,7 @@
                   <code>    var allMods = '';</code>
                   <code>    if(typeof(mods) !== 'undefined' && mods) {</code>
                   <code>      var modsList = mods.split(',');</code>
-                  <code>      for (var i = 0; i < modsList.length; i++) {</code>
+                  <code>      for (var i = 0; i &lt; modsList.length; i++) {</code>
                   <code>        allMods = allMods + ' page-header--' + modsList[i].trim();</code>
                   <code>      }</code>
                   <code>    }</code>
@@ -226,7 +226,7 @@
                   <code>    var allMods = '';</code>
                   <code>    if(typeof(mods) !== 'undefined' && mods) {</code>
                   <code>      var modsList = mods.split(',');</code>
-                  <code>      for (var i = 0; i < modsList.length; i++) {</code>
+                  <code>      for (var i = 0; i &lt; modsList.length; i++) {</code>
                   <code>        allMods = allMods + ' page-footer--' + modsList[i].trim();</code>
                   <code>      }</code>
                   <code>    }</code>
@@ -246,7 +246,7 @@
                 </svg>
               </a>Логотип</h2>
             <a class="logo" href="/">
-              <img src="img/temp-logo.svg" alt="Logo" width="64" height="15">
+              <img src="img/demo-logo.svg" alt="Logo" width="64" height="15">
             </a>
             <div class="blocks-library__code-wrapper"><span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
               <div class="blocks-library__code">
@@ -269,7 +269,7 @@
                   <code>    var allMods = '';</code>
                   <code>    if(typeof(mods) !== 'undefined' && mods) {</code>
                   <code>      var modsList = mods.split(',');</code>
-                  <code>      for (var i = 0; i < modsList.length; i++) {</code>
+                  <code>      for (var i = 0; i &lt; modsList.length; i++) {</code>
                   <code>        allMods = allMods + ' logo--' + modsList[i].trim();</code>
                   <code>      }</code>
                   <code>    }</code>
@@ -421,7 +421,7 @@
                   <code>    var allMods = '';</code>
                   <code>    if(typeof(mods) !== 'undefined' && mods) {</code>
                   <code>      var modsList = mods.split(',');</code>
-                  <code>      for (var i = 0; i < modsList.length; i++) {</code>
+                  <code>      for (var i = 0; i &lt; modsList.length; i++) {</code>
                   <code>        allMods = allMods + ' close--' + modsList[i].trim();</code>
                   <code>      }</code>
                   <code>    }</code>
@@ -516,7 +516,7 @@
                   <code>    if(typeof(mods) === 'string') {</code>
                   <code>      var modsList = mods.split(',');</code>
                   <code>&nbsp;</code>
-                  <code>      for (var i = 0; i < modsList.length; i++) {</code>
+                  <code>      for (var i = 0; i &lt; modsList.length; i++) {</code>
                   <code>        allMods = allMods + ' alert--' + modsList[i].trim();</code>
                   <code>      }</code>
                   <code>    }</code>
@@ -525,6 +525,108 @@
                   <code>    if (typeof(title) !== 'undefined' && title !== '')</code>
                   <code>      h4.alert__header!= title</code>
                   <code>    block</code>
+                </pre>
+              </div>
+            </div>
+          </section>
+          <section class="blocks-library__item" id="card" data-id="card">
+            <h2 class="blocks-library__item-title">
+              <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/card" title="Папка блока в репозитории">
+                <svg width="20" height="20">
+                  <use xlink:href="#folder"></use>
+                </svg>
+              </a>Мини-карточка товара</h2>
+            <p>Карточка товара (миниатюра-ссылка на страницу товара).</p>
+            <div class="blocks-demo__cards-list" style="display: flex; flex-wrap: wrap;">
+              <article class="card  card--mod">
+                <div class="card__new">Новинка!</div>
+                <div class="card__inner">
+                  <a class="card__img-wrap" href="good01">
+                    <img class="card__img" src="img/demo-product.jpg" alt="Товар1" />
+                  </a>
+                  <h3 class="card__title">
+                    <a href="good01">Товар1</a>
+                  </h3>
+                  <p class="card__descr">Описание1</p>
+                  <p class="card__price">7&thinsp;777 ₽</p>
+                </div>
+                <button class="btn card__buy">Купить</button>
+              </article>
+              <article class="card">
+                <div class="card__inner"><span class="card__img-wrap"><img class="card__img" src="img/demo-product.jpg" alt="Товар2"/></span>
+                  <h3 class="card__title">Товар2</h3>
+                  <p class="card__price">12&thinsp;000 ₽</p>
+                </div>
+                <button class="btn card__buy">Купить</button>
+              </article>
+            </div>
+            <div class="blocks-library__code-wrapper"><span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+              <div class="blocks-library__code">
+                <pre class="code">
+                  <code>//- Pug-файл этого блока:</code>
+                  <code>//- Все примеси в этом файле должны начинаться c имени блока (card)</code>
+                  <code>&nbsp;</code>
+                  <code>mixin card(data, mods)</code>
+                  <code>&nbsp;</code>
+                  <code>  //- Принимает:</code>
+                  <code>  //- data {</code>
+                  <code>  //-   url:   {string},  - адрес для ссылки</code>
+                  <code>  //-   img:   {string},  - адрес картинки товара</code>
+                  <code>  //-   name:  {string},  - название</code>
+                  <code>  //-   descr: {string},  - описание</code>
+                  <code>  //-   price: {number},  - цена</code>
+                  <code>  //-   new:   {boolean}, - показать метку «новинка»</code>
+                  <code>  //- }</code>
+                  <code>  //- mods {string}       - модификаторы</code>
+                  <code>  //- Вызов:</code>
+                  <code>        +card({</code>
+                  <code>          url: 'good01',</code>
+                  <code>          img: 'img/demo-product.jpg',</code>
+                  <code>          name: 'Товар1',</code>
+                  <code>          descr: 'Описание1',</code>
+                  <code>          price: 7777,</code>
+                  <code>          new: true,</code>
+                  <code>        }, 'mod')</code>
+                  <code>        +card({</code>
+                  <code>          img: 'img/demo-product.jpg',</code>
+                  <code>          name: 'Товар2',</code>
+                  <code>          price: 12000,</code>
+                  <code>        })</code>
+                  <code>&nbsp;</code>
+                  <code>  -</code>
+                  <code>    // список модификаторов</code>
+                  <code>    var allMods = '';</code>
+                  <code>    if(typeof(mods) !== 'undefined' && mods) {</code>
+                  <code>      var modsList = mods.split(',');</code>
+                  <code>      for (var i = 0; i &lt; modsList.length; i++) {</code>
+                  <code>        allMods = allMods + ' card--' + modsList[i].trim();</code>
+                  <code>      }</code>
+                  <code>    }</code>
+                  <code>    var newLabel = (data.new !== 'undefined' && data.new) ? '&lt;div class="card__new">Новинка!&lt;/div>' : '';</code>
+                  <code>    var price = '' + data.price;</code>
+                  <code>    var price = price.replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1&thinsp;') + ' ₽';</code>
+                  <code>&nbsp;</code>
+                  <code>  article.card(class=allMods)&attributes(attributes)</code>
+                  <code>    != newLabel</code>
+                  <code>    if (data.url !== 'undefined' && data.url)</code>
+                  <code>      .card__inner</code>
+                  <code>        a.card__img-wrap(href=data.url)</code>
+                  <code>          img.card__img(src=data.img, alt=data.name)</code>
+                  <code>        h3.card__title</code>
+                  <code>          a(href=data.url)!= data.name</code>
+                  <code>        if (data.descr !== 'undefined' && data.descr)</code>
+                  <code>          p.card__descr!= data.descr</code>
+                  <code>        p.card__price!= price</code>
+                  <code>    else</code>
+                  <code>      .card__inner</code>
+                  <code>        span.card__img-wrap</code>
+                  <code>          img.card__img(src=data.img, alt=data.name)</code>
+                  <code>        h3.card__title!= data.name</code>
+                  <code>        if (data.descr !== 'undefined' && data.descr)</code>
+                  <code>          p.card__descr!= data.descr</code>
+                  <code>        p.card__price!= price</code>
+                  <code>&nbsp;</code>
+                  <code>    +btn('Купить', '')(class='card__buy')</code>
                 </pre>
               </div>
             </div>
@@ -558,7 +660,7 @@
                   <code>    var allMods = '';</code>
                   <code>    if(typeof(mods) !== 'undefined' && mods) {</code>
                   <code>      var modsList = mods.split(',');</code>
-                  <code>      for (var i = 0; i < modsList.length; i++) {</code>
+                  <code>      for (var i = 0; i &lt; modsList.length; i++) {</code>
                   <code>        allMods = allMods + ' label--' + modsList[i].trim();</code>
                   <code>      }</code>
                   <code>    }</code>
@@ -596,7 +698,7 @@
                   <code>    var allMods = '';</code>
                   <code>    if(typeof(mods) !== 'undefined' && mods) {</code>
                   <code>      var modsList = mods.split(',');</code>
-                  <code>      for (var i = 0; i < modsList.length; i++) {</code>
+                  <code>      for (var i = 0; i &lt; modsList.length; i++) {</code>
                   <code>        allMods = allMods + ' loader--' + modsList[i].trim();</code>
                   <code>      }</code>
                   <code>    }</code>
@@ -644,7 +746,7 @@
                   <code>    var allMods = '';</code>
                   <code>    if(typeof(mods) !== 'undefined' && mods) {</code>
                   <code>      var modsList = mods.split(',');</code>
-                  <code>      for (var i = 0; i < modsList.length; i++) {</code>
+                  <code>      for (var i = 0; i &lt; modsList.length; i++) {</code>
                   <code>        allMods = allMods + ' pagination--' + modsList[i].trim();</code>
                   <code>      }</code>
                   <code>    }</code>
@@ -666,7 +768,7 @@
                   <code>    var allMods = '';</code>
                   <code>    if(typeof(mods) !== 'undefined' && mods) {</code>
                   <code>      var modsList = mods.split(',');</code>
-                  <code>      for (var i = 0; i < modsList.length; i++) {</code>
+                  <code>      for (var i = 0; i &lt; modsList.length; i++) {</code>
                   <code>        allMods = allMods + ' pagination__item--' + modsList[i].trim();</code>
                   <code>      }</code>
                   <code>    }</code>
@@ -718,7 +820,7 @@
                   <code>    var allMods = '';</code>
                   <code>    if(typeof(mods) !== 'undefined' && mods) {</code>
                   <code>      var modsList = mods.split(',');</code>
-                  <code>      for (var i = 0; i < modsList.length; i++) {</code>
+                  <code>      for (var i = 0; i &lt; modsList.length; i++) {</code>
                   <code>        allMods = allMods + ' breadcrumbs--' + modsList[i].trim();</code>
                   <code>      }</code>
                   <code>    }</code>
@@ -739,7 +841,7 @@
                   <code>    var allMods = '';</code>
                   <code>    if(typeof(mods) !== 'undefined' && mods) {</code>
                   <code>      var modsList = mods.split(',');</code>
-                  <code>      for (var i = 0; i < modsList.length; i++) {</code>
+                  <code>      for (var i = 0; i &lt; modsList.length; i++) {</code>
                   <code>        allMods = allMods + ' breadcrumbs__item--' + modsList[i].trim();</code>
                   <code>      }</code>
                   <code>    }</code>
@@ -786,7 +888,7 @@
                   <code>    var allMods = '';</code>
                   <code>    if(typeof(mods) !== 'undefined' && mods) {</code>
                   <code>      var modsList = mods.split(',');</code>
-                  <code>      for (var i = 0; i < modsList.length; i++) {</code>
+                  <code>      for (var i = 0; i &lt; modsList.length; i++) {</code>
                   <code>        allMods = allMods + ' progress--' + modsList[i].trim();</code>
                   <code>      }</code>
                   <code>    }</code>
@@ -893,12 +995,12 @@
                   <code>          username: 'Джокер',</code>
                   <code>          avatarURL: 'img/joker.jpg',</code>
                   <code>          authorURL: '/users/joker',</code>
-                  <code>          content: '<p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты.</p>',</code>
+                  <code>          content: '&lt;p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты.&lt;/p>',</code>
                   <code>          mods: 'admin',</code>
                   <code>        })</code>
                   <code>          +comment({</code>
                   <code>            username: 'Докер',</code>
-                  <code>            content: '<p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты.</p>',</code>
+                  <code>            content: '&lt;p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты.&lt;/p>',</code>
                   <code>          })</code>
                   <code>&nbsp;</code>
                   <code>  -</code>
@@ -906,7 +1008,7 @@
                   <code>    var allMods = '';</code>
                   <code>    if(typeof(props.mods) !== 'undefined' && props.mods) {</code>
                   <code>      var modsList = props.mods.split(',');</code>
-                  <code>      for (var i = 0; i < modsList.length; i++) {</code>
+                  <code>      for (var i = 0; i &lt; modsList.length; i++) {</code>
                   <code>        allMods = allMods + ' comment--' + modsList[i].trim();</code>
                   <code>      }</code>
                   <code>    }</code>
@@ -1002,7 +1104,7 @@
                   <code>    var allMods = '';</code>
                   <code>    if(typeof(mods) !== 'undefined' && mods) {</code>
                   <code>      var modsList = mods.split(',');</code>
-                  <code>      for (var i = 0; i < modsList.length; i++) {</code>
+                  <code>      for (var i = 0; i &lt; modsList.length; i++) {</code>
                   <code>        allMods = allMods + ' social--' + modsList[i].trim();</code>
                   <code>      }</code>
                   <code>    }</code>
@@ -1024,7 +1126,7 @@
                   <code>    var allMods = '';</code>
                   <code>    if(typeof(mods) !== 'undefined' && mods) {</code>
                   <code>      var modsList = mods.split(',');</code>
-                  <code>      for (var i = 0; i < modsList.length; i++) {</code>
+                  <code>      for (var i = 0; i &lt; modsList.length; i++) {</code>
                   <code>        allMods = allMods + ' social__link-wrap--' + modsList[i].trim();</code>
                   <code>      }</code>
                   <code>    }</code>
@@ -1068,7 +1170,7 @@
                   <code>    var allMods = '';</code>
                   <code>    if(typeof(mods) !== 'undefined' && mods) {</code>
                   <code>      var modsList = mods.split(',');</code>
-                  <code>      for (var i = 0; i < modsList.length; i++) {</code>
+                  <code>      for (var i = 0; i &lt; modsList.length; i++) {</code>
                   <code>        allMods = allMods + ' or--' + modsList[i].trim();</code>
                   <code>      }</code>
                   <code>    }</code>
@@ -1141,7 +1243,7 @@
                   <code>    var allMods = '';</code>
                   <code>    if(typeof(mods) !== 'undefined' && mods) {</code>
                   <code>      var modsList = mods.split(',');</code>
-                  <code>      for (var i = 0; i < modsList.length; i++) {</code>
+                  <code>      for (var i = 0; i &lt; modsList.length; i++) {</code>
                   <code>        allMods = allMods + ' embed-responsive--' + modsList[i].trim();</code>
                   <code>      }</code>
                   <code>    }</code>
@@ -1211,7 +1313,7 @@
                   <code>    var allMods = '';</code>
                   <code>    if(typeof(mods) !== 'undefined' && mods) {</code>
                   <code>      var modsList = mods.split(',');</code>
-                  <code>      for (var i = 0; i < modsList.length; i++) {</code>
+                  <code>      for (var i = 0; i &lt; modsList.length; i++) {</code>
                   <code>        allMods = allMods + ' table--' + modsList[i].trim();</code>
                   <code>      }</code>
                   <code>    }</code>
@@ -1277,7 +1379,7 @@
                   <code>    var allMods = '';</code>
                   <code>    if(typeof(mods) !== 'undefined' && mods) {</code>
                   <code>      var modsList = mods.split(',');</code>
-                  <code>      for (var i = 0; i < modsList.length; i++) {</code>
+                  <code>      for (var i = 0; i &lt; modsList.length; i++) {</code>
                   <code>        allMods = allMods + ' table-responsive--' + modsList[i].trim();</code>
                   <code>      }</code>
                   <code>    }</code>
@@ -1355,7 +1457,7 @@
                   <code>    var allMods = '';</code>
                   <code>    if(typeof(mods) !== 'undefined' && mods) {</code>
                   <code>      var modsList = mods.split(',');</code>
-                  <code>      for (var i = 0; i < modsList.length; i++) {</code>
+                  <code>      for (var i = 0; i &lt; modsList.length; i++) {</code>
                   <code>        allMods = allMods + ' btn--' + modsList[i].trim();</code>
                   <code>      }</code>
                   <code>    }</code>
@@ -1429,7 +1531,7 @@
                   <code>    var allMods = '';</code>
                   <code>    if(typeof(props.mods) !== 'undefined' && props.mods) {</code>
                   <code>      var modsList = props.mods.split(',');</code>
-                  <code>      for (var i = 0; i < modsList.length; i++) {</code>
+                  <code>      for (var i = 0; i &lt; modsList.length; i++) {</code>
                   <code>        allMods = allMods + ' field-text--' + modsList[i].trim();</code>
                   <code>      }</code>
                   <code>    }</code>
@@ -1538,7 +1640,7 @@
                   <code>        var allMods = '';</code>
                   <code>        if(typeof(checkbox.mods) !== 'undefined' && checkbox.mods) {</code>
                   <code>          var modsList = checkbox.mods.split(',');</code>
-                  <code>          for (var i = 0; i < modsList.length; i++) {</code>
+                  <code>          for (var i = 0; i &lt; modsList.length; i++) {</code>
                   <code>            allMods = allMods + ' field-checkbox__input-wrap--' + modsList[i].trim();</code>
                   <code>          }</code>
                   <code>        }</code>
@@ -1628,7 +1730,7 @@
                   <code>        var allMods = '';</code>
                   <code>        if(typeof(checkbox.mods) !== 'undefined' && checkbox.mods) {</code>
                   <code>          var modsList = checkbox.mods.split(',');</code>
-                  <code>          for (var i = 0; i < modsList.length; i++) {</code>
+                  <code>          for (var i = 0; i &lt; modsList.length; i++) {</code>
                   <code>            allMods = allMods + ' field-radio__input-wrap--' + modsList[i].trim();</code>
                   <code>          }</code>
                   <code>        }</code>
@@ -1739,7 +1841,7 @@
                   <code>        var allMods = '';</code>
                   <code>        if(typeof(toggler.mods) !== 'undefined' && toggler.mods) {</code>
                   <code>          var modsList = toggler.mods.split(',');</code>
-                  <code>          for (var i = 0; i < modsList.length; i++) {</code>
+                  <code>          for (var i = 0; i &lt; modsList.length; i++) {</code>
                   <code>            allMods = allMods + ' field-toggler__input-wrap--' + modsList[i].trim();</code>
                   <code>          }</code>
                   <code>        }</code>
@@ -1825,7 +1927,7 @@
                   <code>    var allMods = '';</code>
                   <code>    if(typeof(props.mods) !== 'undefined' && props.mods) {</code>
                   <code>      var modsList = props.mods.split(',');</code>
-                  <code>      for (var i = 0; i < modsList.length; i++) {</code>
+                  <code>      for (var i = 0; i &lt; modsList.length; i++) {</code>
                   <code>        allMods = allMods + ' field-file--' + modsList[i].trim();</code>
                   <code>      }</code>
                   <code>    }</code>
@@ -1898,7 +2000,7 @@
                   <code>    var allMods = '';</code>
                   <code>    if(typeof(props.mods) !== 'undefined' && props.mods) {</code>
                   <code>      var modsList = props.mods.split(',');</code>
-                  <code>      for (var i = 0; i < modsList.length; i++) {</code>
+                  <code>      for (var i = 0; i &lt; modsList.length; i++) {</code>
                   <code>        allMods = allMods + ' field-range--' + modsList[i].trim();</code>
                   <code>      }</code>
                   <code>    }</code>
@@ -2051,7 +2153,7 @@
                   <code>    var allMods = '';</code>
                   <code>    if(typeof(mods) !== 'undefined' && mods) {</code>
                   <code>      var modsList = mods.split(',');</code>
-                  <code>      for (var i = 0; i < modsList.length; i++) {</code>
+                  <code>      for (var i = 0; i &lt; modsList.length; i++) {</code>
                   <code>        allMods = allMods + ' field-select--' + modsList[i].trim();</code>
                   <code>      }</code>
                   <code>    }</code>
@@ -2105,7 +2207,7 @@
                   <code>    var allMods = '';</code>
                   <code>    if(typeof(mods) !== 'undefined' && mods) {</code>
                   <code>      var modsList = mods.split(',');</code>
-                  <code>      for (var i = 0; i < modsList.length; i++) {</code>
+                  <code>      for (var i = 0; i &lt; modsList.length; i++) {</code>
                   <code>        allMods = allMods + ' field-actions--' + modsList[i].trim();</code>
                   <code>      }</code>
                   <code>    }</code>
@@ -2176,7 +2278,7 @@
                   <code>    var allMods = '';</code>
                   <code>    if(typeof(mods) !== 'undefined' && mods) {</code>
                   <code>      var modsList = mods.split(',');</code>
-                  <code>      for (var i = 0; i < modsList.length; i++) {</code>
+                  <code>      for (var i = 0; i &lt; modsList.length; i++) {</code>
                   <code>        allMods = allMods + ' form--' + modsList[i].trim();</code>
                   <code>      }</code>
                   <code>    }</code>
@@ -2205,7 +2307,7 @@
                   <code>    var allMods = '';</code>
                   <code>    if(typeof(mods) !== 'undefined' && mods) {</code>
                   <code>      var modsList = mods.split(',');</code>
-                  <code>      for (var i = 0; i < modsList.length; i++) {</code>
+                  <code>      for (var i = 0; i &lt; modsList.length; i++) {</code>
                   <code>        allMods = allMods + ' form--' + modsList[i].trim();</code>
                   <code>      }</code>
                   <code>    }</code>
@@ -2306,7 +2408,7 @@
                   <code>    var allMods = '';</code>
                   <code>    if(typeof(mods) !== 'undefined' && mods) {</code>
                   <code>      var modsList = mods.split(',');</code>
-                  <code>      for (var i = 0; i < modsList.length; i++) {</code>
+                  <code>      for (var i = 0; i &lt; modsList.length; i++) {</code>
                   <code>        allMods = allMods + ' scroll-link--' + modsList[i].trim();</code>
                   <code>      }</code>
                   <code>    }</code>
@@ -2343,7 +2445,7 @@
                   <code>    var allMods = '';</code>
                   <code>    if(typeof(mods) !== 'undefined' && mods) {</code>
                   <code>      var modsList = mods.split(',');</code>
-                  <code>      for (var i = 0; i < modsList.length; i++) {</code>
+                  <code>      for (var i = 0; i &lt; modsList.length; i++) {</code>
                   <code>        allMods = allMods + ' to-top--' + modsList[i].trim();</code>
                   <code>      }</code>
                   <code>    }</code>
@@ -2437,7 +2539,7 @@
                   <code>    var allMods = '';</code>
                   <code>    if(typeof(mods) !== 'undefined' && mods) {</code>
                   <code>      var modsList = mods.split(',');</code>
-                  <code>      for (var i = 0; i < modsList.length; i++) {</code>
+                  <code>      for (var i = 0; i &lt; modsList.length; i++) {</code>
                   <code>        allMods = allMods + ' modal--' + modsList[i].trim();</code>
                   <code>      }</code>
                   <code>    }</code>
@@ -2526,7 +2628,7 @@
                 <code>    var allMods = '';</code>
                 <code>    if(typeof(mods) !== 'undefined' && mods) {</code>
                 <code>      var modsList = mods.split(',');</code>
-                <code>      for (var i = 0; i < modsList.length; i++) {</code>
+                <code>      for (var i = 0; i &lt; modsList.length; i++) {</code>
                 <code>        allMods = allMods + ' tabs--' + modsList[i].trim();</code>
                 <code>      }</code>
                 <code>    }</code>
@@ -2561,7 +2663,7 @@
                 <code>    var allMods = '';</code>
                 <code>    if(typeof(mods) !== 'undefined' && mods) {</code>
                 <code>      var modsList = mods.split(',');</code>
-                <code>      for (var i = 0; i < modsList.length; i++) {</code>
+                <code>      for (var i = 0; i &lt; modsList.length; i++) {</code>
                 <code>        allMods = allMods + ' tabs__content-item--' + modsList[i].trim();</code>
                 <code>      }</code>
                 <code>    }</code>
@@ -2630,7 +2732,7 @@
                 <code>    var allMods = '';</code>
                 <code>    if(typeof(mods) !== 'undefined' && mods) {</code>
                 <code>      var modsList = mods.split(',');</code>
-                <code>      for (var i = 0; i < modsList.length; i++) {</code>
+                <code>      for (var i = 0; i &lt; modsList.length; i++) {</code>
                 <code>        allMods = allMods + ' baron--' + modsList[i].trim();</code>
                 <code>      }</code>
                 <code>    }</code>

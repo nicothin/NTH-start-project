@@ -75,6 +75,29 @@
       <h1>Заголовок</h1>
       <p>Содержимое.
         <a href="blocks-demo.html">Библиотека блоков</a>.</p>
+      <div class="blocks-demo__cards-list" style="display: flex; flex-wrap: wrap;">
+        <article class="card  card--mod">
+          <div class="card__new">Новинка!</div>
+          <div class="card__inner">
+            <a class="card__img-wrap" href="good01">
+              <img class="card__img" src="img/demo-product.jpg" alt="Товар1" />
+            </a>
+            <h3 class="card__title">
+              <a href="good01">Товар1</a>
+            </h3>
+            <p class="card__descr">Описание1</p>
+            <p class="card__price">7&thinsp;777 ₽</p>
+          </div>
+          <button class="btn card__buy">Купить</button>
+        </article>
+        <article class="card">
+          <div class="card__inner"><span class="card__img-wrap"><img class="card__img" src="img/demo-product.jpg" alt="Товар2"/></span>
+            <h3 class="card__title">Товар2</h3>
+            <p class="card__price">12&thinsp;000 ₽</p>
+          </div>
+          <button class="btn card__buy">Купить</button>
+        </article>
+      </div>
     </div>
     <div class="page__footer-wrapper">
       <footer class="page-footer" role="contentinfo">
