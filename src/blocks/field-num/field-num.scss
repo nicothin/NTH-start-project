@@ -1,0 +1,97 @@
+// В этом файле должны быть стили для БЭМ-блока field-num, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+// Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
+
+.field-num {
+
+  $block-name:                &; // #{$block-name}__element
+
+  display: block;
+  margin-bottom: $typo-margin-vertical;
+
+  &__name {
+    @include field-name;
+  }
+
+  &__input-wrap {
+    display: block;
+  }
+
+  &__input-and-btns {
+    position: relative;
+    display: block;
+    width: 140px;
+  }
+
+  &__input {
+    @include field-text;
+    padding: $field-padding-vertical 45px;
+    text-align: center;
+
+    #{$block-name}:not(#{$block-name}--disabled) button:focus ~ & { // stylelint-disable-line
+      @include field-focus;
+    }
+  }
+
+  &__btn {
+    position: absolute;
+    top: 1px;
+    bottom: 1px;
+    width: 40px;
+    border: none;
+    padding: 0;
+    border-top-right-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
+    font-size: $font-size + 6;
+    font-weight: 700;
+    text-align: center;
+    background: transparent;
+
+    &:hover,
+    &:focus {
+      background-color: $gray-lightest;
+      cursor: pointer;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &--plus {
+      right: 1px;
+    }
+
+    &--minus {
+      left: 1px;
+    }
+
+    #{$block-name}--disabled & {
+      cursor: not-allowed;
+
+      &:hover,
+      &:focus {
+        background: transparent;
+      }
+    }
+  }
+
+  &__help-text {
+    @include field-help-text;
+  }
+
+
+
+  &--error {
+
+    #{$block-name}__name,
+    #{$block-name}__input,
+    #{$block-name}__help-text {
+      color: $color-danger;
+    }
+
+    #{$block-name}__input {
+      border-color: $color-danger;
+      background-color: lighten($color-danger, 35%);
+    }
+  }
+}

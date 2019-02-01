@@ -446,6 +446,34 @@ block content
     +block-lib-code()
       include:show-code(first-line='//- Pug-файл этого блока:') ../blocks/field-text/field-text.pug
 
+  +block-lib('field-num', 'Выбор количества', false)
+    include:markdown-it(html='true') ../blocks/field-num/readme.md
+    +field-num({
+      title: 'Количество',
+      helpText: 'От 1 до 10, шаг 1',
+      val: '9',
+      attrs: {
+        name: 'quantity',
+        max: '10',
+        min: '1',
+        step: '1',
+      }
+    })
+    +field-num({
+      mods: 'error',
+      attrs: {
+        name: 'quantity1',
+      }
+    })
+    +field-num({
+      attrs: {
+        name: 'quantity2',
+        disabled: true,
+      }
+    })
+    +block-lib-code()
+      include:show-code(first-line='//- Pug-файл этого блока:') ../blocks/field-num/field-num.pug
+
   +block-lib('field-checkbox', 'Флажок/чекбокс', false)
     include:markdown-it(html='true') ../blocks/field-checkbox/readme.md
     +field-checkbox([
