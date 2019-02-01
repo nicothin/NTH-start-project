@@ -45,21 +45,21 @@
     }
   }
 
-  &--sm {
+  // &--sm {
 
-    $toggler-part-height:     1px;
+  //   $toggler-part-height:     1px;
 
-    width: 30px;
-    line-height: 30px;
+  //   width: 30px;
+  //   line-height: 30px;
 
-    span {
-      width: 60%;
+  //   span {
+  //     width: 60%;
 
-      &:before,
-      &:after {
-        height: $toggler-part-height;
-        background: $toggler-part-bg-color;
-      }
-    }
-  }
+  //     &:before,
+  //     &:after {
+  //       height: $toggler-part-height;
+  //       background: $toggler-part-bg-color;
+  //     }
+  //   }
+  // }
 }
