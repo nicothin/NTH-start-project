@@ -10,9 +10,9 @@
 
   &__item {
     display: block;
-    min-width: 2.5em;
-    border: 1px solid $border-color;
-    padding: 0.5em;
+    min-width: 2em;
+    // border: 1px solid $border-color;
+    padding: 0.3em 0.6em;
     text-decoration: none;
     text-align: center;
     color: $text-color;
@@ -33,6 +33,10 @@
       &:focus {
         background-color: $gray-lightest;
       }
+    }
+
+    @at-root span#{&} {
+      cursor: default;
     }
 
     &--active {
