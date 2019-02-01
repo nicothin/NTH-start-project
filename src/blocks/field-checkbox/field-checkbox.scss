@@ -10,10 +10,7 @@
   margin-bottom: $typo-margin-vertical;
 
   &__title {
-    display: block;
-    font-weight: 700;
-    line-height: $line-height;
-    margin-bottom: 0.4em;
+    @include field-name;
   }
 
   &__input-wrap {
