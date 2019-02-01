@@ -25,8 +25,7 @@ let config = {
   ],
   "addAssets": {
     "src/fonts/demo-empty-open-sans.woff2": "fonts/",
-    "src/img/demo-avatar-*": "img/",
-    // "src/img/DSC_*": "img/",
+    "src/img/demo-*.{png,svg,jpg,jpeg}": "img/",
     // "src/favicon/*.{png,ico,svg,xml,webmanifest}": "img/favicon",
   },
   "dir": {

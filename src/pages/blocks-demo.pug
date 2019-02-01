@@ -172,7 +172,7 @@ block content
   +block-lib('logo', 'Логотип', false)
     include:markdown-it(html='true') ../blocks/logo/readme.md
     +logo('/')
-      img(src='img/temp-logo.svg', alt='Logo', width='64', height='15')
+      img(src='img/demo-logo.svg', alt='Logo', width='64', height='15')
     +block-lib-code()
       include:show-code(first-line='//- Pug-файл этого блока:') ../blocks/logo/logo.pug
 
@@ -206,6 +206,25 @@ block content
       +close('Закрыть', 'sm')(class='alert__close', aria-label='Закрыть')
     +block-lib-code()
       include:show-code(first-line='//- Pug-файл этого блока:') ../blocks/alert/alert.pug
+
+  +block-lib('card', 'Мини-карточка товара', false)
+    include:markdown-it(html='true') ../blocks/card/readme.md
+    .blocks-demo__cards-list(style='display: flex; flex-wrap: wrap;')
+      +card({
+        url: 'good01',
+        img: 'img/demo-product.jpg',
+        name: 'Товар1',
+        descr: 'Описание1',
+        price: 7777,
+        new: true,
+      }, 'mod')
+      +card({
+        img: 'img/demo-product.jpg',
+        name: 'Товар2',
+        price: 12000,
+      })
+    +block-lib-code()
+      include:show-code(first-line='//- Pug-файл этого блока:') ../blocks/card/card.pug
 
   +block-lib('label', 'Лейбл', false)
     include:markdown-it(html='true') ../blocks/label/readme.md

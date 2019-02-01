@@ -1,0 +1,63 @@
+//- Все примеси в этом файле должны начинаться c имени блока (card)
+
+mixin card(data, mods)
+
+  //- Принимает:
+  //- data {
+  //-   url:   {string},  - адрес для ссылки
+  //-   img:   {string},  - адрес картинки товара
+  //-   name:  {string},  - название
+  //-   descr: {string},  - описание
+  //-   price: {number},  - цена
+  //-   new:   {boolean}, - показать метку «новинка»
+  //- }
+  //- mods {string}       - модификаторы
+  //- Вызов:
+        +card({
+          url: 'good01',
+          img: 'img/demo-product.jpg',
+          name: 'Товар1',
+          descr: 'Описание1',
+          price: 7777,
+          new: true,
+        }, 'mod')
+        +card({
+          img: 'img/demo-product.jpg',
+          name: 'Товар2',
+          price: 12000,
+        })
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' card--' + modsList[i].trim();
+      }
+    }
+    var newLabel = (data.new !== 'undefined' && data.new) ? '<div class="card__new">Новинка!</div>' : '';
+    var price = '' + data.price;
+    var price = price.replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1&thinsp;') + ' ₽';
+
+  article.card(class=allMods)&attributes(attributes)
+    != newLabel
+    if (data.url !== 'undefined' && data.url)
+      .card__inner
+        a.card__img-wrap(href=data.url)
+          img.card__img(src=data.img, alt=data.name)
+        h3.card__title
+          a(href=data.url)!= data.name
+        if (data.descr !== 'undefined' && data.descr)
+          p.card__descr!= data.descr
+        p.card__price!= price
+    else
+      .card__inner
+        span.card__img-wrap
+          img.card__img(src=data.img, alt=data.name)
+        h3.card__title!= data.name
+        if (data.descr !== 'undefined' && data.descr)
+          p.card__descr!= data.descr
+        p.card__price!= price
+
+    +btn('Купить', '')(class='card__buy')
