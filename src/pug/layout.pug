@@ -30,8 +30,8 @@ html(class='no-js  page', lang='ru')
 
     block head
       link(rel='stylesheet', href='css/style.css')
-      script.
-        document.querySelector('html').classList.replace('no-js', 'js');'ontouchstart' in window ? document.querySelector('html').classList.add('touch') : document.querySelector('html').classList.add('no-touch');
+      script
+        include ../js/head-script.js
 
   body
     noscript У вас отключен JavaScript. Это пугает.

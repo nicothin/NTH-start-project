@@ -62,7 +62,7 @@ let pugOption = {
 let prettyOption = {
   indent_size: 2,
   indent_char: ' ',
-  unformatted: ['code', 'em', 'strong', 'span', 'i', 'b', 'br'],
+  unformatted: ['code', 'em', 'strong', 'span', 'i', 'b', 'br', 'script'],
   content_unformatted: [],
 };
 
