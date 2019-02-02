@@ -42,9 +42,8 @@
     padding: 0;
     border-top-right-radius: $border-radius;
     border-bottom-right-radius: $border-radius;
-    font-size: $font-size + 6;
-    font-weight: 700;
-    text-align: center;
+    font: 0/0 a; // stylelint-disable-line
+    color: transparent;
     background: transparent;
 
     &:hover,
@@ -59,10 +58,14 @@
 
     &--plus {
       right: 1px;
+      background: svg-load('../field-num/bg-img/plus.svg') center no-repeat;
+      background-size: 14px 14px;
     }
 
     &--minus {
       left: 1px;
+      background: svg-load('../field-num/bg-img/minus.svg') center no-repeat;
+      background-size: 14px 14px;
     }
 
     #{$block-name}--disabled & {
@@ -70,7 +73,7 @@
 
       &:hover,
       &:focus {
-        background: transparent;
+        background-color: transparent;
       }
     }
   }
