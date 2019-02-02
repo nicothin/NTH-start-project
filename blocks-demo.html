@@ -1551,6 +1551,86 @@
               </div>
             </div>
           </section>
+          <section class="blocks-library__item" id="field-num" data-id="field-num">
+            <h2 class="blocks-library__item-title">
+              <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/field-num" title="Папка блока в репозитории">
+                <svg width="20" height="20">
+                  <use xlink:href="#folder"></use>
+                </svg>
+              </a>Выбор количества</h2>
+            <div class="field-num"><span class="field-num__name">Количество</span><span class="field-num__input-wrap"><span class="field-num__input-and-btns"><button class="field-num__btn field-num__btn--minus" type="button">-</button><button class="field-num__btn field-num__btn--plus" type="button">+</button><input class="field-num__input" type="number" value="9" name="quantity" max="10" min="1" step="1"/></span>
+              <span
+                class="field-num__help-text">От 1 до 10, шаг 1</span>
+                </span>
+            </div>
+            <div class="field-num  field-num--error"><span class="field-num__input-wrap"><span class="field-num__input-and-btns"><button class="field-num__btn field-num__btn--minus" type="button">-</button><button class="field-num__btn field-num__btn--plus" type="button">+</button><input class="field-num__input" type="number" value="0" name="quantity1"/></span></span>
+            </div>
+            <div class="field-num  field-num--disabled"><span class="field-num__input-wrap"><span class="field-num__input-and-btns"><button class="field-num__btn field-num__btn--minus" type="button">-</button><button class="field-num__btn field-num__btn--plus" type="button">+</button><input class="field-num__input" type="number" value="0" name="quantity2" disabled="disabled"/></span></span>
+            </div>
+            <div class="blocks-library__code-wrapper"><span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+              <div class="blocks-library__code">
+                <pre class="code">
+                  <code>//- Pug-файл этого блока:</code>
+                  <code>//- Все примеси в этом файле должны начинаться c имени блока (field-num)</code>
+                  <code>&nbsp;</code>
+                  <code>mixin field-num(props)</code>
+                  <code>&nbsp;</code>
+                  <code>  //- Принимает:</code>
+                  <code>  //-   props {</code>
+                  <code>  //-     title: ''         {string} - текст с названием (выводится над полем)</code>
+                  <code>  //-     helpText: ''      {string} - пояснение под полем</code>
+                  <code>  //-     mods: ''          {string} - модификаторы блока</code>
+                  <code>  //-     val:              {number} - количество в поле</code>
+                  <code>  //-     attrs:            {object} - любые атрибуты для input</code>
+                  <code>  //-       placeholder:    {string}</code>
+                  <code>  //- Вызов:</code>
+                  <code>        +field-num({</code>
+                  <code>          title: 'Количество',</code>
+                  <code>          helpText: 'От 1 до 10, шаг 1',</code>
+                  <code>          mods: '',</code>
+                  <code>          val: '9',</code>
+                  <code>          attrs: {</code>
+                  <code>            name: 'quantity',</code>
+                  <code>            max: '10',</code>
+                  <code>            min: '1',</code>
+                  <code>            step: '1',</code>
+                  <code>          }</code>
+                  <code>        })</code>
+                  <code>        +field-num({</code>
+                  <code>          mods: 'error',</code>
+                  <code>          attrs: {</code>
+                  <code>            name: 'quantity',</code>
+                  <code>          }</code>
+                  <code>        })</code>
+                  <code>&nbsp;</code>
+                  <code>  -</code>
+                  <code>    if(typeof(props) === 'undefined') { var props = {}; }</code>
+                  <code>    var allMods = '';</code>
+                  <code>    if(typeof(props.mods) !== 'undefined' && props.mods) {</code>
+                  <code>      var modsList = props.mods.split(',');</code>
+                  <code>      for (var i = 0; i &lt; modsList.length; i++) {</code>
+                  <code>        allMods = allMods + ' field-num--' + modsList[i].trim();</code>
+                  <code>      }</code>
+                  <code>    }</code>
+                  <code>    if(props.attrs.disabled) allMods = allMods + ' field-num--disabled';</code>
+                  <code>    var val = parseInt(props.val);</code>
+                  <code>    if(isNaN(val)) val = 0;</code>
+                  <code>&nbsp;</code>
+                  <code>  .field-num(class=allMods)&attributes(attributes)</code>
+                  <code>    if(typeof(props.title) !== 'undefined' && props.title)</code>
+                  <code>      span.field-num__name!= props.title</code>
+                  <code>    span.field-num__input-wrap</code>
+                  <code>      span.field-num__input-and-btns</code>
+                  <code>        button.field-num__btn.field-num__btn--minus(type='button') -</code>
+                  <code>        button.field-num__btn.field-num__btn--plus(type='button') +</code>
+                  <code>        input.field-num__input(type='number', value=val)&attributes(props.attrs)</code>
+                  <code>      if(typeof(props.helpText) !== 'undefined' && props.helpText)</code>
+                  <code>        span.field-num__help-text!= props.helpText</code>
+                  <code>      block</code>
+                </pre>
+              </div>
+            </div>
+          </section>
           <section class="blocks-library__item" id="field-checkbox" data-id="field-checkbox">
             <h2 class="blocks-library__item-title">
               <a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/field-checkbox" title="Папка блока в репозитории">
