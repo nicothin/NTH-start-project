@@ -54,6 +54,7 @@
     "gulp-pretty-html": "^2.0.9",
     "gulp-pug": "^4.0.1",
     "gulp-rename": "^1.2.2",
+    "gulp-replace": "^1.0.0",
     "gulp-sass": "^4.0.1",
     "gulp-sourcemaps": "^2.4.1",
     "gulp-svgmin": "^2.1.0",
