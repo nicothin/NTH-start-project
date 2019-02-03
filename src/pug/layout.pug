@@ -3,7 +3,7 @@
 include mixins.pug
 
 doctype html
-html(class='no-js  page', lang='ru')
+html(class='page  no-js', lang='ru')
 
   head
     meta(charset='utf-8')
@@ -21,9 +21,9 @@ html(class='no-js  page', lang='ru')
     //- link(rel='manifest', href='/img/favicon/site.webmanifest')
     //- link(rel='mask-icon', href='/img/favicon/safari-pinned-tab.svg', color='#5bbad5')
     //- meta(name='msapplication-TileColor', content='#5bbad5')
-    meta(name='theme-color', content='#000')
-    meta(name='msapplication-navbutton-color', content='#000')
-    meta(name='apple-mobile-web-app-status-bar-style', content='#000')
+    //- meta(name='theme-color', content='#000')
+    //- meta(name='msapplication-navbutton-color', content='#000')
+    //- meta(name='apple-mobile-web-app-status-bar-style', content='#000')
 
     block meta
       title Home
@@ -39,12 +39,12 @@ html(class='no-js  page', lang='ru')
     .page__inner
       .page__content
         block header
-          p «шапка»
+          p шапка
         block content
-          p содержимое страницы
+          p содержимое
       .page__footer-wrapper
         block footer
-          p «подвал»
+          p подвал
 
     block page-bottom
       script(src='js/bundle.js')
