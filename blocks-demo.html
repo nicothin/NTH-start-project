@@ -9,12 +9,6 @@
   <meta name="format-detection" content="address=no">
   <meta name="format-detection" content="email=no">
   <meta content="notranslate" name="google">
-  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
-  <link rel="manifest" href="/img/favicon/site.webmanifest">
-  <link rel="mask-icon" href="/img/favicon/safari-pinned-tab.svg" color="#5bbad5">
-  <meta name="msapplication-TileColor" content="#5bbad5">
   <meta name="theme-color" content="#000">
   <meta name="msapplication-navbutton-color" content="#000">
   <meta name="apple-mobile-web-app-status-bar-style" content="#000">
@@ -23,9 +17,18 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/blocks-library.css">
   <script>
-    document.querySelector('html').classList.replace('no-js', 'js');
-    'ontouchstart' in window ? document.querySelector('html').classList.add('touch') : document.querySelector('html').classList.add('no-touch');
-  </script>
+document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+function cth(c){document.documentElement.classList.add(c)}
+'ontouchstart' in window?cth('touch'):cth('no-touch');
+if(typeof InstallTrigger!=='undefined')cth('firefox');
+if(/constructor/i.test(window.HTMLElement)||(function(p){return p.toString()==="[object SafariRemoteNotification]"})(!window['safari']||(typeof safari!=='undefined'&&safari.pushNotification)))cth('safari');
+if(/*@cc_on!@*/false||!!document.documentMode)cth('ie');
+if(!(/*@cc_on!@*/false||!!document.documentMode)&&!!window.StyleMedia)cth('edge');
+if(!!window.chrome&&(!!window.chrome.webstore||!!window.chrome.runtime))cth('chrome');
+if(~navigator.appVersion.indexOf("Win"))cth('windows');
+if(~navigator.appVersion.indexOf("Mac"))cth('osx');
+if(~navigator.appVersion.indexOf("Linux"))cth('linux');
+</script>
   <style>
     .components-demo {
       display: block;
@@ -39,35 +42,29 @@
       padding-top: 1em;
       padding-bottom: 1em;
     }
-  </style>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
+  </style><script>document.addEventListener('DOMContentLoaded', function(){
 
-      // наполнение бокого меню
-      var demoBlocks = document.querySelectorAll('.blocks-library__item');
-      var offCanvasMenu = '<li class="off-canvas__menu-item"><a class="off-canvas__menu-link" data-toggle-native="off-canvas" href="/">Главная страница</a></li><li class="off-canvas__menu-item"><a class="off-canvas__menu-link" data-toggle-native="off-canvas" href="https://github.com/nicothin/NTH-start-project">Исходный репозиторий</a></li><li class="off-canvas__menu-item off-canvas__menu-item--separator"><a class="off-canvas__menu-link" data-toggle-native="off-canvas" href="http://nicothin.github.io/NTH-start-project/blocks-demo.html">Демка на github pages</a></li>';
-      for (var i = 0; i < demoBlocks.length; i++) {
-        var classes = 'off-canvas__menu-item';
-        var block = demoBlocks[i];
-        if (block.classList.contains('blocks-library__item--menusep')) {
-          classes += ' off-canvas__menu-item--separator';
-        }
-        offCanvasMenu += '<li class="' + classes + '"><a class="off-canvas__menu-link" data-toggle-native="off-canvas" href="#' + block.getAttribute('id') + '" data-scroll-link>' + block.querySelector('.blocks-library__item-title').textContent + '</a></li>';
-      }
-      var offCanvasMenuContent = document.getElementById('off-canvas-menu');
-      offCanvasMenuContent.innerHTML = offCanvasMenu;
+  // наполнение бокого меню
+  var demoBlocks = document.querySelectorAll('.blocks-library__item');
+  var offCanvasMenu = '<li class="off-canvas__menu-item"><a class="off-canvas__menu-link" data-toggle-native="off-canvas" href="/">Главная страница</a></li><li class="off-canvas__menu-item"><a class="off-canvas__menu-link" data-toggle-native="off-canvas" href="https://github.com/nicothin/NTH-start-project">Исходный репозиторий</a></li><li class="off-canvas__menu-item off-canvas__menu-item--separator"><a class="off-canvas__menu-link" data-toggle-native="off-canvas" href="http://nicothin.github.io/NTH-start-project/blocks-demo.html">Демка на github pages</a></li>';
+  for (var i=0; i<demoBlocks.length; i++){
+    var classes = 'off-canvas__menu-item';
+    var block = demoBlocks[i];
+    if (block.classList.contains('blocks-library__item--menusep')) { classes += ' off-canvas__menu-item--separator'; }
+    offCanvasMenu += '<li class="'+classes+'"><a class="off-canvas__menu-link" data-toggle-native="off-canvas" href="#'+block.getAttribute('id')+'" data-scroll-link>'+block.querySelector('.blocks-library__item-title').textContent+'</a></li>';
+  }
+  var offCanvasMenuContent = document.getElementById('off-canvas-menu');
+  offCanvasMenuContent.innerHTML = offCanvasMenu;
 
-      // просмотр примера кода для блока
-      var codeShowTriggers = document.querySelectorAll('.blocks-library__code-show-trigger');
-      for (var i = 0; i < codeShowTriggers.length; i++) {
-        codeShowTriggers[i].addEventListener('click', function() {
-          this.closest('.blocks-library__code-wrapper').querySelector('.blocks-library__code').classList.toggle('blocks-library__code--shown');
-        });
-      }
-
+  // просмотр примера кода для блока
+  var codeShowTriggers = document.querySelectorAll('.blocks-library__code-show-trigger');
+  for (var i = 0; i < codeShowTriggers.length; i++) {
+    codeShowTriggers[i].addEventListener('click', function(){
+      this.closest('.blocks-library__code-wrapper').querySelector('.blocks-library__code').classList.toggle('blocks-library__code--shown');
     });
-  </script>
-</head>
+  }
+
+});</script></head>
 
 <body>
   <noscript>У вас отключен JavaScript. Это пугает.</noscript>
@@ -290,7 +287,9 @@
             <p>Пункты меню берутся из <code>main-nav/main-nav.data.json</code>.</p>
             <p>На малых ширинах преобразуется в мобильный вид, скрывается/показывается по клику на бургер, если JS включен (на <code>html</code> есть класс <code>js</code>).</p>
             <nav class="main-nav" id="nav">
-              <button class="burger main-nav__toggler" aria-label="Показать главное меню" data-target-id="nav" data-target-class-toggle="main-nav--open"><span>Показать главное меню</span></button>
+              <button class="burger main-nav__toggler" aria-label="Показать главное меню" data-target-id="nav" data-target-class-toggle="main-nav--open">
+                <span>Показать главное меню</span>
+              </button>
               <ul class="main-nav__list">
                 <li class="main-nav__item">
                   <a class="main-nav__link" href="/">Главная страница</a>
@@ -399,7 +398,9 @@
               </a>Закрыть</h2>
             <p>Иконка закрытия.</p>
             <div>
-              <button class="close" type="button" aria-label="Закрыть" title="Закрыть"><span>Закрыть</span></button>
+              <button class="close" type="button" aria-label="Закрыть" title="Закрыть">
+                <span>Закрыть</span>
+              </button>
             </div>
             <div class="blocks-library__code-wrapper"><span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
               <div class="blocks-library__code">
@@ -441,7 +442,9 @@
               </a>Бургер</h2>
             <p>Анимированное превращение в крестик по добавлению модификатора. <br /> JS блока берет переданный в data-атрибуте идентификатор и, по клику на бургере, добавляет переданный в data-атрибуте класс на элемент с этим модификатором.</p>
             <div>
-              <button class="burger" aria-label="Показать пример кода" data-target-id="burger-code" data-target-class-toggle="blocks-library__code--shown"><span>Показать пример кода</span></button>
+              <button class="burger" aria-label="Показать пример кода" data-target-id="burger-code" data-target-class-toggle="blocks-library__code--shown">
+                <span>Показать пример кода</span>
+              </button>
             </div>
             <div class="blocks-library__code-wrapper"><span class="blocks-library__code-show-trigger" title="Показать код"></span>
               <div class="blocks-library__code" id="burger-code">
@@ -479,12 +482,16 @@
               </a>Сообщения</h2>
             <div class="alert" role="alert">
               <p>Обычное сообщение</p>
-              <button class="close  close--sm alert__close" type="button" aria-label="Закрыть" title="Закрыть"><span>Закрыть</span></button>
+              <button class="close  close--sm alert__close" type="button" aria-label="Закрыть" title="Закрыть">
+                <span>Закрыть</span>
+              </button>
             </div>
             <div class="alert  alert--warning alert--some-mod-name" role="alert">
               <h4 class="alert__header">Заголовок</h4>
               <p>Блок сообщения с модификаторами.</p>
-              <button class="close  close--sm alert__close" type="button" aria-label="Закрыть" title="Закрыть"><span>Закрыть</span></button>
+              <button class="close  close--sm alert__close" type="button" aria-label="Закрыть" title="Закрыть">
+                <span>Закрыть</span>
+              </button>
             </div>
             <div class="blocks-library__code-wrapper"><span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
               <div class="blocks-library__code">
@@ -550,14 +557,18 @@
                   <p class="card__descr">Описание1</p>
                   <p class="card__price">7&thinsp;777 ₽</p>
                 </div>
-                <button class="btn card__buy">Купить</button>
+                <button class="btn card__buy">
+                  Купить
+                </button>
               </article>
               <article class="card">
                 <div class="card__inner"><span class="card__img-wrap"><img class="card__img" src="img/demo-product.jpg" alt="Товар2"/></span>
                   <h3 class="card__title">Товар2</h3>
                   <p class="card__price">12&thinsp;000 ₽</p>
                 </div>
-                <button class="btn card__buy">Купить</button>
+                <button class="btn card__buy">
+                  Купить
+                </button>
               </article>
             </div>
             <div class="blocks-library__code-wrapper"><span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
@@ -1428,12 +1439,16 @@
             <p>
               <a class="btn" href="/">Кнопка-ссылка</a>
               <input class="btn" value="Кнопка-input" type="button" name="submit" />
-              <button class="btn  btn--main">Кнопка-button</button>
+              <button class="btn  btn--main">
+                Кнопка-button
+              </button>
             </p>
             <p>
               <a class="btn  btn--disabled" href="/">Кнопка-ссылка</a>
               <input class="btn" value="Кнопка-input" type="button" name="submit" disabled="" />
-              <button class="btn  btn--main" disabled="">Кнопка-button</button>
+              <button class="btn  btn--main" disabled="">
+                Кнопка-button
+              </button>
             </p>
             <div class="blocks-library__code-wrapper"><span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
               <div class="blocks-library__code">
@@ -2266,7 +2281,9 @@
               </a>Действия формы</h2>
             <div class="field-actions">
               <div class="field-actions__text">* — обязательные поля</div>
-              <button class="btn">Отправить</button>
+              <button class="btn">
+                Отправить
+              </button>
             </div>
             <div class="blocks-library__code-wrapper"><span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
               <div class="blocks-library__code">
@@ -2323,7 +2340,9 @@
                 </label>
               </fieldset>
               <div class="field-actions">
-                <button class="btn  btn--primary">Отправить</button>
+                <button class="btn  btn--primary">
+                  Отправить
+                </button>
               </div>
             </form>
             <div class="blocks-library__code-wrapper"><span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
@@ -2448,7 +2467,9 @@
               </div>
               <div class="blocks-library__col-2-2">
                 <div class="field-actions">
-                  <button class="btn  btn--primary">Отправить</button>
+                  <button class="btn  btn--primary">
+                    Отправить
+                  </button>
                 </div>
               </div>
             </form>
@@ -2544,7 +2565,9 @@
               </a>Боковое меню страницы</h2>
             <p>Меню показывается по клику на любой элемент с <code>data-toggle=&quot;off-canvas&quot;</code> или <code>data-toggle-native=&quot;off-canvas&quot;</code> (в последнем случае произойдет и действие браузера по умолчанию).</p>
             <p>
-              <button class="btn" type="button" data-toggle="off-canvas">Показать/скрыть боковое меню</button>
+              <button class="btn" type="button" data-toggle="off-canvas">
+                Показать/скрыть боковое меню
+              </button>
             </p>
             <div class="blocks-library__code-wrapper"><span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
               <div class="blocks-library__code">
@@ -2563,7 +2586,9 @@
             <p class="alert  alert--warning">Зависит от
               <a href="https://jquery.com/">jQuery</a>.</p>
             <p>Одно и то же модальное окно, в консоль выводятся события.
-              <button class="btn" type="button" data-toggle="modal" data-target="#modal-demo-01">Показать модальное окно</button>
+              <button class="btn" type="button" data-toggle="modal" data-target="#modal-demo-01">
+                Показать модальное окно
+              </button>
               <a href="#modal-demo-01" data-toggle="modal">Показать модальное окно</a> <span data-toggle="modal" data-target="#modal-demo-01">Показать модальное окно</span></p>
             <div class="modal  modal--some" id="modal-demo-01" tabindex="-1" role="dialog">
               <div class="modal__dialog" role="document">
@@ -2588,7 +2613,9 @@
                     <p>Текст</p>
                   </div>
                   <div class="modal__footer">
-                    <button class="btn" type="button" data-dismiss="modal">Закрыть</button>
+                    <button class="btn" type="button" data-dismiss="modal">
+                      Закрыть
+                    </button>
                   </div>
                 </div>
               </div>
