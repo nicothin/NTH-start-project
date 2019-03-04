@@ -30,6 +30,7 @@ ready(function(){
   const fieldsText = Array.from(document.querySelectorAll('input[data-check-pattern]'));
   fieldsText.forEach(function(input){
     input.addEventListener('blur', function(){ checkFieldText(input); });
+    input.addEventListener('keyup', function(){ checkFieldText(input); });
   });
 
   // Для всех проверяемых чекбоксов
@@ -39,7 +40,6 @@ ready(function(){
   });
 
   function checkFieldText(input) {
-    input.addEventListener('input', function(){ checkFieldText(input); });
     const regExp = new RegExp(input.dataset.checkPattern, 'gi');
     const result = regExp.test(input.value);
     const errorClass = 'field-text--error';
