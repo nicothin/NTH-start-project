@@ -7,20 +7,15 @@ block meta
 //- block append head
 //-   link(rel='stylesheet', href='css/some.css')
 
-block header
-  +page-header()
-    +logo('/')
-      img(src='img/demo-logo.svg', alt='Logo', width='64', height='15')
-    +main-nav('10')
+block nav
+  +main-nav('10')
 
 block content
   h1 Заголовок
   p Содержимое. #[a(href='blocks-demo.html') Библиотека блоков].
 
-block footer
-  +page-footer()
-    p «Подвал»
-    p Контактный телефон: #[a(href='tel:+70000000000') +7 000 000 00 00]
+//- block footer
+//-   p footer
 
 //- block append page-bottom
 //-   script(src='js/some.js')
