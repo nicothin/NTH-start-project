@@ -5,7 +5,7 @@ const ready = require('../../js/utils/documentReady.js');
 ready(function(){
 
   var fields = document.querySelectorAll( '.field-num' );
-  if(fieldsNum.length) {
+  if(fields.length) {
     Array.prototype.forEach.call( fields, function( field ) {
       const input = field.querySelector('.field-num__input');
       const valueMin = input.getAttribute('min') ? +input.getAttribute('min') : -Infinity;
