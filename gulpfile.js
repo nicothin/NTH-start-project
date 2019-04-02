@@ -260,7 +260,7 @@ function compileSass() {
       }
     }))
     .pipe(debug({title: 'Compiles:'}))
-    .pipe(sass({includePaths: [__dirname+'/']}))
+    .pipe(sass({includePaths: [__dirname+'/','node_modules']}))
     .pipe(postcss(postCssPlugins))
     .pipe(csso({
       restructure: false,
