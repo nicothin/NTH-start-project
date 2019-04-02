@@ -2,10 +2,10 @@
 
 let config = {
   "notGetBlocks": [
-    "blocks-demo.html"
+    "blocks-demo.html",
   ],
   "ignoredBlocks": [
-    "no-js"
+    "no-js",
   ],
   "alwaysAddBlocks": [
     // "sprite-svg",
@@ -14,14 +14,15 @@ let config = {
   ],
   "addStyleBefore": [
     "src/scss/variables.scss",
-    "src/scss/mixins.scss"
+    "src/scss/mixins.scss",
+    // "somePackage/dist/somePackage.css", // для "node_modules/somePackage/dist/somePackage.css",
   ],
   "addStyleAfter": [
-    // "src/scss/print.scss"
+    // "src/scss/print.scss",
   ],
   "addJsBefore": [],
   "addJsAfter": [
-    "./script.js"
+    "./script.js",
   ],
   "addAssets": {
     "src/fonts/demo-empty-open-sans.woff2": "fonts/",
