@@ -38,13 +38,18 @@ html(class='page  no-js', lang='ru')
 
     .page__inner
       .page__content
-        block header
-          p шапка
+        +page-header()
+          +logo('/')
+            img(src='img/demo-logo.svg', alt='Logo', width='64', height='15')
+          block nav
+
         block content
           p содержимое
       .page__footer-wrapper
-        block footer
-          p подвал
+        +page-footer()
+          block footer
+            p «Подвал»
+            p Контактный телефон: #[a(href='tel:+70000000000') +7 000 000 00 00]
 
     block page-bottom
       script(src='js/bundle.js')

@@ -1,18 +1,18 @@
 extends ../pug/layout.pug
 
 block meta
-  title Главная
+  title Error 404
   meta(name='description', content='')
 
 //- block append head
 //-   link(rel='stylesheet', href='css/some.css')
 
 block nav
-  +main-nav('10')
+  +main-nav('-1')
 
 block content
-  h1 Заголовок
-  p Содержимое. #[a(href='blocks-demo.html') Библиотека блоков].
+  h1 Error 404
+  p Page not found.
 
 //- block footer
 //-   p footer
