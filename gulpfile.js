@@ -46,7 +46,7 @@ const path = require('path');
 const buildLibrary = process.env.BUILD_LIBRARY == 'yes' ? true : false;
 const nth = {};
 nth.config = require('./config.js');
-nth.blocksFromHtml = nth.config.alwaysAddBlocks; // блоки из конфига сразу добавим в список блоков
+nth.blocksFromHtml = Object.create(nth.config.alwaysAddBlocks); // блоки из конфига сразу добавим в список блоков
 nth.scssImportsList = []; // список импортов стилей
 const dir = nth.config.dir;
 
@@ -222,10 +222,15 @@ function writeSassImportsFile(cb) {
   nth.config.addStyleBefore.forEach(function(src) {
     newScssImportsList.push(src);
   });
+  nth.config.alwaysAddBlocks.forEach(function(blockName) {
+    newScssImportsList.push(`${dir.blocks}${blockName}/${blockName}.scss`);
+  });
   let allBlocksWithScssFiles = getDirectories('scss');
   allBlocksWithScssFiles.forEach(function(blockWithScssFile){
+    let url = `${dir.blocks}${blockWithScssFile}/${blockWithScssFile}.scss`;
     if (nth.blocksFromHtml.indexOf(blockWithScssFile) == -1) return;
-    newScssImportsList.push(`${dir.blocks}${blockWithScssFile}/${blockWithScssFile}.scss`);
+    if (newScssImportsList.indexOf(url) > -1) return;
+    newScssImportsList.push(url);
   });
   nth.config.addStyleAfter.forEach(function(src) {
     newScssImportsList.push(src);
