@@ -277,18 +277,27 @@ exports.compileSass = compileSass;
 
 
 function writeJsRequiresFile(cb) {
-  let msg = `\n/*!*${doNotEditMsg.replace(/\n /gm,'\n * ').replace(/\n\n$/,'\n */\n\n')}`;
-  let jsRequires = msg + '/* global require */\n\n';
+  const jsRequiresList = [];
   nth.config.addJsBefore.forEach(function(src) {
-    jsRequires += `require('${src}');\n`;
+    jsRequiresList.push(src);
   });
   const allBlocksWithJsFiles = getDirectories('js');
-  const allUsedBlocks = nth.blocksFromHtml.concat(nth.config.alwaysAddBlocks);
-  allBlocksWithJsFiles.forEach(function(blockWithJsFile){
-    if (allUsedBlocks.indexOf(blockWithJsFile) == -1) return;
-    jsRequires += `require('../blocks/${blockWithJsFile}/${blockWithJsFile}.js');\n`;
+  allBlocksWithJsFiles.forEach(function(blockName){
+    if (nth.config.alwaysAddBlocks.indexOf(blockName) == -1) return;
+    jsRequiresList.push(`../blocks/${blockName}/${blockName}.js`)
+  });
+  allBlocksWithJsFiles.forEach(function(blockName){
+    let src = `../blocks/${blockName}/${blockName}.js`
+    if (nth.blocksFromHtml.indexOf(blockName) == -1) return;
+    if (jsRequiresList.indexOf(src) > -1) return;
+    jsRequiresList.push(src);
   });
   nth.config.addJsAfter.forEach(function(src) {
+    jsRequiresList.push(src);
+  });
+  let msg = `\n/*!*${doNotEditMsg.replace(/\n /gm,'\n * ').replace(/\n\n$/,'\n */\n\n')}`;
+  let jsRequires = msg + '/* global require */\n\n';
+  jsRequiresList.forEach(function(src) {
     jsRequires += `require('${src}');\n`;
   });
   jsRequires += msg;
