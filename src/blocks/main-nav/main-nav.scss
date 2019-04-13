@@ -24,11 +24,19 @@
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.2s;
+
+        &--lvl-2 {
+          max-height: none;
+        }
       }
 
       .js #{$block-name}--open & {
-        max-height: 100vh;
+        max-height: 1000px;
         transition: max-height 0.6s;
+
+        &--lvl-2 {
+          max-height: none;
+        }
       }
     }
 
@@ -74,7 +82,7 @@
       min-width: 200px;
 
       @media (max-width: ($menu-desktop-width - 1)) {
-        padding-left: 1.2em;
+        padding-left: 2em;
       }
     }
 
@@ -82,7 +90,7 @@
       min-width: 200px;
 
       @media (max-width: ($menu-desktop-width - 1)) {
-        padding-left: 2.4em;
+        padding-left: 3em;
       }
     }
   }
