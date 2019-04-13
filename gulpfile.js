@@ -283,9 +283,8 @@ function writeJsRequiresFile(cb) {
     jsRequires += `require('${src}');\n`;
   });
   const allBlocksWithJsFiles = getDirectories('js');
-  const allUsedBlocks = nth.blocksFromHtml.concat(nth.config.alwaysAddBlocks);
   allBlocksWithJsFiles.forEach(function(blockWithJsFile){
-    if (allUsedBlocks.indexOf(blockWithJsFile) == -1) return;
+    if (nth.blocksFromHtml.indexOf(blockWithJsFile) == -1) return;
     jsRequires += `require('../blocks/${blockWithJsFile}/${blockWithJsFile}.js');\n`;
   });
   nth.config.addJsAfter.forEach(function(src) {
