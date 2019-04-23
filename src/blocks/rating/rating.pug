@@ -1,0 +1,36 @@
+//- Все примеси в этом файле должны начинаться c имени блока (rating)
+
+mixin rating(num, mods)
+
+  //- Принимает:
+  //-   num     {number} - актуальный рейтинг
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +rating(3, 'some-mod')(aria-label='Средне')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' rating--' + modsList[i].trim();
+      }
+    }
+
+    // если не передан рейтинг
+    if(typeof(num) === 'undefined')
+      num = 0;
+
+    // счётчик
+    var i = 0;
+
+  span.rating(class=allMods)&attributes(attributes)
+    while i < 5
+      -
+        var mod = '';
+        if (num == i) mod = 'rating__star--full';
+        i++;
+      span.rating__star(class=mod)
+
+    block
