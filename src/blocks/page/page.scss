@@ -222,6 +222,15 @@ figure {
   margin-bottom: $typo-margin-vertical;
 }
 
+p {
+  // http://clagnut.com/blog/2395
+  hyphens: auto;
+  hyphenate-limit-chars: 6 3 3;
+  hyphenate-limit-lines: 2;
+  hyphenate-limit-last: always;   
+  hyphenate-limit-zone: 8%;
+}
+
 address {
   font-style: normal;
 }
