@@ -1,12 +1,12 @@
 {
-  "name": "NTH-start-project",
+  "name": "nth-start-project",
   "version": "4.0.0",
   "description": "Startkit for HTML/CSS/JS pages layout.",
   "author": "Nikolay Gromov",
   "license": "WTFPL",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nicothin/NTH-start-project.git"
+    "url": "git+https://github.com/nicothin/NTH-start-project.git"
   },
   "scripts": {
     "test": "npm run test:pug && npm run test:style && npm run test:js",
@@ -91,5 +91,10 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/nicothin/NTH-start-project/issues"
+  },
+  "homepage": "https://github.com/nicothin/NTH-start-project#readme",
+  "main": "config.js"
 }
