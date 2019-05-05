@@ -7,13 +7,21 @@
 
 const fs = require('fs');
 const projectConfig = require('./config.js');
+const mkdirp = require('mkdirp');
 
 const dir = projectConfig.dir;
 const bemModSeparator=projectConfig.bemModSeparator;
-const mkdirp = require('mkdirp');
 
 const bemBlockName = process.argv[2];
-const defaultExtensions = projectConfig.defaultExtensions; // расширения по умолчанию
+
+// расширения по умолчанию, если не заданы в конфиге.
+let defaultExtensions ;
+if(projectConfig.defaultExtensions === undefined) {
+  defaultExtensions = ['scss', 'img', 'bg-img']
+} 
+else {
+  defaultExtensions = projectConfig.defaultExtensions
+};
 const extensions = uniqueArray(defaultExtensions.concat(process.argv.slice(3)));
 
 
