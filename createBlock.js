@@ -13,7 +13,7 @@ const bemModSeparator=projectConfig.bemModSeparator;
 const mkdirp = require('mkdirp');
 
 const bemBlockName = process.argv[2];
-const defaultExtensions = ['scss', 'img', 'bg-img']; // расширения по умолчанию
+const defaultExtensions = projectConfig.defaultExtensions; // расширения по умолчанию
 const extensions = uniqueArray(defaultExtensions.concat(process.argv.slice(3)));
 
 

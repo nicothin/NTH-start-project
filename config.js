@@ -37,7 +37,8 @@ let config = {
     'build': 'build/',
     'blocks': 'src/blocks/'
   },
-  'bemModSeparator': '_'
+  'bemModSeparator': '_',
+  'defaultExtensions': ['scss', 'img', 'bg-img'],
 };
 
 module.exports = config;

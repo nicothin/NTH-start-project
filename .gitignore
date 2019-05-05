@@ -26,3 +26,5 @@ package-lock.json
 .idea
 ex_files
 Thumbs.db
+
+init-devDependencies.bash
