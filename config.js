@@ -36,7 +36,8 @@ let config = {
     'src': 'src/',
     'build': 'build/',
     'blocks': 'src/blocks/'
-  }
+  },
+  'bemModSeparator': '_'
 };
 
 module.exports = config;
