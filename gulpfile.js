@@ -223,7 +223,7 @@ function writeSassImportsFile(cb) {
     newScssImportsList.push(src);
   });
   nth.config.alwaysAddBlocks.forEach(function(blockName) {
-    newScssImportsList.push(`${dir.blocks}${blockName}/${blockName}.scss`);
+    if (fileExist(`${dir.blocks}${blockName}/${blockName}.scss`)) newScssImportsList.push(`${dir.blocks}${blockName}/${blockName}.scss`);
   });
   let allBlocksWithScssFiles = getDirectories('scss');
   allBlocksWithScssFiles.forEach(function(blockWithScssFile){
