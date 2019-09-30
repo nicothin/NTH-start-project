@@ -140,13 +140,13 @@
     z-index: 1;
     top: 100%;
     width: 100%;
-    overflow: hidden;
     margin-top: -1px;
     border: 1px solid $border-color;
     border-bottom-left-radius: $border-radius;
     border-bottom-right-radius: $border-radius;
     background-color: #fff;
     word-break: break-all;
+    overflow: hidden;
 
     #{$block-name}__item {
       padding: $field-padding-vertical $field-padding-horizontal;

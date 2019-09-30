@@ -35,13 +35,13 @@
     align-items: baseline;
     position: relative;
     width: 100%;
-    overflow: hidden;
     border: 1px solid $border-color;
     border-radius: $border-radius;
     background-color: #fff;
     white-space: nowrap;
     text-overflow: ellipsis;
     cursor: pointer;
+    overflow: hidden;
 
     @at-root input:disabled ~ & {
       background: $gray-lighter;

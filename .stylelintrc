@@ -115,14 +115,14 @@
           "height",
           "min-height",
           "max-height",
-          "overflow",
-          "overflow-*",
           "margin",
           "margin-*",
           "border",
           "border-*",
           "padding",
           "padding-*",
+          "overflow",
+          "overflow-*",
         ]
       },
       {

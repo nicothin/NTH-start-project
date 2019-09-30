@@ -6,7 +6,6 @@
   box-sizing: border-box;
   display: inline-block;
   max-width: 100%;
-  overflow: hidden;
   margin: 0;
   border-radius: $border-radius;
   // border: 1px solid $gray-lighter;
@@ -26,6 +25,7 @@
   background-color: $gray-lightest;
   background-image: none;
   cursor: pointer;
+  overflow: hidden;
 
   &:hover,
   &:focus {

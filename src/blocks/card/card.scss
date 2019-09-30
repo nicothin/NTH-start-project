@@ -6,28 +6,28 @@
 
   $block-name:                &; // #{$block-name}__element
 
-  position: relative;
-  z-index: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  z-index: 0;
   min-width: 200px;
   padding: 0 15px;
   margin-bottom: 30px;
 
   &__inner {
-    flex-grow: 1;
-    position: relative;
     display: flex;
-    align-items: center;
     flex-direction: column;
+    flex-grow: 1;
+    align-items: center;
+    position: relative;
     width: 100%;
     margin-bottom: 20px;
   }
 
   &__img-wrap {
-    flex-shrink: 0;
     display: block;
+    flex-shrink: 0;
     margin-bottom: 20px;
   }
 
