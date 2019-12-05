@@ -3,11 +3,12 @@
 // Подключение шрифтов.
 // Типографика.
 
+// stylelint-disable plugin/selector-bem-pattern
 
 // Сделаем viewport великим снова! (привет, IE10) http://timkadlec.com/2012/10/ie10-snap-mode-and-responsive-design/
 @at-root {
 
-  @-ms-viewport {
+  @-ms-viewport { // stylelint-disable-line
     width: device-width;
   }
 }
@@ -28,7 +29,7 @@
 .page {
   box-sizing: border-box;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  -webkit-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%; // stylelint-disable-line
   min-width: 320px;
   min-height: 100%;
 
@@ -71,11 +72,11 @@ body {
   background-color: $body-bg;
 
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale
+  -moz-osx-font-smoothing: grayscale;
 }
 
 [tabindex='-1']:focus {
-  outline: none !important;
+  outline: none !important; // stylelint-disable-line
 }
 
 // Коррекция для кликабельных элементов с указанной ролью в iOS
@@ -84,8 +85,8 @@ body {
 }
 
 // Мы любим Сафари (на самом деле, нет).
-[type="search"]::-webkit-search-decoration {
-  -webkit-appearance: none;
+[type='search']::-webkit-search-decoration {
+  -webkit-appearance: none; // stylelint-disable-line
 }
 
 // area,
@@ -107,26 +108,28 @@ input {
   text-transform: none; // Уберём наследование text transform в Firefox
 }
 
+// Коррекция проблем стилизации для Safari
 button,
-html [type="button"],
-[type="reset"],
-[type="submit"] {
-  -webkit-appearance: button; // Коррекция проблем стилизации для Safari
+html [type='button'],
+[type='reset'],
+[type='submit'] {
+  -webkit-appearance: button; // stylelint-disable-line
 }
 
 button::-moz-focus-inner,
-[type="button"]::-moz-focus-inner,
-[type="reset"]::-moz-focus-inner,
-[type="submit"]::-moz-focus-inner {
+[type='button']::-moz-focus-inner,
+[type='reset']::-moz-focus-inner,
+[type='submit']::-moz-focus-inner {
   padding: 0;
   border-style: none;
 }
 
-input[type="date"],
-input[type="time"],
-input[type="datetime-local"],
-input[type="month"] {
-  -webkit-appearance: listbox; // Коррекция для Mobile Safari (https://github.com/twbs/bootstrap/issues/11266)
+// Коррекция для Mobile Safari (https://github.com/twbs/bootstrap/issues/11266)
+input[type='date'],
+input[type='time'],
+input[type='datetime-local'],
+input[type='month'] {
+  -webkit-appearance: listbox; // stylelint-disable-line
 }
 
 textarea {
@@ -166,7 +169,7 @@ a {
   //   color: $link-color--hover;
   // }
 
-  &[href^="tel:"] {
+  &[href^='tel:'] {
 
     // На больших экранах телефоны-ссылки делаем обычным текстом
     @media (min-width: $screen-xl) {
@@ -202,12 +205,12 @@ h6 {
   color: currentColor;
 }
 
-h1 { font-size: $font-size-h1; }
-h2 { font-size: $font-size-h2; }
-h3 { font-size: $font-size-h3; }
-h4 { font-size: $font-size-h4; }
-h5 { font-size: $font-size-h5; }
-h6 { font-size: $font-size-h6; }
+h1 { font-size: $font-size-h1; } // stylelint-disable-line
+h2 { font-size: $font-size-h2; } // stylelint-disable-line
+h3 { font-size: $font-size-h3; } // stylelint-disable-line
+h4 { font-size: $font-size-h4; } // stylelint-disable-line
+h5 { font-size: $font-size-h5; } // stylelint-disable-line
+h6 { font-size: $font-size-h6; } // stylelint-disable-line
 
 p,
 ul,
