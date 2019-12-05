@@ -1,3 +1,4 @@
+/* stylelint-disable */
 @import "../../scss/variables.scss";
 @import "../../scss/mixins.scss";
 @import "../alert/alert.scss";
@@ -197,3 +198,4 @@
     @include col(md, 12);
   }
 }
+/* stylelint-enable */
