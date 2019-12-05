@@ -1,3 +1,5 @@
+/* global document */
+
 const ready = require('../../js/utils/documentReady.js');
 
 ready(function(){
@@ -26,9 +28,16 @@ ready(function(){
 
   const Choices = require('choices.js');
 
-  new Choices('.field-select__select', {
-    searchEnabled: false,
-    placeholderValue: 'Выберите',
+  // Включим отдельно
+  // const choices = new Choices('#some-if', {/* options */});
+
+  // Или тупо найдём все селекты и включим на них Choices
+  const selects = document.querySelectorAll('.field-select__select');
+  selects.forEach(function(item){
+    new Choices(item, {
+      searchEnabled: false,
+      placeholderValue: 'Выберите',
+    });
   });
 
 });
