@@ -15,7 +15,6 @@ __MACOSX
 _arc/
 bower_components/
 node_modules/
-package-lock.json
 .vscode/
 .publish/
 .DS_Store
