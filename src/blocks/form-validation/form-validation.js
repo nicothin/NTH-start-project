@@ -29,8 +29,8 @@ ready(function(){
   // Для всех проверяемых текстовых полей
   const fieldsText = Array.from(document.querySelectorAll('input[data-check-pattern]'));
   fieldsText.forEach(function(input){
+    input.addEventListener('input', function(){ checkFieldText(input); });
     input.addEventListener('blur', function(){ checkFieldText(input); });
-    input.addEventListener('keyup', function(){ checkFieldText(input); });
   });
 
   // Для всех проверяемых чекбоксов
