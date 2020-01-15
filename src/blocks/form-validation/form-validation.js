@@ -29,8 +29,12 @@ ready(function(){
   // Для всех проверяемых текстовых полей
   const fieldsText = Array.from(document.querySelectorAll('input[data-check-pattern]'));
   fieldsText.forEach(function(input){
-    input.addEventListener('blur', function(){ checkFieldText(input); });
-    input.addEventListener('keyup', function(){ checkFieldText(input); });
+    let hasBeenAlreadyBlured = false;
+    input.addEventListener('blur', function(){ 
+      checkFieldText(input); 
+      if(!hasBeenAlreadyBlured) hasBeenAlreadyBlured = true;
+    });
+    input.addEventListener('input', function(){ if(hasBeenAlreadyBlured) checkFieldText(input); });
   });
 
   // Для всех проверяемых чекбоксов
