@@ -18,6 +18,19 @@
     font-size: $font-size-sm;
     line-height: 1em;
     color: $text-color-muted;
+
+    @media (max-width: ($screen-md - 1)) {
+      display: block;
+      margin-top: 1em;
+      margin-bottom: 0.5em;
+      border: 0;
+      padding: 0;
+      font-family: $font-family;
+      font-size: $font-size-h3;
+      font-weight: 700;
+      line-height: 1.2;
+      color: currentColor;
+    }
   }
 
   td,
