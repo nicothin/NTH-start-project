@@ -2,14 +2,6 @@
 /* eslint-disable no-console */
 'use strict';
 
-// Проверка количества съедаемой памяти
-// setInterval(function(){ // eslint-disable-line
-//   let memory = process.memoryUsage()
-//   let date = new Date();
-//   console.log(`[${addZero(date.getHours())}:${addZero(date.getMinutes())}:${addZero(date.getSeconds())}]`, 'Memory usage (heapUsed):', (memory.heapUsed / 1024 / 1024).toFixed(2) + 'Mb');
-// }, 1000 * 10);
-// function addZero(i) { return (i < 10) ? i = "0" + i : i;}
-
 // Пакеты, использующиеся при обработке
 const { series, parallel, src, dest, watch, lastRun } = require('gulp');
 const fs = require('fs');
