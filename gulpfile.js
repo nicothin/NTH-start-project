@@ -145,11 +145,11 @@ function copyImg(cb) {
   let copiedImages = [];
   nth.blocksFromHtml.forEach(function(block) {
     let src = `${dir.blocks}${block}/img`;
-    if(fileExist(src)) copiedImages.push(src);
+    if(fileExist(src)) copiedImages.push(`${src}/*.{png,jpg,jpeg,svg}`);
   });
   nth.config.alwaysAddBlocks.forEach(function(block) {
     let src = `${dir.blocks}${block}/img`;
-    if(fileExist(src)) copiedImages.push(src);
+    if(fileExist(src)) copiedImages.push(`${src}/*.{png,jpg,jpeg,svg}`);
   });
   if(copiedImages.length) {
     (async () => {
