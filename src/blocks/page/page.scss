@@ -34,9 +34,9 @@
   min-height: 100%;
 
   &__inner {
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
   }
 
   &__content {
@@ -61,8 +61,8 @@
 body {
   display: flex;           // Исправляем баг в IE для min-height and flexbox (flex-direction:column)
   flex-direction: column;  // и прижимаем footer в IE 10-11
-  margin: 0;
   min-height: 100%;
+  margin: 0;
   word-break: break-word;
   font-family: $font-family;
   font-size: $font-size;
@@ -184,11 +184,11 @@ a {
 hr {
   box-sizing: content-box; // Проблема Firefox
   height: 0;               // Проблема Firefox
-  overflow: visible;       // Проблема Edge и IE
   margin-top: $typo-margin-vertical * 2;
   margin-bottom: $typo-margin-vertical * 2;
   border: 0;
   border-top: 1px solid $border-color;
+  overflow: visible;       // Проблема Edge и IE
 }
 
 h1,
