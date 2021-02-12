@@ -35,7 +35,8 @@ const ghpages = require('gh-pages');
 const path = require('path');
 
 // Глобальные настройки этого запуска
-const buildLibrary = process.env.BUILD_LIBRARY == 'yes' ? true : false;
+const buildLibrary = process.env.BUILD_LIBRARY || false;
+const mode = process.env.MODE || 'development';
 const nth = {};
 nth.config = require('./config.js');
 nth.blocksFromHtml = Object.create(nth.config.alwaysAddBlocks); // блоки из конфига сразу добавим в список блоков
@@ -262,7 +263,7 @@ function compileSass() {
     .pipe(csso({
       restructure: false,
     }))
-    .pipe(dest(`${dir.build}/css`, { sourcemaps: '.' }))
+    .pipe(dest(`${dir.build}/css`, { sourcemaps: mode === 'development' ? '.' : false }))
     .pipe(browserSync.stream());
 }
 exports.compileSass = compileSass;
@@ -308,8 +309,9 @@ function buildJs() {
   return src(`${dir.src}js/entry.js`)
     .pipe(plumber())
     .pipe(webpackStream({
-      mode: 'production',
+      mode: mode,
       entry: entryList,
+      devtool: 'inline-source-map',
       output: {
         filename: '[name].js',
       },

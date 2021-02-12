@@ -12,7 +12,7 @@ const dir = projectConfig.dir;
 const mkdirp = require('mkdirp');
 
 const blockName = process.argv[2];
-const defaultExtensions = ['scss', 'img', 'bg-img']; // расширения по умолчанию
+const defaultExtensions = ['scss', 'img']; // расширения по умолчанию
 const extensions = uniqueArray(defaultExtensions.concat(process.argv.slice(3)));
 
 // Если есть имя блока
@@ -55,17 +55,7 @@ if (blockName) {
       }
     }
 
-    else if (extension === 'bg-img') {
-      const imgFolder = `${dirPath}bg-img/`;
-      if (fileExist(imgFolder) === false) {
-        const made = mkdirp.sync(imgFolder);
-        console.log(`[NTH] Создание папки: ${made}`);
-      } else {
-        console.log(`[NTH] Папка ${imgFolder} НЕ создана (уже существует) `);
-      }
-    }
-
-    if (fileExist(filePath) === false && extension !== 'img' && extension !== 'bg-img' && extension !== 'md') {
+    if (fileExist(filePath) === false && extension !== 'img' && extension !== 'md') {
       fs.writeFile(filePath, fileContent, (err) => {
         if (err) {
           return console.log(`[NTH] Файл НЕ создан: ${err}`);
@@ -76,7 +66,7 @@ if (blockName) {
         }
       });
     }
-    else if (extension !== 'img' && extension !== 'bg-img' && extension !== 'md') {
+    else if (extension !== 'img' && extension !== 'md') {
       console.log(`[NTH] Файл НЕ создан: ${filePath} (уже существует)`);
     }
     else if (extension === 'md') {

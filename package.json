@@ -1,6 +1,6 @@
 {
   "name": "NTH-start-project",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "description": "Startkit for HTML/CSS/JS pages layout.",
   "author": "Nikolay Gromov",
   "license": "WTFPL",
@@ -14,8 +14,8 @@
     "test:style": "stylelint \"src/**/*.scss\" --syntax=scss",
     "test:js": "eslint src/blocks/**/*.js src/js/**/*.js",
     "start": "gulp",
-    "wlib": "cross-env BUILD_LIBRARY=yes gulp",
-    "build": "gulp build",
+    "wlib": "cross-env BUILD_LIBRARY=true gulp",
+    "build": "cross-env MODE=production gulp build",
     "lint-staged": "lint-staged"
   },
   "browserslist": [

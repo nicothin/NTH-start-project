@@ -1,5 +1,7 @@
-// Браузер и ОС
+// Убрать на html класс "no-js", добавить класс "js": с уровня стилей знаем работает ли JS
 document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+
+// Браузер и ОС
 function cth(c){document.documentElement.classList.add(c)}
 'ontouchstart' in window?cth('touch'):cth('no-touch');
 if(typeof InstallTrigger!=='undefined')cth('firefox');
