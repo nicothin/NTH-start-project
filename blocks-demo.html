@@ -17,8 +17,10 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/blocks-library.css">
   <script>
-// Браузер и ОС
+// Убрать на html класс "no-js", добавить класс "js": с уровня стилей знаем работает ли JS
 document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+
+// Браузер и ОС
 function cth(c){document.documentElement.classList.add(c)}
 'ontouchstart' in window?cth('touch'):cth('no-touch');
 if(typeof InstallTrigger!=='undefined')cth('firefox');
@@ -40,17 +42,18 @@ window.addEventListener('resize', () => {
 });
 
 // Добавление css-scroll-size для борьбы с проблемами скроллируемых блоков
-document.addEventListener("DOMContentLoaded", () => {
-  const outer = document.createElement('div');
-  const inner = document.createElement('div');
-  outer.style.overflow = 'scroll';
-  outer.classList.add('scrollbar');
-  document.body.appendChild(outer);
-  outer.appendChild(inner);
-  const scrollbarSize = outer.offsetWidth - inner.offsetWidth;
-  document.body.removeChild(outer);
-  document.documentElement.style.setProperty('--css-scroll-size', `${scrollbarSize}px`);
-});
+// TODO: перенести в закомменченном виде в page?
+// document.addEventListener("DOMContentLoaded", () => {
+//   const outer = document.createElement('div');
+//   const inner = document.createElement('div');
+//   outer.style.overflow = 'scroll';
+//   outer.classList.add('scrollbar');
+//   document.body.appendChild(outer);
+//   outer.appendChild(inner);
+//   const scrollbarSize = outer.offsetWidth - inner.offsetWidth;
+//   document.body.removeChild(outer);
+//   document.documentElement.style.setProperty('--css-scroll-size', `${scrollbarSize}px`);
+// });
 </script>
   <style>
     .components-demo {
@@ -112,54 +115,9 @@ document.addEventListener("DOMContentLoaded", () => {
             <p>В стилизацию блока включена стилизация «прибитого подвала».</p>
             <div class="blocks-library__code-wrapper"><span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
               <div class="blocks-library__code">
-                <pre class="code"><code>&lt;!DOCTYPE html></code><code>&lt;html class="no-js  page" lang="ru"></code><code>&lt;head>...&lt;/head></code><code>&lt;body></code><code>  &lt;div class="page__inner"></code><code>    &lt;div class="page__content">Обёртка основного содержимого&lt;/div></code><code>    &lt;div class="page__footer-wrapper">Обёртка прибитого подвала&lt;/div></code><code>  &lt;/div></code><code>&lt;/body></code><code>&lt;/html></code></pre>
+                <pre class="code"><code>&lt;!DOCTYPE html></code><code>&lt;html class="no-js  page" lang="ru"></code><code>&lt;head>...&lt;/head></code><code>&lt;body></code><code>  &lt;div class="page__inner"></code><code>    &lt;div class="page__content"></code><code>      Основной содержимое</code><code>    &lt;/div></code><code>    &lt;div class="page__footer-wrapper"></code><code>      «Прибитый» «подвал»</code><code>    &lt;/div></code><code>  &lt;/div></code><code>&lt;/body></code><code>&lt;/html></code></pre>
               </div>
             </div>
-          </section>
-          <section class="blocks-library__item" id="grid-mixins" data-id="grid">
-            <h2 class="blocks-library__item-title"><a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/grid" title="Папка блока в репозитории"><svg width="20" height="20">
-                  <use xlink:href="#folder"></use>
-                </svg></a>Примеси-генераторы модульной сетки</h2>
-            <p>В сборку берётся <code>./src/scss/mixins/grid-mixins.scss</code> с примесями-генераторами. Используйте семантические классы и применяйте к ним примеси.</p>
-            <p><a href="https://codepen.io/nicothin/pen/aJEOwE?editors=1100">Пример использования на codepen.io</a>.</p>
-            <p>Необходимая структура:</p>
-            <ul>
-              <li>Контейнер — общая обёртка, обеспечивающая ширину, боковые внутренние отступы (<code>padding</code>) и центровку (<code>margin: auto</code>). Может содержать любой контент.</li>
-              <li>Прямой родитель сетки — обёртка ячеек, обеспечивающая отрицательные боковые отступы (<code>margin</code>).</li>
-              <li>Ячейки любой ширины (по умолчанию 12 колонок, для изменения — переопредить переменную).</li>
-            </ul>
-            <div class="blocks-library__code-wrapper"><span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
-              <div class="blocks-library__code">
-                <pre class="code"><code>&lt;section class="promo"></code><code>  &lt;div class="promo__inner"></code><code>    &lt;h2>Заголовок промо&lt;/h2></code><code>    &lt;p>Произвольный контент до модульной сетки&lt;/p></code><code>    &lt;div class="promo__grid"></code><code>      &lt;div class="promo__img">&lt;/div></code><code>      &lt;div class="promo__text">&lt;/div></code><code>    &lt;/div></code><code>  &lt;/div></code><code>&lt;/section></code><code>&nbsp;</code><code>.promo {</code><code></code><code>  &__inner {</code><code>    @include container();</code><code>  }</code><code></code><code>  &__grid {</code><code>    @include row();</code><code>  }</code><code></code><code>  &__img {</code><code>    @include col();</code><code>    @include col(md, 5);</code><code>  }</code><code></code><code>  &__text {</code><code>    @include col();</code><code>    @include col(md, 7);</code><code>  }</code><code>}</code></pre>
-              </div>
-            </div>
-          </section>
-          <section class="blocks-library__item" id="sprite-svg" data-id="sprite-svg">
-            <h2 class="blocks-library__item-title"><a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/sprite-svg" title="Папка блока в репозитории"><svg width="20" height="20">
-                  <use xlink:href="#folder"></use>
-                </svg></a>SVG-спрайт c <a href="https://github.com/w0rm/gulp-svgstore">gulp-svgstore</a></h2>
-            <p>Из файлов <code>sprite-svg/svg/</code> генерируется файл спрайта <code>sprite-svg/img/sprite.svg</code>.</p>
-            <p class="alert  alert--warning">Блок не имеет классов, упоминаемых в разметке. Чтобы взять его в сборку, упомяните <code>sprite-svg</code> в <code>config.js#alwaysAddBlocks</code>.</p>
-            <p>Для вставки на страницу используйте <code>svg &gt; use</code> со ссылками на <code>id</code> символа:</p>
-            <pre class="code">
-              <code>svg(width="32", height="32")</code>
-              <code>  use(xlink:href="img/sprite.svg#icon-boo")</code>
-            </pre>
-            <p class="alert alert--warning">При использовании блока в проекте в сборку берётся <a href="https://www.npmjs.com/package/svg4everybody">svg4everybody</a>.</p>
-          </section>
-          <section class="blocks-library__item blocks-library__item--menusep" id="sprite-png" data-id="sprite-png">
-            <h2 class="blocks-library__item-title"><a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/sprite-png" title="Папка блока в репозитории"><svg width="20" height="20">
-                  <use xlink:href="#folder"></use>
-                </svg></a>PNG-спрайт с <a href="https://github.com/Ensighten/spritesmith">spritesmith</a></h2>
-            <p>Из файлов <code>sprite-png/png/</code> генерируется файл спрайта <code>sprite-png/img/sprite-ЧИСЛОВОЙ_ИНДЕКС.svg</code>.</p>
-            <p class="alert  alert--warning">Блок не имеет классов, упоминаемых в разметке. Чтобы взять его в сборку, упомяните <code>sprite-png</code> в <code>config.js#alwaysAddBlocks</code>.</p>
-            <p><strong>Стилевой файл блока генерируется автоматически</strong> и содержит примеси для использования спрайтов.</p>
-            <p>Пример использования для конкретного селектора:</p>
-            <pre class="code">
-              <code>.selector {</code>
-              <code>  @include sprite($icon-left); // $icon-left — $ИМЯ-ФАЙЛА-КАРТИНКИ</code>
-              <code>}</code>
-            </pre>
           </section>
           <section class="blocks-library__item" id="page-header" data-id="page-header">
             <h2 class="blocks-library__item-title"><a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/page-header" title="Папка блока в репозитории"><svg width="20" height="20">
@@ -248,9 +206,9 @@ document.addEventListener("DOMContentLoaded", () => {
                   <code>  //-   mods  {string} - список модификаторов</code>
                   <code>  //- Вызов:</code>
                   <code>        +logo('/')</code>
-                  <code>          img(src='img/logo.svg', alt='Logo', width='64', height='15')</code>
+                  <code>          img(src='img/demo-logo.svg', alt='Project_name', width='64', height='15')</code>
                   <code>        +logo(false, 'mod')</code>
-                  <code>          img(src='img/logo.svg', alt='Logo', width='64', height='15')</code>
+                  <code>          img(src='img/demo-logo.svg', alt='Project_name', width='64', height='15')</code>
                   <code>  -</code>
                   <code>    // список модификаторов</code>
                   <code>    var allMods = '';</code>
@@ -271,7 +229,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <h2 class="blocks-library__item-title"><a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/main-nav" title="Папка блока в репозитории"><svg width="20" height="20">
                   <use xlink:href="#folder"></use>
                 </svg></a>Главная навигация</h2>
-            <p>Пункты меню берутся из <code>main-nav/main-nav.data.json</code>.</p>
+            <p>Пункты меню — из <code>main-nav/main-nav.data.json</code>.</p>
             <p>На малых ширинах преобразуется в мобильный вид, скрывается/показывается по клику на бургер, если JS включен (на <code>html</code> есть класс <code>js</code>).</p>
             <nav class="main-nav" id="nav"><button class="burger main-nav__toggler" aria-label="Показать главное меню" data-target-id="nav" data-target-class-toggle="main-nav--open"><span>Показать главное меню</span></button>
               <ul class="main-nav__list">
@@ -400,33 +358,33 @@ document.addEventListener("DOMContentLoaded", () => {
                 </svg></a>Бургер</h2>
             <p>Анимированное превращение в крестик по добавлению модификатора. <br />
 JS блока берет переданный в data-атрибуте идентификатор и, по клику на бургере, добавляет переданный в data-атрибуте класс на элемент с этим модификатором.</p>
-              <div><button class="burger" aria-label="Показать пример кода" data-target-id="burger-code" data-target-class-toggle="blocks-library__code--shown"><span>Показать пример кода</span></button></div>
-              <div class="blocks-library__code-wrapper"><span class="blocks-library__code-show-trigger" title="Показать код"></span>
-                <div class="blocks-library__code" id="burger-code">
-                  <pre class="code">
-                    <code>//- Pug-файл этого блока:</code>
-                    <code>//- Все примеси в этом файле должны начинаться c имени блока (burger)</code>
-                    <code>&nbsp;</code>
-                    <code>mixin burger(label, targetId, switchableClass)</code>
-                    <code>&nbsp;</code>
-                    <code>  //- Принимает:</code>
-                    <code>  //-   label           {string} - описание, значение атрибута aria-label</code>
-                    <code>  //-   targetId        {string} - атрибут id целевого элемента (без символа #), на котором по клику будет меняться класс</code>
-                    <code>  //-   switchableClass {string} - класс, добавляемый/убираемый с целевого элемента</code>
-                    <code>  //- Вызов:</code>
-                    <code>        +burger('Показать пример кода', 'burger-code', 'blocks-library__code--shown')</code>
-                    <code>        +burger('Показать ничто')(data-some="SOME")</code>
-                    <code>&nbsp;</code>
-                    <code>  -</code>
-                    <code>    label = label || 'Toggle block ' + targetId</code>
-                    <code>    if (typeof(targetId) !== 'undefined' && targetId !== '') attributes['data-target-id'] = targetId</code>
-                    <code>    if (typeof(switchableClass) !== 'undefined' && switchableClass !== '') attributes['data-target-class-toggle'] = switchableClass</code>
-                    <code>&nbsp;</code>
-                    <code>  button.burger(aria-label=label)&attributes(attributes)</code>
-                    <code>    span= label</code>
-                  </pre>
-                </div>
+            <div><button class="burger" aria-label="Показать пример кода" data-target-id="burger-code" data-target-class-toggle="blocks-library__code--shown"><span>Показать пример кода</span></button></div>
+            <div class="blocks-library__code-wrapper"><span class="blocks-library__code-show-trigger" title="Показать код"></span>
+              <div class="blocks-library__code" id="burger-code">
+                <pre class="code">
+                  <code>//- Pug-файл этого блока:</code>
+                  <code>//- Все примеси в этом файле должны начинаться c имени блока (burger)</code>
+                  <code>&nbsp;</code>
+                  <code>mixin burger(label, targetId, switchableClass)</code>
+                  <code>&nbsp;</code>
+                  <code>  //- Принимает:</code>
+                  <code>  //-   label           {string} - описание, значение атрибута aria-label</code>
+                  <code>  //-   targetId        {string} - атрибут id целевого элемента (без символа #), на котором по клику будет меняться класс</code>
+                  <code>  //-   switchableClass {string} - класс, добавляемый/убираемый с целевого элемента</code>
+                  <code>  //- Вызов:</code>
+                  <code>        +burger('Показать пример кода', 'burger-code', 'blocks-library__code--shown')</code>
+                  <code>        +burger('Показать ничто')(data-some="SOME")</code>
+                  <code>&nbsp;</code>
+                  <code>  -</code>
+                  <code>    label = label || 'Toggle block ' + targetId</code>
+                  <code>    if (typeof(targetId) !== 'undefined' && targetId !== '') attributes['data-target-id'] = targetId</code>
+                  <code>    if (typeof(switchableClass) !== 'undefined' && switchableClass !== '') attributes['data-target-class-toggle'] = switchableClass</code>
+                  <code>&nbsp;</code>
+                  <code>  button.burger(aria-label=label)&attributes(attributes)</code>
+                  <code>    span= label</code>
+                </pre>
               </div>
+            </div>
           </section>
           <section class="blocks-library__item" id="alert" data-id="alert">
             <h2 class="blocks-library__item-title"><a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/alert" title="Папка блока в репозитории"><svg width="20" height="20">
@@ -455,13 +413,13 @@ JS блока берет переданный в data-атрибуте иден�
                   <code>          p Текст</code>
                   <code>        +alert('Внимание', 'warning, some-mod-name')</code>
                   <code>          p Предупреждение</code>
-                  <code>          +close('Закрыть', 'sm')(class='alert__close', aria-label='Закрыть')</code>
+                  <code>          +close('Закрыть')(class='alert__close')</code>
                   <code>        +alert('Внимание', 'danger')</code>
                   <code>          p Проблема</code>
-                  <code>          +close('Закрыть', 'sm')(class='alert__close', aria-label='Закрыть')</code>
+                  <code>          +close('Закрыть')(class='alert__close')</code>
                   <code>        +alert('Внимание', 'success')</code>
                   <code>          p Успех</code>
-                  <code>          +close('Закрыть', 'sm')(class='alert__close', aria-label='Закрыть')</code>
+                  <code>          +close('Закрыть')(class='alert__close')</code>
                   <code>&nbsp;</code>
                   <code>  -</code>
                   <code>    //- список модификаторов</code>
@@ -1283,12 +1241,14 @@ JS блока берет переданный в data-атрибуте иден�
               <input class="btn" value="Кнопка-input" type="button" name="submit" />
               <button class="btn  btn--main">
                 Кнопка-button
-              </button></p>
+              </button>
+            </p>
             <p><a class="btn  btn--disabled" href="/">Кнопка-ссылка</a>
               <input class="btn" value="Кнопка-input" type="button" name="submit" disabled="" />
               <button class="btn  btn--main" disabled="">
                 Кнопка-button
-              </button></p>
+              </button>
+            </p>
             <div class="blocks-library__code-wrapper"><span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
               <div class="blocks-library__code">
                 <pre class="code">
@@ -2174,34 +2134,34 @@ JS блока берет переданный в data-атрибуте иден�
             <p>Для чекбоксов: по событию <code>change</code> проверяется соответствия состояния и <code>data-check-state=&quot;on&quot;</code> (<code>off</code>).</p>
             <p class="alert  alert--warning">Блок не имеет классов, упоминаемых в разметке. Чтобы взять его в сборку, упомяните <code>form-validation</code> в <code>config.js#alwaysAddBlocks</code>.</p>
             <p class="alert  alert--warning">Pug «умно» обрабатывает строки, убирая обратный слеш (<code>\</code>), этот символ в pug нужно экранировать: не <code>\d</code>, а <code>\\d</code>. <br>См. пример кода ниже.</p>
-              <form class="form blocks-library__row" data-check-form="true">
-                <div class="blocks-library__col-1-2"><label class="field-text"><span class="field-text__name">Имя</span><span class="field-text__input-wrap"><input class="field-text__input" type="text" require="require" data-check-pattern="^[a-zа-яё]+.{2,}"/><span class="field-text__help-text">Имя юзера. Не менее 3-х символов. Обязательно.</span></span></label></div>
-                <div class="blocks-library__col-1-2"><label class="field-text"><span class="field-text__name">Фамилия</span><span class="field-text__input-wrap"><input class="field-text__input" type="text" data-check-pattern="^[a-zа-яё]+.+"/><span class="field-text__help-text">Фамилия. Не менее 2-х символов. Не обязательно.</span></span></label></div>
-                <div class="blocks-library__col-1-2"><label class="field-text"><span class="field-text__name">Телефон</span><span class="field-text__input-wrap"><input class="field-text__input" type="tel" require="require" placeholder="+7 (000) 000-00-00" data-check-pattern="[\+]?\d?[\s|-]?[(]?\d{0,3}[)]?[\s|-]?\d{3}[\s|-]?\d{2}[\s|-]?\d{2}"/><span class="field-text__help-text">Обязательно.</span></span></label></div>
-                <div class="blocks-library__col-1-2"><label class="field-text"><span class="field-text__name">Электромыло</span><span class="field-text__input-wrap"><input class="field-text__input" type="email" require="require" data-check-pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"/><span class="field-text__help-text">Обязательно.</span></span></label></div>
-                <div class="blocks-library__col-2-2">
-                  <div class="field-checkbox">
-                    <div class="field-checkbox__input-wrap"><label class="field-checkbox__name"><input class="field-checkbox__input" type="checkbox" name="checkCheck" data-check-state="on" /><span class="field-checkbox__name-text">Принимаю условия, передаю квартиру во владение Николаю.</span></label>
-                      <div class="field-checkbox__help-text-wrap">
-                        <div class="field-checkbox__help-text">Это шутка, чекбокс можно спокойно отмечать. Или же нет.</div>
-                      </div>
+            <form class="form blocks-library__row" data-check-form="true">
+              <div class="blocks-library__col-1-2"><label class="field-text"><span class="field-text__name">Имя</span><span class="field-text__input-wrap"><input class="field-text__input" type="text" require="require" data-check-pattern="^[a-zа-яё]+.{2,}"/><span class="field-text__help-text">Имя юзера. Не менее 3-х символов. Обязательно.</span></span></label></div>
+              <div class="blocks-library__col-1-2"><label class="field-text"><span class="field-text__name">Фамилия</span><span class="field-text__input-wrap"><input class="field-text__input" type="text" data-check-pattern="^[a-zа-яё]+.+"/><span class="field-text__help-text">Фамилия. Не менее 2-х символов. Не обязательно.</span></span></label></div>
+              <div class="blocks-library__col-1-2"><label class="field-text"><span class="field-text__name">Телефон</span><span class="field-text__input-wrap"><input class="field-text__input" type="tel" require="require" placeholder="+7 (000) 000-00-00" data-check-pattern="[\+]?\d?[\s|-]?[(]?\d{0,3}[)]?[\s|-]?\d{3}[\s|-]?\d{2}[\s|-]?\d{2}"/><span class="field-text__help-text">Обязательно.</span></span></label></div>
+              <div class="blocks-library__col-1-2"><label class="field-text"><span class="field-text__name">Электромыло</span><span class="field-text__input-wrap"><input class="field-text__input" type="email" require="require" data-check-pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"/><span class="field-text__help-text">Обязательно.</span></span></label></div>
+              <div class="blocks-library__col-2-2">
+                <div class="field-checkbox">
+                  <div class="field-checkbox__input-wrap"><label class="field-checkbox__name"><input class="field-checkbox__input" type="checkbox" name="checkCheck" data-check-state="on" /><span class="field-checkbox__name-text">Принимаю условия, передаю квартиру во владение Николаю.</span></label>
+                    <div class="field-checkbox__help-text-wrap">
+                      <div class="field-checkbox__help-text">Это шутка, чекбокс можно спокойно отмечать. Или же нет.</div>
                     </div>
-                    <div class="field-checkbox__input-wrap"><label class="field-checkbox__name"><input class="field-checkbox__input" type="checkbox" name="checkOff" data-check-state="off" checked="checked" /><span class="field-checkbox__name-text">Должен. Быть. Неотмеченным.</span></label>
-                      <div class="field-checkbox__help-text-wrap">
-                        <div class="field-checkbox__help-text">Иначе всё — тлен!</div>
-                      </div>
+                  </div>
+                  <div class="field-checkbox__input-wrap"><label class="field-checkbox__name"><input class="field-checkbox__input" type="checkbox" name="checkOff" data-check-state="off" checked="checked" /><span class="field-checkbox__name-text">Должен. Быть. Неотмеченным.</span></label>
+                    <div class="field-checkbox__help-text-wrap">
+                      <div class="field-checkbox__help-text">Иначе всё — тлен!</div>
                     </div>
                   </div>
                 </div>
-                <div class="blocks-library__col-2-2">
-                  <div class="field-actions"><button class="btn  btn--primary">Отправить</button></div>
-                </div>
-              </form>
-              <div class="blocks-library__code-wrapper"><span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
-                <div class="blocks-library__code">
-                  <pre class="code"><code>+field-text({</code><code>  title: 'Фамилия',</code><code>  helpText: 'Фамилия. Не менее 2-х символов. Не обязательно.',</code><code>  attrs: {</code><code>    'data-check-pattern': '^[a-zа-яё]+.+'</code><code>  }</code><code>})</code><code>+field-text({</code><code>  title: 'Телефон',</code><code>  helpText: 'Обязательно.',</code><code>  attrs: {</code><code>    type: 'tel',</code><code>    require: true,</code><code>    placeholder: '+7 (000) 000-00-00',</code><code>    'data-check-pattern': '[\\+]?\\d?[\\s|-]?[(]?\\d{0,3}[)]?[\\s|-]?\\d{3}[\\s|-]?\\d{2}[\\s|-]?\\d{2}'</code><code>  }</code><code>})</code><code>+field-text({</code><code>  title: 'Электромыло',</code><code>  helpText: 'Обязательно.',</code><code>  attrs: {</code><code>    type: 'email',</code><code>    require: true,</code><code>    'data-check-pattern': '[a-z0-9!#$%&\'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&\'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?'</code><code>  }</code><code>})</code></pre>
-                </div>
               </div>
+              <div class="blocks-library__col-2-2">
+                <div class="field-actions"><button class="btn  btn--primary">Отправить</button></div>
+              </div>
+            </form>
+            <div class="blocks-library__code-wrapper"><span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
+              <div class="blocks-library__code">
+                <pre class="code"><code>+field-text({</code><code>  title: 'Фамилия',</code><code>  helpText: 'Фамилия. Не менее 2-х символов. Не обязательно.',</code><code>  attrs: {</code><code>    'data-check-pattern': '^[a-zа-яё]+.+'</code><code>  }</code><code>})</code><code>+field-text({</code><code>  title: 'Телефон',</code><code>  helpText: 'Обязательно.',</code><code>  attrs: {</code><code>    type: 'tel',</code><code>    require: true,</code><code>    placeholder: '+7 (000) 000-00-00',</code><code>    'data-check-pattern': '[\\+]?\\d?[\\s|-]?[(]?\\d{0,3}[)]?[\\s|-]?\\d{3}[\\s|-]?\\d{2}[\\s|-]?\\d{2}'</code><code>  }</code><code>})</code><code>+field-text({</code><code>  title: 'Электромыло',</code><code>  helpText: 'Обязательно.',</code><code>  attrs: {</code><code>    type: 'email',</code><code>    require: true,</code><code>    'data-check-pattern': '[a-z0-9!#$%&\'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&\'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?'</code><code>  }</code><code>})</code></pre>
+              </div>
+            </div>
           </section>
           <section class="blocks-library__item" id="scroll-link" data-id="scroll-link">
             <h2 class="blocks-library__item-title"><a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/scroll-link" title="Папка блока в репозитории"><svg width="20" height="20">
@@ -2290,36 +2250,30 @@ JS блока берет переданный в data-атрибуте иден�
             <h2 class="blocks-library__item-title"><a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/modal" title="Папка блока в репозитории"><svg width="20" height="20">
                   <use xlink:href="#folder"></use>
                 </svg></a>Модальное окно</h2>
-            <p>Основано на modal.js из Bootstrap. Изменения минимальны (имена классов, пространство имен событий, некоторые упрощения).</p>
-            <p class="alert  alert--warning">Зависит от <a href="https://jquery.com/">jQuery</a>.</p>
-            <p>Одно и то же модальное окно, в консоль выводятся события. <button class="btn" type="button" data-toggle="modal" data-target="#modal-demo-01">Показать модальное окно</button> <a href="#modal-demo-01" data-toggle="modal">Показать модальное окно</a> <span data-toggle="modal" data-target="#modal-demo-01">Показать модальное окно</span></p>
-            <div class="modal  modal--some" id="modal-demo-01" tabindex="-1" role="dialog">
-              <div class="modal__dialog" role="document">
-                <div class="modal__content">
-                  <div class="modal__header"><span class="close modal__close" data-dismiss="modal" aria-label="Закрыть"><span></span></span>
-                    <h4 class="modal__title">Заголовок</h4>
-                  </div>
+            <p>Простейшее модальное окно без сторонних зависимостей.</p>
+            <p><button class="btn" type="button" data-modal-target="#modal-demo-01" data-modal="open">Показать окно с «шапкой» и «подвалом»</button> <a href="#modal-demo-02" data-modal="open">Показать окно без внутренних отступов</a></p>
+            <section class="modal  modal--some" id="modal-demo-01" tabindex="-1" aria-hidden="true">
+              <div class="modal__dialog">
+                <div class="modal__content"><button class="close  close--sm modal__close" type="button" aria-label="Закрыть" title="Закрыть" data-modal="close"><span>Закрыть</span></button>
+                  <header class="modal__header">
+                    <h5 class="modal__title">Заголовок</h5>
+                  </header>
                   <div class="modal__body">
-                    <p>Текст</p>
-                    <p>Текст</p>
-                    <p>Текст</p>
-                    <p>Текст</p>
-                    <p>Текст</p>
-                    <p>Текст</p>
-                    <p>Текст</p>
-                    <p>Текст</p>
-                    <p>Текст</p>
-                    <p>Текст</p>
-                    <p>Текст</p>
-                    <p>Текст</p>
-                    <p>Текст</p>
-                    <p>Текст</p>
+                    <p>С «Шапкой», «подвалом» и внутр. отступами на контенте.</p>
+                    <p>С «Шапкой», «подвалом» и внутр. отступами на контенте.</p>
+                    <p>С «Шапкой», «подвалом» и внутр. отступами на контенте.</p>
                   </div>
-                  <div class="modal__footer"><button class="btn" type="button" data-dismiss="modal">Закрыть</button></div>
+                  <footer class="modal__footer"><button class="btn" type="button" data-modal="close">Закрыть</button></footer>
                 </div>
               </div>
-            </div>
-            <pre class="code"><code>// методы</code><code>$('#modal-demo-01').modal(options)</code><code>$('#modal-demo-01').modal('show')</code><code>$('#modal-demo-01').modal('hide')</code><code>$('#modal-demo-01').modal('toggle')</code><code></code><code>// события</code><code>$('#modal-demo-01').on('show.nth.modal', function(){</code><code>  console.log('show.nth.modal');</code><code>});</code><code>$('#modal-demo-01').on('shown.nth.modal', function(){</code><code>  console.log('shown.nth.modal');</code><code>});</code><code>$('#modal-demo-01').on('hide.nth.modal', function(){</code><code>  console.log('hide.nth.modal');</code><code>});</code><code>$('#modal-demo-01').on('hidden.nth.modal', function(){</code><code>  console.log('hidden.nth.modal');</code><code>});</code></pre>
+            </section>
+            <section class="modal" id="modal-demo-02" tabindex="-1" aria-hidden="true">
+              <div class="modal__dialog">
+                <div class="modal__content"><button class="close  close--sm modal__close" type="button" aria-label="Закрыть" title="Закрыть" data-modal="close"><span>Закрыть</span></button>
+                  <p>Без «шапки», «подвала» и внутр. отступов на контенте.</p>
+                </div>
+              </div>
+            </section>
             <div class="blocks-library__code-wrapper"><span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
               <div class="blocks-library__code">
                 <pre class="code">
@@ -2335,9 +2289,18 @@ JS блока берет переданный в data-атрибуте иден�
                   <code>  //- Вызов:</code>
                   <code>        +modal('modal-demo-01', 'Заголовок', 'some')</code>
                   <code>          .modal__body</code>
-                  <code>            p Текст</code>
-                  <code>          .modal__footer</code>
-                  <code>            button.btn(type='button', data-dismiss='modal') Закрыть</code>
+                  <code>            p С «Шапкой», «подвалом» и внутр. отступами на контенте.</code>
+                  <code>          footer.modal__footer</code>
+                  <code>            button.btn(type='button', data-modal='close') Закрыть</code>
+                  <code>        +modal('modal-demo-02')</code>
+                  <code>          p Без «шапки», «подвала» и внутр. отступов на контенте.</code>
+                  <code>&nbsp;</code>
+                  <code>      Показать модальное окно:</code>
+                  <code>        button.btn(type='button', data-modal-target='#modal-demo-01', data-modal='open') Показать</code>
+                  <code>        a.btn(href='#modal-demo-01', data-modal='open') Показать</code>
+                  <code>&nbsp;</code>
+                  <code>      Скрыть все модальные окна:</code>
+                  <code>        button(type='button', data-modal='close') Скрыть</code>
                   <code>&nbsp;</code>
                   <code>  -</code>
                   <code>    // список модификаторов</code>
@@ -2349,13 +2312,14 @@ JS блока берет переданный в data-атрибуте иден�
                   <code>      }</code>
                   <code>    }</code>
                   <code>&nbsp;</code>
-                  <code>  .modal(id=id, class=allMods, tabindex='-1', role='dialog')&attributes(attributes)</code>
-                  <code>    .modal__dialog(role='document')</code>
-                  <code>        .modal__content</code>
-                  <code>          .modal__header</code>
-                  <code>            span.close.modal__close(data-dismiss='modal', aria-label='Закрыть') #[span]</code>
-                  <code>            h4.modal__title!= title</code>
-                  <code>          block</code>
+                  <code>  section.modal(id=id, class=allMods, tabindex='-1', aria-hidden='true')&attributes(attributes)</code>
+                  <code>    .modal__dialog</code>
+                  <code>      .modal__content</code>
+                  <code>        +close('Закрыть', 'sm')(class='modal__close', data-modal='close')</code>
+                  <code>        if title</code>
+                  <code>          header.modal__header</code>
+                  <code>            h5.modal__title!= title</code>
+                  <code>        block</code>
                 </pre>
               </div>
             </div>
@@ -2539,22 +2503,32 @@ JS блока берет переданный в data-атрибуте иден�
               </div>
             </div>
           </section>
-          <section class="blocks-library__item" id="object-fit-polyfill" data-id="object-fit-polyfill">
-            <h2 class="blocks-library__item-title"><a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/object-fit-polyfill" title="Папка блока в репозитории"><svg width="20" height="20">
+          <section class="blocks-library__item" id="sprite-svg" data-id="sprite-svg">
+            <h2 class="blocks-library__item-title"><a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/sprite-svg" title="Папка блока в репозитории"><svg width="20" height="20">
                   <use xlink:href="#folder"></use>
-                </svg></a>Поддержка object-fit для IE</h2>
-            <p>Дополнительные стили для картинок с указанным <code>object-fit: ...;</code> добавится с помощью PostCSS-плагина на этапе постобработки css.</p>
-            <p class="alert  alert--warning">Блок не имеет классов, упоминаемых в разметке. Чтобы взять его в сборку, упомяните <code>object-fit-polyfill</code> в <code>config.js#alwaysAddBlocks</code>.</p>
-            <p>Инструменты: <a href="https://github.com/bfred-it/object-fit-images">полифил</a>, <a href="https://github.com/ronik-design/postcss-object-fit-images">PostCSS-плагин, реализующий автоматическое применение полифила</a>.</p>
-            <img class="ofp-demo" src="img/demo-avatar-m.png" alt="Аватар" style="width: 128px; height: 64px;"><img class="ofp-demo" src="img/demo-avatar-f.png" alt="Аватар" style="width: 64px; height: 64px;">
-            <div class="blocks-library__code-wrapper"><span class="blocks-library__code-show-trigger" title="Показать код"><i class="blocks-library__code-icon"></i></span>
-              <div class="blocks-library__code">
-                <div>
-                  <pre class="code"><code>&lt;img src="img/demo-avatar-m.png" class="semantic-class" style="width: 128px; height: 64px;" alt="Аватар" /></code><code>&lt;img src="img/demo-avatar-f.png" class="semantic-class" style="width: 64px; height: 64px;" alt="Аватар" /></code></pre>
-                  <pre class="code"><code>.semantic-class {</code><code>  object-fit: cover;</code><code>}</code></pre>
-                </div>
-              </div>
-            </div>
+                </svg></a>SVG-спрайт c <a href="https://github.com/w0rm/gulp-svgstore">gulp-svgstore</a></h2>
+            <p>Из файлов <code>sprite-svg/svg/</code> генерируется файл спрайта <code>sprite-svg/img/sprite.svg</code>.</p>
+            <p class="alert  alert--warning">Блок не имеет классов, упоминаемых в разметке. Чтобы взять его в сборку, упомяните <code>sprite-svg</code> в <code>config.js#alwaysAddBlocks</code>.</p>
+            <p>Для вставки на страницу используйте <code>svg &gt; use</code> со ссылками на <code>id</code> символа:</p>
+            <pre class="code">
+              <code>svg(width='32', height='32')</code>
+              <code>  use(xlink:href='img/sprite.svg#icon-boo')</code>
+            </pre>
+            <p class="alert alert--warning">При использовании блока в проекте в сборку берётся <a href="https://www.npmjs.com/package/svg4everybody">svg4everybody</a>.</p>
+          </section>
+          <section class="blocks-library__item" id="sprite-png" data-id="sprite-png">
+            <h2 class="blocks-library__item-title"><a class="blocks-library__item-title-link" href="https://github.com/nicothin/NTH-start-project/tree/master/src/blocks/sprite-png" title="Папка блока в репозитории"><svg width="20" height="20">
+                  <use xlink:href="#folder"></use>
+                </svg></a>PNG-спрайт с <a href="https://github.com/Ensighten/spritesmith">spritesmith</a></h2>
+            <p>Из файлов <code>sprite-png/png/</code> генерируется файл спрайта <code>sprite-png/img/sprite-ЧИСЛОВОЙ_ИНДЕКС.svg</code>.</p>
+            <p class="alert  alert--warning">Блок не имеет классов, упоминаемых в разметке. Чтобы взять его в сборку, упомяните <code>sprite-png</code> в <code>config.js#alwaysAddBlocks</code>.</p>
+            <p><strong>Стилевой файл блока генерируется автоматически</strong> и содержит примеси для использования спрайтов.</p>
+            <p>Пример использования для конкретного селектора:</p>
+            <pre class="code">
+              <code>.selector {</code>
+              <code>  @include sprite($icon-left); // $icon-left — $ИМЯ-ФАЙЛА-КАРТИНКИ</code>
+              <code>}</code>
+            </pre>
           </section>
           <div class="burger blocks-library__menu-toggler" data-toggle="off-canvas"><span data-toggle="off-canvas"></span></div>
         </div>

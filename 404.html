@@ -13,8 +13,10 @@
   <meta name="description" content="">
   <link rel="stylesheet" href="css/style.css">
   <script>
-// Браузер и ОС
+// Убрать на html класс "no-js", добавить класс "js": с уровня стилей знаем работает ли JS
 document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+
+// Браузер и ОС
 function cth(c){document.documentElement.classList.add(c)}
 'ontouchstart' in window?cth('touch'):cth('no-touch');
 if(typeof InstallTrigger!=='undefined')cth('firefox');
@@ -36,17 +38,18 @@ window.addEventListener('resize', () => {
 });
 
 // Добавление css-scroll-size для борьбы с проблемами скроллируемых блоков
-document.addEventListener("DOMContentLoaded", () => {
-  const outer = document.createElement('div');
-  const inner = document.createElement('div');
-  outer.style.overflow = 'scroll';
-  outer.classList.add('scrollbar');
-  document.body.appendChild(outer);
-  outer.appendChild(inner);
-  const scrollbarSize = outer.offsetWidth - inner.offsetWidth;
-  document.body.removeChild(outer);
-  document.documentElement.style.setProperty('--css-scroll-size', `${scrollbarSize}px`);
-});
+// TODO: перенести в закомменченном виде в page?
+// document.addEventListener("DOMContentLoaded", () => {
+//   const outer = document.createElement('div');
+//   const inner = document.createElement('div');
+//   outer.style.overflow = 'scroll';
+//   outer.classList.add('scrollbar');
+//   document.body.appendChild(outer);
+//   outer.appendChild(inner);
+//   const scrollbarSize = outer.offsetWidth - inner.offsetWidth;
+//   document.body.removeChild(outer);
+//   document.documentElement.style.setProperty('--css-scroll-size', `${scrollbarSize}px`);
+// });
 </script>
 </head>
 
