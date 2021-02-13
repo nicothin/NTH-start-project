@@ -1,6 +1,7 @@
 /* global document */
 
-const ready = require('../../js/utils/documentReady.js');
+import ready from 'Utils/documentReady.js';
+import Choices from 'choices.js';
 
 ready(function(){
 
@@ -26,9 +27,7 @@ ready(function(){
     };
   }
 
-  const Choices = require('choices.js');
-
-  // Включим отдельно
+  // Включим на каком-то конкретном отдельно
   // const choices = new Choices('#some-if', {/* options */});
 
   // Или тупо найдём все селекты и включим на них Choices

@@ -1,5 +1,5 @@
-const ready = require('../../js/utils/documentReady.js');
-const baron = require('baron');
+import ready from 'Utils/documentReady.js';
+import baron from 'baron';
 
 ready(function(){
 

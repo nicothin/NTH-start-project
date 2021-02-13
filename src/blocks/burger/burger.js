@@ -1,6 +1,6 @@
 /* global document */
 
-const ready = require('../../js/utils/documentReady.js');
+import ready from 'Utils/documentReady.js';
 
 ready(function(){
 

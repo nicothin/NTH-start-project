@@ -3,23 +3,24 @@
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
 .close {
-  display: inline-block;
   position: relative;
   z-index: 1;
-  width: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
   border: none;
   padding: 0;
-  line-height: 30px;
   background: transparent;
   user-select: none;
   cursor: pointer;
 
   span {
-    display: inline-block;
     position: relative;
-    width: 100%;
+    display: block;
+    width: 60%;
     height: $toggler-part-height;
-    vertical-align: middle;
     font-size: 0;
     color: transparent;
     background: transparent;
@@ -32,7 +33,7 @@
       left: 0;
       width: 100%;
       height: $toggler-part-height;
-      background: $toggler-part-bg-color;
+      background: $gray-dark;
       transform-origin: 50% 50%;
     }
 
@@ -44,22 +45,4 @@
       transform: rotate3d(0, 0, 1, -45deg);
     }
   }
-
-  // &--sm {
-
-  //   $toggler-part-height:     1px;
-
-  //   width: 30px;
-  //   line-height: 30px;
-
-  //   span {
-  //     width: 60%;
-
-  //     &:before,
-  //     &:after {
-  //       height: $toggler-part-height;
-  //       background: $toggler-part-bg-color;
-  //     }
-  //   }
-  // }
 }

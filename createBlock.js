@@ -34,7 +34,7 @@ if (blockName) {
     }
 
     else if (extension === 'js') {
-      fileContent = `/* global document */\n\n// const ready = require('../../js/utils/documentReady.js');\n\n// ready(function(){\n//   \n// });\n`;
+      fileContent = `/* global document */\n\n// import ready from 'Utils/documentReady.js';\n\n// ready(function() {\n//   \n// });\n`;
     }
 
     else if (extension === 'md') {

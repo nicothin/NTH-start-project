@@ -3,26 +3,27 @@
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
 .burger {
-  display: inline-block;
   position: relative;
   z-index: 1;
-  width: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
   border: none;
   padding: 0;
-  line-height: 30px;
   background: transparent;
   user-select: none;
   cursor: pointer;
 
   > span { // stylelint-disable-line  selector-combinator-blacklist
-    display: inline-block;
+    display: block;
     position: relative;
-    width: 100%;
+    width: 90%;
     height: $toggler-part-height;
-    vertical-align: middle;
     font-size: 0;
     color: transparent;
-    background: $toggler-part-bg-color;
+    background: $gray-dark;
     transition: background $transition-time $transition-time;
 
     &:before,
@@ -32,7 +33,7 @@
       left: 0;
       width: 100%;
       height: $toggler-part-height;
-      background: $toggler-part-bg-color;
+      background: $gray-dark;
       transform-origin: 50% 50%;
       transition: top $transition-time $transition-time, transform $transition-time;
     }

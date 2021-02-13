@@ -9,9 +9,18 @@ mixin modal(id, title, mods)
   //- Вызов:
         +modal('modal-demo-01', 'Заголовок', 'some')
           .modal__body
-            p Текст
-          .modal__footer
-            button.btn(type='button', data-dismiss='modal') Закрыть
+            p С «Шапкой», «подвалом» и внутр. отступами на контенте.
+          footer.modal__footer
+            button.btn(type='button', data-modal='close') Закрыть
+        +modal('modal-demo-02')
+          p Без «шапки», «подвала» и внутр. отступов на контенте.
+
+      Показать модальное окно:
+        button.btn(type='button', data-modal-target='#modal-demo-01', data-modal='open') Показать
+        a.btn(href='#modal-demo-01', data-modal='open') Показать
+
+      Скрыть все модальные окна:
+        button(type='button', data-modal='close') Скрыть
 
   -
     // список модификаторов
@@ -23,10 +32,11 @@ mixin modal(id, title, mods)
       }
     }
 
-  .modal(id=id, class=allMods, tabindex='-1', role='dialog')&attributes(attributes)
-    .modal__dialog(role='document')
-        .modal__content
-          .modal__header
-            span.close.modal__close(data-dismiss='modal', aria-label='Закрыть') #[span]
-            h4.modal__title!= title
-          block
+  section.modal(id=id, class=allMods, tabindex='-1', aria-hidden='true')&attributes(attributes)
+    .modal__dialog
+      .modal__content
+        +close('Закрыть', 'sm')(class='modal__close', data-modal='close')
+        if title
+          header.modal__header
+            h5.modal__title!= title
+        block

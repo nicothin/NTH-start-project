@@ -1,4 +1,4 @@
-/* global document module */
+/* global document */
 
 const ready = function (fn) {
   if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading"){
@@ -8,4 +8,4 @@ const ready = function (fn) {
   }
 }
 
-module.exports = ready;
+export default ready;

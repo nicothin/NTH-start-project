@@ -201,7 +201,7 @@
     "function-whitespace-after": ["always", {
       "message": "Всегда нужны пробелы между функциями"
     }],
-    "function-url-scheme-whitelist": [["data", "/^https/"], {
+    "function-url-scheme-allowed-list": [["data", "/^https/"], {
       "message": "Картинки фоновые только data: URL и по https хочешь ты"
     }],
     "number-leading-zero": ["always", {
@@ -253,7 +253,7 @@
     "value-list-comma-space-before": ["never", {
       "message": "В значениях перед запятой пробел запрещен"
     }],
-    "property-blacklist": [["text-rendering", ], {
+    "property-disallowed-list": [["text-rendering", ], {
       "message": "Свойство из чёрного списка"
     }],
     "property-case": ["lower", {
@@ -281,7 +281,7 @@
       # "severity": "warning",
       "message": "!important с опаской применять следует"
     }],
-    "declaration-property-unit-blacklist": [{
+    "declaration-property-unit-disallowed-list": [{
         "font-size": ["pt"],
         "/^animation/": ["ms"],
         "/^padding/": ["%"]
@@ -295,7 +295,7 @@
     # }, {
     #   "message": "Для этого свойства значение это в чёрном списке"
     # }],
-    "unit-blacklist": [["mm","cm","in","pc",], {
+    "unit-disallowed-list": [["mm","cm","in","pc",], {
       "message": "Запрещены единицы измерения эти"
     }],
     "declaration-block-no-duplicate-properties": [true, {
@@ -350,7 +350,7 @@
     "selector-combinator-space-before": ["always", {
       "message": "Перед комбинатором в селекторе пробел нужен"
     }],
-    "selector-attribute-operator-blacklist": [["id"], {
+    "selector-attribute-operator-disallowed-list": [["id"], {
       "message": "По ID джедай стилизовать не должен"
     }],
     "selector-max-compound-selectors": [3, {
@@ -424,7 +424,7 @@
     "media-feature-range-operator-space-before": ["always", {
       "message": "Пробел перед оператором диапазона ставить следует"
     }],
-    "at-rule-blacklist": [["extend", ], {
+    "at-rule-disallowed-list": [["extend", ], {
       "message": "В чёрном списке @-правило это"
     }],
     "at-rule-empty-line-before": ["always", {
@@ -472,7 +472,7 @@
     "comment-whitespace-inside": ["always", {
       "message": "В комменте пробелы в начале о конце нужны"
     }],
-    "comment-word-blacklist": [ [/((Х|х)+уй|(Х|х)уе|(Х|х)уё|(Б|б)ляд|(М|м)уда|(П|п)идо|(П|п)еди|(П|п)еде|(^|\s)+(Б|б)ля)/], {
+    "comment-word-disallowed-list": [ [/((Х|х)+уй|(Х|х)уе|(Х|х)уё|(Б|б)ляд|(М|м)уда|(П|п)идо|(П|п)еди|(П|п)еде|(^|\s)+(Б|б)ля)/], {
       "message": "Комментарий херовый, при себе оставь его"
     }],
     "indentation": [2, {
@@ -516,7 +516,7 @@
     "shorthand-property-no-redundant-values": [true, {
       "message": "В значении свойства избыточность лишняя, короче можно написать"
     }],
-    "selector-combinator-blacklist": [[">", ], {
+    "selector-combinator-disallowed-list": [[">", ], {
       "severity": "warning",
       "message": "Комбинатор > опасно связывает CSS с DOM"
     }],
@@ -539,7 +539,7 @@
     # "selector-nested-pattern": ["^(&|\\.\\w+\\s+&)(__\\w|--\\w)?", {
     #   "message": "Вкладывать такой селектор нельзя"
     # }],
-    "selector-pseudo-class-blacklist": [["/^nth-/", ], {
+    "selector-pseudo-class-disallowed-list": [["/^nth-/", ], {
       # "severity": "warning",
       "message": "Псевдокласс такой использовать не стоит"
     }],
