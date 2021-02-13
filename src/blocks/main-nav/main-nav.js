@@ -1,8 +1,8 @@
 /* global document Element */
 
-const ready = require('../../js/utils/documentReady.js');
+import ready from 'Utils/documentReady.js';
 
-ready(function(){
+ready(function() {
 
   // Добавление/удаление модификаторов при фокусировке на ссылочном элементе
   var linkClassName = 'main-nav__link';

@@ -1,9 +1,9 @@
 /* global document */
 
-const closest = require('closest');
-const ready = require('../../js/utils/documentReady.js');
+import closest from 'closest';
+import ready from 'Utils/documentReady.js';
 
-ready(function(){
+ready(function() {
 
   /*
     Форма: работа стилизованного input[type="file"]

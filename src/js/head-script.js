@@ -21,16 +21,3 @@ window.addEventListener('resize', () => {
   let vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty('--vh', `${vh}px`);
 });
-
-// Добавление css-scroll-size для борьбы с проблемами скроллируемых блоков
-document.addEventListener("DOMContentLoaded", () => {
-  const outer = document.createElement('div');
-  const inner = document.createElement('div');
-  outer.style.overflow = 'scroll';
-  outer.classList.add('scrollbar');
-  document.body.appendChild(outer);
-  outer.appendChild(inner);
-  const scrollbarSize = outer.offsetWidth - inner.offsetWidth;
-  document.body.removeChild(outer);
-  document.documentElement.style.setProperty('--css-scroll-size', `${scrollbarSize}px`);
-});

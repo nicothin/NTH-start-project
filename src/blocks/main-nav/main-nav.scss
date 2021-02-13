@@ -67,6 +67,7 @@
   }
 
   &__link {
+    position: relative;
     display: block;
     padding: 0.5em 1em;
     text-decoration: none;
@@ -74,6 +75,7 @@
 
     &:hover,
     &:focus {
+      z-index: 1;
       text-decoration: none;
       background-color: $gray-lightest;
     }
