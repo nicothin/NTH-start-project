@@ -311,7 +311,7 @@ function buildJs() {
     .pipe(webpackStream({
       mode: mode,
       entry: entryList,
-      devtool: 'inline-source-map',
+      devtool: mode === 'development' ? 'inline-source-map' : false,
       output: {
         filename: '[name].js',
       },
