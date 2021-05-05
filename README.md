@@ -146,7 +146,6 @@ node createBlock.js demo-block pug js # создаст папку блока, de
 2. [css-mqpacker](https://github.com/hail2u/node-css-mqpacker)
 3. [postcss-import](https://github.com/postcss/postcss-import)
 4. [postcss-inline-svg](https://github.com/TrySound/postcss-inline-svg)
-6. [postcss-object-fit-images](https://github.com/ronik-design/postcss-object-fit-images) (в паре с [полифилом](https://github.com/bfred-it/object-fit-images))
 
 ### Стилевой код-гайд
 
@@ -180,7 +179,6 @@ node createBlock.js demo-block pug js # создаст папку блока, de
 - Добавить класс с указанием названия браузера и ОС.
 - Добавить класс `touch` или `no-touch`, в зависимости от типа интерфейса.
 - Добавить кастомное свойство `--vh` со значением в 1% высоты вьюпорта (значение пересчитывается при изменении размеров).
-- Добавить кастомное свойство `--css-scroll-size` с указанием ширины скролла в пикселах.
 
 
 ## Нравится проект?

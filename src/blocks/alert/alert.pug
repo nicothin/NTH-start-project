@@ -10,13 +10,13 @@ mixin alert(title, mods)
           p Текст
         +alert('Внимание', 'warning, some-mod-name')
           p Предупреждение
-          +close('Закрыть', 'sm')(class='alert__close', aria-label='Закрыть')
+          +close('Закрыть')(class='alert__close')
         +alert('Внимание', 'danger')
           p Проблема
-          +close('Закрыть', 'sm')(class='alert__close', aria-label='Закрыть')
+          +close('Закрыть')(class='alert__close')
         +alert('Внимание', 'success')
           p Успех
-          +close('Закрыть', 'sm')(class='alert__close', aria-label='Закрыть')
+          +close('Закрыть')(class='alert__close')
 
   -
     //- список модификаторов

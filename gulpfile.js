@@ -22,7 +22,6 @@ const mqpacker = require("css-mqpacker");
 const atImport = require("postcss-import");
 const csso = require('gulp-csso');
 const inlineSVG = require('postcss-inline-svg');
-const objectFitImages = require('postcss-object-fit-images');
 const cpy = require('cpy');
 const svgstore = require('gulp-svgstore');
 const svgmin = require('gulp-svgmin');
@@ -68,7 +67,6 @@ let postCssPlugins = [
   }),
   atImport(),
   inlineSVG(),
-  objectFitImages(),
 ];
 
 
@@ -314,6 +312,11 @@ function buildJs() {
       devtool: mode === 'development' ? 'inline-source-map' : false,
       output: {
         filename: '[name].js',
+      },
+      resolve: {
+        alias: {
+          Utils: path.resolve(__dirname, 'src/js/utils/'),
+        },
       },
       module: {
         rules: [

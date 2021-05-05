@@ -1,7 +1,7 @@
 /* global document */
 
 const closest = require('closest');
-const ready = require('../../js/utils/documentReady.js');
+import ready from 'Utils/documentReady.js';
 
 ready(function(){
 
@@ -30,8 +30,8 @@ ready(function(){
   const fieldsText = Array.from(document.querySelectorAll('input[data-check-pattern]'));
   fieldsText.forEach(function(input){
     let hasBeenAlreadyBlured = false;
-    input.addEventListener('blur', function(){ 
-      checkFieldText(input); 
+    input.addEventListener('blur', function(){
+      checkFieldText(input);
       if(!hasBeenAlreadyBlured) hasBeenAlreadyBlured = true;
     });
     input.addEventListener('input', function(){ if(hasBeenAlreadyBlured) checkFieldText(input); });

@@ -101,63 +101,15 @@ block content
         code &lt;head>...&lt;/head>
         code &lt;body>
         code   &lt;div class="page__inner">
-        code     &lt;div class="page__content">Обёртка основного содержимого&lt;/div>
-        code     &lt;div class="page__footer-wrapper">Обёртка прибитого подвала&lt;/div>
+        code     &lt;div class="page__content">
+        code       Основной содержимое
+        code     &lt;/div>
+        code     &lt;div class="page__footer-wrapper">
+        code       «Прибитый» «подвал»
+        code     &lt;/div>
         code   &lt;/div>
         code &lt;/body>
         code &lt;/html>
-
-  +block-lib('grid-mixins', 'Примеси-генераторы модульной сетки', false, 'grid')
-    :markdown-it()
-      В сборку берётся `./src/scss/mixins/grid-mixins.scss` с примесями-генераторами. Используйте семантические классы и применяйте к ним примеси.
-
-      [Пример использования на codepen.io](https://codepen.io/nicothin/pen/aJEOwE?editors=1100).
-
-      Необходимая структура:
-
-      - Контейнер — общая обёртка, обеспечивающая ширину, боковые внутренние отступы (`padding`) и центровку (`margin: auto`). Может содержать любой контент.
-      - Прямой родитель сетки — обёртка ячеек, обеспечивающая отрицательные боковые отступы (`margin`).
-      - Ячейки любой ширины (по умолчанию 12 колонок, для изменения — переопредить переменную).
-
-    +block-lib-code()
-      pre.code
-        code &lt;section class="promo">
-        code   &lt;div class="promo__inner">
-        code     &lt;h2>Заголовок промо&lt;/h2>
-        code     &lt;p>Произвольный контент до модульной сетки&lt;/p>
-        code     &lt;div class="promo__grid">
-        code       &lt;div class="promo__img">&lt;/div>
-        code       &lt;div class="promo__text">&lt;/div>
-        code     &lt;/div>
-        code   &lt;/div>
-        code &lt;/section>
-        code &nbsp;
-        code .promo {
-        code
-        code   &__inner {
-        code     @include container();
-        code   }
-        code
-        code   &__grid {
-        code     @include row();
-        code   }
-        code
-        code   &__img {
-        code     @include col();
-        code     @include col(md, 5);
-        code   }
-        code
-        code   &__text {
-        code     @include col();
-        code     @include col(md, 7);
-        code   }
-        code }
-
-  +block-lib('sprite-svg', 'SVG-спрайт c <a href="https://github.com/w0rm/gulp-svgstore">gulp-svgstore</a>', false)
-    include:markdown-it(html='true') ../blocks/sprite-svg/readme.md
-
-  +block-lib('sprite-png', 'PNG-спрайт с <a href="https://github.com/Ensighten/spritesmith">spritesmith</a>', true)
-    include:markdown-it(html='true') ../blocks/sprite-png/readme.md
 
   +block-lib('page-header', '«Шапка» страницы', false)
     include:markdown-it(html='true') ../blocks/page-header/readme.md
@@ -883,45 +835,16 @@ block content
 
   +block-lib('modal', 'Модальное окно', false)
     include:markdown-it(html='true') ../blocks/modal/readme.md
-    p Одно и то же модальное окно, в консоль выводятся события. #[button.btn(type='button', data-toggle='modal', data-target='#modal-demo-01') Показать модальное окно] #[a(href='#modal-demo-01', data-toggle='modal') Показать модальное окно] #[span(data-toggle='modal', data-target='#modal-demo-01') Показать модальное окно]
+    p #[button.btn(type='button', data-modal-target='#modal-demo-01', data-modal='open') Показать окно с «шапкой» и «подвалом»] #[a(href='#modal-demo-02', data-modal='open') Показать окно без внутренних отступов]
     +modal('modal-demo-01', 'Заголовок', 'some')
       .modal__body
-        p Текст
-        p Текст
-        p Текст
-        p Текст
-        p Текст
-        p Текст
-        p Текст
-        p Текст
-        p Текст
-        p Текст
-        p Текст
-        p Текст
-        p Текст
-        p Текст
-      .modal__footer
-        button.btn(type='button', data-dismiss='modal') Закрыть
-    pre.code
-      code // методы
-      code $('#modal-demo-01').modal(options)
-      code $('#modal-demo-01').modal('show')
-      code $('#modal-demo-01').modal('hide')
-      code $('#modal-demo-01').modal('toggle')
-      code
-      code // события
-      code $('#modal-demo-01').on('show.nth.modal', function(){
-      code   console.log('show.nth.modal');
-      code });
-      code $('#modal-demo-01').on('shown.nth.modal', function(){
-      code   console.log('shown.nth.modal');
-      code });
-      code $('#modal-demo-01').on('hide.nth.modal', function(){
-      code   console.log('hide.nth.modal');
-      code });
-      code $('#modal-demo-01').on('hidden.nth.modal', function(){
-      code   console.log('hidden.nth.modal');
-      code });
+        p С «Шапкой», «подвалом» и внутр. отступами на контенте.
+        p С «Шапкой», «подвалом» и внутр. отступами на контенте.
+        p С «Шапкой», «подвалом» и внутр. отступами на контенте.
+      footer.modal__footer
+        button.btn(type='button', data-modal='close') Закрыть
+    +modal('modal-demo-02')
+      p Без «шапки», «подвала» и внутр. отступов на контенте.
     +block-lib-code()
       include:show-code(first-line='//- Pug-файл этого блока:') ../blocks/modal/modal.pug
 
@@ -968,20 +891,11 @@ block content
     +block-lib-code()
       include:show-code(first-line='//- Pug-файл этого блока:') ../blocks/baron/baron.pug
 
-  +block-lib('object-fit-polyfill', 'Поддержка object-fit для IE', false)
-    include:markdown-it(html='true') ../blocks/object-fit-polyfill/readme.md
-    img.ofp-demo(src='img/demo-avatar-m.png', alt='Аватар', style='width: 128px; height: 64px;')
-    img.ofp-demo(src='img/demo-avatar-f.png', alt='Аватар', style='width: 64px; height: 64px;')
-    +block-lib-code()
-      div
-        pre.code
-          code &lt;img src="img/demo-avatar-m.png" class="semantic-class" style="width: 128px; height: 64px;" alt="Аватар" />
-          code &lt;img src="img/demo-avatar-f.png" class="semantic-class" style="width: 64px; height: 64px;" alt="Аватар" />
-        pre.code
-          code .semantic-class {
-          code   object-fit: cover;
-          code }
+  +block-lib('sprite-svg', 'SVG-спрайт c <a href="https://github.com/w0rm/gulp-svgstore">gulp-svgstore</a>', false)
+    include:markdown-it(html='true') ../blocks/sprite-svg/readme.md
 
+  +block-lib('sprite-png', 'PNG-спрайт с <a href="https://github.com/Ensighten/spritesmith">spritesmith</a>', false)
+    include:markdown-it(html='true') ../blocks/sprite-png/readme.md
 
   .burger.blocks-library__menu-toggler(data-toggle='off-canvas')
     span(data-toggle='off-canvas')

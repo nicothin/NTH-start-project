@@ -69,7 +69,6 @@
     "postcss": "^8.2.5",
     "postcss-import": "^14.0.0",
     "postcss-inline-svg": "^5.0.0",
-    "postcss-object-fit-images": "^1.1.2",
     "pug-lint": "^2.6.0",
     "stylelint": "^13.2.1",
     "stylelint-order": "^4.0.0",
@@ -84,8 +83,6 @@
     "baron": "^3.0.3",
     "choices.js": "^9.0.1",
     "closest": "0.0.1",
-    "jquery": "^3.4.1",
-    "object-fit-images": "^3.2.4",
     "svg4everybody": "^2.1.8"
   },
   "husky": {

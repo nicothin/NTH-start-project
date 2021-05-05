@@ -10,6 +10,5 @@ require('../off-canvas/off-canvas.js');
 require('../modal/modal.js');
 require('../tabs/tabs.js');
 require('../baron/baron.js');
-require('../object-fit-polyfill/object-fit-polyfill.js');
 require('../form-validation/form-validation.js');
 require('../../js/script.js');
