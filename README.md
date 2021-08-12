@@ -20,9 +20,10 @@
 
 Требуются установленный [git](https://git-scm.com/) и [Node.js (LTS)](https://nodejs.org/en/).
 
-1. Открыть терминал, попасть в папку проектов, клонировать этот репозиторий: `git clone https://github.com/nicothin/NTH-start-project.git my-new-project`
-2. Удалить историю разработки: `rm -rf .git`
-3. Установить зависимости проекта: `npm i` (может быть долго, особенно на Windows).
+1. Открыть терминал, попасть в папку проектов, клонировать этот репозиторий: `git clone https://github.com/nicothin/NTH-start-project.git my-new-project` (где `my-new-project` — папка для нового проекта).
+2. Перейти в папку нового проекта (в этом примере — `cd my-new-project`).
+3. Удалить историю разработки: `rm -rf .git`
+4. Установить зависимости проекта: `npm i` (может быть долго, особенно на Windows).
 
 
 ## Команды
