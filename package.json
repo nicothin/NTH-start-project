@@ -35,7 +35,7 @@
     "autoprefixer": "^10.2.4",
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
-    "browser-sync": "^2.26.7",
+    "browser-sync": "^2.27.10",
     "cpy": "^8.1.0",
     "cross-env": "^7.0.2",
     "css-mqpacker": "^7.0.0",
